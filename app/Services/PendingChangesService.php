@@ -60,7 +60,7 @@ class PendingChangesService
 
     public function pendingChangesExist(Tree|null $tree = null): bool
     {
-        $query = DB::table(table: 'change')->where(column: 'status', operator: '=', value: ChangeStatus::Pending->value);
+        $query = DB::queryBuilder()->from(table: 'change')->where(column: 'status', operator: '=', value: ChangeStatus::Pending->value);
 
         if ($tree instanceof Tree) {
             $query = $query->where(column: 'tree_id', operator: '=', value: $tree->id());
@@ -74,7 +74,7 @@ class PendingChangesService
      */
     public function pendingXrefs(Tree $tree): Collection
     {
-        return DB::table('change')
+        return DB::queryBuilder()->from('change')
             ->where('status', '=', ChangeStatus::Pending->value)
             ->where('gedcom_id', '=', $tree->id())
             ->orderBy('xref')
@@ -98,7 +98,7 @@ class PendingChangesService
     {
         $xrefs = $this->pendingXrefs($tree);
 
-        $rows = DB::table('change')
+        $rows = DB::queryBuilder()->from('change')
             ->join('user', 'user.user_id', '=', 'change.user_id')
             ->where('status', '=', ChangeStatus::Pending->value)
             ->where('gedcom_id', '=', $tree->id())
@@ -141,7 +141,7 @@ class PendingChangesService
     {
         $xrefs = $this->pendingXrefs($tree);
 
-        $changes = DB::table('change')
+        $changes = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', ChangeStatus::Pending->value)
             ->whereIn('xref', $xrefs->slice(0, $n))
@@ -158,7 +158,7 @@ class PendingChangesService
                 $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
-            DB::table('change')
+            DB::queryBuilder()->from('change')
                 ->where('change_id', '=', $change->change_id)
                 ->update(['status' => ChangeStatus::Accepted->value]);
         }
@@ -166,7 +166,7 @@ class PendingChangesService
 
     public function acceptRecord(GedcomRecord $record): void
     {
-        $changes = DB::table('change')
+        $changes = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $record->tree()->id())
             ->where('xref', '=', $record->xref())
             ->where('status', '=', ChangeStatus::Pending->value)
@@ -183,7 +183,7 @@ class PendingChangesService
                 $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
             }
 
-            DB::table('change')
+            DB::queryBuilder()->from('change')
                 ->where('change_id', '=', $change->change_id)
                 ->update(['status' => ChangeStatus::Accepted->value]);
         }
@@ -191,7 +191,7 @@ class PendingChangesService
 
     public function acceptChange(Tree $tree, string $xref, string $change_id): void
     {
-        $changes = DB::table('change')
+        $changes = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('xref', '=', $xref)
             ->where('change_id', '<=', $change_id)
@@ -208,7 +208,7 @@ class PendingChangesService
                 $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
-            DB::table('change')
+            DB::queryBuilder()->from('change')
                 ->where('change_id', '=', $change->change_id)
                 ->update(['status' => ChangeStatus::Accepted->value]);
         }
@@ -216,7 +216,7 @@ class PendingChangesService
 
     public function rejectTree(Tree $tree): void
     {
-        DB::table('change')
+        DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', ChangeStatus::Pending->value)
             ->update(['status' => ChangeStatus::Rejected->value]);
@@ -224,7 +224,7 @@ class PendingChangesService
 
     public function rejectChange(Tree $tree, string $xref, string $change_id): void
     {
-        DB::table('change')
+        DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('xref', '=', $xref)
             ->where('change_id', '>=', $change_id)
@@ -234,7 +234,7 @@ class PendingChangesService
 
     public function rejectRecord(GedcomRecord $record): void
     {
-        DB::table('change')
+        DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $record->tree()->id())
             ->where('xref', '=', $record->xref())
             ->where('status', '=', ChangeStatus::Pending->value)
@@ -255,7 +255,7 @@ class PendingChangesService
         $xref     = $params['xref'] ?? '';
         $username = $params['username'] ?? '';
 
-        $query = DB::table('change')
+        $query = DB::queryBuilder()->from('change')
             ->leftJoin('user', 'user.user_id', '=', 'change.user_id')
             ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
             ->select(['change.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), 'gedcom_name'])

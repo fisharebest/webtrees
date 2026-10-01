@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
 // Count the number of linked records. These numbers include private records.
 // It is not good to bypass privacy, but many servers do not have the resources
 // to process privacy for every record in the tree
-$count_individuals = DB::table('individuals')
+$count_individuals = DB::queryBuilder()->from('individuals')
     ->join('link', static function (JoinClause $join): void {
         $join->on('l_from', '=', 'i_id');
         $join->on('l_file', '=', 'i_file');
@@ -37,7 +37,7 @@ $count_individuals = DB::table('individuals')
     ->map(static fn (string $n): int => (int) $n)
     ->all();
 
-$count_families = DB::table('families')
+$count_families = DB::queryBuilder()->from('families')
     ->join('link', static function (JoinClause $join): void {
         $join->on('l_from', '=', 'f_id');
         $join->on('l_file', '=', 'f_file');

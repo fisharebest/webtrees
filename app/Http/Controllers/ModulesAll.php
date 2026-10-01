@@ -60,7 +60,7 @@ final class ModulesAll
             $old_status = $module->isEnabled();
 
             if ($new_status !== $old_status) {
-                DB::table('module')
+                DB::queryBuilder()->from('module')
                     ->where('module_name', '=', $module->name())
                     ->update(['status' => $new_status ? 'enabled' : 'disabled']);
 

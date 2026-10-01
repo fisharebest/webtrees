@@ -146,7 +146,7 @@ class CalendarService
 
         foreach ($anniversaries as $anniv) {
             // Build a query to match anniversaries in the appropriate calendar.
-            $query = DB::table('dates')
+            $query = DB::queryBuilder()->from('dates')
                 ->distinct()
                 ->where('d_file', '=', $tree->id())
                 ->where('d_type', '=', $anniv->calendarEscape()->value);

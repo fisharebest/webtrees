@@ -108,7 +108,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         }
 
         // We can apply the filters using SQL, but it is more efficient to shuffle in PHP.
-        $random_row = DB::table('media')
+        $random_row = DB::queryBuilder()->from('media')
             ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')

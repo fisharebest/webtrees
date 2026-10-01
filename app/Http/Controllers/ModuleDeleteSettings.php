@@ -35,26 +35,26 @@ final class ModuleDeleteSettings
     {
         $module_name = Validator::parsedBody($request)->string('module_name');
 
-        DB::table('block_setting')
+        DB::queryBuilder()->from('block_setting')
             ->join('block', 'block_setting.block_id', '=', 'block.block_id')
             ->join('module', 'block.module_name', '=', 'module.module_name')
             ->where('module.module_name', '=', $module_name)
             ->delete();
 
-        DB::table('block')
+        DB::queryBuilder()->from('block')
             ->join('module', 'block.module_name', '=', 'module.module_name')
             ->where('module.module_name', '=', $module_name)
             ->delete();
 
-        DB::table('module_setting')
+        DB::queryBuilder()->from('module_setting')
             ->where('module_name', '=', $module_name)
             ->delete();
 
-        DB::table('module_privacy')
+        DB::queryBuilder()->from('module_privacy')
             ->where('module_name', '=', $module_name)
             ->delete();
 
-        DB::table('module')
+        DB::queryBuilder()->from('module')
             ->where('module_name', '=', $module_name)
             ->delete();
 

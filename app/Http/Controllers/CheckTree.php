@@ -95,22 +95,22 @@ final class CheckTree
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
 
-        $q1 = DB::table('individuals')
+        $q1 = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id())
             ->select(['i_id AS xref', 'i_gedcom AS gedcom', new Expression("'INDI' AS type")]);
-        $q2 = DB::table('families')
+        $q2 = DB::queryBuilder()->from('families')
             ->where('f_file', '=', $tree->id())
             ->select(['f_id AS xref', 'f_gedcom AS gedcom', new Expression("'FAM' AS type")]);
-        $q3 = DB::table('media')
+        $q3 = DB::queryBuilder()->from('media')
             ->where('m_file', '=', $tree->id())
             ->select(['m_id AS xref', 'm_gedcom AS gedcom', new Expression("'OBJE' AS type")]);
-        $q4 = DB::table('sources')
+        $q4 = DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->select(['s_id AS xref', 's_gedcom AS gedcom', new Expression("'SOUR' AS type")]);
-        $q5 = DB::table('other')
+        $q5 = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type']);
-        $q6 = DB::table('change')
+        $q6 = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', ChangeStatus::Pending->value)
             ->orderBy('change_id')

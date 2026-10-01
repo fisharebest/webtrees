@@ -76,18 +76,18 @@ class PlaceLocation
             $place = mb_substr($place, 0, 120);
 
             if ($parent_id === null) {
-                $location_id = DB::table('place_location')
+                $location_id = DB::queryBuilder()->from('place_location')
                     ->where('place', '=', $place)
                     ->whereNull('parent_id')
                     ->value('id');
             } else {
-                $location_id = DB::table('place_location')
+                $location_id = DB::queryBuilder()->from('place_location')
                     ->where('place', '=', $place)
                     ->where('parent_id', '=', $parent_id)
                     ->value('id');
             }
 
-            $location_id ??= DB::table('place_location')->insertGetId([
+            $location_id ??= DB::queryBuilder()->from('place_location')->insertGetId([
                     'parent_id' => $parent_id,
                     'place'     => $place,
                 ]);
@@ -106,12 +106,12 @@ class PlaceLocation
 
         foreach ($this->parts->reverse() as $place) {
             if ($parent_id === null) {
-                $parent_id = DB::table('place_location')
+                $parent_id = DB::queryBuilder()->from('place_location')
                     ->whereNull('parent_id')
                     ->where('place', '=', mb_substr($place, 0, 120))
                     ->value('id');
             } else {
-                $parent_id = DB::table('place_location')
+                $parent_id = DB::queryBuilder()->from('place_location')
                     ->where('parent_id', '=', $parent_id)
                     ->where('place', '=', mb_substr($place, 0, 120))
                     ->value('id');
@@ -136,7 +136,7 @@ class PlaceLocation
                 ];
             }
 
-            $row = DB::table('place_location')
+            $row = DB::queryBuilder()->from('place_location')
                 ->where('id', '=', $this->id())
                 ->select(['latitude', 'longitude'])
                 ->first();
@@ -186,7 +186,7 @@ class PlaceLocation
         }
 
         // Find our own co-ordinates and those of any child places
-        $latitudes = DB::table('place_location')
+        $latitudes = DB::queryBuilder()->from('place_location')
             ->whereNotNull('latitude')
             ->where(function (Builder $query): void {
                 $query
@@ -197,7 +197,7 @@ class PlaceLocation
             ->pluck('latitude')
             ->map(static fn (string $x): float => (float) $x);
 
-        $longitudes = DB::table('place_location')
+        $longitudes = DB::queryBuilder()->from('place_location')
             ->whereNotNull('longitude')
             ->where(function (Builder $query): void {
                 $query

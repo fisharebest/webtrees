@@ -61,7 +61,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $query = DB::table('hit_counter')
+        $query = DB::queryBuilder()->from('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_name', self::PAGES)
             ->select(['page_parameter', 'page_count'])

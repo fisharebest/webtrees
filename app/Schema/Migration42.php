@@ -49,11 +49,11 @@ class Migration42 implements MigrationInterface
     public function upgrade(): void
     {
         // doctrine/dbal cannot modify tables containing ENUM fields
-        $data = DB::table('module_privacy')->get();
+        $data = DB::queryBuilder()->from('module_privacy')->get();
 
-        DB::schema()->drop('module_privacy');
+        DB::schemaBuilder()->drop('module_privacy');
 
-        DB::schema()->create('module_privacy', static function (Blueprint $table): void {
+        DB::schemaBuilder()->create('module_privacy', static function (Blueprint $table): void {
             $table->increments('id');
             $table->string('module_name', 32);
             $table->integer('gedcom_id');
@@ -72,7 +72,7 @@ class Migration42 implements MigrationInterface
         });
 
         foreach ($data as $datum) {
-            DB::table('module_privacy')->insert([
+            DB::query(table: 'module_privacy')->insert(values: [
                 'module_name'  => $datum->module_name,
                 'gedcom_id'    => $datum->gedcom_id,
                 'interface'    => self::COMPONENT_TO_INTERFACE[$datum->component],

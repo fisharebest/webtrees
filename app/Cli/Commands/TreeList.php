@@ -60,7 +60,7 @@ final class TreeList extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $trees = DB::table('gedcom')->orderBy('gedcom_id')
+        $trees = DB::queryBuilder()->from('gedcom')->orderBy('gedcom_id')
             ->where('gedcom_id', '>', 0)
             ->get()
             ->map(Tree::fromDB(...));

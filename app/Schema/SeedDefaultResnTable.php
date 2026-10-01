@@ -41,7 +41,7 @@ class SeedDefaultResnTable implements SeedInterface
     {
         // Set default privacy settings for new trees
         foreach (self::DEFAULT_RESTRICTIONS as $tag_type => $resn) {
-            DB::table('default_resn')->updateOrInsert([
+            DB::queryBuilder()->from('default_resn')->updateOrInsert([
                 'gedcom_id' => -1,
                 'tag_type'  => $tag_type,
             ], [

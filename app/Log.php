@@ -54,7 +54,7 @@ class Log
             $ip_address = '127.0.0.1';
         }
 
-        DB::table('log')->insert([
+        DB::query(table: 'log')->insert(values: [
             'log_type'    => $log_type,
             'log_message' => $message,
             'ip_address'  => $ip_address,

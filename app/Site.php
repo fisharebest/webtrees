@@ -112,7 +112,7 @@ class Site
         $setting_value = mb_substr($setting_value, 0, 2000);
 
         if (self::getPreference($setting_name) !== $setting_value) {
-            DB::table('site_setting')->updateOrInsert([
+            DB::queryBuilder()->from('site_setting')->updateOrInsert([
                 'setting_name' => $setting_name,
             ], [
                 'setting_value' => $setting_value,
@@ -138,7 +138,7 @@ class Site
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (self::$preferences === []) {
-            self::$preferences = DB::table('site_setting')
+            self::$preferences = DB::queryBuilder()->from('site_setting')
                 ->pluck('setting_value', 'setting_name')
                 ->all();
         }

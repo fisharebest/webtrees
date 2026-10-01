@@ -82,7 +82,7 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_id', '=', $xref)
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Header::RECORD_TYPE)
