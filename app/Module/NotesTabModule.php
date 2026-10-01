@@ -94,7 +94,6 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * Get all the facts for an individual which contain notes.
      *
-     *
      * @return Collection<int,Fact>
      */
     private function getFactsWithNotes(Individual $individual): Collection

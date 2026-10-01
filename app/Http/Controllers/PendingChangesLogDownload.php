@@ -25,6 +25,9 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_map;
+use function implode;
+use function str_replace;
 use function response;
 
 final class PendingChangesLogDownload
@@ -39,9 +42,8 @@ final class PendingChangesLogDownload
         $params         = $request->getQueryParams();
         $params['tree'] = $tree->name();
 
-        $content = $this->pending_changes_service->changesQuery($params)
-            ->get()
-            ->map(static fn (object $row): string =>
+        $rows = $this->pending_changes_service->changesQuery($params)->get();
+        $content = implode("\n", array_map(static fn (object $row): string =>
                 // Convert to CSV
                 implode(',', [
                 '"' . $row->change_time . '"',
@@ -51,8 +53,7 @@ final class PendingChangesLogDownload
                 '"' . str_replace('"', '""', $row->new_gedcom) . '"',
                 '"' . str_replace('"', '""', $row->user_name) . '"',
                 '"' . str_replace('"', '""', $row->gedcom_name) . '"',
-            ]))
-            ->implode("\n");
+            ]), $rows));
 
         return response($content, HttpStatusCode::OK, [
             'content-type'        => 'text/csv; charset=UTF-8',

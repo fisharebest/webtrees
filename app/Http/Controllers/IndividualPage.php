@@ -206,7 +206,6 @@ final class IndividualPage
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     *
      * @return Collection<int,ModuleSidebarInterface>
      */
     public function getSidebars(Individual $individual): Collection
@@ -219,7 +218,6 @@ final class IndividualPage
     /**
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
-     *
      *
      * @return Collection<int,ModuleTabInterface>
      */

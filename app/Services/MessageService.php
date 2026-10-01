@@ -53,7 +53,6 @@ class MessageService
     /**
      * Contact messages can only be sent to the designated contacts
      *
-     *
      * @return array<UserInterface>
      */
     public function validContacts(Tree $tree): array
@@ -93,7 +92,7 @@ class MessageService
         ]);
 
         if ($contact_method->sendsInternalMessage()) {
-            DB::table('message')->insert([
+            DB::query(table: 'message')->insert(values: [
                 'sender'     => Auth::check() ? Auth::user()->email() : $sender->email(),
                 'ip_address' => $ip,
                 'user_id'    => $recipient->id(),
@@ -120,7 +119,6 @@ class MessageService
 
     /**
      * Convert a username (or mailing list name) into an array of recipients.
-     *
      *
      * @return Collection<int,User>
      */

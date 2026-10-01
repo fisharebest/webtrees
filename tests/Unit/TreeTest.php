@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
@@ -75,6 +76,19 @@ class TreeTest extends TestCase
         $tree->setPreference('foo', 'bar');
         $pref = $tree->getPreference('foo');
         self::assertSame('bar', $pref);
+
+        $tree->setPreference('foo', 'baz');
+        self::assertSame('baz', $tree->getPreference('foo'));
+        self::assertSame('baz', DB::query()
+            ->from('gedcom_setting')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('setting_name', 'foo')
+            ->value('setting_value'));
+        self::assertSame(1, DB::query()
+            ->from('gedcom_setting')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('setting_name', 'foo')
+            ->count());
     }
 
     public function testUserTreePreferences(): void
@@ -91,6 +105,21 @@ class TreeTest extends TestCase
         $tree->setUserPreference($user, 'foo', 'bar');
         $pref = $tree->getUserPreference($user, 'foo', 'default');
         self::assertSame('bar', $pref);
+
+        $tree->setUserPreference($user, 'foo', 'baz');
+        self::assertSame('baz', $tree->getUserPreference($user, 'foo', 'default'));
+        self::assertSame('baz', DB::query()
+            ->from('user_gedcom_setting')
+            ->whereEqual('user_id', $user->id())
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('setting_name', 'foo')
+            ->value('setting_value'));
+        self::assertSame(1, DB::query()
+            ->from('user_gedcom_setting')
+            ->whereEqual('user_id', $user->id())
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('setting_name', 'foo')
+            ->count());
     }
 
     public function testCreateInvalidIndividual(): void

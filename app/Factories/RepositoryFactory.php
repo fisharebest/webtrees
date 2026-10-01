@@ -58,7 +58,6 @@ class RepositoryFactory extends AbstractGedcomRecordFactory implements Repositor
     /**
      * Create a source from a row in the database.
      *
-     *
      * @return Closure(object):Repository
      */
     public function mapper(Tree $tree): Closure
@@ -88,10 +87,11 @@ class RepositoryFactory extends AbstractGedcomRecordFactory implements Repositor
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
             ->value('o_gedcom');
     }
 }

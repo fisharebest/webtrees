@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -79,20 +78,21 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $subquery = DB::table('name')
-            ->where('n_file', '=', $tree->id())
-            ->where('n_type', '<>', '_MARNM')
-            ->where('n_surn', '<>', '')
-            ->where('n_surn', '<>', Individual::NOMEN_NESCIO)
-            ->select([
+        $subquery = DB::query()
+            ->select(
                 DB::binaryColumn('n_surn', 'n_surn'),
                 DB::binaryColumn('n_surname', 'n_surname'),
-            ]);
+            )
+            ->from('name')
+            ->whereEqual('n_file', $tree->id())
+            ->whereNotEqual('n_type', '_MARNM')
+            ->whereNotEqual('n_surn', '')
+            ->whereNotEqual('n_surn', Individual::NOMEN_NESCIO);
 
         $query = DB::query()
+            ->select('n_surn', 'n_surname', DB::alias(DB::count('*'), 'total'))
             ->fromSub($subquery, 'names')
-            ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
-            ->groupBy(['n_surn', 'n_surname']);
+            ->groupBy('n_surn', 'n_surname');
 
         /** @var array<non-empty-array<int>> $top_surnames */
         $top_surnames = [];

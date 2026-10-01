@@ -19,9 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\UserJournalModule;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\HtmlService;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Module\UserJournalModule;
 
 #[CoversClass(UserJournalModule::class)]
 class UserJournalModuleTest extends TestCase
@@ -29,5 +39,38 @@ class UserJournalModuleTest extends TestCase
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(UserJournalModule::class));
+    }
+
+    public function testListsOnlyTheCurrentUsersArticlesNewestFirst(): void
+    {
+        self::createDatabase();
+        (new ModuleService())->bootModules(new WebtreesTheme());
+
+        $user_service = new UserService(new SystemClock());
+        $user         = $user_service->create('first', 'First', 'first@example.com', 'secret');
+        $other_user   = $user_service->create('second', 'Second', 'second@example.com', 'secret');
+        Auth::login($user);
+        $tree = (new TreeService(new GedcomImportService()))->create('first', 'First');
+
+        $rows = [
+            [$user->id(), 'Old article', '2020-01-01 12:00:00'],
+            [$user->id(), 'New article', '2021-01-01 12:00:00'],
+            [$other_user->id(), 'Other article', '2022-01-01 12:00:00'],
+        ];
+
+        foreach ($rows as [$user_id, $subject, $updated]) {
+            DB::query(table: 'news')->insert([
+                'user_id' => $user_id,
+                'subject' => $subject,
+                'body'    => 'Content',
+                'updated' => $updated,
+            ]);
+        }
+
+        $module = new UserJournalModule(new HtmlService());
+        $html   = $module->getBlock($tree, 0, ModuleBlockInterface::CONTEXT_EMBED);
+
+        self::assertMatchesRegularExpression('/New article.*Old article/s', $html);
+        self::assertStringNotContainsString('Other article', $html);
     }
 }

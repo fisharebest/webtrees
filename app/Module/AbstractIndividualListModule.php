@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\QueryBuilder;
+use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
@@ -30,14 +33,12 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_filter;
+use function array_fill;
 use function array_key_exists;
 use function array_keys;
 use function array_map;
@@ -45,6 +46,7 @@ use function array_merge;
 use function array_sum;
 use function array_values;
 use function assert;
+use function count;
 use function e;
 use function implode;
 use function ob_get_clean;
@@ -488,26 +490,25 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
     /**
      * Restrict a query to individuals that are a spouse in a family record.
      */
-    protected function whereFamily(bool $fams, Builder $query): void
+    protected function whereFamily(bool $fams, QueryBuilder $query): QueryBuilder
     {
         if ($fams) {
-            $query->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_from', '=', 'n_id')
-                    ->on('l_file', '=', 'n_file')
-                    ->where('l_type', '=', 'FAMS');
-            });
+            return $query->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'n_id')->on('l_file', 'n_file')->on('l_type', DB::value('FAMS')));
         }
+
+        return $query;
     }
 
     /**
      * Restrict a query to include/exclude married names.
      */
-    protected function whereMarriedName(bool $marnm, Builder $query): void
+    protected function whereMarriedName(bool $marnm, QueryBuilder $query): QueryBuilder
     {
         if (!$marnm) {
-            $query->where('n_type', '<>', '_MARNM');
+            return $query->whereNotEqual('n_type', '_MARNM');
         }
+
+        return $query;
     }
 
     /**
@@ -528,21 +529,22 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $initials[$initial] = 0;
         }
 
-        $subquery = DB::table('name')
-            ->where('n_file', '=', $tree->id())
-            ->select([DB::binaryColumn('n_givn', 'n_givn')]);
+        $subquery = DB::query()
+            ->select(DB::binaryColumn('n_givn', 'n_givn'))
+            ->from('name')
+            ->whereEqual('n_file', $tree->id());
 
-        $this->whereFamily($fams, $subquery);
-        $this->whereMarriedName($marnm, $subquery);
+        $subquery = $this->whereFamily($fams, $subquery);
+        $subquery = $this->whereMarriedName($marnm, $subquery);
 
         if ($surns !== []) {
-            $subquery->whereIn('n_surn', $surns);
+            $subquery = $subquery->whereIn(DB::binaryColumn('n_surn'), $surns);
         }
 
         $query = DB::query()
+            ->select('n_givn', DB::alias(DB::count('*'), 'count'))
             ->fromSub($subquery, 'names')
-            ->select(['n_givn', new Expression('COUNT(*) AS count')])
-            ->groupBy(['n_givn']);
+            ->groupBy('n_givn');
 
         foreach ($query->get() as $row) {
             $initial = I18N::language()->initialLetter(I18N::language()->normalize(I18N::strtoupper($row->n_givn)));
@@ -566,25 +568,27 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     private function surnameData(Tree $tree, bool $marnm, bool $fams): array
     {
-        $subquery = DB::table('name')
-            ->where('n_file', '=', $tree->id())
+        $subquery = DB::query()
+            ->select(DB::binaryColumn('n_surn', 'n_surn'), DB::binaryColumn('n_surname', 'n_surname'))
+            ->from('name')
+            ->whereEqual('n_file', $tree->id())
             ->whereNotNull('n_surn') // Filters old records for sources, repositories, etc.
-            ->whereNotNull('n_surname')
-            ->select([
-                DB::binaryColumn('n_surn', 'n_surn'),
-                DB::binaryColumn('n_surname', 'n_surname'),
-            ]);
+            ->whereNotNull('n_surname');
 
-        $this->whereFamily($fams, $subquery);
-        $this->whereMarriedName($marnm, $subquery);
+        $subquery = $this->whereFamily($fams, $subquery);
+        $subquery = $this->whereMarriedName($marnm, $subquery);
 
-        return DB::query()
+        $rows = DB::query()
+            ->select('n_surn', 'n_surname', DB::alias(DB::count('*'), 'total'))
             ->fromSub($subquery, 'names')
-            ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
-            ->groupBy(['n_surn', 'n_surname'])
-            ->get()
-            ->map(static fn (object $x): object => (object) ['n_surn' => $x->n_surn, 'n_surname' => $x->n_surname, 'total' => (int) $x->total])
-            ->all();
+            ->groupBy('n_surn', 'n_surname')
+            ->get();
+
+        return array_map(static fn (object $row): object => (object) [
+            'n_surn' => $row->n_surn,
+            'n_surname' => $row->n_surname,
+            'total' => (int) $row->total,
+        ], $rows);
     }
 
     /**
@@ -689,22 +693,19 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     protected function individuals(Tree $tree, array $surns_to_show, string $galpha, bool $marnm, bool $fams): Collection
     {
-        $query = DB::table('individuals')
-            ->join('name', static function (JoinClause $join): void {
-                $join
-                    ->on('n_id', '=', 'i_id')
-                    ->on('n_file', '=', 'i_file');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'n_givn', 'n_surn']);
+        $query = DB::query()
+            ->select('i_id AS xref', 'i_gedcom AS gedcom', 'n_givn', 'n_surn')
+            ->from('individuals')
+            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_id', 'i_id')->on('n_file', 'i_file'))
+            ->whereEqual('i_file', $tree->id());
 
-        $this->whereFamily($fams, $query);
-        $this->whereMarriedName($marnm, $query);
+        $query = $this->whereFamily($fams, $query);
+        $query = $this->whereMarriedName($marnm, $query);
 
         if ($surns_to_show === []) {
-            $query->whereNotIn('n_surn', ['', '@N.N.']);
+            $query = $query->whereNotIn('n_surn', ['', '@N.N.']);
         } else {
-            $query->whereIn(DB::binaryColumn('n_surn'), $surns_to_show);
+            $query = $query->whereIn(DB::binaryColumn('n_surn'), $surns_to_show);
         }
 
         $individuals = new Collection();

@@ -234,7 +234,6 @@ class HousekeepingService
      * Delete files and folders that belonged to an earlier version of webtrees.
      * Return a list of those that we could not delete.
      *
-     *
      * @return array<string>
      */
     public function deleteOldWebtreesFiles(FilesystemOperator $filesystem): array
@@ -273,16 +272,16 @@ class HousekeepingService
 
     public function deleteOldLogs(int $max_age_in_seconds): void
     {
-        DB::table('log')
+        DB::query(table: 'log')
             ->whereIn('log_type', ['error', 'media'])
-            ->where('log_time', '<', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
+            ->whereLessThan('log_time', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
 
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
-        DB::table('session')
-            ->where('session_time', '<', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
+        DB::query(table: 'session')
+            ->whereLessThan('session_time', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
 

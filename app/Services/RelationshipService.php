@@ -59,7 +59,6 @@ class RelationshipService
      * takes account of pending changes, so we can display names of newly added
      * relations.
      *
-     *
      * @return array<Individual|Family> An array of nodes on the relationship path
      */
     private function getCloseRelationship(Individual $individual1, Individual $individual2, int $maxlength = 4): array

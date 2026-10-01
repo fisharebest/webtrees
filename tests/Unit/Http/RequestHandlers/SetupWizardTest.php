@@ -21,7 +21,10 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
 use Fisharebest\Webtrees\Tests\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
+
+use function view;
 
 #[CoversClass(SetupWizard::class)]
 class SetupWizardTest extends TestCase
@@ -29,5 +32,37 @@ class SetupWizardTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(SetupWizard::class));
+    }
+
+    public function testFirebirdConnectionView(): void
+    {
+        $html = view('setup/step-4-database-firebird', [
+            'dbca'     => '',
+            'dbcert'   => '',
+            'dbhost'   => 'localhost',
+            'dbkey'    => '',
+            'dbname'   => '/var/db/family & friends.fdb',
+            'dbpass'   => 'secret',
+            'dbport'   => '3050',
+            'dbtype'   => 'firebird',
+            'dbuser'   => 'SYSDBA',
+            'dbverify' => '',
+            'errors'   => new Collection(),
+            'lang'     => 'en-US',
+            'tblpfx'   => 'wt_',
+            'warnings' => new Collection(),
+            'wtemail'  => '',
+            'wtname'   => '',
+            'wtpass'   => '',
+            'wtuser'   => '',
+        ]);
+
+        self::assertStringContainsString('Database connection', $html);
+        self::assertStringContainsString('Firebird', $html);
+        self::assertStringContainsString('name="dbtype" type="hidden" value="firebird"', $html);
+        self::assertStringContainsString('name="dbport" pattern="\d+" type="text" value="3050"', $html);
+        self::assertStringContainsString('name="dbname" type="text" value="/var/db/family &amp; friends.fdb"', $html);
+        self::assertStringContainsString('name="step" type="submit" value="5"', $html);
+        self::assertStringContainsString('name="step" type="submit" value="3"', $html);
     }
 }

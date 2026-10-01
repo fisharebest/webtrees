@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Input\InputInterface;
@@ -48,7 +49,7 @@ final class ConfigIni extends AbstractCommand
         $this
             ->setName(name: 'config-ini')
             ->setDescription(description: 'Set values in data/config.ini.php')
-            ->addOption(name: 'dbtype', mode: InputOption::VALUE_OPTIONAL, description: 'Database type', default: $config['dbtype'] ?? DB::MYSQL)
+            ->addOption(name: 'dbtype', mode: InputOption::VALUE_OPTIONAL, description: 'Database type', default: $config['dbtype'] ?? Driver::MySQL->value)
             ->addOption(name: 'dbhost', mode: InputOption::VALUE_OPTIONAL, description: 'Database host', default: $config['dbhost'] ?? '')
             ->addOption(name: 'dbport', mode: InputOption::VALUE_OPTIONAL, description: 'Database port', default: $config['dbport'] ?? '')
             ->addOption(name: 'dbuser', mode: InputOption::VALUE_OPTIONAL, description: 'Database user', default: $config['dbuser'] ?? '')

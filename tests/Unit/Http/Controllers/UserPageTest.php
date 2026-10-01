@@ -19,8 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\UserPage;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UserPage::class)]
@@ -29,5 +39,33 @@ class UserPageTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(UserPage::class));
+    }
+
+    public function testInitializesOnlyUsersWithoutBlocks(): void
+    {
+        self::createDatabase();
+
+        $tree = (new TreeService(new GedcomImportService()))->create('name', 'title');
+        $user = (new UserService(new SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
+        DB::query(table: 'module')->insert(['module_name' => 'test-block']);
+        DB::query(table: 'block')->insert([
+            'user_id'     => -1,
+            'location'    => 'main',
+            'block_order' => 1,
+            'module_name' => 'test-block',
+        ]);
+        self::createRequest(attributes: ['tree' => $tree]);
+        Registry::container()->set(ModuleThemeInterface::class, self::createStub(ModuleThemeInterface::class));
+
+        $home_page_service = self::createMock(HomePageService::class);
+        $home_page_service->expects(self::once())->method('checkDefaultUserBlocksExist');
+        $home_page_service->method('userBlocks')->willReturn(new Collection());
+        $controller = new UserPage($user, $home_page_service);
+
+        self::assertSame(HttpStatusCode::OK->value, $controller->get($tree)->getStatusCode());
+        self::assertSame(1, DB::query(table: 'block')->whereEqual('user_id', $user->id())->count());
+
+        self::assertSame(HttpStatusCode::OK->value, $controller->get($tree)->getStatusCode());
+        self::assertSame(1, DB::query(table: 'block')->whereEqual('user_id', $user->id())->count());
     }
 }

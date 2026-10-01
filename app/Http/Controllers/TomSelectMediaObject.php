@@ -42,7 +42,6 @@ final class TomSelectMediaObject extends AbstractTomSelectHandler
     /**
      * Perform the search
      *
-     *
      * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -60,9 +61,12 @@ final class TreeList extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $trees = DB::table('gedcom')->orderBy('gedcom_id')
-            ->where('gedcom_id', '>', 0)
-            ->get()
+        $trees = DB::query()
+            ->select('*')
+            ->from('gedcom')
+            ->whereGreaterThan('gedcom_id', 0)
+            ->orderBy('gedcom_id')
+            ->get(in: Collection::class)
             ->map(Tree::fromDB(...));
 
         $headers = ['ID', 'Name', 'Title', 'Media folder', 'Imported', 'Private', 'Support user', 'Contact user'];

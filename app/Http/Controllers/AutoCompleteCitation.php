@@ -19,12 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 use function preg_match_all;
@@ -43,34 +44,27 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
         $regex_query = strtr(preg_quote($query, '/'), [' ' => '.+']);
 
         // Fetch all records with a link to this source
-        $individuals = DB::table('individuals')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'i_file')
-                    ->on('l_from', '=', 'i_id');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('l_to', '=', $source->xref())
-            ->where('l_type', '=', 'SOUR')
+        $individuals = DB::query()
+            ->select('individuals.*')
             ->distinct()
-            ->select(['individuals.*'])
-            ->get()
+            ->from('individuals')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'i_file')->on('l_from', 'i_id'))
+            ->whereEqual('i_file', $tree->id())
+            ->whereEqual('l_to', $source->xref())
+            ->whereEqual('l_type', 'SOUR')
+            ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
-        $families = DB::table('families')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'f_file')
-                    ->on('l_from', '=', 'f_id')
-                    ->where('l_type', '=', 'SOUR');
-            })
-            ->where('f_file', '=', $tree->id())
-            ->where('l_to', '=', $source->xref())
-            ->where('l_type', '=', 'SOUR')
+        $families = DB::query()
+            ->select('families.*')
             ->distinct()
-            ->select(['families.*'])
-            ->get()
+            ->from('families')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'f_file')->on('l_from', 'f_id')->on('l_type', DB::value('SOUR')))
+            ->whereEqual('f_file', $tree->id())
+            ->whereEqual('l_to', $source->xref())
+            ->whereEqual('l_type', 'SOUR')
+            ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 

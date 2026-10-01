@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -38,7 +39,11 @@ final class PendingChangesLogDelete
         $params         = $request->getQueryParams();
         $params['tree'] = $tree->name();
 
-        $this->pending_changes_service->changesQuery($params)->delete();
+        $matching_changes = $this->pending_changes_service->changesQuery($params);
+
+        DB::query(table: 'change')
+            ->whereInSubquery('change_id', DB::query()->select('change_id')->fromSub($matching_changes, 'matching_changes'))
+            ->delete();
 
         return response();
     }

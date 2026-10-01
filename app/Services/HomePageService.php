@@ -51,9 +51,11 @@ class HomePageService
         $tree     = Validator::attributes($request)->tree();
         $block_id = Validator::attributes($request)->integer('block_id');
 
-        $block = DB::table('block')
-            ->where('block_id', '=', $block_id)
-            ->where('gedcom_id', '=', $tree->id())
+        $block = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
+            ->whereEqual('gedcom_id', $tree->id())
             ->whereNull('user_id')
             ->first();
 
@@ -75,9 +77,11 @@ class HomePageService
     {
         $block_id = Validator::attributes($request)->integer('block_id');
 
-        $block = DB::table('block')
-            ->where('block_id', '=', $block_id)
-            ->where('user_id', '=', $user->id())
+        $block = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
+            ->whereEqual('user_id', $user->id())
             ->whereNull('gedcom_id')
             ->first();
 
@@ -99,8 +103,9 @@ class HomePageService
     {
         $active_blocks = $this->module_service->findByComponent(ModuleBlockInterface::class, $tree, Auth::user());
 
-        $module_name = DB::table('block')
-            ->where('block_id', '=', $block_id)
+        $module_name = DB::query()
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
             ->value('module_name');
 
         $block = $active_blocks->first(static fn (ModuleInterface $module): bool => $module->name() === $module_name);
@@ -115,7 +120,6 @@ class HomePageService
     /**
      * Get all the available blocks for a tree page.
      *
-     *
      * @return Collection<string,ModuleBlockInterface>
      */
     public function availableTreeBlocks(Tree $tree, UserInterface $user): Collection
@@ -127,7 +131,6 @@ class HomePageService
 
     /**
      * Get all the available blocks for a user page.
-     *
      *
      * @return Collection<string,ModuleBlockInterface>
      */
@@ -147,11 +150,12 @@ class HomePageService
      */
     public function treeBlocks(Tree $tree, UserInterface $user, string $location): Collection
     {
-        $rows = DB::table('block')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('location', '=', $location)
+        $rows = DB::query()
+            ->from('block')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('location', $location)
             ->orderBy('block_order')
-            ->pluck('module_name', 'block_id');
+            ->pluck('module_name', 'block_id', in: Collection::class);
 
         return $this->filterActiveBlocks($rows, $this->availableTreeBlocks($tree, $user));
     }
@@ -161,8 +165,10 @@ class HomePageService
      */
     public function checkDefaultTreeBlocksExist(): void
     {
-        $has_blocks = DB::table('block')
-            ->where('gedcom_id', '=', -1)
+        $has_blocks = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('gedcom_id', -1)
             ->exists();
 
         // No default settings?  Create them.
@@ -172,7 +178,7 @@ class HomePageService
                     $module = $this->module_service->findByInterface($class)->first();
 
                     if ($module instanceof ModuleInterface) {
-                        DB::table('block')->insert([
+                        DB::query(table: 'block')->insert(values: [
                             'gedcom_id'   => -1,
                             'location'    => $location,
                             'block_order' => $block_order,
@@ -193,11 +199,12 @@ class HomePageService
      */
     public function userBlocks(Tree $tree, UserInterface $user, string $location): Collection
     {
-        $rows = DB::table('block')
-            ->where('user_id', '=', $user->id())
-            ->where('location', '=', $location)
+        $rows = DB::query()
+            ->from('block')
+            ->whereEqual('user_id', $user->id())
+            ->whereEqual('location', $location)
             ->orderBy('block_order')
-            ->pluck('module_name', 'block_id');
+            ->pluck('module_name', 'block_id', in: Collection::class);
 
         return $this->filterActiveBlocks($rows, $this->availableUserBlocks($tree, $user));
     }
@@ -207,8 +214,10 @@ class HomePageService
      */
     public function checkDefaultUserBlocksExist(): void
     {
-        $has_blocks = DB::table('block')
-            ->where('user_id', '=', -1)
+        $has_blocks = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('user_id', -1)
             ->exists();
 
         // No default settings?  Create them.
@@ -218,7 +227,7 @@ class HomePageService
                     $module = $this->module_service->findByInterface($class)->first();
 
                     if ($module instanceof ModuleBlockInterface) {
-                        DB::table('block')->insert([
+                        DB::query(table: 'block')->insert(values: [
                             'user_id'     => -1,
                             'location'    => $location,
                             'block_order' => $block_order,
@@ -238,20 +247,21 @@ class HomePageService
      */
     public function updateUserBlocks(int $user_id, Collection $main_block_ids, Collection $side_block_ids): void
     {
-        $existing_block_ids = DB::table('block')
-            ->where('user_id', '=', $user_id)
+        $existing_block_ids = DB::query()
+            ->from('block')
+            ->whereEqual('user_id', $user_id)
             ->whereIn('location', [ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS])
             ->pluck('block_id');
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
             if (!$main_block_ids->contains($existing_block_id) && !$side_block_ids->contains($existing_block_id)) {
-                DB::table('block_setting')
-                    ->where('block_id', '=', $existing_block_id)
+                DB::query(table: 'block_setting')
+                    ->whereEqual('block_id', $existing_block_id)
                     ->delete();
 
-                DB::table('block')
-                    ->where('block_id', '=', $existing_block_id)
+                DB::query(table: 'block')
+                    ->whereEqual('block_id', $existing_block_id)
                     ->delete();
             }
         }
@@ -265,15 +275,15 @@ class HomePageService
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block
-                    DB::table('block')
-                        ->where('block_id', '=', $block_id)
+                    DB::query(table: 'block')
+                        ->whereEqual('block_id', $block_id)
                         ->update([
                             'block_order' => $block_order,
                             'location'    => $location,
                         ]);
                 } else {
                     // New block
-                    DB::table('block')->insert([
+                    DB::query(table: 'block')->insert(values: [
                         'user_id'     => $user_id,
                         'location'    => $location,
                         'block_order' => $block_order,
@@ -292,20 +302,21 @@ class HomePageService
      */
     public function updateTreeBlocks(int $tree_id, Collection $main_block_ids, Collection $side_block_ids): void
     {
-        $existing_block_ids = DB::table('block')
-            ->where('gedcom_id', '=', $tree_id)
+        $existing_block_ids = DB::query()
+            ->from('block')
+            ->whereEqual('gedcom_id', $tree_id)
             ->whereIn('location', [ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS])
             ->pluck('block_id');
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
             if (!$main_block_ids->contains($existing_block_id) && !$side_block_ids->contains($existing_block_id)) {
-                DB::table('block_setting')
-                    ->where('block_id', '=', $existing_block_id)
+                DB::query(table: 'block_setting')
+                    ->whereEqual('block_id', $existing_block_id)
                     ->delete();
 
-                DB::table('block')
-                    ->where('block_id', '=', $existing_block_id)
+                DB::query(table: 'block')
+                    ->whereEqual('block_id', $existing_block_id)
                     ->delete();
             }
         }
@@ -319,15 +330,15 @@ class HomePageService
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block
-                    DB::table('block')
-                        ->where('block_id', '=', $block_id)
+                    DB::query(table: 'block')
+                        ->whereEqual('block_id', $block_id)
                         ->update([
                             'block_order' => $block_order,
                             'location'    => $location,
                         ]);
                 } else {
                     // New block
-                    DB::table('block')->insert([
+                    DB::query(table: 'block')->insert(values: [
                         'gedcom_id'   => $tree_id,
                         'location'    => $location,
                         'block_order' => $block_order,

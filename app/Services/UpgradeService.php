@@ -98,7 +98,6 @@ class UpgradeService
     /**
      * Create a list of all the files in a webtrees .ZIP archive
      *
-     *
      * @return Collection<int,string>
      * @throws FilesystemException
      */
@@ -118,7 +117,6 @@ class UpgradeService
     /**
      * Fetch a file from a URL and save it in a filesystem.
      * Use streams so that we can copy files larger than our available memory.
-     *
      *
      * @return int The number of bytes downloaded
      * @throws ClientExceptionInterface
@@ -163,7 +161,6 @@ class UpgradeService
 
     /**
      * Move (copy and delete) all files from one filesystem to another.
-     *
      *
      * @throws FilesystemException
      */

@@ -55,8 +55,14 @@ final class SiteLogs
         $this->layout = 'layouts/administration';
 
         // First and last change in the database
-        $earliest = DB::table('log')->min('log_time') ?? date('Y-m-d H:i:s');
-        $latest   = DB::table('log')->max('log_time') ?? date('Y-m-d H:i:s');
+        $earliest = DB::query()
+            ->from('log')
+            ->orderBy('log_time')
+            ->value('log_time') ?? date('Y-m-d H:i:s');
+        $latest = DB::query()
+            ->from('log')
+            ->orderBy(DB::desc('log_time'))
+            ->value('log_time') ?? date('Y-m-d H:i:s');
 
         $earliest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $earliest, new DateTimeZone('UTC'))
             ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))

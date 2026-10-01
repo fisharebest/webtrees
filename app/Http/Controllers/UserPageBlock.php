@@ -43,9 +43,10 @@ final class UserPageBlock
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_id = (int) DB::table('block')
-            ->where('block_id', '=', $block_id)
-            ->where('user_id', '=', $this->user->id())
+        $block_id = (int) DB::query()
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
+            ->whereEqual('user_id', $this->user->id())
             ->value('block_id');
 
         $module = $this->home_page_service->getBlockModule($tree, $block_id);

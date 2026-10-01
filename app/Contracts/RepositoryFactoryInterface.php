@@ -36,7 +36,6 @@ interface RepositoryFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a source from a row in the database.
      *
-     *
      * @return Closure(object):Repository
      */
     public function mapper(Tree $tree): Closure;

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
@@ -65,7 +66,6 @@ class ServerCheckService
     /**
      * Things that may cause webtrees to break.
      *
-     *
      * @return Collection<int,string>
      */
     public function serverErrors(string $driver = ''): Collection
@@ -88,13 +88,11 @@ class ServerCheckService
     /**
      * Things that should be fixed, but which won't stop completely webtrees from running.
      *
-     *
      * @return Collection<int,string>
      */
-    public function serverWarnings(string $driver = ''): Collection
+    public function serverWarnings(): Collection
     {
         $warnings = Collection::make([
-            $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('exif'),
             $this->checkPhpExtension('fileinfo'),
@@ -242,13 +240,14 @@ class ServerCheckService
     private function databaseDriverErrors(string $driver): Collection
     {
         switch ($driver) {
-            case DB::MYSQL:
+            case Driver::MySQL->value:
+            case Driver::MariaDB->value:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_mysql'),
                 ]);
 
-            case DB::SQLITE:
+            case Driver::SQLite->value:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('sqlite3'),
@@ -256,37 +255,16 @@ class ServerCheckService
                     $this->checkSqliteVersion(),
                 ]);
 
-            case DB::POSTGRESQL:
+            case Driver::PostgreSQL->value:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_pgsql'),
                 ]);
 
-            case DB::SQL_SERVER:
+            case Driver::SqlServer->value:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_sqlsrv'),
-                ]);
-
-            default:
-                return new Collection();
-        }
-    }
-
-    /**
-     * @return Collection<int,string>
-     */
-    private function databaseDriverWarnings(string $driver): Collection
-    {
-        switch ($driver) {
-            case DB::POSTGRESQL:
-                return new Collection([
-                    I18N::translate('Support for PostgreSQL is experimental.'),
-                ]);
-
-            case DB::SQL_SERVER:
-                return new Collection([
-                    I18N::translate('Support for SQL Server is experimental.'),
                 ]);
 
             default:

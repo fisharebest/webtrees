@@ -20,6 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use DomainException;
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
+use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -29,9 +33,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\StreamInterface;
 
@@ -74,42 +75,42 @@ class TreeService
     {
         return Registry::cache()->array()->remember('all-trees', static function (): Collection {
             // All trees
-            $query = DB::table('gedcom')
-                ->where('gedcom.gedcom_id', '>', 0)
-                ->when(!Auth::isAdmin(), function (Builder $query): void {
-                    $query->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
-                        $join
-                            ->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->where('user_id', '=', Auth::id())
-                            ->where('setting_name', '=', UserInterface::PREF_TREE_ROLE);
-                    });
+            $query = DB::query()
+                ->select('gedcom.*')
+                ->from('gedcom')
+                ->whereGreaterThan('gedcom.gedcom_id', 0);
 
-                    $query->where(static function (Builder $query): void {
-                        $query
-                            // Managers
-                            ->where('setting_value', '=', Role::Manager->value)
-                            // Members
-                            ->orWhere(static function (Builder $query): void {
-                                $query
-                                    ->where('imported', '=', 1)
-                                    ->where('private', '=', 1)
-                                    ->where('setting_value', '<>', Role::Visitor->value);
-                            })
-                            // Public trees
-                            ->orWhere(static function (Builder $query): void {
-                                $query
-                                    ->where('imported', '=', 1)
-                                    ->where('private', '=', 0);
-                            });
-                    });
-                })
-                ->select(['gedcom.*'])
-                ->orderBy('gedcom.sort_order')
-                ->orderBy('gedcom.title');
+            if (!Auth::isAdmin()) {
+                $user_id = Auth::id();
+
+                if ($user_id === null) {
+                    // Guests have no tree role, so only imported public trees are visible.
+                    $query = $query
+                        ->whereEqual('imported', 1)
+                        ->whereEqual('private', 0);
+                } else {
+                    $query = $query
+                        ->leftJoin('user_gedcom_setting', static fn (JoinOn $j): JoinOn => $j
+                            ->on('user_gedcom_setting.gedcom_id', 'gedcom.gedcom_id')
+                            ->on('user_gedcom_setting.user_id', DB::value($user_id))
+                            ->on('user_gedcom_setting.setting_name', DB::value(UserInterface::PREF_TREE_ROLE)))
+                        ->whereNested(static fn (Predicates $p): Predicates => $p
+                            ->equal('setting_value', Role::Manager->value)
+                            ->orNested(static fn (Predicates $p): Predicates => $p
+                                ->equal('imported', 1)
+                                ->equal('private', 1)
+                                ->notEqual('setting_value', Role::Visitor->value))
+                            ->orNested(static fn (Predicates $p): Predicates => $p
+                                ->equal('imported', 1)
+                                ->equal('private', 0)));
+                }
+            }
+
+            $query = $query->orderBy('gedcom.sort_order', 'gedcom.title');
 
             // TODO - do we need the array keys, or would a list of trees be sufficient?
             return $query
-                ->get()
+                ->get(in: Collection::class)
                 ->map(Tree::fromDB(...))
                 ->mapWithKeys(static fn (Tree $tree): array => [$tree->name() => $tree]);
         });
@@ -141,39 +142,37 @@ class TreeService
 
     public function create(string $name, string $title): Tree
     {
-        DB::table('gedcom')->insert([
+        $gedcom_id = DB::query(table: 'gedcom')->insertGetId([
             'contact_user_id' => Auth::id(),
             'gedcom_filename' => $name . '.ged',
             'gedcom_name'     => $name,
             'support_user_id' => Auth::id(),
             'title'           => $title,
-        ]);
+        ], 'gedcom_id');
 
-        $tree = DB::table('gedcom')
-            ->where('gedcom_id', '=', DB::lastInsertId())
-            ->get()
+        $tree = DB::query()
+            ->select('*')
+            ->from('gedcom')
+            ->whereEqual('gedcom_id', $gedcom_id)
+            ->get(in: Collection::class)
             ->map(Tree::fromDB(...))
             ->first();
 
         // Set preferences from the default tree
-        DB::query()->from('gedcom_setting')->insertUsing(
+        DB::query(table: 'gedcom_setting')->insertFrom(
             ['gedcom_id', 'setting_name', 'setting_value'],
-            static function (Builder $query) use ($tree): void {
-                $query
-                    ->select([new Expression($tree->id()), 'setting_name', 'setting_value'])
-                    ->from('gedcom_setting')
-                    ->where('gedcom_id', '=', -1);
-            }
+            DB::query()
+                ->select(DB::value($tree->id()), 'setting_name', 'setting_value')
+                ->from('gedcom_setting')
+                ->whereEqual('gedcom_id', -1),
         );
 
-        DB::query()->from('default_resn')->insertUsing(
+        DB::query(table: 'default_resn')->insertFrom(
             ['gedcom_id', 'tag_type', 'resn'],
-            static function (Builder $query) use ($tree): void {
-                $query
-                    ->select([new Expression($tree->id()), 'tag_type', 'resn'])
-                    ->from('default_resn')
-                    ->where('gedcom_id', '=', -1);
-            }
+            DB::query()
+                ->select(DB::value($tree->id()), 'tag_type', 'resn')
+                ->from('default_resn')
+                ->whereEqual('gedcom_id', -1),
         );
 
         // Gedcom and privacy settings
@@ -208,12 +207,12 @@ class TreeService
 
         $file_data = '';
 
-        DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update([
+        DB::query(table: 'gedcom')->whereEqual('gedcom_id', $tree->id())->update([
             'gedcom_filename' => $filename,
             'imported' => 0,
         ]);
 
-        DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::query(table: 'gedcom_chunk')->whereEqual('gedcom_id', $tree->id())->delete();
 
         $stream = $stream->detach();
 
@@ -225,7 +224,7 @@ class TreeService
             $eol_pos = max((int) strrpos($file_data, "\r0"), (int) strrpos($file_data, "\n0"));
 
             if ($eol_pos > 0) {
-                DB::table('gedcom_chunk')->insert([
+                DB::query(table: 'gedcom_chunk')->insert(values: [
                     'gedcom_id'  => $tree->id(),
                     'chunk_data' => substr($file_data, 0, $eol_pos + 1),
                 ]);
@@ -234,7 +233,7 @@ class TreeService
             }
         }
 
-        DB::table('gedcom_chunk')->insert([
+        DB::query(table: 'gedcom_chunk')->insert(values: [
             'gedcom_id'  => $tree->id(),
             'chunk_data' => $file_data,
         ]);
@@ -249,31 +248,33 @@ class TreeService
             Site::setPreference('DEFAULT_GEDCOM', '');
         }
 
-        DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('link')->where('l_file', '=', $tree->id())->delete();
-        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-        DB::table('media')->where('m_file', '=', $tree->id())->delete();
-        DB::table('block_setting')
-            ->join('block', 'block.block_id', '=', 'block_setting.block_id')
-            ->where('gedcom_id', '=', $tree->id())
+        DB::query(table: 'gedcom_chunk')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'individuals')->whereEqual('i_file', $tree->id())->delete();
+        DB::query(table: 'families')->whereEqual('f_file', $tree->id())->delete();
+        DB::query(table: 'sources')->whereEqual('s_file', $tree->id())->delete();
+        DB::query(table: 'other')->whereEqual('o_file', $tree->id())->delete();
+        DB::query(table: 'places')->whereEqual('p_file', $tree->id())->delete();
+        DB::query(table: 'placelinks')->whereEqual('pl_file', $tree->id())->delete();
+        DB::query(table: 'name')->whereEqual('n_file', $tree->id())->delete();
+        DB::query(table: 'dates')->whereEqual('d_file', $tree->id())->delete();
+        DB::query(table: 'change')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'link')->whereEqual('l_file', $tree->id())->delete();
+        DB::query(table: 'media_file')->whereEqual('m_file', $tree->id())->delete();
+        DB::query(table: 'media')->whereEqual('m_file', $tree->id())->delete();
+        DB::query(table: 'block_setting')
+            ->whereInSubquery('block_id', DB::query()
+                ->select('block_id')
+                ->from('block')
+                ->whereEqual('gedcom_id', $tree->id()))
             ->delete();
-        DB::table('block')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('user_gedcom_setting')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('gedcom_setting')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('module_privacy')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('hit_counter')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('default_resn')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('log')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::query(table: 'block')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'user_gedcom_setting')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'gedcom_setting')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'module_privacy')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'hit_counter')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'default_resn')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'log')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'gedcom')->whereEqual('gedcom_id', $tree->id())->delete();
     }
 
     /**

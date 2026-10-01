@@ -92,7 +92,6 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * Get all the facts for an individual which contain sources.
      *
-     *
      * @return Collection<int,Fact>
      */
     private function getFactsWithSources(Individual $individual): Collection

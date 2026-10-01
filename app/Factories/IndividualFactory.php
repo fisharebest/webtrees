@@ -56,7 +56,6 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
     /**
      * Create an individual from a row in the database.
      *
-     *
      * @return Closure(object):Individual
      */
     public function mapper(Tree $tree): Closure
@@ -81,9 +80,10 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('individuals')
-            ->where('i_id', '=', $xref)
-            ->where('i_file', '=', $tree->id())
+        return DB::query()
+            ->from('individuals')
+            ->whereEqual('i_id', $xref)
+            ->whereEqual('i_file', $tree->id())
             ->value('i_gedcom');
     }
 }

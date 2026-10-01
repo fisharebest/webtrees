@@ -19,9 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(HitCountFooterModule::class)]
 class HitCountFooterModuleTest extends TestCase
@@ -29,5 +33,42 @@ class HitCountFooterModuleTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(HitCountFooterModule::class));
+    }
+
+    public function testCountsNewAndRepeatedPageVisits(): void
+    {
+        self::createDatabase();
+
+        $tree = (new TreeService(new GedcomImportService()))->create('name', 'title');
+        DB::query(table: 'hit_counter')->insert([
+            'gedcom_id'      => $tree->id(),
+            'page_name'      => 'index.php',
+            'page_parameter' => 'gedcom:' . $tree->id(),
+            'page_count'     => 4,
+        ]);
+
+        $module = new class () extends HitCountFooterModule {
+            public function countVisit(Tree $tree, string $page, string $parameter): int
+            {
+                return $this->countHit($tree, $page, $parameter);
+            }
+        };
+
+        self::assertSame(5, $module->countVisit($tree, 'index.php', 'gedcom:' . $tree->id()));
+        self::assertSame(5, $module->countVisit($tree, 'index.php', 'gedcom:' . $tree->id()));
+        self::assertSame(1, $module->countVisit($tree, 'individual.php', 'X1'));
+
+        self::assertSame(5, (int) DB::query()
+            ->from('hit_counter')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('page_name', 'index.php')
+            ->whereEqual('page_parameter', 'gedcom:' . $tree->id())
+            ->value('page_count'));
+        self::assertSame(1, (int) DB::query()
+            ->from('hit_counter')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('page_name', 'individual.php')
+            ->whereEqual('page_parameter', 'X1')
+            ->value('page_count'));
     }
 }

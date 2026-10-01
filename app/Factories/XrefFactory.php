@@ -39,9 +39,10 @@ class XrefFactory implements XrefFactoryInterface
     protected function generate(string $prefix, string $suffix): string
     {
         // Lock the row, so that only one new XREF may be generated at a time.
-        $num = (int) DB::table('site_setting')
-            ->where('setting_name', '=', 'next_xref')
-            ->lockForUpdate()
+        $num = (int) DB::query()
+            ->from('site_setting')
+            ->whereEqual('setting_name', 'next_xref')
+            ->forUpdate()
             ->value('setting_value');
 
         $increment = 1.0;
@@ -57,12 +58,12 @@ class XrefFactory implements XrefFactoryInterface
 
             // Records may already exist with this sequence number.
             $already_used =
-                DB::table('individuals')->where('i_id', '=', $xref)->exists() ||
-                DB::table('families')->where('f_id', '=', $xref)->exists() ||
-                DB::table('sources')->where('s_id', '=', $xref)->exists() ||
-                DB::table('media')->where('m_id', '=', $xref)->exists() ||
-                DB::table('other')->where('o_id', '=', $xref)->exists() ||
-                DB::table('change')->where('xref', '=', $xref)->exists();
+                DB::query()->select('*')->from('individuals')->whereEqual('i_id', $xref)->exists() ||
+                DB::query()->select('*')->from('families')->whereEqual('f_id', $xref)->exists() ||
+                DB::query()->select('*')->from('sources')->whereEqual('s_id', $xref)->exists() ||
+                DB::query()->select('*')->from('media')->whereEqual('m_id', $xref)->exists() ||
+                DB::query()->select('*')->from('other')->whereEqual('o_id', $xref)->exists() ||
+                DB::query()->select('*')->from('change')->whereEqual('xref', $xref)->exists();
         } while ($already_used);
 
         Site::setPreference('next_xref', (string) $num);

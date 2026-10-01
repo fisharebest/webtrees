@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Carbon\CarbonImmutable;
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\DB;
@@ -33,8 +34,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -261,20 +260,23 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
-        $subquery = DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', ChangeStatus::Accepted->value)
-            ->where('new_gedcom', '<>', '')
-            ->where('change_time', '>', Registry::timestampFactory()->now()->subDays($days)->toDateTimeString())
-            ->groupBy(['xref'])
-            ->select([new Expression('MAX(change_id) AS recent_change_id')]);
+        $subquery = DB::query()
+            ->select(DB::alias(DB::max('change_id'), 'recent_change_id'))
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('status', ChangeStatus::Accepted->value)
+            ->whereNotEqual('new_gedcom', '')
+            ->whereGreaterThan('change_time', Registry::timestampFactory()->now()->subDays($days)->toDateTimeString())
+            ->groupBy('xref');
 
-        $query = DB::table('change')
-            ->joinSub($subquery, 'recent', 'recent_change_id', '=', 'change_id')
-            ->select(['change.*']);
+        $query = DB::query()
+            ->withCte('recent', $subquery)
+            ->select('change.*')
+            ->from('change')
+            ->join('recent', static fn (JoinOn $j): JoinOn => $j->on('recent.recent_change_id', 'change.change_id'));
 
         return $query
-            ->get()
+            ->get(in: Collection::class)
             ->map(fn (object $row): object => (object) [
                 'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
                 'time'   => Registry::timestampFactory()->fromString($row->change_time),
@@ -295,31 +297,25 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     {
         $julian_day = Registry::timestampFactory()->todayJulianDay() - $days;
 
-        $individuals = DB::table('dates')
-            ->where('d_file', '=', $tree->id())
-            ->where('d_julianday1', '>=', $julian_day)
-            ->where('d_fact', '=', 'CHAN')
-            ->join('individuals', static function (JoinClause $join): void {
-                $join
-                    ->on('d_file', '=', 'i_file')
-                    ->on('d_gid', '=', 'i_id');
-            })
-            ->select(['individuals.*'])
-            ->get()
+        $individuals = DB::query()
+            ->select('individuals.*')
+            ->from('dates')
+            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'i_file')->on('d_gid', 'i_id'))
+            ->whereEqual('d_file', $tree->id())
+            ->whereGreaterThanOrEqual('d_julianday1', $julian_day)
+            ->whereEqual('d_fact', 'CHAN')
+            ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(Individual::accessFilter());
 
-        $families = DB::table('dates')
-            ->where('d_file', '=', $tree->id())
-            ->where('d_julianday1', '>=', $julian_day)
-            ->where('d_fact', '=', 'CHAN')
-            ->join('families', static function (JoinClause $join): void {
-                $join
-                    ->on('d_file', '=', 'f_file')
-                    ->on('d_gid', '=', 'f_id');
-            })
-            ->select(['families.*'])
-            ->get()
+        $families = DB::query()
+            ->select('families.*')
+            ->from('dates')
+            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+            ->whereEqual('d_file', $tree->id())
+            ->whereGreaterThanOrEqual('d_julianday1', $julian_day)
+            ->whereEqual('d_fact', 'CHAN')
+            ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($tree))
             ->filter(Family::accessFilter());
 

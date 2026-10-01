@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Module;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
@@ -31,6 +32,9 @@ use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
+
+use function array_map;
+use function array_sum;
 
 #[CoversClass(StatisticsChartModule::class)]
 #[CoversClass(Statistics::class)]
@@ -173,6 +177,29 @@ class StatisticsChartModuleTest extends TestCase
         $response = $module->getOtherAction($request);
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertNotEmpty($response->getBody()->getContents());
+    }
+
+    public function testStatisticsDataQueryResults(): void
+    {
+        $tree       = $this->importTree('demo.ged');
+        $statistics = new StatisticsData($tree, Registry::container()->get(UserService::class));
+
+        self::assertGreaterThan(0, $statistics->countIndividuals());
+        self::assertSame(
+            $statistics->countIndividuals(),
+            $statistics->countIndividualsDeceased() + $statistics->countIndividualsLiving(),
+        );
+        self::assertSame(0, $statistics->countUserfavorites());
+        self::assertSame(0, $statistics->countUserJournal());
+        self::assertSame(0, $statistics->countUserMessages());
+        self::assertSame([], $statistics->countEventsByMonth('UNKNOWN', 0, 0));
+        self::assertSame([], $statistics->countEventsByMonthAndSex('UNKNOWN', 0, 0));
+        self::assertGreaterThan(0, array_sum($statistics->countFirstChildrenByMonth(0, 0)));
+        self::assertSame(
+            array_sum($statistics->countFirstChildrenByMonth(0, 0)),
+            array_sum(array_map(static fn (object $row): int => $row->total, $statistics->countFirstChildrenByMonthAndSex(0, 0))),
+        );
+        self::assertSame([], $statistics->countFirstChildrenByMonth(1800, 1801));
     }
 
     #[DataProvider('customChartFamilyAndIndividualOptions')]

@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 
@@ -42,8 +40,10 @@ final class UserPage
 
     public function get(Tree $tree): ResponseInterface
     {
-        $has_blocks = DB::table('block')
-            ->where('user_id', '=', $this->user->id())
+        $has_blocks = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('user_id', $this->user->id())
             ->exists();
 
         if (!$has_blocks) {
@@ -52,14 +52,12 @@ final class UserPage
             $user = $this->user;
 
             // Copy the defaults
-            DB::query()->from('block')->insertUsing(
+            DB::query(table: 'block')->insertFrom(
                 ['user_id', 'location', 'block_order', 'module_name'],
-                static function (Builder $query) use ($user): void {
-                    $query
-                        ->select([new Expression($user->id()), 'location', 'block_order', 'module_name'])
-                        ->from('block')
-                        ->where('user_id', '=', -1);
-                }
+                DB::query()
+                    ->select(DB::value($user->id()), 'location', 'block_order', 'module_name')
+                    ->from('block')
+                    ->whereEqual('user_id', -1),
             );
         }
 

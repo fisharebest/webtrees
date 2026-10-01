@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
+use Fisharebest\Database\Driver;
+use Fisharebest\Database\Exceptions\QueryException;
 use Fisharebest\Webtrees\DB;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
-use Throwable;
 
 /**
  * Upgrade the database schema from version 45 to version 46.
@@ -32,16 +32,16 @@ final readonly class Migration45 implements MigrationInterface
     public function upgrade(): void
     {
         // We now write only upper-case values to these columns.
-        DB::table(table: 'media_file')->update(values: [
-            'multimedia_format' => new Expression(value: 'UPPER(multimedia_format)'),
+        DB::query(table: 'media_file')->update(values: [
+            'multimedia_format' => DB::upper('multimedia_format'),
         ]);
 
-        DB::table(table: 'media_file')->update(values: [
-            'source_media_type' => new Expression(value: 'UPPER(source_media_type)'),
+        DB::query(table: 'media_file')->update(values: [
+            'source_media_type' => DB::upper('source_media_type'),
         ]);
 
-        if (!DB::schema()->hasColumn(table: 'gedcom', column: 'media_folder')) {
-            DB::schema()->table(table: 'gedcom', callback: function (Blueprint $table): void {
+        if (!DB::schemaBuilder()->hasColumn(table: 'gedcom', column: 'media_folder')) {
+            DB::schemaBuilder()->table(table: 'gedcom', callback: function (Blueprint $table): void {
                 $table->string(column: 'media_folder', length: 255)->default(value: 'media/')->index();
                 $table->string(column: 'title', length: 255)->default(value: 'tree')->index();
                 $table->string(column: 'gedcom_filename', length: 255)->default(value: 'tree.ged')->index();
@@ -50,7 +50,7 @@ final readonly class Migration45 implements MigrationInterface
                 $table->integer(column: 'contact_user_id')->nullable()->index();
                 $table->integer(column: 'support_user_id')->nullable()->index();
 
-                if (DB::driverName() === DB::SQL_SERVER) {
+                if (DB::driverName() === Driver::SqlServer->value) {
                     // SQL-Server can't use CASCADE or SET NULL constraints here, as it can't handle multiple paths
                     $table->foreign(columns: ['contact_user_id'])->references(['user_id'])->on('user');
                     $table->foreign(columns: ['support_user_id'])->references(['user_id'])->on('user');
@@ -71,8 +71,10 @@ final readonly class Migration45 implements MigrationInterface
             'WEBMASTER_USER_ID'      => 'support_user_id',
         ];
 
-        $rows = DB::table(table: 'gedcom_setting')
-            ->whereIn(column: 'setting_name', values: array_keys($new_columns))
+        $rows = DB::query()
+            ->select('gedcom_id', 'setting_name', 'setting_value')
+            ->from('gedcom_setting')
+            ->whereIn('setting_name', array_keys($new_columns))
             ->get();
 
         foreach ($rows as $row) {
@@ -85,21 +87,21 @@ final readonly class Migration45 implements MigrationInterface
             };
 
             try {
-                DB::table(table: 'gedcom')
-                    ->where(column: 'gedcom_id', operator: '=', value: $row->gedcom_id)
+                DB::query(table: 'gedcom')
+                    ->whereEqual('gedcom_id', $row->gedcom_id)
                     ->update(values: [$column => $value]);
-            } catch (Throwable) {
+            } catch (QueryException) {
                 // If it violates a foreign key constraint, then just ignore it.
             }
         }
 
-        DB::table(table: 'gedcom_setting')
-            ->whereIn(column: 'setting_name', values: array_keys($new_columns))
+        DB::query(table: 'gedcom_setting')
+            ->whereIn('setting_name', array_keys($new_columns))
             ->delete();
 
         // Old setting, no longer used.
-        DB::table(table: 'gedcom_setting')
-            ->whereIn(column: 'setting_name', values: ['LANGUAGE'])
+        DB::query(table: 'gedcom_setting')
+            ->whereIn('setting_name', ['LANGUAGE'])
             ->delete();
     }
 }

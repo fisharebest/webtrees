@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Http\Controllers\ModuleDeleteSettings;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -26,8 +28,31 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ModuleDeleteSettings::class)]
 class ModuleDeleteSettingsTest extends TestCase
 {
-    public function testClass(): void
+    public function testDeletesOnlyTheSelectedModulesBlocksAndSettings(): void
     {
-        self::assertTrue(class_exists(ModuleDeleteSettings::class));
+        self::createDatabase();
+
+        foreach ([['test-module-1', 101], ['test-module-2', 102]] as [$module_name, $block_id]) {
+            DB::query(table: 'module')->insert(['module_name' => $module_name]);
+            DB::query(table: 'block')->insert([
+                'block_id'    => $block_id,
+                'block_order' => 1,
+                'module_name' => $module_name,
+            ]);
+            DB::query(table: 'block_setting')->insert([
+                'block_id'      => $block_id,
+                'setting_name'  => 'test',
+                'setting_value' => 'value',
+            ]);
+        }
+
+        (new ModuleDeleteSettings())->post(self::createRequest(
+            HttpRequestMethod::POST->value,
+            params: ['module_name' => 'test-module-1'],
+        ));
+
+        self::assertSame([102], DB::query()->from('block_setting')->pluck('block_id'));
+        self::assertSame([102], DB::query()->from('block')->pluck('block_id'));
+        self::assertSame(['test-module-2'], DB::query()->from('module')->whereLike('module_name', 'test-module-%')->pluck('module_name'));
     }
 }

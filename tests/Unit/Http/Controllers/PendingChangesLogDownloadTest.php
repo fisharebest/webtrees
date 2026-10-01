@@ -19,15 +19,41 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\PendingChangesLogDownload;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\PendingChangesService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PendingChangesLogDownload::class)]
 class PendingChangesLogDownloadTest extends TestCase
 {
-    public function testClass(): void
+    public function testDownloadsFilteredChanges(): void
     {
-        self::assertTrue(class_exists(PendingChangesLogDownload::class));
+        self::createDatabase();
+
+        $tree = (new TreeService(new GedcomImportService()))->create('test', 'Test');
+        $user = (new UserService(new SystemClock()))->create('tester', 'Tester', 'tester@example.com', 'secret');
+
+        foreach (['accepted', 'pending'] as $status) {
+            DB::query(table: 'change')->insert([
+                'gedcom_id'  => $tree->id(),
+                'xref'       => 'I1',
+                'status'     => $status,
+                'old_gedcom' => '',
+                'new_gedcom' => '0 @I1@ INDI',
+                'user_id'    => $user->id(),
+            ]);
+        }
+
+        $controller = new PendingChangesLogDownload(new PendingChangesService(new GedcomImportService()));
+        $response   = $controller->get(self::createRequest(query: ['type' => 'accepted']), $tree);
+
+        self::assertStringContainsString('"accepted"', (string) $response->getBody());
+        self::assertStringNotContainsString('"pending"', (string) $response->getBody());
     }
 }

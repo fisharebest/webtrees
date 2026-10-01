@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
@@ -38,7 +39,6 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\JoinClause;
 
 use function array_chunk;
 use function array_intersect_key;
@@ -251,7 +251,7 @@ class GedcomImportService
             $type = 'HEAD';
             $xref = 'HEAD'; // For records without an XREF, use the type as a pseudo XREF.
         } elseif (str_starts_with($gedrec, '0 TRLR')) {
-            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
+            DB::query(table: 'gedcom')->whereEqual('gedcom_id', $tree->id())->update(['imported' => 1]);
             $type = 'TRLR';
             $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
         } elseif (preg_match('/^0 (_PTF|_PTE|_STF|_STE|_PLAC|_PEG|LABL) @/', $gedrec) === 1) {
@@ -284,17 +284,18 @@ class GedcomImportService
         // using an application which does not support (and deletes) media objects, then add them
         // back in.
         if ($tree->getPreference('keep_media') === '1') {
-            $old_linked_media = DB::table('link')
-                ->where('l_from', '=', $xref)
-                ->where('l_file', '=', $tree_id)
-                ->where('l_type', '=', 'OBJE')
+            $old_linked_media = DB::query()
+                ->from('link')
+                ->whereEqual('l_from', $xref)
+                ->whereEqual('l_file', $tree_id)
+                ->whereEqual('l_type', 'OBJE')
                 ->pluck('l_to');
 
             // Delete these links - so that we do not insert them again in updateLinks()
-            DB::table('link')
-                ->where('l_from', '=', $xref)
-                ->where('l_file', '=', $tree_id)
-                ->where('l_type', '=', 'OBJE')
+            DB::query(table: 'link')
+                ->whereEqual('l_from', $xref)
+                ->whereEqual('l_file', $tree_id)
+                ->whereEqual('l_type', 'OBJE')
                 ->delete();
 
             foreach ($old_linked_media as $media_id) {
@@ -315,7 +316,7 @@ class GedcomImportService
                     $rin = $xref;
                 }
 
-                DB::table('individuals')->insert([
+                DB::query(table: 'individuals')->insert(values: [
                     'i_id'     => $xref,
                     'i_file'   => $tree_id,
                     'i_rin'    => $rin,
@@ -345,7 +346,7 @@ class GedcomImportService
                     $nchi = max($nchi, $match[1]);
                 }
 
-                DB::table('families')->insert([
+                DB::query(table: 'families')->insert(values: [
                     'f_id'      => $xref,
                     'f_file'    => $tree_id,
                     'f_husb'    => $husb,
@@ -368,7 +369,7 @@ class GedcomImportService
                     $name = $xref;
                 }
 
-                DB::table('sources')->insert([
+                DB::query(table: 'sources')->insert(values: [
                     's_id'     => $xref,
                     's_file'   => $tree_id,
                     's_name'   => mb_substr($name, 0, 255),
@@ -381,7 +382,7 @@ class GedcomImportService
             case Submission::RECORD_TYPE:
             case Submitter::RECORD_TYPE:
             case Location::RECORD_TYPE:
-                DB::table('other')->insert([
+                DB::query(table: 'other')->insert(values: [
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,
                     'o_type'   => $type,
@@ -396,7 +397,7 @@ class GedcomImportService
                     $gedrec .= "\n1 DATE " . $today;
                 }
 
-                DB::table('other')->insert([
+                DB::query(table: 'other')->insert(values: [
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,
                     'o_type'   => Header::RECORD_TYPE,
@@ -407,14 +408,14 @@ class GedcomImportService
             case Media::RECORD_TYPE:
                 $record = Registry::mediaFactory()->new($xref, $gedrec, null, $tree);
 
-                DB::table('media')->insert([
+                DB::query(table: 'media')->insert(values: [
                     'm_id'     => $xref,
                     'm_file'   => $tree_id,
                     'm_gedcom' => $gedrec,
                 ]);
 
                 foreach ($record->mediaFiles() as $media_file) {
-                    DB::table('media_file')->insert([
+                    DB::query(table: 'media_file')->insert(values: [
                         'm_id'                 => $xref,
                         'm_file'               => $tree_id,
                         'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 248),
@@ -426,7 +427,7 @@ class GedcomImportService
                 break;
 
             default: // Custom record types.
-                DB::table('other')->insert([
+                DB::query(table: 'other')->insert(values: [
                     'o_id'     => $xref,
                     'o_file'   => $tree_id,
                     'o_type'   => mb_substr($type, 0, 15),
@@ -467,8 +468,8 @@ class GedcomImportService
         $location = new PlaceLocation($place_name);
 
         if ($location->latitude() === null && $location->longitude() === null) {
-            DB::table('place_location')
-                ->where('id', '=', $location->id())
+            DB::query(table: 'place_location')
+                ->whereEqual('id', $location->id())
                 ->update([
                     'latitude'  => $latitude,
                     'longitude' => $longitude,
@@ -502,8 +503,8 @@ class GedcomImportService
         $location = new PlaceLocation($place_name);
 
         if ($location->latitude() === null && $location->longitude() === null) {
-            DB::table('place_location')
-                ->where('id', '=', $location->id())
+            DB::query(table: 'place_location')
+                ->whereEqual('id', $location->id())
                 ->update([
                     'latitude'  => $latitude,
                     'longitude' => $longitude,
@@ -543,7 +544,7 @@ class GedcomImportService
 
         // PDO has a limit of 65535 placeholders, and each row requires 3 placeholders.
         foreach (array_chunk($rows, 20000) as $chunk) {
-            DB::table('placelinks')->insert($chunk);
+            DB::query(table: 'placelinks')->insertBatch($chunk);
         }
     }
 
@@ -590,7 +591,7 @@ class GedcomImportService
         // array_unique doesn't work with arrays of arrays
         $rows = array_intersect_key($rows, array_unique(array_map(serialize(...), $rows)));
 
-        DB::table('dates')->insert(array_values($rows));
+        DB::query(table: 'dates')->insertBatch($rows);
     }
 
     /**
@@ -616,7 +617,7 @@ class GedcomImportService
             ];
         }
 
-        DB::table('link')->insert(array_values($rows));
+        DB::query(table: 'link')->insertBatch(array_values($rows));
     }
 
     /**
@@ -661,7 +662,7 @@ class GedcomImportService
             ];
         }
 
-        DB::table('name')->insert($rows);
+        DB::query(table: 'name')->insertBatch($rows);
     }
 
     /**
@@ -728,10 +729,11 @@ class GedcomImportService
         $notes = $matches[1];
 
         // Have we already created a media object with the same title/filename?
-        $xref = DB::table('media_file')
-            ->where('m_file', '=', $tree->id())
-            ->where('descriptive_title', '=', mb_substr($title, 0, 248))
-            ->where('multimedia_file_refn', '=', mb_substr($file, 0, 248))
+        $xref = DB::query()
+            ->from('media_file')
+            ->whereEqual('m_file', $tree->id())
+            ->whereEqual('descriptive_title', mb_substr($title, 0, 248))
+            ->whereEqual('multimedia_file_refn', mb_substr($file, 0, 248))
             ->value('m_id');
 
         if ($xref === null) {
@@ -768,13 +770,13 @@ class GedcomImportService
                 $gedcom .= "\n1 NOTE " . strtr($note, ["\n3" => "\n2", "\n4" => "\n2", "\n5" => "\n2"]);
             }
 
-            DB::table('media')->insert([
+            DB::query(table: 'media')->insert(values: [
                 'm_id'     => $xref,
                 'm_file'   => $tree->id(),
                 'm_gedcom' => $gedcom,
             ]);
 
-            DB::table('media_file')->insert([
+            DB::query(table: 'media_file')->insert(values: [
                 'm_id'                 => $xref,
                 'm_file'               => $tree->id(),
                 'multimedia_file_refn' => mb_substr($file, 0, 248),
@@ -800,77 +802,81 @@ class GedcomImportService
         }
 
         // Place links
-        DB::table('placelinks')
-            ->where('pl_gid', '=', $gid)
-            ->where('pl_file', '=', $tree->id())
+        DB::query(table: 'placelinks')
+            ->whereEqual('pl_gid', $gid)
+            ->whereEqual('pl_file', $tree->id())
             ->delete();
 
         // Orphaned places.  If we're deleting  "Westminster, London, England",
         // then we may also need to delete "London, England" and "England".
         do {
-            $affected = DB::table('places')
-                ->leftJoin('placelinks', function (JoinClause $join): void {
-                    $join
-                        ->on('p_id', '=', 'pl_p_id')
-                        ->on('p_file', '=', 'pl_file');
-                })
-                ->whereNull('pl_p_id')
+            $orphaned_places = DB::query()
+                ->select('places.p_id')
+                ->distinct()
+                ->from('places')
+                ->leftJoin('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_p_id', 'p_id')->on('pl_file', 'p_file'))
+                ->whereNull('pl_p_id');
+
+            $affected = DB::query(table: 'places')
+                ->whereInSubquery('p_id', DB::query()
+                    ->select('p_id')
+                    ->fromSub($orphaned_places, 'orphaned_places'))
                 ->delete();
         } while ($affected > 0);
 
-        DB::table('dates')
-            ->where('d_gid', '=', $gid)
-            ->where('d_file', '=', $tree->id())
+        DB::query(table: 'dates')
+            ->whereEqual('d_gid', $gid)
+            ->whereEqual('d_file', $tree->id())
             ->delete();
 
-        DB::table('name')
-            ->where('n_id', '=', $gid)
-            ->where('n_file', '=', $tree->id())
+        DB::query(table: 'name')
+            ->whereEqual('n_id', $gid)
+            ->whereEqual('n_file', $tree->id())
             ->delete();
 
-        DB::table('link')
-            ->where('l_from', '=', $gid)
-            ->where('l_file', '=', $tree->id())
+        DB::query(table: 'link')
+            ->whereEqual('l_from', $gid)
+            ->whereEqual('l_file', $tree->id())
             ->delete();
 
         switch ($type) {
             case Individual::RECORD_TYPE:
-                DB::table('individuals')
-                    ->where('i_id', '=', $gid)
-                    ->where('i_file', '=', $tree->id())
+                DB::query(table: 'individuals')
+                    ->whereEqual('i_id', $gid)
+                    ->whereEqual('i_file', $tree->id())
                     ->delete();
                 break;
 
             case Family::RECORD_TYPE:
-                DB::table('families')
-                    ->where('f_id', '=', $gid)
-                    ->where('f_file', '=', $tree->id())
+                DB::query(table: 'families')
+                    ->whereEqual('f_id', $gid)
+                    ->whereEqual('f_file', $tree->id())
                     ->delete();
                 break;
 
             case Source::RECORD_TYPE:
-                DB::table('sources')
-                    ->where('s_id', '=', $gid)
-                    ->where('s_file', '=', $tree->id())
+                DB::query(table: 'sources')
+                    ->whereEqual('s_id', $gid)
+                    ->whereEqual('s_file', $tree->id())
                     ->delete();
                 break;
 
             case Media::RECORD_TYPE:
-                DB::table('media_file')
-                    ->where('m_id', '=', $gid)
-                    ->where('m_file', '=', $tree->id())
+                DB::query(table: 'media_file')
+                    ->whereEqual('m_id', $gid)
+                    ->whereEqual('m_file', $tree->id())
                     ->delete();
 
-                DB::table('media')
-                    ->where('m_id', '=', $gid)
-                    ->where('m_file', '=', $tree->id())
+                DB::query(table: 'media')
+                    ->whereEqual('m_id', $gid)
+                    ->whereEqual('m_file', $tree->id())
                     ->delete();
                 break;
 
             default:
-                DB::table('other')
-                    ->where('o_id', '=', $gid)
-                    ->where('o_file', '=', $tree->id())
+                DB::query(table: 'other')
+                    ->whereEqual('o_id', $gid)
+                    ->whereEqual('o_file', $tree->id())
                     ->delete();
                 break;
         }

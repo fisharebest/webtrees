@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -33,7 +34,6 @@ use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Throwable;
 
@@ -118,10 +118,11 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('families')->where('f_file', '=', $tree->id());
-        $this->recordQuery($query, 'f_gedcom', $params);
+        $query = DB::query()
+            ->from('families')
+            ->whereEqual('f_file', $tree->id());
 
-        return $query->pluck('f_id');
+        return $this->recordQuery($query, 'f_gedcom', $params)->pluck('f_id', in: Collection::class);
     }
 
     /**
@@ -138,12 +139,11 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('individuals')
-            ->where('i_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id());
 
-        $this->recordQuery($query, 'i_gedcom', $params);
-
-        return $query->pluck('i_id');
+        return $this->recordQuery($query, 'i_gedcom', $params)->pluck('i_id', in: Collection::class);
     }
 
     /**
@@ -160,13 +160,12 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Location::RECORD_TYPE);
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Location::RECORD_TYPE);
 
-        $this->recordQuery($query, 'o_gedcom', $params);
-
-        return $query->pluck('o_id');
+        return $this->recordQuery($query, 'o_gedcom', $params)->pluck('o_id', in: Collection::class);
     }
 
     /**
@@ -183,12 +182,11 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('media')
-            ->where('m_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('media')
+            ->whereEqual('m_file', $tree->id());
 
-        $this->recordQuery($query, 'm_gedcom', $params);
-
-        return $query->pluck('m_id');
+        return $this->recordQuery($query, 'm_gedcom', $params)->pluck('m_id', in: Collection::class);
     }
 
     /**
@@ -205,13 +203,12 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE);
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE);
 
-        $this->recordQuery($query, 'o_gedcom', $params);
-
-        return $query->pluck('o_id');
+        return $this->recordQuery($query, 'o_gedcom', $params)->pluck('o_id', in: Collection::class);
     }
 
     /**
@@ -228,13 +225,12 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE);
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE);
 
-        $this->recordQuery($query, 'o_gedcom', $params);
-
-        return $query->pluck('o_id');
+        return $this->recordQuery($query, 'o_gedcom', $params)->pluck('o_id', in: Collection::class);
     }
 
     /**
@@ -253,9 +249,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
 
         $query = $this->sourcesToFixQuery($tree, $params);
 
-        $this->recordQuery($query, 's_gedcom', $params);
-
-        return $query->pluck('s_id');
+        return $this->recordQuery($query, 's_gedcom', $params)->pluck('s_id', in: Collection::class);
     }
 
     /**
@@ -274,9 +268,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
 
         $query = $this->submittersToFixQuery($tree, $params);
 
-        $this->recordQuery($query, 'o_gedcom', $params);
-
-        return $query->pluck('o_id');
+        return $this->recordQuery($query, 'o_gedcom', $params)->pluck('o_id', in: Collection::class);
     }
 
     /**
@@ -369,7 +361,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      */
-    private function recordQuery(Builder $query, string $column, array $params): void
+    private function recordQuery(QueryBuilder $query, string $column, array $params): QueryBuilder
     {
         $search = $params['search-for'];
         $method = $params['method'];
@@ -378,21 +370,26 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
         switch ($method) {
             case 'exact':
             case 'words':
-                $query->where($column, 'LIKE', $like);
-                break;
+                return $params['case'] === 'i'
+                    ? $query->whereILike($column, $like)
+                    : $query->whereLike($column, $like);
 
             case 'wildcards':
                 $like = strtr($like, ['?' => '_', '*' => '%']);
-                $query->where($column, 'LIKE', $like);
-                break;
+                return $params['case'] === 'i'
+                    ? $query->whereILike($column, $like)
+                    : $query->whereLike($column, $like);
 
             case 'regex':
                 // Substituting newlines seems to be necessary on *some* versions
                 // of MySQL (e.g. 5.7), and harmless on others (e.g. 8.0).
                 $search = strtr($search, ['\n' => "\n"]);
 
-                $query->where($column, DB::regexOperator(), $search);
-                break;
+                return $params['case'] === 'i'
+                    ? $query->whereIRegex($column, $search)
+                    : $query->whereRegex($column, $search);
         }
+
+        return $query;
     }
 }

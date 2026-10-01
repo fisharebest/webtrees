@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Schema;
 
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Schema\SeedDefaultResnTable;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Schema\SeedDefaultResnTable;
 
 #[CoversClass(SeedDefaultResnTable::class)]
 class SeedDefaultResnTableTest extends TestCase
@@ -29,5 +30,47 @@ class SeedDefaultResnTableTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(SeedDefaultResnTable::class));
+    }
+
+    public function testRunRestoresFiveDefaultRowsWithoutDuplicatingThem(): void
+    {
+        self::createDatabase();
+
+        DB::query()
+            ->from('default_resn')
+            ->whereEqual('default_resn_id', 1)
+            ->update(['resn' => 'hidden']);
+        DB::query(table: 'default_resn')->insert([
+            'gedcom_id' => -1,
+            'tag_type'  => 'BIRT',
+            'resn'      => 'none',
+        ]);
+
+        $seed = new SeedDefaultResnTable();
+        $seed->run();
+        $seed->run();
+
+        self::assertSame([
+            1 => 'SSN',
+            2 => 'SOUR',
+            3 => 'REPO',
+            4 => 'SUBM',
+            5 => 'SUBN',
+            6 => 'BIRT',
+        ], DB::query()
+            ->from('default_resn')
+            ->orderBy('default_resn_id')
+            ->pluck('tag_type', 'default_resn_id'));
+        self::assertSame([
+            1 => 'confidential',
+            2 => 'privacy',
+            3 => 'privacy',
+            4 => 'confidential',
+            5 => 'confidential',
+            6 => 'none',
+        ], DB::query()
+            ->from('default_resn')
+            ->orderBy('default_resn_id')
+            ->pluck('resn', 'default_resn_id'));
     }
 }

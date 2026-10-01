@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
@@ -56,30 +57,37 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-mysql" value="mysql" <?= $dbtype === DB::MYSQL ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-mysql" value="mysql" <?= $dbtype === Driver::MySQL->value ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-mysql">
                     MySQL / MariaDB
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === DB::SQLITE ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === Driver::SQLite->value ? 'checked' : '' ?>>>
                 <label class="form-check-label" for="dbtype-sqlite">
                     SQLite
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-pgsql" value="pgsql" <?= $dbtype === DB::POSTGRESQL ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-pgsql" value="pgsql" <?= $dbtype === Driver::PostgreSQL->value ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-pgsql">
                     PostgreSQL
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlsrv" value="sqlsrv" <?= $dbtype === DB::SQL_SERVER ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlsrv" value="sqlsrv" <?= $dbtype === Driver::SqlServer->value ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-sqlsrv">
                     SQL Server
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-firebird" value="firebird" <?= $dbtype === Driver::Firebird->value ? 'checked' : '' ?>>
+                <label class="form-check-label" for="dbtype-firebird">
+                    Firebird
                 </label>
             </div>
 

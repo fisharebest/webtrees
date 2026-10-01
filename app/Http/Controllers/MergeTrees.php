@@ -28,8 +28,6 @@ use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -82,106 +80,79 @@ final class MergeTrees
         $tree2 = $this->tree_service->all()->get($tree2_name);
 
         if ($tree1 instanceof Tree && $tree2 instanceof Tree && $tree1 !== $tree2 && $this->admin_service->countCommonXrefs($tree1, $tree2) === 0) {
-            DB::query()->from('individuals')->insertUsing([
+            DB::query(table: 'individuals')->insertFrom([
                 'i_file',
                 'i_id',
                 'i_rin',
                 'i_sex',
                 'i_gedcom',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
-                    'i_id',
-                    'i_rin',
-                    'i_sex',
-                    'i_gedcom',
-                ])->from('individuals')
-                    ->where('i_file', '=', $tree1->id());
-            });
+            ], DB::query()
+                ->select(DB::value($tree2->id()), 'i_id', 'i_rin', 'i_sex', 'i_gedcom')
+                ->from('individuals')
+                ->whereEqual('i_file', $tree1->id()));
 
-            DB::query()->from('families')->insertUsing([
+            DB::query(table: 'families')->insertFrom([
                 'f_file',
                 'f_id',
                 'f_husb',
                 'f_wife',
                 'f_gedcom',
                 'f_numchil',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
-                    'f_id',
-                    'f_husb',
-                    'f_wife',
-                    'f_gedcom',
-                    'f_numchil',
-                ])->from('families')
-                    ->where('f_file', '=', $tree1->id());
-            });
+            ], DB::query()
+                ->select(DB::value($tree2->id()), 'f_id', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil')
+                ->from('families')
+                ->whereEqual('f_file', $tree1->id()));
 
-            DB::query()->from('sources')->insertUsing([
+            DB::query(table: 'sources')->insertFrom([
                 's_file',
                 's_id',
                 's_name',
                 's_gedcom',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
-                    's_id',
-                    's_name',
-                    's_gedcom',
-                ])->from('sources')
-                    ->where('s_file', '=', $tree1->id());
-            });
+            ], DB::query()
+                ->select(DB::value($tree2->id()), 's_id', 's_name', 's_gedcom')
+                ->from('sources')
+                ->whereEqual('s_file', $tree1->id()));
 
-            DB::query()->from('media')->insertUsing([
+            DB::query(table: 'media')->insertFrom([
                 'm_file',
                 'm_id',
                 'm_gedcom',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
-                    'm_id',
-                    'm_gedcom',
-                ])->from('media')
-                    ->where('m_file', '=', $tree1->id());
-            });
+            ], DB::query()
+                ->select(DB::value($tree2->id()), 'm_id', 'm_gedcom')
+                ->from('media')
+                ->whereEqual('m_file', $tree1->id()));
 
-            DB::query()->from('media_file')->insertUsing([
+            DB::query(table: 'media_file')->insertFrom([
                 'm_file',
                 'm_id',
                 'multimedia_file_refn',
                 'multimedia_format',
                 'source_media_type',
                 'descriptive_title',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
+            ], DB::query()
+                ->select(
+                    DB::value($tree2->id()),
                     'm_id',
                     'multimedia_file_refn',
                     'multimedia_format',
                     'source_media_type',
                     'descriptive_title',
-                ])->from('media_file')
-                    ->where('m_file', '=', $tree1->id());
-            });
+                )
+                ->from('media_file')
+                ->whereEqual('m_file', $tree1->id()));
 
-            DB::query()->from('other')->insertUsing([
+            DB::query(table: 'other')->insertFrom([
                 'o_file',
                 'o_id',
                 'o_type',
                 'o_gedcom',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
-                    'o_id',
-                    'o_type',
-                    'o_gedcom',
-                ])->from('other')
-                    ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-                    ->where('o_file', '=', $tree1->id());
-            });
+            ], DB::query()
+                ->select(DB::value($tree2->id()), 'o_id', 'o_type', 'o_gedcom')
+                ->from('other')
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
+                ->whereEqual('o_file', $tree1->id()));
 
-            DB::query()->from('name')->insertUsing([
+            DB::query(table: 'name')->insertFrom([
                 'n_file',
                 'n_id',
                 'n_num',
@@ -195,9 +166,9 @@ final class MergeTrees
                 'n_soundex_surn_std',
                 'n_soundex_givn_dm',
                 'n_soundex_surn_dm',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
+            ], DB::query()
+                ->select(
+                    DB::value($tree2->id()),
                     'n_id',
                     'n_num',
                     'n_type',
@@ -210,11 +181,11 @@ final class MergeTrees
                     'n_soundex_surn_std',
                     'n_soundex_givn_dm',
                     'n_soundex_surn_dm',
-                ])->from('name')
-                    ->where('n_file', '=', $tree1->id());
-            });
+                )
+                ->from('name')
+                ->whereEqual('n_file', $tree1->id()));
 
-            DB::query()->from('dates')->insertUsing([
+            DB::query(table: 'dates')->insertFrom([
                 'd_file',
                 'd_gid',
                 'd_day',
@@ -225,9 +196,9 @@ final class MergeTrees
                 'd_julianday2',
                 'd_fact',
                 'd_type',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
+            ], DB::query()
+                ->select(
+                    DB::value($tree2->id()),
                     'd_gid',
                     'd_day',
                     'd_month',
@@ -237,25 +208,20 @@ final class MergeTrees
                     'd_julianday2',
                     'd_fact',
                     'd_type',
-                ])->from('dates')
-                    ->where('d_file', '=', $tree1->id());
-            });
+                )
+                ->from('dates')
+                ->whereEqual('d_file', $tree1->id()));
 
-            DB::query()->from('link')->insertUsing([
+            DB::query(table: 'link')->insertFrom([
                 'l_file',
                 'l_from',
                 'l_type',
                 'l_to',
-            ], static function (Builder $query) use ($tree1, $tree2): void {
-                $query->select([
-                    new Expression($tree2->id()),
-                    'l_from',
-                    'l_type',
-                    'l_to',
-                ])->from('link')
-                    ->whereNotIn('l_from', [Header::RECORD_TYPE, 'TRLR'])
-                    ->where('l_file', '=', $tree1->id());
-            });
+            ], DB::query()
+                ->select(DB::value($tree2->id()), 'l_from', 'l_type', 'l_to')
+                ->from('link')
+                ->whereNotIn('l_from', [Header::RECORD_TYPE, 'TRLR'])
+                ->whereEqual('l_file', $tree1->id()));
 
             FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
 
