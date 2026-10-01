@@ -21,14 +21,16 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Connection;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use PDO;
 use PDOException;
 use RuntimeException;
 use SensitiveParameter;
 
-final class DB extends Manager
+final class DB
 {
     // Supported drivers
     public const string MARIADB    = 'mariadb';
@@ -141,7 +143,7 @@ final class DB extends Manager
             $database = Webtrees::ROOT_DIR . 'data/' . $database . '.sqlite';
         }
 
-        $capsule = new self();
+        $capsule = new Manager();
         $capsule->addConnection([
             'driver'                   => $driver,
             'host'                     => $host,
@@ -192,7 +194,7 @@ final class DB extends Manager
 
     private static function pdo(): PDO
     {
-        return parent::connection()->getPdo();
+        return Manager::connection()->getPdo();
     }
 
     /**
@@ -202,7 +204,7 @@ final class DB extends Manager
      */
     public static function prefix(string $identifier): string
     {
-        return parent::connection()->getTablePrefix() . $identifier;
+        return Manager::connection()->getTablePrefix() . $identifier;
     }
 
     public static function collation(): string|null
@@ -231,7 +233,7 @@ final class DB extends Manager
 
     public static function rollBack(): void
     {
-        parent::connection()->rollBack();
+        Manager::connection()->rollBack();
     }
 
     /**
@@ -271,8 +273,6 @@ final class DB extends Manager
     }
 
     /**
-     * @TODO - the next version of illumate/database will change literal-string to string.
-     *
      * @param literal-string $column
      * @param literal-string|null $alias
      * @return Expression<literal-string>
@@ -297,11 +297,23 @@ final class DB extends Manager
         return self::REGEX_OPERATOR[self::driverName()];
     }
 
-    /**
-     * PHPSTAN can't detect the magic methods in the parent class.
-     */
-    public static function query(): Builder
+    public static function connection(): Connection
     {
-        return parent::connection()->query();
+        return Manager::connection();
+    }
+
+    public static function query(): QueryBuilder
+    {
+        return Manager::connection()->query();
+    }
+
+    public static function schema(): SchemaBuilder
+    {
+        return Manager::schema();
+    }
+
+    public static function table(string $table): QueryBuilder
+    {
+        return Manager::connection()->table(table: $table);
     }
 }
