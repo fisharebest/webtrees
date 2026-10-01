@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
@@ -31,9 +32,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 use function addcslashes;
@@ -50,25 +48,26 @@ class LinkedRecordService
     {
         $like = addcslashes($record->xref(), '\\%_');
 
-        $union = DB::table('change')
-            ->where('gedcom_id', '=', $record->tree()->id())
-            ->where('new_gedcom', 'LIKE', '%@' . $like . '@%')
-            ->where('new_gedcom', 'NOT LIKE', '0 @' . $like . '@%')
-            ->whereIn('change_id', function (Builder $query) use ($record): void {
-                $query
-                    ->select([new Expression('MAX(change_id)')])
-                    ->from('change')
-                    ->where('gedcom_id', '=', $record->tree()->id())
-                    ->where('status', '=', ChangeStatus::Pending->value)
-                    ->groupBy(['xref']);
-            })
-            ->select(['xref']);
+        $union = DB::query()
+            ->select('xref')
+            ->from('change')
+            ->whereEqual('gedcom_id', $record->tree()->id())
+            ->whereLike('new_gedcom', '%@' . $like . '@%')
+            ->whereNotLike('new_gedcom', '0 @' . $like . '@%')
+            ->whereInSubquery('change_id', DB::query()
+                ->select(DB::max('change_id'))
+                ->from('change')
+                ->whereEqual('gedcom_id', $record->tree()->id())
+                ->whereEqual('status', ChangeStatus::Pending->value)
+                ->groupBy('xref'));
 
-        return DB::table('link')
-            ->where('l_file', '=', $record->tree()->id())
-            ->where('l_to', '=', $record->xref())
-            ->select(['l_from'])
+        return DB::query()
+            ->select('l_from')
+            ->from('link')
+            ->whereEqual('l_file', $record->tree()->id())
+            ->whereEqual('l_to', $record->xref())
             ->union($union)
+            ->get(in: Collection::class)
             ->pluck('l_from')
             ->map(static fn (string $xref) => Registry::gedcomRecordFactory()->make($xref, $record->tree()))
             ->whereInstanceOf(GedcomRecord::class)
@@ -80,23 +79,20 @@ class LinkedRecordService
      */
     public function linkedFamilies(GedcomRecord $record, string|null $link_type = null): Collection
     {
-        $query = DB::table('families')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'f_file')
-                    ->on('l_from', '=', 'f_id');
-            })
-            ->where('f_file', '=', $record->tree()->id())
-            ->where('l_to', '=', $record->xref());
+        $query = DB::query()
+            ->select('families.*')
+            ->distinct()
+            ->from('families')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'f_file')->on('l_from', 'f_id'))
+            ->whereEqual('f_file', $record->tree()->id())
+            ->whereEqual('l_to', $record->xref());
 
         if ($link_type !== null) {
-            $query->where('l_type', '=', $link_type);
+            $query = $query->whereEqual('l_type', $link_type);
         }
 
         return $query
-            ->distinct()
-            ->select(['families.*'])
-            ->get()
+            ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($record->tree()))
             ->whereInstanceOf(Family::class)
             ->filter(GedcomRecord::accessFilter());
@@ -107,23 +103,20 @@ class LinkedRecordService
      */
     public function linkedIndividuals(GedcomRecord $record, string|null $link_type = null): Collection
     {
-        $query = DB::table('individuals')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'i_file')
-                    ->on('l_from', '=', 'i_id');
-            })
-            ->where('i_file', '=', $record->tree()->id())
-            ->where('l_to', '=', $record->xref());
+        $query = DB::query()
+            ->select('individuals.*')
+            ->distinct()
+            ->from('individuals')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'i_file')->on('l_from', 'i_id'))
+            ->whereEqual('i_file', $record->tree()->id())
+            ->whereEqual('l_to', $record->xref());
 
         if ($link_type !== null) {
-            $query->where('l_type', '=', $link_type);
+            $query = $query->whereEqual('l_type', $link_type);
         }
 
         return $query
-            ->distinct()
-            ->select(['individuals.*'])
-            ->get()
+            ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($record->tree()))
             ->whereInstanceOf(Individual::class)
             ->filter(GedcomRecord::accessFilter());
@@ -134,18 +127,15 @@ class LinkedRecordService
      */
     public function linkedLocations(GedcomRecord $record): Collection
     {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $record->tree()->id())
-            ->where('o_type', '=', Location::RECORD_TYPE)
-            ->where('l_to', '=', $record->xref())
+        return DB::query()
+            ->select('other.*')
             ->distinct()
-            ->select(['other.*'])
-            ->get()
+            ->from('other')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'o_file')->on('l_from', 'o_id'))
+            ->whereEqual('o_file', $record->tree()->id())
+            ->whereEqual('o_type', Location::RECORD_TYPE)
+            ->whereEqual('l_to', $record->xref())
+            ->get(in: Collection::class)
             ->map(Registry::locationFactory()->mapper($record->tree()))
             ->whereInstanceOf(Location::class)
             ->filter(GedcomRecord::accessFilter());
@@ -156,17 +146,14 @@ class LinkedRecordService
      */
     public function linkedMedia(GedcomRecord $record): Collection
     {
-        return DB::table('media')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'm_file')
-                    ->on('l_from', '=', 'm_id');
-            })
-            ->where('m_file', '=', $record->tree()->id())
-            ->where('l_to', '=', $record->xref())
+        return DB::query()
+            ->select('media.*')
             ->distinct()
-            ->select(['media.*'])
-            ->get()
+            ->from('media')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'm_file')->on('l_from', 'm_id'))
+            ->whereEqual('m_file', $record->tree()->id())
+            ->whereEqual('l_to', $record->xref())
+            ->get(in: Collection::class)
             ->map(Registry::mediaFactory()->mapper($record->tree()))
             ->whereInstanceOf(Media::class)
             ->filter(GedcomRecord::accessFilter());
@@ -177,18 +164,15 @@ class LinkedRecordService
      */
     public function linkedNotes(GedcomRecord $record): Collection
     {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $record->tree()->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
-            ->where('l_to', '=', $record->xref())
+        return DB::query()
+            ->select('other.*')
             ->distinct()
-            ->select(['other.*'])
-            ->get()
+            ->from('other')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'o_file')->on('l_from', 'o_id'))
+            ->whereEqual('o_file', $record->tree()->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE)
+            ->whereEqual('l_to', $record->xref())
+            ->get(in: Collection::class)
             ->map(Registry::noteFactory()->mapper($record->tree()))
             ->whereInstanceOf(Note::class)
             ->filter(GedcomRecord::accessFilter());
@@ -199,18 +183,15 @@ class LinkedRecordService
      */
     public function linkedRepositories(GedcomRecord $record): Collection
     {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $record->tree()->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
-            ->where('l_to', '=', $record->xref())
+        return DB::query()
+            ->select('other.*')
             ->distinct()
-            ->select(['other.*'])
-            ->get()
+            ->from('other')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'o_file')->on('l_from', 'o_id'))
+            ->whereEqual('o_file', $record->tree()->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
+            ->whereEqual('l_to', $record->xref())
+            ->get(in: Collection::class)
             ->map(Registry::repositoryFactory()->mapper($record->tree()))
             ->whereInstanceOf(Repository::class)
             ->filter(GedcomRecord::accessFilter());
@@ -221,17 +202,14 @@ class LinkedRecordService
      */
     public function linkedSources(GedcomRecord $record): Collection
     {
-        return DB::table('sources')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 's_file')
-                    ->on('l_from', '=', 's_id');
-            })
-            ->where('s_file', '=', $record->tree()->id())
-            ->where('l_to', '=', $record->xref())
+        return DB::query()
+            ->select('sources.*')
             ->distinct()
-            ->select(['sources.*'])
-            ->get()
+            ->from('sources')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 's_file')->on('l_from', 's_id'))
+            ->whereEqual('s_file', $record->tree()->id())
+            ->whereEqual('l_to', $record->xref())
+            ->get(in: Collection::class)
             ->map(Registry::sourceFactory()->mapper($record->tree()))
             ->whereInstanceOf(Source::class)
             ->filter(GedcomRecord::accessFilter());
@@ -242,19 +220,15 @@ class LinkedRecordService
      */
     public function linkedSubmitters(GedcomRecord $record): Collection
     {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $record->tree()->id())
-            ->where('o_type', '=', Submitter::RECORD_TYPE)
-            ->where('l_to', '=', $record->xref())
+        return DB::query()
+            ->select('other.*')
             ->distinct()
-            ->select(['other.*'])
-            ->distinct()
-            ->get()
+            ->from('other')
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'o_file')->on('l_from', 'o_id'))
+            ->whereEqual('o_file', $record->tree()->id())
+            ->whereEqual('o_type', Submitter::RECORD_TYPE)
+            ->whereEqual('l_to', $record->xref())
+            ->get(in: Collection::class)
             ->map(Registry::submitterFactory()->mapper($record->tree()))
             ->whereInstanceOf(Submitter::class)
             ->filter(GedcomRecord::accessFilter());

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -45,6 +46,14 @@ class SiteTest extends TestCase
         Site::setPreference('setting', 'foo');
 
         self::assertSame('foo', Site::getPreference('setting'));
+
+        Site::setPreference('setting', 'bar');
+
+        self::assertSame('bar', Site::getPreference('setting'));
+        self::assertSame(1, DB::query()
+            ->from('site_setting')
+            ->whereEqual('setting_name', 'setting')
+            ->count());
     }
 
     public function test2000CharacterLimit(): void

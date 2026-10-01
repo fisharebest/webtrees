@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
@@ -26,7 +27,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemException;
@@ -36,6 +36,7 @@ use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
 
+use function addcslashes;
 use function array_combine;
 use function array_diff;
 use function array_intersect;
@@ -114,17 +115,16 @@ class MediaFileService
     /**
      * A list of media files not already linked to a media object.
      *
-     *
      * @return array<string>
      */
     public function unusedFiles(Tree $tree): array
     {
-        $used_files = DB::table('media_file')
-            ->where('m_file', '=', $tree->id())
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->pluck('multimedia_file_refn')
-            ->all();
+        $used_files = DB::query()
+            ->from('media_file')
+            ->whereEqual('m_file', $tree->id())
+            ->whereNotLike('multimedia_file_refn', 'http://%')
+            ->whereNotLike('multimedia_file_refn', 'https://%')
+            ->pluck('multimedia_file_refn');
 
         $media_filesystem = $tree->mediaFilesystem();
         $disk_files       = $this->allFilesOnDisk($media_filesystem, '', FilesystemReader::LIST_DEEP)->all();
@@ -138,7 +138,6 @@ class MediaFileService
     /**
      * Store an uploaded file (or URL), either to be added to a media object
      * or to create a media object.
-     *
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
      * @throws FilesystemException
@@ -302,26 +301,27 @@ class MediaFileService
      */
     public function allFilesInDatabase(string $media_folder, bool $subfolders): Collection
     {
-        $path = DB::concat(['media_folder', 'multimedia_file_refn']);
+        $escaped_folder  = addcslashes($media_folder, '\\%_');
+        $path_expression = DB::concat(DB::column('media_folder'), DB::column('multimedia_file_refn'));
 
-        $query = DB::table('media_file')
-            ->join('gedcom', 'gedcom_id', '=', 'm_file')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->where(new Expression($path), 'LIKE', $media_folder . '%');
+        $query = DB::query()
+            ->from('media_file')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom_id', 'm_file'))
+            ->whereNotLike('multimedia_file_refn', 'http://%')
+            ->whereNotLike('multimedia_file_refn', 'https://%')
+            ->whereLike($path_expression, $escaped_folder . '%');
 
         if (!$subfolders) {
-            $query->where(new Expression($path), 'NOT LIKE', $media_folder . '%/%');
+            $query = $query->whereNotLike($path_expression, $escaped_folder . '%/%');
         }
 
         return $query
-            ->orderBy(new Expression($path))
-            ->pluck(new Expression($path . ' AS value'));
+            ->orderBy($path_expression)
+            ->pluck($path_expression, in: Collection::class);
     }
 
     /**
      * Generate a list of all folders used by a tree.
-     *
      *
      * @return Collection<int,string>
      * @throws FilesystemException
@@ -341,23 +341,23 @@ class MediaFileService
     /**
      * Generate a list of all folders in either the database or the filesystem.
      *
-     *
      * @return Collection<array-key,string>
      * @throws FilesystemException
      */
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
-        /** Issue #5114 - columns containing '||' get a trailing space added by MySQL.  The alias is a workaround */
-        $db_folders = DB::table('media_file')
-            ->join('gedcom', 'gedcom_id', '=', 'm_file')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->pluck(new Expression('media_folder || multimedia_file_refn AS value'))
+        $db_folders = DB::query()
+            ->from('media_file')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom_id', 'm_file'))
+            ->whereNotLike('multimedia_file_refn', 'http://%')
+            ->whereNotLike('multimedia_file_refn', 'https://%')
+            ->pluck(DB::concat(DB::column('media_folder'), DB::column('multimedia_file_refn')), in: Collection::class)
             ->map(static fn (string $path): string => dirname($path) . '/');
 
-        $media_roots = DB::table('gedcom')
-            ->where('gedcom.gedcom_id', '>', '0')
-            ->pluck('media_folder')
+        $media_roots = DB::query()
+            ->from('gedcom')
+            ->whereGreaterThan('gedcom.gedcom_id', 0)
+            ->pluck('media_folder', in: Collection::class)
             ->uniqueStrict();
 
         $disk_folders = new Collection($media_roots);

@@ -22,12 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function addcslashes;
@@ -40,7 +40,7 @@ class SiteLogsService
     /**
      * Generate a query for filtering the changes log.
      */
-    public function logsQuery(ServerRequestInterface $request): Builder
+    public function logsQuery(ServerRequestInterface $request): QueryBuilder
     {
         $tree     = Validator::queryParams($request)->string('tree');
         $from     = Validator::queryParams($request)->string('from');
@@ -50,10 +50,15 @@ class SiteLogsService
         $ip       = Validator::queryParams($request)->string('ip');
         $username = Validator::queryParams($request)->string('username');
 
-        $query = DB::table('log')
-            ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
-            ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
-            ->select(['log.*', new Expression("COALESCE(user_name, '<--->') AS user_name"), new Expression("COALESCE(gedcom_name, '<--->') AS gedcom_name")]);
+        $query = DB::query()
+            ->select(
+                'log.*',
+                DB::alias(DB::coalesce(DB::column('user_name'), DB::value('<--->')), 'user_name'),
+                DB::alias(DB::coalesce(DB::column('gedcom_name'), DB::value('<--->')), 'gedcom_name'),
+            )
+            ->from('log')
+            ->leftJoin('user', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'log.user_id'))
+            ->leftJoin('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom.gedcom_id', 'log.gedcom_id'));
 
         $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
         $utc = new DateTimeZone('UTC');
@@ -63,7 +68,7 @@ class SiteLogsService
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');
 
-            $query->where('log_time', '>=', $from_time);
+            $query = $query->whereGreaterThanOrEqual('log_time', $from_time);
         }
 
         if ($to !== '') {
@@ -72,31 +77,31 @@ class SiteLogsService
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');
 
-            $query->where('log_time', '<', $to_time);
+            $query = $query->whereLessThan('log_time', $to_time);
         }
 
         if ($type !== '') {
-            $query->where('log_type', '=', $type);
+            $query = $query->whereEqual('log_type', $type);
         }
 
         if ($text !== '') {
-            $query->where('log_message', 'LIKE', '%' . addcslashes($text, '\\%_') . '%');
+            $query = $query->whereLike('log_message', '%' . addcslashes($text, '\\%_') . '%');
         }
 
         if ($ip !== '') {
-            $query->where('ip_address', 'LIKE', addcslashes($ip, '\\%_') . '%');
+            $query = $query->whereLike('ip_address', addcslashes($ip, '\\%_') . '%');
         }
 
         if ($username === '<--->') {
-            $query->whereNull('user.user_id');
+            $query = $query->whereNull('user.user_id');
         } elseif ($username !== '') {
-            $query->where('user_name', '=', $username);
+            $query = $query->whereEqual('user_name', $username);
         }
 
         if ($tree === '<-->') {
-            $query->whereNull('gedcom.gedcom_id');
+            $query = $query->whereNull('gedcom.gedcom_id');
         } elseif ($tree !== '') {
-            $query->where('gedcom_name', '=', $tree);
+            $query = $query->whereEqual('gedcom_name', $tree);
         }
 
         return $query;

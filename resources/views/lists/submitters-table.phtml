@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
@@ -25,27 +24,23 @@ use Illuminate\Support\Collection;
 // Count the number of linked records. These numbers include private records.
 // It is not good to bypass privacy, but many servers do not have the resources
 // to process privacy for every record in the tree
-$count_individuals = DB::table('individuals')
-    ->join('link', static function (JoinClause $join): void {
-        $join->on('l_from', '=', 'i_id');
-        $join->on('l_file', '=', 'i_file');
-    })
-    ->where('l_type', '=', Submitter::RECORD_TYPE)
-    ->where('l_file', '=', $tree->id())
-    ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
+$count_individuals = DB::query()
+    ->from('individuals')
+    ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'i_id')->on('l_file', 'i_file'))
+    ->whereEqual('l_type', Submitter::RECORD_TYPE)
+    ->whereEqual('l_file', $tree->id())
+    ->groupBy('l_to')
+    ->pluck(DB::count(), 'l_to', in: Collection::class)
     ->map(static fn (string $n): int => (int) $n)
     ->all();
 
-$count_families = DB::table('families')
-    ->join('link', static function (JoinClause $join): void {
-        $join->on('l_from', '=', 'f_id');
-        $join->on('l_file', '=', 'f_file');
-    })
-    ->where('l_type', '=', Submitter::RECORD_TYPE)
-    ->where('l_file', '=', $tree->id())
-    ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
+$count_families = DB::query()
+    ->from('families')
+    ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'f_id')->on('l_file', 'f_file'))
+    ->whereEqual('l_type', Submitter::RECORD_TYPE)
+    ->whereEqual('l_file', $tree->id())
+    ->groupBy('l_to')
+    ->pluck(DB::count(), 'l_to', in: Collection::class)
     ->map(static fn (string $n): int => (int) $n)
     ->all();
 ?>

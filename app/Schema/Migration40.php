@@ -32,8 +32,8 @@ class Migration40 implements MigrationInterface
         // This table was previously created by the news module in 1.7.9.
         // These migrations are now part of the core code.
 
-        if (!DB::schema()->hasTable('news')) {
-            DB::schema()->create('news', static function (Blueprint $table): void {
+        if (!DB::schemaBuilder()->hasTable('news')) {
+            DB::schemaBuilder()->create('news', static function (Blueprint $table): void {
                 $table->integer('news_id', true);
                 $table->integer('user_id')->nullable();
                 $table->integer('gedcom_id')->nullable();

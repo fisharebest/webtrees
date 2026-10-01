@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 use function str_contains;
@@ -64,13 +63,9 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
     public function individualsToFix(Tree $tree, array $params): Collection
     {
         return $this->individualsToFixQuery($tree, $params)
-            ->where('i_file', '=', $tree->id())
-            ->where(function (Builder $query): void {
-                $query
-                    ->where('i_gedcom', 'LIKE', "%\n1 _WT_OBJE_SORT %")
-                    ->orWhere('i_gedcom', 'LIKE', "%\n1 _WT_OBJE_SORT %");
-            })
-            ->pluck('i_id');
+            ->whereEqual('i_file', $tree->id())
+            ->whereRaw('(i_gedcom LIKE ? OR i_gedcom LIKE ?)', ["%\n1 _WT_OBJE_SORT %", "%\n1 _WT_OBJE_SORT %"])
+            ->pluck('i_id', in: Collection::class);
     }
 
     /**

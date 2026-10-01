@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -55,7 +56,7 @@ final class CleanDataFolder
             'config.ini.php',
         ];
 
-        if (Validator::attributes($request)->string('dbtype', DB::MYSQL) === DB::SQLITE) {
+        if (Validator::attributes($request)->string('dbtype', Driver::MySQL->value) === Driver::SQLite->value) {
             $protected[] = Validator::attributes($request)->string('dbname') . '.sqlite';
         }
 

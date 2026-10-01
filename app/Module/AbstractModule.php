@@ -69,10 +69,10 @@ abstract class AbstractModule implements ModuleInterface
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
         $settings = Registry::cache()->array()
-            ->remember('block-setting-' . $block_id, static fn (): array => DB::table('block_setting')
-                ->where('block_id', '=', $block_id)
-                ->pluck('setting_value', 'setting_name')
-                ->all());
+            ->remember('block-setting-' . $block_id, static fn (): array => DB::query()
+                ->from('block_setting')
+                ->whereEqual('block_id', $block_id)
+                ->pluck('setting_value', 'setting_name'));
 
         return $settings[$setting_name] ?? $default;
     }
@@ -82,12 +82,11 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
-        DB::table('block_setting')->updateOrInsert([
+        DB::query(table: 'block_setting')->upsert([
             'block_id'      => $block_id,
             'setting_name'  => $setting_name,
-        ], [
             'setting_value' => $setting_value,
-        ]);
+        ], ['block_id', 'setting_name'], ['setting_value']);
 
         return $this;
     }
@@ -136,9 +135,10 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function getPreference(string $setting_name, string $default = ''): string
     {
-        return DB::table('module_setting')
-            ->where('module_name', '=', $this->name())
-            ->where('setting_name', '=', $setting_name)
+        return DB::query()
+            ->from('module_setting')
+            ->whereEqual('module_name', $this->name())
+            ->whereEqual('setting_name', $setting_name)
             ->value('setting_value') ?? $default;
     }
 
@@ -150,12 +150,11 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function setPreference(string $setting_name, string $setting_value): void
     {
-        DB::table('module_setting')->updateOrInsert([
+        DB::query(table: 'module_setting')->upsert([
             'module_name'  => $this->name(),
             'setting_name' => $setting_name,
-        ], [
             'setting_value' => $setting_value,
-        ]);
+        ], ['module_name', 'setting_name'], ['setting_value']);
     }
 
     /**
@@ -168,9 +167,11 @@ abstract class AbstractModule implements ModuleInterface
     final public function accessLevel(Tree $tree, string $interface): AccessLevel
     {
         $access_levels = Registry::cache()->array()
-            ->remember('module-privacy-' . $tree->id(), static fn (): Collection => DB::table('module_privacy')
-                ->where('gedcom_id', '=', $tree->id())
-                ->get());
+            ->remember('module-privacy-' . $tree->id(), static fn (): Collection => DB::query()
+                ->select('*')
+                ->from('module_privacy')
+                ->whereEqual('gedcom_id', $tree->id())
+                ->get(in: Collection::class));
 
         $row = $access_levels->first(fn (object $row): bool => $row->interface === $interface && $row->module_name === $this->name());
 

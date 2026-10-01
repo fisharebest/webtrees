@@ -24,6 +24,8 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Carbon\CarbonImmutable;
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
@@ -41,8 +43,6 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 
 use function addcslashes;
@@ -60,10 +60,13 @@ class PendingChangesService
 
     public function pendingChangesExist(Tree|null $tree = null): bool
     {
-        $query = DB::table(table: 'change')->where(column: 'status', operator: '=', value: ChangeStatus::Pending->value);
+        $query = DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereEqual('status', ChangeStatus::Pending->value);
 
         if ($tree instanceof Tree) {
-            $query = $query->where(column: 'tree_id', operator: '=', value: $tree->id());
+            $query = $query->whereEqual('tree_id', $tree->id());
         }
 
         return $query->exists();
@@ -74,12 +77,13 @@ class PendingChangesService
      */
     public function pendingXrefs(Tree $tree): Collection
     {
-        return DB::table('change')
-            ->where('status', '=', ChangeStatus::Pending->value)
-            ->where('gedcom_id', '=', $tree->id())
+        return DB::query()
+            ->from('change')
+            ->whereEqual('status', ChangeStatus::Pending->value)
+            ->whereEqual('gedcom_id', $tree->id())
+            ->groupBy('xref')
             ->orderBy('xref')
-            ->groupBy(['xref'])
-            ->pluck('xref');
+            ->pluck('xref', in: Collection::class);
     }
 
     /**
@@ -98,13 +102,14 @@ class PendingChangesService
     {
         $xrefs = $this->pendingXrefs($tree);
 
-        $rows = DB::table('change')
-            ->join('user', 'user.user_id', '=', 'change.user_id')
-            ->where('status', '=', ChangeStatus::Pending->value)
-            ->where('gedcom_id', '=', $tree->id())
-            ->whereIn('xref', $xrefs->slice(0, $n))
+        $rows = DB::query()
+            ->select('change.*', 'user.user_name', 'user.real_name')
+            ->from('change')
+            ->join('user', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'change.user_id'))
+            ->whereEqual('status', ChangeStatus::Pending->value)
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereIn('xref', $xrefs->slice(0, $n)->all())
             ->orderBy('change.change_id')
-            ->select(['change.*', 'user.user_name', 'user.real_name'])
             ->get();
 
         $changes = [];
@@ -141,12 +146,14 @@ class PendingChangesService
     {
         $xrefs = $this->pendingXrefs($tree);
 
-        $changes = DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', ChangeStatus::Pending->value)
-            ->whereIn('xref', $xrefs->slice(0, $n))
+        $changes = DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('status', ChangeStatus::Pending->value)
+            ->whereIn('xref', $xrefs->slice(0, $n)->all())
             ->orderBy('change_id')
-            ->lockForUpdate()
+            ->forUpdate()
             ->get();
 
         foreach ($changes as $change) {
@@ -158,20 +165,22 @@ class PendingChangesService
                 $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
-            DB::table('change')
-                ->where('change_id', '=', $change->change_id)
+            DB::query(table: 'change')
+                ->whereEqual('change_id', $change->change_id)
                 ->update(['status' => ChangeStatus::Accepted->value]);
         }
     }
 
     public function acceptRecord(GedcomRecord $record): void
     {
-        $changes = DB::table('change')
-            ->where('gedcom_id', '=', $record->tree()->id())
-            ->where('xref', '=', $record->xref())
-            ->where('status', '=', ChangeStatus::Pending->value)
+        $changes = DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereEqual('gedcom_id', $record->tree()->id())
+            ->whereEqual('xref', $record->xref())
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->orderBy('change_id')
-            ->lockForUpdate()
+            ->forUpdate()
             ->get();
 
         foreach ($changes as $change) {
@@ -183,19 +192,21 @@ class PendingChangesService
                 $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
             }
 
-            DB::table('change')
-                ->where('change_id', '=', $change->change_id)
+            DB::query(table: 'change')
+                ->whereEqual('change_id', $change->change_id)
                 ->update(['status' => ChangeStatus::Accepted->value]);
         }
     }
 
     public function acceptChange(Tree $tree, string $xref, string $change_id): void
     {
-        $changes = DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('xref', '=', $xref)
-            ->where('change_id', '<=', $change_id)
-            ->where('status', '=', ChangeStatus::Pending->value)
+        $changes = DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('xref', $xref)
+            ->whereLessThanOrEqual('change_id', $change_id)
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->orderBy('change_id')
             ->get();
 
@@ -208,43 +219,43 @@ class PendingChangesService
                 $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
-            DB::table('change')
-                ->where('change_id', '=', $change->change_id)
+            DB::query(table: 'change')
+                ->whereEqual('change_id', $change->change_id)
                 ->update(['status' => ChangeStatus::Accepted->value]);
         }
     }
 
     public function rejectTree(Tree $tree): void
     {
-        DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', ChangeStatus::Pending->value)
+        DB::query(table: 'change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->update(['status' => ChangeStatus::Rejected->value]);
     }
 
     public function rejectChange(Tree $tree, string $xref, string $change_id): void
     {
-        DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('xref', '=', $xref)
-            ->where('change_id', '>=', $change_id)
-            ->where('status', '=', ChangeStatus::Pending->value)
+        DB::query(table: 'change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('xref', $xref)
+            ->whereGreaterThanOrEqual('change_id', $change_id)
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->update(['status' => ChangeStatus::Rejected->value]);
     }
 
     public function rejectRecord(GedcomRecord $record): void
     {
-        DB::table('change')
-            ->where('gedcom_id', '=', $record->tree()->id())
-            ->where('xref', '=', $record->xref())
-            ->where('status', '=', ChangeStatus::Pending->value)
+        DB::query(table: 'change')
+            ->whereEqual('gedcom_id', $record->tree()->id())
+            ->whereEqual('xref', $record->xref())
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->update(['status' => ChangeStatus::Rejected->value]);
     }
 
     /**
      * @param array<string,string> $params
      */
-    public function changesQuery(array $params): Builder
+    public function changesQuery(array $params): QueryBuilder
     {
         $tree     = $params['tree'];
         $from     = $params['from'] ?? '';
@@ -255,11 +266,12 @@ class PendingChangesService
         $xref     = $params['xref'] ?? '';
         $username = $params['username'] ?? '';
 
-        $query = DB::table('change')
-            ->leftJoin('user', 'user.user_id', '=', 'change.user_id')
-            ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
-            ->select(['change.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), 'gedcom_name'])
-            ->where('gedcom_name', '=', $tree);
+        $query = DB::query()
+            ->select('change.*', DB::alias(DB::coalesce(DB::column('user_name'), DB::value('<none>')), 'user_name'), 'gedcom_name')
+            ->from('change')
+            ->leftJoin('user', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'change.user_id'))
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom.gedcom_id', 'change.gedcom_id'))
+            ->whereEqual('gedcom_name', $tree);
 
         $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
         $utc = new DateTimeZone('UTC');
@@ -269,7 +281,7 @@ class PendingChangesService
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');
 
-            $query->where('change_time', '>=', $from_time);
+            $query = $query->whereGreaterThanOrEqual('change_time', $from_time);
         }
 
         if ($to !== '') {
@@ -279,26 +291,26 @@ class PendingChangesService
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');
 
-            $query->where('change_time', '<', $to_time);
+            $query = $query->whereLessThan('change_time', $to_time);
         }
 
         if ($type !== '') {
-            $query->where('status', '=', $type);
+            $query = $query->whereEqual('status', $type);
         }
 
         if ($oldged !== '') {
-            $query->where('old_gedcom', 'LIKE', '%' . addcslashes($oldged, '\\%_') . '%');
+            $query = $query->whereLike('old_gedcom', '%' . addcslashes($oldged, '\\%_') . '%');
         }
         if ($newged !== '') {
-            $query->where('new_gedcom', 'LIKE', '%' . addcslashes($newged, '\\%_') . '%');
+            $query = $query->whereLike('new_gedcom', '%' . addcslashes($newged, '\\%_') . '%');
         }
 
         if ($xref !== '') {
-            $query->where('xref', '=', $xref);
+            $query = $query->whereEqual('xref', $xref);
         }
 
         if ($username !== '') {
-            $query->where('user_name', 'LIKE', '%' . addcslashes($username, '\\%_') . '%');
+            $query = $query->whereLike('user_name', '%' . addcslashes($username, '\\%_') . '%');
         }
 
         return $query;

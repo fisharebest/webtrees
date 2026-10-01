@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
+use Fisharebest\Database\Driver;
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use PDOException;
 
@@ -29,12 +31,41 @@ use PDOException;
  */
 class Migration44 implements MigrationInterface
 {
+    private function legacyPlacesToImport(): QueryBuilder
+    {
+        $roots = DB::query()
+            ->select('pl_id')
+            ->from('placelocation')
+            ->whereNull('pl_parent_id')
+            ->orWhereEqual('pl_parent_id', 0);
+
+        $children = DB::query()
+            ->select('child.pl_id')
+            ->from('placelocation AS child')
+            ->join('valid_places AS parent', static fn (JoinOn $j): JoinOn => $j->on('parent.pl_id', 'child.pl_parent_id'));
+
+        return DB::query()
+            ->withRecursiveCte('valid_places', $roots, $children)
+            ->select(
+                'placelocation.pl_id',
+                DB::raw('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
+                'pl_place',
+                DB::raw("CAST(REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '') AS FLOAT)"),
+                DB::raw("CAST(REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '') AS FLOAT)"),
+            )
+            ->from('placelocation')
+            ->join('valid_places', static fn (JoinOn $j): JoinOn => $j->on('valid_places.pl_id', 'placelocation.pl_id'))
+            ->leftJoin('place_location', static fn (JoinOn $j): JoinOn => $j->on('place_location.id', 'placelocation.pl_id'))
+            ->whereNull('place_location.id')
+            ->orderBy('placelocation.pl_id');
+    }
+
     public function upgrade(): void
     {
         // It is simpler to create a new table than to update the existing one.
 
-        if (!DB::schema()->hasTable('place_location')) {
-            DB::schema()->create('place_location', static function (Blueprint $table): void {
+        if (!DB::schemaBuilder()->hasTable('place_location')) {
+            DB::schemaBuilder()->create('place_location', static function (Blueprint $table): void {
                 $table->integer('id', true);
                 $table->integer('parent_id')->nullable();
                 $table->string('place', 120);
@@ -50,8 +81,8 @@ class Migration44 implements MigrationInterface
 
             // SqlServer cannot cascade-delete/update on self-relations.
             // Users will need to delete all child locations before deleting the parent.
-            if (DB::driverName() !== DB::SQL_SERVER) {
-                DB::schema()->table('place_location', static function (Blueprint $table): void {
+            if (DB::driverName() !== Driver::SqlServer->value) {
+                DB::schemaBuilder()->table('place_location', static function (Blueprint $table): void {
                     $table->foreign(['parent_id'])
                         ->references(['id'])
                         ->on('place_location')
@@ -63,28 +94,22 @@ class Migration44 implements MigrationInterface
 
         // This table should only exist if we are upgrading an old installation, which would have been
         // created with MySQL. Therefore, we can safely use MySQL-specific SQL.
-        if (DB::schema()->hasTable('placelocation')) {
-            if (DB::driverName() === DB::MYSQL) {
-                DB::table('placelocation')
-                    ->where('pl_lati', '=', '')
-                    ->orWhere('pl_long', '=', '')
+        if (DB::schemaBuilder()->hasTable('placelocation')) {
+            if (DB::driverName() === Driver::MySQL->value) {
+                DB::query(table: 'placelocation')
+                    ->whereEqual('pl_lati', '')
+                    ->orWhereEqual('pl_long', '')
                     ->update([
                         'pl_lati' => null,
                         'pl_long' => null,
                     ]);
 
-                // Missing/invalid parents?  Move them to the top level
-                DB::table('placelocation AS pl1')
-                    ->leftJoin('placelocation AS pl2', 'pl1.pl_parent_id', '=', 'pl2.pl_id')
-                    ->whereNull('pl2.pl_id')
-                    ->update([
-                        'pl1.pl_parent_id' => 0,
-                    ]);
-
                 // Remove invalid values.
-                DB::table('placelocation')
-                    ->where('pl_lati', 'NOT REGEXP', '^[NS][0-9]+[.]?[0-9]*$')
-                    ->orWhere('pl_long', 'NOT REGEXP', '^[EW][0-9]+[.]?[0-9]*$')
+                DB::query(table: 'placelocation')
+                    ->whereRaw('(pl_lati NOT REGEXP ? OR pl_long NOT REGEXP ?)', [
+                        '^[NS][0-9]+[.]?[0-9]*$',
+                        '^[EW][0-9]+[.]?[0-9]*$',
+                    ])
                     ->update([
                         'pl_lati' => null,
                         'pl_long' => null,
@@ -93,28 +118,26 @@ class Migration44 implements MigrationInterface
                 // The existing data may have placenames that only differ after the first 120 chars.
                 // Need to remove the constraint before we truncate/merge them.
                 try {
-                    DB::schema()->table('placelocation', static function (Blueprint $table): void {
+                    DB::schemaBuilder()->table('placelocation', static function (Blueprint $table): void {
                         $table->dropUnique(['pl_parent_id', 'pl_place']);
                     });
                 } catch (PDOException) {
                     // Already deleted, or does not exist;
                 }
 
-                DB::table('placelocation')
+                DB::query(table: 'placelocation')
                     ->update([
-                        'pl_place' => new Expression('SUBSTRING(pl_place, 1, 120)'),
+                        'pl_place' => DB::substring('pl_place', 1, 120),
                     ]);
 
                 // The lack of unique key constraints means that there may be duplicates...
                 while (true) {
                     // Two places with the same name and parent...
-                    $row = DB::table('placelocation')
-                        ->select([
-                            new Expression('MIN(pl_id) AS min'),
-                            new Expression('MAX(pl_id) AS max'),
-                        ])
-                        ->groupBy(['pl_parent_id', 'pl_place'])
-                        ->having(new Expression('COUNT(*)'), '>', '1')
+                    $row = DB::query()
+                        ->select(DB::raw('MIN(pl_id) AS min'), DB::raw('MAX(pl_id) AS max'))
+                        ->from('placelocation')
+                        ->groupBy('pl_parent_id', 'pl_place')
+                        ->havingRaw('COUNT(*) > ?', [1])
                         ->first();
 
                     if ($row === null) {
@@ -122,62 +145,29 @@ class Migration44 implements MigrationInterface
                     }
 
                     // ...move children to the first
-                    DB::table('placelocation')
-                        ->where('pl_parent_id', '=', $row->max)
+                    DB::query(table: 'placelocation')
+                        ->whereEqual('pl_parent_id', $row->max)
                         ->update(['pl_parent_id' => $row->min]);
 
                     // ...delete the second
-                    DB::table('placelocation')
-                        ->where('pl_id', '=', $row->max)
+                    DB::query(table: 'placelocation')
+                        ->whereEqual('pl_id', $row->max)
                         ->delete();
                 }
 
-                // This is the SQL standard.  It works with MySQL 8.0 and higher
-                $select1 = DB::table('placelocation')
-                    ->leftJoin('place_location', 'id', '=', 'pl_id')
-                    ->whereNull('id')
-                    ->orderBy('pl_level')
-                    ->orderBy('pl_id')
-                    ->select([
-                        'pl_id',
-                        new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
-                        'pl_place',
-                        new Expression("CAST(REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '') AS FLOAT)"),
-                        new Expression("CAST(REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '') AS FLOAT)"),
-                    ]);
-
-                // This works for MySQL 5.7 and lower, which cannot cast to FLOAT
-                $select2 = DB::table('placelocation')
-                    ->leftJoin('place_location', 'id', '=', 'pl_id')
-                    ->whereNull('id')
-                    ->orderBy('pl_level')
-                    ->orderBy('pl_id')
-                    ->select([
-                        'pl_id',
-                        new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
-                        'pl_place',
-                        new Expression("REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '')"),
-                        new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
-                    ]);
-
-                try {
-                    DB::table('place_location')
-                        ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
-                } catch (PDOException) {
-                    DB::table('place_location')
-                        ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
-                }
+                DB::query(table: 'place_location')
+                    ->insertFrom(['id', 'parent_id', 'place', 'latitude', 'longitude'], $this->legacyPlacesToImport());
             }
 
-            DB::schema()->drop('placelocation');
+            DB::schemaBuilder()->drop('placelocation');
         }
 
         // Earlier versions of webtrees used 0 and NULL interchangeably.
         // Assume 0 at the country-level and NULL at lower levels.
-        DB::table('place_location')
+        DB::query(table: 'place_location')
             ->whereNotNull('parent_id')
-            ->where('latitude', '=', 0)
-            ->where('longitude', '=', 0)
+            ->whereEqual('latitude', 0)
+            ->whereEqual('longitude', 0)
             ->update([
                 'latitude'  => null,
                 'longitude' => null,

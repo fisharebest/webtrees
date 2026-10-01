@@ -5,6 +5,10 @@ parameters:
 
     level: 6
 
+    #checkUninitializedProperties: true
+    #checkImplicitMixed: true
+    #checkBenevolentUnionTypes: true
+
     paths:
         - index.php
         - public/index.php

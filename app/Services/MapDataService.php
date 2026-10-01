@@ -19,16 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
+use stdClass;
 
 use function abs;
-use function array_filter;
 use function array_unshift;
 use function implode;
 use function mb_strtolower;
@@ -50,9 +50,10 @@ class MapDataService
         $hierarchy = [];
 
         while (true) {
-            $row = DB::table('place_location')
-                ->where('id', '=', $id)
-                ->select(['place', 'parent_id'])
+            $row = DB::query()
+                ->select('place', 'parent_id')
+                ->from('place_location')
+                ->whereEqual('id', $id)
                 ->first();
 
             if ($row === null) {
@@ -60,7 +61,12 @@ class MapDataService
             }
 
             $hierarchy[] = $row->place;
-            $id          = $row->parent_id;
+
+            if ($row->parent_id === null) {
+                return new PlaceLocation(implode(Gedcom::PLACE_SEPARATOR, $hierarchy));
+            }
+
+            $id = (int) $row->parent_id;
         }
     }
 
@@ -74,17 +80,19 @@ class MapDataService
         $parents  = $this->placeIdsForLocation($location);
         $children = [];
 
-        $rows = DB::table('places')
-            ->join('gedcom', 'gedcom_id', '=', 'p_file')
+        $rows = new Collection(DB::query()
+            ->select('p_place', 'gedcom_name AS tree_name', 'title AS tree_title', 'p_id')
+            ->from('places')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom_id', 'p_file'))
             ->whereIn('p_parent_id', $parents)
-            ->select(['p_place', 'gedcom_name AS tree_name', 'title AS tree_title', 'p_id'])
-            ->get()
-            ->map(static fn (object $row): object => (object) [
-                'p_place'    => $row->p_place,
-                'tree_name'  => $row->tree_name,
-                'tree_title' => $row->tree_title,
-                'p_id'       => (int) $row->p_id,
-            ]);
+            ->get());
+
+        $rows = $rows->map(static fn (object $row): object => (object) [
+            'p_place'    => $row->p_place,
+            'tree_name'  => $row->tree_name,
+            'tree_title' => $row->tree_title,
+            'p_id'       => (int) $row->p_id,
+        ]);
 
         foreach ($rows as $row) {
             $children[mb_strtolower($row->p_place)][] = $row;
@@ -98,53 +106,8 @@ class MapDataService
      */
     public function importMissingLocations(): void
     {
-        $all_places = DB::table('places AS p0')
-            ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
-            ->leftJoin('places AS p2', 'p2.p_id', '=', 'p1.p_parent_id')
-            ->leftJoin('places AS p3', 'p3.p_id', '=', 'p2.p_parent_id')
-            ->leftJoin('places AS p4', 'p4.p_id', '=', 'p3.p_parent_id')
-            ->leftJoin('places AS p5', 'p5.p_id', '=', 'p4.p_parent_id')
-            ->leftJoin('places AS p6', 'p6.p_id', '=', 'p5.p_parent_id')
-            ->leftJoin('places AS p7', 'p7.p_id', '=', 'p6.p_parent_id')
-            ->leftJoin('places AS p8', 'p8.p_id', '=', 'p7.p_parent_id')
-            ->select([
-                'p0.p_place AS part_0',
-                'p1.p_place AS part_1',
-                'p2.p_place AS part_2',
-                'p3.p_place AS part_3',
-                'p4.p_place AS part_4',
-                'p5.p_place AS part_5',
-                'p6.p_place AS part_6',
-                'p7.p_place AS part_7',
-                'p8.p_place AS part_8',
-            ])
-            ->get()
-            ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row, static fn (string|null $value): bool => $value !== null)));
-
-        $all_locations = DB::table('place_location AS p0')
-            ->leftJoin('place_location AS p1', 'p1.id', '=', 'p0.parent_id')
-            ->leftJoin('place_location AS p2', 'p2.id', '=', 'p1.parent_id')
-            ->leftJoin('place_location AS p3', 'p3.id', '=', 'p2.parent_id')
-            ->leftJoin('place_location AS p4', 'p4.id', '=', 'p3.parent_id')
-            ->leftJoin('place_location AS p5', 'p5.id', '=', 'p4.parent_id')
-            ->leftJoin('place_location AS p6', 'p6.id', '=', 'p5.parent_id')
-            ->leftJoin('place_location AS p7', 'p7.id', '=', 'p6.parent_id')
-            ->leftJoin('place_location AS p8', 'p8.id', '=', 'p7.parent_id')
-            ->select([
-                'p0.place AS part_0',
-                'p1.place AS part_1',
-                'p2.place AS part_2',
-                'p3.place AS part_3',
-                'p4.place AS part_4',
-                'p5.place AS part_5',
-                'p6.place AS part_6',
-                'p7.place AS part_7',
-                'p8.place AS part_8',
-            ])
-            ->get()
-            ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row, static fn (string|null $value): bool => $value !== null)));
-
-        $missing = $all_places->diff($all_locations);
+        $missing = $this->hierarchyPaths('places', 'p_id', 'p_parent_id', 'p_place')
+            ->diff($this->hierarchyPaths('place_location', 'id', 'parent_id', 'place'));
 
         foreach ($missing as $location) {
             (new PlaceLocation($location))->id();
@@ -154,8 +117,8 @@ class MapDataService
     public function deleteRecursively(int $id): void
     {
         // Uses on-delete-cascade
-        DB::table('place_location')
-            ->where('id', '=', $id)
+        DB::query(table: 'place_location')
+            ->whereEqual('id', $id)
             ->delete();
     }
 
@@ -165,24 +128,30 @@ class MapDataService
     public function deleteUnusedLocations(int|null $parent_location_id, array $parent_place_ids): void
     {
         if ($parent_location_id === null) {
-            $location_query = DB::table('place_location')
+            $location_query = DB::query()
+                ->select('id', 'place')
+                ->from('place_location')
                 ->whereNull('parent_id');
         } else {
-            $location_query = DB::table('place_location')
-                ->where('parent_id', '=', $parent_location_id);
+            $location_query = DB::query()
+                ->select('id', 'place')
+                ->from('place_location')
+                ->whereEqual('parent_id', $parent_location_id);
         }
 
         foreach ($location_query->get() as $location) {
-            $places = DB::table('places')
+            $places = DB::query()
+                ->select('p_id')
+                ->from('places')
                 ->whereIn('p_parent_id', $parent_place_ids)
-                ->where('p_place', '=', $location->place)
-                ->get();
+                ->whereEqual('p_place', $location->place)
+                ->get(in: Collection::class);
 
             if ($places->isEmpty()) {
                 FlashMessages::addMessage(I18N::translate('“%s” has been deleted.', e($location->place)));
 
-                DB::table('place_location')
-                    ->where('id', '=', $location->id)
+                DB::query(table: 'place_location')
+                    ->whereEqual('id', $location->id)
                     ->delete();
             } else {
                 $place_ids = $places->map(static fn (object $place): int => (int) $place->p_id)->all();
@@ -199,48 +168,7 @@ class MapDataService
      */
     public function getPlaceListLocation(int|null $parent_id): Collection
     {
-        $expression =
-            DB::prefix('p1') . '.place IS NOT NULL AND ' . DB::prefix('p1') . '.latitude IS NULL OR ' .
-            DB::prefix('p2') . '.place IS NOT NULL AND ' . DB::prefix('p2') . '.latitude IS NULL OR ' .
-            DB::prefix('p3') . '.place IS NOT NULL AND ' . DB::prefix('p3') . '.latitude IS NULL OR ' .
-            DB::prefix('p4') . '.place IS NOT NULL AND ' . DB::prefix('p4') . '.latitude IS NULL OR ' .
-            DB::prefix('p5') . '.place IS NOT NULL AND ' . DB::prefix('p5') . '.latitude IS NULL OR ' .
-            DB::prefix('p6') . '.place IS NOT NULL AND ' . DB::prefix('p6') . '.latitude IS NULL OR ' .
-            DB::prefix('p7') . '.place IS NOT NULL AND ' . DB::prefix('p7') . '.latitude IS NULL OR ' .
-            DB::prefix('p8') . '.place IS NOT NULL AND ' . DB::prefix('p8') . '.latitude IS NULL OR ' .
-            DB::prefix('p9') . '.place IS NOT NULL AND ' . DB::prefix('p9') . '.latitude IS NULL';
-
-        $expression = 'CASE ' . $expression . ' WHEN TRUE THEN 1 ELSE 0 END';
-
-        $query = DB::table('place_location AS p0')
-            ->leftJoin('place_location AS p1', 'p1.parent_id', '=', 'p0.id')
-            ->leftJoin('place_location AS p2', 'p2.parent_id', '=', 'p1.id')
-            ->leftJoin('place_location AS p3', 'p3.parent_id', '=', 'p2.id')
-            ->leftJoin('place_location AS p4', 'p4.parent_id', '=', 'p3.id')
-            ->leftJoin('place_location AS p5', 'p5.parent_id', '=', 'p4.id')
-            ->leftJoin('place_location AS p6', 'p6.parent_id', '=', 'p5.id')
-            ->leftJoin('place_location AS p7', 'p7.parent_id', '=', 'p6.id')
-            ->leftJoin('place_location AS p8', 'p8.parent_id', '=', 'p7.id')
-            ->leftJoin('place_location AS p9', 'p9.parent_id', '=', 'p8.id');
-
-        if ($parent_id === null) {
-            $query->whereNull('p0.parent_id');
-        } else {
-            $query->where('p0.parent_id', '=', $parent_id);
-        }
-
-        return $query
-            ->groupBy(['p0.id', 'p0.parent_id', 'p0.place', 'p0.latitude', 'p0.longitude'])
-            ->select([
-                'p0.id',
-                'p0.parent_id',
-                'p0.place',
-                'p0.latitude',
-                'p0.longitude',
-                new Expression('COUNT(' . DB::prefix('p1') . '.id) AS child_count'),
-                new Expression('SUM(' . $expression . ') AS no_coord'),
-            ])
-            ->get()
+        return (new Collection($this->locationRowsWithCte($parent_id)))
             ->map(static fn (object $row): object => (object) [
                 'id'          => (int) $row->id,
                 'place'       => $row->place,
@@ -264,6 +192,105 @@ class MapDataService
     }
 
     /**
+     * @return Collection<int,string>
+     */
+    private function hierarchyPaths(string $table, string $id_column, string $parent_column, string $name_column): Collection
+    {
+        $initial = DB::query()
+            ->select(
+                $id_column . ' AS node_id',
+                $parent_column,
+                $name_column,
+                DB::alias(DB::value(0), 'depth'),
+            )
+            ->from($table);
+
+        $recursive = DB::query()
+            ->select(
+                'child.node_id',
+                'parent.' . $parent_column,
+                'parent.' . $name_column,
+                DB::raw('child.depth + 1'),
+            )
+            ->from($table, 'parent')
+            ->join('place_hierarchy AS child', static fn (JoinOn $j): JoinOn => $j->on('parent.' . $id_column, 'child.' . $parent_column));
+
+        $rows = DB::query()
+            ->withRecursiveCte('place_hierarchy', $initial, $recursive)
+            ->select('node_id', $name_column)
+            ->from('place_hierarchy')
+            ->orderBy('node_id', 'depth')
+            ->get();
+
+        $parts = [];
+        foreach ($rows as $row) {
+            $parts[$row->node_id][] = $row->$name_column;
+        }
+
+        return (new Collection($parts))
+            ->map(static fn (array $names): string => implode(Gedcom::PLACE_SEPARATOR, $names));
+    }
+
+    /**
+     * @return list<stdClass>
+     */
+    private function locationRowsWithCte(int|null $parent_id): array
+    {
+        $initial = DB::query()
+            ->select(
+                'parent.id AS root_id',
+                'child.id AS descendant_id',
+                DB::alias(DB::raw('CASE WHEN child.latitude IS NULL THEN 1 ELSE 0 END'), 'missing'),
+            )
+            ->from('place_location', 'parent')
+            ->join('place_location AS child', static fn (JoinOn $j): JoinOn => $j->on('child.parent_id', 'parent.id'));
+
+        $recursive = DB::query()
+            ->select(
+                'path.root_id',
+                'child.id',
+                DB::raw('CASE WHEN path.missing = 1 OR child.latitude IS NULL THEN 1 ELSE 0 END'),
+            )
+            ->from('location_paths', 'path')
+            ->join('place_location AS child', static fn (JoinOn $j): JoinOn => $j->on('child.parent_id', 'path.descendant_id'));
+
+        // Each terminal path counts once, and is flagged if any descendant lacks coordinates.
+        $counts = DB::query()
+            ->select(
+                'path.root_id',
+                DB::alias(DB::count('*'), 'child_count'),
+                DB::alias(DB::sum('path.missing'), 'no_coord'),
+            )
+            ->from('location_paths', 'path')
+            ->leftJoin('place_location AS child', static fn (JoinOn $j): JoinOn => $j->on('child.parent_id', 'path.descendant_id'))
+            ->whereNull('child.id')
+            ->groupBy('path.root_id');
+
+        $query = DB::query()
+            ->withRecursiveCte('location_paths', $initial, $recursive)
+            ->withCte('location_counts', $counts)
+            ->select(
+                'p0.id',
+                'p0.parent_id',
+                'p0.place',
+                'p0.latitude',
+                'p0.longitude',
+                DB::alias(DB::coalesce(DB::column('location_counts.child_count'), DB::value(0)), 'child_count'),
+                DB::alias(DB::coalesce(DB::column('location_counts.no_coord'), DB::value(0)), 'no_coord'),
+            )
+            ->from('place_location', 'p0')
+            ->leftJoin('location_counts', static fn (JoinOn $j): JoinOn => $j->on('location_counts.root_id', 'p0.id'));
+
+        if ($parent_id === null) {
+            $query = $query->whereNull('p0.parent_id');
+        } else {
+            $query = $query->whereEqual('p0.parent_id', $parent_id);
+        }
+
+        return $query->get();
+    }
+
+    /**
      * Find all active places that match a location
      *
      * @return array<string>
@@ -280,12 +307,12 @@ class MapDataService
         $place_ids = ['0'];
 
         foreach ($hierarchy as $place_name) {
-            $place_ids = DB::table('places')
+            $place_ids = DB::query()
+                ->from('places')
                 ->whereIn('p_parent_id', $place_ids)
-                ->where('p_place', '=', $place_name)
-                ->groupBy(['p_id'])
-                ->pluck('p_id')
-                ->all();
+                ->whereEqual('p_place', $place_name)
+                ->groupBy('p_id')
+                ->pluck('p_id');
         }
 
         return $place_ids;

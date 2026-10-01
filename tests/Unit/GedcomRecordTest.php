@@ -21,7 +21,10 @@ namespace Fisharebest\Webtrees\Tests\Unit;
 
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Enums\Role;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -117,6 +120,31 @@ class GedcomRecordTest extends TestCase
         self::assertSame('1 FACT foo', $facts[0]->gedcom());
         self::assertSame('1 FACT foo', $facts[1]->gedcom());
         self::assertSame('1 FACT bar', $facts[2]->gedcom());
+    }
+
+    public function testDeleteRecordCreatesPendingChange(): void
+    {
+        $this->user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '0');
+
+        $import_service = new GedcomImportService();
+        $import_service->importRecord('0 @I1@ INDI', $this->tree, true);
+
+        $individual = Registry::individualFactory()->make('I1', $this->tree);
+        self::assertNotNull($individual);
+
+        $individual->deleteRecord();
+
+        $changes = DB::query()
+            ->select('new_gedcom', 'status', 'user_id')
+            ->from('change')
+            ->whereEqual('gedcom_id', $this->tree->id())
+            ->whereEqual('xref', 'I1')
+            ->get();
+
+        self::assertCount(1, $changes);
+        self::assertSame('', $changes[0]->new_gedcom);
+        self::assertSame(ChangeStatus::Pending->value, $changes[0]->status);
+        self::assertSame($this->user->id(), $changes[0]->user_id);
     }
 
     public function testUpdateFact(): void

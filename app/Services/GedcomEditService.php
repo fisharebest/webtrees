@@ -208,7 +208,6 @@ class GedcomEditService
     /**
      * List of facts/events to add to families and individuals.
      *
-     *
      * @return array<string>
      */
     public function factsToAdd(Family|Individual $record, bool $include_hidden): array

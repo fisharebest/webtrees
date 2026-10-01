@@ -58,9 +58,10 @@ final class TreeSetting extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $tree_id = DB::table('gedcom')
-            ->where(column: 'gedcom_name', operator: '=', value: $tree_name)
-            ->value(column: 'gedcom_id');
+        $tree_id = DB::query()
+            ->from('gedcom')
+            ->whereEqual('gedcom_name', $tree_name)
+            ->value('gedcom_id');
 
         if ($tree_id === null) {
             $io->error(message: 'Tree ‘' . $tree_name . '’ not found.');
@@ -84,12 +85,12 @@ final class TreeSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            $settings = DB::table(table: 'gedcom_setting')
-                ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
-                ->orderBy(column: 'setting_name')
-                ->select(columns: ['setting_name', 'setting_value'])
-                ->get()
-                ->all();
+            $settings = DB::query()
+                ->select('setting_name', 'setting_value')
+                ->from('gedcom_setting')
+                ->whereEqual('gedcom_id', $tree_id)
+                ->orderBy('setting_name')
+                ->get();
 
             foreach ($settings as $setting) {
                 if ($setting_name === null || str_contains(haystack: $setting->setting_name, needle: $setting_name)) {
@@ -102,11 +103,15 @@ final class TreeSetting extends AbstractCommand
             return self::SUCCESS;
         }
 
-        /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('gedcom_setting')
-            ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
-            ->where(column: 'setting_name', operator: '=', value: $setting_name)
-            ->value(column: 'setting_value');
+        if ($setting_name === null) {
+            $old_setting_value = null;
+        } else {
+            $old_setting_value = DB::query()
+                ->from('gedcom_setting')
+                ->whereEqual('gedcom_id', $tree_id)
+                ->whereEqual('setting_name', $setting_name)
+                ->value('setting_value');
+        }
 
         if ($delete) {
             if ($setting_name === null) {
@@ -124,9 +129,9 @@ final class TreeSetting extends AbstractCommand
             if ($old_setting_value === null) {
                 $io->warning(message: 'Tree setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table('gedcom_setting')
-                    ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
-                    ->where('setting_name', '=', $setting_name)
+                DB::query(table: 'gedcom_setting')
+                    ->whereEqual('gedcom_id', $tree_id)
+                    ->whereEqual('setting_name', $setting_name)
                     ->delete();
 
                 $io->success(message: 'Tree setting ‘' . $setting_name . '’ deleted.  Previous value was ‘' . $old_setting_value . '’.');
@@ -163,18 +168,17 @@ final class TreeSetting extends AbstractCommand
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'gedcom_setting')
-                ->insert(values: [
-                    'gedcom_id'     => $tree_id,
-                    'setting_name'  => $setting_name,
-                    'setting_value' => $setting_value,
-                ]);
+            DB::query(table: 'gedcom_setting')->insert(values: [
+                'gedcom_id'     => $tree_id,
+                'setting_name'  => $setting_name,
+                'setting_value' => $setting_value,
+            ]);
 
             $io->success(message: 'gedcom setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'gedcom_setting')
-                ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
-                ->where(column: 'setting_name', operator: '=', value: $setting_name)
+            DB::query(table: 'gedcom_setting')
+                ->whereEqual('gedcom_id', $tree_id)
+                ->whereEqual('setting_name', $setting_name)
                 ->update(values: ['setting_value' => $setting_value]);
 
             $io->success(message: 'Tree setting ‘' . $setting_name . '’ was changed from ‘' . $old_setting_value . '’ to ‘' . $setting_value . '’.');

@@ -198,8 +198,8 @@ final class MapDataImport
                 $added++;
             }
 
-            $updated += DB::table('place_location')
-                ->where('id', '=', $location->id())
+            $updated += DB::query(table: 'place_location')
+                ->whereEqual('id', $location->id())
                 ->update([
                     'latitude'  => $place['latitude'],
                     'longitude' => $place['longitude'],

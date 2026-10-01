@@ -19,11 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\MapDataExportGeoJson;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+
+use function json_decode;
+
+use const JSON_THROW_ON_ERROR;
 
 #[CoversClass(MapDataExportGeoJson::class)]
 class MapDataExportGeoJsonTest extends TestCase
@@ -36,6 +41,19 @@ class MapDataExportGeoJsonTest extends TestCase
 
     public function testExportGeoJson(): void
     {
+        $parent_id = DB::query(table: 'place_location')->insertGetId([
+            'parent_id' => null,
+            'place'     => 'Country',
+            'latitude'  => 1.25,
+            'longitude' => 2.5,
+        ], 'id');
+        DB::query(table: 'place_location')->insert([
+            'parent_id' => $parent_id,
+            'place'     => 'Town',
+            'latitude'  => 3.75,
+            'longitude' => 4.5,
+        ]);
+
         $map_data_service = new MapDataService();
         $controller       = new MapDataExportGeoJson($map_data_service);
         $request          = self::createRequest();
@@ -43,5 +61,20 @@ class MapDataExportGeoJsonTest extends TestCase
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame($response->getHeaderLine('content-type'), 'application/vnd.geo+json');
+        self::assertSame([
+            'type'     => 'FeatureCollection',
+            'features' => [
+                [
+                    'type'       => 'Feature',
+                    'geometry'   => ['type' => 'Point', 'coordinates' => [2.5, 1.25]],
+                    'properties' => ['name' => 'Country'],
+                ],
+                [
+                    'type'       => 'Feature',
+                    'geometry'   => ['type' => 'Point', 'coordinates' => [4.5, 3.75]],
+                    'properties' => ['name' => 'Town, Country'],
+                ],
+            ],
+        ], json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR));
     }
 }

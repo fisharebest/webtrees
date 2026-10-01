@@ -48,20 +48,27 @@ final class SiteLogsData
     {
         $query = $this->site_logs_service->logsQuery($request);
 
-        return $this->datatables_service->handleQuery($request, $query, [], [], function (object $row): array {
-            $log_time = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->log_time, new DateTimeZone('UTC'))
-                ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
-                ->format('Y-m-d H:i:s T');
+        return $this->datatables_service->handleQuery(
+            $request,
+            $query,
+            [],
+            [],
+            function (object $row): array {
+                $log_time = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->log_time, new DateTimeZone('UTC'))
+                    ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+                    ->format('Y-m-d H:i:s T');
 
-            return [
-                $row->log_id,
-                $log_time,
-                $row->log_type,
-                '<span class="ut">' . e($row->log_message) . '</span>',
-                e($row->ip_address),
-                '<span class="ut">' . e($row->user_name) . '</span>',
-                '<span class="ut">' . e($row->gedcom_name) . '</span>',
-            ];
-        });
+                return [
+                    $row->log_id,
+                    $log_time,
+                    $row->log_type,
+                    '<span class="ut">' . e($row->log_message) . '</span>',
+                    e($row->ip_address),
+                    '<span class="ut">' . e($row->user_name) . '</span>',
+                    '<span class="ut">' . e($row->gedcom_name) . '</span>',
+                ];
+            },
+            [],
+        );
     }
 }

@@ -20,31 +20,33 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\SiteLogsDownload;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SiteLogsDownload::class)]
 class SiteLogsDownloadTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
+
     public function testResponse(): void
     {
         $request = self::createRequest();
 
-        $query1 = self::createStub(Builder::class);
-        $query2 = self::createStub(Builder::class);
-        $rows1  = self::createStub(Collection::class);
-        $rows2  = self::createStub(Collection::class);
-        $query1->method('orderBy')->willReturn($query2);
-        $query2->method('get')->willReturn($rows1);
-        $rows1->method('map')->willReturn($rows2);
-        $rows2->method('implode')->willReturn('foo,bar');
+        DB::query(table: 'log')->insert([
+            'log_type'    => 'edit',
+            'log_message' => 'foo,bar',
+            'ip_address'  => '127.0.0.1',
+        ]);
 
         $site_logs_service = self::createStub(SiteLogsService::class);
-        $site_logs_service->method('logsQuery')->willReturn($query1);
+        $site_logs_service->method('logsQuery')->willReturn(DB::query()->select('log.*', 'log_message AS user_name', 'log_message AS gedcom_name')->from('log'));
 
         $controller = new SiteLogsDownload($site_logs_service);
         $response   = $controller->get($request);
@@ -52,5 +54,6 @@ class SiteLogsDownloadTest extends TestCase
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
         self::assertSame('attachment; filename="webtrees-logs.csv"', $response->getHeaderLine('content-disposition'));
+        self::assertStringContainsString('"foo,bar"', (string) $response->getBody());
     }
 }

@@ -281,8 +281,8 @@ class ReportRegressionTest extends TestCase
     private function dummyThumbnailForMime(string $mime_type): string
     {
         return match ($mime_type) {
-            'image/png' => (string) base64_decode(self::DUMMY_PNG_BASE64, true),
-            default     => (string) base64_decode(self::DUMMY_JPEG_BASE64, true),
+            'image/png' => base64_decode(self::DUMMY_PNG_BASE64, true),
+            default     => base64_decode(self::DUMMY_JPEG_BASE64, true),
         };
     }
 

@@ -57,7 +57,6 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
     /**
      * Create a Location from a row in the database.
      *
-     *
      * @return Closure(object):Location
      */
     public function mapper(Tree $tree): Closure
@@ -82,10 +81,11 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Location::RECORD_TYPE)
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Location::RECORD_TYPE)
             ->value('o_gedcom');
     }
 }

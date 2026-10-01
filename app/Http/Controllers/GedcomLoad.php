@@ -57,13 +57,15 @@ final class GedcomLoad
 
         try {
             // What is the current import status?
-            $import_offset = DB::table('gedcom_chunk')
-                ->where('gedcom_id', '=', $tree->id())
-                ->where('imported', '=', '1')
+            $import_offset = DB::query()
+                ->from('gedcom_chunk')
+                ->whereEqual('gedcom_id', $tree->id())
+                ->whereEqual('imported', '1')
                 ->count();
 
-            $import_total = DB::table('gedcom_chunk')
-                ->where('gedcom_id', '=', $tree->id())
+            $import_total = DB::query()
+                ->from('gedcom_chunk')
+                ->whereEqual('gedcom_id', $tree->id())
                 ->count();
 
             // Calculate progress so far
@@ -84,31 +86,32 @@ final class GedcomLoad
             // If we are loading the first (header) record, then delete old data.
             if ($import_offset === 0) {
                 $queries = [
-                    'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
-                    'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
-                    'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
-                    'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
-                    'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
-                    'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
-                    'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
-                    'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
-                    'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
+                    'individuals' => DB::query(table: 'individuals')->whereEqual('i_file', $tree->id()),
+                    'families'    => DB::query(table: 'families')->whereEqual('f_file', $tree->id()),
+                    'sources'     => DB::query(table: 'sources')->whereEqual('s_file', $tree->id()),
+                    'other'       => DB::query(table: 'other')->whereEqual('o_file', $tree->id()),
+                    'places'      => DB::query(table: 'places')->whereEqual('p_file', $tree->id()),
+                    'placelinks'  => DB::query(table: 'placelinks')->whereEqual('pl_file', $tree->id()),
+                    'name'        => DB::query(table: 'name')->whereEqual('n_file', $tree->id()),
+                    'dates'       => DB::query(table: 'dates')->whereEqual('d_file', $tree->id()),
+                    'change'      => DB::query(table: 'change')->whereEqual('gedcom_id', $tree->id()),
                 ];
 
                 if ($tree->getPreference('keep_media') === '1') {
-                    $queries['link'] = DB::table('link')->where('l_file', '=', $tree->id())
-                        ->where('l_type', '<>', 'OBJE');
+                    $queries['link'] = DB::query(table: 'link')
+                        ->whereEqual('l_file', $tree->id())
+                        ->whereNotEqual('l_type', 'OBJE');
                 } else {
-                    $queries['link']       = DB::table('link')->where('l_file', '=', $tree->id());
-                    $queries['media_file'] = DB::table('media_file')->where('m_file', '=', $tree->id());
-                    $queries['media']      = DB::table('media')->where('m_file', '=', $tree->id());
+                    $queries['link']       = DB::query(table: 'link')->whereEqual('l_file', $tree->id());
+                    $queries['media_file'] = DB::query(table: 'media_file')->whereEqual('m_file', $tree->id());
+                    $queries['media']      = DB::query(table: 'media')->whereEqual('m_file', $tree->id());
                 }
 
                 foreach ($queries as $table => $query) {
-                    $count = (clone $query)->count();
+                    $count = $query->count();
 
                     while ($count > 0) {
-                        $count -= (clone $query)->take(10000)->delete();
+                        $count -= $query->limit(10000)->delete();
 
                         if ($this->timeout_service->isTimeLimitUp()) {
                             return $this->viewResponse('admin/import-progress', [
@@ -129,11 +132,12 @@ final class GedcomLoad
 
             // Run for a short period of time. This keeps the resource requirements low.
             do {
-                $data = DB::table('gedcom_chunk')
-                    ->where('gedcom_id', '=', $tree->id())
-                    ->where('imported', '=', '0')
+                $data = DB::query()
+                    ->select('gedcom_chunk_id', 'chunk_data')
+                    ->from('gedcom_chunk')
+                    ->whereEqual('gedcom_id', $tree->id())
+                    ->whereEqual('imported', '0')
                     ->orderBy('gedcom_chunk_id')
-                    ->select(['gedcom_chunk_id', 'chunk_data'])
                     ->first();
 
                 if ($data === null) {
@@ -142,9 +146,9 @@ final class GedcomLoad
 
                 // Mark the chunk as imported.  This will create a row-lock, to prevent other
                 // processes from reading it until we have finished.
-                $n = DB::table('gedcom_chunk')
-                    ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
-                    ->where('imported', '=', '0')
+                $n = DB::query(table: 'gedcom_chunk')
+                    ->whereEqual('gedcom_chunk_id', $data->gedcom_chunk_id)
+                    ->whereEqual('imported', '0')
                     ->update(['imported' => 1]);
 
                 // Another process has already imported this data?
@@ -175,8 +179,8 @@ final class GedcomLoad
                 }
 
                 // Do not need the data any more.
-                DB::table('gedcom_chunk')
-                    ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
+                DB::query(table: 'gedcom_chunk')
+                    ->whereEqual('gedcom_chunk_id', $data->gedcom_chunk_id)
                     ->update(['chunk_data' => '']);
             } while (!$this->timeout_service->isTimeLimitUp());
 

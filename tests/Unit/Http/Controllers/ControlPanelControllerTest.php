@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
@@ -53,11 +54,13 @@ class ControlPanelControllerTest extends TestCase
         $admin_service         = new AdminService();
         $message_service       = new MessageService(email_service: new EmailService(), user_service: new UserService(new SystemClock()));
         $module_service        = new ModuleService();
+        $module_service->bootModules(new WebtreesTheme());
         $housekeeping_service  = new HousekeepingService(new SystemClock());
         $server_check_service  = new ServerCheckService(php_service: new PhpService());
         $timeout_service       = new TimeoutService(php_service: new PhpService(), clock: new SystemClock());
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
+        $tree_service->create('statistics-totals', 'Statistics totals test tree');
         $upgrade_service       = new UpgradeService(
             self::createStub(ClientInterface::class),
             self::createStub(RequestFactoryInterface::class),
@@ -80,5 +83,6 @@ class ControlPanelControllerTest extends TestCase
         $response              = $controller->get();
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
+        self::assertStringContainsString('Statistics totals test tree', (string) $response->getBody());
     }
 }

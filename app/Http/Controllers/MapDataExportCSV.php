@@ -85,18 +85,19 @@ final class MapDataExportCSV
                 ];
             }
 
-            $query = DB::table('place_location');
             // Data for the next level.
+            $query = DB::query()
+                ->select('id', 'place', 'latitude', 'longitude')
+                ->from('place_location');
 
             if ($id === null) {
-                $query->whereNull('parent_id');
+                $query = $query->whereNull('parent_id');
             } else {
-                $query->where('parent_id', '=', $id);
+                $query = $query->whereEqual('parent_id', $id);
             }
 
             $rows = $query
-                ->orderBy('place', 'desc')
-                ->select(['id', 'place', 'latitude', 'longitude'])
+                ->orderBy(DB::desc('place'))
                 ->get();
 
             $next_level = count($hierarchy);

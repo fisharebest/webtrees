@@ -66,23 +66,31 @@ final class SearchGeneral
         $search_sources      = Validator::queryParams($request)->boolean('search_sources', false);
         $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
 
-        $exist_notes = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
+        $exist_notes = DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE)
             ->exists();
 
-        $exist_locations = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Location::RECORD_TYPE)
+        $exist_locations = DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Location::RECORD_TYPE)
             ->exists();
 
-        $exist_repositories = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
+        $exist_repositories = DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
             ->exists();
 
-        $exist_sources = DB::table('sources')
-            ->where('s_file', '=', $tree->id())
+        $exist_sources = DB::query()
+            ->select('*')
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id())
             ->exists();
 
         // If no record types selected, select individuals, families, and shared notes (if they exist)

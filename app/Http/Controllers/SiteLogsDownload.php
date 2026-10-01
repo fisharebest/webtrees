@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function implode;
+use function array_map;
 use function str_replace;
 
 final class SiteLogsDownload
@@ -38,15 +40,15 @@ final class SiteLogsDownload
     {
         $content = $this->site_logs_service->logsQuery($request)
             ->orderBy('log_id')
-            ->get()
-            ->map(static fn (object $row): string => '"' . $row->log_time . '",' .
+            ->get();
+
+        $content = implode('', array_map(static fn (object $row): string => '"' . $row->log_time . '",' .
             '"' . $row->log_type . '",' .
             '"' . str_replace('"', '""', $row->log_message) . '",' .
             '"' . $row->ip_address . '",' .
             '"' . str_replace('"', '""', $row->user_name) . '",' .
             '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
-            "\n")
-            ->implode('');
+            "\n", $content));
 
         return Registry::responseFactory()->response($content, HttpStatusCode::OK, [
             'content-type'        => 'text/csv; charset=UTF-8',

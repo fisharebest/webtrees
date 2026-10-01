@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -28,8 +31,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -104,8 +105,10 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('media')
-            ->where('m_file', '=', $tree->id())
+        return !DB::query()
+            ->select('*')
+            ->from('media')
+            ->whereEqual('m_file', $tree->id())
             ->exists();
     }
 
@@ -163,17 +166,17 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
     /**
      * Generate a list of all the folders in a current tree.
      *
-     *
      * @return array<string>
      */
     private function allFolders(Tree $tree): array
     {
-        $folders = DB::table('media_file')
-            ->where('m_file', '=', $tree->id())
-            ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
-            ->where('multimedia_file_refn', 'NOT LIKE', 'https:%')
-            ->where('multimedia_file_refn', 'LIKE', '%/%')
-            ->pluck('multimedia_file_refn', 'multimedia_file_refn')
+        $folders = DB::query()
+            ->from('media_file')
+            ->whereEqual('m_file', $tree->id())
+            ->whereNotLike('multimedia_file_refn', 'http:%')
+            ->whereNotLike('multimedia_file_refn', 'https:%')
+            ->whereLike('multimedia_file_refn', '%/%')
+            ->pluck('multimedia_file_refn', 'multimedia_file_refn', in: Collection::class)
             ->map(static fn (string $path): string => dirname($path))
             ->uniqueStrict()
             ->sort()
@@ -198,61 +201,55 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
      */
     private function allMedia(Tree $tree, string $folder, bool $subfolders, string $sort, string $filter, string $format): Collection
     {
-        $query = DB::table('media')
-            ->join('media_file', static function (JoinClause $join): void {
-                $join
-                    ->on('media_file.m_file', '=', 'media.m_file')
-                    ->on('media_file.m_id', '=', 'media.m_id');
-            })
-            ->where('media.m_file', '=', $tree->id());
+        $query = DB::query()
+            ->select('*')
+            ->from('media')
+            ->join('media_file', static fn (JoinOn $j): JoinOn => $j->on('media_file.m_file', 'media.m_file')->on('media_file.m_id', 'media.m_id'))
+            ->whereEqual('media.m_file', $tree->id());
 
         if ($folder === '') {
             // Include external URLs in the root folder.
             if (!$subfolders) {
-                $query->where(static function (Builder $query): void {
-                    $query
-                        ->where('multimedia_file_refn', 'NOT LIKE', '%/%')
-                        ->orWhere('multimedia_file_refn', 'LIKE', 'http:%')
-                        ->orWhere('multimedia_file_refn', 'LIKE', 'https:%');
-                });
+                $query = $query->whereNested(static fn (Predicates $p): Predicates => $p
+                    ->notLike('multimedia_file_refn', '%/%')
+                    ->orLike('multimedia_file_refn', 'http:%')
+                    ->orLike('multimedia_file_refn', 'https:%'));
             }
         } else {
             // Exclude external URLs from the root folder.
-            $query
-                ->where('multimedia_file_refn', 'LIKE', $folder . '/%')
-                ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
-                ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
+            $query = $query
+                ->whereLike('multimedia_file_refn', $folder . '/%')
+                ->whereNotLike('multimedia_file_refn', 'http:%')
+                ->whereNotLike('multimedia_file_refn', 'https:%');
 
             if (!$subfolders) {
-                $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
+                $query = $query->whereNotLike('multimedia_file_refn', $folder . '/%/%');
             }
         }
 
         // Apply search terms
         if ($filter !== '') {
-            $query->where(static function (Builder $query) use ($filter): void {
-                $like = '%' . addcslashes($filter, '\\%_') . '%';
-                $query
-                    ->where('multimedia_file_refn', 'LIKE', $like)
-                    ->orWhere('descriptive_title', 'LIKE', $like);
-            });
+            $like = '%' . addcslashes($filter, '\\%_') . '%';
+            $query = $query->whereNested(static fn (Predicates $p): Predicates => $p
+                ->like('multimedia_file_refn', $like)
+                ->orLike('descriptive_title', $like));
         }
 
         if ($format !== '') {
-            $query->where('source_media_type', '=', $format);
+            $query = $query->whereEqual('source_media_type', $format);
         }
 
         switch ($sort) {
             case 'file':
-                $query->orderBy('multimedia_file_refn');
+                $query = $query->orderBy('multimedia_file_refn');
                 break;
             case 'title':
-                $query->orderBy('descriptive_title');
+                $query = $query->orderBy('descriptive_title');
                 break;
         }
 
         return $query
-            ->get()
+            ->get(in: Collection::class)
             ->map(Registry::mediaFactory()->mapper($tree))
             ->uniqueStrict()
             ->filter(GedcomRecord::accessFilter());

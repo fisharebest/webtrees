@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Services\UserService;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -29,6 +30,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tests\TestCase;
+
+use function time;
 
 #[CoversClass(UserService::class)]
 class UserServiceTest extends TestCase
@@ -57,9 +60,21 @@ class UserServiceTest extends TestCase
         $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user_id      = $user->id();
+        $other_user   = $user_service->create('other', 'Other', 'other@example.com', 'secret');
+
+        DB::query(table: 'module')->insert(['module_name' => 'test-block']);
+        DB::query(table: 'block')->insert(['block_id' => 101, 'user_id' => $user_id, 'block_order' => 1, 'module_name' => 'test-block']);
+        DB::query(table: 'block')->insert(['block_id' => 102, 'user_id' => $other_user->id(), 'block_order' => 1, 'module_name' => 'test-block']);
+        foreach (['first', 'second'] as $setting_name) {
+            DB::query(table: 'block_setting')->insert(['block_id' => 101, 'setting_name' => $setting_name, 'setting_value' => 'value']);
+        }
+        DB::query(table: 'block_setting')->insert(['block_id' => 102, 'setting_name' => 'first', 'setting_value' => 'value']);
+
         $user_service->delete($user);
 
         self::assertNull($user_service->find($user_id));
+        self::assertSame([102], DB::query()->from('block_setting')->pluck('block_id'));
+        self::assertSame([102], DB::query()->from('block')->pluck('block_id'));
     }
 
     public function testFindNonExistingUser(): void
@@ -223,5 +238,52 @@ class UserServiceTest extends TestCase
         self::assertCount(2, $users);
         self::assertSame('user1', $users[0]->userName());
         self::assertSame('user2', $users[1]->userName());
+    }
+
+    public function testFindByTokenChecksExpirationAndTokenType(): void
+    {
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $valid = $user_service->create('valid', 'Valid', 'valid@example.com', 'secret');
+        $expired = $user_service->create('expired', 'Expired', 'expired@example.com', 'secret');
+
+        $valid->setPreference('password-token', 'shared-token');
+        $valid->setPreference('password-token-expire', (string) (time() + 3600));
+        $expired->setPreference('password-token', 'shared-token');
+        $expired->setPreference('password-token-expire', (string) (time() - 3600));
+
+        self::assertSame($valid->id(), $user_service->findByToken('shared-token')?->id());
+        self::assertNull($user_service->findByToken('unknown-token'));
+        self::assertNull($user_service->findByToken('password-token-expire'));
+    }
+
+    public function testAllLoggedInReturnsDistinctUsers(): void
+    {
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $active = $user_service->create('active', 'Active', 'active@example.com', 'secret');
+        $user_service->create('inactive', 'Inactive', 'inactive@example.com', 'secret');
+
+        foreach (['first', 'second'] as $session_id) {
+            DB::query(table: 'session')->insert(values: [
+                'session_id'   => $session_id,
+                'user_id'      => $active->id(),
+                'ip_address'   => '127.0.0.1',
+                'session_data' => '',
+            ]);
+        }
+
+        $users = $user_service->allLoggedIn();
+
+        self::assertCount(1, $users);
+        self::assertSame($active->id(), $users->first()?->id());
+    }
+
+    public function testUnapprovedAndUnverifiedIncludeUsersWithoutMatchingSettings(): void
+    {
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $user = $user_service->create('unset', 'Unset', 'unset@example.com', 'secret');
+        $user->setPreference('unrelated', '1');
+
+        self::assertSame($user->id(), $user_service->unapproved()->first()?->id());
+        self::assertSame($user->id(), $user_service->unverified()->first()?->id());
     }
 }

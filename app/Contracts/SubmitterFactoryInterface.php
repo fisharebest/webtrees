@@ -36,7 +36,6 @@ interface SubmitterFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a submitter from a row in the database.
      *
-     *
      * @return Closure(object):Submitter
      */
     public function mapper(Tree $tree): Closure;

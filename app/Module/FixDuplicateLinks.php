@@ -63,7 +63,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->familiesToFixQuery($tree, $params)
-            ->pluck('f_id');
+            ->pluck('f_id', in: Collection::class);
     }
 
     /**
@@ -78,7 +78,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->individualsToFixQuery($tree, $params)
-            ->pluck('i_id');
+            ->pluck('i_id', in: Collection::class);
     }
 
     /**
@@ -93,7 +93,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->mediaToFixQuery($tree, $params)
-            ->pluck('m_id');
+            ->pluck('m_id', in: Collection::class);
     }
 
     /**
@@ -108,7 +108,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->notesToFixQuery($tree, $params)
-            ->pluck('o_id');
+            ->pluck('o_id', in: Collection::class);
     }
 
     /**
@@ -123,7 +123,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->repositoriesToFixQuery($tree, $params)
-            ->pluck('o_id');
+            ->pluck('o_id', in: Collection::class);
     }
 
     /**
@@ -138,7 +138,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->sourcesToFixQuery($tree, $params)
-            ->pluck('s_id');
+            ->pluck('s_id', in: Collection::class);
     }
 
     /**
@@ -153,7 +153,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
     {
         // No DB querying possible?  Select all.
         return $this->submittersToFixQuery($tree, $params)
-            ->pluck('o_id');
+            ->pluck('o_id', in: Collection::class);
     }
 
     /**

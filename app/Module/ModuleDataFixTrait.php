@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 /**
@@ -149,13 +149,14 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function familiesToFixQuery(Tree $tree, array $params): Builder
+    protected function familiesToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('families')
-            ->where('f_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('families')
+            ->whereEqual('f_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('f_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('f_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -176,13 +177,14 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function individualsToFixQuery(Tree $tree, array $params): Builder
+    protected function individualsToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('individuals')
-            ->where('i_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('i_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('i_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -203,14 +205,15 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function locationsToFixQuery(Tree $tree, array $params): Builder
+    protected function locationsToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('other')
-            ->where('o_type', '=', Location::RECORD_TYPE)
-            ->where('o_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_type', Location::RECORD_TYPE)
+            ->whereEqual('o_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('o_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -231,13 +234,14 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function mediaToFixQuery(Tree $tree, array $params): Builder
+    protected function mediaToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('media')
-            ->where('m_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('media')
+            ->whereEqual('m_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('m_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('m_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -258,14 +262,15 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function notesToFixQuery(Tree $tree, array $params): Builder
+    protected function notesToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('other')
-            ->where('o_type', '=', Note::RECORD_TYPE)
-            ->where('o_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_type', Note::RECORD_TYPE)
+            ->whereEqual('o_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('o_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -286,14 +291,15 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function repositoriesToFixQuery(Tree $tree, array $params): Builder
+    protected function repositoriesToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('other')
-            ->where('o_type', '=', Repository::RECORD_TYPE)
-            ->where('o_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
+            ->whereEqual('o_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('o_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -314,13 +320,14 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function sourcesToFixQuery(Tree $tree, array $params): Builder
+    protected function sourcesToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('sources')
-            ->where('s_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('s_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('s_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -341,14 +348,15 @@ trait ModuleDataFixTrait
     /**
      * @param array<string,string> $params
      */
-    protected function submittersToFixQuery(Tree $tree, array $params): Builder
+    protected function submittersToFixQuery(Tree $tree, array $params): QueryBuilder
     {
-        $query = DB::table('other')
-            ->where('o_type', '=', Submitter::RECORD_TYPE)
-            ->where('o_file', '=', $tree->id());
+        $query = DB::query()
+            ->from('other')
+            ->whereEqual('o_type', Submitter::RECORD_TYPE)
+            ->whereEqual('o_file', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('o_id', [$params['start'], $params['end']]);
+            $query = $query->whereBetween('o_id', $params['start'], $params['end']);
         }
 
         return $query;
@@ -363,15 +371,13 @@ trait ModuleDataFixTrait
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {
-        $pending = DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', ChangeStatus::Pending->value)
-            ->where(static function (Builder $query) use ($type): void {
-                $query
-                    ->where('old_gedcom', 'LIKE', '%@ ' . $type . '\n%')
-                    ->orWhere('new_gedcom', 'LIKE', '%@ ' . $type . '\n%');
-            })
-            ->pluck('xref');
+        $pattern = '%@ ' . $type . '\n%';
+        $pending = DB::query()
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('status', ChangeStatus::Pending->value)
+            ->whereRaw('(old_gedcom LIKE ? OR new_gedcom LIKE ?)', [$pattern, $pattern])
+            ->pluck('xref', in: Collection::class);
 
         return $records
             ->concat($pending)

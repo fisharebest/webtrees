@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
@@ -30,9 +33,6 @@ use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\UnableToCheckFileExistence;
@@ -42,6 +42,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
+use function addcslashes;
 use function assert;
 use function e;
 use function getimagesizefromstring;
@@ -91,7 +92,7 @@ final class ManageMediaData
 
         $sort_columns = [
             0 => 'multimedia_file_refn',
-            2 => new Expression(DB::concat(['descriptive_title', 'multimedia_file_refn'])),
+            2 => DB::concat(DB::column('descriptive_title'), DB::column('multimedia_file_refn')),
         ];
 
         // Convert a row from the database into a row for datatables
@@ -143,50 +144,57 @@ final class ManageMediaData
 
         switch ($files) {
             case 'local':
-                $query = DB::table('media_file')
-                    ->join('media', static function (JoinClause $join): void {
-                        $join
-                            ->on('media.m_file', '=', 'media_file.m_file')
-                            ->on('media.m_id', '=', 'media_file.m_id');
-                    })
-                    ->join('gedcom', 'gedcom.gedcom_id', '=', 'media.m_file')
-                    ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
-                    ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-                    ->select(['media.*', 'multimedia_file_refn', 'descriptive_title', 'media_folder']);
-
-                $query->where(new Expression(DB::concat(['media_folder', 'multimedia_file_refn'])), 'LIKE', $media_folder . '%');
+                $escaped_folder = addcslashes($media_folder, '\\%_');
+                $query = DB::query()
+                    ->select('media.*', 'multimedia_file_refn', 'descriptive_title', 'media_folder')
+                    ->from('media_file')
+                    ->join('media', static fn (JoinOn $j): JoinOn => $j->on('media.m_file', 'media_file.m_file')->on('media.m_id', 'media_file.m_id'))
+                    ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom.gedcom_id', 'media.m_file'))
+                    ->whereNotLike('multimedia_file_refn', 'http://%')
+                    ->whereNotLike('multimedia_file_refn', 'https://%')
+                    ->whereLike(DB::concat(DB::column('media_folder'), DB::column('multimedia_file_refn')), $escaped_folder . '%');
 
                 if ($subfolders === 'exclude') {
-                    $query->where(new Expression(DB::concat(['media_folder', 'multimedia_file_refn'])), 'NOT LIKE', $media_folder . '%/%');
+                    $query = $query->whereNotLike(DB::concat(DB::column('media_folder'), DB::column('multimedia_file_refn')), $escaped_folder . '%/%');
                 }
 
-                return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
+                return $this->datatables_service->handleQuery(
+                    $request,
+                    $query,
+                    $search_columns,
+                    $sort_columns,
+                    $callback,
+                    [DB::ordinal(1)],
+                );
 
             case 'external':
-                $query = DB::table('media_file')
-                    ->join('media', static function (JoinClause $join): void {
-                        $join
-                            ->on('media.m_file', '=', 'media_file.m_file')
-                            ->on('media.m_id', '=', 'media_file.m_id');
-                    })
-                    ->where(static function (Builder $query): void {
-                        $query
-                            ->where('multimedia_file_refn', 'LIKE', 'http://%')
-                            ->orWhere('multimedia_file_refn', 'LIKE', 'https://%');
-                    })
-                    ->select([
+                $query = DB::query()
+                    ->select(
                         'media.*',
                         'multimedia_file_refn',
                         'descriptive_title',
-                        new Expression("'' AS media_folder"),
-                    ]);
+                        DB::alias(DB::value(''), 'media_folder'),
+                    )
+                    ->from('media_file')
+                    ->join('media', static fn (JoinOn $j): JoinOn => $j->on('media.m_file', 'media_file.m_file')->on('media.m_id', 'media_file.m_id'))
+                    ->whereNested(static fn (Predicates $p): Predicates => $p
+                        ->like('multimedia_file_refn', 'http://%')
+                        ->orLike('multimedia_file_refn', 'https://%'));
 
-                return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
+                return $this->datatables_service->handleQuery(
+                    $request,
+                    $query,
+                    $search_columns,
+                    $sort_columns,
+                    $callback,
+                    [DB::ordinal(1)],
+                );
 
             case 'unused':
                 // Which trees use which media folder?
-                $media_trees = DB::table('gedcom')
-                    ->where('gedcom_id', '>', 0)
+                $media_trees = DB::query()
+                    ->from('gedcom')
+                    ->whereGreaterThan('gedcom_id', 0)
                     ->pluck('media_folder', 'gedcom_name');
 
                 $disk_files = $this->media_file_service->allFilesOnDisk($data_filesystem, $media_folder, $subfolders === 'include');
@@ -246,7 +254,6 @@ final class ManageMediaData
 
     /**
      * Generate some useful information and links about a media object.
-     *
      *
      * @return string HTML
      */

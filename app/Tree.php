@@ -154,12 +154,11 @@ class Tree
     public function setPreference(string $setting_name, string $setting_value): self
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
-            DB::table('gedcom_setting')->updateOrInsert([
+            DB::query(table: 'gedcom_setting')->upsert([
                 'gedcom_id'    => $this->id,
                 'setting_name' => $setting_name,
-            ], [
                 'setting_value' => $setting_value,
-            ]);
+            ], ['gedcom_id', 'setting_name'], ['setting_value']);
 
             $this->preferences[$setting_name] = $setting_value;
 
@@ -172,10 +171,10 @@ class Tree
     public function getPreference(string $setting_name, string|null $default = null): string
     {
         if ($this->preferences === []) {
-            $this->preferences = DB::table('gedcom_setting')
-                ->where('gedcom_id', '=', $this->id)
-                ->pluck('setting_value', 'setting_name')
-                ->all();
+            $this->preferences = DB::query()
+                ->from('gedcom_setting')
+                ->whereEqual('gedcom_id', $this->id)
+                ->pluck('setting_value', 'setting_name');
         }
 
         return $this->preferences[$setting_name] ?? $default ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
@@ -265,8 +264,10 @@ class Tree
 
     private function loadDefaultResn(): void
     {
-        $rows = DB::table('default_resn')
-            ->where('gedcom_id', '=', $this->id)
+        $rows = DB::query()
+            ->select('*')
+            ->from('default_resn')
+            ->whereEqual('gedcom_id', $this->id)
             ->get();
 
         foreach ($rows as $row) {
@@ -294,13 +295,12 @@ class Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
-            DB::table('user_gedcom_setting')->updateOrInsert([
+            DB::query(table: 'user_gedcom_setting')->upsert([
                 'gedcom_id'    => $this->id(),
                 'user_id'      => $user->id(),
                 'setting_name' => $setting_name,
-            ], [
                 'setting_value' => $setting_value,
-            ]);
+            ], ['user_id', 'gedcom_id', 'setting_name'], ['setting_value']);
 
             // Update the cache
             $this->user_preferences[$user->id()][$setting_name] = $setting_value;
@@ -319,11 +319,11 @@ class Tree
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (!array_key_exists($user->id(), $this->user_preferences)) {
-            $this->user_preferences[$user->id()] = DB::table('user_gedcom_setting')
-                ->where('user_id', '=', $user->id())
-                ->where('gedcom_id', '=', $this->id)
-                ->pluck('setting_value', 'setting_name')
-                ->all();
+            $this->user_preferences[$user->id()] = DB::query()
+                ->from('user_gedcom_setting')
+                ->whereEqual('user_id', $user->id())
+                ->whereEqual('gedcom_id', $this->id)
+                ->pluck('setting_value', 'setting_name');
         }
 
         return $this->user_preferences[$user->id()][$setting_name] ?? $default;
@@ -347,9 +347,11 @@ class Tree
 
     public function hasPendingEdit(): bool
     {
-        return DB::table('change')
-            ->where('gedcom_id', '=', $this->id)
-            ->where('status', '=', ChangeStatus::Pending->value)
+        return DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereEqual('gedcom_id', $this->id)
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->exists();
     }
 
@@ -368,7 +370,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::query(table: 'change')->insert(values: [
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -405,7 +407,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::query(table: 'change')->insert(values: [
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -442,7 +444,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::query(table: 'change')->insert(values: [
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -479,7 +481,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::query(table: 'change')->insert(values: [
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -530,9 +532,11 @@ class Tree
         }
 
         if ($individual === null) {
-            $xref = DB::table('individuals')
-                ->where('i_file', '=', $this->id())
-                ->min('i_id');
+            $xref = DB::query()
+                ->from('individuals')
+                ->whereEqual('i_file', $this->id())
+                ->orderBy('i_id')
+                ->value('i_id');
 
             if (is_string($xref)) {
                 $individual = Registry::individualFactory()->make($xref, $this);

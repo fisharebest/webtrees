@@ -676,7 +676,6 @@ class Soundex
     /**
      * Calculate the Daitch-Mokotoff soundex for a word.
      *
-     *
      * @return array<string> List of possible DM codes for the word.
      */
     private static function daitchMokotoffWord(string $name): array

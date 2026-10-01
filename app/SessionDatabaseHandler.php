@@ -48,8 +48,10 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
     public function read(string $id): string
     {
-        $this->row = DB::table('session')
-            ->where('session_id', '=', $id)
+        $this->row = DB::query()
+            ->select('*')
+            ->from('session')
+            ->whereEqual('session_id', $id)
             ->first();
 
         return $this->row->session_data ?? '';
@@ -62,7 +64,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
         $now        = $this->clock->now()->format('Y-m-d H:i:s');
 
         if ($this->row === null) {
-            DB::table('session')->insert([
+            DB::query(table: 'session')->insert(values: [
                 'session_id'   => $id,
                 'session_time' => $now,
                 'user_id'      => $user_id,
@@ -93,8 +95,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
             }
 
             if ($updates !== []) {
-                DB::table('session')
-                    ->where('session_id', '=', $id)
+                DB::query(table: 'session')
+                    ->whereEqual('session_id', $id)
                     ->update($updates);
             }
         }
@@ -104,8 +106,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
     public function destroy(string $id): bool
     {
-        DB::table('session')
-            ->where('session_id', '=', $id)
+        DB::query(table: 'session')
+            ->whereEqual('session_id', $id)
             ->delete();
 
         return true;
@@ -113,8 +115,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
     public function gc(int $max_lifetime): int
     {
-        return DB::table('session')
-            ->where('session_time', '<', $this->clock->now()->modify('-' . $max_lifetime . ' seconds')->format('Y-m-d H:i:s'))
+        return DB::query(table: 'session')
+            ->whereLessThan('session_time', $this->clock->now()->modify('-' . $max_lifetime . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
 
@@ -127,8 +129,10 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
     public function validateId(string $id): bool
     {
-        return DB::table('session')
-            ->where('session_id', '=', $id)
+        return DB::query()
+            ->select('*')
+            ->from('session')
+            ->whereEqual('session_id', $id)
             ->exists();
     }
 }

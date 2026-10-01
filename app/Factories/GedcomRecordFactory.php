@@ -117,7 +117,6 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
     /**
      * Create a GedcomRecord object from a row in the database.
      *
-     *
      * @return Closure(object):GedcomRecord
      */
     public function mapper(Tree $tree): Closure
@@ -177,9 +176,10 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      */
     private function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
             ->whereNotIn('o_type', [
                 Header::RECORD_TYPE,
                 Note::RECORD_TYPE,

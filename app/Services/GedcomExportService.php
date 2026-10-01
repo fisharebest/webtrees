@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;
@@ -33,8 +34,6 @@ use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
@@ -208,11 +207,11 @@ class GedcomExportService
 
             $data = [
                 new Collection([$this->createHeader($tree, $encoding, true, $access_level)]),
-                $this->individualQuery($tree, $sort_by_xref)->get()->map(Registry::individualFactory()->mapper($tree)),
-                $this->familyQuery($tree, $sort_by_xref)->get()->map(Registry::familyFactory()->mapper($tree)),
-                $this->sourceQuery($tree, $sort_by_xref)->get()->map(Registry::sourceFactory()->mapper($tree)),
-                $this->otherQuery($tree, $sort_by_xref)->get()->map(Registry::gedcomRecordFactory()->mapper($tree)),
-                $this->mediaQuery($tree, $sort_by_xref)->get()->map(Registry::mediaFactory()->mapper($tree)),
+                $this->individualQuery($tree, $sort_by_xref)->get(in: Collection::class)->map(Registry::individualFactory()->mapper($tree)),
+                $this->familyQuery($tree, $sort_by_xref)->get(in: Collection::class)->map(Registry::familyFactory()->mapper($tree)),
+                $this->sourceQuery($tree, $sort_by_xref)->get(in: Collection::class)->map(Registry::sourceFactory()->mapper($tree)),
+                $this->otherQuery($tree, $sort_by_xref)->get(in: Collection::class)->map(Registry::gedcomRecordFactory()->mapper($tree)),
+                $this->mediaQuery($tree, $sort_by_xref)->get(in: Collection::class)->map(Registry::mediaFactory()->mapper($tree)),
                 new Collection(['0 TRLR']),
             ];
         }
@@ -366,78 +365,77 @@ class GedcomExportService
         return implode("\n", $lines);
     }
 
-    private function familyQuery(Tree $tree, bool $sort_by_xref): Builder
+    private function familyQuery(Tree $tree, bool $sort_by_xref): QueryBuilder
     {
-        $query = DB::table('families')
-            ->where('f_file', '=', $tree->id())
-            ->select(['f_gedcom', 'f_id']);
+        $query = DB::query()
+            ->select('f_gedcom', 'f_id')
+            ->from('families')
+            ->whereEqual('f_file', $tree->id());
 
         if ($sort_by_xref) {
-            $query
-                ->orderBy(new Expression('LENGTH(f_id)'))
-                ->orderBy('f_id');
+            $query = $query
+                ->orderBy(DB::length('f_id'), 'f_id');
         }
 
         return $query;
     }
 
-    private function individualQuery(Tree $tree, bool $sort_by_xref): Builder
+    private function individualQuery(Tree $tree, bool $sort_by_xref): QueryBuilder
     {
-        $query = DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->select(['i_gedcom', 'i_id']);
+        $query = DB::query()
+            ->select('i_gedcom', 'i_id')
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id());
 
         if ($sort_by_xref) {
-            $query
-                ->orderBy(new Expression('LENGTH(i_id)'))
-                ->orderBy('i_id');
+            $query = $query
+                ->orderBy(DB::length('i_id'), 'i_id');
         }
 
         return $query;
     }
 
-    private function sourceQuery(Tree $tree, bool $sort_by_xref): Builder
+    private function sourceQuery(Tree $tree, bool $sort_by_xref): QueryBuilder
     {
-        $query = DB::table('sources')
-            ->where('s_file', '=', $tree->id())
-            ->select(['s_gedcom', 's_id']);
+        $query = DB::query()
+            ->select('s_gedcom', 's_id')
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id());
 
         if ($sort_by_xref) {
-            $query
-                ->orderBy(new Expression('LENGTH(s_id)'))
-                ->orderBy('s_id');
+            $query = $query
+                ->orderBy(DB::length('s_id'), 's_id');
         }
 
         return $query;
     }
 
-    private function mediaQuery(Tree $tree, bool $sort_by_xref): Builder
+    private function mediaQuery(Tree $tree, bool $sort_by_xref): QueryBuilder
     {
-        $query = DB::table('media')
-            ->where('m_file', '=', $tree->id())
-            ->select(['m_gedcom', 'm_id']);
+        $query = DB::query()
+            ->select('m_gedcom', 'm_id')
+            ->from('media')
+            ->whereEqual('m_file', $tree->id());
 
         if ($sort_by_xref) {
-            $query
-                ->orderBy(new Expression('LENGTH(m_id)'))
-                ->orderBy('m_id');
+            $query = $query
+                ->orderBy(DB::length('m_id'), 'm_id');
         }
 
         return $query;
     }
 
-    private function otherQuery(Tree $tree, bool $sort_by_xref): Builder
+    private function otherQuery(Tree $tree, bool $sort_by_xref): QueryBuilder
     {
-        $query = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-            ->select(['o_gedcom', 'o_id']);
+        $query = DB::query()
+            ->select('o_gedcom', 'o_id')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR']);
 
         if ($sort_by_xref) {
-            $query
-                ->orderBy('o_type')
-                ->orderBy(new Expression('LENGTH(o_id)'))
-                ->orderBy('o_id');
+            $query = $query
+                ->orderBy('o_type', DB::length('o_id'), 'o_id');
         }
 
         return $query;

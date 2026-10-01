@@ -32,10 +32,11 @@ use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ModuleService::class)]
 class ModuleServiceTest extends TestCase
@@ -51,6 +52,19 @@ class ModuleServiceTest extends TestCase
         $module_service = new ModuleService();
 
         self::assertNotEmpty($module_service->all()->all());
+    }
+
+    public function testAllAppliesPersistedModuleStatus(): void
+    {
+        DB::query(table: 'module')->insert(values: [
+            'module_name' => 'charts',
+            'status' => 'disabled',
+        ]);
+        Registry::cache()->array()->forget('all-modules');
+
+        $module_service = new ModuleService();
+
+        self::assertFalse($module_service->all(true)->get('charts')->isEnabled());
     }
 
     public function testFindByComponent(): void
@@ -88,7 +102,7 @@ class ModuleServiceTest extends TestCase
 
     public function testOtherModules(): void
     {
-        DB::table('module')->insert(['module_name' => 'not-a-module']);
+        DB::query(table: 'module')->insert(values: ['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();
 
@@ -101,11 +115,13 @@ class ModuleServiceTest extends TestCase
 
     public function testDeletedModules(): void
     {
-        DB::table('module')->insert(['module_name' => 'not-a-module']);
+        DB::query(table: 'module')->insert(values: ['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();
 
-        self::assertCount(1, $module_service->deletedModules());
-        self::assertSame('not-a-module', $module_service->deletedModules()->first());
+        $deleted_modules = $module_service->deletedModules();
+
+        self::assertCount(1, $deleted_modules);
+        self::assertSame('not-a-module', $deleted_modules->first());
     }
 }

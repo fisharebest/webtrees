@@ -32,8 +32,10 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use stdClass;
 
 use function e;
 use function redirect;
@@ -68,7 +70,7 @@ final class TreePrivacy
     {
         $delete_default_resn_id = Validator::parsedBody($request)->list('delete');
 
-        DB::table('default_resn')
+        DB::query(table: 'default_resn')
             ->whereIn('default_resn_id', $delete_default_resn_id)
             ->delete();
 
@@ -91,32 +93,32 @@ final class TreePrivacy
 
             // Delete any existing data
             if ($tag_type !== '' && $xref !== '') {
-                DB::table('default_resn')
-                    ->where('gedcom_id', '=', $tree->id())
-                    ->where('tag_type', '=', $tag_type)
-                    ->where('xref', '=', $xref)
+                DB::query(table: 'default_resn')
+                    ->whereEqual('gedcom_id', $tree->id())
+                    ->whereEqual('tag_type', $tag_type)
+                    ->whereEqual('xref', $xref)
                     ->delete();
             }
 
             if ($tag_type !== '' && $xref === '') {
-                DB::table('default_resn')
-                    ->where('gedcom_id', '=', $tree->id())
-                    ->where('tag_type', '=', $tag_type)
+                DB::query(table: 'default_resn')
+                    ->whereEqual('gedcom_id', $tree->id())
+                    ->whereEqual('tag_type', $tag_type)
                     ->whereNull('xref')
                     ->delete();
             }
 
             if ($tag_type === '' && $xref !== '') {
-                DB::table('default_resn')
-                    ->where('gedcom_id', '=', $tree->id())
+                DB::query(table: 'default_resn')
+                    ->whereEqual('gedcom_id', $tree->id())
                     ->whereNull('tag_type')
-                    ->where('xref', '=', $xref)
+                    ->whereEqual('xref', $xref)
                     ->delete();
             }
 
             // Add (or update) the new data
             if ($tag_type !== '' || $xref !== '') {
-                DB::table('default_resn')->insert([
+                DB::query(table: 'default_resn')->insert(values: [
                     'gedcom_id' => $tree->id(),
                     'xref'      => $xref === '' ? null : $xref,
                     'tag_type'  => $tag_type === '' ? null : $tag_type,
@@ -135,8 +137,8 @@ final class TreePrivacy
         $show_private_relationships = Validator::parsedBody($request)->string('SHOW_PRIVATE_RELATIONSHIPS');
         $include_in_sitemap         = Validator::parsedBody($request)->boolean('include_in_sitemap', false);
 
-        DB::table('gedcom')
-            ->where('gedcom_id', '=', $tree->id())
+        DB::query(table: 'gedcom')
+            ->whereEqual('gedcom_id', $tree->id())
             ->update([
                 'private' => (int) $require_authentication,
             ]);
@@ -187,10 +189,12 @@ final class TreePrivacy
      */
     private function privacyRestrictions(Tree $tree): array
     {
-        return DB::table('default_resn')
-            ->where('gedcom_id', '=', $tree->id())
-            ->get()
-            ->map(static function (object $row) use ($tree): object {
+        return DB::query()
+            ->select('*')
+            ->from('default_resn')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->get(in: Collection::class)
+            ->map(static function (stdClass $row) use ($tree): object {
                 $record = null;
 
                 if ($row->xref !== null) {

@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -62,10 +63,12 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $articles = DB::table('news')
-            ->where('gedcom_id', '=', $tree->id())
-            ->orderByDesc('updated')
-            ->get()
+        $articles = DB::query()
+            ->select('*')
+            ->from('news')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->orderBy(DB::desc('updated'))
+            ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 $row->updated = Registry::timestampFactory()->fromString($row->updated);
 
@@ -127,9 +130,11 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $utc      = new DateTimeZone('UTC');
 
         if ($news_id !== 0) {
-            $row = DB::table('news')
-                ->where('news_id', '=', $news_id)
-                ->where('gedcom_id', '=', $tree->id())
+            $row = DB::query()
+                ->select('*')
+                ->from('news')
+                ->whereEqual('news_id', $news_id)
+                ->whereEqual('gedcom_id', $tree->id())
                 ->first();
 
             // Record was deleted before we could read it?
@@ -185,16 +190,16 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         }
 
         if ($news_id !== 0) {
-            DB::table('news')
-                ->where('news_id', '=', $news_id)
-                ->where('gedcom_id', '=', $tree->id()) // Check this is our own tree - validates news_id
+            DB::query(table: 'news')
+                ->whereEqual('news_id', $news_id)
+                ->whereEqual('gedcom_id', $tree->id()) // Check this is our own tree - validates news_id
                 ->update([
                     'body'    => $body,
                     'subject' => $subject,
                     'updated' => $updated->format('Y-m-d H:i:s'),
                 ]);
         } else {
-            DB::table('news')->insert([
+            DB::query(table: 'news')->insert(values: [
                 'body'      => $body,
                 'subject'   => $subject,
                 'gedcom_id' => $tree->id(),
@@ -216,9 +221,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new HttpForbiddenException();
         }
 
-        DB::table('news')
-            ->where('news_id', '=', $news_id)
-            ->where('gedcom_id', '=', $tree->id())
+        DB::query(table: 'news')
+            ->whereEqual('news_id', $news_id)
+            ->whereEqual('gedcom_id', $tree->id())
             ->delete();
 
         $url = route(TreePage::class, ['tree' => $tree->name()]);

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Note;
@@ -26,7 +27,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 
 use function date;
@@ -53,52 +54,59 @@ final class SitemapIndexXml
             ->filter(static fn (Tree $tree): bool => !$tree->private())
             ->filter(static fn (Tree $tree): bool => $tree->getPreference('include_in_sitemap') === '1');
 
-        $tree_ids = $public_trees->map(static fn (Tree $tree): int => $tree->id());
+        $tree_ids = $public_trees->map(static fn (Tree $tree): int => $tree->id())->all();
 
-        $count_families = DB::table('families')
-            ->join('gedcom', 'f_file', '=', 'gedcom_id')
+        $count_families = DB::query()
+            ->from('families')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('f_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
-        $count_individuals = DB::table('individuals')
-            ->join('gedcom', 'i_file', '=', 'gedcom_id')
+        $count_individuals = DB::query()
+            ->from('individuals')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
-        $count_media = DB::table('media')
-            ->join('gedcom', 'm_file', '=', 'gedcom_id')
+        $count_media = DB::query()
+            ->from('media')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('m_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
-        $count_notes = DB::table('other')
-            ->join('gedcom', 'o_file', '=', 'gedcom_id')
+        $count_notes = DB::query()
+            ->from('other')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('o_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->where('o_type', '=', Note::RECORD_TYPE)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->whereEqual('o_type', Note::RECORD_TYPE)
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
-        $count_repositories = DB::table('other')
-            ->join('gedcom', 'o_file', '=', 'gedcom_id')
+        $count_repositories = DB::query()
+            ->from('other')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('o_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->where('o_type', '=', Repository::RECORD_TYPE)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
-        $count_sources = DB::table('sources')
-            ->join('gedcom', 's_file', '=', 'gedcom_id')
+        $count_sources = DB::query()
+            ->from('sources')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('s_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
-        $count_submitters = DB::table('other')
-            ->join('gedcom', 'o_file', '=', 'gedcom_id')
+        $count_submitters = DB::query()
+            ->from('other')
+            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('o_file', 'gedcom_id'))
             ->whereIn('gedcom_id', $tree_ids)
-            ->where('o_type', '=', Submitter::RECORD_TYPE)
-            ->groupBy(['gedcom_name'])
-            ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
+            ->whereEqual('o_type', Submitter::RECORD_TYPE)
+            ->groupBy('gedcom_name')
+            ->pluck(DB::count(), 'gedcom_name', in: Collection::class);
 
         $content = view('sitemap/sitemap-index-xml', [
             'all_trees'          => $public_trees,

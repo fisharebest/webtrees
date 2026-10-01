@@ -64,9 +64,9 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
     public function mediaToFix(Tree $tree, array $params): Collection
     {
         return $this->mediaToFixQuery($tree, $params)
-            ->where('m_file', '=', $tree->id())
-            ->where('m_gedcom', 'LIKE', "%\n1 _PRIM %")
-            ->pluck('m_id');
+            ->whereEqual('m_file', $tree->id())
+            ->whereRaw('m_gedcom LIKE ?', ["%\n1 _PRIM %"])
+            ->pluck('m_id', in: Collection::class);
     }
 
     /**

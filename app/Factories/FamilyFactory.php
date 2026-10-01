@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 use function preg_match;
 
@@ -53,10 +54,12 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
 
             // Preload all the family members using a single database query.
             preg_match_all('/\n1 (?:HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $gedcom . "\n" . $pending, $match);
-            DB::table('individuals')
-                ->where('i_file', '=', $tree->id())
+            DB::query()
+                ->select('*')
+                ->from('individuals')
+                ->whereEqual('i_file', $tree->id())
                 ->whereIn('i_id', $match[1])
-                ->get()
+                ->get(in: Collection::class)
                 ->map(Registry::individualFactory()->mapper($tree));
 
             return $this->new($xref, $gedcom ?? '', $pending, $tree);
@@ -65,7 +68,6 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
 
     /**
      * Create a Family object from a row in the database.
-     *
      *
      * @return Closure(object):Family
      */
@@ -91,9 +93,10 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('families')
-            ->where('f_id', '=', $xref)
-            ->where('f_file', '=', $tree->id())
+        return DB::query()
+            ->from('families')
+            ->whereEqual('f_id', $xref)
+            ->whereEqual('f_file', $tree->id())
             ->value('f_gedcom');
     }
 }

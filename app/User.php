@@ -47,10 +47,10 @@ class User implements UserInterface
         $this->real_name = $real_name;
         $this->email     = $email;
 
-        $this->preferences = DB::table('user_setting')
-            ->where('user_id', '=', $this->user_id)
-            ->pluck('setting_value', 'setting_name')
-            ->all();
+        $this->preferences = DB::query()
+            ->from('user_setting')
+            ->whereEqual('user_id', $this->user_id)
+            ->pluck('setting_value', 'setting_name');
     }
 
     /**
@@ -77,8 +77,8 @@ class User implements UserInterface
         if ($this->email !== $email) {
             $this->email = $email;
 
-            DB::table('user')
-                ->where('user_id', '=', $this->user_id)
+            DB::query(table: 'user')
+                ->whereEqual('user_id', $this->user_id)
                 ->update([
                     'email' => $email,
                 ]);
@@ -103,8 +103,8 @@ class User implements UserInterface
         if ($this->real_name !== $real_name) {
             $this->real_name = $real_name;
 
-            DB::table('user')
-                ->where('user_id', '=', $this->user_id)
+            DB::query(table: 'user')
+                ->whereEqual('user_id', $this->user_id)
                 ->update([
                     'real_name' => $real_name,
                 ]);
@@ -129,8 +129,8 @@ class User implements UserInterface
         if ($this->user_name !== $user_name) {
             $this->user_name = $user_name;
 
-            DB::table('user')
-                ->where('user_id', '=', $this->user_id)
+            DB::query(table: 'user')
+                ->whereEqual('user_id', $this->user_id)
                 ->update([
                     'user_name' => $user_name,
                 ]);
@@ -155,12 +155,11 @@ class User implements UserInterface
     public function setPreference(string $setting_name, string $setting_value): void
     {
         if ($this->getPreference($setting_name) !== $setting_value) {
-            DB::table('user_setting')->updateOrInsert([
+            DB::query(table: 'user_setting')->upsert([
                 'user_id'      => $this->user_id,
                 'setting_name' => $setting_name,
-            ], [
                 'setting_value' => $setting_value,
-            ]);
+            ], ['user_id', 'setting_name'], ['setting_value']);
 
             $this->preferences[$setting_name] = $setting_value;
         }
@@ -171,8 +170,8 @@ class User implements UserInterface
      */
     public function setPassword(#[\SensitiveParameter] string $password): User
     {
-        DB::table('user')
-            ->where('user_id', '=', $this->user_id)
+        DB::query(table: 'user')
+            ->whereEqual('user_id', $this->user_id)
             ->update([
                 'password' => password_hash($password, PASSWORD_DEFAULT),
             ]);
@@ -185,8 +184,9 @@ class User implements UserInterface
      */
     public function checkPassword(#[\SensitiveParameter] string $password): bool
     {
-        $password_hash = DB::table('user')
-            ->where('user_id', '=', $this->id())
+        $password_hash = DB::query()
+            ->from('user')
+            ->whereEqual('user_id', $this->id())
             ->value('password');
 
         if (is_string($password_hash) && password_verify($password, $password_hash)) {

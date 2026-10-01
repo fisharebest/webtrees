@@ -93,7 +93,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * Get all the facts for an individual which contain media objects.
      *
-     *
      * @return Collection<int,Fact>
      */
     protected function getFactsWithMedia(Individual $individual): Collection

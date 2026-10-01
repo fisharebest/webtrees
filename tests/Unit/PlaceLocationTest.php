@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PlaceLocation::class)]
 class PlaceLocationTest extends TestCase
@@ -29,5 +30,20 @@ class PlaceLocationTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(PlaceLocation::class));
+    }
+
+    public function testIdCreatesMissingLocationsAndReusesExistingRows(): void
+    {
+        self::createDatabase();
+
+        $location = new PlaceLocation('Village, Region');
+        self::assertFalse($location->exists());
+
+        $location_id = $location->id();
+        self::assertIsInt($location_id);
+        self::assertSame($location_id, (new PlaceLocation('Village, Region'))->id());
+
+        self::assertSame(1, DB::query(table: 'place_location')->whereEqual('place', 'Village')->count());
+        self::assertSame(1, DB::query(table: 'place_location')->whereEqual('place', 'Region')->count());
     }
 }

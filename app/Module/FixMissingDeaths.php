@@ -63,10 +63,10 @@ class FixMissingDeaths extends AbstractModule implements ModuleDataFixInterface
         $query = $this->individualsToFixQuery($tree, $params);
 
         foreach (Gedcom::DEATH_EVENTS as $event) {
-            $query->where('i_gedcom', 'NOT LIKE', "%\n1 " . $event . '%');
+            $query = $query->whereRaw('i_gedcom NOT LIKE ?', ["%\n1 " . $event . '%']);
         }
 
-        return $query->pluck('i_id');
+        return $query->pluck('i_id', in: Collection::class);
     }
 
     /**

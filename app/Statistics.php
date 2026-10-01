@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Charts\BarChartData;
 use Fisharebest\Webtrees\Charts\ChartDataInterface;
 use Fisharebest\Webtrees\Charts\ComboChartData;
@@ -26,15 +27,12 @@ use Fisharebest\Webtrees\Charts\PieChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
-use Fisharebest\Webtrees\Enums\SortOrder;
 use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
@@ -42,8 +40,10 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
+use SortDirection;
 
 use function array_keys;
+use function array_map;
 use function array_shift;
 use function array_sum;
 use function count;
@@ -328,12 +328,13 @@ class Statistics
     public function chartLargestFamilies(
         string $limit = '7'
     ): string {
-        $data = DB::table('families')
-            ->select(['f_numchil AS total', 'f_id AS id'])
-            ->where('f_file', '=', $this->tree->id())
-            ->orderBy('total', SortOrder::Descending->value)
+        $data = DB::query()
+            ->select('f_numchil AS total', 'f_id AS id')
+            ->from('families')
+            ->whereEqual('f_file', $this->tree->id())
+            ->orderBy(DB::desc('total'))
             ->limit((int) $limit)
-            ->get()
+            ->get(in: Collection::class)
             ->map(fn (object $row): array => [
                 htmlspecialchars_decode(strip_tags(Registry::familyFactory()->make($row->id, $this->tree)->fullName())),
                 (int) $row->total,
@@ -403,20 +404,20 @@ class Statistics
         $labels = [];
         $values = [];
 
-        $records = DB::table('families')
-            ->selectRaw('ROUND((d_year + 49) / 100, 0) AS century')
-            ->selectRaw('COUNT(*) AS total')
-            ->join('dates', static function (JoinClause $join): void {
-                $join->on('d_file', '=', 'f_file')
-                    ->on('d_gid', '=', 'f_id');
-            })
-            ->where('f_file', '=', $this->tree->id())
-            ->where('f_numchil', '=', 0)
-            ->where('d_fact', '=', 'MARR')
+        $records = DB::query()
+            ->select(
+                DB::alias(DB::raw('ROUND((d_year + 49) / 100, 0)'), 'century'),
+                DB::alias(DB::count('*'), 'total'),
+            )
+            ->from('families')
+            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+            ->whereEqual('f_file', $this->tree->id())
+            ->whereEqual('f_numchil', 0)
+            ->whereEqual('d_fact', 'MARR')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->groupBy(['century'])
+            ->groupBy('century')
             ->orderBy('century')
-            ->get()
+            ->get(in: Collection::class)
             ->map(static fn (object $row): object => (object) [
                 'century' => (int) $row->century,
                 'total'   => (int) $row->total,
@@ -559,7 +560,7 @@ class Statistics
     {
         return view('lists/given-names-table', [
             'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, SortOrder::Descending->value]],
+            'order'       => [[1, 'desc']],
         ]);
     }
 
@@ -621,7 +622,7 @@ class Statistics
     {
         return view('lists/given-names-table', [
             'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, SortOrder::Descending->value]],
+            'order'       => [[1, 'desc']],
         ]);
     }
 
@@ -667,7 +668,7 @@ class Statistics
     {
         return view('lists/given-names-table', [
             'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, SortOrder::Descending->value]],
+            'order'       => [[1, 'desc']],
         ]);
     }
 
@@ -686,7 +687,7 @@ class Statistics
     {
         return view('lists/given-names-table', [
             'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, SortOrder::Descending->value]],
+            'order'       => [[1, 'desc']],
         ]);
     }
 
@@ -732,7 +733,7 @@ class Statistics
     {
         return view('lists/given-names-table', [
             'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
-            'order'       => [[1, SortOrder::Descending->value]],
+            'order'       => [[1, 'desc']],
         ]);
     }
 
@@ -805,107 +806,107 @@ class Statistics
 
     public function firstBirth(): string
     {
-        return $this->data->firstEventRecord(['BIRT'], SortOrder::Ascending);
+        return $this->data->firstEventRecord(['BIRT'], SortDirection::Ascending);
     }
 
     public function firstBirthName(): string
     {
-        return $this->data->firstEventName(['BIRT'], SortOrder::Ascending);
+        return $this->data->firstEventName(['BIRT'], SortDirection::Ascending);
     }
 
     public function firstBirthPlace(): string
     {
-        return $this->data->firstEventPlace(['BIRT'], SortOrder::Ascending);
+        return $this->data->firstEventPlace(['BIRT'], SortDirection::Ascending);
     }
 
     public function firstBirthYear(): string
     {
-        return $this->data->firstEventYear(['BIRT'], SortOrder::Ascending);
+        return $this->data->firstEventYear(['BIRT'], SortDirection::Ascending);
     }
 
     public function firstDeath(): string
     {
-        return $this->data->firstEventRecord(['DEAT'], SortOrder::Ascending);
+        return $this->data->firstEventRecord(['DEAT'], SortDirection::Ascending);
     }
 
     public function firstDeathName(): string
     {
-        return $this->data->firstEventName(['DEAT'], SortOrder::Ascending);
+        return $this->data->firstEventName(['DEAT'], SortDirection::Ascending);
     }
 
     public function firstDeathPlace(): string
     {
-        return $this->data->firstEventPlace(['DEAT'], SortOrder::Ascending);
+        return $this->data->firstEventPlace(['DEAT'], SortDirection::Ascending);
     }
 
     public function firstDeathYear(): string
     {
-        return $this->data->firstEventYear(['DEAT'], SortOrder::Ascending);
+        return $this->data->firstEventYear(['DEAT'], SortDirection::Ascending);
     }
 
     public function firstDivorce(): string
     {
-        return $this->data->firstEventRecord(['DIV'], SortOrder::Ascending);
+        return $this->data->firstEventRecord(['DIV'], SortDirection::Ascending);
     }
 
     public function firstDivorceName(): string
     {
-        return $this->data->firstEventName(['DIV'], SortOrder::Ascending);
+        return $this->data->firstEventName(['DIV'], SortDirection::Ascending);
     }
 
     public function firstDivorcePlace(): string
     {
-        return $this->data->firstEventPlace(['DIV'], SortOrder::Ascending);
+        return $this->data->firstEventPlace(['DIV'], SortDirection::Ascending);
     }
 
     public function firstDivorceYear(): string
     {
-        return $this->data->firstEventYear(['DIV'], SortOrder::Ascending);
+        return $this->data->firstEventYear(['DIV'], SortDirection::Ascending);
     }
 
     public function firstEvent(): string
     {
-        return $this->data->firstEventRecord([], SortOrder::Ascending);
+        return $this->data->firstEventRecord([], SortDirection::Ascending);
     }
 
     public function firstEventName(): string
     {
-        return $this->data->firstEventName([], SortOrder::Ascending);
+        return $this->data->firstEventName([], SortDirection::Ascending);
     }
 
     public function firstEventPlace(): string
     {
-        return $this->data->firstEventPlace([], SortOrder::Ascending);
+        return $this->data->firstEventPlace([], SortDirection::Ascending);
     }
 
     public function firstEventType(): string
     {
-        return $this->data->firstEventType([], SortOrder::Ascending);
+        return $this->data->firstEventType([], SortDirection::Ascending);
     }
 
     public function firstEventYear(): string
     {
-        return $this->data->firstEventYear([], SortOrder::Ascending);
+        return $this->data->firstEventYear([], SortDirection::Ascending);
     }
 
     public function firstMarriage(): string
     {
-        return $this->data->firstEventRecord(['MARR'], SortOrder::Ascending);
+        return $this->data->firstEventRecord(['MARR'], SortDirection::Ascending);
     }
 
     public function firstMarriageName(): string
     {
-        return $this->data->firstEventName(['MARR'], SortOrder::Ascending);
+        return $this->data->firstEventName(['MARR'], SortDirection::Ascending);
     }
 
     public function firstMarriagePlace(): string
     {
-        return $this->data->firstEventPlace(['MARR'], SortOrder::Ascending);
+        return $this->data->firstEventPlace(['MARR'], SortDirection::Ascending);
     }
 
     public function firstMarriageYear(): string
     {
-        return $this->data->firstEventYear(['MARR'], SortOrder::Ascending);
+        return $this->data->firstEventYear(['MARR'], SortDirection::Ascending);
     }
 
     public function gedcomCreatedSoftware(): string
@@ -992,11 +993,12 @@ class Statistics
 
     public function gedcomUpdated(): string
     {
-        $row = DB::table('change')
-            ->where('gedcom_id', '=', $this->tree->id())
-            ->where('status', '=', ChangeStatus::Accepted->value)
-            ->orderBy('change_id', SortOrder::Descending->value)
-            ->select(['change_time'])
+        $row = DB::query()
+            ->select('change_time')
+            ->from('change')
+            ->whereEqual('gedcom_id', $this->tree->id())
+            ->whereEqual('status', ChangeStatus::Accepted->value)
+            ->orderBy(DB::desc('change_id'))
             ->first();
 
         if ($row === null) {
@@ -1125,107 +1127,107 @@ class Statistics
 
     public function lastBirth(): string
     {
-        return $this->data->firstEventRecord(['BIRT'], SortOrder::Descending);
+        return $this->data->firstEventRecord(['BIRT'], SortDirection::Descending);
     }
 
     public function lastBirthName(): string
     {
-        return $this->data->firstEventName(['BIRT'], SortOrder::Descending);
+        return $this->data->firstEventName(['BIRT'], SortDirection::Descending);
     }
 
     public function lastBirthPlace(): string
     {
-        return $this->data->firstEventPlace(['BIRT'], SortOrder::Descending);
+        return $this->data->firstEventPlace(['BIRT'], SortDirection::Descending);
     }
 
     public function lastBirthYear(): string
     {
-        return $this->data->firstEventYear(['BIRT'], SortOrder::Descending);
+        return $this->data->firstEventYear(['BIRT'], SortDirection::Descending);
     }
 
     public function lastDeath(): string
     {
-        return $this->data->firstEventRecord(['DEAT'], SortOrder::Descending);
+        return $this->data->firstEventRecord(['DEAT'], SortDirection::Descending);
     }
 
     public function lastDeathName(): string
     {
-        return $this->data->firstEventName(['DEAT'], SortOrder::Descending);
+        return $this->data->firstEventName(['DEAT'], SortDirection::Descending);
     }
 
     public function lastDeathPlace(): string
     {
-        return $this->data->firstEventPlace(['DEAT'], SortOrder::Descending);
+        return $this->data->firstEventPlace(['DEAT'], SortDirection::Descending);
     }
 
     public function lastDeathYear(): string
     {
-        return $this->data->firstEventYear(['DEAT'], SortOrder::Descending);
+        return $this->data->firstEventYear(['DEAT'], SortDirection::Descending);
     }
 
     public function lastDivorce(): string
     {
-        return $this->data->firstEventRecord(['DIV'], SortOrder::Descending);
+        return $this->data->firstEventRecord(['DIV'], SortDirection::Descending);
     }
 
     public function lastDivorceName(): string
     {
-        return $this->data->firstEventName(['DIV'], SortOrder::Descending);
+        return $this->data->firstEventName(['DIV'], SortDirection::Descending);
     }
 
     public function lastDivorcePlace(): string
     {
-        return $this->data->firstEventPlace(['DIV'], SortOrder::Descending);
+        return $this->data->firstEventPlace(['DIV'], SortDirection::Descending);
     }
 
     public function lastDivorceYear(): string
     {
-        return $this->data->firstEventYear(['DIV'], SortOrder::Descending);
+        return $this->data->firstEventYear(['DIV'], SortDirection::Descending);
     }
 
     public function lastEvent(): string
     {
-        return $this->data->firstEventRecord([], SortOrder::Descending);
+        return $this->data->firstEventRecord([], SortDirection::Descending);
     }
 
     public function lastEventName(): string
     {
-        return $this->data->firstEventName([], SortOrder::Descending);
+        return $this->data->firstEventName([], SortDirection::Descending);
     }
 
     public function lastEventPlace(): string
     {
-        return $this->data->firstEventPlace([], SortOrder::Descending);
+        return $this->data->firstEventPlace([], SortDirection::Descending);
     }
 
     public function lastEventType(): string
     {
-        return $this->data->firstEventType([], SortOrder::Descending);
+        return $this->data->firstEventType([], SortDirection::Descending);
     }
 
     public function lastEventYear(): string
     {
-        return $this->data->firstEventYear([], SortOrder::Descending);
+        return $this->data->firstEventYear([], SortDirection::Descending);
     }
 
     public function lastMarriage(): string
     {
-        return $this->data->firstEventRecord(['MARR'], SortOrder::Descending);
+        return $this->data->firstEventRecord(['MARR'], SortDirection::Descending);
     }
 
     public function lastMarriageName(): string
     {
-        return $this->data->firstEventName(['MARR'], SortOrder::Descending);
+        return $this->data->firstEventName(['MARR'], SortDirection::Descending);
     }
 
     public function lastMarriagePlace(): string
     {
-        return $this->data->firstEventPlace(['MARR'], SortOrder::Descending);
+        return $this->data->firstEventPlace(['MARR'], SortDirection::Descending);
     }
 
     public function lastMarriageYear(): string
     {
-        return $this->data->firstEventYear(['MARR'], SortOrder::Descending);
+        return $this->data->firstEventYear(['MARR'], SortDirection::Descending);
     }
 
     public function latestUserFullName(): string
@@ -1367,22 +1369,22 @@ class Statistics
 
     public function minAgeOfMarriage(): string
     {
-        return $this->data->ageOfMarriageQuery('age', SortOrder::Ascending, 1);
+        return $this->data->ageOfMarriageQuery('age', SortDirection::Ascending, 1);
     }
 
     public function minAgeOfMarriageFamilies(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('nolist', SortOrder::Ascending, (int) $limit);
+        return $this->data->ageOfMarriageQuery('nolist', SortDirection::Ascending, (int) $limit);
     }
 
     public function minAgeOfMarriageFamiliesList(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('list', SortOrder::Ascending, (int) $limit);
+        return $this->data->ageOfMarriageQuery('list', SortDirection::Ascending, (int) $limit);
     }
 
     public function minAgeOfMarriageFamily(): string
     {
-        return $this->data->ageOfMarriageQuery('name', SortOrder::Ascending, 1);
+        return $this->data->ageOfMarriageQuery('name', SortDirection::Ascending, 1);
     }
 
     public function noChildrenFamilies(): string
@@ -1397,62 +1399,62 @@ class Statistics
 
     public function oldestFather(): string
     {
-        return $this->data->parentsQuery('full', SortOrder::Descending, Sex::Male, false);
+        return $this->data->parentsQuery('full', SortDirection::Descending, Sex::Male, false);
     }
 
     public function oldestFatherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', SortOrder::Descending, Sex::Male, (bool) $show_years);
+        return $this->data->parentsQuery('age', SortDirection::Descending, Sex::Male, (bool) $show_years);
     }
 
     public function oldestFatherName(): string
     {
-        return $this->data->parentsQuery('name', SortOrder::Descending, Sex::Male, false);
+        return $this->data->parentsQuery('name', SortDirection::Descending, Sex::Male, false);
     }
 
     public function oldestMarriageFemale(): string
     {
-        return $this->data->marriageQuery('full', SortOrder::Descending, Sex::Female, false);
+        return $this->data->marriageQuery('full', SortDirection::Descending, Sex::Female, false);
     }
 
     public function oldestMarriageFemaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', SortOrder::Descending, Sex::Female, (bool) $show_years);
+        return $this->data->marriageQuery('age', SortDirection::Descending, Sex::Female, (bool) $show_years);
     }
 
     public function oldestMarriageFemaleName(): string
     {
-        return $this->data->marriageQuery('name', SortOrder::Descending, Sex::Female, false);
+        return $this->data->marriageQuery('name', SortDirection::Descending, Sex::Female, false);
     }
 
     public function oldestMarriageMale(): string
     {
-        return $this->data->marriageQuery('full', SortOrder::Descending, Sex::Male, false);
+        return $this->data->marriageQuery('full', SortDirection::Descending, Sex::Male, false);
     }
 
     public function oldestMarriageMaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', SortOrder::Descending, Sex::Male, (bool) $show_years);
+        return $this->data->marriageQuery('age', SortDirection::Descending, Sex::Male, (bool) $show_years);
     }
 
     public function oldestMarriageMaleName(): string
     {
-        return $this->data->marriageQuery('name', SortOrder::Descending, Sex::Male, false);
+        return $this->data->marriageQuery('name', SortDirection::Descending, Sex::Male, false);
     }
 
     public function oldestMother(): string
     {
-        return $this->data->parentsQuery('full', SortOrder::Descending, Sex::Female, false);
+        return $this->data->parentsQuery('full', SortDirection::Descending, Sex::Female, false);
     }
 
     public function oldestMotherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', SortOrder::Descending, Sex::Female, (bool) $show_years);
+        return $this->data->parentsQuery('age', SortDirection::Descending, Sex::Female, (bool) $show_years);
     }
 
     public function oldestMotherName(): string
     {
-        return $this->data->parentsQuery('name', SortOrder::Descending, Sex::Female, false);
+        return $this->data->parentsQuery('name', SortDirection::Descending, Sex::Female, false);
     }
 
     public function serverDate(): string
@@ -1566,20 +1568,20 @@ class Statistics
 
     public function statsChildren(): string
     {
-        $records = DB::table('families')
-            ->selectRaw('AVG(f_numchil) AS total')
-            ->selectRaw('ROUND((d_year + 49) / 100, 0) AS century')
-            ->join('dates', static function (JoinClause $join): void {
-                $join->on('d_file', '=', 'f_file')
-                    ->on('d_gid', '=', 'f_id');
-            })
-            ->where('f_file', '=', $this->tree->id())
-            ->where('d_julianday1', '<>', 0)
-            ->where('d_fact', '=', 'MARR')
+        $records = DB::query()
+            ->select(
+                DB::alias(DB::avg('f_numchil'), 'total'),
+                DB::alias(DB::raw('ROUND((d_year + 49) / 100, 0)'), 'century'),
+            )
+            ->from('families')
+            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+            ->whereEqual('f_file', $this->tree->id())
+            ->whereNotEqual('d_julianday1', 0)
+            ->whereEqual('d_fact', 'MARR')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->groupBy(['century'])
+            ->groupBy('century')
             ->orderBy('century')
-            ->get()
+            ->get(in: Collection::class)
             ->map(static fn (object $row): object => (object) [
                 'century' => (int) $row->century,
                 'total'   => (float) $row->total,
@@ -1691,60 +1693,53 @@ class Statistics
     {
         $out = [];
 
-        $male = DB::table('dates as married')
-            ->select([
-                new Expression('AVG(' . DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' - 182.5) / 365.25 AS age'),
-                new Expression('ROUND((' . DB::prefix('married.d_year') . ' + 49) / 100, 0) AS century'),
-                new Expression("'M' as sex"),
-            ])
-            ->join('families as fam', static function (JoinClause $join): void {
-                $join->on('fam.f_id', '=', 'married.d_gid')
-                    ->on('fam.f_file', '=', 'married.d_file');
-            })
-            ->join('dates as birth', static function (JoinClause $join): void {
-                $join->on('birth.d_gid', '=', 'fam.f_husb')
-                    ->on('birth.d_file', '=', 'fam.f_file');
-            })
+        $male = DB::query()
+            ->select(
+                DB::alias(DB::raw('AVG(married.d_julianday2 - birth.d_julianday1 - 182.5) / 365.25'), 'age'),
+                DB::alias(DB::raw('ROUND((married.d_year + 49) / 100, 0)'), 'century'),
+                DB::alias(DB::raw("'M'"), 'sex'),
+            )
+            ->from('dates as married')
+            ->join('families as fam', static fn (JoinOn $j): JoinOn => $j->on('fam.f_id', 'married.d_gid')->on('fam.f_file', 'married.d_file'))
+            ->join('dates as birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_gid', 'fam.f_husb')->on('birth.d_file', 'fam.f_file'))
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->where('married.d_file', '=', $this->tree->id())
-            ->where('married.d_fact', '=', 'MARR')
-            ->where('married.d_julianday1', '>', new Expression(DB::prefix('birth.d_julianday1')))
+            ->whereEqual('married.d_file', $this->tree->id())
+            ->whereEqual('married.d_fact', 'MARR')
+            ->whereGreaterThan('married.d_julianday1', DB::column('birth.d_julianday1'))
             ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->where('birth.d_fact', '=', 'BIRT')
-            ->where('birth.d_julianday1', '<>', 0)
-            ->groupBy(['century', 'sex']);
+            ->whereEqual('birth.d_fact', 'BIRT')
+            ->whereNotEqual('birth.d_julianday1', 0)
+            ->groupBy('century', 'sex');
 
-        $female = DB::table('dates as married')
-            ->select([
-                new Expression('ROUND(AVG(' . DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' - 182.5) / 365.25, 1) AS age'),
-                new Expression('ROUND((' . DB::prefix('married.d_year') . ' + 49) / 100, 0) AS century'),
-                new Expression("'F' as sex"),
-            ])
-            ->join('families as fam', static function (JoinClause $join): void {
-                $join->on('fam.f_id', '=', 'married.d_gid')
-                    ->on('fam.f_file', '=', 'married.d_file');
-            })
-            ->join('dates as birth', static function (JoinClause $join): void {
-                $join->on('birth.d_gid', '=', 'fam.f_wife')
-                    ->on('birth.d_file', '=', 'fam.f_file');
-            })
+        $female = DB::query()
+            ->select(
+                DB::alias(DB::raw('ROUND(AVG(married.d_julianday2 - birth.d_julianday1 - 182.5) / 365.25, 1)'), 'age'),
+                DB::alias(DB::raw('ROUND((married.d_year + 49) / 100, 0)'), 'century'),
+                DB::alias(DB::raw("'F'"), 'sex'),
+            )
+            ->from('dates as married')
+            ->join('families as fam', static fn (JoinOn $j): JoinOn => $j->on('fam.f_id', 'married.d_gid')->on('fam.f_file', 'married.d_file'))
+            ->join('dates as birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_gid', 'fam.f_wife')->on('birth.d_file', 'fam.f_file'))
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->where('married.d_file', '=', $this->tree->id())
-            ->where('married.d_fact', '=', 'MARR')
-            ->where('married.d_julianday1', '>', new Expression(DB::prefix('birth.d_julianday1')))
+            ->whereEqual('married.d_file', $this->tree->id())
+            ->whereEqual('married.d_fact', 'MARR')
+            ->whereGreaterThan('married.d_julianday1', DB::column('birth.d_julianday1'))
             ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
-            ->where('birth.d_fact', '=', 'BIRT')
-            ->where('birth.d_julianday1', '<>', 0)
-            ->groupBy(['century', 'sex']);
+            ->whereEqual('birth.d_fact', 'BIRT')
+            ->whereNotEqual('birth.d_julianday1', 0)
+            ->groupBy('century', 'sex');
 
-        $records = $male->unionAll($female)
-            ->orderBy('century')
-            ->get()
-            ->map(static fn (object $row): object => (object) [
+        $records = array_map(
+            static fn (object $row): object => (object) [
                 'age'     => (float) $row->age,
                 'century' => (int) $row->century,
                 'sex'     => $row->sex,
-            ]);
+            ],
+            $male
+                ->unionAll($female)
+                ->orderBy('century')
+                ->get(),
+        );
 
         foreach ($records as $record) {
             $out[$record->century][$record->sex] = $record->age;
@@ -1855,22 +1850,22 @@ class Statistics
 
     public function topAgeOfMarriage(): string
     {
-        return $this->data->ageOfMarriageQuery('age', SortOrder::Descending, 1);
+        return $this->data->ageOfMarriageQuery('age', SortDirection::Descending, 1);
     }
 
     public function topAgeOfMarriageFamilies(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('nolist', SortOrder::Descending, (int) $limit);
+        return $this->data->ageOfMarriageQuery('nolist', SortDirection::Descending, (int) $limit);
     }
 
     public function topAgeOfMarriageFamiliesList(string $limit = '10'): string
     {
-        return $this->data->ageOfMarriageQuery('list', SortOrder::Descending, (int) $limit);
+        return $this->data->ageOfMarriageQuery('list', SortDirection::Descending, (int) $limit);
     }
 
     public function topAgeOfMarriageFamily(): string
     {
-        return $this->data->ageOfMarriageQuery('name', SortOrder::Descending, 1);
+        return $this->data->ageOfMarriageQuery('name', SortDirection::Descending, 1);
     }
 
     public function topTenLargestFamily(string $limit = '10'): string
@@ -2535,61 +2530,61 @@ class Statistics
 
     public function youngestFather(): string
     {
-        return $this->data->parentsQuery('full', SortOrder::Ascending, Sex::Male, false);
+        return $this->data->parentsQuery('full', SortDirection::Ascending, Sex::Male, false);
     }
 
     public function youngestFatherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', SortOrder::Ascending, Sex::Male, (bool) $show_years);
+        return $this->data->parentsQuery('age', SortDirection::Ascending, Sex::Male, (bool) $show_years);
     }
 
     public function youngestFatherName(): string
     {
-        return $this->data->parentsQuery('name', SortOrder::Ascending, Sex::Male, false);
+        return $this->data->parentsQuery('name', SortDirection::Ascending, Sex::Male, false);
     }
 
     public function youngestMarriageFemale(): string
     {
-        return $this->data->marriageQuery('full', SortOrder::Ascending, Sex::Female, false);
+        return $this->data->marriageQuery('full', SortDirection::Ascending, Sex::Female, false);
     }
 
     public function youngestMarriageFemaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', SortOrder::Ascending, Sex::Female, (bool) $show_years);
+        return $this->data->marriageQuery('age', SortDirection::Ascending, Sex::Female, (bool) $show_years);
     }
 
     public function youngestMarriageFemaleName(): string
     {
-        return $this->data->marriageQuery('name', SortOrder::Ascending, Sex::Female, false);
+        return $this->data->marriageQuery('name', SortDirection::Ascending, Sex::Female, false);
     }
 
     public function youngestMarriageMale(): string
     {
-        return $this->data->marriageQuery('full', SortOrder::Ascending, Sex::Male, false);
+        return $this->data->marriageQuery('full', SortDirection::Ascending, Sex::Male, false);
     }
 
     public function youngestMarriageMaleAge(string $show_years = '0'): string
     {
-        return $this->data->marriageQuery('age', SortOrder::Ascending, Sex::Male, (bool) $show_years);
+        return $this->data->marriageQuery('age', SortDirection::Ascending, Sex::Male, (bool) $show_years);
     }
 
     public function youngestMarriageMaleName(): string
     {
-        return $this->data->marriageQuery('name', SortOrder::Ascending, Sex::Male, false);
+        return $this->data->marriageQuery('name', SortDirection::Ascending, Sex::Male, false);
     }
 
     public function youngestMother(): string
     {
-        return $this->data->parentsQuery('full', SortOrder::Ascending, Sex::Female, false);
+        return $this->data->parentsQuery('full', SortDirection::Ascending, Sex::Female, false);
     }
 
     public function youngestMotherAge(string $show_years = '0'): string
     {
-        return $this->data->parentsQuery('age', SortOrder::Ascending, Sex::Female, (bool) $show_years);
+        return $this->data->parentsQuery('age', SortDirection::Ascending, Sex::Female, (bool) $show_years);
     }
 
     public function youngestMotherName(): string
     {
-        return $this->data->parentsQuery('name', SortOrder::Ascending, Sex::Female, false);
+        return $this->data->parentsQuery('name', SortDirection::Ascending, Sex::Female, false);
     }
 }

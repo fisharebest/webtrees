@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -65,10 +66,10 @@ final class TreeExport extends AbstractCommand
      */
     private function autoCompleteTreeName(CompletionInput $input): array
     {
-        return DB::table('tree')
-            ->where('tree_name', 'LIKE', addcslashes($input->getCompletionValue(), '%_\\') . '%')
-            ->pluck('name')
-            ->all();
+        return DB::query()
+            ->from('tree')
+            ->whereLike('tree_name', addcslashes($input->getCompletionValue(), '%_\\') . '%')
+            ->pluck('name');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -95,9 +96,11 @@ final class TreeExport extends AbstractCommand
             return self::FAILURE;
         }
 
-        $tree = DB::table('gedcom')
-            ->where('gedcom_name', '=', $tree_name)
-            ->get()
+        $tree = DB::query()
+            ->select('*')
+            ->from('gedcom')
+            ->whereEqual('gedcom_name', $tree_name)
+            ->get(in: Collection::class)
             ->map(Tree::fromDB(...))
             ->first();
 

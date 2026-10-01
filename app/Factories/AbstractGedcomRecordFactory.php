@@ -48,11 +48,12 @@ abstract class AbstractGedcomRecordFactory
         // Caution - this cache can be overwritten by GedcomExportService
         return Registry::cache()
             ->array()
-            ->remember(self::class . $tree->id(), static fn (): Collection => DB::table('change')
-                ->where('gedcom_id', '=', $tree->id())
-                ->where('status', '=', ChangeStatus::Pending->value)
+            ->remember(self::class . $tree->id(), static fn (): Collection => DB::query()
+                ->from('change')
+                ->whereEqual('gedcom_id', $tree->id())
+                ->whereEqual('status', ChangeStatus::Pending->value)
                 ->orderBy('change_id')
-                ->pluck('new_gedcom', 'xref'));
+                ->pluck('new_gedcom', 'xref', in: Collection::class));
     }
 
     /**

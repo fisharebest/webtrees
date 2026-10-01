@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Family;
@@ -31,8 +32,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
@@ -57,49 +56,63 @@ class AdminService
      */
     public function countCommonXrefs(Tree $tree1, Tree $tree2): int
     {
-        $subquery1 = DB::table('change')
-            ->where('gedcom_id', '=', $tree1->id())
-            ->select(['xref AS xref1'])
-            ->union(DB::table('individuals')
-                ->where('i_file', '=', $tree1->id())
-                ->select(['i_id AS xref']))
-            ->union(DB::table('families')
-                ->where('f_file', '=', $tree1->id())
-                ->select(['f_id AS xref']))
-            ->union(DB::table('sources')
-                ->where('s_file', '=', $tree1->id())
-                ->select(['s_id AS xref']))
-            ->union(DB::table('media')
-                ->where('m_file', '=', $tree1->id())
-                ->select(['m_id AS xref']))
-            ->union(DB::table('other')
-                ->where('o_file', '=', $tree1->id())
-                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-                ->select(['o_id AS xref']));
+        $subquery1 = DB::query()
+            ->select('xref AS xref1')
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree1->id())
+            ->union(DB::query()
+                ->select('i_id AS xref')
+                ->from('individuals')
+                ->whereEqual('i_file', $tree1->id()))
+            ->union(DB::query()
+                ->select('f_id AS xref')
+                ->from('families')
+                ->whereEqual('f_file', $tree1->id()))
+            ->union(DB::query()
+                ->select('s_id AS xref')
+                ->from('sources')
+                ->whereEqual('s_file', $tree1->id()))
+            ->union(DB::query()
+                ->select('m_id AS xref')
+                ->from('media')
+                ->whereEqual('m_file', $tree1->id()))
+            ->union(DB::query()
+                ->select('o_id AS xref')
+                ->from('other')
+                ->whereEqual('o_file', $tree1->id())
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR']));
 
-        $subquery2 = DB::table('change')
-            ->where('gedcom_id', '=', $tree2->id())
-            ->select(['xref AS xref2'])
-            ->union(DB::table('individuals')
-                ->where('i_file', '=', $tree2->id())
-                ->select(['i_id AS xref']))
-            ->union(DB::table('families')
-                ->where('f_file', '=', $tree2->id())
-                ->select(['f_id AS xref']))
-            ->union(DB::table('sources')
-                ->where('s_file', '=', $tree2->id())
-                ->select(['s_id AS xref']))
-            ->union(DB::table('media')
-                ->where('m_file', '=', $tree2->id())
-                ->select(['m_id AS xref']))
-            ->union(DB::table('other')
-                ->where('o_file', '=', $tree2->id())
-                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-                ->select(['o_id AS xref']));
+        $subquery2 = DB::query()
+            ->select('xref AS xref2')
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree2->id())
+            ->union(DB::query()
+                ->select('i_id AS xref')
+                ->from('individuals')
+                ->whereEqual('i_file', $tree2->id()))
+            ->union(DB::query()
+                ->select('f_id AS xref')
+                ->from('families')
+                ->whereEqual('f_file', $tree2->id()))
+            ->union(DB::query()
+                ->select('s_id AS xref')
+                ->from('sources')
+                ->whereEqual('s_file', $tree2->id()))
+            ->union(DB::query()
+                ->select('m_id AS xref')
+                ->from('media')
+                ->whereEqual('m_file', $tree2->id()))
+            ->union(DB::query()
+                ->select('o_id AS xref')
+                ->from('other')
+                ->whereEqual('o_file', $tree2->id())
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR']));
 
         return DB::query()
-            ->fromSub($subquery1, 'sub1')
-            ->joinSub($subquery2, 'sub2', 'xref1', '=', 'xref2')
+            ->withCte('sub1', $subquery1)
+            ->withCte('sub2', $subquery2)
+            ->from('sub1')
+            ->join('sub2', static fn (JoinOn $j): JoinOn => $j->on('sub1.xref1', 'sub2.xref2'))
             ->count();
     }
 
@@ -113,13 +126,13 @@ class AdminService
         // Will need to wait for a "repositories" table.
         $repositories = [];
 
-        $sources = DB::table('sources')
-            ->where('s_file', '=', $tree->id())
-            ->groupBy(['s_name'])
-            ->having(new Expression('COUNT(s_id)'), '>', '1')
-            ->select([new Expression(DB::groupConcat('s_id') . ' AS xrefs')])
+        $sources = DB::query()
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id())
+            ->groupBy('s_name')
+            ->havingRaw('COUNT(s_id) > ?', [1])
             ->orderBy('xrefs')
-            ->pluck('xrefs')
+            ->pluck(DB::groupConcat('s_id'), in: Collection::class)
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Source => Registry::sourceFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
@@ -131,43 +144,41 @@ class AdminService
             return implode(',', array_unique($array));
         };
 
-        $individuals = DB::table('dates')
-            ->join('name', static function (JoinClause $join): void {
-                $join
-                    ->on('d_file', '=', 'n_file')
-                    ->on('d_gid', '=', 'n_id');
-            })
-            ->where('d_file', '=', $tree->id())
+        $individuals = DB::query()
+            ->from('dates')
+            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'n_file')->on('d_gid', 'n_id'))
+            ->whereEqual('d_file', $tree->id())
             ->whereIn('d_fact', ['BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI'])
-            ->groupBy(['d_year', 'd_month', 'd_day', 'd_type', 'd_fact', 'n_type', 'n_full'])
-            ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', '1')
-            ->select([new Expression(DB::groupConcat('d_gid') . ' AS xrefs')])
+            ->groupBy('d_year', 'd_month', 'd_day', 'd_type', 'd_fact', 'n_type', 'n_full')
+            ->havingRaw('COUNT(DISTINCT d_gid) > ?', [1])
             ->orderBy('xrefs')
-            ->pluck('xrefs')
+            ->pluck(DB::groupConcat('d_gid'), in: Collection::class)
             ->map($distinct_order_by)
             ->unique()
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Individual => Registry::individualFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
-        $families = DB::table('families')
-            ->where('f_file', '=', $tree->id())
-            ->groupBy([new Expression('LEAST(f_husb, f_wife)')])
-            ->groupBy([new Expression('GREATEST(f_husb, f_wife)')])
-            ->having(new Expression('COUNT(f_id)'), '>', '1')
-            ->select([new Expression(DB::groupConcat('f_id') . ' AS xrefs')])
+        $families = DB::query()
+            ->from('families')
+            ->whereEqual('f_file', $tree->id())
+            ->groupBy(
+                DB::least(DB::column('f_husb'), DB::column('f_wife')),
+                DB::greatest(DB::column('f_husb'), DB::column('f_wife')),
+            )
+            ->havingRaw('COUNT(f_id) > ?', [1])
             ->orderBy('xrefs')
-            ->pluck('xrefs')
+            ->pluck(DB::groupConcat('f_id'), in: Collection::class)
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Family => Registry::familyFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
-        $media = DB::table('media_file')
-            ->where('m_file', '=', $tree->id())
-            ->where('descriptive_title', '<>', '')
-            ->groupBy(['descriptive_title'])
-            ->having(new Expression('COUNT(DISTINCT m_id)'), '>', '1')
-            ->select([new Expression(DB::groupConcat('m_id') . ' AS xrefs')])
+        $media = DB::query()
+            ->from('media_file')
+            ->whereEqual('m_file', $tree->id())
+            ->whereNotEqual('descriptive_title', '')
+            ->groupBy('descriptive_title')
+            ->havingRaw('COUNT(DISTINCT m_id) > ?', [1])
             ->orderBy('xrefs')
-            ->pluck('xrefs')
+            ->pluck(DB::groupConcat('m_id'), in: Collection::class)
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Media => Registry::mediaFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
@@ -183,58 +194,68 @@ class AdminService
     /**
      * Every XREF used by this tree and also used by some other tree
      *
-     *
      * @return array<string>
      */
     public function duplicateXrefs(Tree $tree): array
     {
-        $subquery1 = DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->select(['i_id AS xref', new Expression("'INDI' AS type")])
-            ->union(DB::table('families')
-                ->where('f_file', '=', $tree->id())
-                ->select(['f_id AS xref', new Expression("'FAM' AS type")]))
-            ->union(DB::table('sources')
-                ->where('s_file', '=', $tree->id())
-                ->select(['s_id AS xref', new Expression("'SOUR' AS type")]))
-            ->union(DB::table('media')
-                ->where('m_file', '=', $tree->id())
-                ->select(['m_id AS xref', new Expression("'OBJE' AS type")]))
-            ->union(DB::table('other')
-                ->where('o_file', '=', $tree->id())
-                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-                ->select(['o_id AS xref', 'o_type AS type']));
+        $subquery1 = DB::query()
+            ->select('i_id AS xref', DB::alias(DB::value('INDI'), 'type'))
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id())
+            ->union(DB::query()
+                ->select('f_id AS xref', DB::alias(DB::value('FAM'), 'type'))
+                ->from('families')
+                ->whereEqual('f_file', $tree->id()))
+            ->union(DB::query()
+                ->select('s_id AS xref', DB::alias(DB::value('SOUR'), 'type'))
+                ->from('sources')
+                ->whereEqual('s_file', $tree->id()))
+            ->union(DB::query()
+                ->select('m_id AS xref', DB::alias(DB::value('OBJE'), 'type'))
+                ->from('media')
+                ->whereEqual('m_file', $tree->id()))
+            ->union(DB::query()
+                ->select('o_id AS xref', 'o_type AS type')
+                ->from('other')
+                ->whereEqual('o_file', $tree->id())
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR']));
 
-        $subquery2 = DB::table('change')
-            ->where('gedcom_id', '<>', $tree->id())
-            ->select(['xref AS other_xref'])
-            ->union(DB::table('individuals')
-                ->where('i_file', '<>', $tree->id())
-                ->select(['i_id AS xref']))
-            ->union(DB::table('families')
-                ->where('f_file', '<>', $tree->id())
-                ->select(['f_id AS xref']))
-            ->union(DB::table('sources')
-                ->where('s_file', '<>', $tree->id())
-                ->select(['s_id AS xref']))
-            ->union(DB::table('media')
-                ->where('m_file', '<>', $tree->id())
-                ->select(['m_id AS xref']))
-            ->union(DB::table('other')
-                ->where('o_file', '<>', $tree->id())
-                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
-                ->select(['o_id AS xref']));
+        $subquery2 = DB::query()
+            ->select('xref AS other_xref')
+            ->from('change')
+            ->whereNotEqual('gedcom_id', $tree->id())
+            ->union(DB::query()
+                ->select('i_id AS xref')
+                ->from('individuals')
+                ->whereNotEqual('i_file', $tree->id()))
+            ->union(DB::query()
+                ->select('f_id AS xref')
+                ->from('families')
+                ->whereNotEqual('f_file', $tree->id()))
+            ->union(DB::query()
+                ->select('s_id AS xref')
+                ->from('sources')
+                ->whereNotEqual('s_file', $tree->id()))
+            ->union(DB::query()
+                ->select('m_id AS xref')
+                ->from('media')
+                ->whereNotEqual('m_file', $tree->id()))
+            ->union(DB::query()
+                ->select('o_id AS xref')
+                ->from('other')
+                ->whereNotEqual('o_file', $tree->id())
+                ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR']));
 
         return DB::query()
-            ->fromSub($subquery1, 'sub1')
-            ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
-            ->pluck('type', 'xref')
-            ->all();
+            ->withCte('sub1', $subquery1)
+            ->withCte('sub2', $subquery2)
+            ->from('sub1')
+            ->join('sub2', static fn (JoinOn $j): JoinOn => $j->on('sub2.other_xref', 'sub1.xref'))
+            ->pluck('sub1.type', 'sub1.xref');
     }
 
     /**
      * A list of GEDCOM files in the data folder.
-     *
      *
      * @return Collection<int,string>
      */

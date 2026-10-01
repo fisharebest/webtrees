@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Http\Controllers\MapDataSave;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -29,5 +31,41 @@ class MapDataSaveTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(MapDataSave::class));
+    }
+
+    public function testCreatesOnlyNewPlacesUnderEachParent(): void
+    {
+        self::createDatabase();
+
+        $controller   = new MapDataSave();
+        $root_request = self::createRequest(HttpRequestMethod::POST->value, params: [
+            'parent_id'      => '',
+            'place_id'       => '',
+            'new_place_lati' => '',
+            'new_place_long' => '',
+            'new_place_name' => 'Country',
+            'url'            => 'https://webtrees.test/',
+        ]);
+
+        $controller->post($root_request);
+        $controller->post($root_request);
+
+        $parent_id = DB::query(table: 'place_location')->whereEqual('place', 'Country')->value('id');
+        self::assertIsInt($parent_id);
+        self::assertSame(1, DB::query(table: 'place_location')->count());
+
+        $child_request = self::createRequest(HttpRequestMethod::POST->value, params: [
+            'parent_id'      => (string) $parent_id,
+            'place_id'       => '',
+            'new_place_lati' => '',
+            'new_place_long' => '',
+            'new_place_name' => 'Country',
+            'url'            => 'https://webtrees.test/',
+        ]);
+
+        $controller->post($child_request);
+        $controller->post($child_request);
+
+        self::assertSame(2, DB::query(table: 'place_location')->count());
     }
 }

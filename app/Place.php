@@ -69,9 +69,11 @@ class Place
         $parts = new Collection();
 
         while ($id !== 0) {
-            $row = DB::table('places')
-                ->where('p_file', '=', $tree->id())
-                ->where('p_id', '=', $id)
+            $row = DB::query()
+                ->select('*')
+                ->from('places')
+                ->whereEqual('p_file', $tree->id())
+                ->whereEqual('p_id', $id)
                 ->first();
 
             if (is_object($row)) {
@@ -109,24 +111,23 @@ class Place
 
             $parent_place_id = $this->parent()->id();
 
-            $place_id = (int) DB::table('places')
-                ->where('p_file', '=', $this->tree->id())
-                ->where('p_place', '=', mb_substr($this->parts->first(), 0, 120))
-                ->where('p_parent_id', '=', $parent_place_id)
+            $place_id = (int) DB::query()
+                ->from('places')
+                ->whereEqual('p_file', $this->tree->id())
+                ->whereEqual('p_place', mb_substr($this->parts->first(), 0, 120))
+                ->whereEqual('p_parent_id', $parent_place_id)
                 ->value('p_id');
 
             if ($place_id === 0) {
                 $place = $this->parts->first();
 
-                DB::table('places')->insert([
+                $place_id = DB::query(table: 'places')->insertGetId([
                     'p_file'        => $this->tree->id(),
                     'p_place'       => mb_substr($place, 0, 120),
                     'p_parent_id'   => $parent_place_id,
                     'p_std_soundex' => Soundex::russell($place),
                     'p_dm_soundex'  => Soundex::daitchMokotoff($place),
-                ]);
-
-                $place_id = DB::lastInsertId();
+                ], 'p_id');
             }
 
             return $place_id;
@@ -141,7 +142,6 @@ class Place
     /**
      * Extract the locality (first parts) of a place name.
      *
-     *
      * @return Collection<int,string>
      */
     public function firstParts(int $n): Collection
@@ -151,7 +151,6 @@ class Place
 
     /**
      * Extract the country (last parts) of a place name.
-     *
      *
      * @return Collection<int,string>
      */
@@ -173,10 +172,11 @@ class Place
             $parent_text = '';
         }
 
-        return DB::table('places')
-            ->where('p_file', '=', $this->tree->id())
-            ->where('p_parent_id', '=', $this->id())
-            ->pluck('p_place')
+        return DB::query()
+            ->from('places')
+            ->whereEqual('p_file', $this->tree->id())
+            ->whereEqual('p_parent_id', $this->id())
+            ->pluck('p_place', in: Collection::class)
             ->sort(I18N::compare(...))
             ->map(fn (string $place): Place => new self($place . $parent_text, $this->tree))
             ->all();

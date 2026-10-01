@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests;
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\DB;
@@ -73,7 +74,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected static function createDatabase(): void
     {
         DB::connect(
-            driver: DB::SQLITE,
+            driver: Driver::SQLite->value,
             host: '',
             port: '',
             database: ':memory:',
@@ -92,6 +93,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         // Create config data
         $migration_service->seedDatabase();
+
+        Registry::cache(new CacheFactory());
     }
 
     /**
@@ -182,18 +185,18 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
 
         // Creating a new tree will create a header and one individual
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('link')->where('l_file', '=', $tree->id())->delete();
-        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-        DB::table('media')->where('m_file', '=', $tree->id())->delete();
+        DB::query(table: 'individuals')->whereEqual('i_file', $tree->id())->delete();
+        DB::query(table: 'families')->whereEqual('f_file', $tree->id())->delete();
+        DB::query(table: 'sources')->whereEqual('s_file', $tree->id())->delete();
+        DB::query(table: 'other')->whereEqual('o_file', $tree->id())->delete();
+        DB::query(table: 'places')->whereEqual('p_file', $tree->id())->delete();
+        DB::query(table: 'placelinks')->whereEqual('pl_file', $tree->id())->delete();
+        DB::query(table: 'name')->whereEqual('n_file', $tree->id())->delete();
+        DB::query(table: 'dates')->whereEqual('d_file', $tree->id())->delete();
+        DB::query(table: 'change')->whereEqual('gedcom_id', $tree->id())->delete();
+        DB::query(table: 'link')->whereEqual('l_file', $tree->id())->delete();
+        DB::query(table: 'media_file')->whereEqual('m_file', $tree->id())->delete();
+        DB::query(table: 'media')->whereEqual('m_file', $tree->id())->delete();
 
         $records = preg_split('/\n(?=0)/', file_get_contents(__DIR__ . '/data/' . $gedcom_file));
 

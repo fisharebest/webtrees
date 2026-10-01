@@ -111,7 +111,6 @@ class Session
     /**
      * Read a value from the session and remove it.
      *
-     *
      * @return mixed
      */
     public static function pull(string $name)
@@ -124,7 +123,6 @@ class Session
 
     /**
      * After any change in authentication level, we should use a new session ID.
-     *
      *
      * @return void
      */

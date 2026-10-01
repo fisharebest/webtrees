@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -84,9 +85,11 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
+        return !DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE)
             ->exists();
     }
 
@@ -97,10 +100,12 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $notes = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
-            ->get()
+        $notes = DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE)
+            ->get(in: Collection::class)
             ->map(Registry::noteFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 

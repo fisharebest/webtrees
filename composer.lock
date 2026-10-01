@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45a47386328ba10b8663a2b77d7f1d8a",
+    "content-hash": "1bcd9a386764b7e1bfa0c5d87064c8ba",
     "packages": [
         {
             "name": "brick/math",
@@ -501,6 +501,114 @@
             "time": "2021-09-03T12:13:28+00:00"
         },
         {
+            "name": "fisharebest/collection",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://codeberg.org/fisharebest/collection.git",
+                "reference": "d13f1a705d431bfcd799f2f1647eecf16f9cb924"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://codeberg.org/api/v1/repos/fisharebest/collection/archive/d13f1a705d431bfcd799f2f1647eecf16f9cb924.zip",
+                "reference": "d13f1a705d431bfcd799f2f1647eecf16f9cb924",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "ext-pcov": "*",
+                "infection/infection": "^0.34",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^12.5|^13.3",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk"
+                }
+            ],
+            "description": "Collection-type objects for lists and maps.",
+            "support": {
+                "issues": "https://codeberg.org/fisharebest/collection/issues",
+                "source": "https://codeberg.org/fisharebest/collection/branch/main"
+            },
+            "time": "2026-10-16T05:04:33+00:00"
+        },
+        {
+            "name": "fisharebest/database",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://codeberg.org/fisharebest/database.git",
+                "reference": "a0ab3a2ec973a78ebdda681d21f49e958417457b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://codeberg.org/api/v1/repos/fisharebest/database/archive/a0ab3a2ec973a78ebdda681d21f49e958417457b.zip",
+                "reference": "a0ab3a2ec973a78ebdda681d21f49e958417457b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "ext-pcov": "*",
+                "ext-pdo_firebird": "*",
+                "ext-pdo_mysql": "*",
+                "ext-pdo_pgsql": "*",
+                "ext-pdo_sqlite": "*",
+                "ext-pdo_sqlsrv": "*",
+                "infection/infection": "^0.34",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpcov": "^11.0|^13.1",
+                "phpunit/phpunit": "^12.5|^13.3",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "polyfills/SortDirection.php"
+                ],
+                "psr-4": {
+                    "Fisharebest\\Database\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk"
+                }
+            ],
+            "description": "Database abstraction layer",
+            "support": {
+                "issues": "https://codeberg.org/fisharebest/database/issues",
+                "source": "https://codeberg.org/fisharebest/database/branch/main"
+            },
+            "time": "2026-11-12T00:17:43+00:00"
+        },
+        {
             "name": "fisharebest/ext-calendar",
             "version": "2.6.0",
             "source": {
@@ -571,16 +679,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v13.40.0",
+            "version": "v13.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "3170236055eb67e860b9d2c01c664d1876fa1652"
+                "reference": "ac19e4e945513b1bad6744f8ea2626974a036bc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/3170236055eb67e860b9d2c01c664d1876fa1652",
-                "reference": "3170236055eb67e860b9d2c01c664d1876fa1652",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/ac19e4e945513b1bad6744f8ea2626974a036bc0",
+                "reference": "ac19e4e945513b1bad6744f8ea2626974a036bc0",
                 "shasum": ""
             },
             "require": {
@@ -627,11 +735,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-10-30T21:24:02+00:00"
+            "time": "2026-11-04T19:47:22+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v13.40.0",
+            "version": "v13.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -677,7 +785,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v13.40.0",
+            "version": "v13.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -739,7 +847,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v13.40.0",
+            "version": "v13.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -861,7 +969,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v13.40.0",
+            "version": "v13.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -907,7 +1015,7 @@
         },
         {
             "name": "illuminate/reflection",
-            "version": "v13.40.0",
+            "version": "v13.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/reflection.git",
@@ -1037,16 +1145,16 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "2d5869a838bbcf37e0d8b0568fc41914e81374b5"
+                "reference": "2bfb44e8af009b553ed2c060c94b0bc3c67b4769"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/2d5869a838bbcf37e0d8b0568fc41914e81374b5",
-                "reference": "2d5869a838bbcf37e0d8b0568fc41914e81374b5",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/2bfb44e8af009b553ed2c060c94b0bc3c67b4769",
+                "reference": "2bfb44e8af009b553ed2c060c94b0bc3c67b4769",
                 "shasum": ""
             },
             "require": {
@@ -1094,7 +1202,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2026-09-22T14:32:34+00:00"
+            "time": "2026-10-14T21:20:29+00:00"
         },
         {
             "name": "league/commonmark",
@@ -8895,16 +9003,16 @@
         },
         {
             "name": "sebastian/version",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "9e935a16187e14f39b0e79910dabd614972cdb26"
+                "reference": "a8b6643a19ba6c8125a473623e45fb8cbb0e4159"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/9e935a16187e14f39b0e79910dabd614972cdb26",
-                "reference": "9e935a16187e14f39b0e79910dabd614972cdb26",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/a8b6643a19ba6c8125a473623e45fb8cbb0e4159",
+                "reference": "a8b6643a19ba6c8125a473623e45fb8cbb0e4159",
                 "shasum": ""
             },
             "require": {
@@ -8937,7 +9045,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/version/issues",
                 "security": "https://github.com/sebastianbergmann/version/security/policy",
-                "source": "https://github.com/sebastianbergmann/version/tree/6.0.1"
+                "source": "https://github.com/sebastianbergmann/version/tree/6.0.2"
             },
             "funding": [
                 {
@@ -8957,7 +9065,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-04T05:50:08+00:00"
+            "time": "2026-11-09T06:30:55+00:00"
         },
         {
             "name": "spaze/phpstan-disallowed-calls",
@@ -9215,7 +9323,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "fisharebest/collection": 20,
+        "fisharebest/database": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

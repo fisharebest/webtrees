@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\FamilyComparator;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
@@ -35,8 +38,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -193,7 +195,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     /**
      * Find all ancestors of an individual, indexed by the Sosa-Stradonitz number.
      *
-     *
      * @return array<Individual>
      */
     private function allAncestors(Individual $individual): array
@@ -223,29 +224,27 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
     /**
      * Fetch all individuals with a matching surname
      *
-     *
      * @return array<Individual>
      */
     private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array
     {
-        $individuals = DB::table('individuals')
-            ->join('name', static function (JoinClause $join): void {
-                $join
-                    ->on('name.n_file', '=', 'individuals.i_file')
-                    ->on('name.n_id', '=', 'individuals.i_id');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('n_type', '<>', '_MARNM')
-            ->where(static function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
-                $query
-                    ->where('n_surn', '=', $surname)
-                    ->orWhere('n_surname', '=', $surname);
+        $individuals = DB::query()
+            ->select('individuals.*')
+            ->distinct()
+            ->from('individuals')
+            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_file', 'i_file')->on('n_id', 'i_id'))
+            ->whereEqual('i_file', $tree->id())
+            ->whereNotEqual('n_type', '_MARNM')
+            ->whereNested(static function (Predicates $p) use ($surname, $soundex_dm, $soundex_std): Predicates {
+                $p = $p
+                    ->equal('n_surn', $surname)
+                    ->orEqual('n_surname', $surname);
 
                 if ($soundex_std) {
                     $sdx = Soundex::russell($surname);
                     if ($sdx !== '') {
                         foreach (explode(':', $sdx) as $value) {
-                            $query->orWhere('n_soundex_surn_std', 'LIKE', '%' . $value . '%');
+                            $p = $p->orLike('n_soundex_surn_std', '%' . $value . '%');
                         }
                     }
                 }
@@ -254,14 +253,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
                     $sdx = Soundex::daitchMokotoff($surname);
                     if ($sdx !== '') {
                         foreach (explode(':', $sdx) as $value) {
-                            $query->orWhere('n_soundex_surn_dm', 'LIKE', '%' . $value . '%');
+                            $p = $p->orLike('n_soundex_surn_dm', '%' . $value . '%');
                         }
                     }
                 }
+
+                return $p;
             })
-            ->distinct()
-            ->select(['individuals.*'])
-            ->get()
+            ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter())
             ->all();

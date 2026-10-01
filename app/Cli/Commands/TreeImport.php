@@ -65,10 +65,10 @@ final class TreeImport extends AbstractCommand
      */
     private function autoCompleteTreeName(CompletionInput $input): array
     {
-        return DB::table('tree')
-            ->where('tree_name', 'LIKE', addcslashes($input->getCompletionValue(), '%_\\') . '%')
-            ->pluck('name')
-            ->all();
+        return DB::query()
+            ->from('tree')
+            ->whereLike('tree_name', addcslashes($input->getCompletionValue(), '%_\\') . '%')
+            ->pluck('name');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -98,32 +98,32 @@ final class TreeImport extends AbstractCommand
 
         try {
             DB::transaction(function () use ($tree, $encoding, $keep_media, $word_wrapped_notes, $gedcom_file, $gedcom_media_path, $io, $output) {
-                DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
+                DB::query(table: 'gedcom')->whereEqual('gedcom_id', $tree->id())->update(['imported' => 0]);
                 $tree->setPreference('keep_media', $keep_media ? '1' : '0');
                 $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
                 $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
 
                 $queries = [
-                    'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
-                    'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
-                    'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
-                    'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
-                    'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
-                    'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
-                    'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
-                    'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
-                    'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
+                    'individuals' => DB::query(table: 'individuals')->whereEqual('i_file', $tree->id()),
+                    'families'    => DB::query(table: 'families')->whereEqual('f_file', $tree->id()),
+                    'sources'     => DB::query(table: 'sources')->whereEqual('s_file', $tree->id()),
+                    'other'       => DB::query(table: 'other')->whereEqual('o_file', $tree->id()),
+                    'places'      => DB::query(table: 'places')->whereEqual('p_file', $tree->id()),
+                    'placelinks'  => DB::query(table: 'placelinks')->whereEqual('pl_file', $tree->id()),
+                    'name'        => DB::query(table: 'name')->whereEqual('n_file', $tree->id()),
+                    'dates'       => DB::query(table: 'dates')->whereEqual('d_file', $tree->id()),
+                    'change'      => DB::query(table: 'change')->whereEqual('gedcom_id', $tree->id()),
                 ];
 
                 if ($keep_media) {
-                    $queries['link'] = DB::table('link')
-                        ->where('l_file', '=', $tree->id())
-                        ->where('l_type', '<>', 'OBJE');
+                    $queries['link'] = DB::query(table: 'link')
+                        ->whereEqual('l_file', $tree->id())
+                        ->whereNotEqual('l_type', 'OBJE');
                 } else {
                     $queries += [
-                        'link'       => DB::table('link')->where('l_file', '=', $tree->id()),
-                        'media_file' => DB::table('media_file')->where('m_file', '=', $tree->id()),
-                        'media'      => DB::table('media')->where('m_file', '=', $tree->id()),
+                        'link'       => DB::query(table: 'link')->whereEqual('l_file', $tree->id()),
+                        'media_file' => DB::query(table: 'media_file')->whereEqual('m_file', $tree->id()),
+                        'media'      => DB::query(table: 'media')->whereEqual('m_file', $tree->id()),
                     ];
                 }
 
@@ -165,7 +165,7 @@ final class TreeImport extends AbstractCommand
 
                 $output->writeln('');
 
-                DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
+                DB::query(table: 'gedcom')->whereEqual('gedcom_id', $tree->id())->update(['imported' => 1]);
             });
         } catch (Throwable $ex) {
             $io->error(message: $ex->getMessage());

@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Schema;
 
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Schema\SeedUserTable;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Schema\SeedUserTable;
 
 #[CoversClass(SeedUserTable::class)]
 class SeedUserTableTest extends TestCase
@@ -29,5 +30,33 @@ class SeedUserTableTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(SeedUserTable::class));
+    }
+
+    public function testRunRestoresDefaultRowWithoutDuplicatingIt(): void
+    {
+        self::createDatabase();
+
+        self::assertSame('DEFAULT_USER', DB::query()
+            ->from('user')
+            ->whereEqual('user_id', -1)
+            ->value('user_name'));
+
+        DB::query()
+            ->from('user')
+            ->whereEqual('user_id', -1)
+            ->update(['real_name' => 'Changed']);
+
+        $seed = new SeedUserTable();
+        $seed->run();
+        $seed->run();
+
+        self::assertSame('DEFAULT_USER', DB::query()
+            ->from('user')
+            ->whereEqual('user_id', -1)
+            ->value('real_name'));
+        self::assertSame(1, DB::query()
+            ->from('user')
+            ->whereEqual('user_id', -1)
+            ->count());
     }
 }

@@ -73,7 +73,6 @@ class ColorsTheme extends CloudsTheme implements ModuleGlobalInterface
     /**
      * Generate a list of items for the user menu.
      *
-     *
      * @return array<Menu>
      */
     public function userMenu(Tree|null $tree): array

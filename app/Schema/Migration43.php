@@ -29,16 +29,16 @@ class Migration43 implements MigrationInterface
     public function upgrade(): void
     {
         // Language was previously a tree-setting.
-        $language = DB::table('gedcom_setting')
-            ->where('setting_name', '=', 'LANGUAGE')
-            ->where('gedcom_id', '>', 0)
+        $language = DB::query()
+            ->from('gedcom_setting')
+            ->whereEqual('setting_name', 'LANGUAGE')
+            ->whereGreaterThan('gedcom_id', 0)
             ->value('setting_value');
 
         // Now it is a site-setting.
-        DB::table('site_setting')->updateOrInsert([
+        DB::query(table: 'site_setting')->upsert([
             'setting_name' => 'LANGUAGE',
-        ], [
             'setting_value' => $language ?? 'en-US',
-        ]);
+        ], ['setting_name'], ['setting_value']);
     }
 }

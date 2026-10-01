@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -54,7 +55,7 @@ use function view;
 
 final class SetupWizard implements RequestHandlerInterface
 {
-    private const string DEFAULT_DBTYPE = DB::MYSQL;
+    private const string DEFAULT_DBTYPE = Driver::MySQL->value;
     private const string DEFAULT_PREFIX = 'wt_';
     private const array  DEFAULT_DATA   = [
         'baseurl'  => '',
@@ -76,13 +77,6 @@ final class SetupWizard implements RequestHandlerInterface
         'wtemail'  => '',
     ];
 
-    private const array DEFAULT_PORTS = [
-        DB::MYSQL      => '3306',
-        DB::POSTGRESQL => '5432',
-        DB::SQLITE     => '',
-        DB::SQL_SERVER => '', // Do not use default, as it is valid to have no port number.
-    ];
-
     public function __construct(
         private readonly MigrationService $migration_service,
         private readonly LanguageFactory $language_factory,
@@ -98,7 +92,6 @@ final class SetupWizard implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-
         // Some functions need a cache, but we don't have one yet.
         Registry::cache(new CacheFactory());
 
@@ -124,7 +117,7 @@ final class SetupWizard implements RequestHandlerInterface
         // Only show database errors after the user has chosen a driver.
         if ($step >= 4) {
             $data['errors']   = $this->server_check_service->serverErrors($data['dbtype']);
-            $data['warnings'] = $this->server_check_service->serverWarnings($data['dbtype']);
+            $data['warnings'] = $this->server_check_service->serverWarnings();
         } else {
             $data['errors']   = $this->server_check_service->serverErrors();
             $data['warnings'] = $this->server_check_service->serverWarnings();
@@ -234,8 +227,17 @@ final class SetupWizard implements RequestHandlerInterface
      */
     private function step5Administrator(array $data): ResponseInterface
     {
+        $default_port = match (Driver::from($data['dbtype'])) {
+            Driver::MariaDB,
+            Driver::MySQL      => '3306',
+            Driver::PostgreSQL => '5432',
+            Driver::SQLite,
+            Driver::SqlServer,
+            Driver::Firebird   => '',
+        };
+
         // Use default port, if none specified.
-        $data['dbport'] = $data['dbport'] !== '' ? $data['dbport'] : self::DEFAULT_PORTS[$data['dbtype']];
+        $data['dbport'] = $data['dbport'] !== '' ? $data['dbport'] : $default_port;
 
         // Validate SSL certificate files exist when specified.
         foreach (['dbkey', 'dbcert', 'dbca'] as $key) {
@@ -351,11 +353,12 @@ final class SetupWizard implements RequestHandlerInterface
     {
         // Try to create the database, if it does not already exist.
         switch ($data['dbtype']) {
-            case DB::SQLITE:
+            case Driver::SQLite->value:
                 touch(Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite');
                 break;
 
-            case DB::MYSQL:
+            case Driver::MariaDB->value:
+            case Driver::MySQL->value:
                 DB::connect(
                     driver: $data['dbtype'],
                     host: $data['dbhost'],

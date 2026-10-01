@@ -19,83 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
+use Fisharebest\Database\DB as BaseDB;
+use Fisharebest\Database\Driver;
+use Fisharebest\Database\Query\AliasedExpression;
+use Fisharebest\Database\Query\Expression;
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Connection;
-use Illuminate\Database\Query\Builder as QueryBuilder;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use PDO;
-use PDOException;
-use RuntimeException;
 use SensitiveParameter;
 
-final class DB
+final class DB extends BaseDB
 {
-    // Supported drivers
-    public const string MARIADB    = 'mariadb';
-    public const string MYSQL      = 'mysql';
-    public const string POSTGRESQL = 'pgsql';
-    public const string SQLITE     = 'sqlite';
-    public const string SQL_SERVER = 'sqlsrv';
-    // Unsupported drivers ;-)
-    public const string FIREBIRD   = 'firebird';
-
-    private const array COLLATION_UTF8 = [
-        self::MARIADB    => 'utf8mb4_bin',
-        self::MYSQL      => 'utf8mb4_bin',
-        self::POSTGRESQL => 'und-x-icu',
-        self::SQLITE     => null,
-        self::SQL_SERVER => 'Latin1_General_100_BIN2_UTF8',
-        self::FIREBIRD   => 'UTF8',
-    ];
-
-    private const array REGEX_OPERATOR = [
-        self::MARIADB    => 'REGEXP',
-        self::MYSQL      => 'REGEXP',
-        self::POSTGRESQL => '~',
-        self::SQLITE     => 'REGEXP',
-        self::SQL_SERVER => 'REGEXP',
-        self::FIREBIRD   => '~',
-    ];
-
-    private const array GROUP_CONCAT_FUNCTION = [
-        self::MARIADB    => 'GROUP_CONCAT(%s)',
-        self::MYSQL      => 'GROUP_CONCAT(%s)',
-        self::POSTGRESQL => "STRING_AGG(%s, ',')",
-        self::SQLITE     => 'GROUP_CONCAT(%s)',
-        self::SQL_SERVER => "STRING_AGG(%s, ',')",
-        self::FIREBIRD   => 'LIST(%s)',
-    ];
-
-    private const array DRIVER_INITIALIZATION = [
-        self::MARIADB    =>
-            'SET NAMES utf8mb4;' .
-            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
-            "SET TIME_ZONE            := '+00:00';" .
-            'SET SQL_BIG_SELECTS      := 1;' .
-            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
-        self::MYSQL      =>
-            'SET NAMES utf8mb4;' .
-            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
-            "SET TIME_ZONE            := '+00:00';" .
-            'SET SQL_BIG_SELECTS      := 1;' .
-            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
-        self::POSTGRESQL =>
-            "SET timezone  = 'UTC';" .
-            "SET datestyle = 'ISO, YMD';",
-        self::SQLITE     =>
-            'PRAGMA journal_mode = WAL;' .
-            'PRAGMA foreign_keys = ON;' .
-            'PRAGMA synchronous  = NORMAL;' .
-            'PRAGMA busy_timeout = 5000;' .
-            'PRAGMA cache_size   = -16000;',
-        self::SQL_SERVER =>
-            'SET language us_english;', // For timestamp columns
-        self::FIREBIRD   =>
-            'SET NAMES UTF8;',
-    ];
-
     public static function connect(
         #[SensitiveParameter]
         string $driver,
@@ -120,14 +54,11 @@ final class DB
         #[SensitiveParameter]
         bool $verify_certificate,
     ): void {
-        $options = [
-            // Some drivers do this and some don't. Make them consistent.
-            PDO::ATTR_STRINGIFY_FETCHES => true,
-        ];
+        $options = [];
 
         // MySQL/MariaDB support encrypted connections
         if (
-            ($driver === self::MYSQL || $driver === self::MARIADB) &&
+            ($driver === Driver::MySQL->value || $driver === Driver::MariaDB->value) &&
             $key !== '' && $certificate !== ''
         ) {
             $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $verify_certificate;
@@ -139,7 +70,7 @@ final class DB
             }
         }
 
-        if ($driver === self::SQLITE && $database !== ':memory:') {
+        if ($driver === Driver::SQLite->value && $database !== ':memory:') {
             $database = Webtrees::ROOT_DIR . 'data/' . $database . '.sqlite';
         }
 
@@ -158,43 +89,61 @@ final class DB
         ]);
         $capsule->setAsGlobal();
 
-        // Eager-load the connection to prevent database credentials appearing in error logs.
-        try {
-            self::pdo();
-        } catch (PDOException $exception) {
-            throw new RuntimeException($exception->getMessage());
-        }
+        parent::attach(pdo: Manager::connection()->getPdo(), prefix: $prefix);
 
-        $sql = self::DRIVER_INITIALIZATION[$driver];
+        $sql = match (Driver::from($driver)) {
+            Driver::MariaDB,
+            Driver::MySQL      =>
+                'SET NAMES utf8mb4;' .
+                "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+                "SET TIME_ZONE            := '+00:00';" .
+                'SET SQL_BIG_SELECTS      := 1;' .
+                'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+            Driver::PostgreSQL =>
+                "SET timezone  = 'UTC';" .
+                "SET datestyle = 'ISO, YMD';",
+            Driver::SQLite     =>
+                'PRAGMA journal_mode = WAL;' .
+                'PRAGMA foreign_keys = ON;' .
+                'PRAGMA synchronous  = NORMAL;' .
+                'PRAGMA busy_timeout = 5000;' .
+                'PRAGMA cache_size   = -16000;',
+            Driver::SqlServer  =>
+            'SET language us_english;', // For timestamp columns
+            Driver::Firebird   =>
+            'SET NAMES UTF8;',
+        };
 
         self::exec($sql);
     }
 
+    /**
+     * Some code relies on a case-sensitive collation in the database.
+     * Until we can convert MySQL/MariaDB databases, we need to cast them in queries.
+     */
+    public static function binaryColumn(string $column, string|null $alias = null): Expression|AliasedExpression
+    {
+        $driver = self::connection()->driver();
+
+        if ($driver === Driver::MariaDB || $driver === Driver::MySQL) {
+            if ($alias === null) {
+                return self::raw('CAST(' . $column . ' AS binary)');
+            }
+
+            return self::alias(self::raw('CAST(' . $column . ' AS binary)'), $alias);
+        }
+
+        return self::column($column);
+    }
+
     public static function driverName(): string
     {
-        return self::pdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
+        return parent::connection()->driver()->value;
     }
 
     public static function exec(string $sql): int|false
     {
-        return self::pdo()->exec($sql);
-    }
-
-    public static function lastInsertId(): int
-    {
-        $return = self::pdo()->lastInsertId();
-
-        if ($return === false) {
-            throw new RuntimeException('Unable to retrieve last insert ID');
-        }
-
-        // All IDs are integers in our schema.
-        return (int) $return;
-    }
-
-    private static function pdo(): PDO
-    {
-        return Manager::connection()->getPdo();
+        return parent::connection()->pdo()->exec($sql);
     }
 
     /**
@@ -204,125 +153,17 @@ final class DB
      */
     public static function prefix(string $identifier): string
     {
-        return Manager::connection()->getTablePrefix() . $identifier;
-    }
-
-    public static function collation(): string|null
-    {
-        return self::COLLATION_UTF8[self::driverName()];
-    }
-
-    /**
-     * SQL-Server needs to be told that we are going to insert into an identity column.
-     *
-     * @param non-empty-string $table
-     * @param Closure(): void  $callback
-     */
-    public static function identityInsert(string $table, Closure $callback): void
-    {
-        if (self::driverName() === self::SQL_SERVER) {
-            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
-        }
-
-        $callback();
-
-        if (self::driverName() === self::SQL_SERVER) {
-            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
-        }
+        return parent::connection()->prefix($identifier);
     }
 
     public static function rollBack(): void
     {
-        Manager::connection()->rollBack();
+        parent::connection()->rollBack();
     }
 
-    /**
-     * @param list<string> $expressions
-     *
-     * @internal
-     *
-     */
-    public static function concat(array $expressions): string
-    {
-        if (self::driverName() === self::SQL_SERVER) {
-            return 'CONCAT(' . implode(', ', $expressions) . ')';
-        }
-
-        // ANSI standard.  MySQL uses this with ANSI mode
-        return '(' . implode(' || ', $expressions) . ')';
-    }
-
-    /**
-     * @internal
-     */
-    public static function iLike(): string
-    {
-        if (self::driverName() === self::POSTGRESQL) {
-            return 'ILIKE';
-        }
-
-        return 'LIKE';
-    }
-
-    /**
-     * @internal
-     */
-    public static function groupConcat(string $column): string
-    {
-        return sprintf(self::GROUP_CONCAT_FUNCTION[self::driverName()], $column);
-    }
-
-    /**
-     * @param literal-string $column
-     * @param literal-string|null $alias
-     * @return Expression<literal-string>
-     */
-    public static function binaryColumn(string $column, string|null $alias = null): Expression
-    {
-        if (self::driverName() === self::MYSQL || self::driverName() === self::MARIADB) {
-            $sql = 'CAST(' . $column . ' AS binary)';
-        } else {
-            $sql = $column;
-        }
-
-        if ($alias !== null) {
-            $sql .= ' AS ' . $alias;
-        }
-
-        return new Expression($sql);
-    }
-
-    public static function regexOperator(): string
-    {
-        return self::REGEX_OPERATOR[self::driverName()];
-    }
-
-    public static function query(): QueryBuilder
-    {
-        return Manager::connection()->query();
-    }
-
-    public static function schema(): SchemaBuilder
+    public static function schemaBuilder(): SchemaBuilder
     {
         return Manager::schema();
-    }
-
-    public static function table(string $table): QueryBuilder
-    {
-        return Manager::connection()->table(table: $table);
-    }
-
-    /**
-     * Execute a callback within a transaction, retrying on concurrency errors.
-     *
-     * @template T
-     * @param Closure(): T $callback
-     *
-     * @return T
-     */
-    public static function transaction(Closure $callback, int $attempts = 1): mixed
-    {
-        return Manager::connection()->transaction($callback, $attempts);
     }
 
     public static function enableQueryLog(): void

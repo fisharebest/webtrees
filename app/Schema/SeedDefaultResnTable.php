@@ -26,27 +26,47 @@ use Fisharebest\Webtrees\DB;
  */
 class SeedDefaultResnTable implements SeedInterface
 {
-    private const array DEFAULT_RESTRICTIONS = [
-        'SSN'  => 'confidential',
-        'SOUR' => 'privacy',
-        'REPO' => 'privacy',
-        'SUBM' => 'confidential',
-        'SUBN' => 'confidential',
-    ];
-
     /**
      *  Run the seeder.
      */
     public function run(): void
     {
         // Set default privacy settings for new trees
-        foreach (self::DEFAULT_RESTRICTIONS as $tag_type => $resn) {
-            DB::table('default_resn')->updateOrInsert([
-                'gedcom_id' => -1,
-                'tag_type'  => $tag_type,
-            ], [
-                'resn'      => $resn,
-            ]);
-        }
+        DB::identityInsert(table: 'default_resn', callback: static function (): void {
+            DB::query(table: 'default_resn')->upsert([
+                'default_resn_id' => 1,
+                'gedcom_id'       => -1,
+                'tag_type'        => 'SSN',
+                'resn'            => 'confidential',
+            ], ['default_resn_id'], ['resn']);
+
+            DB::query(table: 'default_resn')->upsert([
+                'default_resn_id' => 2,
+                'gedcom_id'       => -1,
+                'tag_type'        => 'SOUR',
+                'resn'            => 'privacy',
+            ], ['default_resn_id'], ['resn']);
+
+            DB::query(table: 'default_resn')->upsert([
+                'default_resn_id' => 3,
+                'gedcom_id'       => -1,
+                'tag_type'        => 'REPO',
+                'resn'            => 'privacy',
+            ], ['default_resn_id'], ['resn']);
+
+            DB::query(table: 'default_resn')->upsert([
+                'default_resn_id' => 4,
+                'gedcom_id'       => -1,
+                'tag_type'        => 'SUBM',
+                'resn'            => 'confidential',
+            ], ['default_resn_id'], ['resn']);
+
+            DB::query(table: 'default_resn')->upsert([
+                'default_resn_id' => 5,
+                'gedcom_id'       => -1,
+                'tag_type'        => 'SUBN',
+                'resn'            => 'confidential',
+            ], ['default_resn_id'], ['resn']);
+        });
     }
 }

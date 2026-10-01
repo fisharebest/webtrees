@@ -57,7 +57,6 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
     /**
      * Create a header from a row in the database.
      *
-     *
      * @return Closure(object):Header
      */
     public function mapper(Tree $tree): Closure
@@ -82,10 +81,11 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Header::RECORD_TYPE)
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Header::RECORD_TYPE)
             ->value('o_gedcom');
     }
 }

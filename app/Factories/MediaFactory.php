@@ -57,7 +57,6 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
     /**
      * Create a media object from a row in the database.
      *
-     *
      * @return Closure(object):Media
      */
     public function mapper(Tree $tree): Closure
@@ -82,9 +81,10 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('media')
-            ->where('m_id', '=', $xref)
-            ->where('m_file', '=', $tree->id())
+        return DB::query()
+            ->from('media')
+            ->whereEqual('m_id', $xref)
+            ->whereEqual('m_file', $tree->id())
             ->value('m_gedcom');
     }
 }

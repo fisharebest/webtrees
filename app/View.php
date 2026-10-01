@@ -196,7 +196,6 @@ class View
     /**
      * Find the file for a view.
      *
-     *
      * @throws Exception
      */
     public function getFilenameForView(string $view_name): string

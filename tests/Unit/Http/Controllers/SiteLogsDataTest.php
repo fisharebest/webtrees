@@ -20,19 +20,25 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\SiteLogsData;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ResponseInterface;
 
 #[CoversClass(SiteLogsData::class)]
 class SiteLogsDataTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
+
     public function testResponse(): void
     {
         $request = self::createRequest(
@@ -40,7 +46,7 @@ class SiteLogsDataTest extends TestCase
             ['tree' => 'a', 'from' => 'b', 'to' => 'c', 'type' => 'd', 'text' => 'e', 'ip' => 'f', 'username' => 'g'],
         );
 
-        $query = self::createStub(Builder::class);
+        $query = DB::query()->select('*')->from('log');
 
         $site_logs_service = self::createStub(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query);

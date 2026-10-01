@@ -41,7 +41,6 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
     /**
      * Generate a list of items for the main menu.
      *
-     *
      * @return array<Menu>
      */
     public function genealogyMenu(Tree|null $tree): array

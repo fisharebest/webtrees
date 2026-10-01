@@ -20,28 +20,36 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\SiteLogsDelete;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Database\Query\Builder;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SiteLogsDelete::class)]
 class SiteLogsDeleteTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
+
     public function testResponse(): void
     {
         $request = self::createRequest();
 
-        $query = self::createStub(Builder::class);
-        $query->method('delete');
+        DB::query(table: 'log')->insert(['log_type' => 'edit', 'log_message' => 'delete me', 'ip_address' => '127.0.0.1']);
+        DB::query(table: 'log')->insert(['log_type' => 'auth', 'log_message' => 'keep me', 'ip_address' => '127.0.0.1']);
 
         $site_logs_service = self::createStub(SiteLogsService::class);
-        $site_logs_service->method('logsQuery')->willReturn($query);
+        $site_logs_service->method('logsQuery')->willReturn(DB::query()->select('log.*')->from('log')->whereEqual('log_type', 'edit'));
 
         $controller = new SiteLogsDelete($site_logs_service);
         $response   = $controller->post($request);
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
+        self::assertSame([], DB::query()->from('log')->whereEqual('log_message', 'delete me')->pluck('log_message'));
+        self::assertSame(['keep me'], DB::query()->from('log')->whereEqual('log_message', 'keep me')->pluck('log_message'));
     }
 }

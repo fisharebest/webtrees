@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Illuminate\Database\Query\Builder;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Illuminate\Support\Collection;
+use LogicException;
 
 use function max;
 use function min;
@@ -76,21 +78,23 @@ class PlaceLocation
             $place = mb_substr($place, 0, 120);
 
             if ($parent_id === null) {
-                $location_id = DB::table('place_location')
-                    ->where('place', '=', $place)
+                $location_id = DB::query()
+                    ->from('place_location')
+                    ->whereEqual('place', $place)
                     ->whereNull('parent_id')
                     ->value('id');
             } else {
-                $location_id = DB::table('place_location')
-                    ->where('place', '=', $place)
-                    ->where('parent_id', '=', $parent_id)
+                $location_id = DB::query()
+                    ->from('place_location')
+                    ->whereEqual('place', $place)
+                    ->whereEqual('parent_id', $parent_id)
                     ->value('id');
             }
 
-            $location_id ??= DB::table('place_location')->insertGetId([
-                    'parent_id' => $parent_id,
-                    'place'     => $place,
-                ]);
+            $location_id ??= DB::query(table: 'place_location')->insertGetId([
+                'parent_id' => $parent_id,
+                'place'     => $place,
+            ], 'id');
 
             return (int) $location_id;
         });
@@ -106,14 +110,16 @@ class PlaceLocation
 
         foreach ($this->parts->reverse() as $place) {
             if ($parent_id === null) {
-                $parent_id = DB::table('place_location')
+                $parent_id = DB::query()
+                    ->from('place_location')
                     ->whereNull('parent_id')
-                    ->where('place', '=', mb_substr($place, 0, 120))
+                    ->whereEqual('place', mb_substr($place, 0, 120))
                     ->value('id');
             } else {
-                $parent_id = DB::table('place_location')
-                    ->where('parent_id', '=', $parent_id)
-                    ->where('place', '=', mb_substr($place, 0, 120))
+                $parent_id = DB::query()
+                    ->from('place_location')
+                    ->whereEqual('parent_id', $parent_id)
+                    ->whereEqual('place', mb_substr($place, 0, 120))
                     ->value('id');
             }
 
@@ -136,9 +142,10 @@ class PlaceLocation
                 ];
             }
 
-            $row = DB::table('place_location')
-                ->where('id', '=', $this->id())
-                ->select(['latitude', 'longitude'])
+            $row = DB::query()
+                ->select('latitude', 'longitude')
+                ->from('place_location')
+                ->whereEqual('id', $this->id() ?? throw new LogicException('Missing place location ID'))
                 ->first();
 
             if ($row->latitude !== null) {
@@ -181,31 +188,31 @@ class PlaceLocation
      */
     public function boundingRectangle(): array
     {
-        if ($this->id() === null) {
+        $location_id = $this->id();
+
+        if ($location_id === null) {
             return [[-180.0, -90.0], [180.0, 90.0]];
         }
 
         // Find our own co-ordinates and those of any child places
-        $latitudes = DB::table('place_location')
+        $latitudes = DB::query()
+            ->from('place_location')
             ->whereNotNull('latitude')
-            ->where(function (Builder $query): void {
-                $query
-                    ->where('parent_id', '=', $this->id())
-                    ->orWhere('id', '=', $this->id());
-            })
-            ->groupBy(['latitude'])
-            ->pluck('latitude')
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->equal('parent_id', $location_id)
+                ->orEqual('id', $location_id))
+            ->groupBy('latitude')
+            ->pluck('latitude', in: Collection::class)
             ->map(static fn (string $x): float => (float) $x);
 
-        $longitudes = DB::table('place_location')
+        $longitudes = DB::query()
+            ->from('place_location')
             ->whereNotNull('longitude')
-            ->where(function (Builder $query): void {
-                $query
-                    ->where('parent_id', '=', $this->id())
-                    ->orWhere('id', '=', $this->id());
-            })
-            ->groupBy(['longitude'])
-            ->pluck('longitude')
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->equal('parent_id', $location_id)
+                ->orEqual('id', $location_id))
+            ->groupBy('longitude')
+            ->pluck('longitude', in: Collection::class)
             ->map(static fn (string $x): float => (float) $x);
 
         // No co-ordinates?  Use the parent place instead.

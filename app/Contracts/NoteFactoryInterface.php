@@ -36,7 +36,6 @@ interface NoteFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a note from a row in the database.
      *
-     *
      * @return Closure(object):Note
      */
     public function mapper(Tree $tree): Closure;

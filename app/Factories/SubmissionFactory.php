@@ -57,7 +57,6 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
     /**
      * Create a submission from a row in the database.
      *
-     *
      * @return Closure(object):Submission
      */
     public function mapper(Tree $tree): Closure
@@ -82,10 +81,11 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Submission::RECORD_TYPE)
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Submission::RECORD_TYPE)
             ->value('o_gedcom');
     }
 }

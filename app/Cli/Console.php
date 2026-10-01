@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli;
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -77,7 +78,7 @@ final class Console extends Application
             }
 
             DB::connect(
-                driver: $config['dbtype'] ?? DB::MYSQL,
+                driver: $config['dbtype'] ?? Driver::MySQL->value,
                 host: $config['dbhost'] ?? '',
                 port: $config['dbport'] ?? '',
                 database: $config['dbname'] ?? '',

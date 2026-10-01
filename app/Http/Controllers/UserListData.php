@@ -19,13 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\UserService;
-use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -42,34 +43,8 @@ final class UserListData
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $query = DB::table('user')
-            ->leftJoin('user_setting AS us1', static function (JoinClause $join): void {
-                $join
-                    ->on('us1.user_id', '=', 'user.user_id')
-                    ->where('us1.setting_name', '=', 'language');
-            })
-            ->leftJoin('user_setting AS us2', static function (JoinClause $join): void {
-                $join
-                    ->on('us2.user_id', '=', 'user.user_id')
-                    ->where('us2.setting_name', '=', UserInterface::PREF_TIMESTAMP_REGISTERED);
-            })
-            ->leftJoin('user_setting AS us3', static function (JoinClause $join): void {
-                $join
-                    ->on('us3.user_id', '=', 'user.user_id')
-                    ->where('us3.setting_name', '=', UserInterface::PREF_TIMESTAMP_ACTIVE);
-            })
-            ->leftJoin('user_setting AS us4', static function (JoinClause $join): void {
-                $join
-                    ->on('us4.user_id', '=', 'user.user_id')
-                    ->where('us4.setting_name', '=', UserInterface::PREF_IS_EMAIL_VERIFIED);
-            })
-            ->leftJoin('user_setting AS us5', static function (JoinClause $join): void {
-                $join
-                    ->on('us5.user_id', '=', 'user.user_id')
-                    ->where('us5.setting_name', '=', UserInterface::PREF_IS_ACCOUNT_APPROVED);
-            })
-            ->where('user.user_id', '>', '0')
-            ->select([
+        $query = DB::query()
+            ->select(
                 'user.user_id AS edit_menu', // Hidden column
                 'user.user_id',
                 'user_name',
@@ -82,7 +57,14 @@ final class UserListData
                 'us3.setting_value AS active_at',
                 'us4.setting_value AS verified',
                 'us5.setting_value AS verified_by_admin',
-            ]);
+            )
+            ->from('user')
+            ->leftJoin('user_setting AS us1', static fn (JoinOn $j): JoinOn => $j->on('us1.user_id', 'user.user_id')->on('us1.setting_name', DB::value('language')))
+            ->leftJoin('user_setting AS us2', static fn (JoinOn $j): JoinOn => $j->on('us2.user_id', 'user.user_id')->on('us2.setting_name', DB::value(UserInterface::PREF_TIMESTAMP_REGISTERED)))
+            ->leftJoin('user_setting AS us3', static fn (JoinOn $j): JoinOn => $j->on('us3.user_id', 'user.user_id')->on('us3.setting_name', DB::value(UserInterface::PREF_TIMESTAMP_ACTIVE)))
+            ->leftJoin('user_setting AS us4', static fn (JoinOn $j): JoinOn => $j->on('us4.user_id', 'user.user_id')->on('us4.setting_name', DB::value(UserInterface::PREF_IS_EMAIL_VERIFIED)))
+            ->leftJoin('user_setting AS us5', static fn (JoinOn $j): JoinOn => $j->on('us5.user_id', 'user.user_id')->on('us5.setting_name', DB::value(UserInterface::PREF_IS_ACCOUNT_APPROVED)))
+            ->whereGreaterThan('user.user_id', 0);
 
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
@@ -114,6 +96,13 @@ final class UserListData
             return $datum;
         };
 
-        return $this->datatables_service->handleQuery($request, $query, $search_columns, $sort_columns, $callback);
+        return $this->datatables_service->handleQuery(
+            $request,
+            $query,
+            $search_columns,
+            $sort_columns,
+            $callback,
+            [DB::ordinal(1)],
+        );
     }
 }

@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Schema;
 
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Schema\SeedGedcomTable;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Schema\SeedGedcomTable;
 
 #[CoversClass(SeedGedcomTable::class)]
 class SeedGedcomTableTest extends TestCase
@@ -29,5 +30,33 @@ class SeedGedcomTableTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(SeedGedcomTable::class));
+    }
+
+    public function testRunRestoresDefaultRowWithoutDuplicatingIt(): void
+    {
+        self::createDatabase();
+
+        self::assertSame('DEFAULT_TREE', DB::query()
+            ->from('gedcom')
+            ->whereEqual('gedcom_id', -1)
+            ->value('gedcom_name'));
+
+        DB::query()
+            ->from('gedcom')
+            ->whereEqual('gedcom_id', -1)
+            ->update(['gedcom_name' => 'Changed']);
+
+        $seed = new SeedGedcomTable();
+        $seed->run();
+        $seed->run();
+
+        self::assertSame('DEFAULT_TREE', DB::query()
+            ->from('gedcom')
+            ->whereEqual('gedcom_id', -1)
+            ->value('gedcom_name'));
+        self::assertSame(1, DB::query()
+            ->from('gedcom')
+            ->whereEqual('gedcom_id', -1)
+            ->count());
     }
 }

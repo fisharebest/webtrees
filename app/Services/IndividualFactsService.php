@@ -75,7 +75,6 @@ class IndividualFactsService
     /**
      * Get the events of associates.
      *
-     *
      * @return Collection<int,Fact>
      */
     public function associateFacts(Individual $individual): Collection
@@ -118,7 +117,6 @@ class IndividualFactsService
     /**
      * Get the events of close relatives.
      *
-     *
      * @return Collection<int,Fact>
      */
     public function relativeFacts(Individual $individual): Collection
@@ -147,7 +145,6 @@ class IndividualFactsService
     /**
      * Get any historical events.
      *
-     *
      * @return Collection<int,Fact>
      */
     public function historicFacts(Individual $individual): Collection
@@ -159,7 +156,6 @@ class IndividualFactsService
 
     /**
      * Get the events of children and grandchildren.
-     *
      *
      * @return Collection<int,Fact>
      */
@@ -588,7 +584,6 @@ class IndividualFactsService
 
     /**
      * Get the events of parents and grandparents.
-     *
      *
      * @return Collection<int,Fact>
      */

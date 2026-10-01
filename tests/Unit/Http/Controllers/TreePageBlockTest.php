@@ -19,8 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\TreePageBlock;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TreePageBlock::class)]
@@ -29,5 +35,45 @@ class TreePageBlockTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(TreePageBlock::class));
+    }
+
+    public function testLoadsOnlyBlocksBelongingToTheTree(): void
+    {
+        self::createDatabase();
+
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('first', 'First');
+        $other_tree   = $tree_service->create('second', 'Second');
+        DB::query(table: 'module')->insert(['module_name' => 'test-block']);
+        $block_id = DB::query(table: 'block')->insertGetId([
+            'gedcom_id'   => $tree->id(),
+            'location'    => 'main',
+            'block_order' => 1,
+            'module_name' => 'test-block',
+        ], 'block_id');
+
+        $module = self::createStub(ModuleBlockInterface::class);
+        $module->method('getBlock')->willReturn('Block content');
+        $block_ids         = [];
+        $requested_trees   = [];
+        $home_page_service = self::createMock(HomePageService::class);
+        $home_page_service->expects(self::exactly(2))->method('getBlockModule')
+            ->willReturnCallback(static function (Tree $requested_tree, int $requested_block_id) use (&$block_ids, &$requested_trees, $module): ModuleBlockInterface {
+                $block_ids[]       = $requested_block_id;
+                $requested_trees[] = $requested_tree;
+
+                return $module;
+            });
+
+        $controller = new TreePageBlock($home_page_service);
+        $request    = self::createRequest(query: ['block_id' => (string) $block_id], attributes: ['tree' => $tree]);
+
+        self::assertStringContainsString('Block content', (string) $controller->get($request, $tree)->getBody());
+
+        $other_request = self::createRequest(query: ['block_id' => (string) $block_id], attributes: ['tree' => $other_tree]);
+        $controller->get($other_request, $other_tree);
+
+        self::assertSame([$block_id, 0], $block_ids);
+        self::assertSame([$tree, $other_tree], $requested_trees);
     }
 }

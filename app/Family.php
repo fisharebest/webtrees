@@ -135,7 +135,6 @@ class Family extends GedcomRecord
     /**
      * Get the (zero, one or two) spouses from this family.
      *
-     *
      * @return Collection<int,Individual>
      */
     public function spouses(AccessLevel|null $access_level = null): Collection
@@ -150,7 +149,6 @@ class Family extends GedcomRecord
 
     /**
      * Get a list of this family’s children.
-     *
      *
      * @return Collection<int,Individual>
      */
@@ -356,10 +354,12 @@ class Family extends GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('families')
-            ->where('f_file', '=', $this->tree->id())
-            ->where('f_id', '=', $this->xref())
-            ->lockForUpdate()
+        $locked_families = DB::query()
+            ->select('*')
+            ->from('families')
+            ->whereEqual('f_file', $this->tree->id())
+            ->whereEqual('f_id', $this->xref())
+            ->forUpdate()
             ->get();
     }
 }

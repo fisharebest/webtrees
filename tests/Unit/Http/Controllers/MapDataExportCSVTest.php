@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\MapDataExportCSV;
 use Fisharebest\Webtrees\Services\MapDataService;
@@ -36,6 +37,19 @@ class MapDataExportCSVTest extends TestCase
 
     public function testExportCSV(): void
     {
+        $parent_id = DB::query(table: 'place_location')->insertGetId([
+            'parent_id' => null,
+            'place'     => 'Country',
+            'latitude'  => 1,
+            'longitude' => 2,
+        ], 'id');
+        DB::query(table: 'place_location')->insert([
+            'parent_id' => $parent_id,
+            'place'     => 'Town',
+            'latitude'  => 3,
+            'longitude' => 4,
+        ]);
+
         $map_data_service = new MapDataService();
         $controller       = new MapDataExportCSV($map_data_service);
         $request          = self::createRequest();
@@ -43,5 +57,7 @@ class MapDataExportCSVTest extends TestCase
 
         self::assertSame(HttpStatusCode::OK->value, $response->getStatusCode());
         self::assertSame($response->getHeaderLine('content-type'), 'text/csv; charset=UTF-8');
+        self::assertStringContainsString('0;Country;;E2;N1;;', (string) $response->getBody());
+        self::assertStringContainsString('1;Country;Town;E4;N3;;', (string) $response->getBody());
     }
 }

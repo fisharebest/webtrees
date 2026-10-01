@@ -61,16 +61,19 @@ final class MapDataSave
         }
 
         if ($place_id === null) {
-            $exists_query = DB::table('place_location')->where('place', '=', $name);
+            $exists_query = DB::query()
+                ->select('*')
+                ->from('place_location')
+                ->whereEqual('place', $name);
 
             if ($parent_id === null) {
-                $exists_query->whereNull('parent_id');
+                $exists_query = $exists_query->whereNull('parent_id');
             } else {
-                $exists_query->where('parent_id', '=', $parent_id);
+                $exists_query = $exists_query->whereEqual('parent_id', $parent_id);
             }
 
             if (!$exists_query->exists()) {
-                DB::table('place_location')->insert([
+                DB::query(table: 'place_location')->insert(values: [
                     'parent_id' => $parent_id,
                     'place'     => $name,
                     'latitude'  => $latitude,
@@ -81,8 +84,8 @@ final class MapDataSave
                 FlashMessages::addMessage($message, 'success');
             }
         } else {
-            DB::table('place_location')
-                ->where('id', '=', $place_id)
+            DB::query(table: 'place_location')
+                ->whereEqual('id', $place_id)
                 ->update([
                     'place'     => $name,
                     'latitude'  => $latitude,

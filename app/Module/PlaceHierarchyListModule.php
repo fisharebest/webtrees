@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Comparators\PlaceComparator;
@@ -36,8 +38,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -109,8 +109,10 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('places')
-            ->where('p_file', '=', $tree->id())
+        return !DB::query()
+            ->select('*')
+            ->from('places')
+            ->whereEqual('p_file', $tree->id())
             ->exists();
     }
 
@@ -344,46 +346,31 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         ];
     }
 
-    private function placeLinks(Place $place): Builder
+    private function placeLinks(Place $place): QueryBuilder
     {
-        return DB::table('places')
-            ->join('placelinks', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'p_file')
-                    ->on('pl_p_id', '=', 'p_id');
-            })
-            ->where('p_file', '=', $place->tree()->id())
-            ->where('p_id', '=', $place->id());
+        return DB::query()
+            ->from('places')
+            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
+            ->whereEqual('p_file', $place->tree()->id())
+            ->whereEqual('p_id', $place->id());
     }
 
-    private function familyPlaceLinks(Place $place): Builder
+    private function familyPlaceLinks(Place $place): QueryBuilder
     {
         return $this->placeLinks($place)
-            ->join('families', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'f_file')
-                    ->on('pl_gid', '=', 'f_id');
-            });
+            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'f_file')->on('pl_gid', 'f_id'));
     }
 
-    private function individualPlaceLinks(Place $place): Builder
+    private function individualPlaceLinks(Place $place): QueryBuilder
     {
         return $this->placeLinks($place)
-            ->join('individuals', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'i_file')
-                    ->on('pl_gid', '=', 'i_id');
-            });
+            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'));
     }
 
-    private function locationPlaceLinks(Place $place): Builder
+    private function locationPlaceLinks(Place $place): QueryBuilder
     {
         return $this->placeLinks($place)
-            ->join('other', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'o_file')
-                    ->on('pl_gid', '=', 'o_id');
-            })
-            ->where('o_type', '=', Location::RECORD_TYPE);
+            ->join('other', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'o_file')->on('pl_gid', 'o_id'))
+            ->whereEqual('o_type', Location::RECORD_TYPE);
     }
 }

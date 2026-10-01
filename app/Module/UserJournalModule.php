@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -62,10 +63,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $articles = DB::table('news')
-            ->where('user_id', '=', Auth::id())
-            ->orderByDesc('updated')
-            ->get()
+        $articles = DB::query()
+            ->select('*')
+            ->from('news')
+            ->whereEqual('user_id', Auth::id())
+            ->orderBy(DB::desc('updated'))
+            ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 $row->updated = Registry::timestampFactory()->fromString($row->updated);
 
@@ -127,9 +130,11 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $utc      = new DateTimeZone('UTC');
 
         if ($news_id !== 0) {
-            $row = DB::table('news')
-                ->where('news_id', '=', $news_id)
-                ->where('user_id', '=', Auth::id())
+            $row = DB::query()
+                ->select('*')
+                ->from('news')
+                ->whereEqual('news_id', $news_id)
+                ->whereEqual('user_id', Auth::id())
                 ->first();
 
             // Record was deleted before we could read it?
@@ -185,16 +190,16 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($news_id !== 0) {
-            DB::table('news')
-                ->where('news_id', '=', $news_id)
-                ->where('user_id', '=', Auth::id()) // Check this is our own page - validates news_id
+            DB::query(table: 'news')
+                ->whereEqual('news_id', $news_id)
+                ->whereEqual('user_id', Auth::id()) // Check this is our own page - validates news_id
                 ->update([
                     'body'    => $body,
                     'subject' => $subject,
                     'updated' => $updated->format('Y-m-d H:i:s'),
                 ]);
         } else {
-            DB::table('news')->insert([
+            DB::query(table: 'news')->insert(values: [
                 'body'    => $body,
                 'subject' => $subject,
                 'user_id' => Auth::id(),
@@ -212,9 +217,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $tree    = Validator::attributes($request)->tree();
         $news_id = Validator::queryParams($request)->integer('news_id');
 
-        DB::table('news')
-            ->where('news_id', '=', $news_id)
-            ->where('user_id', '=', Auth::id())
+        DB::query(table: 'news')
+            ->whereEqual('news_id', $news_id)
+            ->whereEqual('user_id', Auth::id())
             ->delete();
 
         $url = route(UserPage::class, ['tree' => $tree->name()]);

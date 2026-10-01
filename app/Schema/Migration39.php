@@ -32,8 +32,8 @@ class Migration39 implements MigrationInterface
         // This table was previously created by the favorites module in 1.7.9.
         // These migrations are now part of the core code.
 
-        if (!DB::schema()->hasTable('favorite')) {
-            DB::schema()->create('favorite', static function (Blueprint $table): void {
+        if (!DB::schemaBuilder()->hasTable('favorite')) {
+            DB::schemaBuilder()->create('favorite', static function (Blueprint $table): void {
                 $table->integer('favorite_id', true);
                 $table->integer('user_id')->nullable();
                 $table->integer('gedcom_id');

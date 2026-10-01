@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
@@ -35,7 +36,6 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -263,18 +263,14 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function findIndividualsByDate(Date $start, Date $end, Tree $tree): array
     {
-        return DB::table('individuals')
-            ->join('dates', static function (JoinClause $join): void {
-                $join
-                    ->on('d_file', '=', 'i_file')
-                    ->on('d_gid', '=', 'i_id');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('d_julianday1', '<=', $end->maximumJulianDay())
-            ->where('d_julianday2', '>=', $start->minimumJulianDay())
+        return DB::query()
+            ->from('individuals')
+            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'i_file')->on('d_gid', 'i_id'))
+            ->whereEqual('i_file', $tree->id())
+            ->whereLessThanOrEqual('d_julianday1', $end->maximumJulianDay())
+            ->whereGreaterThanOrEqual('d_julianday2', $start->minimumJulianDay())
             ->whereNotIn('d_fact', ['BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN'])
-            ->pluck('i_id')
-            ->all();
+            ->pluck('i_id');
     }
 
     /**
@@ -283,16 +279,12 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function findIndividualsByPlace(Place $place, Tree $tree): array
     {
-        return DB::table('individuals')
-            ->join('placelinks', static function (JoinClause $join): void {
-                $join
-                    ->on('pl_file', '=', 'i_file')
-                    ->on('pl_gid', '=', 'i_id');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('pl_p_id', '=', $place->id())
-            ->pluck('i_id')
-            ->all();
+        return DB::query()
+            ->from('individuals')
+            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'))
+            ->whereEqual('i_file', $tree->id())
+            ->whereEqual('pl_p_id', $place->id())
+            ->pluck('i_id');
     }
 
     /**

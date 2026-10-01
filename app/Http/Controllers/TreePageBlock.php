@@ -41,9 +41,10 @@ final class TreePageBlock
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_id = (int) DB::table('block')
-            ->where('block_id', '=', $block_id)
-            ->where('gedcom_id', '=', $tree->id())
+        $block_id = (int) DB::query()
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
+            ->whereEqual('gedcom_id', $tree->id())
             ->value('block_id');
 
         $module = $this->home_page_service->getBlockModule($tree, $block_id);

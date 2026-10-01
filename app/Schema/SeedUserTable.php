@@ -27,14 +27,13 @@ class SeedUserTable implements SeedInterface
     {
         // Add a "default" user, to store default settings
         DB::identityInsert(table: 'user', callback: static function (): void {
-            DB::table(table: 'user')->updateOrInsert(attributes: [
-                'user_id' => -1,
-            ], values: [
+            DB::query(table: 'user')->upsert([
+                'user_id'   => -1,
                 'user_name' => 'DEFAULT_USER',
                 'real_name' => 'DEFAULT_USER',
                 'email'     => 'DEFAULT_USER',
                 'password'  => 'DEFAULT_USER',
-            ]);
+            ], ['user_id'], ['user_name', 'real_name', 'email', 'password']);
         });
     }
 }

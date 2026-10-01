@@ -283,7 +283,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * This chart can display its output in a number of styles
      *
-     *
      * @return array<string>
      */
     protected function styles(TextDirection $direction): array

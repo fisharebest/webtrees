@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Fisharebest\Webtrees\Cache;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\User;
@@ -83,5 +84,18 @@ class UserTest extends TestCase
         self::assertSame('', $user->getPreference('foo'));
         $user->setPreference('foo', 'bar');
         self::assertSame('bar', $user->getPreference('foo'));
+
+        $user->setPreference('foo', 'baz');
+        self::assertSame('baz', $user->getPreference('foo'));
+        self::assertSame('baz', DB::query()
+            ->from('user_setting')
+            ->whereEqual('user_id', $user->id())
+            ->whereEqual('setting_name', 'foo')
+            ->value('setting_value'));
+        self::assertSame(1, DB::query()
+            ->from('user_setting')
+            ->whereEqual('user_id', $user->id())
+            ->whereEqual('setting_name', 'foo')
+            ->count());
     }
 }

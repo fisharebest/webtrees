@@ -147,7 +147,6 @@ class Fact
     /**
      * Get the value of level 2 data in the fact
      *
-     *
      * @return string
      */
     public function attribute(string $tag): string
