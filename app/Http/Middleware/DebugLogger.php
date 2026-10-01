@@ -42,9 +42,9 @@ class DebugLogger implements MiddlewareInterface
         $start = microtime(true);
 
         // Log SQL queries in response headers
-        DB::connection()->enableQueryLog();
+        DB::enableQueryLog();
         $response = $handler->handle($request);
-        $queries  = DB::connection()->getQueryLog();
+        $queries  = DB::getQueryLog();
         $slowest  = max(array_column($queries, 'time'));
         $total    = array_sum(array_column($queries, 'time'));
         $message  = sprintf('Queries: %d, slowest: %.3f ms, total: %.3f ms', count($queries), $slowest, $total);

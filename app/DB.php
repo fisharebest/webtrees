@@ -297,11 +297,6 @@ final class DB
         return self::REGEX_OPERATOR[self::driverName()];
     }
 
-    public static function connection(): Connection
-    {
-        return Manager::connection();
-    }
-
     public static function query(): QueryBuilder
     {
         return Manager::connection()->query();
@@ -315,5 +310,31 @@ final class DB
     public static function table(string $table): QueryBuilder
     {
         return Manager::connection()->table(table: $table);
+    }
+
+    /**
+     * Execute a callback within a transaction, retrying on concurrency errors.
+     *
+     * @template T
+     * @param Closure(): T $callback
+     *
+     * @return T
+     */
+    public static function transaction(Closure $callback, int $attempts = 1): mixed
+    {
+        return Manager::connection()->transaction($callback, $attempts);
+    }
+
+    public static function enableQueryLog(): void
+    {
+        Manager::connection()->enableQueryLog();
+    }
+
+    /**
+     * @return array<array{query:string,bindings:array<int|string|float|null>,time:float|null}>
+     */
+    public static function getQueryLog(): array
+    {
+        return Manager::connection()->getQueryLog();
     }
 }

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Http\Routing\GedcomRecordParameterResolver;
@@ -39,7 +38,6 @@ use Psy\Shell;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -79,7 +77,6 @@ final class Repl extends AbstractCommand
 
         $shell->setScopeVariables([
             'container' => Registry::container(),
-            'db'        => DB::connection(),
         ]);
 
         // Autoload webtrees classes on first use.
