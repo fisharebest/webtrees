@@ -72,6 +72,7 @@ final class UserEdit
 
         $theme_options = $this->module_service
             ->findByInterface(ModuleThemeInterface::class)
+            ->mapWithKeys(static fn (ModuleThemeInterface $module): array => [$module->name() => $module])
             ->map($this->module_service->titleMapper())
             ->prepend(I18N::translate('<default theme>'), '');
 

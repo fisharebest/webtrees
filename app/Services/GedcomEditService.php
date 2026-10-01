@@ -91,7 +91,7 @@ class GedcomEditService
         $sex_fact   = new Collection([new Fact('1 SEX ' . $sex->value, $dummy, '')]);
         $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
 
-        return $sex_fact->concat($name_facts)->concat($facts->sort(FactComparator::byType(...))->values());
+        return $sex_fact->concat($name_facts)->concat($facts->sort(FactComparator::byType(...)))->values();
     }
 
     private function createNewFact(GedcomRecord $record, string $tag): Fact
