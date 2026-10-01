@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9026b74a5a74990f11ce259aa417b2a4",
+    "content-hash": "d3ea310bf7d7f33f33d6c85e55cc431c",
     "packages": [
         {
             "name": "brick/math",
@@ -499,6 +499,114 @@
                 "source": "https://github.com/fisharebest/algorithm/tree/1.6.0"
             },
             "time": "2021-09-03T12:13:28+00:00"
+        },
+        {
+            "name": "fisharebest/collection",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://codeberg.org/fisharebest/collection.git",
+                "reference": "de2a8b7d16ec64fa590a7cf5abe36db19f1506ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://codeberg.org/api/v1/repos/fisharebest/collection/archive/de2a8b7d16ec64fa590a7cf5abe36db19f1506ad.zip",
+                "reference": "de2a8b7d16ec64fa590a7cf5abe36db19f1506ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "ext-pcov": "*",
+                "infection/infection": "^0.34",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^12.5|^13.3",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk"
+                }
+            ],
+            "description": "Collection-type objects for lists and maps.",
+            "support": {
+                "issues": "https://codeberg.org/fisharebest/collection/issues",
+                "source": "https://codeberg.org/fisharebest/collection/branch/main"
+            },
+            "time": "2026-08-27T10:37:37+00:00"
+        },
+        {
+            "name": "fisharebest/database",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://codeberg.org/fisharebest/database.git",
+                "reference": "a0bf1f855ab07475cd9a2848ee9aec5845c0cdf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://codeberg.org/api/v1/repos/fisharebest/database/archive/a0bf1f855ab07475cd9a2848ee9aec5845c0cdf2.zip",
+                "reference": "a0bf1f855ab07475cd9a2848ee9aec5845c0cdf2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "ext-pcov": "*",
+                "ext-pdo_firebird": "*",
+                "ext-pdo_mysql": "*",
+                "ext-pdo_pgsql": "*",
+                "ext-pdo_sqlite": "*",
+                "ext-pdo_sqlsrv": "*",
+                "infection/infection": "^0.34",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpcov": "^11.0|^13.1",
+                "phpunit/phpunit": "^12.5|^13.3",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "compatibility/SortDirection.php"
+                ],
+                "psr-4": {
+                    "Fisharebest\\Database\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk"
+                }
+            ],
+            "description": "Database abstraction layer",
+            "support": {
+                "issues": "https://codeberg.org/fisharebest/database/issues",
+                "source": "https://codeberg.org/fisharebest/database/branch/main"
+            },
+            "time": "2026-10-12T21:41:49+00:00"
         },
         {
             "name": "fisharebest/ext-calendar",
@@ -9128,7 +9236,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "fisharebest/collection": 20,
+        "fisharebest/database": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

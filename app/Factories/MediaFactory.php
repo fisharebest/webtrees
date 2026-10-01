@@ -82,7 +82,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('media')
+        return DB::queryBuilder()->from('media')
             ->where('m_id', '=', $xref)
             ->where('m_file', '=', $tree->id())
             ->value('m_gedcom');

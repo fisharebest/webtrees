@@ -82,7 +82,7 @@ final class MergeTrees
         $tree2 = $this->tree_service->all()->get($tree2_name);
 
         if ($tree1 instanceof Tree && $tree2 instanceof Tree && $tree1 !== $tree2 && $this->admin_service->countCommonXrefs($tree1, $tree2) === 0) {
-            DB::query()->from('individuals')->insertUsing([
+            DB::queryBuilder()->from('individuals')->insertUsing([
                 'i_file',
                 'i_id',
                 'i_rin',
@@ -99,7 +99,7 @@ final class MergeTrees
                     ->where('i_file', '=', $tree1->id());
             });
 
-            DB::query()->from('families')->insertUsing([
+            DB::queryBuilder()->from('families')->insertUsing([
                 'f_file',
                 'f_id',
                 'f_husb',
@@ -118,7 +118,7 @@ final class MergeTrees
                     ->where('f_file', '=', $tree1->id());
             });
 
-            DB::query()->from('sources')->insertUsing([
+            DB::queryBuilder()->from('sources')->insertUsing([
                 's_file',
                 's_id',
                 's_name',
@@ -133,7 +133,7 @@ final class MergeTrees
                     ->where('s_file', '=', $tree1->id());
             });
 
-            DB::query()->from('media')->insertUsing([
+            DB::queryBuilder()->from('media')->insertUsing([
                 'm_file',
                 'm_id',
                 'm_gedcom',
@@ -146,7 +146,7 @@ final class MergeTrees
                     ->where('m_file', '=', $tree1->id());
             });
 
-            DB::query()->from('media_file')->insertUsing([
+            DB::queryBuilder()->from('media_file')->insertUsing([
                 'm_file',
                 'm_id',
                 'multimedia_file_refn',
@@ -165,7 +165,7 @@ final class MergeTrees
                     ->where('m_file', '=', $tree1->id());
             });
 
-            DB::query()->from('other')->insertUsing([
+            DB::queryBuilder()->from('other')->insertUsing([
                 'o_file',
                 'o_id',
                 'o_type',
@@ -181,7 +181,7 @@ final class MergeTrees
                     ->where('o_file', '=', $tree1->id());
             });
 
-            DB::query()->from('name')->insertUsing([
+            DB::queryBuilder()->from('name')->insertUsing([
                 'n_file',
                 'n_id',
                 'n_num',
@@ -214,7 +214,7 @@ final class MergeTrees
                     ->where('n_file', '=', $tree1->id());
             });
 
-            DB::query()->from('dates')->insertUsing([
+            DB::queryBuilder()->from('dates')->insertUsing([
                 'd_file',
                 'd_gid',
                 'd_day',
@@ -241,7 +241,7 @@ final class MergeTrees
                     ->where('d_file', '=', $tree1->id());
             });
 
-            DB::query()->from('link')->insertUsing([
+            DB::queryBuilder()->from('link')->insertUsing([
                 'l_file',
                 'l_from',
                 'l_type',

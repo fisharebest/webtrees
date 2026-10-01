@@ -42,7 +42,7 @@ final class UserPage
 
     public function get(Tree $tree): ResponseInterface
     {
-        $has_blocks = DB::table('block')
+        $has_blocks = DB::queryBuilder()->from('block')
             ->where('user_id', '=', $this->user->id())
             ->exists();
 
@@ -52,7 +52,7 @@ final class UserPage
             $user = $this->user;
 
             // Copy the defaults
-            DB::query()->from('block')->insertUsing(
+            DB::queryBuilder()->from('block')->insertUsing(
                 ['user_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($user): void {
                     $query

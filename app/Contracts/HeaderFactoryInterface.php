@@ -36,7 +36,6 @@ interface HeaderFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a header from a row in the database.
      *
-     *
      * @return Closure(object):Header
      */
     public function mapper(Tree $tree): Closure;

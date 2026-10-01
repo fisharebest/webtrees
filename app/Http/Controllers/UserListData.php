@@ -42,7 +42,7 @@ final class UserListData
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $query = DB::table('user')
+        $query = DB::queryBuilder()->from('user')
             ->leftJoin('user_setting AS us1', static function (JoinClause $join): void {
                 $join
                     ->on('us1.user_id', '=', 'user.user_id')

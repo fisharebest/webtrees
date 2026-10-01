@@ -273,7 +273,7 @@ class HousekeepingService
 
     public function deleteOldLogs(int $max_age_in_seconds): void
     {
-        DB::table('log')
+        DB::queryBuilder()->from('log')
             ->whereIn('log_type', ['error', 'media'])
             ->where('log_time', '<', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
@@ -281,7 +281,7 @@ class HousekeepingService
 
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
-        DB::table('session')
+        DB::queryBuilder()->from('session')
             ->where('session_time', '<', $this->clock->now()->modify('-' . $max_age_in_seconds . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }

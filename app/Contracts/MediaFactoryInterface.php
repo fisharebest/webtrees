@@ -36,7 +36,6 @@ interface MediaFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a media object from a row in the database.
      *
-     *
      * @return Closure(object):Media
      */
     public function mapper(Tree $tree): Closure;

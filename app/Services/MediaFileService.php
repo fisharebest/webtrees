@@ -119,7 +119,7 @@ class MediaFileService
      */
     public function unusedFiles(Tree $tree): array
     {
-        $used_files = DB::table('media_file')
+        $used_files = DB::queryBuilder()->from('media_file')
             ->where('m_file', '=', $tree->id())
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
@@ -302,9 +302,9 @@ class MediaFileService
      */
     public function allFilesInDatabase(string $media_folder, bool $subfolders): Collection
     {
-        $path = DB::concat(['media_folder', 'multimedia_file_refn']);
+        $path = DB::concatenate(['media_folder', 'multimedia_file_refn']);
 
-        $query = DB::table('media_file')
+        $query = DB::queryBuilder()->from('media_file')
             ->join('gedcom', 'gedcom_id', '=', 'm_file')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
@@ -348,14 +348,14 @@ class MediaFileService
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
         /** Issue #5114 - columns containing '||' get a trailing space added by MySQL.  The alias is a workaround */
-        $db_folders = DB::table('media_file')
+        $db_folders = DB::queryBuilder()->from('media_file')
             ->join('gedcom', 'gedcom_id', '=', 'm_file')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
             ->pluck(new Expression('media_folder || multimedia_file_refn AS value'))
             ->map(static fn (string $path): string => dirname($path) . '/');
 
-        $media_roots = DB::table('gedcom')
+        $media_roots = DB::queryBuilder()->from('gedcom')
             ->where('gedcom.gedcom_id', '>', '0')
             ->pluck('media_folder')
             ->uniqueStrict();

@@ -36,7 +36,6 @@ interface FamilyFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a Family object from a row in the database.
      *
-     *
      * @return Closure(object):Family
      */
     public function mapper(Tree $tree): Closure;

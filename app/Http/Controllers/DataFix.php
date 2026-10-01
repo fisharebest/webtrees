@@ -31,7 +31,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use function e;
 use function redirect;
 use function route;
-use function var_dump;
 
 final class DataFix
 {

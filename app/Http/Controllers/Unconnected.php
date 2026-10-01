@@ -62,13 +62,13 @@ final class Unconnected
             $links[] = '_ASSO';
         }
 
-        $rows = DB::table('link')
+        $rows = DB::queryBuilder()->from('link')
             ->where('l_file', '=', $tree->id())
             ->whereIn('l_type', $links)
             ->select(['l_from', 'l_to'])
             ->get();
 
-        $graph = DB::table('individuals')
+        $graph = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id())
             ->pluck('i_id')
             ->mapWithKeys(static fn (string $xref): array => [$xref => []])
@@ -92,7 +92,7 @@ final class Unconnected
             $component = array_map(static fn ($x): string => strtolower((string) $x), $component);
 
             if (!in_array(strtolower($xref), $component, true)) {
-                $individual_groups[] = DB::table('individuals')
+                $individual_groups[] = DB::queryBuilder()->from('individuals')
                     ->where('i_file', '=', $tree->id())
                     ->whereIn('i_id', $component)
                     ->get()

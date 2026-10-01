@@ -65,7 +65,7 @@ final class TreeExport extends AbstractCommand
      */
     private function autoCompleteTreeName(CompletionInput $input): array
     {
-        return DB::table('tree')
+        return DB::queryBuilder()->from('tree')
             ->where('tree_name', 'LIKE', addcslashes($input->getCompletionValue(), '%_\\') . '%')
             ->pluck('name')
             ->all();
@@ -95,7 +95,7 @@ final class TreeExport extends AbstractCommand
             return self::FAILURE;
         }
 
-        $tree = DB::table('gedcom')
+        $tree = DB::queryBuilder()->from('gedcom')
             ->where('gedcom_name', '=', $tree_name)
             ->get()
             ->map(Tree::fromDB(...))

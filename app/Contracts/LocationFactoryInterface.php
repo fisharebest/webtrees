@@ -36,7 +36,6 @@ interface LocationFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a Location from a row in the database.
      *
-     *
      * @return Closure(object):Location
      */
     public function mapper(Tree $tree): Closure;

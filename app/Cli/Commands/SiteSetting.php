@@ -70,7 +70,7 @@ final class SiteSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            $settings = DB::table(table: 'site_setting')
+            $settings = DB::queryBuilder()->from(table: 'site_setting')
                 ->orderBy(column: 'setting_name')
                 ->select(columns: ['setting_name', 'setting_value'])
                 ->get()
@@ -88,7 +88,7 @@ final class SiteSetting extends AbstractCommand
         }
 
         /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('site_setting')
+        $old_setting_value = DB::queryBuilder()->from('site_setting')
             ->where(column: 'setting_name', operator: '=', value: $setting_name)
             ->value(column: 'setting_value');
 
@@ -108,7 +108,7 @@ final class SiteSetting extends AbstractCommand
             if ($old_setting_value === null) {
                 $io->warning(message: 'Site setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table(table: 'site_setting')
+                DB::queryBuilder()->from(table: 'site_setting')
                     ->where(column: 'setting_name', operator: '=', value: $setting_name)
                     ->delete();
 
@@ -146,7 +146,7 @@ final class SiteSetting extends AbstractCommand
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'site_setting')
+            DB::queryBuilder()->from(table: 'site_setting')
                 ->insert(values: [
                     'setting_name'  => $setting_name,
                     'setting_value' => $setting_value,
@@ -154,7 +154,7 @@ final class SiteSetting extends AbstractCommand
 
             $io->success(message: 'Site setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'site_setting')
+            DB::queryBuilder()->from(table: 'site_setting')
                 ->where(column: 'setting_name', operator: '=', value: $setting_name)
                 ->update(values: ['setting_value' => $setting_value]);
 

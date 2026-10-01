@@ -62,7 +62,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $articles = DB::table('news')
+        $articles = DB::queryBuilder()->from('news')
             ->where('user_id', '=', Auth::id())
             ->orderByDesc('updated')
             ->get()
@@ -127,7 +127,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $utc      = new DateTimeZone('UTC');
 
         if ($news_id !== 0) {
-            $row = DB::table('news')
+            $row = DB::queryBuilder()->from('news')
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
                 ->first();
@@ -185,7 +185,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($news_id !== 0) {
-            DB::table('news')
+            DB::queryBuilder()->from('news')
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id()) // Check this is our own page - validates news_id
                 ->update([
@@ -194,7 +194,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
                     'updated' => $updated->format('Y-m-d H:i:s'),
                 ]);
         } else {
-            DB::table('news')->insert([
+            DB::queryBuilder()->from('news')->insert([
                 'body'    => $body,
                 'subject' => $subject,
                 'user_id' => Auth::id(),
@@ -212,7 +212,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $tree    = Validator::attributes($request)->tree();
         $news_id = Validator::queryParams($request)->integer('news_id');
 
-        DB::table('news')
+        DB::queryBuilder()->from('news')
             ->where('news_id', '=', $news_id)
             ->where('user_id', '=', Auth::id())
             ->delete();

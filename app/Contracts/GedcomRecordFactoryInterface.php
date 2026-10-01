@@ -45,7 +45,6 @@ interface GedcomRecordFactoryInterface
     /**
      * Create a GedcomRecord object from a row in the database.
      *
-     *
      * @return Closure(object):GedcomRecord
      */
     public function mapper(Tree $tree): Closure;

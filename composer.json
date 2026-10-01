@@ -44,6 +44,8 @@
         "ext-session": "*",
         "ext-xml": "*",
         "fisharebest/algorithm": "1.6.0",
+        "fisharebest/collection": "dev-main",
+        "fisharebest/database": "dev-main",
         "fisharebest/ext-calendar": "2.6.0",
         "illuminate/database": "13.36.0",
         "illuminate/support": "13.36.0",

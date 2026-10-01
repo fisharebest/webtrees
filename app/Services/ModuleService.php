@@ -604,7 +604,7 @@ class ModuleService
         return Registry::cache()->array()->remember('all-modules', function (): Collection {
             // Modules have a default status, order, etc.
             // We can override these from database settings.
-            $module_info = DB::table('module')
+            $module_info = DB::queryBuilder()->from('module')
                 ->get()
                 ->mapWithKeys(static fn (object $row): array => [$row->module_name => $row]);
 
@@ -634,7 +634,7 @@ class ModuleService
                     } else {
                         $module->setEnabled($module->isEnabledByDefault());
 
-                        DB::table('module')->insert([
+                        DB::queryBuilder()->from('module')->insert([
                             'module_name' => $module->name(),
                             'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
                         ]);
@@ -832,7 +832,7 @@ class ModuleService
      */
     public function deletedModules(): Collection
     {
-        $database_modules = DB::table('module')->pluck('module_name');
+        $database_modules = DB::queryBuilder()->from('module')->pluck('module_name');
 
         $disk_modules = $this->all(true)
             ->map(static fn (ModuleInterface $module): string => $module->name());

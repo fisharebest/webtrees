@@ -68,7 +68,7 @@ final class TreePrivacy
     {
         $delete_default_resn_id = Validator::parsedBody($request)->list('delete');
 
-        DB::table('default_resn')
+        DB::queryBuilder()->from('default_resn')
             ->whereIn('default_resn_id', $delete_default_resn_id)
             ->delete();
 
@@ -91,7 +91,7 @@ final class TreePrivacy
 
             // Delete any existing data
             if ($tag_type !== '' && $xref !== '') {
-                DB::table('default_resn')
+                DB::queryBuilder()->from('default_resn')
                     ->where('gedcom_id', '=', $tree->id())
                     ->where('tag_type', '=', $tag_type)
                     ->where('xref', '=', $xref)
@@ -99,7 +99,7 @@ final class TreePrivacy
             }
 
             if ($tag_type !== '' && $xref === '') {
-                DB::table('default_resn')
+                DB::queryBuilder()->from('default_resn')
                     ->where('gedcom_id', '=', $tree->id())
                     ->where('tag_type', '=', $tag_type)
                     ->whereNull('xref')
@@ -107,7 +107,7 @@ final class TreePrivacy
             }
 
             if ($tag_type === '' && $xref !== '') {
-                DB::table('default_resn')
+                DB::queryBuilder()->from('default_resn')
                     ->where('gedcom_id', '=', $tree->id())
                     ->whereNull('tag_type')
                     ->where('xref', '=', $xref)
@@ -116,7 +116,7 @@ final class TreePrivacy
 
             // Add (or update) the new data
             if ($tag_type !== '' || $xref !== '') {
-                DB::table('default_resn')->insert([
+                DB::queryBuilder()->from('default_resn')->insert([
                     'gedcom_id' => $tree->id(),
                     'xref'      => $xref === '' ? null : $xref,
                     'tag_type'  => $tag_type === '' ? null : $tag_type,
@@ -135,7 +135,7 @@ final class TreePrivacy
         $show_private_relationships = Validator::parsedBody($request)->string('SHOW_PRIVATE_RELATIONSHIPS');
         $include_in_sitemap         = Validator::parsedBody($request)->boolean('include_in_sitemap', false);
 
-        DB::table('gedcom')
+        DB::queryBuilder()->from('gedcom')
             ->where('gedcom_id', '=', $tree->id())
             ->update([
                 'private' => (int) $require_authentication,
@@ -187,7 +187,7 @@ final class TreePrivacy
      */
     private function privacyRestrictions(Tree $tree): array
     {
-        return DB::table('default_resn')
+        return DB::queryBuilder()->from('default_resn')
             ->where('gedcom_id', '=', $tree->id())
             ->get()
             ->map(static function (object $row) use ($tree): object {

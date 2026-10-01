@@ -36,7 +36,6 @@ interface IndividualFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create an individual from a row in the database.
      *
-     *
      * @return Closure(object):Individual
      */
     public function mapper(Tree $tree): Closure;
