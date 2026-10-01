@@ -539,7 +539,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $subquery->whereIn('n_surn', $surns);
         }
 
-        $query = DB::query()
+        $query = DB::queryBuilder()
             ->fromSub($subquery, 'names')
             ->select(['n_givn', new Expression('COUNT(*) AS count')])
             ->groupBy(['n_givn']);
@@ -578,7 +578,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
         $this->whereFamily($fams, $subquery);
         $this->whereMarriedName($marnm, $subquery);
 
-        return DB::query()
+        return DB::queryBuilder()
             ->fromSub($subquery, 'names')
             ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
             ->groupBy(['n_surn', 'n_surname'])

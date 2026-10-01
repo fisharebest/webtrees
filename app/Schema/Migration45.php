@@ -40,8 +40,8 @@ final readonly class Migration45 implements MigrationInterface
             'source_media_type' => new Expression(value: 'UPPER(source_media_type)'),
         ]);
 
-        if (!DB::schema()->hasColumn(table: 'gedcom', column: 'media_folder')) {
-            DB::schema()->table(table: 'gedcom', callback: function (Blueprint $table): void {
+        if (!DB::schemaBuilder()->hasColumn(table: 'gedcom', column: 'media_folder')) {
+            DB::schemaBuilder()->table(table: 'gedcom', callback: function (Blueprint $table): void {
                 $table->string(column: 'media_folder', length: 255)->default(value: 'media/')->index();
                 $table->string(column: 'title', length: 255)->default(value: 'tree')->index();
                 $table->string(column: 'gedcom_filename', length: 255)->default(value: 'tree.ged')->index();

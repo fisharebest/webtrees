@@ -97,7 +97,7 @@ class AdminService
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        return DB::query()
+        return DB::queryBuilder()
             ->fromSub($subquery1, 'sub1')
             ->joinSub($subquery2, 'sub2', 'xref1', '=', 'xref2')
             ->count();
@@ -225,7 +225,7 @@ class AdminService
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        return DB::query()
+        return DB::queryBuilder()
             ->fromSub($subquery1, 'sub1')
             ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
             ->pluck('type', 'xref')

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
@@ -297,12 +296,12 @@ final class DB
         return self::REGEX_OPERATOR[self::driverName()];
     }
 
-    public static function query(): QueryBuilder
+    public static function queryBuilder(): QueryBuilder
     {
         return Manager::connection()->query();
     }
 
-    public static function schema(): SchemaBuilder
+    public static function schemaBuilder(): SchemaBuilder
     {
         return Manager::schema();
     }

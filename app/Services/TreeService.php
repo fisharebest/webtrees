@@ -156,7 +156,7 @@ class TreeService
             ->first();
 
         // Set preferences from the default tree
-        DB::query()->from('gedcom_setting')->insertUsing(
+        DB::queryBuilder()->from('gedcom_setting')->insertUsing(
             ['gedcom_id', 'setting_name', 'setting_value'],
             static function (Builder $query) use ($tree): void {
                 $query
@@ -166,7 +166,7 @@ class TreeService
             }
         );
 
-        DB::query()->from('default_resn')->insertUsing(
+        DB::queryBuilder()->from('default_resn')->insertUsing(
             ['gedcom_id', 'tag_type', 'resn'],
             static function (Builder $query) use ($tree): void {
                 $query

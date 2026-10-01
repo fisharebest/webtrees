@@ -51,7 +51,7 @@ final class TreePage
             $this->home_page_service->checkDefaultTreeBlocksExist();
 
             // Copy the defaults
-            DB::query()->from('block')->insertUsing(
+            DB::queryBuilder()->from('block')->insertUsing(
                 ['gedcom_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($tree): void {
                     $query

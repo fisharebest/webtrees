@@ -30,6 +30,16 @@
             "phpstan/extension-installer": true
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "../collection"
+        },
+        {
+            "type": "vcs",
+            "url": "../database"
+        }
+    ],
     "require": {
         "php": "8.3 - 8.6",
         "ext-ctype": "*",
@@ -44,6 +54,8 @@
         "ext-session": "*",
         "ext-xml": "*",
         "fisharebest/algorithm": "1.6.0",
+        "fisharebest/collection": "dev-main",
+        "fisharebest/database": "dev-main",
         "fisharebest/ext-calendar": "2.6.0",
         "illuminate/database": "13.34.0",
         "illuminate/support": "13.34.0",

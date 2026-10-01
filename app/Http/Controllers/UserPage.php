@@ -52,7 +52,7 @@ final class UserPage
             $user = $this->user;
 
             // Copy the defaults
-            DB::query()->from('block')->insertUsing(
+            DB::queryBuilder()->from('block')->insertUsing(
                 ['user_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($user): void {
                     $query

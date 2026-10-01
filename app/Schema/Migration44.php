@@ -33,8 +33,8 @@ class Migration44 implements MigrationInterface
     {
         // It is simpler to create a new table than to update the existing one.
 
-        if (!DB::schema()->hasTable('place_location')) {
-            DB::schema()->create('place_location', static function (Blueprint $table): void {
+        if (!DB::schemaBuilder()->hasTable('place_location')) {
+            DB::schemaBuilder()->create('place_location', static function (Blueprint $table): void {
                 $table->integer('id', true);
                 $table->integer('parent_id')->nullable();
                 $table->string('place', 120);
@@ -51,7 +51,7 @@ class Migration44 implements MigrationInterface
             // SqlServer cannot cascade-delete/update on self-relations.
             // Users will need to delete all child locations before deleting the parent.
             if (DB::driverName() !== DB::SQL_SERVER) {
-                DB::schema()->table('place_location', static function (Blueprint $table): void {
+                DB::schemaBuilder()->table('place_location', static function (Blueprint $table): void {
                     $table->foreign(['parent_id'])
                         ->references(['id'])
                         ->on('place_location')
@@ -63,7 +63,7 @@ class Migration44 implements MigrationInterface
 
         // This table should only exist if we are upgrading an old installation, which would have been
         // created with MySQL. Therefore, we can safely use MySQL-specific SQL.
-        if (DB::schema()->hasTable('placelocation')) {
+        if (DB::schemaBuilder()->hasTable('placelocation')) {
             if (DB::driverName() === DB::MYSQL) {
                 DB::table('placelocation')
                     ->where('pl_lati', '=', '')
@@ -93,7 +93,7 @@ class Migration44 implements MigrationInterface
                 // The existing data may have placenames that only differ after the first 120 chars.
                 // Need to remove the constraint before we truncate/merge them.
                 try {
-                    DB::schema()->table('placelocation', static function (Blueprint $table): void {
+                    DB::schemaBuilder()->table('placelocation', static function (Blueprint $table): void {
                         $table->dropUnique(['pl_parent_id', 'pl_place']);
                     });
                 } catch (PDOException) {
@@ -169,7 +169,7 @@ class Migration44 implements MigrationInterface
                 }
             }
 
-            DB::schema()->drop('placelocation');
+            DB::schemaBuilder()->drop('placelocation');
         }
 
         // Earlier versions of webtrees used 0 and NULL interchangeably.

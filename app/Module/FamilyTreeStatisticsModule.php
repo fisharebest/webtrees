@@ -106,7 +106,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                     DB::binaryColumn('n_surname', 'n_surname'),
                 ]);
 
-            $query = DB::query()
+            $query = DB::queryBuilder()
                 ->fromSub($subquery, 'names')
                 ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
                 ->groupBy(['n_surn', 'n_surname']);

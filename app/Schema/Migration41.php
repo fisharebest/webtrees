@@ -29,7 +29,7 @@ class Migration41 implements MigrationInterface
 {
     public function upgrade(): void
     {
-        DB::schema()->table('module', static function (Blueprint $table): void {
+        DB::schemaBuilder()->table('module', static function (Blueprint $table): void {
             $table->integer('footer_order')->nullable()->after('sidebar_order');
         });
     }
