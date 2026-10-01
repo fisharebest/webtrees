@@ -177,7 +177,7 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      */
     private function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_id', '=', $xref)
             ->where('o_file', '=', $tree->id())
             ->whereNotIn('o_type', [

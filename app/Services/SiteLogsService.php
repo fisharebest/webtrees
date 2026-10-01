@@ -50,7 +50,7 @@ class SiteLogsService
         $ip       = Validator::queryParams($request)->string('ip');
         $username = Validator::queryParams($request)->string('username');
 
-        $query = DB::table('log')
+        $query = DB::queryBuilder()->from('log')
             ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
             ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
             ->select(['log.*', new Expression("COALESCE(user_name, '<--->') AS user_name"), new Expression("COALESCE(gedcom_name, '<--->') AS gedcom_name")]);

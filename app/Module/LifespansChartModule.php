@@ -263,7 +263,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function findIndividualsByDate(Date $start, Date $end, Tree $tree): array
     {
-        return DB::table('individuals')
+        return DB::queryBuilder()->from('individuals')
             ->join('dates', static function (JoinClause $join): void {
                 $join
                     ->on('d_file', '=', 'i_file')
@@ -283,7 +283,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function findIndividualsByPlace(Place $place, Tree $tree): array
     {
-        return DB::table('individuals')
+        return DB::queryBuilder()->from('individuals')
             ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'i_file')

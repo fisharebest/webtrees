@@ -356,7 +356,7 @@ class Family extends GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('families')
+        DB::queryBuilder()->from('families')
             ->where('f_file', '=', $this->tree->id())
             ->where('f_id', '=', $this->xref())
             ->lockForUpdate()

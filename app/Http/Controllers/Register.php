@@ -198,7 +198,7 @@ final class Register
                 $body_html
             );
 
-            DB::table('message')->insert([
+            DB::queryBuilder()->from('message')->insert([
                 'sender'     => $user->email(),
                 'ip_address' => $request->getAttribute('client-ip'),
                 'user_id'    => $administrator->id(),

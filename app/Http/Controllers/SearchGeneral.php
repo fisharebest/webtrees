@@ -66,22 +66,22 @@ final class SearchGeneral
         $search_sources      = Validator::queryParams($request)->boolean('search_sources', false);
         $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
 
-        $exist_notes = DB::table('other')
+        $exist_notes = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->exists();
 
-        $exist_locations = DB::table('other')
+        $exist_locations = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Location::RECORD_TYPE)
             ->exists();
 
-        $exist_repositories = DB::table('other')
+        $exist_repositories = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->exists();
 
-        $exist_sources = DB::table('sources')
+        $exist_sources = DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->exists();
 

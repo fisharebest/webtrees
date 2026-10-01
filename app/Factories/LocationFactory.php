@@ -82,7 +82,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_id', '=', $xref)
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Location::RECORD_TYPE)

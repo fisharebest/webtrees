@@ -81,7 +81,7 @@ class SearchService
      */
     public function searchFamilies(array $trees, array $search): Collection
     {
-        $query = DB::table('families');
+        $query = DB::queryBuilder()->from('families');
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, 'f_gedcom', $search);
@@ -107,7 +107,7 @@ class SearchService
      */
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('families')
+        $query = DB::queryBuilder()->from('families')
             ->leftJoin('name AS husb_name', static function (JoinClause $join): void {
                 $join
                     ->on('husb_name.n_file', '=', 'families.f_file')
@@ -140,7 +140,7 @@ class SearchService
      */
     public function searchFamiliesInPlace(Place $place): Collection
     {
-        return DB::table('families')
+        return DB::queryBuilder()->from('families')
             ->join('placelinks', static function (JoinClause $query): void {
                 $query
                     ->on('families.f_file', '=', 'placelinks.pl_file')
@@ -163,7 +163,7 @@ class SearchService
      */
     public function searchIndividuals(array $trees, array $search): Collection
     {
-        $query = DB::table('individuals');
+        $query = DB::queryBuilder()->from('individuals');
 
         $this->whereTrees($query, 'i_file', $trees);
         $this->whereSearch($query, 'i_gedcom', $search);
@@ -189,7 +189,7 @@ class SearchService
      */
     public function searchIndividualNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('name.n_file', '=', 'individuals.i_file')
@@ -210,7 +210,7 @@ class SearchService
      */
     public function searchIndividualsInPlace(Place $place): Collection
     {
-        return DB::table('individuals')
+        return DB::queryBuilder()->from('individuals')
             ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('i_file', '=', 'pl_file')
@@ -235,7 +235,7 @@ class SearchService
      */
     public function searchLocations(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Location::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
@@ -254,7 +254,7 @@ class SearchService
      */
     public function searchMedia(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('media');
+        $query = DB::queryBuilder()->from('media');
 
         $this->whereTrees($query, 'media.m_file', $trees);
         $this->whereSearch($query, 'm_gedcom', $search);
@@ -272,7 +272,7 @@ class SearchService
      */
     public function searchNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Note::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
@@ -291,7 +291,7 @@ class SearchService
      */
     public function searchSharedNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', SharedNote::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
@@ -310,7 +310,7 @@ class SearchService
      */
     public function searchRepositories(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Repository::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
@@ -329,7 +329,7 @@ class SearchService
      */
     public function searchSources(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('sources');
+        $query = DB::queryBuilder()->from('sources');
 
         $this->whereTrees($query, 's_file', $trees);
         $this->whereSearch($query, 's_gedcom', $search);
@@ -347,7 +347,7 @@ class SearchService
      */
     public function searchSourcesByName(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('sources')
+        $query = DB::queryBuilder()->from('sources')
             ->orderBy('s_name');
 
         $this->whereTrees($query, 's_file', $trees);
@@ -366,7 +366,7 @@ class SearchService
      */
     public function searchSurnames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('name');
+        $query = DB::queryBuilder()->from('name');
 
         $this->whereTrees($query, 'n_file', $trees);
         $this->whereSearch($query, 'n_surname', $search);
@@ -389,7 +389,7 @@ class SearchService
      */
     public function searchSubmissions(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Submission::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
@@ -408,7 +408,7 @@ class SearchService
      */
     public function searchSubmitters(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Submitter::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
@@ -425,7 +425,7 @@ class SearchService
      */
     public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $query = DB::table('places AS p0')
+        $query = DB::queryBuilder()->from('places AS p0')
             ->where('p0.p_file', '=', $tree->id())
             ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
             ->leftJoin('places AS p2', 'p2.p_id', '=', 'p1.p_parent_id')
@@ -482,7 +482,7 @@ class SearchService
     {
         $fields = array_filter($fields, static fn (string $x): bool => $x !== '');
 
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id())
             ->select(['individuals.*'])
             ->distinct();
@@ -944,7 +944,7 @@ class SearchService
             return new Collection();
         }
 
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->select(['individuals.*'])
             ->distinct();
 
@@ -1072,14 +1072,14 @@ class SearchService
      */
     public function findMediaObjectsForMediaFile(string $file): array
     {
-        return DB::table('media')
+        return DB::queryBuilder()->from('media')
             ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), '=', $file)
+            ->where(new Expression(DB::concatenate(['setting_value', 'multimedia_file_refn'])), '=', $file)
             ->select(['media.*'])
             ->distinct()
             ->get()

@@ -86,7 +86,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('sources')
+        return !DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->exists();
     }
@@ -98,7 +98,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $sources = DB::table('sources')
+        $sources = DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->get()
             ->map(Registry::sourceFactory()->mapper($tree))

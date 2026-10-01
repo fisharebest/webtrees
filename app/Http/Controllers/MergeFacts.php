@@ -169,34 +169,34 @@ final class MergeFacts
         }
 
         // Update any linked user-accounts
-        DB::table('user_gedcom_setting')
+        DB::queryBuilder()->from('user_gedcom_setting')
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('setting_name', [UserInterface::PREF_TREE_ACCOUNT_XREF, UserInterface::PREF_TREE_DEFAULT_XREF])
             ->where('setting_value', '=', $xref2)
             ->update(['setting_value' => $xref1]);
 
         // Merge stories, etc.
-        DB::table('block')
+        DB::queryBuilder()->from('block')
             ->where('gedcom_id', '=', $tree->id())
             ->where('xref', '=', $xref2)
             ->update(['xref' => $xref1]);
 
         // Merge hit counters
-        $hits = DB::table('hit_counter')
+        $hits = DB::queryBuilder()->from('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_parameter', [$xref1, $xref2])
             ->groupBy(['page_name'])
             ->pluck(new Expression('SUM(page_count) AS total'), 'page_name');
 
         foreach ($hits as $page_name => $page_count) {
-            DB::table('hit_counter')
+            DB::queryBuilder()->from('hit_counter')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('page_name', '=', $page_name)
                 ->where('page_parameter', '=', $xref1)
                 ->update(['page_count' => $page_count]);
         }
 
-        DB::table('hit_counter')
+        DB::queryBuilder()->from('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
             ->where('page_parameter', '=', $xref2)
             ->delete();
@@ -215,7 +215,7 @@ final class MergeFacts
             }
         }
 
-        DB::table('favorite')
+        DB::queryBuilder()->from('favorite')
             ->where('gedcom_id', '=', $tree->id())
             ->where('xref', '=', $xref2)
             ->update(['xref' => $xref1]);

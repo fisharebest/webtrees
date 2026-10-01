@@ -77,7 +77,7 @@ class LocationListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('other')
+        return !DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Location::RECORD_TYPE)
             ->exists();
@@ -100,7 +100,7 @@ class LocationListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $locations = DB::table('other')
+        $locations = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Location::RECORD_TYPE)
             ->get()

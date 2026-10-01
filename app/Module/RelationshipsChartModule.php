@@ -438,7 +438,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     ): array {
         $tree = $individual1->tree();
 
-        $rows = DB::table('link')
+        $rows = DB::queryBuilder()->from('link')
             ->where('l_file', '=', $tree->id())
             ->whereIn('l_type', ['FAMS', 'FAMC'])
             ->select(['l_from', 'l_to'])
@@ -542,7 +542,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $xref2,
         ];
         while ($queue !== []) {
-            $parents = DB::table('link AS l1')
+            $parents = DB::queryBuilder()->from('link AS l1')
                 ->join('link AS l2', static function (JoinClause $join): void {
                     $join
                         ->on('l1.l_to', '=', 'l2.l_to')
@@ -572,7 +572,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     private function excludeFamilies(string $xref1, string $xref2, int $tree_id): array
     {
-        return DB::table('link AS l1')
+        return DB::queryBuilder()->from('link AS l1')
             ->join('link AS l2', static function (JoinClause $join): void {
                 $join
                     ->on('l1.l_to', '=', 'l2.l_to')

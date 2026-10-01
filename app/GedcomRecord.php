@@ -739,7 +739,7 @@ class GedcomRecord
         }
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::queryBuilder()->from('change')->insert([
             'gedcom_id'  => $this->tree->id(),
             'xref'       => $this->xref,
             'old_gedcom' => $this->gedcom(),
@@ -767,7 +767,7 @@ class GedcomRecord
     {
         // Create a pending change
         if (!$this->isPendingDeletion()) {
-            DB::table('change')->insert([
+            DB::queryBuilder()->from('change')->insert([
                 'gedcom_id'  => $this->tree->id(),
                 'xref'       => $this->xref,
                 'old_gedcom' => $this->gedcom(),
@@ -938,7 +938,7 @@ class GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('other')
+        DB::queryBuilder()->from('other')
             ->where('o_file', '=', $this->tree->id())
             ->where('o_id', '=', $this->xref())
             ->lockForUpdate()

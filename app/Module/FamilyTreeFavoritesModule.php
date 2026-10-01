@@ -115,7 +115,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function getFavorites(Tree $tree): array
     {
-        return DB::table('favorite')
+        return DB::queryBuilder()->from('favorite')
             ->where('gedcom_id', '=', $tree->id())
             ->whereNull('user_id')
             ->select(['favorite_id', 'xref', 'favorite_type', 'url', 'title', 'note'])
@@ -170,7 +170,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
         $favorite_id = Validator::queryParams($request)->integer('favorite_id');
 
         if (Auth::isManager($tree, $user)) {
-            DB::table('favorite')
+            DB::queryBuilder()->from('favorite')
                 ->where('favorite_id', '=', $favorite_id)
                 ->whereNull('user_id')
                 ->delete();
@@ -183,7 +183,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     private function addUrlFavorite(Tree $tree, string $url, string $title, string $note): void
     {
-        DB::table('favorite')->updateOrInsert([
+        DB::queryBuilder()->from('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
             'user_id'   => null,
             'url'       => $url,
@@ -196,7 +196,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     private function addRecordFavorite(Tree $tree, GedcomRecord $record, string $note): void
     {
-        DB::table('favorite')->updateOrInsert([
+        DB::queryBuilder()->from('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
             'user_id'   => null,
             'xref'      => $record->xref(),

@@ -62,7 +62,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $articles = DB::table('news')
+        $articles = DB::queryBuilder()->from('news')
             ->where('gedcom_id', '=', $tree->id())
             ->orderByDesc('updated')
             ->get()
@@ -127,7 +127,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $utc      = new DateTimeZone('UTC');
 
         if ($news_id !== 0) {
-            $row = DB::table('news')
+            $row = DB::queryBuilder()->from('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id())
                 ->first();
@@ -185,7 +185,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         }
 
         if ($news_id !== 0) {
-            DB::table('news')
+            DB::queryBuilder()->from('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id()) // Check this is our own tree - validates news_id
                 ->update([
@@ -194,7 +194,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                     'updated' => $updated->format('Y-m-d H:i:s'),
                 ]);
         } else {
-            DB::table('news')->insert([
+            DB::queryBuilder()->from('news')->insert([
                 'body'      => $body,
                 'subject'   => $subject,
                 'gedcom_id' => $tree->id(),
@@ -216,7 +216,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new HttpForbiddenException();
         }
 
-        DB::table('news')
+        DB::queryBuilder()->from('news')
             ->where('news_id', '=', $news_id)
             ->where('gedcom_id', '=', $tree->id())
             ->delete();

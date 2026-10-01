@@ -96,7 +96,7 @@ final class RenumberTree
             $new_xref = Registry::xrefFactory()->make($type);
             switch ($type) {
                 case Individual::RECORD_TYPE:
-                    DB::table('individuals')
+                    DB::queryBuilder()->from('individuals')
                         ->where('i_file', '=', $tree->id())
                         ->where('i_id', '=', $old_xref)
                         ->update([
@@ -104,7 +104,7 @@ final class RenumberTree
                             'i_gedcom' => new Expression("REPLACE(i_gedcom, '0 @$old_xref@ INDI', '0 @$new_xref@ INDI')"),
                         ]);
 
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->where('f_husb', '=', $old_xref)
                         ->where('f_file', '=', $tree->id())
                         ->update([
@@ -112,7 +112,7 @@ final class RenumberTree
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' HUSB @$old_xref@', ' HUSB @$new_xref@')"),
                         ]);
 
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->where('f_wife', '=', $old_xref)
                         ->where('f_file', '=', $tree->id())
                         ->update([
@@ -122,7 +122,7 @@ final class RenumberTree
 
                     // Other links from families to individuals
                     foreach (['CHIL', 'ASSO', '_ASSO'] as $tag) {
-                        DB::table('families')
+                        DB::queryBuilder()->from('families')
                             ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'f_file')
@@ -138,7 +138,7 @@ final class RenumberTree
 
                     // Links from individuals to individuals
                     foreach (['ALIA', 'ASSO', '_ASSO'] as $tag) {
-                        DB::table('individuals')
+                        DB::queryBuilder()->from('individuals')
                             ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'i_file')
@@ -152,21 +152,21 @@ final class RenumberTree
                             ]);
                     }
 
-                    DB::table('placelinks')
+                    DB::queryBuilder()->from('placelinks')
                         ->where('pl_file', '=', $tree->id())
                         ->where('pl_gid', '=', $old_xref)
                         ->update([
                             'pl_gid' => $new_xref,
                         ]);
 
-                    DB::table('dates')
+                    DB::queryBuilder()->from('dates')
                         ->where('d_file', '=', $tree->id())
                         ->where('d_gid', '=', $old_xref)
                         ->update([
                             'd_gid' => $new_xref,
                         ]);
 
-                    DB::table('user_gedcom_setting')
+                    DB::queryBuilder()->from('user_gedcom_setting')
                         ->where('gedcom_id', '=', $tree->id())
                         ->where('setting_value', '=', $old_xref)
                         ->whereIn('setting_name', [UserInterface::PREF_TREE_ACCOUNT_XREF, UserInterface::PREF_TREE_DEFAULT_XREF])
@@ -176,7 +176,7 @@ final class RenumberTree
                     break;
 
                 case Family::RECORD_TYPE:
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->where('f_file', '=', $tree->id())
                         ->where('f_id', '=', $old_xref)
                         ->update([
@@ -186,7 +186,7 @@ final class RenumberTree
 
                     // Links from individuals to families
                     foreach (['FAMC', 'FAMS'] as $tag) {
-                        DB::table('individuals')
+                        DB::queryBuilder()->from('individuals')
                             ->join('link', static function (JoinClause $join): void {
                                 $join
                                     ->on('l_file', '=', 'i_file')
@@ -200,14 +200,14 @@ final class RenumberTree
                             ]);
                     }
 
-                    DB::table('placelinks')
+                    DB::queryBuilder()->from('placelinks')
                         ->where('pl_file', '=', $tree->id())
                         ->where('pl_gid', '=', $old_xref)
                         ->update([
                             'pl_gid' => $new_xref,
                         ]);
 
-                    DB::table('dates')
+                    DB::queryBuilder()->from('dates')
                         ->where('d_file', '=', $tree->id())
                         ->where('d_gid', '=', $old_xref)
                         ->update([
@@ -216,7 +216,7 @@ final class RenumberTree
                     break;
 
                 case Source::RECORD_TYPE:
-                    DB::table('sources')
+                    DB::queryBuilder()->from('sources')
                         ->where('s_file', '=', $tree->id())
                         ->where('s_id', '=', $old_xref)
                         ->update([
@@ -224,7 +224,7 @@ final class RenumberTree
                             's_gedcom' => new Expression("REPLACE(s_gedcom, '0 @$old_xref@ SOUR', '0 @$new_xref@ SOUR')"),
                         ]);
 
-                    DB::table('individuals')
+                    DB::queryBuilder()->from('individuals')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
@@ -237,7 +237,7 @@ final class RenumberTree
                             'i_gedcom' => new Expression("REPLACE(i_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
 
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
@@ -250,7 +250,7 @@ final class RenumberTree
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
 
-                    DB::table('media')
+                    DB::queryBuilder()->from('media')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
@@ -263,7 +263,7 @@ final class RenumberTree
                             'm_gedcom' => new Expression("REPLACE(m_gedcom, ' SOUR @$old_xref@', ' SOUR @$new_xref@')"),
                         ]);
 
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
@@ -278,7 +278,7 @@ final class RenumberTree
                     break;
 
                 case Repository::RECORD_TYPE:
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->where('o_file', '=', $tree->id())
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', 'REPO')
@@ -287,7 +287,7 @@ final class RenumberTree
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ REPO', '0 @$new_xref@ REPO')"),
                         ]);
 
-                    DB::table('sources')
+                    DB::queryBuilder()->from('sources')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
@@ -302,7 +302,7 @@ final class RenumberTree
                     break;
 
                 case Note::RECORD_TYPE:
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->where('o_file', '=', $tree->id())
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', 'NOTE')
@@ -311,7 +311,7 @@ final class RenumberTree
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ NOTE', '0 @$new_xref@ NOTE')"),
                         ]);
 
-                    DB::table('individuals')
+                    DB::queryBuilder()->from('individuals')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
@@ -324,7 +324,7 @@ final class RenumberTree
                             'i_gedcom' => new Expression("REPLACE(i_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
@@ -337,7 +337,7 @@ final class RenumberTree
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
-                    DB::table('media')
+                    DB::queryBuilder()->from('media')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
@@ -350,7 +350,7 @@ final class RenumberTree
                             'm_gedcom' => new Expression("REPLACE(m_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
-                    DB::table('sources')
+                    DB::queryBuilder()->from('sources')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
@@ -363,7 +363,7 @@ final class RenumberTree
                             's_gedcom' => new Expression("REPLACE(s_gedcom, ' NOTE @$old_xref@', ' NOTE @$new_xref@')"),
                         ]);
 
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
@@ -378,7 +378,7 @@ final class RenumberTree
                     break;
 
                 case Media::RECORD_TYPE:
-                    DB::table('media')
+                    DB::queryBuilder()->from('media')
                         ->where('m_file', '=', $tree->id())
                         ->where('m_id', '=', $old_xref)
                         ->update([
@@ -386,14 +386,14 @@ final class RenumberTree
                             'm_gedcom' => new Expression("REPLACE(m_gedcom, '0 @$old_xref@ OBJE', '0 @$new_xref@ OBJE')"),
                         ]);
 
-                    DB::table('media_file')
+                    DB::queryBuilder()->from('media_file')
                         ->where('m_file', '=', $tree->id())
                         ->where('m_id', '=', $old_xref)
                         ->update([
                             'm_id' => $new_xref,
                         ]);
 
-                    DB::table('individuals')
+                    DB::queryBuilder()->from('individuals')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
@@ -406,7 +406,7 @@ final class RenumberTree
                             'i_gedcom' => new Expression("REPLACE(i_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
 
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
@@ -419,7 +419,7 @@ final class RenumberTree
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
 
-                    DB::table('sources')
+                    DB::queryBuilder()->from('sources')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
@@ -432,7 +432,7 @@ final class RenumberTree
                             's_gedcom' => new Expression("REPLACE(s_gedcom, ' OBJE @$old_xref@', ' OBJE @$new_xref@')"),
                         ]);
 
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
@@ -447,7 +447,7 @@ final class RenumberTree
                     break;
 
                 default:
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->where('o_file', '=', $tree->id())
                         ->where('o_id', '=', $old_xref)
                         ->where('o_type', '=', $type)
@@ -456,7 +456,7 @@ final class RenumberTree
                             'o_gedcom' => new Expression("REPLACE(o_gedcom, '0 @$old_xref@ $type', '0 @$new_xref@ $type')"),
                         ]);
 
-                    DB::table('individuals')
+                    DB::queryBuilder()->from('individuals')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'i_file')
@@ -469,7 +469,7 @@ final class RenumberTree
                             'i_gedcom' => new Expression("REPLACE(i_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
-                    DB::table('families')
+                    DB::queryBuilder()->from('families')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'f_file')
@@ -482,7 +482,7 @@ final class RenumberTree
                             'f_gedcom' => new Expression("REPLACE(f_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
-                    DB::table('media')
+                    DB::queryBuilder()->from('media')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'm_file')
@@ -495,7 +495,7 @@ final class RenumberTree
                             'm_gedcom' => new Expression("REPLACE(m_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
-                    DB::table('sources')
+                    DB::queryBuilder()->from('sources')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 's_file')
@@ -508,7 +508,7 @@ final class RenumberTree
                             's_gedcom' => new Expression("REPLACE(s_gedcom, ' $type @$old_xref@', ' $type @$new_xref@')"),
                         ]);
 
-                    DB::table('other')
+                    DB::queryBuilder()->from('other')
                         ->join('link', static function (JoinClause $join): void {
                             $join
                                 ->on('l_file', '=', 'o_file')
@@ -523,42 +523,42 @@ final class RenumberTree
                     break;
             }
 
-            DB::table('name')
+            DB::queryBuilder()->from('name')
                 ->where('n_file', '=', $tree->id())
                 ->where('n_id', '=', $old_xref)
                 ->update([
                     'n_id' => $new_xref,
                 ]);
 
-            DB::table('default_resn')
+            DB::queryBuilder()->from('default_resn')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('xref', '=', $old_xref)
                 ->update([
                     'xref' => $new_xref,
                 ]);
 
-            DB::table('hit_counter')
+            DB::queryBuilder()->from('hit_counter')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('page_parameter', '=', $old_xref)
                 ->update([
                     'page_parameter' => $new_xref,
                 ]);
 
-            DB::table('link')
+            DB::queryBuilder()->from('link')
                 ->where('l_file', '=', $tree->id())
                 ->where('l_from', '=', $old_xref)
                 ->update([
                     'l_from' => $new_xref,
                 ]);
 
-            DB::table('link')
+            DB::queryBuilder()->from('link')
                 ->where('l_file', '=', $tree->id())
                 ->where('l_to', '=', $old_xref)
                 ->update([
                     'l_to' => $new_xref,
                 ]);
 
-            DB::table('favorite')
+            DB::queryBuilder()->from('favorite')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('xref', '=', $old_xref)
                 ->update([

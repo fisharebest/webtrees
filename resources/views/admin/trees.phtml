@@ -65,7 +65,7 @@ use Illuminate\Support\Collection;
 
                 <div id="card-tree-content-<?= $managed_tree->id() ?>" class="accordion-collapse collapse<?= $managed_tree->id() === $tree->id() || !$managed_tree->imported() ? ' show' : '' ?>" aria-labelledby="card-tree-header-<?= $managed_tree->id() ?>">
                     <div class="accordion-body">
-                        <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
+                        <?php $importing = DB::queryBuilder()->from('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
                             <div
                                 id="import<?= $managed_tree->id() ?>"

@@ -110,7 +110,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $faqs = $this->faqsForTree($tree)->all();
 
-        $min_block_order = (int) DB::table('block')
+        $min_block_order = (int) DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where(static function (Builder $query) use ($tree): void {
                 $query
@@ -119,7 +119,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             })
             ->min('block_order');
 
-        $max_block_order = (int) DB::table('block')
+        $max_block_order = (int) DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where(static function (Builder $query) use ($tree): void {
                 $query
@@ -155,9 +155,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
+        DB::queryBuilder()->from('block_setting')->where('block_id', '=', $block_id)->delete();
 
-        DB::table('block')->where('block_id', '=', $block_id)->delete();
+        DB::queryBuilder()->from('block')->where('block_id', '=', $block_id)->delete();
 
         $url = route(ModuleAction::class, [
             'module' => $this->name(),
@@ -171,24 +171,24 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_order = DB::table('block')
+        $block_order = DB::queryBuilder()->from('block')
             ->where('block_id', '=', $block_id)
             ->value('block_order');
 
-        $swap_block = DB::table('block')
+        $swap_block = DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where('block_order', '>', $block_order)
             ->orderBy('block_order')
             ->first();
 
         if ($block_order !== null && $swap_block !== null) {
-            DB::table('block')
+            DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
                     'block_order' => $swap_block->block_order,
                 ]);
 
-            DB::table('block')
+            DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $swap_block->block_id)
                 ->update([
                     'block_order' => $block_order,
@@ -202,24 +202,24 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_order = DB::table('block')
+        $block_order = DB::queryBuilder()->from('block')
             ->where('block_id', '=', $block_id)
             ->value('block_order');
 
-        $swap_block = DB::table('block')
+        $swap_block = DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where('block_order', '<', $block_order)
             ->orderBy('block_order', 'desc')
             ->first();
 
         if ($block_order !== null && $swap_block !== null) {
-            DB::table('block')
+            DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
                     'block_order' => $swap_block->block_order,
                 ]);
 
-            DB::table('block')
+            DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $swap_block->block_id)
                 ->update([
                     'block_order' => $block_order,
@@ -240,7 +240,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $header      = '';
             $body        = '';
             $gedcom_id   = null;
-            $block_order = 1 + (int) DB::table('block')->where('module_name', '=', $this->name())->max('block_order');
+            $block_order = 1 + (int) DB::queryBuilder()->from('block')->where('module_name', '=', $this->name())->max('block_order');
 
             $languages = [];
 
@@ -249,8 +249,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             // Editing an existing faq
             $header      = $this->getBlockSetting($block_id, 'header');
             $body        = $this->getBlockSetting($block_id, 'faqbody');
-            $gedcom_id   = DB::table('block')->where('block_id', '=', $block_id)->value('gedcom_id');
-            $block_order = DB::table('block')->where('block_id', '=', $block_id)->value('block_order');
+            $gedcom_id   = DB::queryBuilder()->from('block')->where('block_id', '=', $block_id)->value('gedcom_id');
+            $block_order = DB::queryBuilder()->from('block')->where('block_id', '=', $block_id)->value('block_order');
 
             $languages = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
@@ -292,14 +292,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $header  = $this->html_service->sanitize($header);
 
         if ($block_id !== 0) {
-            DB::table('block')
+            DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
                     'gedcom_id'   => $gedcom_id,
                     'block_order' => $block_order,
                 ]);
         } else {
-            DB::table('block')->insert([
+            DB::queryBuilder()->from('block')->insert([
                 'gedcom_id'   => $gedcom_id,
                 'module_name' => $this->name(),
                 'block_order' => $block_order,
@@ -349,7 +349,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     private function faqsForTree(Tree $tree): Collection
     {
-        return DB::table('block')
+        return DB::queryBuilder()->from('block')
             ->join('block_setting AS bs1', 'bs1.block_id', '=', 'block.block_id')
             ->join('block_setting AS bs2', 'bs2.block_id', '=', 'block.block_id')
             ->join('block_setting AS bs3', 'bs3.block_id', '=', 'block.block_id')
@@ -376,7 +376,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     private function faqsExist(Tree $tree, string $language): bool
     {
-        return DB::table('block')
+        return DB::queryBuilder()->from('block')
             ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
             ->where('module_name', '=', $this->name())
             ->where('setting_name', '=', 'languages')

@@ -50,7 +50,7 @@ class MapDataService
         $hierarchy = [];
 
         while (true) {
-            $row = DB::table('place_location')
+            $row = DB::queryBuilder()->from('place_location')
                 ->where('id', '=', $id)
                 ->select(['place', 'parent_id'])
                 ->first();
@@ -74,7 +74,7 @@ class MapDataService
         $parents  = $this->placeIdsForLocation($location);
         $children = [];
 
-        $rows = DB::table('places')
+        $rows = DB::queryBuilder()->from('places')
             ->join('gedcom', 'gedcom_id', '=', 'p_file')
             ->whereIn('p_parent_id', $parents)
             ->select(['p_place', 'gedcom_name AS tree_name', 'title AS tree_title', 'p_id'])
@@ -98,7 +98,7 @@ class MapDataService
      */
     public function importMissingLocations(): void
     {
-        $all_places = DB::table('places AS p0')
+        $all_places = DB::queryBuilder()->from('places AS p0')
             ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
             ->leftJoin('places AS p2', 'p2.p_id', '=', 'p1.p_parent_id')
             ->leftJoin('places AS p3', 'p3.p_id', '=', 'p2.p_parent_id')
@@ -121,7 +121,7 @@ class MapDataService
             ->get()
             ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row, static fn (string|null $value): bool => $value !== null)));
 
-        $all_locations = DB::table('place_location AS p0')
+        $all_locations = DB::queryBuilder()->from('place_location AS p0')
             ->leftJoin('place_location AS p1', 'p1.id', '=', 'p0.parent_id')
             ->leftJoin('place_location AS p2', 'p2.id', '=', 'p1.parent_id')
             ->leftJoin('place_location AS p3', 'p3.id', '=', 'p2.parent_id')
@@ -154,7 +154,7 @@ class MapDataService
     public function deleteRecursively(int $id): void
     {
         // Uses on-delete-cascade
-        DB::table('place_location')
+        DB::queryBuilder()->from('place_location')
             ->where('id', '=', $id)
             ->delete();
     }
@@ -165,15 +165,15 @@ class MapDataService
     public function deleteUnusedLocations(int|null $parent_location_id, array $parent_place_ids): void
     {
         if ($parent_location_id === null) {
-            $location_query = DB::table('place_location')
+            $location_query = DB::queryBuilder()->from('place_location')
                 ->whereNull('parent_id');
         } else {
-            $location_query = DB::table('place_location')
+            $location_query = DB::queryBuilder()->from('place_location')
                 ->where('parent_id', '=', $parent_location_id);
         }
 
         foreach ($location_query->get() as $location) {
-            $places = DB::table('places')
+            $places = DB::queryBuilder()->from('places')
                 ->whereIn('p_parent_id', $parent_place_ids)
                 ->where('p_place', '=', $location->place)
                 ->get();
@@ -181,7 +181,7 @@ class MapDataService
             if ($places->isEmpty()) {
                 FlashMessages::addMessage(I18N::translate('“%s” has been deleted.', e($location->place)));
 
-                DB::table('place_location')
+                DB::queryBuilder()->from('place_location')
                     ->where('id', '=', $location->id)
                     ->delete();
             } else {
@@ -212,7 +212,7 @@ class MapDataService
 
         $expression = 'CASE ' . $expression . ' WHEN TRUE THEN 1 ELSE 0 END';
 
-        $query = DB::table('place_location AS p0')
+        $query = DB::queryBuilder()->from('place_location AS p0')
             ->leftJoin('place_location AS p1', 'p1.parent_id', '=', 'p0.id')
             ->leftJoin('place_location AS p2', 'p2.parent_id', '=', 'p1.id')
             ->leftJoin('place_location AS p3', 'p3.parent_id', '=', 'p2.id')
@@ -280,7 +280,7 @@ class MapDataService
         $place_ids = ['0'];
 
         foreach ($hierarchy as $place_name) {
-            $place_ids = DB::table('places')
+            $place_ids = DB::queryBuilder()->from('places')
                 ->whereIn('p_parent_id', $place_ids)
                 ->where('p_place', '=', $place_name)
                 ->groupBy(['p_id'])

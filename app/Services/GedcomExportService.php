@@ -368,7 +368,7 @@ class GedcomExportService
 
     private function familyQuery(Tree $tree, bool $sort_by_xref): Builder
     {
-        $query = DB::table('families')
+        $query = DB::queryBuilder()->from('families')
             ->where('f_file', '=', $tree->id())
             ->select(['f_gedcom', 'f_id']);
 
@@ -383,7 +383,7 @@ class GedcomExportService
 
     private function individualQuery(Tree $tree, bool $sort_by_xref): Builder
     {
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id())
             ->select(['i_gedcom', 'i_id']);
 
@@ -398,7 +398,7 @@ class GedcomExportService
 
     private function sourceQuery(Tree $tree, bool $sort_by_xref): Builder
     {
-        $query = DB::table('sources')
+        $query = DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->select(['s_gedcom', 's_id']);
 
@@ -413,7 +413,7 @@ class GedcomExportService
 
     private function mediaQuery(Tree $tree, bool $sort_by_xref): Builder
     {
-        $query = DB::table('media')
+        $query = DB::queryBuilder()->from('media')
             ->where('m_file', '=', $tree->id())
             ->select(['m_gedcom', 'm_id']);
 
@@ -428,7 +428,7 @@ class GedcomExportService
 
     private function otherQuery(Tree $tree, bool $sort_by_xref): Builder
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
             ->select(['o_gedcom', 'o_id']);

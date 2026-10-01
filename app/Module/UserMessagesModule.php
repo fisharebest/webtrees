@@ -70,7 +70,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $context     = Validator::queryParams($request)->string('context');
         $message_ids = Validator::parsedBody($request)->list('message_id');
 
-        DB::table('message')
+        DB::queryBuilder()->from('message')
             ->where('user_id', '=', Auth::id())
             ->whereIn('message_id', $message_ids)
             ->delete();
@@ -91,7 +91,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $messages = DB::table('message')
+        $messages = DB::queryBuilder()->from('message')
             ->where('user_id', '=', Auth::id())
             ->orderByDesc('message_id')
             ->get()

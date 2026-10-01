@@ -88,7 +88,7 @@ class ModuleServiceTest extends TestCase
 
     public function testOtherModules(): void
     {
-        DB::table('module')->insert(['module_name' => 'not-a-module']);
+        DB::queryBuilder()->from('module')->insert(['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();
 
@@ -101,7 +101,7 @@ class ModuleServiceTest extends TestCase
 
     public function testDeletedModules(): void
     {
-        DB::table('module')->insert(['module_name' => 'not-a-module']);
+        DB::queryBuilder()->from('module')->insert(['module_name' => 'not-a-module']);
 
         $module_service = new ModuleService();
 

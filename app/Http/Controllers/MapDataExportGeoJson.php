@@ -85,7 +85,7 @@ final class MapDataExportGeoJson
                 ];
             }
 
-            $query = DB::table('place_location');
+            $query = DB::queryBuilder()->from('place_location');
             // Data for the next level.
 
             if ($id === null) {

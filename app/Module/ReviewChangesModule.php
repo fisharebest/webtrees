@@ -90,7 +90,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $changes_exist = DB::table('change')
+        $changes_exist = DB::queryBuilder()->from('change')
             ->where('status', ChangeStatus::Pending->value)
             ->exists();
 
@@ -141,7 +141,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             }
             $content .= '<ul>';
 
-            $changes = DB::table('change')
+            $changes = DB::queryBuilder()->from('change')
                 ->where('gedcom_id', '=', $tree->id())
                 ->whereIn('change_id', static function (Builder $query) use ($tree): void {
                     $query->select([new Expression('MAX(change_id)')])

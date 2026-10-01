@@ -55,45 +55,45 @@ final class SitemapIndexXml
 
         $tree_ids = $public_trees->map(static fn (Tree $tree): int => $tree->id());
 
-        $count_families = DB::table('families')
+        $count_families = DB::queryBuilder()->from('families')
             ->join('gedcom', 'f_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->groupBy(['gedcom_name'])
             ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
-        $count_individuals = DB::table('individuals')
+        $count_individuals = DB::queryBuilder()->from('individuals')
             ->join('gedcom', 'i_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->groupBy(['gedcom_name'])
             ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
-        $count_media = DB::table('media')
+        $count_media = DB::queryBuilder()->from('media')
             ->join('gedcom', 'm_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->groupBy(['gedcom_name'])
             ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
-        $count_notes = DB::table('other')
+        $count_notes = DB::queryBuilder()->from('other')
             ->join('gedcom', 'o_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->groupBy(['gedcom_name'])
             ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
-        $count_repositories = DB::table('other')
+        $count_repositories = DB::queryBuilder()->from('other')
             ->join('gedcom', 'o_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->groupBy(['gedcom_name'])
             ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
-        $count_sources = DB::table('sources')
+        $count_sources = DB::queryBuilder()->from('sources')
             ->join('gedcom', 's_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->groupBy(['gedcom_name'])
             ->pluck(new Expression('COUNT(*) AS total'), 'gedcom_name');
 
-        $count_submitters = DB::table('other')
+        $count_submitters = DB::queryBuilder()->from('other')
             ->join('gedcom', 'o_file', '=', 'gedcom_id')
             ->whereIn('gedcom_id', $tree_ids)
             ->where('o_type', '=', Submitter::RECORD_TYPE)

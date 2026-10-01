@@ -198,7 +198,7 @@ final class MapDataImport
                 $added++;
             }
 
-            $updated += DB::table('place_location')
+            $updated += DB::queryBuilder()->from('place_location')
                 ->where('id', '=', $location->id())
                 ->update([
                     'latitude'  => $place['latitude'],

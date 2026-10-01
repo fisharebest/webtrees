@@ -20,17 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Database\DB as BaseDB;
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use PDO;
-use PDOException;
 use RuntimeException;
 use SensitiveParameter;
 
-final class DB
+final class DB extends BaseDB
 {
     // Supported drivers
     public const string MARIADB    = 'mariadb';
@@ -40,15 +39,6 @@ final class DB
     public const string SQL_SERVER = 'sqlsrv';
     // Unsupported drivers ;-)
     public const string FIREBIRD   = 'firebird';
-
-    private const array COLLATION_UTF8 = [
-        self::MARIADB    => 'utf8mb4_bin',
-        self::MYSQL      => 'utf8mb4_bin',
-        self::POSTGRESQL => 'und-x-icu',
-        self::SQLITE     => null,
-        self::SQL_SERVER => 'Latin1_General_100_BIN2_UTF8',
-        self::FIREBIRD   => 'UTF8',
-    ];
 
     private const array REGEX_OPERATOR = [
         self::MARIADB    => 'REGEXP',
@@ -158,12 +148,7 @@ final class DB
         ]);
         $capsule->setAsGlobal();
 
-        // Eager-load the connection to prevent database credentials appearing in error logs.
-        try {
-            self::pdo();
-        } catch (PDOException $exception) {
-            throw new RuntimeException($exception->getMessage());
-        }
+        //parent::attach(pdo: Manager::connection()->getPdo(), prefix: $prefix);
 
         $sql = self::DRIVER_INITIALIZATION[$driver];
 
@@ -207,11 +192,6 @@ final class DB
         return Manager::connection()->getTablePrefix() . $identifier;
     }
 
-    public static function collation(): string|null
-    {
-        return self::COLLATION_UTF8[self::driverName()];
-    }
-
     /**
      * SQL-Server needs to be told that we are going to insert into an identity column.
      *
@@ -242,7 +222,7 @@ final class DB
      * @internal
      *
      */
-    public static function concat(array $expressions): string
+    public static function concatenate(array $expressions): string
     {
         if (self::driverName() === self::SQL_SERVER) {
             return 'CONCAT(' . implode(', ', $expressions) . ')';
@@ -297,19 +277,14 @@ final class DB
         return self::REGEX_OPERATOR[self::driverName()];
     }
 
-    public static function query(): QueryBuilder
+    public static function queryBuilder(): QueryBuilder
     {
         return Manager::connection()->query();
     }
 
-    public static function schema(): SchemaBuilder
+    public static function schemaBuilder(): SchemaBuilder
     {
         return Manager::schema();
-    }
-
-    public static function table(string $table): QueryBuilder
-    {
-        return Manager::connection()->table(table: $table);
     }
 
     /**

@@ -69,7 +69,7 @@ class Place
         $parts = new Collection();
 
         while ($id !== 0) {
-            $row = DB::table('places')
+            $row = DB::queryBuilder()->from('places')
                 ->where('p_file', '=', $tree->id())
                 ->where('p_id', '=', $id)
                 ->first();
@@ -109,7 +109,7 @@ class Place
 
             $parent_place_id = $this->parent()->id();
 
-            $place_id = (int) DB::table('places')
+            $place_id = (int) DB::queryBuilder()->from('places')
                 ->where('p_file', '=', $this->tree->id())
                 ->where('p_place', '=', mb_substr($this->parts->first(), 0, 120))
                 ->where('p_parent_id', '=', $parent_place_id)
@@ -118,7 +118,7 @@ class Place
             if ($place_id === 0) {
                 $place = $this->parts->first();
 
-                DB::table('places')->insert([
+                DB::queryBuilder()->from('places')->insert([
                     'p_file'        => $this->tree->id(),
                     'p_place'       => mb_substr($place, 0, 120),
                     'p_parent_id'   => $parent_place_id,
@@ -173,7 +173,7 @@ class Place
             $parent_text = '';
         }
 
-        return DB::table('places')
+        return DB::queryBuilder()->from('places')
             ->where('p_file', '=', $this->tree->id())
             ->where('p_parent_id', '=', $this->id())
             ->pluck('p_place')
