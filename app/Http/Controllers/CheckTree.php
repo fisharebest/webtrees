@@ -55,7 +55,7 @@ use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -95,26 +95,37 @@ final class CheckTree
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
 
-        $q1 = DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom', new Expression("'INDI' AS type")]);
-        $q2 = DB::table('families')
-            ->where('f_file', '=', $tree->id())
-            ->select(['f_id AS xref', 'f_gedcom AS gedcom', new Expression("'FAM' AS type")]);
-        $q3 = DB::table('media')
-            ->where('m_file', '=', $tree->id())
-            ->select(['m_id AS xref', 'm_gedcom AS gedcom', new Expression("'OBJE' AS type")]);
-        $q4 = DB::table('sources')
-            ->where('s_file', '=', $tree->id())
-            ->select(['s_id AS xref', 's_gedcom AS gedcom', new Expression("'SOUR' AS type")]);
-        $q5 = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type']);
-        $q6 = DB::table('change')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('status', '=', ChangeStatus::Pending->value)
-            ->orderBy('change_id')
-            ->select(['xref', 'new_gedcom AS gedcom', new Expression("'' AS type")]);
+        $q1 = DB::query()
+            ->select('i_id AS xref', 'i_gedcom AS gedcom', DB::alias(DB::value('INDI'), 'type'), DB::alias(DB::value(0), 'priority'))
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id());
+        $q2 = DB::query()
+            ->select('f_id AS xref', 'f_gedcom AS gedcom', DB::alias(DB::value('FAM'), 'type'), DB::alias(DB::value(0), 'priority'))
+            ->from('families')
+            ->whereEqual('f_file', $tree->id());
+        $q3 = DB::query()
+            ->select('m_id AS xref', 'm_gedcom AS gedcom', DB::alias(DB::value('OBJE'), 'type'), DB::alias(DB::value(0), 'priority'))
+            ->from('media')
+            ->whereEqual('m_file', $tree->id());
+        $q4 = DB::query()
+            ->select('s_id AS xref', 's_gedcom AS gedcom', DB::alias(DB::value('SOUR'), 'type'), DB::alias(DB::value(0), 'priority'))
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id());
+        $q5 = DB::query()
+            ->select('o_id AS xref', 'o_gedcom AS gedcom', 'o_type AS type', DB::alias(DB::value(0), 'priority'))
+            ->from('other')
+            ->whereEqual('o_file', $tree->id());
+        $q6 = DB::query()
+            ->select('xref', 'new_gedcom AS gedcom', DB::alias(DB::value(''), 'type'), DB::alias(DB::value(1), 'priority'))
+            ->from('change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('status', ChangeStatus::Pending->value)
+            ->whereInSubquery('change_id', DB::query()
+                ->select(DB::max('change_id'))
+                ->from('change')
+                ->whereEqual('gedcom_id', $tree->id())
+                ->whereEqual('status', ChangeStatus::Pending->value)
+                ->groupBy('xref'));
 
         $rows = $q1
             ->unionAll($q2)
@@ -122,7 +133,8 @@ final class CheckTree
             ->unionAll($q4)
             ->unionAll($q5)
             ->unionAll($q6)
-            ->get()
+            ->orderBy('priority')
+            ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 // Extract type for pending record
                 if ($row->type === '' && str_starts_with($row->gedcom, '0 HEAD')) {

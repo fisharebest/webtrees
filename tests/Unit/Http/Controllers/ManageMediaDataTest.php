@@ -94,6 +94,7 @@ class ManageMediaDataTest extends TestCase
         $media_file_service->method('allFilesOnDisk')->willReturn(new Collection());
         $media_file_service->method('allFilesInDatabase')->willReturn(new Collection());
         $tree_service = new TreeService($gedcom_import_service);
+        $tree_service->create('name', 'title');
         $controller   = new ManageMediaData($datatables_service, $linked_record_service, $media_file_service, $tree_service);
         $request      = self::createRequest(HttpRequestMethod::GET->value, [
             'files'        => 'unused',

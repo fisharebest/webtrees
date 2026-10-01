@@ -115,7 +115,6 @@ trait ModuleThemeTrait
     /**
      * Links, to show in chart boxes;
      *
-     *
      * @return array<Menu>
      */
     public function individualBoxMenu(Individual $individual): array
@@ -128,7 +127,6 @@ trait ModuleThemeTrait
 
     /**
      * Chart links, to show in chart boxes;
-     *
      *
      * @return array<Menu>
      */
@@ -152,7 +150,6 @@ trait ModuleThemeTrait
 
     /**
      * Family links, to show in chart boxes.
-     *
      *
      * @return array<Menu>
      */
@@ -405,7 +402,6 @@ trait ModuleThemeTrait
     /**
      * Generate a list of items for the main menu.
      *
-     *
      * @return array<Menu>
      */
     public function genealogyMenu(Tree|null $tree): array
@@ -435,7 +431,6 @@ trait ModuleThemeTrait
 
     /**
      * Generate a list of items for the user menu.
-     *
      *
      * @return array<Menu>
      */

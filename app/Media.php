@@ -42,9 +42,10 @@ class Media extends GedcomRecord
     protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide media objects if they are attached to private records
-        $linked_ids = DB::table('link')
-            ->where('l_file', '=', $this->tree->id())
-            ->where('l_to', '=', $this->xref)
+        $linked_ids = DB::query()
+            ->from('link')
+            ->whereEqual('l_file', $this->tree->id())
+            ->whereEqual('l_to', $this->xref)
             ->pluck('l_from');
 
         foreach ($linked_ids as $linked_id) {
@@ -174,10 +175,12 @@ class Media extends GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('media')
-            ->where('m_file', '=', $this->tree->id())
-            ->where('m_id', '=', $this->xref())
-            ->lockForUpdate()
+        $locked_media = DB::query()
+            ->select('*')
+            ->from('media')
+            ->whereEqual('m_file', $this->tree->id())
+            ->whereEqual('m_id', $this->xref())
+            ->forUpdate()
             ->get();
     }
 }

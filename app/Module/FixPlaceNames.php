@@ -79,8 +79,8 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
         $search = '%' . addcslashes($params['search-for'], '\\%_') . '%';
 
         return  $this->familiesToFixQuery($tree, $params)
-            ->where('f_gedcom', 'LIKE', $search)
-            ->pluck('f_id');
+            ->whereRaw('f_gedcom LIKE ?', [$search])
+            ->pluck('f_id', in: Collection::class);
     }
 
     /**
@@ -100,9 +100,9 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
         $search = '%' . addcslashes($params['search-for'], '\\%_') . '%';
 
         return  $this->individualsToFixQuery($tree, $params)
-            ->where('i_file', '=', $tree->id())
-            ->where('i_gedcom', 'LIKE', $search)
-            ->pluck('i_id');
+            ->whereEqual('i_file', $tree->id())
+            ->whereRaw('i_gedcom LIKE ?', [$search])
+            ->pluck('i_id', in: Collection::class);
     }
 
     /**

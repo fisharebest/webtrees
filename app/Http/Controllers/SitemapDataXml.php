@@ -99,12 +99,14 @@ final class SitemapDataXml
      */
     private function sitemapFamilies(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('families')
-            ->where('f_file', '=', $tree->id())
+        return DB::query()
+            ->select('*')
+            ->from('families')
+            ->whereEqual('f_file', $tree->id())
             ->orderBy('f_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($tree));
     }
 
@@ -113,12 +115,14 @@ final class SitemapDataXml
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
+        return DB::query()
+            ->select('*')
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id())
             ->orderBy('i_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($tree));
     }
 
@@ -127,12 +131,14 @@ final class SitemapDataXml
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('media')
-            ->where('m_file', '=', $tree->id())
+        return DB::query()
+            ->select('*')
+            ->from('media')
+            ->whereEqual('m_file', $tree->id())
             ->orderBy('m_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::mediaFactory()->mapper($tree));
     }
 
@@ -141,13 +147,15 @@ final class SitemapDataXml
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
+        return DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE)
             ->orderBy('o_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::noteFactory()->mapper($tree));
     }
 
@@ -156,13 +164,15 @@ final class SitemapDataXml
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
+        return DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
             ->orderBy('o_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::repositoryFactory()->mapper($tree));
     }
 
@@ -171,12 +181,14 @@ final class SitemapDataXml
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('sources')
-            ->where('s_file', '=', $tree->id())
+        return DB::query()
+            ->select('*')
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id())
             ->orderBy('s_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::sourceFactory()->mapper($tree));
     }
 
@@ -185,13 +197,15 @@ final class SitemapDataXml
      */
     private function sitemapSubmitters(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Submitter::RECORD_TYPE)
+        return DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Submitter::RECORD_TYPE)
             ->orderBy('o_id')
-            ->skip($offset)
-            ->take($limit)
-            ->get()
+            ->limit($limit)
+            ->offset($offset)
+            ->get(in: Collection::class)
             ->map(Registry::submitterFactory()->mapper($tree));
     }
 }

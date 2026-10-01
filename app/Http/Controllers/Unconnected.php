@@ -62,15 +62,17 @@ final class Unconnected
             $links[] = '_ASSO';
         }
 
-        $rows = DB::table('link')
-            ->where('l_file', '=', $tree->id())
+        $rows = DB::query()
+            ->select('l_from', 'l_to')
+            ->from('link')
+            ->whereEqual('l_file', $tree->id())
             ->whereIn('l_type', $links)
-            ->select(['l_from', 'l_to'])
             ->get();
 
-        $graph = DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->pluck('i_id')
+        $graph = DB::query()
+            ->from('individuals')
+            ->whereEqual('i_file', $tree->id())
+            ->pluck('i_id', in: Collection::class)
             ->mapWithKeys(static fn (string $xref): array => [$xref => []])
             ->all();
 
@@ -92,10 +94,12 @@ final class Unconnected
             $component = array_map(static fn ($x): string => strtolower((string) $x), $component);
 
             if (!in_array(strtolower($xref), $component, true)) {
-                $individual_groups[] = DB::table('individuals')
-                    ->where('i_file', '=', $tree->id())
+                $individual_groups[] = DB::query()
+                    ->select('*')
+                    ->from('individuals')
+                    ->whereEqual('i_file', $tree->id())
                     ->whereIn('i_id', $component)
-                    ->get()
+                    ->get(in: Collection::class)
                     ->map(Registry::individualFactory()->mapper($tree))
                     ->filter();
             }

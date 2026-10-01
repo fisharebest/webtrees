@@ -61,7 +61,6 @@ class AlbumModule extends MediaTabModule
     /**
      * Get the linked media objects.
      *
-     *
      * @return Collection<int,Media>
      */
     private function getMedia(Individual $individual): Collection

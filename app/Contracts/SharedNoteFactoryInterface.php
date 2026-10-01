@@ -36,7 +36,6 @@ interface SharedNoteFactoryInterface extends GedcomRecordFactoryInterface
     /**
      * Create a note from a row in the database.
      *
-     *
      * @return Closure(object):SharedNote
      */
     public function mapper(Tree $tree): Closure;

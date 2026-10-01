@@ -246,9 +246,11 @@ final class TreePreferences
             $MEDIA_DIRECTORY = trim($MEDIA_DIRECTORY, '/') . '/';
 
             // Tree name needs to be unique
-            $duplicate = DB::table('gedcom')
-                ->where('gedcom_name', '=', $gedcom)
-                ->where('gedcom_id', '<>', $tree->id())
+            $duplicate = DB::query()
+                ->select('*')
+                ->from('gedcom')
+                ->whereEqual('gedcom_name', $gedcom)
+                ->whereNotEqual('gedcom_id', $tree->id())
                 ->exists();
 
             if ($duplicate) {
@@ -260,8 +262,8 @@ final class TreePreferences
             $gedcom          = $tree->name();
         }
 
-        DB::table('gedcom')
-            ->where('gedcom_id', '=', $tree->id())
+        DB::query(table: 'gedcom')
+            ->whereEqual('gedcom_id', $tree->id())
             ->update([
                 'contact_user_id' => $contact_user_id === 0 ? null : $contact_user_id,
                 'media_folder'    => $MEDIA_DIRECTORY,
@@ -271,9 +273,9 @@ final class TreePreferences
             ]);
 
         if ($tree->name() !== $gedcom) {
-            DB::table('site_setting')
-                ->where('setting_name', '=', 'DEFAULT_GEDCOM')
-                ->where('setting_value', '=', $tree->name())
+            DB::query(table: 'site_setting')
+                ->whereEqual('setting_name', 'DEFAULT_GEDCOM')
+                ->whereEqual('setting_value', $tree->name())
                 ->update(['setting_value' => $gedcom]);
         }
 

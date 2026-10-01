@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -34,7 +35,11 @@ final class SiteLogsDelete
 
     public function post(ServerRequestInterface $request): ResponseInterface
     {
-        $this->site_logs_service->logsQuery($request)->delete();
+        $matching_logs = $this->site_logs_service->logsQuery($request);
+
+        DB::query(table: 'log')
+            ->whereInSubquery('log_id', DB::query()->select('log_id')->fromSub($matching_logs, 'matching_logs'))
+            ->delete();
 
         return response();
     }

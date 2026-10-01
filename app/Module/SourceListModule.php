@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -86,8 +87,10 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('sources')
-            ->where('s_file', '=', $tree->id())
+        return !DB::query()
+            ->select('*')
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id())
             ->exists();
     }
 
@@ -98,9 +101,11 @@ class SourceListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $sources = DB::table('sources')
-            ->where('s_file', '=', $tree->id())
-            ->get()
+        $sources = DB::query()
+            ->select('*')
+            ->from('sources')
+            ->whereEqual('s_file', $tree->id())
+            ->get(in: Collection::class)
             ->map(Registry::sourceFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 

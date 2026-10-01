@@ -63,7 +63,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
     {
         // No DB querying possible?  Select all.
         return $this->individualsToFixQuery($tree, $params)
-            ->pluck('i_id');
+            ->pluck('i_id', in: Collection::class);
     }
 
     /**

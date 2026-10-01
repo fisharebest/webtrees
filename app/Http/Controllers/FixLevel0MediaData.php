@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
@@ -26,8 +28,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -60,65 +60,57 @@ final class FixLevel0MediaData
 
         $search = Validator::parsedBody($request)->array('search')['value'] ?? '';
 
-        $query = DB::table('media')
-            ->join('media_file', static function (JoinClause $join): void {
-                $join
-                    ->on('media_file.m_file', '=', 'media.m_file')
-                    ->on('media_file.m_id', '=', 'media.m_id');
-            })
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('link.l_file', '=', 'media.m_file')
-                    ->on('link.l_to', '=', 'media.m_id')
-                    ->where('link.l_type', '=', 'OBJE');
-            })
-            ->join('individuals', static function (JoinClause $join): void {
-                $join
-                    ->on('individuals.i_file', '=', 'link.l_file')
-                    ->on('individuals.i_id', '=', 'link.l_from');
-            })
-            ->where('i_gedcom', 'LIKE', new Expression("('%\n1 OBJE @' || " . DB::prefix('media') . ".m_id || '@%')"))
-            ->orderBy('individuals.i_file')
-            ->orderBy('individuals.i_id')
-            ->orderBy('media.m_id')
-            ->where('descriptive_title', 'LIKE', '%' . addcslashes($search, '\\%_') . '%')
-            ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
+        $query = DB::query()
+            ->select('media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom')
+            ->from('media')
+            ->join('media_file', static fn (JoinOn $j): JoinOn => $j->on('media_file.m_file', 'media.m_file')->on('media_file.m_id', 'media.m_id'))
+            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('link.l_file', 'media.m_file')->on('link.l_to', 'media.m_id')->on('link.l_type', DB::value('OBJE')))
+            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('individuals.i_file', 'link.l_file')->on('individuals.i_id', 'link.l_from'))
+            ->whereLike('i_gedcom', DB::concat(DB::value('%\n1 OBJE @'), DB::column('media.m_id'), DB::value('@%')))
+            ->whereLike('descriptive_title', '%' . addcslashes($search, '\\%_') . '%');
 
-        return $this->datatables_service->handleQuery($request, $query, [], [], function (object $datum) use ($ignore_facts): array {
-            $tree       = $this->tree_service->find((int) $datum->m_file);
-            $media      = Registry::mediaFactory()->make($datum->m_id, $tree, $datum->m_gedcom);
-            $individual = Registry::individualFactory()->make($datum->i_id, $tree, $datum->i_gedcom);
+        return $this->datatables_service->handleQuery(
+            $request,
+            $query,
+            [],
+            [],
+            function (object $datum) use ($ignore_facts): array {
+                $tree       = $this->tree_service->find((int) $datum->m_file);
+                $media      = Registry::mediaFactory()->make($datum->m_id, $tree, $datum->m_gedcom);
+                $individual = Registry::individualFactory()->make($datum->i_id, $tree, $datum->i_gedcom);
 
-            $facts = $individual
-                ->facts([], true)
-                ->filter(static fn (Fact $fact): bool => !$fact->isPendingDeletion() &&
-                    !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
-                    !in_array($fact->tag(), $ignore_facts, true));
+                $facts = $individual
+                    ->facts([], true)
+                    ->filter(static fn (Fact $fact): bool => !$fact->isPendingDeletion() &&
+                        !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
+                        !in_array($fact->tag(), $ignore_facts, true));
 
-            // The link to the media object may have been deleted in a pending change.
-            $deleted = true;
-            foreach ($individual->facts(['OBJE']) as $fact) {
-                if ($fact->target() === $media && !$fact->isPendingDeletion()) {
-                    $deleted = false;
+                // The link to the media object may have been deleted in a pending change.
+                $deleted = true;
+                foreach ($individual->facts(['OBJE']) as $fact) {
+                    if ($fact->target() === $media && !$fact->isPendingDeletion()) {
+                        $deleted = false;
+                    }
                 }
-            }
-            if ($deleted) {
-                $facts = new Collection();
-            }
+                if ($deleted) {
+                    $facts = new Collection();
+                }
 
-            $facts = $facts->map(static fn (Fact $fact): string => view('admin/fix-level-0-media-action', [
-                'fact'       => $fact,
-                'individual' => $individual,
-                'media'      => $media,
-            ]));
+                $facts = $facts->map(static fn (Fact $fact): string => view('admin/fix-level-0-media-action', [
+                    'fact'       => $fact,
+                    'individual' => $individual,
+                    'media'      => $media,
+                ]));
 
-            return [
-                $tree->name(),
-                $media->displayImage(100, 100, 'contain', ['class' => 'img-thumbnail']),
-                '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>',
-                '<a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a>',
-                $facts->implode(' '),
-            ];
-        });
+                return [
+                    $tree->name(),
+                    $media->displayImage(100, 100, 'contain', ['class' => 'img-thumbnail']),
+                    '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>',
+                    '<a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a>',
+                    $facts->implode(' '),
+                ];
+            },
+            default_sort: ['individuals.i_file', 'individuals.i_id', 'media.m_id'],
+        );
     }
 }

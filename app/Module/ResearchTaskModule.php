@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\DateValueToday;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -145,18 +145,15 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      */
     private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
     {
-        return DB::table('individuals')
-            ->join('dates', static function (JoinClause $join): void {
-                $join
-                    ->on('i_file', '=', 'd_file')
-                    ->on('i_id', '=', 'd_gid');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('d_fact', '=', '_TODO')
-            ->where('d_julianday1', '<', $max_julian_day)
+        return DB::query()
+            ->select('individuals.*')
             ->distinct()
-            ->select(['individuals.*'])
-            ->get()
+            ->from('individuals')
+            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'd_file')->on('i_id', 'd_gid'))
+            ->whereEqual('i_file', $tree->id())
+            ->whereEqual('d_fact', '_TODO')
+            ->whereLessThan('d_julianday1', $max_julian_day)
+            ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }
@@ -167,18 +164,15 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      */
     private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
     {
-        return DB::table('families')
-            ->join('dates', static function (JoinClause $join): void {
-                $join
-                    ->on('f_file', '=', 'd_file')
-                    ->on('f_id', '=', 'd_gid');
-            })
-            ->where('f_file', '=', $tree->id())
-            ->where('d_fact', '=', '_TODO')
-            ->where('d_julianday1', '<', $max_julian_day)
+        return DB::query()
+            ->select('families.*')
             ->distinct()
-            ->select(['families.*'])
-            ->get()
+            ->from('families')
+            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('f_file', 'd_file')->on('f_id', 'd_gid'))
+            ->whereEqual('f_file', $tree->id())
+            ->whereEqual('d_fact', '_TODO')
+            ->whereLessThan('d_julianday1', $max_julian_day)
+            ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
     }

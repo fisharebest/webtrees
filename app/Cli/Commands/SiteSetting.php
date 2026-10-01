@@ -70,11 +70,11 @@ final class SiteSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            $settings = DB::table(table: 'site_setting')
+            $settings = DB::query()
+                ->select('setting_name', 'setting_value')
+                ->from('site_setting')
                 ->orderBy(column: 'setting_name')
-                ->select(columns: ['setting_name', 'setting_value'])
-                ->get()
-                ->all();
+                ->get();
 
             foreach ($settings as $setting) {
                 if ($setting_name === null || str_contains(haystack: $setting->setting_name, needle: $setting_name)) {
@@ -87,10 +87,14 @@ final class SiteSetting extends AbstractCommand
             return self::SUCCESS;
         }
 
-        /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('site_setting')
-            ->where(column: 'setting_name', operator: '=', value: $setting_name)
-            ->value(column: 'setting_value');
+        if ($setting_name === null) {
+            $old_setting_value = null;
+        } else {
+            $old_setting_value = DB::query()
+                ->from('site_setting')
+                ->whereEqual('setting_name', $setting_name)
+                ->value('setting_value');
+        }
 
         if ($delete) {
             if ($setting_name === null) {
@@ -108,8 +112,8 @@ final class SiteSetting extends AbstractCommand
             if ($old_setting_value === null) {
                 $io->warning(message: 'Site setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table(table: 'site_setting')
-                    ->where(column: 'setting_name', operator: '=', value: $setting_name)
+                DB::query(table: 'site_setting')
+                    ->whereEqual('setting_name', $setting_name)
                     ->delete();
 
                 $io->success(message: 'Site setting ‘' . $setting_name . '’ deleted.  Previous value was ‘' . $old_setting_value . '’.');
@@ -146,16 +150,15 @@ final class SiteSetting extends AbstractCommand
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'site_setting')
-                ->insert(values: [
-                    'setting_name'  => $setting_name,
-                    'setting_value' => $setting_value,
-                ]);
+            DB::query(table: 'site_setting')->insert(values: [
+                'setting_name'  => $setting_name,
+                'setting_value' => $setting_value,
+            ]);
 
             $io->success(message: 'Site setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'site_setting')
-                ->where(column: 'setting_name', operator: '=', value: $setting_name)
+            DB::query(table: 'site_setting')
+                ->whereEqual('setting_name', $setting_name)
                 ->update(values: ['setting_value' => $setting_value]);
 
             $io->success(message: 'Site setting ‘' . $setting_name . '’ was changed from ‘' . $old_setting_value . '’ to ‘' . $setting_value . '’.');

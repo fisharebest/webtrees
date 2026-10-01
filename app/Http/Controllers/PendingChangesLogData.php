@@ -116,6 +116,6 @@ final class PendingChangesLogData
             ];
         };
 
-        return $this->datatables_service->handleQuery($request, $query, [], [], $callback);
+        return $this->datatables_service->handleQuery($request, $query, [], [], $callback, []);
     }
 }

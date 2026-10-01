@@ -604,8 +604,10 @@ class ModuleService
         return Registry::cache()->array()->remember('all-modules', function (): Collection {
             // Modules have a default status, order, etc.
             // We can override these from database settings.
-            $module_info = DB::table('module')
-                ->get()
+            $module_info = DB::query()
+                ->select('*')
+                ->from('module')
+                ->get(in: Collection::class)
                 ->mapWithKeys(static fn (object $row): array => [$row->module_name => $row]);
 
             return $this->coreModules()
@@ -634,7 +636,7 @@ class ModuleService
                     } else {
                         $module->setEnabled($module->isEnabledByDefault());
 
-                        DB::table('module')->insert([
+                        DB::query(table: 'module')->insert(values: [
                             'module_name' => $module->name(),
                             'status'      => $module->isEnabled() ? 'enabled' : 'disabled',
                         ]);
@@ -719,7 +721,6 @@ class ModuleService
 
     /**
      * A function filter modules by enabled/disabled
-     *
      *
      * @return Closure(ModuleInterface):bool
      */
@@ -808,7 +809,6 @@ class ModuleService
      * Configuration settings are available through the various "module component" pages.
      * For modules that do not provide a component, we need to list them separately.
      *
-     *
      * @return Collection<int,ModuleInterface>
      */
     public function otherModules(bool $include_disabled = false): Collection
@@ -832,7 +832,9 @@ class ModuleService
      */
     public function deletedModules(): Collection
     {
-        $database_modules = DB::table('module')->pluck('module_name');
+        $database_modules = DB::query()
+            ->from('module')
+            ->pluck('module_name', in: Collection::class);
 
         $disk_modules = $this->all(true)
             ->map(static fn (ModuleInterface $module): string => $module->name());

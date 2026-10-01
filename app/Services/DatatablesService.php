@@ -20,14 +20,21 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
+use Fisharebest\Database\Query\Expression;
+use Fisharebest\Database\Query\OrderedExpression;
+use Fisharebest\Database\Query\Ordinal;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use SortDirection;
 
 use function addcslashes;
+use function array_map;
+use function count;
 use function strtr;
 
 /**
@@ -115,13 +122,20 @@ class DatatablesService
      * Apply filtering and pagination to a database query, and generate a response suitable for datatables.
      *
      * @param ServerRequestInterface                            $request        Includes the datatables request parameters.
-     * @param Builder                                           $query          A query to fetch the unfiltered rows and columns.
+     * @param QueryBuilder                                      $query          A query to fetch the unfiltered rows and columns.
      * @param array<string>                                     $search_columns The names of searchable columns.
-     * @param array<string|Expression<literal-string|int|float>> $sort_columns   Sort column mapping.
+     * @param array<string|Expression>                          $sort_columns   Sort column mapping.
      * @param Closure                                           $callback       Converts a row-object to an array-of-columns.
+     * @param list<Expression|Ordinal|OrderedExpression|string> $default_sort   Applied after any user-specified sort.
      */
-    public function handleQuery(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
-    {
+    public function handleQuery(
+        ServerRequestInterface $request,
+        QueryBuilder $query,
+        array $search_columns,
+        array $sort_columns,
+        Closure $callback,
+        array $default_sort,
+    ): ResponseInterface {
         $search = Validator::parsedBody($request)->array('search')['value'] ?? '';
         $start  = Validator::parsedBody($request)->integer('start', 0);
         $length = Validator::parsedBody($request)->integer('length', 0);
@@ -129,47 +143,51 @@ class DatatablesService
         $draw   = Validator::parsedBody($request)->integer('draw', 0);
 
         // Count unfiltered records
-        $recordsTotal = (clone $query)->count();
+        $recordsTotal = $query->count();
 
         // Filtering
-        if ($search !== '') {
-            $query->where(static function (Builder $query) use ($search, $search_columns): void {
+        if ($search !== '' && $search_columns !== []) {
+            $query = $query->whereNested(static function (Predicates $p) use ($search, $search_columns): Predicates {
                 $like = '%' . addcslashes($search, '\\%_') . '%';
                 $like = strtr($like, [' ' => '%']);
 
                 foreach ($search_columns as $search_column) {
-                    $query->orWhere($search_column, 'LIKE', $like);
+                    $p = $p->orLike($search_column, $like);
                 }
+
+                return $p;
             });
         }
 
         // Sorting
-        if ($order !== []) {
-            foreach ($order as $value) {
-                // Columns in datatables are numbered from zero.
-                // Columns in MySQL are numbered starting with one.
-                // If not specified, the Nth table column maps onto the Nth query column.
-                $sort_column = $sort_columns[$value['column']] ?? new Expression(1 + (int) $value['column']);
+        $sort_expressions = [];
 
-                $query->orderBy($sort_column, $value['dir']);
-            }
-        } else {
-            $query->orderBy(new Expression(1));
+        foreach ($order as $value) {
+            // Columns in datatables are numbered from zero.
+            // Columns in MySQL are numbered starting with one.
+            // If not specified, the Nth table column maps onto the Nth query column.
+            $sort_column = $sort_columns[$value['column']] ?? DB::ordinal(position: 1 + (int) $value['column']);
+
+            $sort_expressions[] = DB::order(
+                $sort_column,
+                $value['dir'] === 'asc' ? SortDirection::Ascending : SortDirection::Descending,
+            );
         }
+
+        $query = $query->orderBy(...$sort_expressions, ...$default_sort);
 
         // Paginating
         if ($length > 0) {
-            $recordsFiltered = (clone $query)->count();
+            $recordsFiltered = $query->count();
 
-            $query->skip($start)->limit($length);
-            $data = $query->get();
+            $data = $query->offset($start)->limit($length)->get();
         } else {
             $data = $query->get();
 
-            $recordsFiltered = $data->count();
+            $recordsFiltered = count($data);
         }
 
-        $data = $data->map($callback)->all();
+        $data = array_map($callback, $data);
 
         return response([
             'draw'            => $draw,

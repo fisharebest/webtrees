@@ -120,7 +120,6 @@ trait ModuleCustomTrait
     /**
      * Additional/updated translations.
      *
-     *
      * @return array<string,string>
      */
     public function customTranslations(string $language): array

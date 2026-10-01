@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -104,7 +105,6 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Get the favorites for a user
      *
-     *
      * @return array<int,object{
      *      favorite_id:string,
      *      favorite_type:string,
@@ -116,11 +116,12 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getFavorites(Tree $tree, UserInterface $user): array
     {
-        return DB::table('favorite')
-            ->where('gedcom_id', '=', $tree->id())
-            ->where('user_id', '=', $user->id())
-            ->select(['favorite_id', 'xref', 'favorite_type', 'url', 'title', 'note'])
-            ->get()
+        return DB::query()
+            ->select('favorite_id', 'xref', 'favorite_type', 'url', 'title', 'note')
+            ->from('favorite')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('user_id', $user->id())
+            ->get(in: Collection::class)
             ->map(static function (object $row) use ($tree): object {
                 if ($row->xref !== null) {
                     $row->record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
@@ -171,9 +172,9 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         $favorite_id = Validator::queryParams($request)->integer('favorite_id');
 
         if (Auth::check()) {
-            DB::table('favorite')
-                ->where('favorite_id', '=', $favorite_id)
-                ->where('user_id', '=', $user->id())
+            DB::query(table: 'favorite')
+                ->whereEqual('favorite_id', $favorite_id)
+                ->whereEqual('user_id', $user->id())
                 ->delete();
         }
 
@@ -184,11 +185,10 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
     private function addUrlFavorite(Tree $tree, UserInterface $user, string $url, string $title, string $note): void
     {
-        DB::table('favorite')->updateOrInsert([
-            'gedcom_id' => $tree->id(),
-            'user_id'   => $user->id(),
-            'url'       => $url,
-        ], [
+        DB::query(table: 'favorite')->insert([
+            'gedcom_id'     => $tree->id(),
+            'user_id'       => $user->id(),
+            'url'           => $url,
             'favorite_type' => 'URL',
             'note'          => $note,
             'title'         => $title,
@@ -197,11 +197,10 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
     private function addRecordFavorite(Tree $tree, UserInterface $user, GedcomRecord $record, string $note): void
     {
-        DB::table('favorite')->updateOrInsert([
-            'gedcom_id' => $tree->id(),
-            'user_id'   => $user->id(),
-            'xref'      => $record->xref(),
-        ], [
+        DB::query(table: 'favorite')->insert([
+            'gedcom_id'     => $tree->id(),
+            'user_id'       => $user->id(),
+            'xref'          => $record->xref(),
             'favorite_type' => $record->tag(),
             'note'          => $note,
         ]);

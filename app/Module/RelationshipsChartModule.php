@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Closure;
 use Fisharebest\Algorithm\Dijkstra;
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -37,7 +38,6 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -438,10 +438,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     ): array {
         $tree = $individual1->tree();
 
-        $rows = DB::table('link')
-            ->where('l_file', '=', $tree->id())
+        $rows = DB::query()
+            ->select('l_from', 'l_to')
+            ->from('link')
+            ->whereEqual('l_file', $tree->id())
             ->whereIn('l_type', ['FAMS', 'FAMC'])
-            ->select(['l_from', 'l_to'])
             ->get();
 
         // Optionally restrict the graph to the ancestors of the individuals.
@@ -542,15 +543,12 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $xref2,
         ];
         while ($queue !== []) {
-            $parents = DB::table('link AS l1')
-                ->join('link AS l2', static function (JoinClause $join): void {
-                    $join
-                        ->on('l1.l_to', '=', 'l2.l_to')
-                        ->on('l1.l_file', '=', 'l2.l_file');
-                })
-                ->where('l1.l_file', '=', $tree_id)
-                ->where('l1.l_type', '=', 'FAMC')
-                ->where('l2.l_type', '=', 'FAMS')
+            $parents = DB::query()
+                ->from('link AS l1')
+                ->join('link AS l2', static fn (JoinOn $j): JoinOn => $j->on('l1.l_to', 'l2.l_to')->on('l1.l_file', 'l2.l_file'))
+                ->whereEqual('l1.l_file', $tree_id)
+                ->whereEqual('l1.l_type', 'FAMC')
+                ->whereEqual('l2.l_type', 'FAMS')
                 ->whereIn('l1.l_from', $queue)
                 ->pluck('l2.l_from');
 
@@ -572,19 +570,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     private function excludeFamilies(string $xref1, string $xref2, int $tree_id): array
     {
-        return DB::table('link AS l1')
-            ->join('link AS l2', static function (JoinClause $join): void {
-                $join
-                    ->on('l1.l_to', '=', 'l2.l_to')
-                    ->on('l1.l_type', '=', 'l2.l_type')
-                    ->on('l1.l_file', '=', 'l2.l_file');
-            })
-            ->where('l1.l_file', '=', $tree_id)
-            ->where('l1.l_type', '=', 'FAMS')
-            ->where('l1.l_from', '=', $xref1)
-            ->where('l2.l_from', '=', $xref2)
-            ->pluck('l1.l_to')
-            ->all();
+        return DB::query()
+            ->from('link AS l1')
+            ->join('link AS l2', static fn (JoinOn $j): JoinOn => $j->on('l1.l_to', 'l2.l_to')->on('l1.l_type', 'l2.l_type')->on('l1.l_file', 'l2.l_file'))
+            ->whereEqual('l1.l_file', $tree_id)
+            ->whereEqual('l1.l_type', 'FAMS')
+            ->whereEqual('l1.l_from', $xref1)
+            ->whereEqual('l2.l_from', $xref2)
+            ->pluck('l1.l_to');
     }
 
     /**

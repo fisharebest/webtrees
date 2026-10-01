@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
@@ -29,7 +32,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -110,23 +112,23 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $faqs = $this->faqsForTree($tree)->all();
 
-        $min_block_order = (int) DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where(static function (Builder $query) use ($tree): void {
-                $query
-                    ->whereNull('gedcom_id')
-                    ->orWhere('gedcom_id', '=', $tree->id());
-            })
-            ->min('block_order');
+        $min_block_order = (int) DB::query()
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->isNull('gedcom_id')
+                ->orEqual('gedcom_id', $tree->id()))
+            ->orderBy('block_order')
+            ->value('block_order');
 
-        $max_block_order = (int) DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where(static function (Builder $query) use ($tree): void {
-                $query
-                    ->whereNull('gedcom_id')
-                    ->orWhere('gedcom_id', '=', $tree->id());
-            })
-            ->max('block_order');
+        $max_block_order = (int) DB::query()
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->isNull('gedcom_id')
+                ->orEqual('gedcom_id', $tree->id()))
+            ->orderBy(DB::desc('block_order'))
+            ->value('block_order');
 
         $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->title();
 
@@ -155,9 +157,13 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
+        DB::query(table: 'block_setting')
+            ->whereEqual('block_id', $block_id)
+            ->delete();
 
-        DB::table('block')->where('block_id', '=', $block_id)->delete();
+        DB::query(table: 'block')
+            ->whereEqual('block_id', $block_id)
+            ->delete();
 
         $url = route(ModuleAction::class, [
             'module' => $this->name(),
@@ -171,25 +177,32 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_order = DB::table('block')
-            ->where('block_id', '=', $block_id)
+        $block_order = DB::query()
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
             ->value('block_order');
 
-        $swap_block = DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where('block_order', '>', $block_order)
+        if ($block_order === null) {
+            return response();
+        }
+
+        $swap_block = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereGreaterThan('block_order', (int) $block_order)
             ->orderBy('block_order')
             ->first();
 
-        if ($block_order !== null && $swap_block !== null) {
-            DB::table('block')
-                ->where('block_id', '=', $block_id)
+        if ($swap_block !== null) {
+            DB::query(table: 'block')
+                ->whereEqual('block_id', $block_id)
                 ->update([
                     'block_order' => $swap_block->block_order,
                 ]);
 
-            DB::table('block')
-                ->where('block_id', '=', $swap_block->block_id)
+            DB::query(table: 'block')
+                ->whereEqual('block_id', $swap_block->block_id)
                 ->update([
                     'block_order' => $block_order,
                 ]);
@@ -202,25 +215,32 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_order = DB::table('block')
-            ->where('block_id', '=', $block_id)
+        $block_order = DB::query()
+            ->from('block')
+            ->whereEqual('block_id', $block_id)
             ->value('block_order');
 
-        $swap_block = DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where('block_order', '<', $block_order)
-            ->orderBy('block_order', 'desc')
+        if ($block_order === null) {
+            return response();
+        }
+
+        $swap_block = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereLessThan('block_order', (int) $block_order)
+            ->orderBy(DB::desc('block_order'))
             ->first();
 
-        if ($block_order !== null && $swap_block !== null) {
-            DB::table('block')
-                ->where('block_id', '=', $block_id)
+        if ($swap_block !== null) {
+            DB::query(table: 'block')
+                ->whereEqual('block_id', $block_id)
                 ->update([
                     'block_order' => $swap_block->block_order,
                 ]);
 
-            DB::table('block')
-                ->where('block_id', '=', $swap_block->block_id)
+            DB::query(table: 'block')
+                ->whereEqual('block_id', $swap_block->block_id)
                 ->update([
                     'block_order' => $block_order,
                 ]);
@@ -240,7 +260,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $header      = '';
             $body        = '';
             $gedcom_id   = null;
-            $block_order = 1 + (int) DB::table('block')->where('module_name', '=', $this->name())->max('block_order');
+            $block_order = 1 + (int) DB::query()
+                ->from('block')
+                ->whereEqual('module_name', $this->name())
+                ->orderBy(DB::desc('block_order'))
+                ->value('block_order');
 
             $languages = [];
 
@@ -249,8 +273,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             // Editing an existing faq
             $header      = $this->getBlockSetting($block_id, 'header');
             $body        = $this->getBlockSetting($block_id, 'faqbody');
-            $gedcom_id   = DB::table('block')->where('block_id', '=', $block_id)->value('gedcom_id');
-            $block_order = DB::table('block')->where('block_id', '=', $block_id)->value('block_order');
+            $gedcom_id = DB::query()
+                ->from('block')
+                ->whereEqual('block_id', $block_id)
+                ->value('gedcom_id');
+            $block_order = DB::query()
+                ->from('block')
+                ->whereEqual('block_id', $block_id)
+                ->value('block_order');
 
             $languages = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
@@ -292,20 +322,18 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $header  = $this->html_service->sanitize($header);
 
         if ($block_id !== 0) {
-            DB::table('block')
-                ->where('block_id', '=', $block_id)
+            DB::query(table: 'block')
+                ->whereEqual('block_id', $block_id)
                 ->update([
                     'gedcom_id'   => $gedcom_id,
                     'block_order' => $block_order,
                 ]);
         } else {
-            DB::table('block')->insert([
+            $block_id = DB::query(table: 'block')->insertGetId([
                 'gedcom_id'   => $gedcom_id,
                 'module_name' => $this->name(),
                 'block_order' => $block_order,
-            ]);
-
-            $block_id = DB::lastInsertId();
+            ], 'block_id');
         }
 
         $this->setBlockSetting($block_id, 'faqbody', $body);
@@ -349,22 +377,21 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     private function faqsForTree(Tree $tree): Collection
     {
-        return DB::table('block')
-            ->join('block_setting AS bs1', 'bs1.block_id', '=', 'block.block_id')
-            ->join('block_setting AS bs2', 'bs2.block_id', '=', 'block.block_id')
-            ->join('block_setting AS bs3', 'bs3.block_id', '=', 'block.block_id')
-            ->where('module_name', '=', $this->name())
-            ->where('bs1.setting_name', '=', 'header')
-            ->where('bs2.setting_name', '=', 'faqbody')
-            ->where('bs3.setting_name', '=', 'languages')
-            ->where(static function (Builder $query) use ($tree): void {
-                $query
-                    ->whereNull('gedcom_id')
-                    ->orWhere('gedcom_id', '=', $tree->id());
-            })
+        return DB::query()
+            ->select('block.block_id', 'block_order', 'gedcom_id', 'bs1.setting_value AS header', 'bs2.setting_value AS faqbody', 'bs3.setting_value AS languages')
+            ->from('block')
+            ->join('block_setting AS bs1', static fn (JoinOn $j): JoinOn => $j->on('bs1.block_id', 'block.block_id'))
+            ->join('block_setting AS bs2', static fn (JoinOn $j): JoinOn => $j->on('bs2.block_id', 'block.block_id'))
+            ->join('block_setting AS bs3', static fn (JoinOn $j): JoinOn => $j->on('bs3.block_id', 'block.block_id'))
+            ->whereEqual('module_name', $this->name())
+            ->whereEqual('bs1.setting_name', 'header')
+            ->whereEqual('bs2.setting_name', 'faqbody')
+            ->whereEqual('bs3.setting_name', 'languages')
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->isNull('gedcom_id')
+                ->orEqual('gedcom_id', $tree->id()))
             ->orderBy('block_order')
-            ->select(['block.block_id', 'block_order', 'gedcom_id', 'bs1.setting_value AS header', 'bs2.setting_value AS faqbody', 'bs3.setting_value AS languages'])
-            ->get()
+            ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 $row->block_id    = (int) $row->block_id;
                 $row->block_order = (int) $row->block_order;
@@ -376,17 +403,16 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     private function faqsExist(Tree $tree, string $language): bool
     {
-        return DB::table('block')
-            ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
-            ->where('module_name', '=', $this->name())
-            ->where('setting_name', '=', 'languages')
-            ->where(static function (Builder $query) use ($tree): void {
-                $query
-                    ->whereNull('gedcom_id')
-                    ->orWhere('gedcom_id', '=', $tree->id());
-            })
-            ->select(['setting_value AS languages'])
-            ->get()
+        return DB::query()
+            ->select('setting_value AS languages')
+            ->from('block')
+            ->join('block_setting', static fn (JoinOn $j): JoinOn => $j->on('block_setting.block_id', 'block.block_id'))
+            ->whereEqual('module_name', $this->name())
+            ->whereEqual('setting_name', 'languages')
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->isNull('gedcom_id')
+                ->orEqual('gedcom_id', $tree->id()))
+            ->get(in: Collection::class)
             ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array($language, explode(',', $faq->languages), true))
             ->isNotEmpty();
     }

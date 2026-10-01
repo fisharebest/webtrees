@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Database\Exceptions\QueryException;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use Fisharebest\Webtrees\Schema\SeedDefaultResnTable;
 use Fisharebest\Webtrees\Schema\SeedGedcomTable;
@@ -45,7 +46,7 @@ class MigrationService
     {
         try {
             $current_version = (int) Site::getPreference($schema_name);
-        } catch (PDOException) {
+        } catch (PDOException | QueryException) {
             // During initial installation, the site_preference table won’t exist.
             $current_version = 0;
         }

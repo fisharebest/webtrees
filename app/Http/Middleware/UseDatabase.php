@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -31,7 +32,7 @@ class UseDatabase implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         DB::connect(
-            driver: Validator::attributes($request)->string('dbtype', DB::MYSQL),
+            driver: Validator::attributes($request)->string('dbtype', Driver::MySQL->value),
             host: Validator::attributes($request)->string('dbhost'),
             port: Validator::attributes($request)->string('dbport'),
             database: Validator::attributes($request)->string('dbname'),

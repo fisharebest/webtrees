@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -97,10 +98,11 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
-        $block_ids = DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where('xref', '=', $individual->xref())
-            ->where('gedcom_id', '=', $individual->tree()->id())
+        $block_ids = DB::query()
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereEqual('xref', $individual->xref())
+            ->whereEqual('gedcom_id', $individual->tree()->id())
             ->pluck('block_id');
 
         $stories = [];
@@ -180,9 +182,11 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             return redirect(route(ControlPanel::class));
         }
 
-        $stories = DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where('gedcom_id', '=', $tree->id())
+        $stories = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereEqual('gedcom_id', $tree->id())
             ->orderBy('xref')
             ->get();
 
@@ -233,8 +237,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $title       = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
             // Editing an existing story
-            $xref = (string) DB::table('block')
-                ->where('block_id', '=', $block_id)
+            $xref = (string) DB::query()
+                ->from('block')
+                ->whereEqual('block_id', $block_id)
                 ->value('xref');
 
             $story_title = $this->getBlockSetting($block_id, 'title');
@@ -270,21 +275,19 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $story_body  = $this->html_service->sanitize($story_body);
 
         if ($block_id !== 0) {
-            DB::table('block')
-                ->where('block_id', '=', $block_id)
+            DB::query(table: 'block')
+                ->whereEqual('block_id', $block_id)
                 ->update([
                     'gedcom_id' => $tree->id(),
                     'xref'      => $xref,
                 ]);
         } else {
-            DB::table('block')->insert([
+            $block_id = DB::query(table: 'block')->insertGetId([
                 'gedcom_id'   => $tree->id(),
                 'xref'        => $xref,
                 'module_name' => $this->name(),
                 'block_order' => 0,
-            ]);
-
-            $block_id = DB::lastInsertId();
+            ], 'block_id');
         }
 
         $this->setBlockSetting($block_id, 'story_body', $story_body);
@@ -299,12 +302,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $tree     = Validator::attributes($request)->tree();
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        DB::table('block_setting')
-            ->where('block_id', '=', $block_id)
+        DB::query(table: 'block_setting')
+            ->whereEqual('block_id', $block_id)
             ->delete();
 
-        DB::table('block')
-            ->where('block_id', '=', $block_id)
+        DB::query(table: 'block')
+            ->whereEqual('block_id', $block_id)
             ->delete();
 
         $url = route(ModuleAction::class, [
@@ -320,10 +323,12 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $tree = Validator::attributes($request)->tree();
 
-        $stories = DB::table('block')
-            ->where('module_name', '=', $this->name())
-            ->where('gedcom_id', '=', $tree->id())
-            ->get()
+        $stories = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('module_name', $this->name())
+            ->whereEqual('gedcom_id', $tree->id())
+            ->get(in: Collection::class)
             ->map(function (object $story) use ($tree): object {
                 $block_id = (int) $story->block_id;
                 $xref     = (string) $story->xref;

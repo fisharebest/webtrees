@@ -57,7 +57,6 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
     /**
      * Create a note from a row in the database.
      *
-     *
      * @return Closure(object):Note
      */
     public function mapper(Tree $tree): Closure
@@ -82,10 +81,11 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Note::RECORD_TYPE)
             ->value('o_gedcom');
     }
 }

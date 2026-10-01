@@ -253,7 +253,6 @@ abstract class AbstractCalendarDate
      * 4 February -> 3 July is 27 days (3 March) and 4 months.
      * It is not 4 months (4 June) and 29 days.
      *
-     *
      * @return array<int> Age in years/months/days
      */
     public function ageDifference(AbstractCalendarDate $date): array

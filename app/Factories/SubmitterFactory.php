@@ -57,7 +57,6 @@ class SubmitterFactory extends AbstractGedcomRecordFactory implements SubmitterF
     /**
      * Create a submitter from a row in the database.
      *
-     *
      * @return Closure(object):Submitter
      */
     public function mapper(Tree $tree): Closure
@@ -82,10 +81,11 @@ class SubmitterFactory extends AbstractGedcomRecordFactory implements SubmitterF
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Submitter::RECORD_TYPE)
+        return DB::query()
+            ->from('other')
+            ->whereEqual('o_id', $xref)
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Submitter::RECORD_TYPE)
             ->value('o_gedcom');
     }
 }

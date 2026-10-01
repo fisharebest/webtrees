@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\I18N;
@@ -27,7 +28,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -108,17 +109,14 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         }
 
         // We can apply the filters using SQL, but it is more efficient to shuffle in PHP.
-        $random_row = DB::table('media')
-            ->join('media_file', static function (JoinClause $join): void {
-                $join
-                    ->on('media_file.m_file', '=', 'media.m_file')
-                    ->on('media_file.m_id', '=', 'media.m_id');
-            })
-            ->where('media.m_file', '=', $tree->id())
+        $random_row = DB::query()
+            ->select('media.*')
+            ->from('media')
+            ->join('media_file', static fn (JoinOn $j): JoinOn => $j->on('media_file.m_file', 'media.m_file')->on('media_file.m_id', 'media.m_id'))
+            ->whereEqual('media.m_file', $tree->id())
             ->whereIn('media_file.multimedia_format', self::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
-            ->select(['media.*'])
-            ->get()
+            ->get(in: Collection::class)
             ->shuffle()
             ->first(function (object $row) use ($filter_links, $tree): bool {
                 $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);

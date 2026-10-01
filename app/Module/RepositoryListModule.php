@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -87,9 +88,11 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
+        return !DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
             ->exists();
     }
 
@@ -100,10 +103,12 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $repositories = DB::table('other')
-            ->where('o_file', '=', $tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
-            ->get()
+        $repositories = DB::query()
+            ->select('*')
+            ->from('other')
+            ->whereEqual('o_file', $tree->id())
+            ->whereEqual('o_type', Repository::RECORD_TYPE)
+            ->get(in: Collection::class)
             ->map(Registry::repositoryFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 

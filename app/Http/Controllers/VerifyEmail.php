@@ -76,7 +76,7 @@ final class VerifyEmail
                     view('emails/verify-notify-html', ['user' => $user])
                 );
 
-                DB::table('message')->insert([
+                DB::query(table: 'message')->insert(values: [
                     'sender'     => $username,
                     'ip_address' => $request->getAttribute('client-ip'),
                     'user_id'    => $administrator->id(),

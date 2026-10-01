@@ -86,7 +86,6 @@ class ClipboardService
     /**
      * Create a list of facts that can be pasted into a given record
      *
-     *
      * @return Collection<int,Fact>
      */
     public function pastableFacts(GedcomRecord $record): Collection

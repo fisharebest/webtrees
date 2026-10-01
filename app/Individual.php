@@ -609,7 +609,6 @@ class Individual extends GedcomRecord
     /**
      * Get a list of this individual’s spouse families
      *
-     *
      * @return Collection<int,Family>
      */
     public function spouseFamilies(AccessLevel|null $access_level = null): Collection
@@ -669,7 +668,6 @@ class Individual extends GedcomRecord
 
     /**
      * Get a list of this individual’s child families (i.e. their parents).
-     *
      *
      * @return Collection<int,Family>
      */
@@ -1006,10 +1004,12 @@ class Individual extends GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->where('i_id', '=', $this->xref())
-            ->lockForUpdate()
+        $locked_individuals = DB::query()
+            ->select('*')
+            ->from('individuals')
+            ->whereEqual('i_file', $this->tree->id())
+            ->whereEqual('i_id', $this->xref())
+            ->forUpdate()
             ->get();
     }
 }

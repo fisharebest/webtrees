@@ -20,6 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Closure;
+use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\FamilyComparator;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
@@ -32,9 +35,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 
 use function addcslashes;
 use function count;
@@ -172,15 +173,16 @@ final class ListBuilder
         string $desc,
         VariableTable $variables,
     ): array {
-        $list = DB::table('change')
-            ->whereIn('change_id', function (Builder $query): void {
-                $query->select([new Expression('MAX(change_id)')])
-                    ->from('change')
-                    ->where('gedcom_id', '=', $this->tree->id())
-                    ->where('status', '=', ChangeStatus::Pending->value)
-                    ->groupBy(['xref']);
-            })
-            ->get()
+        $list = DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereInSubquery('change_id', DB::query()
+                ->select(DB::max('change_id'))
+                ->from('change')
+                ->whereEqual('gedcom_id', $this->tree->id())
+                ->whereEqual('status', ChangeStatus::Pending->value)
+                ->groupBy('xref'))
+            ->get(in: Collection::class)
             ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom !== '' ? $row->new_gedcom : $row->old_gedcom))
             ->filter()
             ->all();
@@ -207,80 +209,65 @@ final class ListBuilder
         string $desc,
         VariableTable $variables,
     ): array {
-        $query = DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
-            ->distinct();
+        $query = DB::query()
+            ->select('i_id AS xref', 'i_gedcom AS gedcom')
+            ->distinct()
+            ->from('individuals')
+            ->whereEqual('i_file', $this->tree->id());
 
         foreach ($attrs as $attr => $value) {
             if (str_starts_with($attr, 'filter') && $value !== '') {
                 $value = $substitute($value, false);
 
                 if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                    $query->join('dates AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                        $join
-                            ->on($attr . '.d_gid', '=', 'i_id')
-                            ->on($attr . '.d_file', '=', 'i_file');
-                    });
-
-                    $query->where($attr . '.d_fact', '=', $match[1]);
+                    $query = $query
+                        ->join('dates AS ' . $attr, static fn (JoinOn $j): JoinOn => $j->on($attr . '.d_gid', 'individuals.i_id')->on($attr . '.d_file', 'individuals.i_file'))
+                        ->whereEqual($attr . '.d_fact', $match[1]);
 
                     $date = new Date($match[3]);
 
                     if ($match[2] === 'LTE') {
-                        $query->where($attr . '.d_julianday2', '<=', $date->maximumJulianDay());
+                        $query = $query->whereLessThanOrEqual($attr . '.d_julianday2', $date->maximumJulianDay());
                     } else {
-                        $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
+                        $query = $query->whereGreaterThanOrEqual($attr . '.d_julianday1', $date->minimumJulianDay());
                     }
 
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
-                    $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                        $join
-                            ->on($attr . '.n_id', '=', 'i_id')
-                            ->on($attr . '.n_file', '=', 'i_file');
-                    });
+                    $query = $query->join('name AS ' . $attr, static fn (JoinOn $j): JoinOn => $j->on($attr . '.n_id', 'individuals.i_id')->on($attr . '.n_file', 'individuals.i_file'));
                     $names = explode(' ', $match[1]);
                     foreach ($names as $name) {
-                        $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
+                        $query = $query->whereLike($attr . '.n_full', '%' . addcslashes($name, '\\%_') . '%');
                     }
 
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^LIKE \/(.+)\/$/', $value, $match)) {
                     $match[1] = str_replace('\n', "\n", $match[1]);
-                    $query->where('i_gedcom', 'LIKE', $match[1]);
+                    $query = $query->whereLike('i_gedcom', $match[1]);
 
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
-                    $query
-                        ->join('placelinks AS ' . $attr . 'a', static function (JoinClause $join) use ($attr): void {
-                            $join
-                                ->on($attr . 'a.pl_file', '=', 'i_file')
-                                ->on($attr . 'a.pl_gid', '=', 'i_id');
-                        })
-                        ->join('places AS ' . $attr . 'b', static function (JoinClause $join) use ($attr): void {
-                            $join
-                                ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
-                                ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
-                        })
-                        ->where($attr . 'b.p_place', 'LIKE', '%' . addcslashes($match[1], '\\%_') . '%');
+                    $query = $query
+                        ->join('placelinks AS ' . $attr . 'a', static fn (JoinOn $j): JoinOn => $j->on($attr . 'a.pl_file', 'individuals.i_file')->on($attr . 'a.pl_gid', 'individuals.i_id'))
+                        ->join('places AS ' . $attr . 'b', static fn (JoinOn $j): JoinOn => $j->on($attr . 'b.p_file', $attr . 'a.pl_file')->on($attr . 'b.p_id', $attr . 'a.pl_p_id'))
+                        ->whereLike($attr . 'b.p_place', '%' . addcslashes($match[1], '\\%_') . '%');
                 } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
                     $match[3] = strtr($match[3], ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
                     $like     = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
-                    $query->where('i_gedcom', 'LIKE', $like);
+                    $query = $query->whereLike('i_gedcom', $like);
                 } elseif (preg_match('/^(\w+) CONTAINS (.*)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
                     $match[2] = strtr($match[2], ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
                     $like     = "%\n1 " . $match[1] . '%' . $match[2] . '%';
-                    $query->where('i_gedcom', 'LIKE', $like);
+                    $query = $query->whereLike('i_gedcom', $like);
                 }
             }
         }
 
         $list = $query
-            ->get()
+            ->get(in: Collection::class)
             ->map(fn (object $row): Individual => Registry::individualFactory()->make($row->xref, $this->tree, $row->gedcom))
             ->filter()
             ->all();
@@ -305,53 +292,47 @@ final class ListBuilder
         string $desc,
         VariableTable $variables,
     ): array {
-        $query = DB::table('families')
-            ->where('f_file', '=', $this->tree->id())
-            ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
-            ->distinct();
+        $query = DB::query()
+            ->select('f_id AS xref', 'f_gedcom AS gedcom')
+            ->distinct()
+            ->from('families')
+            ->whereEqual('f_file', $this->tree->id());
 
         foreach ($attrs as $attr => $value) {
             if (str_starts_with($attr, 'filter') && $value !== '') {
                 $value = $substitute($value, false);
 
                 if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                    $query->join('dates AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                        $join
-                            ->on($attr . '.d_gid', '=', 'f_id')
-                            ->on($attr . '.d_file', '=', 'f_file');
-                    });
-
-                    $query->where($attr . '.d_fact', '=', $match[1]);
+                    $query = $query
+                        ->join('dates AS ' . $attr, static fn (JoinOn $j): JoinOn => $j->on($attr . '.d_gid', 'families.f_id')->on($attr . '.d_file', 'families.f_file'))
+                        ->whereEqual($attr . '.d_fact', $match[1]);
 
                     $date = new Date($match[3]);
 
                     if ($match[2] === 'LTE') {
-                        $query->where($attr . '.d_julianday2', '<=', $date->maximumJulianDay());
+                        $query = $query->whereLessThanOrEqual($attr . '.d_julianday2', $date->maximumJulianDay());
                     } else {
-                        $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
+                        $query = $query->whereGreaterThanOrEqual($attr . '.d_julianday1', $date->minimumJulianDay());
                     }
 
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^LIKE \/(.+)\/$/', $value, $match)) {
                     $match[1] = str_replace('\n', "\n", $match[1]);
-                    $query->where('f_gedcom', 'LIKE', $match[1]);
+                    $query = $query->whereLike('f_gedcom', $match[1]);
 
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
                     if ($sortby === 'NAME' || $match[1] !== '') {
-                        $query->join('name AS ' . $attr, static function (JoinClause $join) use ($attr): void {
-                            $join
-                                ->on($attr . '.n_file', '=', 'f_file')
-                                ->where(static function (Builder $query): void {
-                                    $query
-                                        ->whereColumn('n_id', '=', 'f_husb')
-                                        ->orWhereColumn('n_id', '=', 'f_wife');
-                                });
-                        });
+                        $query = $query
+                            ->join('name AS ' . $attr, static fn (JoinOn $j): JoinOn => $j
+                                ->on($attr . '.n_file', 'families.f_file')
+                                ->onNested(static fn (JoinOn $j): JoinOn => $j
+                                    ->on($attr . '.n_id', DB::column('families.f_husb'))
+                                    ->orOn($attr . '.n_id', DB::column('families.f_wife'))));
                         if ($match[1] !== '') {
                             $names = explode(' ', $match[1]);
                             foreach ($names as $name) {
-                                $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
+                                $query = $query->whereLike($attr . '.n_full', '%' . addcslashes($name, '\\%_') . '%');
                             }
                         }
                     }
@@ -359,34 +340,26 @@ final class ListBuilder
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
-                    $query
-                        ->join('placelinks AS ' . $attr . 'a', static function (JoinClause $join) use ($attr): void {
-                            $join
-                                ->on($attr . 'a.pl_file', '=', 'f_file')
-                                ->on($attr . 'a.pl_gid', '=', 'f_id');
-                        })
-                        ->join('places AS ' . $attr . 'b', static function (JoinClause $join) use ($attr): void {
-                            $join
-                                ->on($attr . 'b.p_file', '=', $attr . 'a.pl_file')
-                                ->on($attr . 'b.p_id', '=', $attr . 'a.pl_p_id');
-                        })
-                        ->where($attr . 'b.p_place', 'LIKE', '%' . addcslashes($match[1], '\\%_') . '%');
+                    $query = $query
+                        ->join('placelinks AS ' . $attr . 'a', static fn (JoinOn $j): JoinOn => $j->on($attr . 'a.pl_file', 'families.f_file')->on($attr . 'a.pl_gid', 'families.f_id'))
+                        ->join('places AS ' . $attr . 'b', static fn (JoinOn $j): JoinOn => $j->on($attr . 'b.p_file', $attr . 'a.pl_file')->on($attr . 'b.p_id', $attr . 'a.pl_p_id'))
+                        ->whereLike($attr . 'b.p_place', '%' . addcslashes($match[1], '\\%_') . '%');
                 } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
                     $match[3] = strtr($match[3], ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
                     $like     = "%\n1 " . $match[1] . "%\n2 " . $match[2] . '%' . $match[3] . '%';
-                    $query->where('f_gedcom', 'LIKE', $like);
+                    $query = $query->whereLike('f_gedcom', $like);
                 } elseif (preg_match('/^(\w+) CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
                     $match[2] = strtr($match[2], ['\\' => '\\\\', '%' => '\\%', '_' => '\\_', ' ' => '%']);
                     $like     = "%\n1 " . $match[1] . '%' . $match[2] . '%';
-                    $query->where('f_gedcom', 'LIKE', $like);
+                    $query = $query->whereLike('f_gedcom', $like);
                 }
             }
         }
 
         $list = $query
-            ->get()
+            ->get(in: Collection::class)
             ->map(fn (object $row): Family => Registry::familyFactory()->make($row->xref, $this->tree, $row->gedcom))
             ->filter()
             ->all();

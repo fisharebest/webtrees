@@ -34,8 +34,6 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -90,8 +88,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $changes_exist = DB::table('change')
-            ->where('status', ChangeStatus::Pending->value)
+        $changes_exist = DB::query()
+            ->select('*')
+            ->from('change')
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->exists();
 
         if ($changes_exist && $sendmail) {
@@ -141,15 +141,16 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             }
             $content .= '<ul>';
 
-            $changes = DB::table('change')
-                ->where('gedcom_id', '=', $tree->id())
-                ->whereIn('change_id', static function (Builder $query) use ($tree): void {
-                    $query->select([new Expression('MAX(change_id)')])
-                        ->from('change')
-                        ->where('gedcom_id', '=', $tree->id())
-                        ->where('status', '=', ChangeStatus::Pending->value)
-                        ->groupBy(['xref']);
-                })
+            $changes = DB::query()
+                ->select('*')
+                ->from('change')
+                ->whereEqual('gedcom_id', $tree->id())
+                ->whereInSubquery('change_id', DB::query()
+                    ->select(DB::max('change_id'))
+                    ->from('change')
+                    ->whereEqual('gedcom_id', $tree->id())
+                    ->whereEqual('status', ChangeStatus::Pending->value)
+                    ->groupBy('xref'))
                 ->get();
 
             foreach ($changes as $change) {

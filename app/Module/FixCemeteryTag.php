@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
 use function preg_match;
@@ -82,12 +81,8 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
     protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
         return $this->individualsToFixQuery($tree, $params)
-            ->where(static function (Builder $query): void {
-                $query
-                    ->where('i_gedcom', 'LIKE', "%\n2 CEME%")
-                    ->orWhere('i_gedcom', 'LIKE', "%\n3 CEME%");
-            })
-            ->pluck('i_id');
+            ->whereRaw('(i_gedcom LIKE ? OR i_gedcom LIKE ?)', ["%\n2 CEME%", "%\n3 CEME%"])
+            ->pluck('i_id', in: Collection::class);
     }
 
     /**

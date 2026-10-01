@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 
@@ -43,22 +41,22 @@ final class TreePage
 
     public function get(Tree $tree): ResponseInterface
     {
-        $has_blocks = DB::table('block')
-            ->where('gedcom_id', '=', $tree->id())
+        $has_blocks = DB::query()
+            ->select('*')
+            ->from('block')
+            ->whereEqual('gedcom_id', $tree->id())
             ->exists();
 
         if (!$has_blocks) {
             $this->home_page_service->checkDefaultTreeBlocksExist();
 
             // Copy the defaults
-            DB::query()->from('block')->insertUsing(
+            DB::query(table: 'block')->insertFrom(
                 ['gedcom_id', 'location', 'block_order', 'module_name'],
-                static function (Builder $query) use ($tree): void {
-                    $query
-                        ->select([new Expression($tree->id()), 'location', 'block_order', 'module_name'])
-                        ->from('block')
-                        ->where('gedcom_id', '=', -1);
-                }
+                DB::query()
+                    ->select(DB::value($tree->id()), 'location', 'block_order', 'module_name')
+                    ->from('block')
+                    ->whereEqual('gedcom_id', -1),
             );
         }
 

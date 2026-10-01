@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -70,8 +71,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $context     = Validator::queryParams($request)->string('context');
         $message_ids = Validator::parsedBody($request)->list('message_id');
 
-        DB::table('message')
-            ->where('user_id', '=', Auth::id())
+        DB::query(table: 'message')
+            ->whereEqual('user_id', Auth::id())
             ->whereIn('message_id', $message_ids)
             ->delete();
 
@@ -91,10 +92,12 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $messages = DB::table('message')
-            ->where('user_id', '=', Auth::id())
-            ->orderByDesc('message_id')
-            ->get()
+        $messages = DB::query()
+            ->select('*')
+            ->from('message')
+            ->whereEqual('user_id', Auth::id())
+            ->orderBy(DB::desc('message_id'))
+            ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 $row->created = Registry::timestampFactory()->fromString($row->created);
 
