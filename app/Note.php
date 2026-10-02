@@ -59,7 +59,7 @@ class Note extends GedcomRecord
     protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide notes if they are attached to private records
-        $linked_ids = DB::table('link')
+        $linked_ids = DB::queryBuilder()->from('link')
             ->where('l_file', '=', $this->tree->id())
             ->where('l_to', '=', $this->xref)
             ->pluck('l_from');

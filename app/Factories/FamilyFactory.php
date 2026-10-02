@@ -53,7 +53,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
 
             // Preload all the family members using a single database query.
             preg_match_all('/\n1 (?:HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $gedcom . "\n" . $pending, $match);
-            DB::table('individuals')
+            DB::queryBuilder()->from('individuals')
                 ->where('i_file', '=', $tree->id())
                 ->whereIn('i_id', $match[1])
                 ->get()
@@ -91,7 +91,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('families')
+        return DB::queryBuilder()->from('families')
             ->where('f_id', '=', $xref)
             ->where('f_file', '=', $tree->id())
             ->value('f_gedcom');

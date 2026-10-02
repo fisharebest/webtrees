@@ -97,7 +97,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
-        $block_ids = DB::table('block')
+        $block_ids = DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where('xref', '=', $individual->xref())
             ->where('gedcom_id', '=', $individual->tree()->id())
@@ -180,7 +180,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             return redirect(route(ControlPanel::class));
         }
 
-        $stories = DB::table('block')
+        $stories = DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())
             ->orderBy('xref')
@@ -233,7 +233,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $title       = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
             // Editing an existing story
-            $xref = (string) DB::table('block')
+            $xref = (string) DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $block_id)
                 ->value('xref');
 
@@ -270,14 +270,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $story_body  = $this->html_service->sanitize($story_body);
 
         if ($block_id !== 0) {
-            DB::table('block')
+            DB::queryBuilder()->from('block')
                 ->where('block_id', '=', $block_id)
                 ->update([
                     'gedcom_id' => $tree->id(),
                     'xref'      => $xref,
                 ]);
         } else {
-            DB::table('block')->insert([
+            DB::queryBuilder()->from('block')->insert([
                 'gedcom_id'   => $tree->id(),
                 'xref'        => $xref,
                 'module_name' => $this->name(),
@@ -299,11 +299,11 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $tree     = Validator::attributes($request)->tree();
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        DB::table('block_setting')
+        DB::queryBuilder()->from('block_setting')
             ->where('block_id', '=', $block_id)
             ->delete();
 
-        DB::table('block')
+        DB::queryBuilder()->from('block')
             ->where('block_id', '=', $block_id)
             ->delete();
 
@@ -320,7 +320,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $tree = Validator::attributes($request)->tree();
 
-        $stories = DB::table('block')
+        $stories = DB::queryBuilder()->from('block')
             ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())
             ->get()

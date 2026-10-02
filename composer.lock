@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b02c6b4157b8f80dce51cf4d169df965",
+    "content-hash": "38e3cec54b953edb3f7fb0b64d0b6e9c",
     "packages": [
         {
             "name": "brick/math",
@@ -499,6 +499,371 @@
                 "source": "https://github.com/fisharebest/algorithm/tree/1.6.0"
             },
             "time": "2021-09-03T12:13:28+00:00"
+        },
+        {
+            "name": "fisharebest/collection",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "../collection",
+                "reference": "de2a8b7d16ec64fa590a7cf5abe36db19f1506ad"
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "ext-pcov": "*",
+                "infection/infection": "^0.34",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^12.5|^13.3",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collection\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Collection\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "banner": [
+                    "@putenv BLUE=\\033[34m",
+                    "@putenv GREY=\\033[37m",
+                    "@putenv RESET=\\033[0m",
+                    "printf \"\\n${GREY} ${BLUE}██████${GREY}╗ ${BLUE}██████${GREY}╗ ${BLUE}██${GREY}╗     ${BLUE}██${GREY}╗     ${BLUE}███████${GREY}╗ ${BLUE}██████${GREY}╗${BLUE}████████${GREY}╗${BLUE}██${GREY}╗ ${BLUE}██████${GREY}╗ ${BLUE}███${GREY}╗   ${BLUE}██${GREY}╗ ${RESET}\\n\"",
+                    "printf \"${GREY}${BLUE}██${GREY}╔════╝${BLUE}██${GREY}╔═══${BLUE}██${GREY}╗${BLUE}██${GREY}║     ${BLUE}██${GREY}║     ${BLUE}██${GREY}╔════╝${BLUE}██${GREY}╔════╝╚══${BLUE}██${GREY}╔══╝${BLUE}██${GREY}║${BLUE}██${GREY}╔═══${BLUE}██${GREY}╗${BLUE}████${GREY}╗  ${BLUE}██${GREY}║ ${RESET}\\n\"",
+                    "printf \"${GREY}${BLUE}██${GREY}║     ${BLUE}██${GREY}║   ${BLUE}██${GREY}║${BLUE}██${GREY}║     ${BLUE}██${GREY}║     ${BLUE}█████${GREY}╗  ${BLUE}██${GREY}║        ${BLUE}██${GREY}║   ${BLUE}██${GREY}║${BLUE}██${GREY}║   ${BLUE}██${GREY}║${BLUE}██${GREY}╔${BLUE}██${GREY}╗ ${BLUE}██${GREY}║ ${RESET}\\n\"",
+                    "printf \"${GREY}${BLUE}██${GREY}║     ${BLUE}██${GREY}║   ${BLUE}██${GREY}║${BLUE}██${GREY}║     ${BLUE}██${GREY}║     ${BLUE}██${GREY}╔══╝  ${BLUE}██${GREY}║        ${BLUE}██${GREY}║   ${BLUE}██${GREY}║${BLUE}██${GREY}║   ${BLUE}██${GREY}║${BLUE}██${GREY}║╚${BLUE}██${GREY}╗${BLUE}██${GREY}║ ${RESET}\\n\"",
+                    "printf \"${GREY}╚${BLUE}██████${GREY}╗╚${BLUE}██████${GREY}╔╝${BLUE}███████${GREY}╗${BLUE}███████${GREY}╗${BLUE}███████${GREY}╗╚${BLUE}██████${GREY}╗   ${BLUE}██${GREY}║   ${BLUE}██${GREY}║╚${BLUE}██████${GREY}╔╝${BLUE}██${GREY}║ ╚${BLUE}████${GREY}║ ${RESET}\\n\"",
+                    "printf \"${GREY} ╚═════╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ${RESET}\\n\\n\""
+                ],
+                "lint": [
+                    "phpcs"
+                ],
+                "test": [
+                    "phpunit"
+                ],
+                "static-analysis": [
+                    "phpstan analyse"
+                ],
+                "mutation-test": [
+                    "infection --threads=max"
+                ],
+                "ci": [
+                    "@lint",
+                    "@static-analysis",
+                    "@test",
+                    "@mutation-test"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk"
+                }
+            ],
+            "description": "Collection-type objects for lists and maps.",
+            "time": "2026-08-27T09:37:37+00:00"
+        },
+        {
+            "name": "fisharebest/database",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "../database",
+                "reference": "38ac6584e370ab13a99b073bb8dd02e344a89203"
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "ext-pcov": "*",
+                "ext-pdo_firebird": "*",
+                "ext-pdo_mysql": "*",
+                "ext-pdo_pgsql": "*",
+                "ext-pdo_sqlite": "*",
+                "ext-pdo_sqlsrv": "*",
+                "infection/infection": "^0.34",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpcov": "^11.0|^13.1",
+                "phpunit/phpunit": "^12.5|^13.3",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fisharebest\\Database\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Fisharebest\\TestDatabase\\": "tests/"
+                }
+            },
+            "scripts": {
+                "banner": [
+                    "@putenv BLUE=\\033[34m",
+                    "@putenv GREY=\\033[37m",
+                    "@putenv RESET=\\033[0m",
+                    "printf \"\\n${GREY} ${BLUE}██████${GREY}╗   ${BLUE}█████${GREY}╗  ${BLUE}██████${BLUE}██${GREY}╗  ${BLUE}█████${GREY}╗  ${BLUE}██████${GREY}╗   ${BLUE}█████${GREY}╗  ${BLUE}██████${BLUE}█${GREY}╗ ${BLUE}██████${BLUE}█${GREY}╗ ${RESET}\\n\"",
+                    "printf \"${GREY} ${BLUE}██${GREY}╔══${BLUE}██${GREY}╗ ${BLUE}██${GREY}╔══${BLUE}██${GREY}╗ ╚══${BLUE}██${GREY}╔══╝ ${BLUE}██${GREY}╔══${BLUE}██${GREY}╗ ${BLUE}██${GREY}╔══${BLUE}██${GREY}╗ ${BLUE}██${GREY}╔══${BLUE}██${GREY}╗ ${BLUE}██${GREY}╔════╝ ${BLUE}██${GREY}╔════╝ ${RESET}\\n\"",
+                    "printf \"${GREY} ${BLUE}██${GREY}║  ${BLUE}██${GREY}║ ${BLUE}██████${BLUE}█${GREY}║    ${BLUE}██${GREY}║    ${BLUE}██████${BLUE}█${GREY}║ ${BLUE}██████${GREY}╔╝ ${BLUE}██████${BLUE}█${GREY}║ ${BLUE}██████${BLUE}█${GREY}╗ ${BLUE}█████${GREY}╗   ${RESET}\\n\"",
+                    "printf \"${GREY} ${BLUE}██${GREY}║  ${BLUE}██${GREY}║ ${BLUE}██${GREY}╔══${BLUE}██${GREY}║    ${BLUE}██${GREY}║    ${BLUE}██${GREY}╔══${BLUE}██${GREY}║ ${BLUE}██${GREY}╔══${BLUE}██${GREY}╗ ${BLUE}██${GREY}╔══${BLUE}██${GREY}║ ╚════${BLUE}██${GREY}║ ${BLUE}██${GREY}╔══╝   ${RESET}\\n\"",
+                    "printf \"${GREY} ${BLUE}██████${GREY}╔╝ ${BLUE}██${GREY}║  ${BLUE}██${GREY}║    ${BLUE}██${GREY}║    ${BLUE}██${GREY}║  ${BLUE}██${GREY}║ ${BLUE}██████${GREY}╔╝ ${BLUE}██${GREY}║  ${BLUE}██${GREY}║ ${BLUE}██████${BLUE}█${GREY}║ ${BLUE}███████${GREY}╗ ${RESET}\\n\"",
+                    "printf \"${GREY} ╚═════╝  ╚═╝  ╚═╝    ╚═╝    ╚═╝  ╚═╝ ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ${RESET}\\n\\n\""
+                ],
+                "test-firebird": [
+                    "printf \"\\n\\033[34m===== Running tests for Firebird ${IMAGE} =====\\033[0m\n\n\"",
+                    "docker rm -f test-firebird 2>/dev/null",
+                    "docker run --name test-firebird -e FIREBIRD_ROOT_PASSWORD=Secret1234 -e FIREBIRD_DATABASE=test.fdb -e FIREBIRD_USER=tester -e FIREBIRD_PASSWORD=Secret1234 -e FIREBIRD_DATABASE_DEFAULT_CHARSET=UTF8 -p 3051:3050 -d ${IMAGE}",
+                    "printf 'Waiting for Firebird'",
+                    "for i in {1..60}; do docker exec test-firebird /opt/firebird/bin/isql -user tester -password Secret1234 localhost:/var/lib/firebird/data/test.fdb -i /dev/null >/dev/null 2>&1 && break || printf .; sleep 1; done",
+                    "echo ' ready'; sleep 1",
+                    "DSN='firebird:dbname=localhost/3051:/var/lib/firebird/data/test.fdb' vendor/bin/phpunit --coverage-php build/coverage-$(basename ${IMAGE}).cov",
+                    "docker stop test-firebird > /dev/null",
+                    "docker rm test-firebird > /dev/null"
+                ],
+                "test-firebird-all": [
+                    "@composer test-firebird-5"
+                ],
+                "test-firebird-5": [
+                    "@putenv IMAGE=firebirdsql/firebird:5",
+                    "@composer test-firebird"
+                ],
+                "test-mysql": [
+                    "printf \"\\n\\033[34m===== Running tests for MySQL ${IMAGE} =====\\033[0m\n\n\"",
+                    "docker rm -f test-mysql 2>/dev/null",
+                    "docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=tester -e MYSQL_PASSWORD=Secret1234 -p 3307:3306 -d ${IMAGE}",
+                    "printf 'Waiting for MySQL'",
+                    "for i in {1..60}; do docker exec test-mysql mysqladmin ping --host=localhost --user=tester --password=Secret1234 2>&1 | grep -q 'mysqld is alive' && break || printf .; sleep 1; done",
+                    "echo ' ready'; sleep 1",
+                    "DSN='mysql:host=127.0.0.1;port=3307;dbname=test' vendor/bin/phpunit --coverage-php build/coverage-$(basename ${IMAGE}).cov",
+                    "docker stop test-mysql > /dev/null",
+                    "docker rm test-mysql > /dev/null"
+                ],
+                "test-mysql-all": [
+                    "@composer test-mysql-9.7",
+                    "@composer test-mysql-8.4",
+                    "@composer test-mysql-8.0",
+                    "@composer test-percona-8.0"
+                ],
+                "test-mysql-9.7": [
+                    "@putenv IMAGE=mysql:9.7",
+                    "@composer test-mysql"
+                ],
+                "test-mysql-8.4": [
+                    "@putenv IMAGE=mysql:8.4",
+                    "@composer test-mysql"
+                ],
+                "test-mysql-8.0": [
+                    "@putenv IMAGE=mysql:8.0",
+                    "@composer test-mysql"
+                ],
+                "test-percona-8.0": [
+                    "@putenv IMAGE=percona/percona-server:8.0",
+                    "@composer test-mysql"
+                ],
+                "test-mariadb": [
+                    "printf \"\\n\\033[34m===== Running tests for MariaDB ${IMAGE} =====\\033[0m\n\n\"",
+                    "docker rm -f test-mariadb 2>/dev/null",
+                    "docker run --name test-mariadb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=tester -e MYSQL_PASSWORD=Secret1234 -p 3308:3306 -d ${IMAGE}",
+                    "printf 'Waiting for MariaDB'",
+                    "for i in {1..60}; do docker exec test-mariadb mariadb-admin ping --host=localhost --user=tester --password=Secret1234 2>&1 | grep -q 'mysqld is alive' && break || printf .; sleep 1; done",
+                    "echo ' ready'; sleep 1",
+                    "DSN='mysql:host=127.0.0.1;port=3308;dbname=test' vendor/bin/phpunit --coverage-php build/coverage-$(basename ${IMAGE}).cov",
+                    "docker stop test-mariadb > /dev/null",
+                    "docker rm test-mariadb > /dev/null"
+                ],
+                "test-mariadb-all": [
+                    "@composer test-mariadb-12.2",
+                    "@composer test-mariadb-11.8",
+                    "@composer test-mariadb-11.4",
+                    "@composer test-mariadb-10.11",
+                    "@composer test-mariadb-10.6"
+                ],
+                "test-mariadb-12.2": [
+                    "@putenv IMAGE=mariadb:12.2",
+                    "@composer test-mariadb"
+                ],
+                "test-mariadb-11.8": [
+                    "@putenv IMAGE=mariadb:11.8",
+                    "@composer test-mariadb"
+                ],
+                "test-mariadb-11.4": [
+                    "@putenv IMAGE=mariadb:11.4",
+                    "@composer test-mariadb"
+                ],
+                "test-mariadb-10.11": [
+                    "@putenv IMAGE=mariadb:10.11",
+                    "@composer test-mariadb"
+                ],
+                "test-mariadb-10.6": [
+                    "@putenv IMAGE=mariadb:10.6",
+                    "@composer test-mariadb"
+                ],
+                "test-pgsql": [
+                    "printf \"\\n\\033[34m===== Running tests for PostgreSQL ${IMAGE} =====\\033[0m\n\n\"",
+                    "docker rm -f test-postgres 2>/dev/null",
+                    "docker run --name test-postgres -e POSTGRES_USER=tester -e POSTGRES_PASSWORD=Secret1234 -e POSTGRES_DB=test -p 5433:5432 -d ${IMAGE}",
+                    "printf 'Waiting for PostgreSQL'",
+                    "for i in {1..60}; do docker exec test-postgres pg_isready -U tester -d test >/dev/null && break || printf .; sleep 1; done",
+                    "echo ' ready'; sleep 1",
+                    "DSN='pgsql:host=localhost;port=5433;dbname=test' vendor/bin/phpunit --coverage-php build/coverage-$(basename ${IMAGE}).cov",
+                    "docker stop test-postgres > /dev/null",
+                    "docker rm test-postgres > /dev/null"
+                ],
+                "test-pgsql-all": [
+                    "@composer test-pgsql-18",
+                    "@composer test-pgsql-17",
+                    "@composer test-pgsql-16",
+                    "@composer test-pgsql-15",
+                    "@composer test-pgsql-14"
+                ],
+                "test-pgsql-18": [
+                    "@putenv IMAGE=postgres:18",
+                    "@composer test-pgsql"
+                ],
+                "test-pgsql-17": [
+                    "@putenv IMAGE=postgres:17",
+                    "@composer test-pgsql"
+                ],
+                "test-pgsql-16": [
+                    "@putenv IMAGE=postgres:16",
+                    "@composer test-pgsql"
+                ],
+                "test-pgsql-15": [
+                    "@putenv IMAGE=postgres:15",
+                    "@composer test-pgsql"
+                ],
+                "test-pgsql-14": [
+                    "@putenv IMAGE=postgres:14",
+                    "@composer test-pgsql"
+                ],
+                "test-sqlite": [
+                    "printf \"\\n\\033[34m===== Running tests for SQLite =====\\033[0m\n\n\"",
+                    "DSN='sqlite::memory:' vendor/bin/phpunit --coverage-php build/coverage-sqlite.cov"
+                ],
+                "test-sqlsrv": [
+                    "printf \"\\n\\033[34m===== Running tests for SQL-Server ${IMAGE} =====\\033[0m\n\n\"",
+                    "docker rm -f test-sqlserver 2>/dev/null",
+                    "docker run --platform linux/amd64 --name test-sqlserver -e ACCEPT_EULA=Y -e SA_PASSWORD=Secret1234 -e MSSQL_PID=Developer -p 1434:1433 -d ${IMAGE}",
+                    "printf 'Waiting for SQL-Server'",
+                    "for i in {1..60}; do docker exec test-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Secret1234 -Q 'SELECT 1' -C -N 2>&1 | grep -q '(1 rows affected)' && break || printf .; sleep 1; done",
+                    "echo ' ready'; sleep 1",
+                    "docker exec test-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Secret1234 -Q 'CREATE DATABASE test' -C -N",
+                    "docker exec test-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Secret1234 -Q \"CREATE LOGIN tester WITH PASSWORD = 'Secret1234'\" -C -N",
+                    "docker exec test-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Secret1234 -d test -Q \"CREATE USER tester FOR LOGIN tester; ALTER ROLE db_owner ADD MEMBER tester\" -C -N",
+                    "DSN='sqlsrv:Server=127.0.0.1,1434;Database=test;TrustServerCertificate=yes' vendor/bin/phpunit --coverage-php build/coverage-$(basename ${IMAGE}).cov",
+                    "docker stop test-sqlserver > /dev/null",
+                    "docker rm test-sqlserver > /dev/null"
+                ],
+                "test-sqlsrv-all": [
+                    "@composer test-sqlsrv-2025",
+                    "@composer test-sqlsrv-2022",
+                    "@composer test-sqlsrv-2019"
+                ],
+                "test-sqlsrv-2025": [
+                    "@putenv IMAGE=mcr.microsoft.com/mssql/server:2025-latest",
+                    "@composer test-sqlsrv"
+                ],
+                "test-sqlsrv-2022": [
+                    "@putenv IMAGE=mcr.microsoft.com/mssql/server:2022-latest",
+                    "@composer test-sqlsrv"
+                ],
+                "test-sqlsrv-2019": [
+                    "@putenv IMAGE=mcr.microsoft.com/mssql/server:2019-latest",
+                    "@composer test-sqlsrv"
+                ],
+                "update-coverage": [
+                    "printf \"\\n\\033[34m===== Creating code coverage reports =====\\033[0m\n\n\"",
+                    "vendor/bin/phpcov merge build --html build/coverage --clover build/coverage.xml --text build/coverage.txt",
+                    "head -9 build/coverage.txt | tail -4"
+                ],
+                "phpstan": [
+                    "printf \"\\n\\033[34m===== Static analysis using phpstan =====\\033[0m\n\n\"",
+                    "vendor/bin/phpstan"
+                ],
+                "infection": [
+                    "printf \"\\n\\033[34m===== Mutation testing using infection =====\\033[0m\n\n\"",
+                    "vendor/bin/infection --max-timeouts=0 --show-mutations=max"
+                ],
+                "generate-badges": [
+                    "printf \"\\n\\033[34m===== Generating badges =====\\033[0m\n\n\"",
+                    "php bin/generate-badges.php init"
+                ],
+                "ci": [
+                    "@composer banner",
+                    "",
+                    "printf \"\\n\\033[34m===== Validating composer.json =====\\033[0m\n\n\"",
+                    "@composer validate",
+                    "",
+                    "printf \"\\n\\033[34m===== Installing dependencies =====\\033[0m\n\n\"",
+                    "@composer update --quiet --no-interaction",
+                    "",
+                    "@composer generate-badges",
+                    "",
+                    "printf \"\\n\\033[34m===== Checking code style =====\\033[0m\n\n\"",
+                    "vendor/bin/phpcs",
+                    "php bin/generate-badges.php phpcs",
+                    "",
+                    "printf \"\\n\\033[34m===== Initialising tests =====\\033[0m\n\n\"",
+                    "mkdir -p build/coverage",
+                    "rm -Rf build/*.*",
+                    "",
+                    "@composer test-sqlite",
+                    "@composer test-mysql-9.7",
+                    "@composer test-mariadb-12.2",
+                    "@composer test-pgsql-18",
+                    "@composer test-sqlsrv-2025",
+                    "@composer test-firebird-5",
+                    "php bin/generate-badges.php phpunit",
+                    "",
+                    "@composer update-coverage",
+                    "php bin/generate-badges.php coverage",
+                    "",
+                    "@composer phpstan",
+                    "php bin/generate-badges.php phpstan",
+                    "",
+                    "@composer infection",
+                    "php bin/generate-badges.php infection"
+                ],
+                "test-all": [
+                    "@composer test-sqlite",
+                    "@composer test-mysql-all",
+                    "@composer test-mariadb-all",
+                    "@composer test-pgsql-all",
+                    "@composer test-sqlsrv-all",
+                    "@composer test-firebird-all"
+                ],
+                "fix": [
+                    "@composer banner",
+                    "printf \"\\n\\033[34m===== Fixing code style =====\\033[0m\n\n\"",
+                    "vendor/bin/phpcbf --colors src tests"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk"
+                }
+            ],
+            "description": "Database abstraction layer",
+            "time": "2026-10-02T09:22:38+00:00"
         },
         {
             "name": "fisharebest/ext-calendar",
@@ -9100,7 +9465,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "fisharebest/collection": 20,
+        "fisharebest/database": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

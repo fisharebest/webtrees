@@ -96,7 +96,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         extract($config, EXTR_OVERWRITE);
 
         if ($show_common_surnames === '1') {
-            $subquery = DB::table('name')
+            $subquery = DB::queryBuilder()->from('name')
                 ->where('n_file', '=', $tree->id())
                 ->where('n_type', '<>', '_MARNM')
                 ->where('n_surn', '<>', '')

@@ -57,12 +57,12 @@ final class GedcomLoad
 
         try {
             // What is the current import status?
-            $import_offset = DB::table('gedcom_chunk')
+            $import_offset = DB::queryBuilder()->from('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('imported', '=', '1')
                 ->count();
 
-            $import_total = DB::table('gedcom_chunk')
+            $import_total = DB::queryBuilder()->from('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
                 ->count();
 
@@ -84,24 +84,24 @@ final class GedcomLoad
             // If we are loading the first (header) record, then delete old data.
             if ($import_offset === 0) {
                 $queries = [
-                    'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
-                    'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
-                    'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
-                    'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
-                    'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
-                    'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
-                    'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
-                    'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
-                    'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
+                    'individuals' => DB::queryBuilder()->from('individuals')->where('i_file', '=', $tree->id()),
+                    'families'    => DB::queryBuilder()->from('families')->where('f_file', '=', $tree->id()),
+                    'sources'     => DB::queryBuilder()->from('sources')->where('s_file', '=', $tree->id()),
+                    'other'       => DB::queryBuilder()->from('other')->where('o_file', '=', $tree->id()),
+                    'places'      => DB::queryBuilder()->from('places')->where('p_file', '=', $tree->id()),
+                    'placelinks'  => DB::queryBuilder()->from('placelinks')->where('pl_file', '=', $tree->id()),
+                    'name'        => DB::queryBuilder()->from('name')->where('n_file', '=', $tree->id()),
+                    'dates'       => DB::queryBuilder()->from('dates')->where('d_file', '=', $tree->id()),
+                    'change'      => DB::queryBuilder()->from('change')->where('gedcom_id', '=', $tree->id()),
                 ];
 
                 if ($tree->getPreference('keep_media') === '1') {
-                    $queries['link'] = DB::table('link')->where('l_file', '=', $tree->id())
+                    $queries['link'] = DB::queryBuilder()->from('link')->where('l_file', '=', $tree->id())
                         ->where('l_type', '<>', 'OBJE');
                 } else {
-                    $queries['link']       = DB::table('link')->where('l_file', '=', $tree->id());
-                    $queries['media_file'] = DB::table('media_file')->where('m_file', '=', $tree->id());
-                    $queries['media']      = DB::table('media')->where('m_file', '=', $tree->id());
+                    $queries['link']       = DB::queryBuilder()->from('link')->where('l_file', '=', $tree->id());
+                    $queries['media_file'] = DB::queryBuilder()->from('media_file')->where('m_file', '=', $tree->id());
+                    $queries['media']      = DB::queryBuilder()->from('media')->where('m_file', '=', $tree->id());
                 }
 
                 foreach ($queries as $table => $query) {
@@ -129,7 +129,7 @@ final class GedcomLoad
 
             // Run for a short period of time. This keeps the resource requirements low.
             do {
-                $data = DB::table('gedcom_chunk')
+                $data = DB::queryBuilder()->from('gedcom_chunk')
                     ->where('gedcom_id', '=', $tree->id())
                     ->where('imported', '=', '0')
                     ->orderBy('gedcom_chunk_id')
@@ -142,7 +142,7 @@ final class GedcomLoad
 
                 // Mark the chunk as imported.  This will create a row-lock, to prevent other
                 // processes from reading it until we have finished.
-                $n = DB::table('gedcom_chunk')
+                $n = DB::queryBuilder()->from('gedcom_chunk')
                     ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
                     ->where('imported', '=', '0')
                     ->update(['imported' => 1]);
@@ -175,7 +175,7 @@ final class GedcomLoad
                 }
 
                 // Do not need the data any more.
-                DB::table('gedcom_chunk')
+                DB::queryBuilder()->from('gedcom_chunk')
                     ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
                     ->update(['chunk_data' => '']);
             } while (!$this->timeout_service->isTimeLimitUp());

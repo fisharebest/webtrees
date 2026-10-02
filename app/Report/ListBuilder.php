@@ -172,7 +172,7 @@ final class ListBuilder
         string $desc,
         VariableTable $variables,
     ): array {
-        $list = DB::table('change')
+        $list = DB::queryBuilder()->from('change')
             ->whereIn('change_id', function (Builder $query): void {
                 $query->select([new Expression('MAX(change_id)')])
                     ->from('change')
@@ -207,7 +207,7 @@ final class ListBuilder
         string $desc,
         VariableTable $variables,
     ): array {
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $this->tree->id())
             ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
             ->distinct();
@@ -305,7 +305,7 @@ final class ListBuilder
         string $desc,
         VariableTable $variables,
     ): array {
-        $query = DB::table('families')
+        $query = DB::queryBuilder()->from('families')
             ->where('f_file', '=', $this->tree->id())
             ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
             ->distinct();

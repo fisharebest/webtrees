@@ -104,7 +104,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('media')
+        return !DB::queryBuilder()->from('media')
             ->where('m_file', '=', $tree->id())
             ->exists();
     }
@@ -168,7 +168,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
      */
     private function allFolders(Tree $tree): array
     {
-        $folders = DB::table('media_file')
+        $folders = DB::queryBuilder()->from('media_file')
             ->where('m_file', '=', $tree->id())
             ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https:%')
@@ -198,7 +198,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
      */
     private function allMedia(Tree $tree, string $folder, bool $subfolders, string $sort, string $filter, string $format): Collection
     {
-        $query = DB::table('media')
+        $query = DB::queryBuilder()->from('media')
             ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')

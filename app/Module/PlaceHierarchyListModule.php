@@ -109,7 +109,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('places')
+        return !DB::queryBuilder()->from('places')
             ->where('p_file', '=', $tree->id())
             ->exists();
     }
@@ -346,7 +346,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     private function placeLinks(Place $place): Builder
     {
-        return DB::table('places')
+        return DB::queryBuilder()->from('places')
             ->join('placelinks', static function (JoinClause $join): void {
                 $join
                     ->on('pl_file', '=', 'p_file')

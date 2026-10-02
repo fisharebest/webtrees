@@ -212,7 +212,7 @@ final class ControlPanel
      */
     private function totalChanges(): array
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('change', static function (JoinClause $join): void {
                 $join
                     ->on('change.gedcom_id', '=', 'gedcom.gedcom_id')
@@ -231,7 +231,7 @@ final class ControlPanel
      */
     private function totalIndividuals(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(i_id) AS total'), 'gedcom_id')
@@ -245,7 +245,7 @@ final class ControlPanel
      */
     private function totalFamilies(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('families', 'f_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(f_id) AS total'), 'gedcom_id')
@@ -259,7 +259,7 @@ final class ControlPanel
      */
     private function totalSources(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('sources', 's_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(s_id) AS total'), 'gedcom_id')
@@ -273,7 +273,7 @@ final class ControlPanel
      */
     private function totalMediaObjects(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('media', 'm_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(m_id) AS total'), 'gedcom_id')
@@ -287,7 +287,7 @@ final class ControlPanel
      */
     private function totalRepositories(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
@@ -305,7 +305,7 @@ final class ControlPanel
      */
     private function totalNotes(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')
@@ -323,7 +323,7 @@ final class ControlPanel
      */
     private function totalSubmitters(): Collection
     {
-        return DB::table('gedcom')
+        return DB::queryBuilder()->from('gedcom')
             ->leftJoin('other', static function (JoinClause $join): void {
                 $join
                     ->on('o_file', '=', 'gedcom_id')

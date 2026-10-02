@@ -1006,7 +1006,7 @@ class Individual extends GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('individuals')
+        DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $this->tree->id())
             ->where('i_id', '=', $this->xref())
             ->lockForUpdate()

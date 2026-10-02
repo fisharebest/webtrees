@@ -84,7 +84,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('other')
+        return !DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->exists();
@@ -97,7 +97,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $notes = DB::table('other')
+        $notes = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->get()

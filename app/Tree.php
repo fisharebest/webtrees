@@ -154,7 +154,7 @@ class Tree
     public function setPreference(string $setting_name, string $setting_value): self
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
-            DB::table('gedcom_setting')->updateOrInsert([
+            DB::queryBuilder()->from('gedcom_setting')->updateOrInsert([
                 'gedcom_id'    => $this->id,
                 'setting_name' => $setting_name,
             ], [
@@ -172,7 +172,7 @@ class Tree
     public function getPreference(string $setting_name, string|null $default = null): string
     {
         if ($this->preferences === []) {
-            $this->preferences = DB::table('gedcom_setting')
+            $this->preferences = DB::queryBuilder()->from('gedcom_setting')
                 ->where('gedcom_id', '=', $this->id)
                 ->pluck('setting_value', 'setting_name')
                 ->all();
@@ -265,7 +265,7 @@ class Tree
 
     private function loadDefaultResn(): void
     {
-        $rows = DB::table('default_resn')
+        $rows = DB::queryBuilder()->from('default_resn')
             ->where('gedcom_id', '=', $this->id)
             ->get();
 
@@ -294,7 +294,7 @@ class Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
-            DB::table('user_gedcom_setting')->updateOrInsert([
+            DB::queryBuilder()->from('user_gedcom_setting')->updateOrInsert([
                 'gedcom_id'    => $this->id(),
                 'user_id'      => $user->id(),
                 'setting_name' => $setting_name,
@@ -319,7 +319,7 @@ class Tree
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (!array_key_exists($user->id(), $this->user_preferences)) {
-            $this->user_preferences[$user->id()] = DB::table('user_gedcom_setting')
+            $this->user_preferences[$user->id()] = DB::queryBuilder()->from('user_gedcom_setting')
                 ->where('user_id', '=', $user->id())
                 ->where('gedcom_id', '=', $this->id)
                 ->pluck('setting_value', 'setting_name')
@@ -347,7 +347,7 @@ class Tree
 
     public function hasPendingEdit(): bool
     {
-        return DB::table('change')
+        return DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $this->id)
             ->where('status', '=', ChangeStatus::Pending->value)
             ->exists();
@@ -368,7 +368,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::queryBuilder()->from('change')->insert([
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -405,7 +405,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::queryBuilder()->from('change')->insert([
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -442,7 +442,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::queryBuilder()->from('change')->insert([
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -479,7 +479,7 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
 
         // Create a pending change
-        DB::table('change')->insert([
+        DB::queryBuilder()->from('change')->insert([
             'gedcom_id'  => $this->id,
             'xref'       => $xref,
             'old_gedcom' => '',
@@ -530,7 +530,7 @@ class Tree
         }
 
         if ($individual === null) {
-            $xref = DB::table('individuals')
+            $xref = DB::queryBuilder()->from('individuals')
                 ->where('i_file', '=', $this->id())
                 ->min('i_id');
 

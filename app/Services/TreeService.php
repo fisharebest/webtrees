@@ -74,7 +74,7 @@ class TreeService
     {
         return Registry::cache()->array()->remember('all-trees', static function (): Collection {
             // All trees
-            $query = DB::table('gedcom')
+            $query = DB::queryBuilder()->from('gedcom')
                 ->where('gedcom.gedcom_id', '>', 0)
                 ->when(!Auth::isAdmin(), function (Builder $query): void {
                     $query->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
@@ -141,7 +141,7 @@ class TreeService
 
     public function create(string $name, string $title): Tree
     {
-        DB::table('gedcom')->insert([
+        DB::queryBuilder()->from('gedcom')->insert([
             'contact_user_id' => Auth::id(),
             'gedcom_filename' => $name . '.ged',
             'gedcom_name'     => $name,
@@ -149,7 +149,7 @@ class TreeService
             'title'           => $title,
         ]);
 
-        $tree = DB::table('gedcom')
+        $tree = DB::queryBuilder()->from('gedcom')
             ->where('gedcom_id', '=', DB::lastInsertId())
             ->get()
             ->map(Tree::fromDB(...))
@@ -208,12 +208,12 @@ class TreeService
 
         $file_data = '';
 
-        DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update([
+        DB::queryBuilder()->from('gedcom')->where('gedcom_id', '=', $tree->id())->update([
             'gedcom_filename' => $filename,
             'imported' => 0,
         ]);
 
-        DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
 
         $stream = $stream->detach();
 
@@ -225,7 +225,7 @@ class TreeService
             $eol_pos = max((int) strrpos($file_data, "\r0"), (int) strrpos($file_data, "\n0"));
 
             if ($eol_pos > 0) {
-                DB::table('gedcom_chunk')->insert([
+                DB::queryBuilder()->from('gedcom_chunk')->insert([
                     'gedcom_id'  => $tree->id(),
                     'chunk_data' => substr($file_data, 0, $eol_pos + 1),
                 ]);
@@ -234,7 +234,7 @@ class TreeService
             }
         }
 
-        DB::table('gedcom_chunk')->insert([
+        DB::queryBuilder()->from('gedcom_chunk')->insert([
             'gedcom_id'  => $tree->id(),
             'chunk_data' => $file_data,
         ]);
@@ -249,31 +249,31 @@ class TreeService
             Site::setPreference('DEFAULT_GEDCOM', '');
         }
 
-        DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('link')->where('l_file', '=', $tree->id())->delete();
-        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-        DB::table('media')->where('m_file', '=', $tree->id())->delete();
-        DB::table('block_setting')
+        DB::queryBuilder()->from('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('individuals')->where('i_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('families')->where('f_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('sources')->where('s_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('other')->where('o_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('places')->where('p_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('placelinks')->where('pl_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('name')->where('n_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('dates')->where('d_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('change')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('link')->where('l_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('media_file')->where('m_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('media')->where('m_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('block_setting')
             ->join('block', 'block.block_id', '=', 'block_setting.block_id')
             ->where('gedcom_id', '=', $tree->id())
             ->delete();
-        DB::table('block')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('user_gedcom_setting')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('gedcom_setting')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('module_privacy')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('hit_counter')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('default_resn')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('log')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('block')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('user_gedcom_setting')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('gedcom_setting')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('module_privacy')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('hit_counter')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('default_resn')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('log')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
     }
 
     /**

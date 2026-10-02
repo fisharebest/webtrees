@@ -53,7 +53,7 @@ final class UserSetting extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $user_id = DB::table('user')
+        $user_id = DB::queryBuilder()->from('user')
             ->where(column: 'user_name', operator: '=', value: $user_name)
             ->value(column: 'user_id');
 
@@ -79,7 +79,7 @@ final class UserSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            $settings = DB::table(table: 'user_setting')
+            $settings = DB::queryBuilder()->from(table: 'user_setting')
                 ->where(column: 'user_id', operator: '=', value: $user_id)
                 ->orderBy(column: 'setting_name')
                 ->select(columns: ['setting_name', 'setting_value'])
@@ -98,7 +98,7 @@ final class UserSetting extends AbstractCommand
         }
 
         /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('user_setting')
+        $old_setting_value = DB::queryBuilder()->from('user_setting')
             ->where(column: 'user_id', operator: '=', value: $user_id)
             ->where(column: 'setting_name', operator: '=', value: $setting_name)
             ->value(column: 'setting_value');
@@ -119,7 +119,7 @@ final class UserSetting extends AbstractCommand
             if ($old_setting_value === null) {
                 $io->warning(message: 'User setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table('user_setting')
+                DB::queryBuilder()->from('user_setting')
                     ->where(column: 'user_id', operator: '=', value: $user_id)
                     ->where('setting_name', '=', $setting_name)
                     ->delete();
@@ -158,7 +158,7 @@ final class UserSetting extends AbstractCommand
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'user_setting')
+            DB::queryBuilder()->from(table: 'user_setting')
                 ->insert(values: [
                     'user_id'       => $user_id,
                     'setting_name'  => $setting_name,
@@ -167,7 +167,7 @@ final class UserSetting extends AbstractCommand
 
             $io->success(message: 'User setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'user_setting')
+            DB::queryBuilder()->from(table: 'user_setting')
                 ->where(column: 'user_id', operator: '=', value: $user_id)
                 ->where(column: 'setting_name', operator: '=', value: $setting_name)
                 ->update(values: ['setting_value' => $setting_value]);

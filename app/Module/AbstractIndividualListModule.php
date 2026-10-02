@@ -528,7 +528,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             $initials[$initial] = 0;
         }
 
-        $subquery = DB::table('name')
+        $subquery = DB::queryBuilder()->from('name')
             ->where('n_file', '=', $tree->id())
             ->select([DB::binaryColumn('n_givn', 'n_givn')]);
 
@@ -566,7 +566,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     private function surnameData(Tree $tree, bool $marnm, bool $fams): array
     {
-        $subquery = DB::table('name')
+        $subquery = DB::queryBuilder()->from('name')
             ->where('n_file', '=', $tree->id())
             ->whereNotNull('n_surn') // Filters old records for sources, repositories, etc.
             ->whereNotNull('n_surname')
@@ -689,7 +689,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      */
     protected function individuals(Tree $tree, array $surns_to_show, string $galpha, bool $marnm, bool $fams): Collection
     {
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('n_id', '=', 'i_id')

@@ -118,7 +118,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('families')->where('f_file', '=', $tree->id());
+        $query = DB::queryBuilder()->from('families')->where('f_file', '=', $tree->id());
         $this->recordQuery($query, 'f_gedcom', $params);
 
         return $query->pluck('f_id');
@@ -138,7 +138,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id());
 
         $this->recordQuery($query, 'i_gedcom', $params);
@@ -160,7 +160,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Location::RECORD_TYPE);
 
@@ -183,7 +183,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('media')
+        $query = DB::queryBuilder()->from('media')
             ->where('m_file', '=', $tree->id());
 
         $this->recordQuery($query, 'm_gedcom', $params);
@@ -205,7 +205,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE);
 
@@ -228,7 +228,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             return null;
         }
 
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE);
 

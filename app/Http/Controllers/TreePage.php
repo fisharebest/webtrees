@@ -43,7 +43,7 @@ final class TreePage
 
     public function get(Tree $tree): ResponseInterface
     {
-        $has_blocks = DB::table('block')
+        $has_blocks = DB::queryBuilder()->from('block')
             ->where('gedcom_id', '=', $tree->id())
             ->exists();
 

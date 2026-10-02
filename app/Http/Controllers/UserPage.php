@@ -42,7 +42,7 @@ final class UserPage
 
     public function get(Tree $tree): ResponseInterface
     {
-        $has_blocks = DB::table('block')
+        $has_blocks = DB::queryBuilder()->from('block')
             ->where('user_id', '=', $this->user->id())
             ->exists();
 

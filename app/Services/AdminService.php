@@ -57,42 +57,42 @@ class AdminService
      */
     public function countCommonXrefs(Tree $tree1, Tree $tree2): int
     {
-        $subquery1 = DB::table('change')
+        $subquery1 = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree1->id())
             ->select(['xref AS xref1'])
-            ->union(DB::table('individuals')
+            ->union(DB::queryBuilder()->from('individuals')
                 ->where('i_file', '=', $tree1->id())
                 ->select(['i_id AS xref']))
-            ->union(DB::table('families')
+            ->union(DB::queryBuilder()->from('families')
                 ->where('f_file', '=', $tree1->id())
                 ->select(['f_id AS xref']))
-            ->union(DB::table('sources')
+            ->union(DB::queryBuilder()->from('sources')
                 ->where('s_file', '=', $tree1->id())
                 ->select(['s_id AS xref']))
-            ->union(DB::table('media')
+            ->union(DB::queryBuilder()->from('media')
                 ->where('m_file', '=', $tree1->id())
                 ->select(['m_id AS xref']))
-            ->union(DB::table('other')
+            ->union(DB::queryBuilder()->from('other')
                 ->where('o_file', '=', $tree1->id())
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        $subquery2 = DB::table('change')
+        $subquery2 = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree2->id())
             ->select(['xref AS xref2'])
-            ->union(DB::table('individuals')
+            ->union(DB::queryBuilder()->from('individuals')
                 ->where('i_file', '=', $tree2->id())
                 ->select(['i_id AS xref']))
-            ->union(DB::table('families')
+            ->union(DB::queryBuilder()->from('families')
                 ->where('f_file', '=', $tree2->id())
                 ->select(['f_id AS xref']))
-            ->union(DB::table('sources')
+            ->union(DB::queryBuilder()->from('sources')
                 ->where('s_file', '=', $tree2->id())
                 ->select(['s_id AS xref']))
-            ->union(DB::table('media')
+            ->union(DB::queryBuilder()->from('media')
                 ->where('m_file', '=', $tree2->id())
                 ->select(['m_id AS xref']))
-            ->union(DB::table('other')
+            ->union(DB::queryBuilder()->from('other')
                 ->where('o_file', '=', $tree2->id())
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
@@ -113,7 +113,7 @@ class AdminService
         // Will need to wait for a "repositories" table.
         $repositories = [];
 
-        $sources = DB::table('sources')
+        $sources = DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->groupBy(['s_name'])
             ->having(new Expression('COUNT(s_id)'), '>', '1')
@@ -131,7 +131,7 @@ class AdminService
             return implode(',', array_unique($array));
         };
 
-        $individuals = DB::table('dates')
+        $individuals = DB::queryBuilder()->from('dates')
             ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('d_file', '=', 'n_file')
@@ -149,7 +149,7 @@ class AdminService
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Individual => Registry::individualFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
-        $families = DB::table('families')
+        $families = DB::queryBuilder()->from('families')
             ->where('f_file', '=', $tree->id())
             ->groupBy([new Expression('LEAST(f_husb, f_wife)')])
             ->groupBy([new Expression('GREATEST(f_husb, f_wife)')])
@@ -160,7 +160,7 @@ class AdminService
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Family => Registry::familyFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
-        $media = DB::table('media_file')
+        $media = DB::queryBuilder()->from('media_file')
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '<>', '')
             ->groupBy(['descriptive_title'])
@@ -188,39 +188,39 @@ class AdminService
      */
     public function duplicateXrefs(Tree $tree): array
     {
-        $subquery1 = DB::table('individuals')
+        $subquery1 = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id())
             ->select(['i_id AS xref', new Expression("'INDI' AS type")])
-            ->union(DB::table('families')
+            ->union(DB::queryBuilder()->from('families')
                 ->where('f_file', '=', $tree->id())
                 ->select(['f_id AS xref', new Expression("'FAM' AS type")]))
-            ->union(DB::table('sources')
+            ->union(DB::queryBuilder()->from('sources')
                 ->where('s_file', '=', $tree->id())
                 ->select(['s_id AS xref', new Expression("'SOUR' AS type")]))
-            ->union(DB::table('media')
+            ->union(DB::queryBuilder()->from('media')
                 ->where('m_file', '=', $tree->id())
                 ->select(['m_id AS xref', new Expression("'OBJE' AS type")]))
-            ->union(DB::table('other')
+            ->union(DB::queryBuilder()->from('other')
                 ->where('o_file', '=', $tree->id())
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref', 'o_type AS type']));
 
-        $subquery2 = DB::table('change')
+        $subquery2 = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '<>', $tree->id())
             ->select(['xref AS other_xref'])
-            ->union(DB::table('individuals')
+            ->union(DB::queryBuilder()->from('individuals')
                 ->where('i_file', '<>', $tree->id())
                 ->select(['i_id AS xref']))
-            ->union(DB::table('families')
+            ->union(DB::queryBuilder()->from('families')
                 ->where('f_file', '<>', $tree->id())
                 ->select(['f_id AS xref']))
-            ->union(DB::table('sources')
+            ->union(DB::queryBuilder()->from('sources')
                 ->where('s_file', '<>', $tree->id())
                 ->select(['s_id AS xref']))
-            ->union(DB::table('media')
+            ->union(DB::queryBuilder()->from('media')
                 ->where('m_file', '<>', $tree->id())
                 ->select(['m_id AS xref']))
-            ->union(DB::table('other')
+            ->union(DB::queryBuilder()->from('other')
                 ->where('o_file', '<>', $tree->id())
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));

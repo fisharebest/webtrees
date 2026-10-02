@@ -41,7 +41,7 @@ final class TreePageBlock
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_id = (int) DB::table('block')
+        $block_id = (int) DB::queryBuilder()->from('block')
             ->where('block_id', '=', $block_id)
             ->where('gedcom_id', '=', $tree->id())
             ->value('block_id');

@@ -93,7 +93,7 @@ class MessageService
         ]);
 
         if ($contact_method->sendsInternalMessage()) {
-            DB::table('message')->insert([
+            DB::queryBuilder()->from('message')->insert([
                 'sender'     => Auth::check() ? Auth::user()->email() : $sender->email(),
                 'ip_address' => $ip,
                 'user_id'    => $recipient->id(),

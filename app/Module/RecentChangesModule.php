@@ -261,7 +261,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
-        $subquery = DB::table('change')
+        $subquery = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', ChangeStatus::Accepted->value)
             ->where('new_gedcom', '<>', '')
@@ -269,7 +269,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->groupBy(['xref'])
             ->select([new Expression('MAX(change_id) AS recent_change_id')]);
 
-        $query = DB::table('change')
+        $query = DB::queryBuilder()->from('change')
             ->joinSub($subquery, 'recent', 'recent_change_id', '=', 'change_id')
             ->select(['change.*']);
 
@@ -295,7 +295,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     {
         $julian_day = Registry::timestampFactory()->todayJulianDay() - $days;
 
-        $individuals = DB::table('dates')
+        $individuals = DB::queryBuilder()->from('dates')
             ->where('d_file', '=', $tree->id())
             ->where('d_julianday1', '>=', $julian_day)
             ->where('d_fact', '=', 'CHAN')
@@ -309,7 +309,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(Individual::accessFilter());
 
-        $families = DB::table('dates')
+        $families = DB::queryBuilder()->from('dates')
             ->where('d_file', '=', $tree->id())
             ->where('d_julianday1', '>=', $julian_day)
             ->where('d_fact', '=', 'CHAN')

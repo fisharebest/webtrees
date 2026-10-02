@@ -87,7 +87,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('other')
+        return !DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->exists();
@@ -100,7 +100,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $repositories = DB::table('other')
+        $repositories = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->get()

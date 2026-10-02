@@ -60,7 +60,7 @@ final class FixLevel0MediaData
 
         $search = Validator::parsedBody($request)->array('search')['value'] ?? '';
 
-        $query = DB::table('media')
+        $query = DB::queryBuilder()->from('media')
             ->join('media_file', static function (JoinClause $join): void {
                 $join
                     ->on('media_file.m_file', '=', 'media.m_file')

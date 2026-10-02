@@ -47,7 +47,7 @@ class User implements UserInterface
         $this->real_name = $real_name;
         $this->email     = $email;
 
-        $this->preferences = DB::table('user_setting')
+        $this->preferences = DB::queryBuilder()->from('user_setting')
             ->where('user_id', '=', $this->user_id)
             ->pluck('setting_value', 'setting_name')
             ->all();
@@ -77,7 +77,7 @@ class User implements UserInterface
         if ($this->email !== $email) {
             $this->email = $email;
 
-            DB::table('user')
+            DB::queryBuilder()->from('user')
                 ->where('user_id', '=', $this->user_id)
                 ->update([
                     'email' => $email,
@@ -103,7 +103,7 @@ class User implements UserInterface
         if ($this->real_name !== $real_name) {
             $this->real_name = $real_name;
 
-            DB::table('user')
+            DB::queryBuilder()->from('user')
                 ->where('user_id', '=', $this->user_id)
                 ->update([
                     'real_name' => $real_name,
@@ -129,7 +129,7 @@ class User implements UserInterface
         if ($this->user_name !== $user_name) {
             $this->user_name = $user_name;
 
-            DB::table('user')
+            DB::queryBuilder()->from('user')
                 ->where('user_id', '=', $this->user_id)
                 ->update([
                     'user_name' => $user_name,
@@ -155,7 +155,7 @@ class User implements UserInterface
     public function setPreference(string $setting_name, string $setting_value): void
     {
         if ($this->getPreference($setting_name) !== $setting_value) {
-            DB::table('user_setting')->updateOrInsert([
+            DB::queryBuilder()->from('user_setting')->updateOrInsert([
                 'user_id'      => $this->user_id,
                 'setting_name' => $setting_name,
             ], [
@@ -171,7 +171,7 @@ class User implements UserInterface
      */
     public function setPassword(#[\SensitiveParameter] string $password): User
     {
-        DB::table('user')
+        DB::queryBuilder()->from('user')
             ->where('user_id', '=', $this->user_id)
             ->update([
                 'password' => password_hash($password, PASSWORD_DEFAULT),
@@ -185,7 +185,7 @@ class User implements UserInterface
      */
     public function checkPassword(#[\SensitiveParameter] string $password): bool
     {
-        $password_hash = DB::table('user')
+        $password_hash = DB::queryBuilder()->from('user')
             ->where('user_id', '=', $this->id())
             ->value('password');
 

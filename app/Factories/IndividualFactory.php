@@ -81,7 +81,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('individuals')
+        return DB::queryBuilder()->from('individuals')
             ->where('i_id', '=', $xref)
             ->where('i_file', '=', $tree->id())
             ->value('i_gedcom');

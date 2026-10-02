@@ -328,7 +328,7 @@ class Statistics
     public function chartLargestFamilies(
         string $limit = '7'
     ): string {
-        $data = DB::table('families')
+        $data = DB::queryBuilder()->from('families')
             ->select(['f_numchil AS total', 'f_id AS id'])
             ->where('f_file', '=', $this->tree->id())
             ->orderBy('total', SortOrder::Descending->value)
@@ -403,7 +403,7 @@ class Statistics
         $labels = [];
         $values = [];
 
-        $records = DB::table('families')
+        $records = DB::queryBuilder()->from('families')
             ->selectRaw('ROUND((d_year + 49) / 100, 0) AS century')
             ->selectRaw('COUNT(*) AS total')
             ->join('dates', static function (JoinClause $join): void {
@@ -992,7 +992,7 @@ class Statistics
 
     public function gedcomUpdated(): string
     {
-        $row = DB::table('change')
+        $row = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('status', '=', ChangeStatus::Accepted->value)
             ->orderBy('change_id', SortOrder::Descending->value)
@@ -1566,7 +1566,7 @@ class Statistics
 
     public function statsChildren(): string
     {
-        $records = DB::table('families')
+        $records = DB::queryBuilder()->from('families')
             ->selectRaw('AVG(f_numchil) AS total')
             ->selectRaw('ROUND((d_year + 49) / 100, 0) AS century')
             ->join('dates', static function (JoinClause $join): void {
@@ -1691,7 +1691,7 @@ class Statistics
     {
         $out = [];
 
-        $male = DB::table('dates as married')
+        $male = DB::queryBuilder()->from('dates as married')
             ->select([
                 new Expression('AVG(' . DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' - 182.5) / 365.25 AS age'),
                 new Expression('ROUND((' . DB::prefix('married.d_year') . ' + 49) / 100, 0) AS century'),
@@ -1714,7 +1714,7 @@ class Statistics
             ->where('birth.d_julianday1', '<>', 0)
             ->groupBy(['century', 'sex']);
 
-        $female = DB::table('dates as married')
+        $female = DB::queryBuilder()->from('dates as married')
             ->select([
                 new Expression('ROUND(AVG(' . DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' - 182.5) / 365.25, 1) AS age'),
                 new Expression('ROUND((' . DB::prefix('married.d_year') . ' + 49) / 100, 0) AS century'),

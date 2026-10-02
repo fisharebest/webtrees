@@ -181,18 +181,18 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
 
         // Creating a new tree will create a header and one individual
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-        DB::table('link')->where('l_file', '=', $tree->id())->delete();
-        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-        DB::table('media')->where('m_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('individuals')->where('i_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('families')->where('f_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('sources')->where('s_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('other')->where('o_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('places')->where('p_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('placelinks')->where('pl_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('name')->where('n_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('dates')->where('d_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('change')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('link')->where('l_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('media_file')->where('m_file', '=', $tree->id())->delete();
+        DB::queryBuilder()->from('media')->where('m_file', '=', $tree->id())->delete();
 
         $records = preg_split('/\n(?=0)/', file_get_contents(__DIR__ . '/data/' . $gedcom_file));
 

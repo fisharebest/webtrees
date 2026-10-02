@@ -82,7 +82,7 @@ class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactory
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('sources')
+        return DB::queryBuilder()->from('sources')
             ->where('s_id', '=', $xref)
             ->where('s_file', '=', $tree->id())
             ->value('s_gedcom');

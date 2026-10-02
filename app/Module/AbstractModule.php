@@ -69,7 +69,7 @@ abstract class AbstractModule implements ModuleInterface
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
         $settings = Registry::cache()->array()
-            ->remember('block-setting-' . $block_id, static fn (): array => DB::table('block_setting')
+            ->remember('block-setting-' . $block_id, static fn (): array => DB::queryBuilder()->from('block_setting')
                 ->where('block_id', '=', $block_id)
                 ->pluck('setting_value', 'setting_name')
                 ->all());
@@ -82,7 +82,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
-        DB::table('block_setting')->updateOrInsert([
+        DB::queryBuilder()->from('block_setting')->updateOrInsert([
             'block_id'      => $block_id,
             'setting_name'  => $setting_name,
         ], [
@@ -136,7 +136,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function getPreference(string $setting_name, string $default = ''): string
     {
-        return DB::table('module_setting')
+        return DB::queryBuilder()->from('module_setting')
             ->where('module_name', '=', $this->name())
             ->where('setting_name', '=', $setting_name)
             ->value('setting_value') ?? $default;
@@ -150,7 +150,7 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function setPreference(string $setting_name, string $setting_value): void
     {
-        DB::table('module_setting')->updateOrInsert([
+        DB::queryBuilder()->from('module_setting')->updateOrInsert([
             'module_name'  => $this->name(),
             'setting_name' => $setting_name,
         ], [
@@ -168,7 +168,7 @@ abstract class AbstractModule implements ModuleInterface
     final public function accessLevel(Tree $tree, string $interface): AccessLevel
     {
         $access_levels = Registry::cache()->array()
-            ->remember('module-privacy-' . $tree->id(), static fn (): Collection => DB::table('module_privacy')
+            ->remember('module-privacy-' . $tree->id(), static fn (): Collection => DB::queryBuilder()->from('module_privacy')
                 ->where('gedcom_id', '=', $tree->id())
                 ->get());
 

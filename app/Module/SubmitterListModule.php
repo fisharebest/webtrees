@@ -92,7 +92,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface
 
     public function listIsEmpty(Tree $tree): bool
     {
-        return !DB::table('other')
+        return !DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->exists();
@@ -105,7 +105,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $submitters = DB::table('other')
+        $submitters = DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->get()

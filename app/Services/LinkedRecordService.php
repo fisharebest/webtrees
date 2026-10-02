@@ -50,7 +50,7 @@ class LinkedRecordService
     {
         $like = addcslashes($record->xref(), '\\%_');
 
-        $union = DB::table('change')
+        $union = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $record->tree()->id())
             ->where('new_gedcom', 'LIKE', '%@' . $like . '@%')
             ->where('new_gedcom', 'NOT LIKE', '0 @' . $like . '@%')
@@ -64,7 +64,7 @@ class LinkedRecordService
             })
             ->select(['xref']);
 
-        return DB::table('link')
+        return DB::queryBuilder()->from('link')
             ->where('l_file', '=', $record->tree()->id())
             ->where('l_to', '=', $record->xref())
             ->select(['l_from'])
@@ -80,7 +80,7 @@ class LinkedRecordService
      */
     public function linkedFamilies(GedcomRecord $record, string|null $link_type = null): Collection
     {
-        $query = DB::table('families')
+        $query = DB::queryBuilder()->from('families')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'f_file')
@@ -107,7 +107,7 @@ class LinkedRecordService
      */
     public function linkedIndividuals(GedcomRecord $record, string|null $link_type = null): Collection
     {
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'i_file')
@@ -134,7 +134,7 @@ class LinkedRecordService
      */
     public function linkedLocations(GedcomRecord $record): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'o_file')
@@ -156,7 +156,7 @@ class LinkedRecordService
      */
     public function linkedMedia(GedcomRecord $record): Collection
     {
-        return DB::table('media')
+        return DB::queryBuilder()->from('media')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'm_file')
@@ -177,7 +177,7 @@ class LinkedRecordService
      */
     public function linkedNotes(GedcomRecord $record): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'o_file')
@@ -199,7 +199,7 @@ class LinkedRecordService
      */
     public function linkedRepositories(GedcomRecord $record): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'o_file')
@@ -221,7 +221,7 @@ class LinkedRecordService
      */
     public function linkedSources(GedcomRecord $record): Collection
     {
-        return DB::table('sources')
+        return DB::queryBuilder()->from('sources')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 's_file')
@@ -242,7 +242,7 @@ class LinkedRecordService
      */
     public function linkedSubmitters(GedcomRecord $record): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'o_file')

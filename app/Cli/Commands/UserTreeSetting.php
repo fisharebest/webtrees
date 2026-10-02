@@ -62,7 +62,7 @@ final class UserTreeSetting extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $user_id = DB::table('user')
+        $user_id = DB::queryBuilder()->from('user')
             ->where(column: 'user_name', operator: '=', value: $user_name)
             ->value(column: 'user_id');
 
@@ -72,7 +72,7 @@ final class UserTreeSetting extends AbstractCommand
             return self::FAILURE;
         }
 
-        $tree_id = DB::table('gedcom')
+        $tree_id = DB::queryBuilder()->from('gedcom')
             ->where(column: 'gedcom_name', operator: '=', value: $tree_name)
             ->value(column: 'gedcom_id');
 
@@ -98,7 +98,7 @@ final class UserTreeSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            $settings = DB::table(table: 'user_gedcom_setting')
+            $settings = DB::queryBuilder()->from(table: 'user_gedcom_setting')
                 ->where(column: 'user_id', operator: '=', value: $user_id)
                 ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                 ->orderBy(column: 'setting_name')
@@ -118,7 +118,7 @@ final class UserTreeSetting extends AbstractCommand
         }
 
         /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('user_gedcom_setting')
+        $old_setting_value = DB::queryBuilder()->from('user_gedcom_setting')
             ->where(column: 'user_id', operator: '=', value: $user_id)
             ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
             ->where(column: 'setting_name', operator: '=', value: $setting_name)
@@ -140,7 +140,7 @@ final class UserTreeSetting extends AbstractCommand
             if ($old_setting_value === null) {
                 $io->warning(message: 'User-tree setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table('user_gedcom_setting')
+                DB::queryBuilder()->from('user_gedcom_setting')
                     ->where(column: 'user_id', operator: '=', value: $user_id)
                     ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                     ->where('setting_name', '=', $setting_name)
@@ -180,7 +180,7 @@ final class UserTreeSetting extends AbstractCommand
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'user_gedcom_setting')
+            DB::queryBuilder()->from(table: 'user_gedcom_setting')
                 ->insert(values: [
                     'user_id'       => $user_id,
                     'gedcom_id'     => $tree_id,
@@ -190,7 +190,7 @@ final class UserTreeSetting extends AbstractCommand
 
             $io->success(message: 'User-tree setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'user_gedcom_setting')
+            DB::queryBuilder()->from(table: 'user_gedcom_setting')
                 ->where(column: 'user_id', operator: '=', value: $user_id)
                 ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                 ->where(column: 'setting_name', operator: '=', value: $setting_name)

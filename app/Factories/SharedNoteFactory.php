@@ -82,7 +82,7 @@ class SharedNoteFactory extends AbstractGedcomRecordFactory implements SharedNot
      */
     protected function gedcom(string $xref, Tree $tree): string|null
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_id', '=', $xref)
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', SharedNote::RECORD_TYPE)

@@ -27,7 +27,7 @@ class SeedGedcomTable implements SeedInterface
     {
         // Add a "default" tree, to store default settings
         DB::identityInsert(table: 'gedcom', callback: static function (): void {
-            DB::table(table: 'gedcom')->updateOrInsert(attributes: [
+            DB::queryBuilder()->from(table: 'gedcom')->updateOrInsert(attributes: [
                 'gedcom_id' => -1,
             ], values: [
                 'gedcom_name' => 'DEFAULT_TREE',

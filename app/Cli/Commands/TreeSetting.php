@@ -58,7 +58,7 @@ final class TreeSetting extends AbstractCommand
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $tree_id = DB::table('gedcom')
+        $tree_id = DB::queryBuilder()->from('gedcom')
             ->where(column: 'gedcom_name', operator: '=', value: $tree_name)
             ->value(column: 'gedcom_id');
 
@@ -84,7 +84,7 @@ final class TreeSetting extends AbstractCommand
             $table = new Table(output: $output);
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
-            $settings = DB::table(table: 'gedcom_setting')
+            $settings = DB::queryBuilder()->from(table: 'gedcom_setting')
                 ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                 ->orderBy(column: 'setting_name')
                 ->select(columns: ['setting_name', 'setting_value'])
@@ -103,7 +103,7 @@ final class TreeSetting extends AbstractCommand
         }
 
         /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('gedcom_setting')
+        $old_setting_value = DB::queryBuilder()->from('gedcom_setting')
             ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
             ->where(column: 'setting_name', operator: '=', value: $setting_name)
             ->value(column: 'setting_value');
@@ -124,7 +124,7 @@ final class TreeSetting extends AbstractCommand
             if ($old_setting_value === null) {
                 $io->warning(message: 'Tree setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table('gedcom_setting')
+                DB::queryBuilder()->from('gedcom_setting')
                     ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                     ->where('setting_name', '=', $setting_name)
                     ->delete();
@@ -163,7 +163,7 @@ final class TreeSetting extends AbstractCommand
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'gedcom_setting')
+            DB::queryBuilder()->from(table: 'gedcom_setting')
                 ->insert(values: [
                     'gedcom_id'     => $tree_id,
                     'setting_name'  => $setting_name,
@@ -172,7 +172,7 @@ final class TreeSetting extends AbstractCommand
 
             $io->success(message: 'gedcom setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'gedcom_setting')
+            DB::queryBuilder()->from(table: 'gedcom_setting')
                 ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                 ->where(column: 'setting_name', operator: '=', value: $setting_name)
                 ->update(values: ['setting_value' => $setting_value]);

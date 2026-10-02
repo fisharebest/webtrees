@@ -43,7 +43,7 @@ final class UserPageBlock
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
 
-        $block_id = (int) DB::table('block')
+        $block_id = (int) DB::queryBuilder()->from('block')
             ->where('block_id', '=', $block_id)
             ->where('user_id', '=', $this->user->id())
             ->value('block_id');

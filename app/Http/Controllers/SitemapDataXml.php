@@ -99,7 +99,7 @@ final class SitemapDataXml
      */
     private function sitemapFamilies(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('families')
+        return DB::queryBuilder()->from('families')
             ->where('f_file', '=', $tree->id())
             ->orderBy('f_id')
             ->skip($offset)
@@ -113,7 +113,7 @@ final class SitemapDataXml
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('individuals')
+        return DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id())
             ->orderBy('i_id')
             ->skip($offset)
@@ -127,7 +127,7 @@ final class SitemapDataXml
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('media')
+        return DB::queryBuilder()->from('media')
             ->where('m_file', '=', $tree->id())
             ->orderBy('m_id')
             ->skip($offset)
@@ -141,7 +141,7 @@ final class SitemapDataXml
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->orderBy('o_id')
@@ -156,7 +156,7 @@ final class SitemapDataXml
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->orderBy('o_id')
@@ -171,7 +171,7 @@ final class SitemapDataXml
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('sources')
+        return DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id())
             ->orderBy('s_id')
             ->skip($offset)
@@ -185,7 +185,7 @@ final class SitemapDataXml
      */
     private function sitemapSubmitters(Tree $tree, int $limit, int $offset): Collection
     {
-        return DB::table('other')
+        return DB::queryBuilder()->from('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->orderBy('o_id')

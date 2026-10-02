@@ -79,7 +79,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $subquery = DB::table('name')
+        $subquery = DB::queryBuilder()->from('name')
             ->where('n_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
             ->where('n_surn', '<>', '')

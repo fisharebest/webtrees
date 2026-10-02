@@ -62,7 +62,7 @@ class Source extends GedcomRecord
      */
     public function lock(): void
     {
-        DB::table('sources')
+        DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $this->tree->id())
             ->where('s_id', '=', $this->xref())
             ->lockForUpdate()

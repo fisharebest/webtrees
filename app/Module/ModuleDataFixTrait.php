@@ -151,7 +151,7 @@ trait ModuleDataFixTrait
      */
     protected function familiesToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('families')
+        $query = DB::queryBuilder()->from('families')
             ->where('f_file', '=', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
@@ -178,7 +178,7 @@ trait ModuleDataFixTrait
      */
     protected function individualsToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('individuals')
+        $query = DB::queryBuilder()->from('individuals')
             ->where('i_file', '=', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
@@ -205,7 +205,7 @@ trait ModuleDataFixTrait
      */
     protected function locationsToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Location::RECORD_TYPE)
             ->where('o_file', '=', $tree->id());
 
@@ -233,7 +233,7 @@ trait ModuleDataFixTrait
      */
     protected function mediaToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('media')
+        $query = DB::queryBuilder()->from('media')
             ->where('m_file', '=', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
@@ -260,7 +260,7 @@ trait ModuleDataFixTrait
      */
     protected function notesToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->where('o_file', '=', $tree->id());
 
@@ -288,7 +288,7 @@ trait ModuleDataFixTrait
      */
     protected function repositoriesToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->where('o_file', '=', $tree->id());
 
@@ -316,7 +316,7 @@ trait ModuleDataFixTrait
      */
     protected function sourcesToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('sources')
+        $query = DB::queryBuilder()->from('sources')
             ->where('s_file', '=', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
@@ -343,7 +343,7 @@ trait ModuleDataFixTrait
      */
     protected function submittersToFixQuery(Tree $tree, array $params): Builder
     {
-        $query = DB::table('other')
+        $query = DB::queryBuilder()->from('other')
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->where('o_file', '=', $tree->id());
 
@@ -363,7 +363,7 @@ trait ModuleDataFixTrait
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {
-        $pending = DB::table('change')
+        $pending = DB::queryBuilder()->from('change')
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', ChangeStatus::Pending->value)
             ->where(static function (Builder $query) use ($type): void {

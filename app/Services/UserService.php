@@ -55,7 +55,7 @@ class UserService
         }
 
         return Registry::cache()->array()
-            ->remember('user-' . $user_id, static fn (): User|null => DB::table('user')
+            ->remember('user-' . $user_id, static fn (): User|null => DB::queryBuilder()->from('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
                 ->map(User::rowMapper())
@@ -64,7 +64,7 @@ class UserService
 
     public function findByEmail(string $email): User|null
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->where('email', '=', $email)
             ->get()
             ->map(User::rowMapper())
@@ -73,7 +73,7 @@ class UserService
 
     public function findByIdentifier(string $identifier): User|null
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->where('user_name', '=', $identifier)
             ->orWhere('email', '=', $identifier)
             ->get()
@@ -86,7 +86,7 @@ class UserService
      */
     public function findByIndividual(Individual $individual): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('gedcom_id', '=', $individual->tree()->id())
             ->where('setting_value', '=', $individual->xref())
@@ -98,7 +98,7 @@ class UserService
 
     public function findByToken(string $token): User|null
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->join('user_setting AS us1', 'us1.user_id', '=', 'user.user_id')
             ->where('us1.setting_name', '=', 'password-token')
             ->where('us1.setting_value', '=', $token)
@@ -113,7 +113,7 @@ class UserService
 
     public function findByUserName(string $user_name): User|null
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->where('user_name', '=', $user_name)
             ->get()
             ->map(User::rowMapper())
@@ -153,7 +153,7 @@ class UserService
      */
     public function all(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->where('user_id', '>', 0)
             ->orderBy('real_name')
             ->get()
@@ -165,7 +165,7 @@ class UserService
      */
     public function administrators(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->join('user_setting', 'user_setting.user_id', '=', 'user.user_id')
             ->where('user_setting.setting_name', '=', UserInterface::PREF_IS_ADMINISTRATOR)
             ->where('user_setting.setting_value', '=', '1')
@@ -181,7 +181,7 @@ class UserService
      */
     public function managers(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
             ->where('user_gedcom_setting.setting_value', '=', Role::Manager->value)
@@ -198,7 +198,7 @@ class UserService
      */
     public function moderators(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
             ->where('user_gedcom_setting.setting_value', '=', Role::Moderator->value)
@@ -215,7 +215,7 @@ class UserService
      */
     public function unapproved(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->leftJoin('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
@@ -238,7 +238,7 @@ class UserService
      */
     public function unverified(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->leftJoin('user_setting', static function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
@@ -261,7 +261,7 @@ class UserService
      */
     public function allLoggedIn(): Collection
     {
-        return DB::table('user')
+        return DB::queryBuilder()->from('user')
             ->join('session', 'session.user_id', '=', 'user.user_id')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
@@ -273,7 +273,7 @@ class UserService
 
     public function create(string $user_name, string $real_name, string $email, #[\SensitiveParameter] string $password): User
     {
-        DB::table('user')->insert([
+        DB::queryBuilder()->from('user')->insert([
             'user_name' => $user_name,
             'real_name' => $real_name,
             'email'     => $email,
@@ -287,43 +287,43 @@ class UserService
 
     public function delete(User $user): void
     {
-        DB::table('session')
+        DB::queryBuilder()->from('session')
             ->where('user_id', '=', $user->id())
             ->delete();
 
         // Don't delete the logs, just set the user to null.
-        DB::table('log')
+        DB::queryBuilder()->from('log')
             ->where('user_id', '=', $user->id())
             ->update(['user_id' => null]);
 
         // Take over the user's pending changes. (What else could we do with them?)
-        DB::table('change')
+        DB::queryBuilder()->from('change')
             ->where('user_id', '=', $user->id())
             ->where('status', '=', ChangeStatus::Rejected->value)
             ->delete();
 
-        DB::table('change')
+        DB::queryBuilder()->from('change')
             ->where('user_id', '=', $user->id())
             ->update(['user_id' => Auth::id()]);
 
         // Delete settings and preferences
-        DB::table('block_setting')
+        DB::queryBuilder()->from('block_setting')
             ->join('block', 'block_setting.block_id', '=', 'block.block_id')
             ->where('user_id', '=', $user->id())
             ->delete();
 
-        DB::table('block')->where('user_id', '=', $user->id())->delete();
-        DB::table('user_gedcom_setting')->where('user_id', '=', $user->id())->delete();
-        DB::table('user_setting')->where('user_id', '=', $user->id())->delete();
-        DB::table('message')->where('user_id', '=', $user->id())->delete();
+        DB::queryBuilder()->from('block')->where('user_id', '=', $user->id())->delete();
+        DB::queryBuilder()->from('user_gedcom_setting')->where('user_id', '=', $user->id())->delete();
+        DB::queryBuilder()->from('user_setting')->where('user_id', '=', $user->id())->delete();
+        DB::queryBuilder()->from('message')->where('user_id', '=', $user->id())->delete();
 
         if (DB::driverName() === DB::SQL_SERVER) {
             // SQL-Server cannot handle these foreign key constraints.
-            DB::table('gedcom')->where('contact_user_id', '=', $user->id())->update(['contact_user_id' => null]);
-            DB::table('gedcom')->where('support_user_id', '=', $user->id())->update(['support_user_id' => null]);
+            DB::queryBuilder()->from('gedcom')->where('contact_user_id', '=', $user->id())->update(['contact_user_id' => null]);
+            DB::queryBuilder()->from('gedcom')->where('support_user_id', '=', $user->id())->update(['support_user_id' => null]);
         }
 
-        DB::table('user')->where('user_id', '=', $user->id())->delete();
+        DB::queryBuilder()->from('user')->where('user_id', '=', $user->id())->delete();
     }
 
     public function contactLink(User $contact_user, ServerRequestInterface $request): string

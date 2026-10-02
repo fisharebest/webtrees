@@ -48,7 +48,7 @@ abstract class AbstractGedcomRecordFactory
         // Caution - this cache can be overwritten by GedcomExportService
         return Registry::cache()
             ->array()
-            ->remember(self::class . $tree->id(), static fn (): Collection => DB::table('change')
+            ->remember(self::class . $tree->id(), static fn (): Collection => DB::queryBuilder()->from('change')
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('status', '=', ChangeStatus::Pending->value)
                 ->orderBy('change_id')

@@ -43,7 +43,7 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
         $regex_query = strtr(preg_quote($query, '/'), [' ' => '.+']);
 
         // Fetch all records with a link to this source
-        $individuals = DB::table('individuals')
+        $individuals = DB::queryBuilder()->from('individuals')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'i_file')
@@ -58,7 +58,7 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter());
 
-        $families = DB::table('families')
+        $families = DB::queryBuilder()->from('families')
             ->join('link', static function (JoinClause $join): void {
                 $join
                     ->on('l_file', '=', 'f_file')

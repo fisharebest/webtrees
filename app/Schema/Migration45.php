@@ -32,11 +32,11 @@ final readonly class Migration45 implements MigrationInterface
     public function upgrade(): void
     {
         // We now write only upper-case values to these columns.
-        DB::table(table: 'media_file')->update(values: [
+        DB::queryBuilder()->from(table: 'media_file')->update(values: [
             'multimedia_format' => new Expression(value: 'UPPER(multimedia_format)'),
         ]);
 
-        DB::table(table: 'media_file')->update(values: [
+        DB::queryBuilder()->from(table: 'media_file')->update(values: [
             'source_media_type' => new Expression(value: 'UPPER(source_media_type)'),
         ]);
 
@@ -71,7 +71,7 @@ final readonly class Migration45 implements MigrationInterface
             'WEBMASTER_USER_ID'      => 'support_user_id',
         ];
 
-        $rows = DB::table(table: 'gedcom_setting')
+        $rows = DB::queryBuilder()->from(table: 'gedcom_setting')
             ->whereIn(column: 'setting_name', values: array_keys($new_columns))
             ->get();
 
@@ -85,7 +85,7 @@ final readonly class Migration45 implements MigrationInterface
             };
 
             try {
-                DB::table(table: 'gedcom')
+                DB::queryBuilder()->from(table: 'gedcom')
                     ->where(column: 'gedcom_id', operator: '=', value: $row->gedcom_id)
                     ->update(values: [$column => $value]);
             } catch (Throwable) {
@@ -93,12 +93,12 @@ final readonly class Migration45 implements MigrationInterface
             }
         }
 
-        DB::table(table: 'gedcom_setting')
+        DB::queryBuilder()->from(table: 'gedcom_setting')
             ->whereIn(column: 'setting_name', values: array_keys($new_columns))
             ->delete();
 
         // Old setting, no longer used.
-        DB::table(table: 'gedcom_setting')
+        DB::queryBuilder()->from(table: 'gedcom_setting')
             ->whereIn(column: 'setting_name', values: ['LANGUAGE'])
             ->delete();
     }

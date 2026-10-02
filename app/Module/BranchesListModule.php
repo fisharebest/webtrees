@@ -228,7 +228,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
      */
     private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array
     {
-        $individuals = DB::table('individuals')
+        $individuals = DB::queryBuilder()->from('individuals')
             ->join('name', static function (JoinClause $join): void {
                 $join
                     ->on('name.n_file', '=', 'individuals.i_file')

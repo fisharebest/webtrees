@@ -95,7 +95,7 @@ abstract class AbstractModuleComponent
             $enabled = Validator::parsedBody($request)->boolean('status-' . $module->name(), false);
 
             if ($enabled !== $module->isEnabled()) {
-                DB::table('module')
+                DB::queryBuilder()->from('module')
                     ->where('module_name', '=', $module->name())
                     ->update(['status' => $enabled ? 'enabled' : 'disabled']);
 
@@ -126,7 +126,7 @@ abstract class AbstractModuleComponent
                 $access_level = AccessLevel::from(Validator::parsedBody($request)->integer($key));
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
-                    DB::table('module_privacy')->updateOrInsert([
+                    DB::queryBuilder()->from('module_privacy')->updateOrInsert([
                         'module_name' => $module->name(),
                         'gedcom_id'   => $tree->id(),
                         'interface'   => $interface,
@@ -150,7 +150,7 @@ abstract class AbstractModuleComponent
         $order   = array_flip($order);
 
         foreach ($modules as $module) {
-            DB::table('module')
+            DB::queryBuilder()->from('module')
                 ->where('module_name', '=', $module->name())
                 ->update([
                     $column => $order[$module->name()] ?? 0,

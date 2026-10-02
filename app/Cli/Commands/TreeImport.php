@@ -65,7 +65,7 @@ final class TreeImport extends AbstractCommand
      */
     private function autoCompleteTreeName(CompletionInput $input): array
     {
-        return DB::table('tree')
+        return DB::queryBuilder()->from('tree')
             ->where('tree_name', 'LIKE', addcslashes($input->getCompletionValue(), '%_\\') . '%')
             ->pluck('name')
             ->all();
@@ -98,32 +98,32 @@ final class TreeImport extends AbstractCommand
 
         try {
             DB::transaction(function () use ($tree, $encoding, $keep_media, $word_wrapped_notes, $gedcom_file, $gedcom_media_path, $io, $output) {
-                DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
+                DB::queryBuilder()->from('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
                 $tree->setPreference('keep_media', $keep_media ? '1' : '0');
                 $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
                 $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
 
                 $queries = [
-                    'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
-                    'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
-                    'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
-                    'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
-                    'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
-                    'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
-                    'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
-                    'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
-                    'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
+                    'individuals' => DB::queryBuilder()->from('individuals')->where('i_file', '=', $tree->id()),
+                    'families'    => DB::queryBuilder()->from('families')->where('f_file', '=', $tree->id()),
+                    'sources'     => DB::queryBuilder()->from('sources')->where('s_file', '=', $tree->id()),
+                    'other'       => DB::queryBuilder()->from('other')->where('o_file', '=', $tree->id()),
+                    'places'      => DB::queryBuilder()->from('places')->where('p_file', '=', $tree->id()),
+                    'placelinks'  => DB::queryBuilder()->from('placelinks')->where('pl_file', '=', $tree->id()),
+                    'name'        => DB::queryBuilder()->from('name')->where('n_file', '=', $tree->id()),
+                    'dates'       => DB::queryBuilder()->from('dates')->where('d_file', '=', $tree->id()),
+                    'change'      => DB::queryBuilder()->from('change')->where('gedcom_id', '=', $tree->id()),
                 ];
 
                 if ($keep_media) {
-                    $queries['link'] = DB::table('link')
+                    $queries['link'] = DB::queryBuilder()->from('link')
                         ->where('l_file', '=', $tree->id())
                         ->where('l_type', '<>', 'OBJE');
                 } else {
                     $queries += [
-                        'link'       => DB::table('link')->where('l_file', '=', $tree->id()),
-                        'media_file' => DB::table('media_file')->where('m_file', '=', $tree->id()),
-                        'media'      => DB::table('media')->where('m_file', '=', $tree->id()),
+                        'link'       => DB::queryBuilder()->from('link')->where('l_file', '=', $tree->id()),
+                        'media_file' => DB::queryBuilder()->from('media_file')->where('m_file', '=', $tree->id()),
+                        'media'      => DB::queryBuilder()->from('media')->where('m_file', '=', $tree->id()),
                     ];
                 }
 
@@ -165,7 +165,7 @@ final class TreeImport extends AbstractCommand
 
                 $output->writeln('');
 
-                DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
+                DB::queryBuilder()->from('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
             });
         } catch (Throwable $ex) {
             $io->error(message: $ex->getMessage());
