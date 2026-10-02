@@ -19,12 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Fisharebest\Database\DB as BaseDB;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use PDO;
+use RuntimeException;
 use SensitiveParameter;
 
 final class DB extends BaseDB
@@ -146,7 +148,7 @@ final class DB extends BaseDB
         ]);
         $capsule->setAsGlobal();
 
-        parent::attach(pdo: Manager::connection()->getPdo(), prefix: $prefix);
+        //parent::attach(pdo: Manager::connection()->getPdo(), prefix: $prefix);
 
         $sql = self::DRIVER_INITIALIZATION[$driver];
 
@@ -155,17 +157,29 @@ final class DB extends BaseDB
 
     public static function driverName(): string
     {
-        return parent::connection()->pdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
+        return self::pdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
     }
 
-    public static function exec(string $sql): int
+    public static function exec(string $sql): int|false
     {
-        return parent::connection()->exec($sql);
+        return self::pdo()->exec($sql);
     }
 
     public static function lastInsertId(): int
     {
-        return parent::connection()->lastInsertId();
+        $return = self::pdo()->lastInsertId();
+
+        if ($return === false) {
+            throw new RuntimeException('Unable to retrieve last insert ID');
+        }
+
+        // All IDs are integers in our schema.
+        return (int) $return;
+    }
+
+    private static function pdo(): PDO
+    {
+        return Manager::connection()->getPdo();
     }
 
     /**
@@ -175,7 +189,26 @@ final class DB extends BaseDB
      */
     public static function prefix(string $identifier): string
     {
-        return parent::connection()->prefix($identifier);
+        return Manager::connection()->getTablePrefix() . $identifier;
+    }
+
+    /**
+     * SQL-Server needs to be told that we are going to insert into an identity column.
+     *
+     * @param non-empty-string $table
+     * @param Closure(): void  $callback
+     */
+    public static function identityInsert(string $table, Closure $callback): void
+    {
+        if (self::driverName() === self::SQL_SERVER) {
+            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
+        }
+
+        $callback();
+
+        if (self::driverName() === self::SQL_SERVER) {
+            self::exec(sql: 'SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
+        }
     }
 
     public static function rollBack(): void
@@ -252,6 +285,19 @@ final class DB extends BaseDB
     public static function schemaBuilder(): SchemaBuilder
     {
         return Manager::schema();
+    }
+
+    /**
+     * Execute a callback within a transaction, retrying on concurrency errors.
+     *
+     * @template T
+     * @param Closure(): T $callback
+     *
+     * @return T
+     */
+    public static function transaction(Closure $callback, int $attempts = 1): mixed
+    {
+        return Manager::connection()->transaction($callback, $attempts);
     }
 
     public static function enableQueryLog(): void
