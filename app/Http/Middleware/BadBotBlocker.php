@@ -1535,9 +1535,12 @@ class BadBotBlocker implements MiddlewareInterface
             return $this->response('Not acceptable: no-ua');
         }
 
-        foreach (self::BAD_ROBOTS as $robot) {
-            if (str_contains($ua, $robot)) {
-                return $this->response('Not acceptable: bad-ua');
+        $allow_ua = Validator::attributes($request)->string('allow_ua', '');
+        if (array_filter(explode(',', $allow_ua), static fn (string $x): bool => str_contains($ua, trim($x))) === []) {
+            foreach (self::BAD_ROBOTS as $robot) {
+                if (str_contains($ua, $robot)) {
+                    return $this->response('Not acceptable: bad-ua');
+                }
             }
         }
 
