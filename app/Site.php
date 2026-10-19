@@ -92,6 +92,8 @@ class Site
         'SMTP_PORT'               => '25',
         'SMTP_SSL'                => 'none',
         'THEME_DIR'               => 'webtrees',
+        'THEME_DIR_MOBILE'        => '',
+        'THEME_MOBILE_DETECT'     => '1',
         'TIMEZONE'                => 'UTC',
         'USE_REGISTRATION_MODULE' => '1',
     ];

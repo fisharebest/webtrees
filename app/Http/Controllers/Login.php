@@ -166,6 +166,7 @@ final class Login
 
         Session::put('language', $user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
         Session::put('theme', $user->getPreference(UserInterface::PREF_THEME));
+        Session::put('theme-mobile', $user->getPreference(UserInterface::PREF_THEME_MOBILE));
         I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
     }
 }
