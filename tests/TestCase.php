@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
@@ -199,6 +200,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
         foreach ($records as $record) {
             $gedcom_import_service->importRecord($record, $tree, false);
         }
+
+        // Import can create cache entries, which can break tests.
+        Registry::cache(new CacheFactory());
 
         return $tree;
     }

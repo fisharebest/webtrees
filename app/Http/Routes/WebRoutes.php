@@ -445,7 +445,7 @@ class WebRoutes
             $routes->add('/submitter/{xref}{/slug}', SubmitterPage::class);
             $routes->add('', TreePage::class);
             $routes->add('/tree-page-block', TreePageBlock::class);
-            $routes->add('/…', 'example');
+            $routes->add('/...', 'example');
         });
 
         // Visitor routes with a tree (robots not allowed).

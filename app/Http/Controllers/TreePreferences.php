@@ -29,9 +29,7 @@ use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -55,7 +53,6 @@ final class TreePreferences
     use ViewResponseTrait;
 
     public function __construct(
-        private ModuleService $module_service,
         private TreeService $tree_service,
         private UserService $user_service,
     ) {
@@ -99,11 +96,6 @@ final class TreePreferences
             1 => I18N::translate('facts'),
             2 => I18N::translate('records'),
         ];
-
-        $theme_options = $this->module_service
-            ->findByInterface(ModuleThemeInterface::class)
-            ->map($this->module_service->titleMapper())
-            ->prepend(I18N::translate('<default theme>'), '');
 
         $privacy_options = [
             AccessLevel::Member->value  => AccessLevel::Member->label(),
@@ -165,7 +157,6 @@ final class TreePreferences
             'relatives_events'         => $relatives_events,
             'source_types'             => $source_types,
             'surname_list_styles'      => $surname_list_styles,
-            'theme_options'            => $theme_options,
             'title'                    => $title,
             'tree'                     => $tree,
             'tree_count'               => $tree_count,

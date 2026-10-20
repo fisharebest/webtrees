@@ -44,10 +44,8 @@ final readonly class RouteMatcher
     /**
      * Match the request path against registered routes.
      */
-    public function match(ServerRequestInterface $request): MatchResult
+    public function match(string $path): MatchResult
     {
-        $path = $request->getUri()->getPath();
-
         foreach ($this->routes->all() as $route) {
             $regex = $this->compile($route->url);
 

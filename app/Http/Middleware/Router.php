@@ -20,8 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Controllers\NotFound;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\MiddlewarePipeline;
+use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 use Fisharebest\Webtrees\Http\Routing\RouteMatcher;
 use Fisharebest\Webtrees\Registry;
@@ -63,23 +65,30 @@ readonly class Router implements MiddlewareInterface
                     ->withHeader('Link', '<' . $uri . '>; rel="canonical"');
             }
 
-            $pretty = $request;
+            $path = $request->getUri()->getPath();
         } else {
-            // Turn the ugly URL into a pretty one, so the router can parse it.
-            $uri    = $request->getUri()->withPath($url_route);
-            $pretty = $request->withUri($uri);
+            $path = $url_route;
+        }
+
+        // Strip the base path prefix — the Router expects route-relative paths.
+        $base_url  = $request->getAttribute('base_url');
+        $base_path = parse_url($base_url, PHP_URL_PATH);
+        $base_path = is_string($base_path) ? $base_path : '';
+
+        if (str_starts_with($path, $base_path)) {
+            // The URL path should always start with the path in the base URL.
+            $path = substr($path, strlen($base_path));
         }
 
         // Match the request to a route.
         $matcher = new RouteMatcher($this->route_collection, Registry::container());
-        $result  = $matcher->match($pretty);
+        $result  = $matcher->match($path);
 
-        // No route matched?
-        if (!$result->isSuccess()) {
-            return $handler->handle($request);
+        if ($result->isSuccess()) {
+            $route = $result->route;
+        } else {
+            $route = new Route($path, NotFound::class);
         }
-
-        $route = $result->route;
 
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);

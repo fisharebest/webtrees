@@ -97,81 +97,78 @@ final class TreeImport extends AbstractCommand
         }
 
         try {
-            DB::connection()->beginTransaction();
+            DB::transaction(function () use ($tree, $encoding, $keep_media, $word_wrapped_notes, $gedcom_file, $gedcom_media_path, $io, $output) {
+                DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
+                $tree->setPreference('keep_media', $keep_media ? '1' : '0');
+                $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
+                $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
 
-            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 0]);
-            $tree->setPreference('keep_media', $keep_media ? '1' : '0');
-            $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
-            $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
-
-            $queries = [
-                'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
-                'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
-                'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
-                'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
-                'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
-                'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
-                'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
-                'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
-                'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
-            ];
-
-            if ($keep_media) {
-                $queries['link'] = DB::table('link')
-                    ->where('l_file', '=', $tree->id())
-                    ->where('l_type', '<>', 'OBJE');
-            } else {
-                $queries += [
-                    'link'       => DB::table('link')->where('l_file', '=', $tree->id()),
-                    'media_file' => DB::table('media_file')->where('m_file', '=', $tree->id()),
-                    'media'      => DB::table('media')->where('m_file', '=', $tree->id()),
+                $queries = [
+                    'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
+                    'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
+                    'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
+                    'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
+                    'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
+                    'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
+                    'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
+                    'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
+                    'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
                 ];
-            }
 
-            $io->info('Deleting old genealogy data.');
+                if ($keep_media) {
+                    $queries['link'] = DB::table('link')
+                        ->where('l_file', '=', $tree->id())
+                        ->where('l_type', '<>', 'OBJE');
+                } else {
+                    $queries += [
+                        'link'       => DB::table('link')->where('l_file', '=', $tree->id()),
+                        'media_file' => DB::table('media_file')->where('m_file', '=', $tree->id()),
+                        'media'      => DB::table('media')->where('m_file', '=', $tree->id()),
+                    ];
+                }
 
-            $progress_bar = new ProgressBar($output, count($queries));
-            $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%% %memory%, %elapsed% elapsed');
-            $progress_bar->setRedrawFrequency(1);
-            $progress_bar->start();
+                $io->info('Deleting old genealogy data.');
 
-            foreach ($queries as $query) {
-                $query->delete();
-                $progress_bar->advance();
-            }
+                $progress_bar = new ProgressBar($output, count($queries));
+                $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%% %memory%, %elapsed% elapsed');
+                $progress_bar->setRedrawFrequency(1);
+                $progress_bar->start();
 
-            $progress_bar->finish();
-            $output->writeln('');
+                foreach ($queries as $query) {
+                    $query->delete();
+                    $progress_bar->advance();
+                }
 
-            $io->info('Importing new genealogy data.');
+                $progress_bar->finish();
+                $output->writeln('');
 
-            $fp = fopen($gedcom_file, 'rb');
+                $io->info('Importing new genealogy data.');
 
-            // Convert to UTF-8.
-            stream_filter_append($fp, GedcomEncodingFilter::class, STREAM_FILTER_READ, ['src_encoding' => $encoding]);
+                $fp = fopen($gedcom_file, 'rb');
 
-            $records = preg_split('/[\r\n]+(?=0)/', stream_get_contents($fp));
+                // Convert to UTF-8.
+                stream_filter_append($fp, GedcomEncodingFilter::class, STREAM_FILTER_READ, ['src_encoding' => $encoding]);
 
-            $progress_bar = new ProgressBar($output, count($records));
-            $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%%, %memory%, %elapsed% elapsed, %remaining% remaining');
-            $progress_bar->setRedrawFrequency(1);
-            $progress_bar->minSecondsBetweenRedraws(0.1);
+                $records = preg_split('/[\r\n]+(?=0)/', stream_get_contents($fp));
 
-            foreach ($records as $n => $record) {
-                $this->gedcom_import_service->importRecord($record, $tree, false);
-                $progress_bar->setProgress($n);
-            }
+                $progress_bar = new ProgressBar($output, count($records));
+                $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%%, %memory%, %elapsed% elapsed, %remaining% remaining');
+                $progress_bar->setRedrawFrequency(1);
+                $progress_bar->minSecondsBetweenRedraws(0.1);
 
-            $progress_bar->finish();
+                foreach ($records as $n => $record) {
+                    $this->gedcom_import_service->importRecord($record, $tree, false);
+                    $progress_bar->setProgress($n);
+                }
 
-            $output->writeln('');
+                $progress_bar->finish();
 
-            DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
+                $output->writeln('');
 
-            DB::connection()->commit();
+                DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->update(['imported' => 1]);
+            });
         } catch (Throwable $ex) {
             $io->error(message: $ex->getMessage());
-            DB::connection()->rollBack();
 
             return self::FAILURE;
         }

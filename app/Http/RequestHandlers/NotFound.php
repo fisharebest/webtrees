@@ -19,27 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Enums\HttpRequestMethod;
-use Fisharebest\Webtrees\Enums\HttpStatusCode;
-use Fisharebest\Webtrees\Http\Controllers\HomePage;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
-use Fisharebest\Webtrees\Registry;
+use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function response;
-use function route;
 
 final class NotFound implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        // Save this updated request.  We'll need it in the exception handler.
-        Registry::container()->set(ServerRequestInterface::class, $request);
-
-        throw new HttpNotFoundException();
+        throw new LogicException('Should never get here. The router should handle not-found requests.');
     }
 }

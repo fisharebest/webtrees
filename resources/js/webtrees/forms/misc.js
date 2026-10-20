@@ -404,9 +404,9 @@ export function initializeSwapIndividualsButtons(root) {
     }
 
     button.addEventListener('click', () => {
-      const first = requireElement(document, requireDatasetValue(button, 'wtSwapFirst', 'first individual selector'), HTMLInputElement, 'first individual input');
-      const second = requireElement(document, requireDatasetValue(button, 'wtSwapSecond', 'second individual selector'), HTMLInputElement, 'second individual input');
-      const form = requireElement(document, requireDatasetValue(button, 'wtSwapForm', 'swap form selector'), HTMLFormElement, 'relationships form');
+      const first = requireElement(document, '#xref', HTMLSelectElement, 'first individual input');
+      const second = requireElement(document, '#xref2', HTMLSelectElement, 'second individual input');
+      const form = requireElement(document, '.wt-page-options-relationships-chart', HTMLFormElement, 'relationships form');
 
       const firstName = first.name;
       first.name = second.name;
@@ -470,4 +470,3 @@ export function initializeSetupBaseUrlFields(root) {
     field.value = decodeURI(location.href.split(/\?|#|index\.php/)[0].replace(/\/+$/, ''));
   });
 }
-

@@ -66,6 +66,7 @@ class AlbumModule extends MediaTabModule
      */
     private function getMedia(Individual $individual): Collection
     {
+        /** @var Collection<int|string,Media> $media */
         $media = new Collection();
 
         foreach ($this->getFactsWithMedia($individual) as $fact) {
@@ -78,6 +79,6 @@ class AlbumModule extends MediaTabModule
             }
         }
 
-        return $media->filter()->filter(Media::accessFilter());
+        return $media->filter()->filter(Media::accessFilter())->values();
     }
 }

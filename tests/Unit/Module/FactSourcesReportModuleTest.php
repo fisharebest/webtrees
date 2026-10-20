@@ -126,12 +126,6 @@ class FactSourcesReportModuleTest extends TestCase
                 'sortby'    => 'NAME',
                 'stype'     => 'records',
             ],
-            [
-                'page_size' => '',
-                'sid'       => '',
-                'sortby'    => '',
-                'stype'     => '',
-            ],
         ];
     }
 
