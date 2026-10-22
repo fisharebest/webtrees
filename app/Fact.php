@@ -196,6 +196,12 @@ class Fact
     {
         $access_level ??= Auth::accessLevel($this->record->tree());
 
+        // We use this value to bypass privacy checks. For example,
+        // when updating a record, or when downloading data.
+        if ($access_level === AccessLevel::Hidden) {
+            return true;
+        }
+
         // Does this record have an explicit restriction notice?
         $restriction_level = Restriction::fromString($this->attribute('RESN'))->accessLevel();
         if ($restriction_level !== null) {
