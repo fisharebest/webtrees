@@ -41,4 +41,16 @@ class UidTest extends AbstractElementTestCase
             self::$element->canonical('FEF44ca3ca7543ed9a05f00591315274'),
         );
     }
+
+    public function testCanonicalKeepsValuesThatAreNotUuids(): void
+    {
+        // A PAF-style _UID: 32 hex digits and a 4-digit checksum
+        self::assertSame(
+            'FEF44CA3CA7543ED9A05F005913152749A6B',
+            self::$element->canonical('FEF44CA3CA7543ED9A05F005913152749A6B'),
+        );
+
+        self::assertSame('my-identifier', self::$element->canonical('my-identifier'));
+        self::assertSame('', self::$element->canonical(''));
+    }
 }

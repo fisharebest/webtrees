@@ -35,13 +35,15 @@ class Uid extends AbstractElement
 
     public function canonical(string $value): string
     {
-        $value = strtolower(parent::canonical($value));
+        $value = parent::canonical($value);
 
-        if (preg_match('/([0-9a-f]{8})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{12})/', $value, $match) === 1) {
-            return $match[1] . '-' . $match[2] . '-' . $match [3] . '-' . $match[4] . '-' . $match[5];
+        // Normalize the format of a UUID.  Keep any other identifier as it is - changing it
+        // would break the links of other applications to this record.
+        if (preg_match('/^([0-9a-f]{8})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{12})$/i', $value, $match) === 1) {
+            return strtolower($match[1] . '-' . $match[2] . '-' . $match[3] . '-' . $match[4] . '-' . $match[5]);
         }
 
-        return Registry::idFactory()->uuid();
+        return $value;
     }
 
     public function edit(string $id, string $name, string $value, Tree $tree): string
