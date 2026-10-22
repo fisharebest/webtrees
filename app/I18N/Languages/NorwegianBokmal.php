@@ -32,7 +32,7 @@ final readonly class NorwegianBokmal extends AbstractLanguage
 {
     protected const PluralRule PLURAL_RULE = PluralRule::TwoFormsSingularForOne;
 
-    protected const string    ENDONYM            = 'norsk bokml';
+    protected const string    ENDONYM            = 'norsk bokmål';
     protected const PaperSize PAPER_SIZE         = PaperSize::A4;
     protected const string    LANGUAGE_TAG       = 'nb';
     protected const string    LOCALE_CODE        = 'nb_NO@collation=phonebook';
@@ -235,13 +235,15 @@ final readonly class NorwegianBokmal extends AbstractLanguage
     }
 
     /**
-     * Generate nominative and genitive forms with the Norwegian "-s" suffix.
+     * Generate nominative and genitive forms with the Norwegian "-s" suffix. No relationship name ends in "s".
      *
      * @return array{string, string}
      */
     private function gen(string $nominative): array
     {
-        return [$nominative, '%s ' . $nominative . 's'];
+        $genitive = $nominative . "s";
+        
+        return [$nominative, $genitive . ' %s'];
     }
 
     /**
@@ -254,10 +256,10 @@ final readonly class NorwegianBokmal extends AbstractLanguage
      */
     private function olde(int $n, string $suffix): array
     {
-        return $this->gen(($n > 3 ? 'tipp×' . $n . '-olde' : ($n === 1 ? 'olde' : str_repeat('tipp', $n - 1) . 'olde')) . $suffix);
+        return $this->gen(($n > 2 ? ($n - 2) . 'x tippolde' : str_repeat('tipp', $n - 1) . 'olde') . $suffix);
     }
 
-    /**
+	/**
      * @return array<Relationship>
      */
     public function relationships(): array
@@ -300,13 +302,12 @@ final readonly class NorwegianBokmal extends AbstractLanguage
             Relationship::fixed(...$this->gen('stebror'))->parent()->spouse()->son(),
             Relationship::fixed(...$this->gen('stesøsken'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$this->gen('ekskone'))->divorced()->partner()->female(),
-            Relationship::fixed(...$this->gen('eksmann'))->divorced()->partner()->male(),
-            Relationship::fixed(...$this->gen('ekspartner'))->divorced()->partner(),
-            Relationship::fixed(...$this->gen('forlovede'))->engaged()->partner()->female(),
-            Relationship::fixed(...$this->gen('forlovede'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->gen('ekshustru'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->gen('eksektemann'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->gen('eksektefelle'))->divorced()->partner(),
+            Relationship::fixed(...$this->gen('forlovede'))->engaged()->partner(),
             Relationship::fixed(...$this->gen('hustru'))->wife(),
-            Relationship::fixed(...$this->gen('mann'))->husband(),
+            Relationship::fixed(...$this->gen('ektemann'))->husband(),
             Relationship::fixed(...$this->gen('ektefelle'))->spouse(),
             Relationship::fixed(...$this->gen('partner'))->partner(),
             // In-laws
@@ -327,26 +328,53 @@ final readonly class NorwegianBokmal extends AbstractLanguage
             Relationship::fixed(...$this->gen('bestemor'))->parent()->mother(),
             Relationship::fixed(...$this->gen('bestefar'))->parent()->father(),
             Relationship::fixed(...$this->gen('besteforelder'))->parent()->parent(),
-            // Grandchildren
+			// Great-Grandparents - maternal/paternal
+			Relationship::fixed(...$this->gen('oldemor'))->parent()->parent()->mother(),
+			Relationship::fixed(...$this->gen('oldefar'))->parent()->parent()->father(),
+			Relationship::fixed(...$this->gen('tippoldemor'))->parent()->parent()->parent()->mother(),
+			Relationship::fixed(...$this->gen('tippoldefar'))->parent()->parent()->parent()->father(),
+			// Grandchildren
             Relationship::fixed(...$this->gen('barnebarn'))->child()->child(),
-            // Aunts and uncles - maternal/paternal
+			Relationship::fixed(...$this->gen('oldebarn'))->child()->child()->child(),
+			Relationship::fixed(...$this->gen('tippoldebarn'))->child()->child()->child()->child(),
+			// Aunts and uncles - maternal/paternal
             Relationship::fixed(...$this->gen('moster'))->mother()->sister(),
             Relationship::fixed(...$this->gen('morbror'))->mother()->brother(),
             Relationship::fixed(...$this->gen('faster'))->father()->sister(),
             Relationship::fixed(...$this->gen('farbror'))->father()->brother(),
             Relationship::fixed(...$this->gen('tante'))->parent()->sister(),
             Relationship::fixed(...$this->gen('onkel'))->parent()->brother(),
+			Relationship::fixed(...$this->gen('grandtante'))->parent()->parent()->sister(),
+            Relationship::fixed(...$this->gen('grandonkel'))->parent()->parent()->brother(),
+			Relationship::fixed(...$this->gen('grandtante'))->parent()->parent()->brother()->wife(),
+            Relationship::fixed(...$this->gen('grandonkel'))->parent()->parent()->sister()->husband(),
             // Nieces and nephews
             Relationship::fixed(...$this->gen('niese'))->sibling()->daughter(),
             Relationship::fixed(...$this->gen('nevø'))->sibling()->son(),
-            // Cousins
-            Relationship::fixed(...$this->gen('kusine'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$this->gen('fetter'))->parent()->sibling()->son(),
-            // Dynamic relationships
+			Relationship::fixed(...$this->gen('grandniese'))->sibling()->child()->daughter(),
+            Relationship::fixed(...$this->gen('grandnevø'))->sibling()->child()->son(),
+			// Cousins
+            Relationship::fixed(...$this->gen('kusine'))->parent()->sibling()->child()->female(),
+			Relationship::fixed(...$this->gen('fetter'))->parent()->sibling()->child()->male(),
+			Relationship::fixed(...$this->gen('søskenbarn'))->parent()->sibling()->child(),
+    		Relationship::fixed(...$this->gen('tremenning'))->parent()->parent()->sibling()->child()->child(),
+			Relationship::fixed(...$this->gen('firmenning'))->parent()->parent()->parent()->sibling()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('femmenning'))->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('seksmenning'))->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('syvmenning'))->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('åttemenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('nimenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('timenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child()->child(),
+            Relationship::fixed(...$this->gen('ellevemenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('tolvmenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('trettenmenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('fjortenmenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child(),
+			Relationship::fixed(...$this->gen('femtenmenning'))->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->parent()->sibling()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child()->child(),
+			// Dynamic relationships
             Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'mor'))->ancestor()->female(),
             Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'far'))->ancestor()->male(),
             Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'forelder'))->ancestor(),
-            Relationship::dynamic(fn (int $n) => $this->olde($n - 2, 'barn'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'barn'))->descendant(),
         ];
     }
-}
+}	
