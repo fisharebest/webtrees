@@ -30,4 +30,16 @@ class LdsOrdinanceStatusTest extends TestCase
     {
         self::assertTrue(class_exists(LdsOrdinanceStatus::class));
     }
+
+    public function testCanonicalValuesHaveLabels(): void
+    {
+        $element = new LdsOrdinanceStatus('label');
+
+        self::assertSame('DNS_CAN', $element->canonical('DNS/CAN'));
+
+        foreach (['BIC', 'CANCELED', 'CHILD', 'COMPLETED', 'DNS', 'DNS_CAN', 'EXCLUDED', 'INFANT', 'PRE_1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED'] as $value) {
+            self::assertArrayHasKey($value, $element->values(), $value);
+            self::assertSame($value, $element->canonical($value), $value);
+        }
+    }
 }

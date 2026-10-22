@@ -64,7 +64,7 @@ class LdsOrdinanceStatus extends AbstractElement
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
             'DNS'       => I18N::translate('Do not seal: unauthorized'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-            'DNS/CAN'   => I18N::translate('Do not seal, previous sealing canceled'),
+            'DNS_CAN'   => I18N::translate('Do not seal, previous sealing canceled'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
             'EXCLUDED'  => I18N::translate('Excluded from this submission'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
