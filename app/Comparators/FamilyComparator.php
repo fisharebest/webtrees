@@ -28,4 +28,9 @@ final readonly class FamilyComparator
     {
         return Date::compare($first->getMarriageDate(), $second->getMarriageDate());
     }
+
+    public static function byMarriagePlace(Family $first, Family $second): int
+    {
+        return PlaceComparator::byPlaceName($first->getMarriagePlace(), $second->getMarriagePlace());
+    }
 }
