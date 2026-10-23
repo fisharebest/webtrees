@@ -41,7 +41,8 @@ class Uid extends AbstractElement
             return $match[1] . '-' . $match[2] . '-' . $match [3] . '-' . $match[4] . '-' . $match[5];
         }
 
-        return Registry::idFactory()->uuid();
+        // Do not change or invent identifiers, see #5293.
+        return $value;
     }
 
     public function edit(string $id, string $name, string $value, Tree $tree): string
