@@ -86,12 +86,19 @@ class AccessLevelTest extends TestCase
         self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Public));
     }
 
-    public function testHiddenDisallowsEveryone(): void
+    public function testHiddenDataIsNotShownToAnyUser(): void
     {
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Hidden));
         self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Manager));
         self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Member));
         self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Public));
+    }
+
+    public function testHiddenAsUserLevelBypassesPrivacy(): void
+    {
+        self::assertTrue(AccessLevel::Hidden->allows(AccessLevel::Hidden));
+        self::assertTrue(AccessLevel::Manager->allows(AccessLevel::Hidden));
+        self::assertTrue(AccessLevel::Member->allows(AccessLevel::Hidden));
+        self::assertTrue(AccessLevel::Public->allows(AccessLevel::Hidden));
     }
 
     public function testDisallowsIsInverseOfAllows(): void

@@ -64,7 +64,8 @@ enum AccessLevel: int
             self::Manager => $this !== self::Hidden,
             self::Member  => $this === self::Member || $this === self::Public,
             self::Public  => $this === self::Public,
-            self::Hidden  => false,
+            // Not a real user level.  It is passed to bypass privacy checks, e.g. when editing or exporting.
+            self::Hidden  => true,
         };
     }
 
