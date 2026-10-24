@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
 use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -105,6 +107,34 @@ class GedcomEditServiceTest extends TestCase
                 ['Y', 'England', '', '123', 'Y', 'Scotland', '', '123']
             )
         );
+    }
+
+    public function testHiddenTagDoesNotHideItsSubtags(): void
+    {
+        self::createDatabase();
+        Site::setPreference('HIDE_CHR', '1');
+        Site::setPreference('HIDE_PLAC_MAP', '1');
+
+        $tree = self::createStub(Tree::class);
+        $tree->method('getPreference')->willReturn('');
+
+        $individual = self::createStub(Individual::class);
+        $individual->method('tag')->willReturn('INDI');
+        $individual->method('tree')->willReturn($tree);
+
+        $gedcom_edit_service = new GedcomEditService();
+
+        // A hidden event can still be added, e.g. from the list of quick facts.  Its subtags are not hidden.
+        $gedcom = $gedcom_edit_service->insertMissingFactSubtags(new Fact('1 CHR', $individual, ''), false);
+
+        self::assertStringContainsString("\n2 DATE", $gedcom);
+        self::assertStringContainsString("\n2 PLAC", $gedcom);
+
+        // A hidden subtag is hidden wherever it occurs.
+        $gedcom = $gedcom_edit_service->insertMissingFactSubtags(new Fact('1 BIRT', $individual, ''), false);
+
+        self::assertStringContainsString("\n2 PLAC", $gedcom);
+        self::assertStringNotContainsString("\n3 MAP", $gedcom);
     }
 
     /**
