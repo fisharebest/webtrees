@@ -22,96 +22,47 @@ namespace Fisharebest\Webtrees\Tests\Unit\Enums;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(AccessLevel::class)]
 class AccessLevelTest extends TestCase
 {
-    public function testManagerCanSeeManagerData(): void
+    /**
+     * @return array<list<AccessLevel,AccessLevel,bool>>
+     */
+    public static function allowsProvider(): array
     {
-        self::assertTrue(AccessLevel::Manager->allows(AccessLevel::Manager));
+        return [
+            // Hidden is not a real user level.  It is used by the system to bypass privacy
+            [AccessLevel::Hidden, AccessLevel::Hidden, true],
+            [AccessLevel::Manager, AccessLevel::Hidden, true],
+            [AccessLevel::Member, AccessLevel::Hidden, true],
+            [AccessLevel::Public, AccessLevel::Hidden, true],
+            // Real user levels cannot see hidden data
+            [AccessLevel::Hidden, AccessLevel::Public, false],
+            [AccessLevel::Hidden, AccessLevel::Member, false],
+            [AccessLevel::Hidden, AccessLevel::Manager, false],
+            // Managers can see all levels
+            [AccessLevel::Manager, AccessLevel::Manager, true],
+            [AccessLevel::Member, AccessLevel::Manager, true],
+            [AccessLevel::Public, AccessLevel::Manager, true],
+            // Members cannot see manager
+            [AccessLevel::Manager, AccessLevel::Member, false],
+            [AccessLevel::Member, AccessLevel::Member, true],
+            [AccessLevel::Public, AccessLevel::Member, true],
+            // Public can only see public
+            [AccessLevel::Manager, AccessLevel::Public, false],
+            [AccessLevel::Member, AccessLevel::Public, false],
+            [AccessLevel::Public, AccessLevel::Public, true],
+
+        ];
     }
 
-    public function testManagerCanSeeMemberData(): void
+    #[DataProvider('allowsProvider')]
+    public function testAllows(AccessLevel $first, AccessLevel $second, bool $allows): void
     {
-        self::assertTrue(AccessLevel::Member->allows(AccessLevel::Manager));
-    }
-
-    public function testManagerCanSeePublicData(): void
-    {
-        self::assertTrue(AccessLevel::Public->allows(AccessLevel::Manager));
-    }
-
-    public function testManagerCannotSeeHiddenData(): void
-    {
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Manager));
-    }
-
-    public function testMemberCannotSeeManagerData(): void
-    {
-        self::assertFalse(AccessLevel::Manager->allows(AccessLevel::Member));
-    }
-
-    public function testMemberCanSeeMemberData(): void
-    {
-        self::assertTrue(AccessLevel::Member->allows(AccessLevel::Member));
-    }
-
-    public function testMemberCanSeePublicData(): void
-    {
-        self::assertTrue(AccessLevel::Public->allows(AccessLevel::Member));
-    }
-
-    public function testMemberCannotSeeHiddenData(): void
-    {
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Member));
-    }
-
-    public function testPublicCannotSeeManagerData(): void
-    {
-        self::assertFalse(AccessLevel::Manager->allows(AccessLevel::Public));
-    }
-
-    public function testPublicCannotSeeMemberData(): void
-    {
-        self::assertFalse(AccessLevel::Member->allows(AccessLevel::Public));
-    }
-
-    public function testPublicCanSeePublicData(): void
-    {
-        self::assertTrue(AccessLevel::Public->allows(AccessLevel::Public));
-    }
-
-    public function testPublicCannotSeeHiddenData(): void
-    {
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Public));
-    }
-
-    public function testHiddenDataIsNotShownToAnyUser(): void
-    {
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Manager));
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Member));
-        self::assertFalse(AccessLevel::Hidden->allows(AccessLevel::Public));
-    }
-
-    public function testHiddenAsUserLevelBypassesPrivacy(): void
-    {
-        self::assertTrue(AccessLevel::Hidden->allows(AccessLevel::Hidden));
-        self::assertTrue(AccessLevel::Manager->allows(AccessLevel::Hidden));
-        self::assertTrue(AccessLevel::Member->allows(AccessLevel::Hidden));
-        self::assertTrue(AccessLevel::Public->allows(AccessLevel::Hidden));
-    }
-
-    public function testDisallowsIsInverseOfAllows(): void
-    {
-        foreach (AccessLevel::cases() as $data_level) {
-            foreach (AccessLevel::cases() as $user_level) {
-                self::assertSame(
-                    !$data_level->allows($user_level),
-                    $data_level->disallows($user_level),
-                    $data_level->name . '->disallows(' . $user_level->name . ') should be inverse of allows()',
-                );
-            }
-        }
+        $this->assertSame($allows, $first->allows($second));
+        $this->assertSame(!$allows, $first->disallows($second));
     }
 
     public function testLabel(): void
