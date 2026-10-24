@@ -28,12 +28,12 @@ use PHPUnit\Framework\Attributes\DataProvider;
 class AccessLevelTest extends TestCase
 {
     /**
-     * @return array<list<AccessLevel,AccessLevel,bool>>
+     * @return array<list{AccessLevel,AccessLevel,bool}>
      */
     public static function allowsProvider(): array
     {
         return [
-            // Hidden is not a real user level.  It is used by the system to bypass privacy
+            // Hidden is not a real user level; it is used by the system to bypass privacy
             [AccessLevel::Hidden, AccessLevel::Hidden, true],
             [AccessLevel::Manager, AccessLevel::Hidden, true],
             [AccessLevel::Member, AccessLevel::Hidden, true],
@@ -61,8 +61,8 @@ class AccessLevelTest extends TestCase
     #[DataProvider('allowsProvider')]
     public function testAllows(AccessLevel $first, AccessLevel $second, bool $allows): void
     {
-        $this->assertSame($allows, $first->allows($second));
-        $this->assertSame(!$allows, $first->disallows($second));
+        self::assertSame($allows, $first->allows($second));
+        self::assertSame(!$allows, $first->disallows($second));
     }
 
     public function testLabel(): void
