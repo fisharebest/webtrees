@@ -51,7 +51,7 @@ import {
   // Fact icons
   faAt, faBaby, faBullhorn, faBuildingUser, faClipboardList, faCross, faDove, faFileContract, faGlobe,
   faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
-  faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
+  faPeopleArrows, faPersonMilitaryRifle, faPhone, faPlaceOfWorship, faRing, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
 import 'corejs-typeahead';
 
@@ -97,7 +97,7 @@ library.add(
   // Fact icons
   faAt, faBaby, faBullhorn, faBuildingUser, faClipboardList, faCross, faDove, faFileContract, faGlobe,
   faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
-  faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
+  faPeopleArrows, faPersonMilitaryRifle, faPhone, faPlaceOfWorship, faRing, faUserGraduate
 );
 dom.watch();
 
