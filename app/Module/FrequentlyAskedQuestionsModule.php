@@ -20,7 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -46,10 +47,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     private TreeService $tree_service;
 
-    /**
-     * @param HtmlService $html_service
-     * @param TreeService $tree_service
-     */
     public function __construct(HtmlService $html_service, TreeService $tree_service)
     {
         $this->html_service = $html_service;
@@ -70,8 +67,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * The default position for this menu.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultMenuOrder(): int
     {
@@ -80,15 +75,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
     public function getMenu(Tree $tree): Menu|null
     {
         if ($this->faqsExist($tree, I18N::languageTag())) {
-            return new Menu($this->title(), route('module', [
+            return new Menu($this->title(), route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Show',
                 'tree'   => $tree->name(),
@@ -98,11 +89,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return null;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -116,7 +102,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $tree = $trees->get(Site::getPreference('DEFAULT_GEDCOM')) ?? $trees->first();
 
             if ($tree instanceof Tree) {
-                return redirect(route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
+                return redirect(route(ModuleAction::class, ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
             }
 
             return redirect(route(ControlPanel::class));
@@ -145,7 +131,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->title();
 
         return $this->viewResponse('modules/faq/config', [
-            'action'          => route('module', ['module' => $this->name(), 'action' => 'Admin']),
+            'action'          => route(ModuleAction::class, ['module' => $this->name(), 'action' => 'Admin']),
             'faqs'            => $faqs,
             'max_block_order' => $max_block_order,
             'min_block_order' => $min_block_order,
@@ -156,25 +142,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect(route('module', [
+        return redirect(route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Admin',
             'tree'   => Validator::parsedBody($request)->string('tree'),
         ]));
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
@@ -183,7 +159,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         DB::table('block')->where('block_id', '=', $block_id)->delete();
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Admin',
         ]);
@@ -191,11 +167,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminMoveDownAction(ServerRequestInterface $request): ResponseInterface
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
@@ -227,11 +198,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return response();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminMoveUpAction(ServerRequestInterface $request): ResponseInterface
     {
         $block_id = Validator::queryParams($request)->integer('block_id');
@@ -263,11 +229,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return response();
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -314,17 +275,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
         $block_id    = Validator::queryParams($request)->integer('block_id', 0);
         $body        = Validator::parsedBody($request)->string('body');
         $header      = Validator::parsedBody($request)->string('header');
-        $languages   = Validator::parsedBody($request)->array('languages');
+        $languages   = Validator::parsedBody($request)->list('languages');
         $gedcom_id   = Validator::parsedBody($request)->string('gedcom_id');
         $block_order = Validator::parsedBody($request)->integer('block_order');
 
@@ -356,7 +312,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $this->setBlockSetting($block_id, 'header', $header);
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
-        $url = route('module', [
+        $url = route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Admin',
         ]);
@@ -364,11 +320,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -386,7 +337,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     }
 
     /**
-     * @param Tree $tree
      *
      * @return Collection<int,object{
      *     block_id: int,
@@ -424,12 +374,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             });
     }
 
-    /**
-     * @param Tree   $tree
-     * @param string $language
-     *
-     * @return bool
-     */
     private function faqsExist(Tree $tree, string $language): bool
     {
         return DB::table('block')

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -59,7 +60,7 @@ foreach ($keys as $key) {
         <?php $expanded = $tree->getPreference('EXPAND_SOURCES') === '1' ?>
         <div>
             <?php if (isset($elements[1])) : ?>
-                <button type="button" class="btn btn-text p-0" href="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
+                <button type="button" class="btn btn-text p-0" data-bs-target="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
                         <?= view('icons/expand') ?>
                         <?= view('icons/collapse') ?>
                 </button>
@@ -86,7 +87,9 @@ foreach ($keys as $key) {
 <?php else : ?>
     <?php foreach ($keys as $key) : ?>
         <?php if ($values[$key] !== '') : ?>
-            <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
+            <?php if (!$elements[$key] instanceof UnknownElement || $tree->getPreference('HIDE_GEDCOM_ERRORS') !== '1') : ?>
+                <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
+            <?php endif ?>
         <?php endif ?>
     <?php endforeach ?>
 <?php endif ?>

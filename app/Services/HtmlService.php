@@ -19,89 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use HTMLPurifier;
-use HTMLPurifier_AttrDef_Enum;
-use HTMLPurifier_Config;
-use HTMLPurifier_HTMLDefinition;
-
-use function assert;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
 
 /**
  * Filter/sanitize HTML
  */
 class HtmlService
 {
-    /**
-     * Take some dirty HTML (as provided by the user), and clean it before
-     * we save/display it.
-     *
-     * @param string $html
-     *
-     * @return string
-     */
     public function sanitize(string $html): string
     {
-        $config = HTMLPurifier_Config::createDefault();
+        // Constructing the sanitizer is slow, so create only when needed.
+        $config = (new HtmlSanitizerConfig())
+            ->allowSafeElements()
+            // These can be abused by a malicious user,
+            // but cKeditor creates style attributes and classes are
+            // useful to make the content match the style of the site.
+            ->allowAttribute('class', '*')
+            ->allowAttribute('style', '*');
 
-        $config->set('Cache.DefinitionImpl', null);
+        $sanitizer = new HtmlSanitizer($config);
 
-        $config->set('HTML.TidyLevel', 'none'); // Only XSS cleaning now
-
-        // Remove the default maximum width/height for images.  This enables percentage values.
-        $config->set('CSS.MaxImgLength', null);
-
-        // Allow id attributes.
-        $config->set('Attr.EnableID', true);
-
-        $def = $config->getHTMLDefinition(true);
-        assert($def instanceof HTMLPurifier_HTMLDefinition);
-
-        // Allow link targets.
-        $def->addAttribute('a', 'target', new HTMLPurifier_AttrDef_Enum(['_blank', '_self', '_target', '_top']));
-
-        // Allow image maps.
-        $def->addAttribute('img', 'usemap', 'CDATA');
-
-        $map = $def->addElement('map', 'Block', 'Flow', 'Common', [
-            'name'  => 'CDATA',
-            'id'    => 'ID',
-            'title' => 'CDATA',
-        ]);
-
-        $map->excludes = ['map' => true];
-
-        $area = $def->addElement('area', 'Block', 'Empty', 'Common', [
-            'name'      => 'CDATA',
-            'id'        => 'ID',
-            'alt'       => 'Text',
-            'coords'    => 'CDATA',
-            'accesskey' => 'Character',
-            'nohref'    => new HTMLPurifier_AttrDef_Enum(['nohref']),
-            'href'      => 'URI',
-            'shape'     => new HTMLPurifier_AttrDef_Enum(['rect', 'circle', 'poly', 'default']),
-            'tabindex'  => 'Number',
-        ]);
-
-        $area->excludes = ['area' => true];
-
-        // Allow audio and video
-        $audio = $def->addElement('audio', 'Block', 'Flow', 'Common', [
-            'controls' => 'Bool#controls',
-            'src'      => 'URI',
-        ]);
-        $audio->excludes = ['audio' => true];
-
-        $video = $def->addElement('video', 'Block', 'Flow', 'Common', [
-            'controls' => 'Bool#controls',
-            'height'   => 'Number',
-            'poster'   => 'URI',
-            'src'      => 'URI',
-            'width'    => 'Number',
-        ]);
-        $video->excludes = ['video' => true];
-
-        $purifier = new HTMLPurifier($config);
-
-        return $purifier->purify($html);
+        return $sanitizer->sanitize($html);
     }
 }

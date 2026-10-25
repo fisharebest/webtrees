@@ -119,7 +119,7 @@ class MapDataService
                 'p8.p_place AS part_8',
             ])
             ->get()
-            ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row)));
+            ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row, static fn (string|null $value): bool => $value !== null)));
 
         $all_locations = DB::table('place_location AS p0')
             ->leftJoin('place_location AS p1', 'p1.id', '=', 'p0.parent_id')
@@ -142,7 +142,7 @@ class MapDataService
                 'p8.place AS part_8',
             ])
             ->get()
-            ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row)));
+            ->map(static fn (object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row, static fn (string|null $value): bool => $value !== null)));
 
         $missing = $all_places->diff($all_locations);
 
@@ -250,7 +250,7 @@ class MapDataService
                 'child_count' => (int) $row->child_count,
                 'no_coord'    => (int) $row->no_coord,
             ])
-            ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->place, $y->place));
+            ->sort(static fn (object $x, object $y): int => I18N::compare($x->place, $y->place));
     }
 
     public function writeLatitude(float $latitude): string

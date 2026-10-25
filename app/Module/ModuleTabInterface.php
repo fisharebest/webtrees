@@ -31,66 +31,42 @@ interface ModuleTabInterface extends ModuleInterface
 {
     /**
      * The text that appears on the tab.
-     *
-     * @return string
      */
     public function tabTitle(): string;
 
     /**
      * Users change change the order of tabs using the control panel.
-     *
-     * @param int $tab_order
-     *
-     * @return void
      */
     public function setTabOrder(int $tab_order): void;
 
     /**
      * Users change change the order of tabs using the control panel.
-     *
-     * @return int
      */
     public function getTabOrder(): int;
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int;
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string;
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool;
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool;
 
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool;
 
@@ -103,10 +79,6 @@ interface ModuleTabInterface extends ModuleInterface
 
     /**
      * Generate an AJAX response for a tab.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function getTabAction(ServerRequestInterface $request): ResponseInterface;
 }

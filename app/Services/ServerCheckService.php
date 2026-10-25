@@ -65,7 +65,6 @@ class ServerCheckService
     /**
      * Things that may cause webtrees to break.
      *
-     * @param string $driver
      *
      * @return Collection<int,string>
      */
@@ -89,7 +88,6 @@ class ServerCheckService
     /**
      * Things that should be fixed, but which won't stop completely webtrees from running.
      *
-     * @param string $driver
      *
      * @return Collection<int,string>
      */
@@ -98,6 +96,7 @@ class ServerCheckService
         $warnings = Collection::make([
             $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
+            $this->checkPhpExtension('exif'),
             $this->checkPhpExtension('fileinfo'),
             $this->checkPhpExtension('gd'),
             $this->checkPhpExtension('intl'),
@@ -280,11 +279,6 @@ class ServerCheckService
     private function databaseDriverWarnings(string $driver): Collection
     {
         switch ($driver) {
-            case DB::SQLITE:
-                return new Collection([
-                    I18N::translate('SQLite is only suitable for small sites, testing and evaluation.'),
-                ]);
-
             case DB::POSTGRESQL:
                 return new Collection([
                     I18N::translate('Support for PostgreSQL is experimental.'),

@@ -48,9 +48,6 @@ class Place
 
     /**
      * Create a place.
-     *
-     * @param string $place_name
-     * @param Tree   $tree
      */
     public function __construct(string $place_name, Tree $tree)
     {
@@ -66,11 +63,6 @@ class Place
 
     /**
      * Find a place by its ID.
-     *
-     * @param int  $id
-     * @param Tree $tree
-     *
-     * @return Place
      */
     public static function find(int $id, Tree $tree): Place
     {
@@ -97,8 +89,6 @@ class Place
 
     /**
      * Get the higher level place.
-     *
-     * @return Place
      */
     public function parent(): Place
     {
@@ -108,12 +98,10 @@ class Place
     /**
      * The database row that contains this place.
      * Note that due to database collation, both "Quebec" and "Québec" will share the same row.
-     *
-     * @return int
      */
     public function id(): int
     {
-        return Registry::cache()->array()->remember('place-' . $this->place_name, function (): int {
+        return Registry::cache()->array()->remember('place-' . $this->place_name . '@' . $this->tree->id(), function (): int {
             // The "top-level" place won't exist in the database.
             if ($this->parts->isEmpty()) {
                 return 0;
@@ -145,9 +133,6 @@ class Place
         });
     }
 
-    /**
-     * @return Tree
-     */
     public function tree(): Tree
     {
         return $this->tree;
@@ -156,7 +141,6 @@ class Place
     /**
      * Extract the locality (first parts) of a place name.
      *
-     * @param int $n
      *
      * @return Collection<int,string>
      */
@@ -168,7 +152,6 @@ class Place
     /**
      * Extract the country (last parts) of a place name.
      *
-     * @param int $n
      *
      * @return Collection<int,string>
      */
@@ -194,15 +177,13 @@ class Place
             ->where('p_file', '=', $this->tree->id())
             ->where('p_parent_id', '=', $this->id())
             ->pluck('p_place')
-            ->sort(I18N::comparator())
+            ->sort(I18N::compare(...))
             ->map(fn (string $place): Place => new self($place . $parent_text, $this->tree))
             ->all();
     }
 
     /**
      * Create a URL to the place-hierarchy page.
-     *
-     * @return string
      */
     public function url(): string
     {
@@ -224,8 +205,6 @@ class Place
 
     /**
      * Format this place for GEDCOM data.
-     *
-     * @return string
      */
     public function gedcomName(): string
     {
@@ -251,7 +230,7 @@ class Place
             return '';
         }
 
-        $full_name = $this->parts->implode(I18N::$list_separator);
+        $full_name = I18N::list($this->parts->all());
 
         if ($link) {
             $url = $this->url();
@@ -278,7 +257,7 @@ class Place
             $parts = $this->firstParts($SHOW_PEDIGREE_PLACES);
         }
 
-        $short_name = $parts->implode(I18N::$list_separator);
+        $short_name = I18N::list($parts->all());
 
         if ($link) {
             $url = $this->url();

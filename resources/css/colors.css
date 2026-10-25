@@ -25,11 +25,6 @@
 .card-header h4 {
     font-size: 1.2rem;
 }
-
-.btn.focus, .btn:focus {
-    box-shadow: none;
-}
-
 .btn-link:hover, .btn-link:focus {
     color: #f00;
     text-decoration: none;
@@ -173,8 +168,6 @@
 .list_value, .list_value_wrap, .list_value_wrap a {
     background: var(--color-4);
 }
-
-
 .menu-tree .nav-link::before {
     content: url(colors/menu/tree.png);
 }
@@ -282,23 +275,6 @@
 .menu-list-subm::before {
     content: url(colors/menu/list-indi.png);
 }
-
-.menu-calendar .nav-link::before {
-    content: url(colors/menu/calendar.png);
-}
-
-.menu-calendar-day::before {
-    content: url(colors/menu/calendar-calendar.png);
-}
-
-.menu-calendar-month::before {
-    content: url(colors/menu/calendar-calendar.png);
-}
-
-.menu-calendar-year::before {
-    content: url(colors/menu/calendar-calendar.png);
-}
-
 .menu-report .nav-link::before {
     content: url(colors/menu/report.png);
 }
@@ -399,12 +375,6 @@
 .wt-chart-box-name {
     color: #555555;
 }
-
-.btn-primary.focus, .btn-primary:focus {
-    box-shadow:none;
-    border: 0;
-}
-
 table.center {
     margin-left: auto;
     margin-right: auto;
@@ -426,10 +396,6 @@ table.center {
 
 .wt-facts-table th {
     border: 1px solid #ccc;
-}
-
-.date {
-    color: #333;
 }
 
 .rtl_cal_day {

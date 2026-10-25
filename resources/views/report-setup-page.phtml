@@ -3,13 +3,14 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Report\InputDefinition;
 
 /**
- * @var string               $title
- * @var string               $description
- * @var string               $destination
- * @var string               $format
- * @var array<array<string>> $inputs
+ * @var string                $title
+ * @var string                $description
+ * @var string                $destination
+ * @var string                $format
+ * @var array<InputDefinition> $inputs
  */
 
 ?>
@@ -29,20 +30,20 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <?php foreach ($inputs as $n => $input) : ?>
-        <input type="hidden" name="varnames[]" value="<?= e($input['name']) ?>">
+        <input type="hidden" name="varnames[]" value="<?= e($input->name) ?>">
         <div class="row">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="input-<?= $n ?>">
-                <?= I18N::translate($input['value']) ?>
+                <?= I18N::translate($input->value) ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?php if ($input['extra'] !== '') : ?>
+                <?php if ($input->extra !== '') : ?>
                     <div class="input-group">
-                        <?= $input['control'] ?>
-                        <?= $input['extra'] ?>
+                        <?= $input->control ?>
+                        <?= $input->extra ?>
                     </div>
                     <div id="caldivinput-<?= e($n) ?>" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>
                 <?php else : ?>
-                    <?= $input['control'] ?>
+                    <?= $input->control ?>
                 <?php endif ?>
             </div>
         </div>

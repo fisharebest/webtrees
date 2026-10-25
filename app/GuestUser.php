@@ -32,10 +32,6 @@ class GuestUser implements UserInterface
 
     private string $real_name;
 
-    /**
-     * @param string $email
-     * @param string $real_name
-     */
     public function __construct(string $email = 'GUEST_USER', string $real_name = 'GUEST_USER')
     {
         $this->email = $email;
@@ -44,8 +40,6 @@ class GuestUser implements UserInterface
 
     /**
      * The user‘s internal identifier.
-     *
-     * @return int
      */
     public function id(): int
     {
@@ -54,8 +48,6 @@ class GuestUser implements UserInterface
 
     /**
      * The users email address.
-     *
-     * @return string
      */
     public function email(): string
     {
@@ -64,8 +56,6 @@ class GuestUser implements UserInterface
 
     /**
      * The user‘s real name.
-     *
-     * @return string
      */
     public function realName(): string
     {
@@ -74,20 +64,12 @@ class GuestUser implements UserInterface
 
     /**
      * The user‘s login name.
-     *
-     * @return string
      */
     public function userName(): string
     {
         return '';
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $default
-     *
-     * @return string
-     */
     public function getPreference(string $setting_name, string $default = ''): string
     {
         $preference = Session::get('_GUEST_' . $setting_name);
@@ -95,12 +77,6 @@ class GuestUser implements UserInterface
         return is_string($preference) ? $preference : $default;
     }
 
-    /**
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
-     */
     public function setPreference(string $setting_name, string $setting_value): void
     {
         Session::put('_GUEST_' . $setting_name, $setting_value);

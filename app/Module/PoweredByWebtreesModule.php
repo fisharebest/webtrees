@@ -32,8 +32,6 @@ class PoweredByWebtreesModule extends AbstractModule implements ModuleFooterInte
 
     /**
      * How should this module be labelled on tabs, footers, etc.?
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -49,8 +47,6 @@ class PoweredByWebtreesModule extends AbstractModule implements ModuleFooterInte
 
     /**
      * The default position for this footer.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -59,10 +55,6 @@ class PoweredByWebtreesModule extends AbstractModule implements ModuleFooterInte
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {

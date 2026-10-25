@@ -35,8 +35,6 @@ abstract class AbstractXrefElement extends AbstractElement
 {
     /**
      * Should we collapse the children of this element when editing?
-     *
-     * @return bool
      */
     public function collapseChildren(): bool
     {
@@ -45,10 +43,6 @@ abstract class AbstractXrefElement extends AbstractElement
 
     /**
      * Escape @ signs in a GEDCOM export.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function escape(string $value): string
     {
@@ -57,12 +51,6 @@ abstract class AbstractXrefElement extends AbstractElement
 
     /**
      * Display the value of this type of element - convert XREFs to links.
-     *
-     * @param string                       $value
-     * @param Tree                         $tree
-     * @param GedcomRecordFactoryInterface $factory
-     *
-     * @return string
      */
     protected function valueXrefLink(string $value, Tree $tree, GedcomRecordFactoryInterface $factory): string
     {

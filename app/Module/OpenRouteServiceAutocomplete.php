@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -45,10 +45,13 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
     use ModuleConfigTrait;
     use ModuleMapAutocompleteTrait;
 
+    public function __construct(
+        private readonly RequestFactoryInterface $request_factory,
+    ) {
+    }
+
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {
@@ -57,9 +60,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return I18N::translate('Search for place names using %s.', $link);
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -74,8 +74,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -87,11 +85,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return false;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('api_key');
@@ -103,11 +96,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return redirect($this->getConfigLink());
     }
 
-    /**
-     * @param string $place
-     *
-     * @return RequestInterface
-     */
     protected function createPlaceNameSearchRequest(string $place): RequestInterface
     {
         $api_key = $this->getPreference('api_key');
@@ -118,11 +106,10 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
             'layers'  => 'coarse',
         ]);
 
-        return new Request('GET', $uri);
+        return $this->request_factory->createRequest('GET', $uri);
     }
 
     /**
-     * @param ResponseInterface $response
      *
      * @return array<string>
      */
@@ -154,10 +141,11 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
                 $result->properties->country,
             ];
 
-            $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts)) ?: $result->properties->label;
+            $place_name = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts, static fn (string|null $value): bool => $value !== null && $value !== ''));
+            $places[] = $place_name !== '' ? $place_name : $result->properties->label;
         }
 
-        usort($places, I18N::comparator());
+        usort($places, I18N::compare(...));
 
         return $places;
     }

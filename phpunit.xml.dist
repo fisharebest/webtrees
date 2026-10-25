@@ -1,23 +1,37 @@
 <?xml version="1.0"?>
 <phpunit
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.5/phpunit.xsd"
   bootstrap="vendor/autoload.php"
   colors="true"
   cacheDirectory=".phpunit.cache"
+  displayDetailsOnPhpunitDeprecations="true"
+  displayDetailsOnPhpunitNotices="true"
+  displayDetailsOnTestsThatTriggerDeprecations="true"
+  displayDetailsOnTestsThatTriggerWarnings="true"
   requireCoverageMetadata="true"
 >
-  <testsuites>
-    <testsuite name="Unit tests">
-      <directory>tests/app</directory>
-    </testsuite>
-    <testsuite name="Feature tests">
-      <directory>tests/feature</directory>
-    </testsuite>
-  </testsuites>
-  <source>
-    <include>
-      <directory suffix=".php">app</directory>
-    </include>
-  </source>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <coverage>
+        <report>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+            <html outputDirectory="build/coverage"/>
+            <xml outputDirectory="build/coverage-xml"/>
+        </report>
+    </coverage>
+    <logging>
+        <junit outputFile="build/junit.xml"/>
+    </logging>
 </phpunit>

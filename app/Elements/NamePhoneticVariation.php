@@ -43,8 +43,6 @@ class NamePhoneticVariation extends NamePersonal
 
     /**
      * Should we collapse the children of this element when editing?
-     *
-     * @return bool
      */
     public function collapseChildren(): bool
     {

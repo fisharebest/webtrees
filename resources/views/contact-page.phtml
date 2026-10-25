@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ContactAction;
+use Fisharebest\Webtrees\Http\Controllers\Contact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h2><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ContactAction::class, ['tree' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route(Contact::class, ['tree' => $tree->name()])) ?>">
     <?= $captcha ?>
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="url" value="<?= e($url) ?>">

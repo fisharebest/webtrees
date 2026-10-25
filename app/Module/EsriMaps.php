@@ -30,8 +30,6 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -40,8 +38,6 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function description(): string
     {

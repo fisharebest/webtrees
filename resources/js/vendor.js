@@ -13,9 +13,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import $ from 'jquery';
-window.$ = window.jQuery = $;
-
 import '@popperjs/core';
 import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from 'bootstrap';
 window.bootstrap = {
@@ -53,7 +50,6 @@ import {
   faHammer, faHashtag, faHouseChimneyUser, faIdCard, faInfo, faMonument, faNoteSticky, faPenFancy,
   faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
 } from '@fortawesome/free-solid-svg-icons';
-import 'corejs-typeahead';
 
 import DataTable from 'datatables.net';
 import 'datatables.net-bs5';
@@ -72,8 +68,6 @@ window.TomSelect = TomSelect;
 
 import 'moment';
 
-import 'jquery-colorbox';
-import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';
@@ -100,8 +94,6 @@ library.add(
   faPeopleArrows, faPersonMilitaryRifle, faPhone, faRing, faUserGraduate
 );
 dom.watch();
-
-window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');

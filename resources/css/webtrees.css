@@ -310,23 +310,6 @@ table {
 .menu-list-subm::before {
     content: url(webtrees/menu/list-indi.png);
 }
-
-.menu-calendar .nav-link::before {
-    content: url(webtrees/menu/calendar.png);
-}
-
-.menu-calendar-day::before {
-    content: url(webtrees/menu/calendar-calendar.png);
-}
-
-.menu-calendar-month::before {
-    content: url(webtrees/menu/calendar-calendar.png);
-}
-
-.menu-calendar-year::before {
-    content: url(webtrees/menu/calendar-calendar.png);
-}
-
 .menu-report .nav-link::before {
     content: url(webtrees/menu/report.png);
 }
@@ -555,11 +538,6 @@ table {
     background: var(--sex-x-bg);
     border: solid var(--sex-x-fg) thin;
 }
-
-:focus {
-    outline-style: none;
-}
-
 .flash-messages {
     clear: both;
     text-align: center;
@@ -677,10 +655,6 @@ div.fact_SHARED_NOTE {
 
 .details_label {
     font-weight: bold;
-}
-
-.date {
-    color: #337;
 }
 
 .label {
@@ -1018,15 +992,6 @@ div.faq_body {
 
 .wt-lifespans-summary-link {
     font-weight: bold;
-}
-
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-    height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /*

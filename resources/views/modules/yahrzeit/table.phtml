@@ -18,7 +18,7 @@ use Illuminate\Support\Collection;
 
 <div class="table-responsive">
     <table
-        class="table table-sm datatable wt-table-yahrzeits"
+        class="table table-sm wt-datatables wt-table-yahrzeits"
         <?= view('lists/datatables-attributes') ?>
         data-paging="<?= $yahrzeits->count() >= $limit_high ? 'true' : 'false' ?>"
         data-filter="false"
@@ -67,6 +67,3 @@ use Illuminate\Support\Collection;
     </table>
 </div>
 
-<script>
-  $(".wt-table-yahrzeits").dataTable();
-</script>

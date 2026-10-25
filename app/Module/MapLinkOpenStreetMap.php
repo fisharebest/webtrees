@@ -33,27 +33,17 @@ class MapLinkOpenStreetMap extends AbstractModule implements ModuleMapLinkInterf
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     protected function providerName(): string
     {
         return I18N::translate('OpenStreetMap™');
     }
 
-    /**
-     * @return string
-     */
     protected function icon(): string
     {
         return view('icons/openstreetmap');
     }
 
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     protected function mapUrl(Fact $fact): string
     {
         $latitude  = $fact->latitude();

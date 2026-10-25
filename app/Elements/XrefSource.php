@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
+use Fisharebest\Webtrees\Http\Controllers\CreateSource;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -49,13 +49,6 @@ class XrefSource extends AbstractXrefElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
@@ -71,7 +64,7 @@ class XrefSource extends AbstractXrefElement
 
             return
                 '<div class="input-group">' .
-                '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateSourceModal::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' .
+                '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateSource::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' .
                 view('icons/add') .
                 '</button>' .
                 $select .
@@ -83,11 +76,6 @@ class XrefSource extends AbstractXrefElement
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string
     {

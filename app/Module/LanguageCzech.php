@@ -19,82 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleCs;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-
-use function mb_substr;
-use function str_starts_with;
+use Fisharebest\Webtrees\I18N\Languages\Czech;
 
 class LanguageCzech extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
-            'B',
-            'C',
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
-            'D',
-            UTF8::LATIN_CAPITAL_LETTER_D_WITH_CARON,
-            'E',
-            UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
-            UTF8::LATIN_CAPITAL_LETTER_E_WITH_CARON,
-            'F',
-            'G',
-            'H',
-            'CH',
-            'I',
-            UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            UTF8::LATIN_CAPITAL_LETTER_N_WITH_CARON,
-            'O',
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
-            'P',
-            'Q',
-            'R',
-            UTF8::LATIN_CAPITAL_LETTER_R_WITH_CARON,
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
-            'T',
-            UTF8::LATIN_CAPITAL_LETTER_T_WITH_CARON,
-            'U',
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_RING_ABOVE,
-            'V',
-            'W',
-            'X',
-            'Y',
-            UTF8::LATIN_CAPITAL_LETTER_Y_WITH_ACUTE,
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
-        ];
+        $this->language = new Czech();
     }
-
-    public function initialLetter(string $string): string
-    {
-        if (str_starts_with($string, 'CS')) {
-            return 'CS';
-        }
-
-        return mb_substr($string, 0, 1);
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleCs();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

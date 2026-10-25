@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\EmailPreferences;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Webtrees;
 
@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Webtrees;
     <?= I18N::translate('See %s for more information.', '<a class="alert-link" href="' . e(Webtrees::URL_FAQ_EMAIL) . '">' . e(Webtrees::URL_FAQ_EMAIL) . '</a>') ?>
 </div>
 
-<form method="post" action="<?= e(route(EmailPreferencesAction::class)) ?>" class="form-horizontal">
+<form method="post" action="<?= e(route(EmailPreferences::class)) ?>" class="form-horizontal">
     <div class="row mb-3">
         <label for="SMTP_ACTIVE" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
@@ -116,10 +116,15 @@ use Fisharebest\Webtrees\Webtrees;
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= /* I18N: A configuration setting */
             I18N::translate('Use password') ?>
         </legend>
+        <div class="col-form-label col-sm-3" aria-hidden="true">
+            <?= /* I18N: A configuration setting */
+            I18N::translate('Use password') ?>
+        </div>
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'SMTP_AUTH', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $SMTP_AUTH]) ?>
             <div class="form-text">

@@ -34,11 +34,6 @@ class PhoneNumber extends AbstractElement
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string
     {

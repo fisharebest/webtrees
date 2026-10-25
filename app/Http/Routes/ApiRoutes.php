@@ -19,20 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Routes;
 
-use Aura\Router\Map;
-use Aura\Router\Route;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 
 /**
  * Routing table for API requests
  */
 class ApiRoutes
 {
-    /**
-     * @param Map<Route> $router
-     *
-     * @return void
-     */
-    public function load(Map $router): void
+    public function load(RouteCollection $routes): void
     {
     }
 }

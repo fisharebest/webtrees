@@ -3,19 +3,20 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
+use Fisharebest\Webtrees\Http\Controllers\AddChildToFamily;
+use Fisharebest\Webtrees\Http\Controllers\AddNewFact;
+use Fisharebest\Webtrees\Http\Controllers\AddSpouseToFamily;
+use Fisharebest\Webtrees\Http\Controllers\ReorderChildren;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\RelationshipService;
 
 /**
  * @var Family              $family
- * @var int                 $fam_access_level
+ * @var AccessLevel         $fam_access_level
  * @var Individual          $individual
  * @var string              $label
  * @var RelationshipService $relationship_service
@@ -36,7 +37,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             $found |= !$fact->isPendingDeletion();
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-sex-' . strtolower($person->sex());
+                $row_class = $person->sex()->cssClass();
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -62,7 +63,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             <tr>
                 <th scope="row"></th>
                 <td>
-                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                    <a href="<?= e(route(AddSpouseToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= I18N::translate('Add a husband') ?>
                     </a>
                 </td>
@@ -75,7 +76,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             $person = $fact->target();
             if ($person instanceof Individual) {
                 $found |= !$fact->isPendingDeletion();
-                $row_class = 'wt-sex-' . strtolower($person->sex());
+                $row_class = $person->sex()->cssClass();
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -101,7 +102,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             <tr>
                 <th scope="row"></th>
                 <td>
-                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                    <a href="<?= e(route(AddSpouseToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= I18N::translate('Add a wife') ?>
                     </a>
                 </td>
@@ -163,7 +164,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
         foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-sex-' . strtolower($person->sex());
+                $row_class = $person->sex()->cssClass();
                 if ($fact->isPendingAddition()) {
                     $child_number++;
                     $row_class .= ' new';
@@ -221,21 +222,21 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 </th>
 
                 <td>
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                    <a href="<?= e(route(AddChildToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= $type === 'FAMS' ? I18N::translate('Add a son') : I18N::translate('Add a brother') ?>
                     </a>
                     |
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                    <a href="<?= e(route(AddChildToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= $type === 'FAMS' ? I18N::translate('Add a daughter') : I18N::translate('Add a sister') ?>
                     </a>
                     |
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'U', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                    <a href="<?= e(route(AddChildToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'U', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= $type === 'FAMS' ? I18N::translate('Add a child') : I18N::translate('Add a sibling') ?>
                     </a>
 
                     <?php if ($family->children()->count() > 1) : ?>
                         <br>
-                        <a href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                        <a href="<?= e(route(ReorderChildren::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
                             <?= I18N::translate('Re-order children') ?>
                         </a>
                     <?php endif; ?>

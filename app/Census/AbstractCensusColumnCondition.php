@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 
 abstract readonly class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface
@@ -89,27 +90,27 @@ abstract readonly class AbstractCensusColumnCondition extends AbstractCensusColu
         return $age->ageYears() < static::AGE_ADULT;
     }
 
-    private function conditionChild(string $sex): string
+    private function conditionChild(Sex $sex): string
     {
-        if ($sex === 'F') {
+        if ($sex === Sex::Female) {
             return static::GIRL;
         }
 
         return static::BOY;
     }
 
-    private function conditionSingle(string $sex): string
+    private function conditionSingle(Sex $sex): string
     {
-        if ($sex === 'F') {
+        if ($sex === Sex::Female) {
             return static::SPINSTER;
         }
 
         return static::BACHELOR;
     }
 
-    private function conditionDivorced(string $sex): string
+    private function conditionDivorced(Sex $sex): string
     {
-        if ($sex === 'F') {
+        if ($sex === Sex::Female) {
             return static::DIVORCEE;
         }
 
@@ -121,18 +122,18 @@ abstract readonly class AbstractCensusColumnCondition extends AbstractCensusColu
         return $individual->getDeathDate()->isOK() && Date::compare($individual->getDeathDate(), $this->date()) < 0;
     }
 
-    private function conditionWidowed(string $sex): string
+    private function conditionWidowed(Sex $sex): string
     {
-        if ($sex === 'F') {
+        if ($sex === Sex::Female) {
             return static::WIDOW;
         }
 
         return static::WIDOWER;
     }
 
-    private function conditionMarried(string $sex): string
+    private function conditionMarried(Sex $sex): string
     {
-        if ($sex === 'F') {
+        if ($sex === Sex::Female) {
             return static::WIFE;
         }
 

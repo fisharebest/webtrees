@@ -19,20 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleZhHant;
+use Fisharebest\Webtrees\I18N\Languages\ChineseTraditional;
 
 class LanguageChineseTraditional extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    public function dateOrder(): string
+    public function __construct()
     {
-        return 'YMD';
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleZhHant();
+        $this->language = new ChineseTraditional();
     }
 }

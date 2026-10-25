@@ -19,57 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleFi;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Finnish;
 
 class LanguageFinnish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            'D',
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            'T',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
-        ];
+        $this->language = new Finnish();
     }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleFi();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

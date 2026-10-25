@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
-use function e;
 use function preg_replace_callback;
 use function view;
 
@@ -45,13 +44,6 @@ class DateValue extends AbstractElement
 {
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
@@ -65,7 +57,7 @@ class DateValue extends AbstractElement
             'id'        => $id,
             'name'      => $name,
             'value'     => $value,
-            'onchange'  => 'webtrees.reformatDate(this, \'' . e($dmy) . '\')',
+            'data-wt-reformat-date-order' => $dmy,
             'maxlength' => static::MAXIMUM_LENGTH,
             'pattern'   => static::PATTERN,
         ];
@@ -82,10 +74,6 @@ class DateValue extends AbstractElement
 
     /**
      * Escape @ signs in a GEDCOM export.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function escape(string $value): string
     {
@@ -95,11 +83,6 @@ class DateValue extends AbstractElement
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string
     {

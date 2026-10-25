@@ -39,9 +39,6 @@ use const UPLOAD_ERR_PARTIAL;
  */
 class FileUploadException extends RuntimeException
 {
-    /**
-     * @param UploadedFileInterface|null $uploaded_file
-     */
     public function __construct(UploadedFileInterface|null $uploaded_file)
     {
         if ($uploaded_file === null) {

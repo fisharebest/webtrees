@@ -40,10 +40,6 @@ class CharacterSet extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -52,10 +48,6 @@ class CharacterSet extends AbstractElement
 
     /**
      * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
      */
     public function default(Tree $tree): string
     {

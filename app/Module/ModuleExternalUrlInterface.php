@@ -26,8 +26,6 @@ interface ModuleExternalUrlInterface extends ModuleInterface
 {
     /**
      * Home page for the service.
-     *
-     * @return string
      */
     public function externalUrl(): string;
 }

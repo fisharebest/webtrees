@@ -55,19 +55,12 @@ class Census extends AbstractEventElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
         $html = $this->editHidden($id, $name, $value);
 
-        $html .= view('modules/GEDFact_assistant/select-census', [
+        $html .= view('modules/GEDFact-assistant/select-census', [
             'census_places' => Censuses::censusPlaces(I18N::languageTag()),
         ]);
 

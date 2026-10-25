@@ -31,10 +31,6 @@ trait ModuleFooterTrait
 
     /**
      * Users can change the order of footers using the control panel.
-     *
-     * @param int $footer_order
-     *
-     * @return void
      */
     public function setFooterOrder(int $footer_order): void
     {
@@ -43,8 +39,6 @@ trait ModuleFooterTrait
 
     /**
      * Users can change the order of footers using the control panel.
-     *
-     * @return int
      */
     public function getFooterOrder(): int
     {
@@ -53,8 +47,6 @@ trait ModuleFooterTrait
 
     /**
      * The default position for this footer.
-     *
-     * @return int
      */
     public function defaultFooterOrder(): int
     {
@@ -63,10 +55,6 @@ trait ModuleFooterTrait
 
     /**
      * A footer, to be added at the bottom of every page.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
      */
     public function getFooter(ServerRequestInterface $request): string
     {

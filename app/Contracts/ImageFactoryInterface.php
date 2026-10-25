@@ -19,48 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
+use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\MediaFile;
-use Intervention\Image\Interfaces\ImageInterface;
 use League\Flysystem\FilesystemOperator;
-use Psr\Http\Message\ResponseInterface;
 
 interface ImageFactoryInterface
 {
-    public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface;
+    public function fileContents(FilesystemOperator $filesystem, string $path): string;
 
-    public function thumbnailResponse(
+    public function fileMimeType(FilesystemOperator $filesystem, string $path): string;
+
+    public function thumbnailContents(
         FilesystemOperator $filesystem,
         string $path,
         int $width,
         int $height,
-        string $fit
-    ): ResponseInterface;
+        ImageOperation $operation
+    ): string;
 
-    public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface;
+    public function mediaFileContents(MediaFile $media_file, bool $add_watermark): string;
 
     public function mediaFileThumbnail(
         MediaFile $media_file,
         int $width,
         int $height,
-        string $fit,
+        ImageOperation $operation,
         bool $add_watermark
     ): string;
-
-    public function mediaFileThumbnailResponse(
-        MediaFile $media_file,
-        int $width,
-        int $height,
-        string $fit,
-        bool $add_watermark
-    ): ResponseInterface;
-
-    public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
-
-    public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
-
-    public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface;
-
-    public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface;
-
-    public function replacementImageResponse(string $text): ResponseInterface;
 }

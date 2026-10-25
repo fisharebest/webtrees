@@ -66,19 +66,12 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
 
     /**
      * The default position for this sidebar.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultSidebarOrder(): int
     {
         return 1;
     }
 
-    /**
-     * @param Individual $individual
-     *
-     * @return bool
-     */
     public function hasSidebarContent(Individual $individual): bool
     {
         return $individual->facts(static::HANDLED_FACTS)->isNotEmpty();
@@ -86,10 +79,6 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
 
     /**
      * Load this sidebar synchronously.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getSidebarContent(Individual $individual): string
     {

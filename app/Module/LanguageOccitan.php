@@ -19,20 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleOc;
+use Fisharebest\Webtrees\I18N\Languages\Occitan;
 
 class LanguageOccitan extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
+    public function __construct()
+    {
+        $this->language = new Occitan();
+    }
+
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleOc();
     }
 }

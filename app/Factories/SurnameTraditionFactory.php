@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
+use Fisharebest\Webtrees\SurnameTradition\GreekSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition;
@@ -36,7 +37,7 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
  */
 class SurnameTraditionFactory implements SurnameTraditionFactoryInterface
 {
-    /** @var array<SurnameTraditionInterface> */
+    /** @var array<string,SurnameTraditionInterface> */
     private array $surname_traditions = [];
 
     /**
@@ -51,6 +52,7 @@ class SurnameTraditionFactory implements SurnameTraditionFactoryInterface
         $this->register(self::SPANISH, new SpanishSurnameTradition());
         $this->register(self::POLISH, new PolishSurnameTradition());
         $this->register(self::LITHUANIAN, new LithuanianSurnameTradition());
+        $this->register(self::GREEK, new GreekSurnameTradition());
         $this->register(self::ICELANDIC, new IcelandicSurnameTradition());
         $this->register(self::DEFAULT, new DefaultSurnameTradition());
     }
@@ -69,22 +71,12 @@ class SurnameTraditionFactory implements SurnameTraditionFactoryInterface
 
     /**
      * Create a named surname tradition.
-     *
-     * @param string $name
-     *
-     * @return SurnameTraditionInterface
      */
     public function make(string $name): SurnameTraditionInterface
     {
         return $this->surname_traditions[$name] ?? new DefaultSurnameTradition();
     }
 
-    /**
-     * @param string                    $name
-     * @param SurnameTraditionInterface $surname_tradition
-     *
-     * @return void
-     */
     public function register(string $name, SurnameTraditionInterface $surname_tradition): void
     {
         $this->surname_traditions[$name] = $surname_tradition;

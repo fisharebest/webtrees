@@ -105,13 +105,9 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
-     *
-     * @return GedcomRecord
      */
     public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): GedcomRecord
     {
@@ -121,7 +117,6 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
     /**
      * Create a GedcomRecord object from a row in the database.
      *
-     * @param Tree $tree
      *
      * @return Closure(object):GedcomRecord
      */
@@ -130,15 +125,6 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
         return fn (object $row): GedcomRecord => $this->make($row->o_id, $tree, $row->o_gedcom);
     }
 
-    /**
-     * @param string      $type
-     * @param string      $xref
-     * @param string      $gedcom
-     * @param string|null $pending
-     * @param Tree        $tree
-     *
-     * @return GedcomRecord
-     */
     private function newGedcomRecord(string $type, string $xref, string $gedcom, string|null $pending, Tree $tree): GedcomRecord
     {
         switch ($type) {
@@ -176,11 +162,6 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
 
     /**
      * Extract the type of a GEDCOM record
-     *
-     * @param string $gedcom
-     *
-     * @return string
-     * @throws InvalidArgumentException
      */
     private function extractType(string $gedcom): string
     {
@@ -193,11 +174,6 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
 
     /**
      * Fetch GEDCOM data from the database.
-     *
-     * @param string $xref
-     * @param Tree   $tree
-     *
-     * @return string|null
      */
     private function gedcom(string $xref, Tree $tree): string|null
     {

@@ -50,9 +50,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -73,12 +70,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -87,7 +79,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $query = DB::table('name')
+        $subquery = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
             ->where('n_surn', '<>', '')
@@ -95,12 +87,12 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             ->select([
                 DB::binaryColumn('n_surn', 'n_surn'),
                 DB::binaryColumn('n_surname', 'n_surname'),
-                new Expression('COUNT(*) AS total'),
-            ])
-            ->groupBy([
-                DB::binaryColumn('n_surn'),
-                DB::binaryColumn('n_surname'),
             ]);
+
+        $query = DB::query()
+            ->fromSub($subquery, 'names')
+            ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+            ->groupBy(['n_surn', 'n_surname']);
 
         /** @var array<non-empty-array<int>> $top_surnames */
         $top_surnames = [];
@@ -124,7 +116,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($info_style) {
             case 'tagcloud':
-                uksort($top_surnames, I18N::comparator());
+                uksort($top_surnames, I18N::compare(...));
                 $content = view('lists/surnames-tag-cloud', [
                     'module'   => $module,
                     'params'   => [],
@@ -156,7 +148,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
             case 'table':
             default:
-                uksort($top_surnames, I18N::comparator());
+                uksort($top_surnames, I18N::compare(...));
                 $content = view('lists/surnames-table', [
                     'families' => false,
                     'module'   => $module,
@@ -194,8 +186,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -204,8 +194,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -214,8 +202,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -224,11 +210,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -241,11 +222,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
@@ -263,7 +239,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             'tagcloud' => I18N::translate('tag cloud'),
         ];
 
-        return view('modules/top10_surnames/config', [
+        return view('modules/top10-surnames/config', [
             'num'         => $num,
             'info_style'  => $info_style,
             'info_styles' => $info_styles,

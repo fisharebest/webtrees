@@ -41,12 +41,15 @@ use function array_diff;
 use function array_intersect;
 use function dirname;
 use function explode;
+use function in_array;
 use function intdiv;
 use function min;
 use function pathinfo;
 use function sha1;
 use function sort;
 use function str_contains;
+use function strpbrk;
+use function strtolower;
 use function strtoupper;
 use function strtr;
 use function trim;
@@ -59,6 +62,25 @@ use const UPLOAD_ERR_OK;
  */
 class MediaFileService
 {
+    // Characters that are not allowed in media filenames.
+    public const string BLOCKED_CHARACTERS = ':';
+
+    // Media files that are images are displayed.  Others (pdf, xls, txt, etc.) are downloaded.
+    // Block files with obvious executable extensions.
+    public const array BLOCKED_EXTENSIONS = [
+        'bash',
+        'bat',
+        'cgi',
+        'com',
+        'exe',
+        'htm',
+        'html',
+        'php',
+        'pl',
+        'sh',
+        'shtml',
+    ];
+
     private const array IGNORE_FOLDERS = [
         // Old versions of webtrees
         'thumbs',
@@ -92,7 +114,6 @@ class MediaFileService
     /**
      * A list of media files not already linked to a media object.
      *
-     * @param Tree $tree
      *
      * @return array<string>
      */
@@ -118,7 +139,6 @@ class MediaFileService
      * Store an uploaded file (or URL), either to be added to a media object
      * or to create a media object.
      *
-     * @param ServerRequestInterface $request
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
      * @throws FilesystemException
@@ -173,11 +193,28 @@ class MediaFileService
                     $folder .= '/';
                 }
 
+                $tmp = strpbrk($folder . $file, self::BLOCKED_CHARACTERS);
+
+                if ($tmp !== false) {
+                    $message = I18N::translate('Filenames are not allowed to contain the character “%s”.', $tmp[0]);
+                    FlashMessages::addMessage($message);
+
+                    return '';
+                }
+
+                $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+                if (in_array(strtolower($extension), self::BLOCKED_EXTENSIONS, true)) {
+                    $message = I18N::translate('Filenames are not allowed to have the extension “%s”.', $extension);
+                    FlashMessages::addMessage($message);
+
+                    return '';
+                }
+
                 // Generate a unique name for the file?
                 if ($auto === '1' || $tree->mediaFilesystem()->fileExists($folder . $file)) {
-                    $folder    = '';
-                    $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
-                    $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
+                    $folder = '';
+                    $file   = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
@@ -196,13 +233,6 @@ class MediaFileService
 
     /**
      * Convert the media file attributes into GEDCOM format.
-     *
-     * @param string $file
-     * @param string $type
-     * @param string $title
-     * @param string $note
-     *
-     * @return string
      */
     public function createMediaFileGedcom(string $file, string $type, string $title, string $note): string
     {
@@ -292,7 +322,6 @@ class MediaFileService
     /**
      * Generate a list of all folders used by a tree.
      *
-     * @param Tree $tree
      *
      * @return Collection<int,string>
      * @throws FilesystemException
@@ -312,7 +341,6 @@ class MediaFileService
     /**
      * Generate a list of all folders in either the database or the filesystem.
      *
-     * @param FilesystemOperator $data_filesystem
      *
      * @return Collection<array-key,string>
      * @throws FilesystemException
@@ -347,16 +375,12 @@ class MediaFileService
 
         return $disk_folders->concat($db_folders)
             ->uniqueStrict()
-            ->sort(I18N::comparator())
+            ->sort(I18N::compare(...))
             ->mapWithKeys(static fn (string $folder): array => [$folder => $folder]);
     }
 
     /**
      * Ignore special media folders.
-     *
-     * @param string $path
-     *
-     * @return bool
      */
     private function ignorePath(string $path): bool
     {

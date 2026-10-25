@@ -19,18 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 
-/**
- * Exception thrown when the server is overloaded.
- */
 class HttpServiceUnavailableException extends HttpException
 {
-    /**
-     * @param string $message
-     */
     public function __construct(string $message)
     {
-        parent::__construct($message, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
+        parent::__construct($message, HttpStatusCode::ServiceUnavailable);
     }
 }

@@ -34,9 +34,6 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
 
     private DataFixService $data_fix_service;
 
-    /**
-     * @param DataFixService $data_fix_service
-     */
     public function __construct(DataFixService $data_fix_service)
     {
         $this->data_fix_service = $data_fix_service;
@@ -58,7 +55,6 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
      * A list of all records that need examining.  This may include records
      * that do not need updating, if we can't detect this quickly using SQL.
      *
-     * @param Tree                 $tree
      * @param array<string,string> $params
      *
      * @return Collection<int,string>|null
@@ -73,10 +69,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
     /**
      * Does a record need updating?
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return bool
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
@@ -90,10 +83,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
     /**
      * Show the changes we would make
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return string
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
@@ -106,21 +96,13 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
     /**
      * Fix a record
      *
-     * @param GedcomRecord         $record
      * @param array<string,string> $params
-     *
-     * @return void
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
         $record->updateRecord($this->updateGedcom($record), false);
     }
 
-    /**
-     * @param GedcomRecord $record
-     *
-     * @return string
-     */
     private function updateGedcom(GedcomRecord $record): string
     {
         $gedcom = $record->gedcom();

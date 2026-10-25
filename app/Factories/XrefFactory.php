@@ -30,22 +30,12 @@ class XrefFactory implements XrefFactoryInterface
 {
     /**
      * Create a new XREF.
-     *
-     * @param string $record_type
-     *
-     * @return string
      */
     public function make(string $record_type): string
     {
         return $this->generate('X', '');
     }
 
-    /**
-     * @param string $prefix
-     * @param string $suffix
-     *
-     * @return string
-     */
     protected function generate(string $prefix, string $suffix): string
     {
         // Lock the row, so that only one new XREF may be generated at a time.

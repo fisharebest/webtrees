@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
-use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Http\Controllers\FamilyPage;
 use Illuminate\Support\Collection;
 
 /**
@@ -41,11 +41,9 @@ class Family extends GedcomRecord
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
      *
-     * @param string      $xref
      * @param string      $gedcom  an empty string for new/pending records
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
-     * @param Tree        $tree
      */
     public function __construct(string $xref, string $gedcom, string|null $pending, Tree $tree)
     {
@@ -63,26 +61,12 @@ class Family extends GedcomRecord
     }
 
     /**
-     * A closure which will compare families by marriage date.
-     *
-     * @return Closure(Family,Family):int
-     */
-    public static function marriageDateComparator(): Closure
-    {
-        return static fn (Family $x, Family $y): int => Date::compare($x->getMarriageDate(), $y->getMarriageDate());
-    }
-
-    /**
      * Get the male (or first female) partner of the family
-     *
-     * @param int|null $access_level
-     *
-     * @return Individual|null
      */
-    public function husband(int|null $access_level = null): Individual|null
+    public function husband(AccessLevel|null $access_level = null): Individual|null
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
+            $access_level = AccessLevel::Hidden;
         }
 
         if ($this->husb instanceof Individual && $this->husb->canShowName($access_level)) {
@@ -94,15 +78,11 @@ class Family extends GedcomRecord
 
     /**
      * Get the female (or second male) partner of the family
-     *
-     * @param int|null $access_level
-     *
-     * @return Individual|null
      */
-    public function wife(int|null $access_level = null): Individual|null
+    public function wife(AccessLevel|null $access_level = null): Individual|null
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
+            $access_level = AccessLevel::Hidden;
         }
 
         if ($this->wife instanceof Individual && $this->wife->canShowName($access_level)) {
@@ -114,12 +94,8 @@ class Family extends GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
@@ -136,12 +112,8 @@ class Family extends GedcomRecord
 
     /**
      * Can the name of this record be shown?
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
-    public function canShowName(int|null $access_level = null): bool
+    public function canShowName(AccessLevel|null $access_level = null): bool
     {
         // We can always see the name (Husband-name + Wife-name), however,
         // the name will often be "private + private"
@@ -150,13 +122,8 @@ class Family extends GedcomRecord
 
     /**
      * Find the spouse of a person.
-     *
-     * @param Individual $person
-     * @param int|null   $access_level
-     *
-     * @return Individual|null
      */
-    public function spouse(Individual $person, int|null $access_level = null): Individual|null
+    public function spouse(Individual $person, AccessLevel|null $access_level = null): Individual|null
     {
         if ($person === $this->wife) {
             return $this->husband($access_level);
@@ -168,11 +135,10 @@ class Family extends GedcomRecord
     /**
      * Get the (zero, one or two) spouses from this family.
      *
-     * @param int|null $access_level
      *
      * @return Collection<int,Individual>
      */
-    public function spouses(int|null $access_level = null): Collection
+    public function spouses(AccessLevel|null $access_level = null): Collection
     {
         $spouses = new Collection([
             $this->husband($access_level),
@@ -185,16 +151,15 @@ class Family extends GedcomRecord
     /**
      * Get a list of this family’s children.
      *
-     * @param int|null $access_level
      *
      * @return Collection<int,Individual>
      */
-    public function children(int|null $access_level = null): Collection
+    public function children(AccessLevel|null $access_level = null): Collection
     {
         $access_level ??= Auth::accessLevel($this->tree);
 
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
+            $access_level = AccessLevel::Hidden;
         }
 
         $children = new Collection();
@@ -212,8 +177,6 @@ class Family extends GedcomRecord
 
     /**
      * Number of children - for the individual list
-     *
-     * @return int
      */
     public function numberOfChildren(): int
     {
@@ -236,8 +199,6 @@ class Family extends GedcomRecord
 
     /**
      * Get marriage date
-     *
-     * @return Date
      */
     public function getMarriageDate(): Date
     {
@@ -251,18 +212,14 @@ class Family extends GedcomRecord
 
     /**
      * Get the marriage year - displayed on lists of families
-     *
-     * @return int
      */
     public function getMarriageYear(): int
     {
-        return $this->getMarriageDate()->minimumDate()->year;
+        return $this->getMarriageDate()->minimumDate()->year();
     }
 
     /**
      * Get the marriage place
-     *
-     * @return Place
      */
     public function getMarriagePlace(): Place
     {
@@ -386,8 +343,6 @@ class Family extends GedcomRecord
     /**
      * This function should be redefined in derived classes to show any major
      * identifying characteristics of this record.
-     *
-     * @return string
      */
     public function formatListDetails(): string
     {

@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileDownload;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail;
+use Fisharebest\Webtrees\Http\Controllers\MediaFileDownload;
+use Fisharebest\Webtrees\Http\Controllers\MediaFileThumbnail;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToReadFile;
@@ -69,9 +69,6 @@ class MediaFile
 
     /**
      * Create a MediaFile from raw GEDCOM data.
-     *
-     * @param string $gedcom
-     * @param Media  $media
      */
     public function __construct(string $gedcom, Media $media)
     {
@@ -97,8 +94,6 @@ class MediaFile
 
     /**
      * Get the format.
-     *
-     * @return string
      */
     public function format(): string
     {
@@ -107,8 +102,6 @@ class MediaFile
 
     /**
      * Get the type.
-     *
-     * @return string
      */
     public function type(): string
     {
@@ -117,8 +110,6 @@ class MediaFile
 
     /**
      * Get the title.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -127,17 +118,12 @@ class MediaFile
 
     /**
      * Get the fact ID.
-     *
-     * @return string
      */
     public function factId(): string
     {
         return $this->fact_id;
     }
 
-    /**
-     * @return bool
-     */
     public function isPendingAddition(): bool
     {
         foreach ($this->media->facts() as $fact) {
@@ -149,9 +135,6 @@ class MediaFile
         return false;
     }
 
-    /**
-     * @return bool
-     */
     public function isPendingDeletion(): bool
     {
         foreach ($this->media->facts() as $fact) {
@@ -170,8 +153,6 @@ class MediaFile
      * @param int                  $height           Pixels
      * @param string               $fit              "crop" or "contain"
      * @param array<string,string> $image_attributes Additional HTML attributes
-     *
-     * @return string
      */
     public function displayImage(int $width, int $height, string $fit, array $image_attributes = []): string
     {
@@ -196,16 +177,15 @@ class MediaFile
                     ]) . '>';
 
             $link_attributes = Html::attributes([
-                'class'      => 'gallery',
-                'type'       => $this->mimeType(),
-                'href'       => $this->downloadUrl('inline'),
-                'data-title' => strip_tags($this->media->fullName()),
+                'href'                  => $this->downloadUrl('inline'),
+                'data-wt-gallery'       => '1',
+                'data-wt-gallery-title' => strip_tags($this->media->fullName()),
+                'data-wt-gallery-title-url' => $this->media->url(),
             ]);
         } else {
             $image = view('icons/mime', ['type' => $this->mimeType()]);
 
             $link_attributes = Html::attributes([
-                'type' => $this->mimeType(),
                 'href' => $this->downloadUrl('inline'),
             ]);
         }
@@ -227,8 +207,6 @@ class MediaFile
      * @param int    $width  Maximum width in pixels
      * @param int    $height Maximum height in pixels
      * @param string $fit    "crop" or "contain"
-     *
-     * @return string
      */
     public function imageUrl(int $width, int $height, string $fit): string
     {
@@ -240,7 +218,7 @@ class MediaFile
             Site::setPreference('glide-key', $glide_key);
         }
 
-        // The "mark" parameter is ignored, but needed for cache-busting.
+        // The "mark" parameter is ignored but needed for cache-busting.
         $params = [
             'xref'      => $this->media->xref(),
             'tree'      => $this->media->tree()->name(),
@@ -248,7 +226,7 @@ class MediaFile
             'w'         => $width,
             'h'         => $height,
             'fit'       => $fit,
-            'mark'      => Registry::imageFactory()->thumbnailNeedsWatermark($this, Auth::user())
+            'mark'      => Auth::needsWatermark($this->media->tree()),
         ];
 
         $params['s'] = $this->signature($params);
@@ -267,8 +245,6 @@ class MediaFile
     /**
      * What is the mime-type of this object?
      * For simplicity and efficiency, use the extension, rather than the contents.
-     *
-     * @return string
      */
     public function mimeType(): string
     {
@@ -281,18 +257,16 @@ class MediaFile
      * Generate a URL to download a media file.
      *
      * @param string $disposition How should the image be returned: "attachment" or "inline"
-     *
-     * @return string
      */
     public function downloadUrl(string $disposition): string
     {
-        // The "mark" parameter is ignored, but needed for cache-busting.
+        // The "mark" parameter is ignored but needed for cache-busting.
         return route(MediaFileDownload::class, [
             'xref'        => $this->media->xref(),
             'tree'        => $this->media->tree()->name(),
             'fact_id'     => $this->fact_id,
             'disposition' => $disposition,
-            'mark'        => Registry::imageFactory()->fileNeedsWatermark($this, Auth::user())
+            'mark'        => Auth::needsWatermark($this->media->tree()),
         ]);
     }
 
@@ -337,8 +311,6 @@ class MediaFile
 
     /**
      * Read the contents of a media file.
-     *
-     * @return string
      */
     public function fileContents(): string
     {
@@ -351,8 +323,6 @@ class MediaFile
 
     /**
      * Check if the file exists on this server
-     *
-     * @return bool
      */
     public function fileExists(): bool
     {
@@ -363,9 +333,6 @@ class MediaFile
         }
     }
 
-    /**
-     * @return Media
-     */
     public function media(): Media
     {
         return $this->media;
@@ -373,8 +340,6 @@ class MediaFile
 
     /**
      * Get the filename.
-     *
-     * @return string
      */
     public function filename(): string
     {
@@ -386,8 +351,6 @@ class MediaFile
      * for compatibility with URLs generated by older versions of webtrees.
      *
      * @param array<mixed> $params
-     *
-     * @return string
      */
     public function signature(array $params): string
     {

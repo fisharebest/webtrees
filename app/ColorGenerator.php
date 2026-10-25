@@ -42,9 +42,6 @@ class ColorGenerator
      * Create a color generator.
      *
      * @param int   $hue        0Deg = Red, 120Deg = green, 240Deg = blue)
-     * @param int   $saturation
-     * @param int   $lightness
-     * @param float $alpha
      * @param int   $range      sign determines direction. positive = clockwise, negative = anticlockwise
      */
     public function __construct(int $hue, int $saturation, int $lightness, float $alpha, int $range)
@@ -64,11 +61,6 @@ class ColorGenerator
      * $lightness cycles between $baselightness and 100% in $lightnessStep steps
      * $hue cycles on each complete $lightness cycle
      * between $basehue and $basehue + $range degrees in $hueStep degrees
-     *
-     * @param int $lightnessStep
-     * @param int $hueStep
-     *
-     * @return string
      */
     public function getNextColor(int $lightnessStep = 10, int $hueStep = 15): string
     {

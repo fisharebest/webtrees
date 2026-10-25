@@ -39,8 +39,6 @@ class ElementFactory implements ElementFactoryInterface
      * Finds a likely element for custom tags.
      *
      * @param string $tag Colon delimited hierarchy, e.g. 'INDI:BIRT:PLAC'
-     *
-     * @return ElementInterface
      */
     public function make(string $tag): ElementInterface
     {

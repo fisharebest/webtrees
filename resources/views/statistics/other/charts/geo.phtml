@@ -2,22 +2,39 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Charts\GeoChartData;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var string                                            $chart_color2
- * @var string                                            $chart_color3
- * @var string                                            $chart_title
- * @var array<int,array<int|string|array<string,string>>> $data
- * @var string                                            $language
- * @var string                                            $region
+ * @var string       $chart_color2
+ * @var string       $chart_color3
+ * @var GeoChartData $chart_data
+ * @var string       $chart_title
+ * @var string       $language
+ * @var string       $region
  */
 
-$id   = 'google-chart-' . bin2hex(random_bytes(8));
-$name = 'callback_' . bin2hex(random_bytes(12));
+$id = 'wt-chart-' . bin2hex(random_bytes(8));
+
+$chart_options = [
+    'plugins'   => [
+        'title' => [
+            'display' => true,
+            'text'    => $chart_title,
+        ],
+    ],
+    'region'    => $region,
+    'colorAxis' => [
+        'colors' => [
+            '#' . $chart_color3,
+            '#' . $chart_color2,
+        ],
+    ],
+];
+
 ?>
 
-<?php if (count($data) === 1) : ?>
+<?php if (!$chart_data->hasData()) : ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else : ?>
     <div class="d-grid mb-3">
@@ -26,40 +43,15 @@ $name = 'callback_' . bin2hex(random_bytes(12));
                 <?= $chart_title ?>
             </div>
             <div class="card-body">
-                <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
+                <div class="wt-chart-container" style="height: 24rem;">
+                    <canvas id="<?= $id ?>"
+                            title="<?= $chart_title ?>"
+                            data-wt-chart-type="geo"
+                            data-wt-chart-data="<?= e(json_encode($chart_data, JSON_THROW_ON_ERROR)) ?>"
+                            data-wt-chart-options="<?= e(json_encode($chart_options, JSON_THROW_ON_ERROR)) ?>"
+                    ></canvas>
+                </div>
             </div>
         </div>
     </div>
-    <script>
-
-    let <?= $name ?> = function () {
-        statistics.drawGeoChart(
-            <?= json_encode($id, JSON_THROW_ON_ERROR) ?>,
-            <?= json_encode($data, JSON_THROW_ON_ERROR) ?>,
-            {
-                title: <?= json_encode($chart_title, JSON_THROW_ON_ERROR) ?>,
-                region: <?= json_encode($region, JSON_THROW_ON_ERROR) ?>,
-                colorAxis: {
-                    colors: [
-                        <?= json_encode('#' . $chart_color3, JSON_THROW_ON_ERROR) ?>,
-                        <?= json_encode('#' . $chart_color2, JSON_THROW_ON_ERROR) ?>
-                    ]
-                }
-            }
-        );
-    };
-
-    if (document.readyState === "complete"
-        || (document.readyState !== "loading" && !document.documentElement.doScroll)
-    ) {
-        statistics.init(<?= json_encode($language, JSON_THROW_ON_ERROR) ?>);
-        statistics.addCallback(<?= $name ?>);
-    } else {
-        document.addEventListener("DOMContentLoaded", function () {
-            statistics.init(<?= json_encode($language, JSON_THROW_ON_ERROR) ?>);
-            statistics.addCallback(<?= $name ?>);
-        });
-    }
-
-    </script>
 <?php endif; ?>

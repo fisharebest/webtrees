@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
+use Fisharebest\Webtrees\Http\Controllers\RepositoryPage;
 
 /**
  * A GEDCOM repository (REPO) object.
@@ -32,8 +32,6 @@ class Repository extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
-     *
-     * @return void
      */
     public function extractNames(): void
     {

@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\ExtCalendar\CalendarInterface;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Contracts\LanguageInterface;
 use Fisharebest\Webtrees\Relationship;
 
 /**
@@ -39,14 +39,10 @@ interface ModuleLanguageInterface extends ModuleInterface
 
     public function initialLetter(string $string): string;
 
-    public function locale(): LocaleInterface;
+    public function language(): LanguageInterface;
 
     /**
      * Ignore diacritics on letters - unless the language considers them a different letter.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function normalize(string $text): string;
 

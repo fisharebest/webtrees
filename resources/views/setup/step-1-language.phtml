@@ -2,26 +2,24 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var string                          $dbhost
- * @var string                          $dbname
- * @var string                          $dbpass
- * @var string                          $dbport
- * @var string                          $dbtype
- * @var string                          $dbuser
- * @var Collection<int,string>          $errors
- * @var string                          $lang
- * @var Collection<int,LocaleInterface> $locales
- * @var string                          $tblpfx
- * @var Collection<int,string>          $warnings
- * @var string                          $wtemail
- * @var string                          $wtname
- * @var string                          $wtpass
- * @var string                          $wtuser
+ * @var string                   $dbhost
+ * @var string                   $dbname
+ * @var string                   $dbpass
+ * @var string                   $dbport
+ * @var string                   $dbtype
+ * @var string                   $dbuser
+ * @var Collection<int,string>   $errors
+ * @var string                   $lang
+ * @var string                   $tblpfx
+ * @var Collection<int,string>   $warnings
+ * @var string                   $wtemail
+ * @var string                   $wtname
+ * @var string                   $wtpass
+ * @var string                   $wtuser
  */
 
 ?>
@@ -45,9 +43,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <select class="form-select" id="lang" name="lang">
-                <?php foreach ($locales as $locale) : ?>
-                    <option value="<?= $locale->languageTag() ?>" <?= $lang === $locale->languageTag() ? 'selected' : '' ?>>
-                        <?= $locale->endonym() ?>
+                <?php foreach (I18N::allLanguages() as $language_tag => $endonym) : ?>
+                    <option value="<?= $language_tag ?>" <?= $lang === $language_tag ? 'selected' : '' ?>>
+                        <?= $endonym ?>
                     </option>
                 <?php endforeach ?>
             </select>

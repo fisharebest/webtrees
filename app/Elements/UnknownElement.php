@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * An unrecognised GEDCOM element.
+ * An unrecognized GEDCOM element.
  */
 class UnknownElement extends AbstractElement
 {
     /**
      * Name for this GEDCOM primitive.
-     *
-     * @return string
      */
     public function label(): string
     {

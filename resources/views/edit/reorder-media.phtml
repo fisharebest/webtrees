@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaAction;
+use Fisharebest\Webtrees\Http\Controllers\ReorderMedia;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Media;
 
 /**
  * @var Individual $individual
@@ -16,17 +16,18 @@ use Fisharebest\Webtrees\View;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
-    <div class="wt-sortable-list">
+<form method="post" action="<?= e(route(ReorderMedia::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
+    <div class="wt-sortable-list" data-wt-sortable-list>
         <?php foreach ($individual->facts(['OBJE']) as $fact) : ?>
+            <?php $media = $fact->target(); ?>
             <div class="card my-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">
-                    <?= view('edit/reorder-card-header', ['title' => $fact->target()?->fullName() ?? '']) ?>
+                    <?= view('edit/reorder-card-header', ['title' => $media?->fullName() ?? '']) ?>
                 </div>
 
                 <div class="card-body">
-                    <?= $fact->target()?->displayImage(100, 100, 'contain', []) ?? '<div class="alert alert-danger">' . I18N::translate('%s does not exist.', e($fact->value())) . '</div>' ?>
+                    <?= $media instanceof Media ? $media->displayImage(100, 100, 'contain', []) : '<div class="alert alert-danger">' . I18N::translate('%s does not exist.', e($fact->value())) . '</div>' ?>
                 </div>
             </div>
         <?php endforeach ?>
@@ -46,11 +47,3 @@ use Fisharebest\Webtrees\View;
 
     <?= csrf_field() ?>
 </form>
-
-<?php View::push('javascript') ?>
-<script>
-    new Sortable(document.querySelector(".wt-sortable-list"), {
-        handle: ".card-header",
-    });
-</script>
-<?php View::endpush() ?>

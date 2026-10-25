@@ -26,7 +26,6 @@ use Illuminate\Support\Collection;
 
 use function array_map;
 use function explode;
-use function implode;
 use function strtoupper;
 use function trim;
 use function view;
@@ -94,10 +93,6 @@ class EventsRecorded extends AbstractElement
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -112,13 +107,6 @@ class EventsRecorded extends AbstractElement
 
     /**
      * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
@@ -133,25 +121,18 @@ class EventsRecorded extends AbstractElement
 
         // Our form element name contains "[]", and multiple selections would create multiple values.
         $hidden = '<input type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
-        // Combine them into a single value.
-        $js = 'document.getElementById("' . $id2 . '").addEventListener("change", function () { document.getElementById("' . $id . '").value = Array.from(document.getElementById("' . $id2 . '").selectedOptions).map(x => x.value).join(","); });';
 
         return view('components/select', [
-            'class'    => 'tom-select',
+            'class'    => 'tom-select wt-events-recorded-select',
             'name'     => '',
             'id'       => $id2,
             'options'  => $options,
             'selected' => explode(',', strtr($value, [' ' => ''])),
-        ]) . $hidden . '<script>' . $js . '</script>';
+        ]) . $hidden;
     }
 
     /**
      * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
      */
     public function value(string $value, Tree $tree): string
     {
@@ -169,6 +150,6 @@ class EventsRecorded extends AbstractElement
             return e($tag);
         }, $tags);
 
-        return implode(I18N::$list_separator, $events);
+        return I18N::listAnd($events);
     }
 }

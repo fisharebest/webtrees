@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -44,8 +45,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -54,16 +53,12 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
         $tree = $individual->tree();
         if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $fam_access_level = Auth::PRIV_HIDE;
+            $fam_access_level = AccessLevel::Hidden;
         } else {
             $fam_access_level = Auth::accessLevel($tree);
         }
@@ -82,10 +77,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -95,10 +86,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -107,8 +94,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool
     {

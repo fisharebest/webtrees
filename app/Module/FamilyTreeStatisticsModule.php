@@ -47,9 +47,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -70,12 +67,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -104,7 +96,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         extract($config, EXTR_OVERWRITE);
 
         if ($show_common_surnames === '1') {
-            $query = DB::table('name')
+            $subquery = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where('n_type', '<>', '_MARNM')
                 ->where('n_surn', '<>', '')
@@ -112,12 +104,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 ->select([
                     DB::binaryColumn('n_surn', 'n_surn'),
                     DB::binaryColumn('n_surname', 'n_surname'),
-                    new Expression('COUNT(*) AS total'),
-                ])
-                ->groupBy([
-                    DB::binaryColumn('n_surn'),
-                    DB::binaryColumn('n_surname'),
                 ]);
+
+            $query = DB::query()
+                ->fromSub($subquery, 'names')
+                ->select(['n_surn', 'n_surname', new Expression('COUNT(*) AS total')])
+                ->groupBy(['n_surn', 'n_surname']);
 
             /** @var array<array<int>> $top_surnames */
             $top_surnames = [];
@@ -149,7 +141,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             $surnames = '';
         }
 
-        $content = view('modules/gedcom_stats/statistics', [
+        $content = view('modules/gedcom-stats/statistics', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,
@@ -191,8 +183,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -201,8 +191,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -211,8 +199,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -221,11 +207,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -274,11 +255,6 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
@@ -302,7 +278,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         $stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
         $stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
-        return view('modules/gedcom_stats/config', [
+        return view('modules/gedcom-stats/config', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,

@@ -6,12 +6,16 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string                 $dbca
+ * @var string                 $dbcert
  * @var string                 $dbhost
+ * @var string                 $dbkey
  * @var string                 $dbname
  * @var string                 $dbpass
  * @var string                 $dbport
  * @var string                 $dbtype
  * @var string                 $dbuser
+ * @var string                 $dbverify
  * @var Collection<int,string> $errors
  * @var string                 $lang
  * @var string                 $tblpfx
@@ -33,7 +37,11 @@ use Illuminate\Support\Collection;
     <input name="dbpass" type="hidden" value="<?= e($dbpass) ?>">
     <input name="dbname" type="hidden" value="<?= e($dbname) ?>">
     <input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
-    <input name="baseurl" type="hidden" value="">
+    <input name="dbkey" type="hidden" value="<?= e($dbkey) ?>">
+    <input name="dbcert" type="hidden" value="<?= e($dbcert) ?>">
+    <input name="dbca" type="hidden" value="<?= e($dbca) ?>">
+    <input name="dbverify" type="hidden" value="<?= e($dbverify) ?>">
+    <input name="baseurl" type="hidden" value="" data-wt-base-url-field>
 
     <h2>
         <?= I18N::translate('Administrator account') ?>
@@ -111,7 +119,3 @@ use Illuminate\Support\Collection;
         </button>
     </div>
 </form>
-
-<script>
-  document.querySelector('input[name=baseurl]').value = decodeURI(location.href.split(/\?|#|index\.php/)[0].replace(/\/+$/, ''));
-</script>

@@ -38,8 +38,6 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
 
     /**
      * Name of the map provider.
-     *
-     * @return string
      */
     public function title(): string
     {
@@ -51,9 +49,6 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
         return false;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     public function getAdminAction(): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -68,11 +63,6 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $api_key = Validator::parsedBody($request)->string('username');

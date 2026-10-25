@@ -24,31 +24,20 @@ namespace Fisharebest\Webtrees\Contracts;
  */
 interface IdFactoryInterface
 {
-    /**
-     * @return string
-     */
     public function uuid(): string;
 
     /**
      * An identifier for use in CSS/HTML
-     *
-     * @param string $prefix
-     *
-     * @return string
      */
     public function id(string $prefix = 'id-'): string;
 
     /**
      * A value for _UID fields, as created by PAF
-     *
-     * @return string
      */
     public function pafUid(): string;
 
     /**
      * @param string $uid exactly 32 hex characters
-     *
-     * @return string
      */
     public function pafUidChecksum(string $uid): string;
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Contracts\ElementInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryAction;
+use Fisharebest\Webtrees\Http\Controllers\CreateRepository;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -14,7 +14,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<form method="post" action="<?= e(route(CreateRepositoryAction::class, ['tree' => $tree->name()])) ?>" id="wt-modal-form">
+<form method="post" action="<?= e(route(CreateRepository::class, ['tree' => $tree->name()])) ?>" id="wt-modal-form" data-wt-modal-submit>
     <?= view('modals/header', ['title' => I18N::translate('Create a repository')]) ?>
 
     <div class="modal-body">
@@ -25,7 +25,3 @@ use Fisharebest\Webtrees\Tree;
 
     <?= csrf_field() ?>
 </form>
-
-<script>
-  document.getElementById('wt-modal-form').addEventListener('submit', webtrees.createRecordModalSubmit);
-</script>

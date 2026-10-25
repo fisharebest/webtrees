@@ -998,12 +998,12 @@ class Gedcom
             'NOTE'             => [['RESN', '0:1', 'CHAN']],
             'NOTE:CHAN'        => [['_WT_USER', '0:1']],
             'NOTE:SOUR:DATA'   => [['TEXT', '0:1']],
-            'OBJE'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M']],
+            'OBJE'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M:?']],
             'OBJE:CHAN'        => [['_WT_USER', '0:1']],
             'OBJE:SOUR:DATA'   => [['TEXT', '0:1']],
-            'REPO'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M']],
+            'REPO'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M:?']],
             'REPO:CHAN'        => [['_WT_USER', '0:1']],
-            'SOUR'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M']],
+            'SOUR'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M:?']],
             'SOUR:CHAN'        => [['_WT_USER', '0:1']],
             'SUBM'             => [['RESN', '0:1', 'CHAN']],
             'SUBM:CHAN'        => [['_WT_USER', '0:1']],
@@ -1015,8 +1015,8 @@ class Gedcom
      */
     private function customSubTags(): array
     {
-        $custom_family_tags     = array_filter(explode(',', Site::getPreference('CUSTOM_FAMILY_TAGS')));
-        $custom_individual_tags = array_filter(explode(',', Site::getPreference('CUSTOM_INDIVIDUAL_TAGS')));
+        $custom_family_tags     = array_filter(explode(',', Site::getPreference('CUSTOM_FAMILY_TAGS')), static fn (string $value): bool => $value !== '');
+        $custom_individual_tags = array_filter(explode(',', Site::getPreference('CUSTOM_INDIVIDUAL_TAGS')), static fn (string $value): bool => $value !== '');
 
         $subtags = [
             'FAM'  => array_map(static fn (string $tag): array => [$tag, '0:M'], $custom_family_tags),
@@ -1106,12 +1106,6 @@ class Gedcom
         return $subtags;
     }
 
-    /**
-     * @param ElementFactoryInterface $element_factory
-     * @param bool                    $include_custom_tags
-     *
-     * @return void
-     */
     public function registerTags(ElementFactoryInterface $element_factory, bool $include_custom_tags): void
     {
         // Standard GEDCOM.

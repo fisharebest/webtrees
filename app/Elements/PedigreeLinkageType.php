@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 
 use function strtoupper;
@@ -45,10 +46,6 @@ class PedigreeLinkageType extends AbstractElement
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -58,14 +55,14 @@ class PedigreeLinkageType extends AbstractElement
     /**
      * A list of controlled values for this element
      *
-     * @param string $sex the text depends on the sex of the individual
+     * @TODO - This is the sex of the individual that has the fact.  Need to pass it in.
      *
      * @return array<int|string,string>
      */
-    public function values(string $sex = 'U'): array
+    public function values(Sex $sex = Sex::Unknown): array
     {
-        $values = [
-            'M' => [
+        return match ($sex) {
+            Sex::Male => [
                 ''                  => '',
                 self::VALUE_BIRTH   => I18N::translateContext('Male pedigree', 'Birth'),
                 self::VALUE_ADOPTED => I18N::translateContext('Male pedigree', 'Adopted'),
@@ -75,7 +72,7 @@ class PedigreeLinkageType extends AbstractElement
                 /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
                 self::VALUE_RADA    => I18N::translateContext('Male pedigree', 'Rada'),
             ],
-            'F' => [
+            Sex::Female => [
                 ''                  => '',
                 self::VALUE_BIRTH   => I18N::translateContext('Female pedigree', 'Birth'),
                 self::VALUE_ADOPTED => I18N::translateContext('Female pedigree', 'Adopted'),
@@ -85,7 +82,7 @@ class PedigreeLinkageType extends AbstractElement
                 /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
                 self::VALUE_RADA    => I18N::translateContext('Female pedigree', 'Rada'),
             ],
-            'U' => [
+            default => [
                 ''                  => '',
                 self::VALUE_BIRTH   => I18N::translateContext('Pedigree', 'Birth'),
                 self::VALUE_ADOPTED => I18N::translateContext('Pedigree', 'Adopted'),
@@ -95,8 +92,6 @@ class PedigreeLinkageType extends AbstractElement
                 /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
                 self::VALUE_RADA    => I18N::translateContext('Pedigree', 'Rada'),
             ],
-        ];
-
-        return $values[$sex] ?? $values['U'];
+        };
     }
 }

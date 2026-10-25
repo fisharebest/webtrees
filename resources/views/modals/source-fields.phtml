@@ -12,55 +12,55 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <div class="row mb-3">
-    <label class="col-form-label col-sm-2" for="source-title">
+    <label class="col-form-label col-sm-2" for="title">
         <?= I18N::translate('Title') ?>
     </label>
     <div class="col-sm-10">
-        <input class="form-control" type="text" id="source-title" name="source-title" required="required">
+        <input class="form-control" type="text" id="title" name="title" required="required">
     </div>
 </div>
 <div class="row mb-3">
-    <label class="col-form-label col-sm-2" for="source-abbreviation">
+    <label class="col-form-label col-sm-2" for="abbreviation">
         <?= I18N::translate('Abbreviation') ?>
     </label>
     <div class="col-sm-10">
-        <input class="form-control" type="text" id="source-abbreviation" name="source-abbreviation">
+        <input class="form-control" type="text" id="abbreviation" name="abbreviation">
     </div>
 </div>
 <div class="row mb-3">
-    <label class="col-form-label col-sm-2" for="source-author">
+    <label class="col-form-label col-sm-2" for="author">
         <?= I18N::translate('Author') ?>
     </label>
     <div class="col-sm-4">
-        <input class="form-control" type="text" id="source-author" name="source-author">
+        <input class="form-control" type="text" id="author" name="author">
     </div>
-    <label class="col-form-label col-sm-2" for="source-publication">
+    <label class="col-form-label col-sm-2" for="publication">
         <?= I18N::translate('Publication') ?>
     </label>
     <div class="col-sm-4">
-        <input class="form-control" type="text" id="source-publication" name="source-publication">
+        <input class="form-control" type="text" id="publication" name="publication">
     </div>
 </div>
 <div class="row mb-3">
-    <label class="col-form-label col-sm-2" for="source-repository">
+    <label class="col-form-label col-sm-2" for="repository">
         <?= I18N::translate('Repository') ?>
     </label>
     <div class="col-sm-4">
-        <?= view('components/select-repository', ['name' => 'source-repository', 'tree' => $tree]) ?>
+        <?= view('components/select-repository', ['name' => 'repository', 'tree' => $tree]) ?>
     </div>
-    <label class="col-form-label col-sm-2" for="source-call-number">
+    <label class="col-form-label col-sm-2" for="call_number">
         <?= I18N::translate('Call number') ?>
     </label>
     <div class="col-sm-4">
-        <input class="form-control" type="text" id="source-call-number" name="source-call-number">
+        <input class="form-control" type="text" id="call_number" name="call_number">
     </div>
 </div>
 <div class="row mb-3">
-    <label class="col-form-label col-sm-2" for="source-text">
+    <label class="col-form-label col-sm-2" for="text">
         <?= I18N::translate('Text') ?>
     </label>
     <div class="col-sm-10">
-        <textarea class="form-control" id="source-text" name="source-text" rows="5"></textarea>
+        <textarea class="form-control" id="text" name="text" rows="5"></textarea>
     </div>
 </div>
 
