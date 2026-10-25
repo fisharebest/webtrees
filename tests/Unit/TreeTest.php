@@ -267,13 +267,26 @@ class TreeTest extends TestCase
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $this->importTree('demo.ged');
-        self::assertNotNull($tree_service->all()->get('demo.ged'));
-        Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
+        self::assertNotNull($tree_service->all()->get('demo.ged'));
+
+        Site::setPreference('DEFAULT_GEDCOM', $tree->name());
         $tree_service->delete($tree);
 
-        self::assertNull($tree_service->all()->get('demo.ged'));
         self::assertSame('', Site::getPreference('DEFAULT_GEDCOM'));
+    }
+
+    public function testHasNoPendingEdits(): void
+    {
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
+        $tree         = $this->importTree('demo.ged');
+        $user         = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '1');
+        Auth::login($user);
+
+        $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        self::assertFalse($tree->hasPendingEdit());
     }
 
     public function testHasPendingEdits(): void
@@ -282,11 +295,8 @@ class TreeTest extends TestCase
         $tree         = $this->importTree('demo.ged');
         $user         = $user_service->create('admin', 'Administrator', 'admin@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
         Auth::login($user);
-
-        $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '1');
-        $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
-        self::assertFalse($tree->hasPendingEdit());
 
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
         $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");

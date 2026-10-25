@@ -674,7 +674,7 @@ final class LayoutEngine
             $dominant_style ??= $run->style;
         }
 
-        if ($total_text === '' || $dominant_style === null) {
+        if ($total_text === '') {
             return;
         }
 

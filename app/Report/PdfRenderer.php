@@ -131,6 +131,17 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
         // Emit page transparency groups only when the page actually blends.
         $tcpdf->setPageTransparencyGroup('auto');
 
+        // Make PDF metadata deterministic for regression testing and reproducible output.
+        $timestamp = $this->config->timestamp->getTimestamp();
+        $unique_id = md5(json_encode($this->config));
+        // @TODO - we can't set the TCPDF version string, so need to normalize this in the tests.
+
+        $tcpdf->setDocCreationDate($timestamp);
+        $tcpdf->setDocModificationDate($timestamp);
+        $tcpdf->setFileId($unique_id);
+        $tcpdf->setDocumentId($unique_id);
+        $tcpdf->setProducerSuffix('');
+
         $this->adaptor = new TcLibPdfAdaptor($tcpdf, $this, $this->config);
     }
 

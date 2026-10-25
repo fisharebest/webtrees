@@ -272,7 +272,6 @@ class BadBotBlocker implements MiddlewareInterface
         'Cision',
         'CISPA Webcrawler',
         'citeseerxbot',
-        'Citoid',
         'Clarity-Bot',
         'ClarityBot',
         'Claude-SearchBot',
@@ -1460,7 +1459,6 @@ class BadBotBlocker implements MiddlewareInterface
         'Zoombot',
         'ZoomInfo',
         'ZoominfoBot',
-        'ZoteroTranslationServer',
         'ZumBot',
         'ZuperlistBot',
         'ZyBorg',
@@ -1474,19 +1472,22 @@ class BadBotBlocker implements MiddlewareInterface
      * @see https://www.bing.com/webmaster/help/how-to-verify-bingbot-3905dc26
      * @see https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.html
      * @see https://www.mojeek.com/bot.html
+     * @see https://wikitech.wikimedia.org/wiki/Citoid/Allowlisting
      */
     private const array ROBOT_REV_FWD_DNS = [
-        'BingPreview'      => ['.search.msn.com'],
-        'Google'           => ['.google.com', '.googlebot.com'],
-        'Mail.RU_Bot'      => ['.mail.ru'],
-        'MicrosoftPreview' => ['.search.msn.com'],
-        'MojeekBot'        => ['.mojeek.com'],
-        'Qwantify'         => ['.qwant.com'],
-        'Sogou'            => ['.crawl.sogou.com'],
-        'Yahoo'            => ['.crawl.yahoo.net'],
-        'Yandex'           => ['.yandex.ru', '.yandex.net', '.yandex.com'],
-        'bingbot'          => ['.search.msn.com'],
-        'msnbot'           => ['.search.msn.com'],
+        'BingPreview'              => ['.search.msn.com'],
+        'Citoid'                   => ['.wikimedia.org'],
+        'Google'                   => ['.google.com', '.googlebot.com'],
+        'Mail.RU_Bot'              => ['.mail.ru'],
+        'MicrosoftPreview'         => ['.search.msn.com'],
+        'MojeekBot'                => ['.mojeek.com'],
+        'Qwantify'                 => ['.qwant.com'],
+        'Sogou'                    => ['.crawl.sogou.com'],
+        'Yahoo'                    => ['.crawl.yahoo.net'],
+        'Yandex'                   => ['.yandex.ru', '.yandex.net', '.yandex.com'],
+        'ZoteroTranslationServer'  => ['.wikimedia.org'],
+        'bingbot'                  => ['.search.msn.com'],
+        'msnbot'                   => ['.search.msn.com'],
     ];
 
     /**
