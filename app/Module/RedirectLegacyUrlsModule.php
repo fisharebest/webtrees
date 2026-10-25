@@ -19,36 +19,35 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectAncestryPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectBranchesPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectCalendarPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectCompactPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectDescendencyPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyBookPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectFanChartPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectGedRecordPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectHourGlassPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndiListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectIndividualPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectLifeSpanPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectMediaViewerPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectModulePhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectNoteListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectNotePhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectPedigreePhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectPlaceListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectRelationshipPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectRepoListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectReportEnginePhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectRepositoryPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectSourceListPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectSourcePhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectStatisticsPhp;
-use Fisharebest\Webtrees\Http\RequestHandlers\RedirectTimeLinePhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectAncestryPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectBranchesPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectCompactPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectDescendencyPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFamilyBookPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFamilyPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFamListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectFanChartPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectGedRecordPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectHourGlassPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectIndiListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectIndividualPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectLifeSpanPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectMediaListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectMediaViewerPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectModulePhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectNoteListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectNotePhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectPedigreePhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectPlaceListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectRelationshipPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectRepoListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectReportEnginePhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectRepositoryPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectSourceListPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectSourcePhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectStatisticsPhp;
+use Fisharebest\Webtrees\Http\Controllers\RedirectTimeLinePhp;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 
@@ -59,44 +58,40 @@ class RedirectLegacyUrlsModule extends AbstractModule
 {
     /**
      * Initialization.
-     *
-     * @return void
      */
     public function boot(): void
     {
-        $router_container = Registry::container()->get(RouterContainer::class);
-        $router           = $router_container->getMap();
+        $routes = Registry::container()->get(RouteCollection::class);
 
         // Legacy URLs from older software.
-        $router->get(RedirectAncestryPhp::class, '/ancestry.php', RedirectAncestryPhp::class);
-        $router->get(RedirectBranchesPhp::class, '/branches.php', RedirectBranchesPhp::class);
-        $router->get(RedirectCalendarPhp::class, '/calendar.php', RedirectCalendarPhp::class);
-        $router->get(RedirectCompactPhp::class, '/compact.php', RedirectCompactPhp::class);
-        $router->get(RedirectDescendencyPhp::class, '/compact.php', RedirectDescendencyPhp::class);
-        $router->get(RedirectFamilyPhp::class, '/family.php', RedirectFamilyPhp::class);
-        $router->get(RedirectFamListPhp::class, '/famlist.php', RedirectFamListPhp::class);
-        $router->get(RedirectFamilyBookPhp::class, '/familybook.php', RedirectFamilyBookPhp::class);
-        $router->get(RedirectFanChartPhp::class, '/fanchart.php', RedirectFanChartPhp::class);
-        $router->get(RedirectGedRecordPhp::class, '/gedrecord.php', RedirectGedRecordPhp::class);
-        $router->get(RedirectHourGlassPhp::class, '/hourglass.php', RedirectHourGlassPhp::class);
-        $router->get(RedirectIndiListPhp::class, '/indilist.php', RedirectIndiListPhp::class);
-        $router->get(RedirectIndividualPhp::class, '/individual.php', RedirectIndividualPhp::class);
-        $router->get(RedirectLifeSpanPhp::class, '/lifespan.php', RedirectLifeSpanPhp::class);
-        $router->get(RedirectMediaListPhp::class, '/medialist.php', RedirectMediaListPhp::class);
-        $router->get(RedirectMediaViewerPhp::class, '/mediaviewer.php', RedirectMediaViewerPhp::class);
-        $router->get(RedirectModulePhp::class, '/module.php', RedirectModulePhp::class);
-        $router->get(RedirectNotePhp::class, '/note.php', RedirectNotePhp::class);
-        $router->get(RedirectNoteListPhp::class, '/notelist.php', RedirectNoteListPhp::class);
-        $router->get(RedirectPedigreePhp::class, '/pedigree.php', RedirectPedigreePhp::class);
-        $router->get(RedirectPlaceListPhp::class, '/placelist.php', RedirectPlaceListPhp::class);
-        $router->get(RedirectRelationshipPhp::class, '/relationship.php', RedirectRelationshipPhp::class);
-        $router->get(RedirectRepositoryPhp::class, '/repository.php', RedirectRepositoryPhp::class);
-        $router->get(RedirectRepoListPhp::class, '/repolist.php', RedirectRepoListPhp::class);
-        $router->get(RedirectReportEnginePhp::class, '/reportengine.php', RedirectReportEnginePhp::class);
-        $router->get(RedirectSourceListPhp::class, '/sourcelist.php', RedirectSourceListPhp::class);
-        $router->get(RedirectSourcePhp::class, '/source.php', RedirectSourcePhp::class);
-        $router->get(RedirectStatisticsPhp::class, '/statistics.php', RedirectStatisticsPhp::class);
-        $router->get(RedirectTimeLinePhp::class, '/timeline.php', RedirectTimeLinePhp::class);
+        $routes->add('/ancestry.php', RedirectAncestryPhp::class);
+        $routes->add('/branches.php', RedirectBranchesPhp::class);
+        $routes->add('/compact.php', RedirectCompactPhp::class);
+        $routes->add('/descendency.php', RedirectDescendencyPhp::class);
+        $routes->add('/family.php', RedirectFamilyPhp::class);
+        $routes->add('/famlist.php', RedirectFamListPhp::class);
+        $routes->add('/familybook.php', RedirectFamilyBookPhp::class);
+        $routes->add('/fanchart.php', RedirectFanChartPhp::class);
+        $routes->add('/gedrecord.php', RedirectGedRecordPhp::class);
+        $routes->add('/hourglass.php', RedirectHourGlassPhp::class);
+        $routes->add('/indilist.php', RedirectIndiListPhp::class);
+        $routes->add('/individual.php', RedirectIndividualPhp::class);
+        $routes->add('/lifespan.php', RedirectLifeSpanPhp::class);
+        $routes->add('/medialist.php', RedirectMediaListPhp::class);
+        $routes->add('/mediaviewer.php', RedirectMediaViewerPhp::class);
+        $routes->add('/module.php', RedirectModulePhp::class);
+        $routes->add('/note.php', RedirectNotePhp::class);
+        $routes->add('/notelist.php', RedirectNoteListPhp::class);
+        $routes->add('/pedigree.php', RedirectPedigreePhp::class);
+        $routes->add('/placelist.php', RedirectPlaceListPhp::class);
+        $routes->add('/relationship.php', RedirectRelationshipPhp::class);
+        $routes->add('/repository.php', RedirectRepositoryPhp::class);
+        $routes->add('/repolist.php', RedirectRepoListPhp::class);
+        $routes->add('/reportengine.php', RedirectReportEnginePhp::class);
+        $routes->add('/sourcelist.php', RedirectSourceListPhp::class);
+        $routes->add('/source.php', RedirectSourcePhp::class);
+        $routes->add('/statistics.php', RedirectStatisticsPhp::class);
+        $routes->add('/timeline.php', RedirectTimeLinePhp::class);
     }
 
     public function description(): string

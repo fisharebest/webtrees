@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Timestamp;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var Timestamp $timestamp
+ * @var CarbonImmutable $timestamp
  */
 ?>
 
-<?php if ($timestamp->timestamp() === 0) : ?>
+<?php if ($timestamp->getTimestamp() === 0) : ?>
     <span class="wt-timestamp">
         <?= I18N::translate('Never') ?>
     </span>

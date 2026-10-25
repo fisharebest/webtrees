@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\EditNoteAction;
+use Fisharebest\Webtrees\Http\Controllers\EditNote;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
@@ -17,14 +17,16 @@ use Fisharebest\Webtrees\Tree;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditNoteAction::class, ['tree' => $tree->name(), 'xref' => $note->xref()])) ?>" class="wt-page-options">
+<form method="post" action="<?= e(route(EditNote::class, ['tree' => $tree->name(), 'xref' => $note->xref()])) ?>" class="wt-page-options">
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="NOTE">
             <?= I18N::translate('Shared note') ?>
         </label>
 
         <div class="col-sm-9 wt-page-options-value">
-            <textarea class="form-control" name="NOTE" id="NOTE" rows="10" dir="auto"><?= e($note->getNote()) ?></textarea>
+            <!-- HTML ignores the first newline in pre and textarea, so must add an exta one -->
+            <?= str_starts_with($note->getNote(), "\n") ? "\n" : '' ?>
+            <textarea class="form-control" name="NOTE" id="NOTE" rows="10" dir="auto"><?= str_starts_with($note->getNote(), "\n") ? "\n" : '' ?><?= e($note->getNote()) ?></textarea>
 
             <a class="wt-osk-trigger" data-wt-id="NOTE" href="#" title="<?= I18N::translate('Find a special character') ?>">
                 <?= view('icons/keyboard') ?>

@@ -1,0 +1,310 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string                                                            $title
+ * @var array<string,array{label:string,statements:list<string>}>         $jurisdictions
+ * @var array<string,array{title:string,text:string,fields:list<string>}> $all_statements
+ * @var string                                                            $jurisdiction
+ * @var list<string>                                                      $enabled
+ * @var string                                                            $controller_name
+ * @var string                                                            $controller_email
+ * @var string                                                            $controller_address
+ * @var string                                                            $impressum_name
+ * @var string                                                            $impressum_email
+ * @var string                                                            $impressum_address
+ * @var string                                                            $impressum_phone
+ * @var string                                                            $ml_name
+ * @var string                                                            $ml_email
+ * @var string                                                            $ml_address
+ * @var string                                                            $ml_phone
+ * @var string                                                            $ml_hosting
+ * @var string                                                            $dpo_name
+ * @var string                                                            $dpo_email
+ * @var string                                                            $children_age
+ * @var string                                                            $authority_name
+ * @var string                                                            $authority_url
+ * @var string                                                            $server_country
+ * @var string                                                            $custom_title
+ * @var string                                                            $custom_body
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<style>
+    .col-form-label:has(~ div .conditional-required:required)::after,
+    .col-form-label:has(~ div textarea.conditional-required:required)::after {
+        content: " *";
+        color: red;
+    }
+</style>
+
+<form method="post" id="privacy-policy-form">
+
+    <!-- Jurisdiction selector -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title"><?= I18N::translate('Jurisdiction') ?></h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <label for="jurisdiction" class="col-sm-3 col-form-label">
+                    <?= I18N::translate('Select your country or region') ?>
+                </label>
+                <div class="col-sm-9">
+                    <select id="jurisdiction" name="jurisdiction" class="form-select">
+                        <option value=""><?= I18N::translate('&lt;select&gt;') ?></option>
+                        <?php foreach ($jurisdictions as $code => $info) : ?>
+                            <option value="<?= e($code) ?>"
+                                    data-statements="<?= e(implode(',', $info['statements'])) ?>">
+                                <?= e($info['label']) ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                    <p class="form-text">
+                        <?= I18N::translate('Select your jurisdiction to automatically enable the required privacy statements. You can also enable or disable individual statements.') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statements -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2 class="card-title"><?= I18N::translate('Privacy statements') ?></h2>
+        </div>
+        <div class="card-body">
+            <p class="text-muted mb-3">
+                <?= I18N::translate('Select which statements to display on the public privacy policy page.') ?>
+            </p>
+            <?php foreach ($all_statements as $key => $statement) : ?>
+                <div class="form-check mb-2">
+                    <input class="form-check-input statement-checkbox" type="checkbox"
+                           name="statements[]" value="<?= e($key) ?>" id="stmt-<?= e($key) ?>"
+                           <?= in_array($key, $enabled, true) ? 'checked' : '' ?>
+                           data-key="<?= e($key) ?>">
+                    <label class="form-check-label" for="stmt-<?= e($key) ?>">
+                        <strong><?= e($statement['title']) ?></strong>
+                        — <span class="text-muted"><?= e($statement['text']) ?></span>
+                    </label>
+                </div>
+
+                <?php if ($key === 'controller') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="controller">
+                        <div class="row mb-2">
+                            <label for="controller_name" class="col-sm-3 col-form-label"><?= I18N::translate('Name') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="controller_name" name="controller_name" value="<?= e($controller_name) ?>" <?= in_array('controller', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="controller_email" class="col-sm-3 col-form-label"><?= I18N::translate('Email address') ?></label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control conditional-required" id="controller_email" name="controller_email" value="<?= e($controller_email) ?>" <?= in_array('controller', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="controller_address" class="col-sm-3 col-form-label"><?= I18N::translate('Postal address') ?></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="controller_address" name="controller_address" rows="2"><?= e($controller_address) ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'impressum') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="impressum">
+                        <div class="row mb-2">
+                            <label for="impressum_name" class="col-sm-3 col-form-label"><?= I18N::translate('Name') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="impressum_name" name="impressum_name" value="<?= e($impressum_name) ?>" <?= in_array('impressum', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="impressum_email" class="col-sm-3 col-form-label"><?= I18N::translate('Email address') ?></label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control conditional-required" id="impressum_email" name="impressum_email" value="<?= e($impressum_email) ?>" <?= in_array('impressum', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="impressum_address" class="col-sm-3 col-form-label"><?= I18N::translate('Postal address') ?></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control conditional-required" id="impressum_address" name="impressum_address" rows="2" <?= in_array('impressum', $enabled, true) ? 'required' : '' ?>><?= e($impressum_address) ?></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="impressum_phone" class="col-sm-3 col-form-label"><?= I18N::translate('Telephone') ?></label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control conditional-required" id="impressum_phone" name="impressum_phone" value="<?= e($impressum_phone) ?>" <?= in_array('impressum', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'mentions_legales') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="mentions_legales">
+                        <div class="row mb-2">
+                            <label for="ml_name" class="col-sm-3 col-form-label"><?= I18N::translate('Name') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="ml_name" name="ml_name" value="<?= e($ml_name) ?>" <?= in_array('mentions_legales', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="ml_email" class="col-sm-3 col-form-label"><?= I18N::translate('Email address') ?></label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control conditional-required" id="ml_email" name="ml_email" value="<?= e($ml_email) ?>" <?= in_array('mentions_legales', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="ml_address" class="col-sm-3 col-form-label"><?= I18N::translate('Postal address') ?></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control conditional-required" id="ml_address" name="ml_address" rows="2" <?= in_array('mentions_legales', $enabled, true) ? 'required' : '' ?>><?= e($ml_address) ?></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="ml_phone" class="col-sm-3 col-form-label"><?= I18N::translate('Telephone') ?></label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control conditional-required" id="ml_phone" name="ml_phone" value="<?= e($ml_phone) ?>" <?= in_array('mentions_legales', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="ml_hosting" class="col-sm-3 col-form-label"><?= I18N::translate('Hosting provider') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="ml_hosting" name="ml_hosting" value="<?= e($ml_hosting) ?>" <?= in_array('mentions_legales', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'dpo') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="dpo">
+                        <div class="row mb-2">
+                            <label for="dpo_name" class="col-sm-3 col-form-label"><?= I18N::translate('Name') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="dpo_name" name="dpo_name" value="<?= e($dpo_name) ?>" <?= in_array('dpo', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="dpo_email" class="col-sm-3 col-form-label"><?= I18N::translate('Email address') ?></label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control conditional-required" id="dpo_email" name="dpo_email" value="<?= e($dpo_email) ?>" <?= in_array('dpo', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'children') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="children">
+                        <div class="row mb-2">
+                            <label for="children_age" class="col-sm-3 col-form-label"><?= I18N::translate('Minimum age for consent') ?></label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control conditional-required" id="children_age" name="children_age" value="<?= e($children_age) ?>" min="13" max="18" style="width: 6rem;" <?= in_array('children', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'complaint') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="complaint">
+                        <div class="row mb-2">
+                            <label for="authority_name" class="col-sm-3 col-form-label"><?= I18N::translate('Supervisory authority') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="authority_name" name="authority_name" value="<?= e($authority_name) ?>" <?= in_array('complaint', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="authority_url" class="col-sm-3 col-form-label"><?= I18N::translate('Website') ?></label>
+                            <div class="col-sm-9">
+                                <input type="url" class="form-control" id="authority_url" name="authority_url" value="<?= e($authority_url) ?>">
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'data_localization') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="data_localization">
+                        <div class="row mb-2">
+                            <label for="server_country" class="col-sm-3 col-form-label"><?= I18N::translate('Server location') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="server_country" name="server_country" value="<?= e($server_country) ?>"  <?= in_array('data_localization', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($key === 'custom') : ?>
+                    <div class="ms-4 mb-3 ps-3 border-start" data-fields-for="custom">
+                        <div class="row mb-2">
+                            <label for="custom_title" class="col-sm-3 col-form-label"><?= I18N::translate('Title') ?></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control conditional-required" id="custom_title" name="custom_title" value="<?= e($custom_title) ?>" <?= in_array('custom', $enabled, true) ? 'required' : '' ?>>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label for="custom_body" class="col-sm-3 col-form-label"><?= I18N::translate('Body') ?></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control conditional-required" id="custom_body" name="custom_body" rows="4" <?= in_array('custom', $enabled, true) ? 'required' : '' ?>><?= e($custom_body) ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+
+            <?php endforeach ?>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <?= view('icons/save') ?>
+        <?= I18N::translate('save') ?>
+    </button>
+
+    <a href="<?= route(ControlPanel::class) ?>" class="btn btn-secondary">
+        <?= view('icons/cancel') ?>
+        <?= I18N::translate('cancel') ?>
+    </a>
+
+    <?= csrf_field() ?>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('jurisdiction');
+        const checkboxes = document.querySelectorAll('.statement-checkbox');
+
+        function updateFieldsVisibility(checkbox) {
+            const fieldsDiv = document.querySelector('[data-fields-for="' + checkbox.dataset.key + '"]');
+            if (fieldsDiv) {
+                fieldsDiv.style.display = checkbox.checked ? '' : 'none';
+                fieldsDiv.querySelectorAll('.conditional-required').forEach(function (input) {
+                    input.required = checkbox.checked;
+                });
+            }
+        }
+
+        checkboxes.forEach(function (cb) {
+            updateFieldsVisibility(cb);
+            cb.addEventListener('change', function () {
+                updateFieldsVisibility(cb);
+            });
+        });
+
+        select.addEventListener('change', function () {
+            const option = select.options[select.selectedIndex];
+            const required = (option.dataset.statements || '').split(',').filter(Boolean);
+
+            checkboxes.forEach(function (cb) {
+                cb.checked = required.includes(cb.dataset.key);
+                updateFieldsVisibility(cb);
+            });
+        });
+    });
+</script>

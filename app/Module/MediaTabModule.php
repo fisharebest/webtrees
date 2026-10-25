@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Illuminate\Support\Collection;
 
 use function preg_match;
@@ -33,14 +34,10 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    private ClipboardService $clipboard_service;
-
-    /**
-     * @param ClipboardService $clipboard_service
-     */
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
+    public function __construct(
+        private ClipboardService $clipboard_service,
+        private FactSortService $fact_sort_service,
+    ) {
     }
 
     public function title(): string
@@ -57,8 +54,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * The default position for this tab.  It can be changed in the control panel.
-     *
-     * @return int
      */
     public function defaultTabOrder(): int
     {
@@ -67,10 +62,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -80,10 +71,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * A greyed out tab has no actual content, but may perhaps have
      * options to create content.
-     *
-     * @param Individual $individual
-     *
-     * @return bool
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -92,10 +79,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * Generate the HTML content of this tab.
-     *
-     * @param Individual $individual
-     *
-     * @return string
      */
     public function getTabContent(Individual $individual): string
     {
@@ -110,13 +93,12 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * Get all the facts for an individual which contain media objects.
      *
-     * @param Individual $individual
      *
      * @return Collection<int,Fact>
      */
     protected function getFactsWithMedia(Individual $individual): Collection
     {
-        return Registry::cache()->array()->remember(self::class . ':' . __METHOD__, static function () use ($individual): Collection {
+        return Registry::cache()->array()->remember(self::class . ':' . __METHOD__, function () use ($individual): Collection {
             $facts = $individual->facts();
 
             foreach ($individual->spouseFamilies() as $family) {
@@ -127,14 +109,12 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
 
             $facts = $facts->filter(static fn (Fact $fact): bool => preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1);
 
-            return Fact::sortFacts($facts);
+            return $this->fact_sort_service->sort($facts);
         });
     }
 
     /**
      * Can this tab load asynchronously?
-     *
-     * @return bool
      */
     public function canLoadAjax(): bool
     {

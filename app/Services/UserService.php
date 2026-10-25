@@ -23,8 +23,10 @@ use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
+use Fisharebest\Webtrees\Enums\Role;
+use Fisharebest\Webtrees\Http\Controllers\Contact;
+use Fisharebest\Webtrees\Http\Controllers\Message;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
@@ -32,16 +34,20 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function max;
-use function time;
 
 /**
  * Functions for managing users.
  */
 class UserService
 {
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
+
     public function find(int|null $user_id): User|null
     {
         if ($user_id === null) {
@@ -98,7 +104,7 @@ class UserService
             ->where('us1.setting_value', '=', $token)
             ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
             ->where('us2.setting_name', '=', 'password-token-expire')
-            ->where('us2.setting_value', '>', time())
+            ->where('us2.setting_value', '>', $this->clock->now()->getTimestamp())
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper())
@@ -178,7 +184,7 @@ class UserService
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
-            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MANAGER)
+            ->where('user_gedcom_setting.setting_value', '=', Role::Manager->value)
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->distinct()
@@ -195,7 +201,7 @@ class UserService
         return DB::table('user')
             ->join('user_gedcom_setting', 'user_gedcom_setting.user_id', '=', 'user.user_id')
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
-            ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MODERATOR)
+            ->where('user_gedcom_setting.setting_value', '=', Role::Moderator->value)
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
             ->distinct()
@@ -290,10 +296,10 @@ class UserService
             ->where('user_id', '=', $user->id())
             ->update(['user_id' => null]);
 
-        // Take over the user’s pending changes. (What else could we do with them?)
+        // Take over the user's pending changes. (What else could we do with them?)
         DB::table('change')
             ->where('user_id', '=', $user->id())
-            ->where('status', '=', 'rejected')
+            ->where('status', '=', ChangeStatus::Rejected->value)
             ->delete();
 
         DB::table('change')
@@ -310,6 +316,13 @@ class UserService
         DB::table('user_gedcom_setting')->where('user_id', '=', $user->id())->delete();
         DB::table('user_setting')->where('user_id', '=', $user->id())->delete();
         DB::table('message')->where('user_id', '=', $user->id())->delete();
+
+        if (DB::driverName() === DB::SQL_SERVER) {
+            // SQL-Server cannot handle these foreign key constraints.
+            DB::table('gedcom')->where('contact_user_id', '=', $user->id())->update(['contact_user_id' => null]);
+            DB::table('gedcom')->where('support_user_id', '=', $user->id())->update(['support_user_id' => null]);
+        }
+
         DB::table('user')->where('user_id', '=', $user->id())->delete();
     }
 
@@ -318,18 +331,16 @@ class UserService
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
 
-        if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_MAILTO) {
-            $url = 'mailto:' . $contact_user->email();
-        } elseif ($user instanceof User) {
+        if ($user instanceof User) {
             // Logged-in users send direct messages
-            $url = route(MessagePage::class, [
-                'to' => $contact_user->userName(),
+            $url = route(Message::class, [
+                'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),
             ]);
         } else {
             // Visitors use the contact form.
-            $url = route(ContactPage::class, [
+            $url = route(Contact::class, [
                 'to'   => $contact_user->userName(),
                 'tree' => $tree->name(),
                 'url'  => (string) $request->getUri(),

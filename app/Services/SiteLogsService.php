@@ -39,10 +39,6 @@ class SiteLogsService
 {
     /**
      * Generate a query for filtering the changes log.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return Builder
      */
     public function logsQuery(ServerRequestInterface $request): Builder
     {
@@ -57,7 +53,7 @@ class SiteLogsService
         $query = DB::table('log')
             ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
             ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
-            ->select(['log.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), new Expression("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
+            ->select(['log.*', new Expression("COALESCE(user_name, '<--->') AS user_name"), new Expression("COALESCE(gedcom_name, '<--->') AS gedcom_name")]);
 
         $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
         $utc = new DateTimeZone('UTC');
@@ -91,11 +87,15 @@ class SiteLogsService
             $query->where('ip_address', 'LIKE', addcslashes($ip, '\\%_') . '%');
         }
 
-        if ($username !== '') {
+        if ($username === '<--->') {
+            $query->whereNull('user.user_id');
+        } elseif ($username !== '') {
             $query->where('user_name', '=', $username);
         }
 
-        if ($tree !== '') {
+        if ($tree === '<-->') {
+            $query->whereNull('gedcom.gedcom_id');
+        } elseif ($tree !== '') {
             $query->where('gedcom_name', '=', $tree);
         }
 

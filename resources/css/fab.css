@@ -372,11 +372,6 @@ table {
     padding: 4px;
     border-radius: 4px;
 }
-
-:focus {
-    outline-style: none;
-}
-
 .flash-messages {
     clear: both;
     text-align: center;
@@ -481,10 +476,6 @@ div.fact_SHARED_NOTE {
 
 .details_label {
     font-weight: bold;
-}
-
-.date {
-    color: #337;
 }
 
 .label {
@@ -839,15 +830,6 @@ div.faq_body {
 
 .wt-lifespans-summary-link {
     font-weight: bold;
-}
-
-/*
- * Any element that is loaded dynamically has the class wt-ajax-load.
- * We can provide a "loading" placeholder for empty elements with this class.
- */
-.wt-ajax-load:empty {
-    height: 32px;
-    background: url(images/loading-32x32.gif) no-repeat 50% 50%;
 }
 
 /*

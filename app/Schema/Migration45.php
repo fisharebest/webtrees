@@ -49,8 +49,15 @@ final readonly class Migration45 implements MigrationInterface
                 $table->integer(column: 'private')->default(value: 0)->index();
                 $table->integer(column: 'contact_user_id')->nullable()->index();
                 $table->integer(column: 'support_user_id')->nullable()->index();
-                $table->foreign(columns: ['contact_user_id'])->references(['user_id'])->on('user')->nullOnDelete()->cascadeOnUpdate();
-                $table->foreign(columns: ['support_user_id'])->references(['user_id'])->on('user')->nullOnDelete()->cascadeOnUpdate();
+
+                if (DB::driverName() === DB::SQL_SERVER) {
+                    // SQL-Server can't use CASCADE or SET NULL constraints here, as it can't handle multiple paths
+                    $table->foreign(columns: ['contact_user_id'])->references(['user_id'])->on('user');
+                    $table->foreign(columns: ['support_user_id'])->references(['user_id'])->on('user');
+                } else {
+                    $table->foreign(columns: ['contact_user_id'])->references(['user_id'])->on('user')->nullOnDelete()->cascadeOnUpdate();
+                    $table->foreign(columns: ['support_user_id'])->references(['user_id'])->on('user')->nullOnDelete()->cascadeOnUpdate();
+                }
             });
         }
 

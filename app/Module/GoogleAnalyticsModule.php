@@ -50,8 +50,6 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
 
     /**
      * Form fields to edit the parameters.
-     *
-     * @return string
      */
     public function analyticsFormFields(): string
     {
@@ -60,8 +58,6 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
 
     /**
      * Home page for the service.
-     *
-     * @return string
      */
     public function externalUrl(): string
     {
@@ -84,8 +80,6 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      * Embed placeholders in the snippet.
      *
      * @param array<string> $parameters
-     *
-     * @return string
      */
     public function analyticsSnippet(array $parameters): string
     {
@@ -98,14 +92,14 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
         if (str_starts_with($parameters['GOOGLE_ANALYTICS_ID'], 'UA-')) {
             $parameters['dimensions'] = (object) [
                 'dimension1' => $tree instanceof Tree ? $tree->name() : '-',
-                'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-',
+                'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user)->value : '-',
             ];
 
             return view('modules/google-analytics/snippet', $parameters);
         }
 
         $parameters['tree_name'] = $tree instanceof Tree ? $tree->name() : '-';
-        $parameters['access_level'] = $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-';
+        $parameters['access_level'] = $tree instanceof Tree ? Auth::accessLevel($tree, $user)->value : '-';
 
         return view('modules/google-analytics/snippet-v4', $parameters);
     }
@@ -113,8 +107,6 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     /**
      * Raw content, to be added at the end of the <head> element.
      * Typically, this will be <link> and <meta> elements.
-     *
-     * @return string
      */
     public function headContent(): string
     {

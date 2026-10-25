@@ -42,10 +42,6 @@ class LdsBaptismDateStatus extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {

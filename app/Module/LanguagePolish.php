@@ -19,60 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocalePl;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N\Languages\Polish;
 
 class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
-            'D',
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            UTF8::LATIN_CAPITAL_LETTER_L_WITH_STROKE,
-            'M',
-            'N',
-            'O',
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
-            'P',
-            'Q',
-            'R',
-            'S',
-            UTF8::LATIN_CAPITAL_LETTER_S_WITH_ACUTE,
-            'T',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_ACUTE,
-            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_DOT_ABOVE,
-        ];
+        $this->language = new Polish();
     }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocalePl();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

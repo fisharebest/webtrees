@@ -19,12 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 
 final readonly class CensusColumnBirthMonthDay extends AbstractCensusColumn implements CensusColumnInterface
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%M %j');
+        $date = Date::fromCalendarDate($individual->getEstimatedBirthDate()->minimumDate())->display();
+
+        $date = preg_replace('/(\s*|, )\d{3,4}\s*/', '', $date);
+        return preg_replace('/(\p{L}{3})\p{L}*/u', '$1', $date);
     }
 }

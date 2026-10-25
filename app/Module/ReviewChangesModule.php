@@ -22,11 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
+use Fisharebest\Webtrees\Http\Controllers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
-use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -37,9 +37,8 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function time;
 
 class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
@@ -51,19 +50,18 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param EmailService $email_service
-     * @param TreeService  $tree_service
-     * @param UserService  $user_service
-     */
+    private ClockInterface $clock;
+
     public function __construct(
         EmailService $email_service,
         TreeService $tree_service,
-        UserService $user_service
+        UserService $user_service,
+        ClockInterface $clock,
     ) {
         $this->email_service = $email_service;
         $this->tree_service  = $tree_service;
         $this->user_service  = $user_service;
+        $this->clock         = $clock;
     }
 
     public function title(): string
@@ -81,12 +79,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -98,7 +91,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         extract($config, EXTR_OVERWRITE);
 
         $changes_exist = DB::table('change')
-            ->where('status', 'pending')
+            ->where('status', ChangeStatus::Pending->value)
             ->exists();
 
         if ($changes_exist && $sendmail) {
@@ -106,34 +99,32 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             $next_email_timestamp = $last_email_timestamp + 86400 * $days;
 
             // There are pending changes - tell moderators/managers/administrators about them.
-            if ($next_email_timestamp < time()) {
+            if ($next_email_timestamp < $this->clock->now()->getTimestamp()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
-                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE) {
-                        foreach ($this->tree_service->all() as $tmp_tree) {
-                            if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
-                                I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
+                    foreach ($this->tree_service->all() as $tmp_tree) {
+                        if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
+                            I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
-                                $this->email_service->send(
-                                    new SiteUser(),
-                                    $user,
-                                    new TreeUser($tmp_tree),
-                                    I18N::translate('Pending changes'),
-                                    view('emails/pending-changes-text', [
-                                        'tree' => $tmp_tree,
-                                        'user' => $user,
-                                    ]),
-                                    view('emails/pending-changes-html', [
-                                        'tree' => $tmp_tree,
-                                        'user' => $user,
-                                    ])
-                                );
-                            }
+                            $this->email_service->send(
+                                new SiteUser(),
+                                $user,
+                                new TreeUser($tmp_tree),
+                                I18N::translate('Pending changes'),
+                                view('emails/pending-changes-text', [
+                                    'tree' => $tmp_tree,
+                                    'user' => $user,
+                                ]),
+                                view('emails/pending-changes-html', [
+                                    'tree' => $tmp_tree,
+                                    'user' => $user,
+                                ])
+                            );
                         }
                     }
                 }
                 I18N::init($old_language);
-                Site::setPreference('LAST_CHANGE_EMAIL', (string) time());
+                Site::setPreference('LAST_CHANGE_EMAIL', (string) $this->clock->now()->getTimestamp());
             }
         }
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
@@ -142,7 +133,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<a href="' . e(route(PendingChanges::class, ['tree' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail) {
-                $last_email_timestamp = Registry::timestampFactory()->make((int) Site::getPreference('LAST_CHANGE_EMAIL'));
+                $last_email_timestamp = Registry::timestampFactory()->fromEpoch((int) Site::getPreference('LAST_CHANGE_EMAIL'));
                 $next_email_timestamp = $last_email_timestamp->addDays($days);
 
                 $content .= I18N::translate('Last email reminder was sent ') . view('components/datetime', ['timestamp' => $last_email_timestamp]) . '<br>';
@@ -156,13 +147,13 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                     $query->select([new Expression('MAX(change_id)')])
                         ->from('change')
                         ->where('gedcom_id', '=', $tree->id())
-                        ->where('status', '=', 'pending')
+                        ->where('status', '=', ChangeStatus::Pending->value)
                         ->groupBy(['xref']);
                 })
                 ->get();
 
             foreach ($changes as $change) {
-                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree, $change->new_gedcom ?: $change->old_gedcom);
+                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree, $change->new_gedcom !== '' ? $change->new_gedcom : $change->old_gedcom);
                 if ($record->canShow()) {
                     $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }
@@ -189,8 +180,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -199,8 +188,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -209,8 +196,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -219,11 +204,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -236,18 +216,13 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
         $days     = $this->getBlockSetting($block_id, 'days', '1');
 
-        return view('modules/review_changes/config', [
+        return view('modules/review-changes/config', [
             'days'     => $days,
             'sendmail' => $sendmail,
         ]);

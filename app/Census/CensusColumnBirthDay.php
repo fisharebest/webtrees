@@ -25,6 +25,12 @@ final readonly class CensusColumnBirthDay extends AbstractCensusColumn implement
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%j');
+        $day = $individual->getEstimatedBirthDate()->minimumDate()->day();
+
+        if ($day === 0) {
+            return '';
+        }
+
+        return (string) $day;
     }
 }

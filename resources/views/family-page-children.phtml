@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
+use Fisharebest\Webtrees\Http\Controllers\AddChildToFamily;
+use Fisharebest\Webtrees\Http\Controllers\ReorderChildren;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -39,16 +39,16 @@ use Fisharebest\Webtrees\I18N;
     <?php endforeach ?>
     <?php if ($family->canEdit()) : ?>
         <div class="wt-chart-box">
-            <a class="btn btn-link" href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M'])) ?>">
+            <a class="btn btn-link" href="<?= e(route(AddChildToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M'])) ?>">
                 <?= I18N::translate('Add a son') ?>
             </a>
             |
-            <a class="btn btn-link" href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F'])) ?>">
+            <a class="btn btn-link" href="<?= e(route(AddChildToFamily::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F'])) ?>">
                 <?= I18N::translate('Add a daughter') ?>
             </a>
             <br>
             <?php if ($family->numberOfChildren() > 1) : ?>
-                <a class="btn btn-link" href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                <a class="btn btn-link" href="<?= e(route(ReorderChildren::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
                     <?= I18N::translate('Re-order children') ?>
                 </a>
             <?php endif ?>

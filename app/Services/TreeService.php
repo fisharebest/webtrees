@@ -23,6 +23,7 @@ use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -86,13 +87,13 @@ class TreeService
                     $query->where(static function (Builder $query): void {
                         $query
                             // Managers
-                            ->where('setting_value', '=', UserInterface::ROLE_MANAGER)
+                            ->where('setting_value', '=', Role::Manager->value)
                             // Members
                             ->orWhere(static function (Builder $query): void {
                                 $query
                                     ->where('imported', '=', 1)
                                     ->where('private', '=', 1)
-                                    ->where('setting_value', '<>', UserInterface::ROLE_VISITOR);
+                                    ->where('setting_value', '<>', Role::Visitor->value);
                             })
                             // Public trees
                             ->orWhere(static function (Builder $query): void {
@@ -116,10 +117,6 @@ class TreeService
 
     /**
      * Find a tree by its ID.
-     *
-     * @param int $id
-     *
-     * @return Tree
      */
     public function find(int $id): Tree
     {
@@ -198,12 +195,9 @@ class TreeService
     /**
      * Import data from a gedcom file into this tree.
      *
-     * @param Tree            $tree
      * @param StreamInterface $stream   The GEDCOM file.
      * @param string          $filename The preferred filename, for export/download.
      * @param string          $encoding Override the encoding specified in the header.
-     *
-     * @return void
      */
     public function importGedcomFile(Tree $tree, StreamInterface $stream, string $filename, string $encoding): void
     {
@@ -248,9 +242,6 @@ class TreeService
         fclose($stream);
     }
 
-    /**
-     * @param Tree $tree
-     */
     public function delete(Tree $tree): void
     {
         // If this is the default tree, then unset it
@@ -287,8 +278,6 @@ class TreeService
 
     /**
      * Generate a unique name for a new tree.
-     *
-     * @return string
      */
     public function uniqueTreeName(): string
     {

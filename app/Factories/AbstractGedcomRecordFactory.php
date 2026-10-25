@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -34,7 +35,6 @@ use function str_starts_with;
 abstract class AbstractGedcomRecordFactory
 {
     /**
-     * @param Tree $tree
      *
      * @return Collection<array-key,string>
      */
@@ -50,18 +50,13 @@ abstract class AbstractGedcomRecordFactory
             ->array()
             ->remember(self::class . $tree->id(), static fn (): Collection => DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
-                ->where('status', '=', 'pending')
+                ->where('status', '=', ChangeStatus::Pending->value)
                 ->orderBy('change_id')
                 ->pluck('new_gedcom', 'xref'));
     }
 
     /**
      * We may have searched for X123, but found the record for x123.
-     *
-     * @param string $gedcom
-     * @param string $xref
-     *
-     * @return string
      */
     protected function extractXref(string $gedcom, string $xref): string
     {

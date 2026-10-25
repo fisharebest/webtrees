@@ -32,7 +32,7 @@ class UseTransaction implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        DB::connection()->transaction(static function () use ($request, $handler, &$response): void {
+        DB::transaction(static function () use ($request, $handler, &$response): void {
             $response = $handler->handle($request);
         }, self::DEADLOCK_RETRY_ATTEMPTS);
 

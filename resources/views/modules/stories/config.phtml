@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAll;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -18,7 +19,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAll::class) => I18N::translate('Modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -34,7 +35,7 @@ use Illuminate\Support\Collection;
 </form>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
+    <a href="<?= e(route(ModuleAction::class, ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
         <?= view('icons/add') ?>
         <?= I18N::translate('Add a story') ?>
     </a>
@@ -42,7 +43,7 @@ use Illuminate\Support\Collection;
 
 <table
     id="wt-datatables-stories"
-    class="table table-bordered table-sm datatables d-none"
+    class="table table-bordered table-sm wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
         null,
@@ -80,13 +81,13 @@ use Illuminate\Support\Collection;
                     <?= e($story->title) ?>
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>" aria-label="<?= I18N::translate('Edit') ?>">
+                    <a class="btn btn-primary" href="<?= e(route(ModuleAction::class, ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>" aria-label="<?= I18N::translate('Edit') ?>">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit') ?>
                     </a>
                 </td>
                 <td>
-                    <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
+                    <form method="post" action="<?= e(route(ModuleAction::class, ['module' => 'stories', 'action' => 'AdminDelete', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
                         <button type="submit" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" aria-label="<?= I18N::translate('Delete') ?>">
                             <?= view('icons/delete') ?>
                             <?= I18N::translate('Delete') ?>

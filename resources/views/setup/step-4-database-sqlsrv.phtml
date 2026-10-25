@@ -6,12 +6,16 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string                 $dbca
+ * @var string                 $dbcert
  * @var string                 $dbhost
+ * @var string                 $dbkey
  * @var string                 $dbname
  * @var string                 $dbpass
  * @var string                 $dbport
  * @var string                 $dbtype
  * @var string                 $dbuser
+ * @var string                 $dbverify
  * @var Collection<int,string> $errors
  * @var string                 $lang
  * @var string                 $tblpfx
@@ -31,6 +35,10 @@ use Illuminate\Support\Collection;
     <input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">
     <input name="wtpass" type="hidden" value="<?= e($wtpass) ?>">
     <input name="wtemail" type="hidden" value="<?= e($wtemail) ?>">
+    <input name="dbkey" type="hidden" value="<?= e($dbkey) ?>">
+    <input name="dbcert" type="hidden" value="<?= e($dbcert) ?>">
+    <input name="dbca" type="hidden" value="<?= e($dbca) ?>">
+    <input name="dbverify" type="hidden" value="<?= e($dbverify) ?>">
 
     <h2>
         <?= I18N::translate('Database connection') ?> – SQL Server

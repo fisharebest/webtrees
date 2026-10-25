@@ -19,58 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\ExtCalendar\CalendarInterface;
-use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleYi;
+use Fisharebest\Webtrees\I18N\Languages\Yiddish;
 
 class LanguageYiddish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'א',
-            'ב',
-            'ג',
-            'ד',
-            'ה',
-            'ו',
-            'ז',
-            'ח',
-            'ט',
-            'י',
-            'כ',
-            'ל',
-            'מ',
-            'נ',
-            'ס',
-            'ע',
-            'פ',
-            'צ',
-            'ק',
-            'ר',
-            'ש',
-            'ת',
-        ];
+        $this->language = new Yiddish();
     }
-
-    public function calendar(): CalendarInterface
-    {
-        return new JewishCalendar();
-    }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleYi();
     }
 }

@@ -43,9 +43,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -66,18 +63,13 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
-        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
+        $default_xref     = $gedcomid !== '' ? $gedcomid : $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
@@ -155,10 +147,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
                     if ($module instanceof InteractiveTreeModule) {
                         $title = I18N::translate('Interactive tree of %s', $individual->fullName());
-                        $tv    = new TreeView();
-                        [$html, $js] = $tv->drawViewport($individual, 2);
-                        $js      = 'document.addEventListener("DOMContentLoaded", function() {' . $js . '});';
-                        $content = $html . '<script>' . $js . '</script>';
+                        $tv      = new TreeView();
+                        $content = $tv->drawViewport($individual, 2);
                     } else {
                         $title   = I18N::translate('Interactive tree');
                         $content = I18N::translate('The module “%s” has been disabled.', $title);
@@ -185,8 +175,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -195,11 +183,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int     $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -212,17 +195,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
-        $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
+        $default_xref     = $gedcomid !== '' ? $gedcomid : $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
@@ -233,7 +211,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             'hourglass'   => I18N::translate('Hourglass chart'),
             'treenav'     => I18N::translate('Interactive tree'),
         ];
-        uasort($charts, I18N::comparator());
+        uasort($charts, I18N::compare(...));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
 

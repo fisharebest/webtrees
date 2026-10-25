@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
+use Fisharebest\Webtrees\Http\Controllers\AccountDelete;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -142,17 +142,17 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <fieldset class="row">
-        <legend class="col-sm-3 col-form-label wt-page-options-label">
+    <div class="row">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="visible-online-1">
             <?= I18N::translate('Visible online') ?>
-        </legend>
+        </label>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/checkbox', ['label' => I18N::translate('Visible to other users when online'), 'name' => 'visible-online', 'checked' => (bool) $user->getPreference(UserInterface::PREF_IS_VISIBLE_ONLINE)]) ?>
             <div class="form-text" id="visible-online-description">
                 <?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
             </div>
         </div>
-    </fieldset>
+    </div>
 
     <div class="row mb-3">
         <div class="col-sm-3 wt-page-options-label"></div>

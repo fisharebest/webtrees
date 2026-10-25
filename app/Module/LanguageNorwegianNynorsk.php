@@ -19,71 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocaleNn;
 use Fisharebest\Webtrees\Encodings\UTF8;
-
-use function mb_substr;
+use Fisharebest\Webtrees\I18N\Languages\NorwegianNynorsk;
 
 class LanguageNorwegianNynorsk extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            'B',
-            'C',
-            'D',
-            'E',
-            'F',
-            'G',
-            'H',
-            'I',
-            'J',
-            'K',
-            'L',
-            'M',
-            'N',
-            'O',
-            'P',
-            'Q',
-            'R',
-            'S',
-            'T',
-            'U',
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            UTF8::LATIN_CAPITAL_LETTER_AE,
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_STROKE,
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
-        ];
+        $this->language = new NorwegianNynorsk();
     }
-
-    public function initialLetter(string $string): string
-    {
-        if (str_starts_with($string, 'AA')) {
-            return 'Å';
-        }
-
-        return mb_substr($string, 0, 1);
-    }
-
     public function isEnabledByDefault(): bool
     {
         return false;
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleNn();
     }
 
     /**

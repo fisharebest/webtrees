@@ -100,9 +100,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
     private CalendarService $calendar_service;
 
-    /**
-     * @param CalendarService $calendar_service
-     */
     public function __construct(CalendarService $calendar_service)
     {
         $this->calendar_service = $calendar_service;
@@ -123,12 +120,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -151,8 +143,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Registry::timestampFactory()->now()->addDays(1)->julianDay();
-        $endjd   = Registry::timestampFactory()->now()->addDays($days)->julianDay();
+        $startjd = Registry::timestampFactory()->todayJulianDay() + 1;
+        $endjd   = Registry::timestampFactory()->todayJulianDay() + $days;
 
         $facts = $this->calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
@@ -171,7 +163,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 }
             }
 
-            $content = view('modules/upcoming_events/empty', ['message' => $message]);
+            $content = view('modules/upcoming-events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,
@@ -205,8 +197,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -215,8 +205,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -225,8 +213,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {
@@ -235,11 +221,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
     /**
      * Update the configuration for a block.
-     *
-     * @param ServerRequestInterface $request
-     * @param int                    $block_id
-     *
-     * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
@@ -247,7 +228,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $filter     = Validator::parsedBody($request)->boolean('filter');
         $info_style = Validator::parsedBody($request)->isInArrayKeys($this->infoStyles())->string('infoStyle');
         $sort_style = Validator::parsedBody($request)->isInArrayKeys($this->sortStyles())->string('sortStyle');
-        $events     = Validator::parsedBody($request)->array('events');
+        $events     = Validator::parsedBody($request)->list('events');
 
         $this->setBlockSetting($block_id, 'days', (string)$days);
         $this->setBlockSetting($block_id, 'filter', (string)$filter);
@@ -258,11 +239,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
     /**
      * An HTML form to edit block settings
-     *
-     * @param Tree $tree
-     * @param int  $block_id
-     *
-     * @return string
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
@@ -281,7 +257,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
             $all_events[$event] = Registry::elementFactory()->make($tag)->label();
         }
 
-        return view('modules/upcoming_events/config', [
+        return view('modules/upcoming-events/config', [
             'all_events'  => $all_events,
             'days'        => $days,
             'event_array' => $event_array,

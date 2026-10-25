@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Contracts\ResponseFactoryInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
@@ -46,10 +46,6 @@ class ResponseFactory implements ResponseFactoryInterface
 
     private StreamFactoryInterface $stream_factory;
 
-    /**
-     * @param PSR17ResponseFactoryInterface $response_factory
-     * @param StreamFactoryInterface        $stream_factory
-     */
     public function __construct(PSR17ResponseFactoryInterface $response_factory, StreamFactoryInterface $stream_factory)
     {
         $this->response_factory = $response_factory;
@@ -59,17 +55,12 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Redirect to a named route.
      *
-     * @param string                                    $route_name
      * @param array<bool|int|string|array<string>|null> $parameters
-     * @param int                                       $status
-     *
-     * @return ResponseInterface
-     *
      */
     public function redirect(
         string $route_name,
         array $parameters = [],
-        int $status = StatusCodeInterface::STATUS_FOUND
+        HttpStatusCode $status = HttpStatusCode::Found
     ): ResponseInterface {
         $url = Registry::routeFactory()->route($route_name, $parameters);
 
@@ -78,30 +69,22 @@ class ResponseFactory implements ResponseFactoryInterface
 
     /**
      * Redirect to a URL.
-     *
-     * @param UriInterface|string $url
-     * @param int                 $code
-     *
-     * @return ResponseInterface
      */
-    public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+    public function redirectUrl(UriInterface|string $url, HttpStatusCode $code = HttpStatusCode::Found): ResponseInterface
     {
         return $this->response_factory
-            ->createResponse($code)
+            ->createResponse($code->value)
             ->withHeader('location', (string) $url);
     }
 
     /**
      * @param string|array<mixed>|object $content
-     * @param int                        $code
      * @param array<string,string>       $headers
-     *
-     * @return ResponseInterface
      */
-    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+    public function response(string|array|object $content = '', HttpStatusCode $code = HttpStatusCode::OK, array $headers = []): ResponseInterface
     {
-        if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
-            $code = StatusCodeInterface::STATUS_NO_CONTENT;
+        if ($content === '' && $code === HttpStatusCode::OK) {
+            $code = HttpStatusCode::NoContent;
         }
 
         if (is_string($content)) {
@@ -114,7 +97,7 @@ class ResponseFactory implements ResponseFactoryInterface
         $stream = $this->stream_factory->createStream($content);
 
         $response = $this->response_factory
-            ->createResponse($code)
+            ->createResponse($code->value)
             ->withBody($stream);
 
         foreach ($headers as $key => $value) {
@@ -127,17 +110,12 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Create and render a view, and embed it in an HTML page.
      *
-     * @param string              $view_name
      * @param array<string,mixed> $view_data
-     * @param int                 $status
-     * @param string              $layout_name
-     *
-     * @return ResponseInterface
      */
     public function view(
         string $view_name,
         array $view_data,
-        int $status = StatusCodeInterface::STATUS_OK,
+        HttpStatusCode $status = HttpStatusCode::OK,
         string $layout_name = Webtrees::LAYOUT_DEFAULT
     ): ResponseInterface {
         // Render the view.

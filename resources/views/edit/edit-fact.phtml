@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
+use Fisharebest\Webtrees\Http\Controllers\EditFact;
+use Fisharebest\Webtrees\Http\Controllers\EditRawFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(EditFact::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom, 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => '']) ?>
@@ -54,7 +54,7 @@ use Fisharebest\Webtrees\Tree;
             <?php endif; ?>
 
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url])) ?>">
+                <a class="btn btn-link" href="<?= e(route(EditRawFact::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>

@@ -1396,6 +1396,32 @@
 2 DATE 26 MAY 2012
 3 TIME 09:39:19
 2 _WT_USER greg
+0 @X1167@ INDI
+1 NAME דוד /בן-גוריון/
+2 GIVN דוד
+2 SURN בן-גוריון
+1 SEX M
+1 BIRT
+2 DATE 16 OCT 1886
+2 PLAC פלונסק, פולין
+1 DEAT
+2 DATE 1 DEC 1973
+2 PLAC שדה בוקר, ישראל
+1 OCCU ראש ממשלה
+1 NOTE הוא היה ראש הממשלה הראשון של מדינת ישראל.
+1 FAMS @f30@
+0 @X1168@ INDI
+1 NAME פולה /בן-גוריון/
+2 GIVN פולה
+2 SURN בן-גוריון
+1 SEX F
+1 BIRT
+2 DATE 1892
+2 PLAC מינסק, רוסיה
+1 DEAT
+2 DATE 29 JAN 1968
+2 PLAC ירושלים, ישראל
+1 FAMS @f30@
 0 @f1@ FAM
 1 HUSB @X1041@
 1 WIFE @X1030@
@@ -1853,6 +1879,12 @@
 3 PAGE https://en.wikipedia.org/wiki/Albert,_Prince_Consort
 2 OBJE @X1123@
 1 CHIL @X1070@
+0 @f30@ FAM
+1 HUSB @X1167@
+1 WIFE @X1168@
+1 MARR
+2 DATE 1917
+2 PLAC ניו יורק, ארצות הברית
 0 @X1102@ SOUR
 1 TITL Wikipedia
 1 CHAN

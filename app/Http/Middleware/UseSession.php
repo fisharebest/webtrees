@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -30,7 +31,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function session_destroy;
 use function session_status;
-use function time;
 
 use const PHP_SESSION_ACTIVE;
 
@@ -38,6 +38,10 @@ class UseSession implements MiddlewareInterface
 {
     // To avoid read-write contention on the wt_user_setting table, don't update the last-active time on every request.
     private const int UPDATE_ACTIVITY_INTERVAL = 60;
+
+    public function __construct(private readonly ClockInterface $clock)
+    {
+    }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -48,16 +52,17 @@ class UseSession implements MiddlewareInterface
         }
 
         // Sessions
-        Session::start($request);
+        Session::start($request, $this->clock);
 
         $user = Auth::user();
 
         // Update the last-login time.
         if (Session::get('masquerade') === null) {
+            $now  = $this->clock->now()->getTimestamp();
             $last = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
 
-            if (time() - $last >= self::UPDATE_ACTIVITY_INTERVAL) {
-                $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
+            if ($now - $last >= self::UPDATE_ACTIVITY_INTERVAL) {
+                $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) $now);
             }
         }
 

@@ -19,13 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Charts\GeoChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\UnknownElement;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
+use Fisharebest\Webtrees\Enums\ContactMethod;
+use Fisharebest\Webtrees\Enums\SortOrder;
+use Fisharebest\Webtrees\Enums\Sex;
+use Fisharebest\Webtrees\Enums\TextDirection;
+use Fisharebest\Webtrees\Http\Controllers\Message;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
-use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Illuminate\Database\Query\Builder;
@@ -70,7 +74,7 @@ readonly class StatisticsData
             ->avg('f_numchil');
     }
 
-    public function averageLifespanDays(string $sex): int
+    public function averageLifespanDays(Sex|null $sex): int
     {
         return (int) $this->birthAndDeathQuery($sex)
             ->select([new Expression('AVG(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
@@ -80,7 +84,7 @@ readonly class StatisticsData
     /**
      * @return Collection<string,int>
      */
-    public function commonGivenNames(string $sex, int $threshold, int $limit): Collection
+    public function commonGivenNames(Sex|null $sex, int $threshold, int $limit): Collection
     {
         $query = DB::table('name')
             ->where('n_file', '=', $this->tree->id())
@@ -88,21 +92,20 @@ readonly class StatisticsData
             ->where('n_givn', '<>', Individual::PRAENOMEN_NESCIO)
             ->where(new Expression('LENGTH(n_givn)'), '>', 1);
 
-        if ($sex !== 'ALL') {
+        if ($sex !== null) {
             $query
                 ->join('individuals', static function (JoinClause $join): void {
                     $join
                         ->on('i_file', '=', 'n_file')
                         ->on('i_id', '=', 'n_id');
                 })
-                ->where('i_sex', '=', $sex);
+                ->where('i_sex', '=', $sex->value);
         }
 
         $rows = $query
             ->groupBy(['n_givn'])
             ->pluck(new Expression('COUNT(DISTINCT n_id) AS total'), 'n_givn')
             ->map(static fn (int|string $count): int => (int) $count);
-
 
         $given_names = [];
 
@@ -112,7 +115,7 @@ readonly class StatisticsData
                 // Exclude initials and particles.
                 if (preg_match('/^([A-Z]|[a-z]{1,3})$/', $given) !== 1) {
                     $given_names[$given] ??= 0;
-                    $given_names[$given] += (int) $count;
+                    $given_names[$given] += $count;
                 }
             }
         }
@@ -136,7 +139,7 @@ readonly class StatisticsData
             ->select(['n_surn'])
             ->groupBy(['n_surn'])
             ->orderByRaw('COUNT(n_surn) DESC')
-            ->orderBy(new Expression('COUNT(n_surn)'), 'DESC')
+            ->orderBy(new Expression('COUNT(n_surn)'), SortOrder::Descending->value)
             ->having(new Expression('COUNT(n_surn)'), '>=', $threshold)
             ->take($limit)
             ->pluck('n_surn')
@@ -160,7 +163,7 @@ readonly class StatisticsData
         switch ($sort) {
             default:
             case 'alpha':
-                uksort($surnames, I18N::comparator());
+                uksort($surnames, I18N::compare(...));
                 break;
             case 'count':
                 break;
@@ -503,11 +506,11 @@ readonly class StatisticsData
             ->count();
     }
 
-    public function countIndividualsBySex(string $sex): int
+    public function countIndividualsBySex(Sex $sex): int
     {
         return DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
-            ->where('i_sex', '=', $sex)
+            ->where('i_sex', '=', $sex->value)
             ->count();
     }
 
@@ -549,7 +552,7 @@ readonly class StatisticsData
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->distinct()
-            ->count(['i_id']);
+            ->count('i_id');
     }
 
     public function countIndividualsWithSources(): int
@@ -616,6 +619,13 @@ readonly class StatisticsData
             ->all();
     }
 
+    public function countMediaObjects(): int
+    {
+        return DB::table('media')
+            ->where('m_file', '=', $this->tree->id())
+            ->count();
+    }
+
     public function countNotes(): int
     {
         return DB::table('other')
@@ -657,7 +667,7 @@ readonly class StatisticsData
 
         foreach (array_slice($places, 0, $limit) as $place => $count) {
             $records[] = [
-                'place' => new Place((string) $place, $this->tree),
+                'place' => new Place((string) $place, $this->tree), // @phpstan-ignore cast.useless (PHP converts numeric string keys to int)
                 'count' => $count,
             ];
         }
@@ -785,7 +795,7 @@ readonly class StatisticsData
      *
      * @return object{id:string,year:int,fact:string,type:string}|null
      */
-    private function firstEvent(array $events, bool $ascending): object|null
+    private function firstEvent(array $events, SortOrder $order): object|null
     {
         if ($events === []) {
             $events = [
@@ -801,7 +811,7 @@ readonly class StatisticsData
             ->where('d_file', '=', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->where('d_julianday1', '<>', 0)
-            ->orderBy('d_julianday1', $ascending ? 'ASC' : 'DESC')
+            ->orderBy('d_julianday1', $order->value)
             ->limit(1)
             ->get()
             ->map(static fn (object $row): object => (object) [
@@ -816,9 +826,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventName(array $events, bool $ascending): string
+    public function firstEventName(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row !== null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
@@ -834,9 +844,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventPlace(array $events, bool $ascending): string
+    public function firstEventPlace(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row !== null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
@@ -857,9 +867,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventRecord(array $events, bool $ascending): string
+    public function firstEventRecord(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
         $result = I18N::translate('This information is not available.');
 
         if ($row !== null) {
@@ -878,9 +888,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventType(array $events, bool $ascending): string
+    public function firstEventType(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row === null) {
             return '';
@@ -900,9 +910,9 @@ readonly class StatisticsData
     /**
      * @param array<string> $events
      */
-    public function firstEventYear(array $events, bool $ascending): string
+    public function firstEventYear(array $events, SortOrder $order): string
     {
-        $row = $this->firstEvent($events, $ascending);
+        $row = $this->firstEvent($events, $order);
 
         if ($row === null) {
             return '-';
@@ -970,7 +980,7 @@ readonly class StatisticsData
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
             ->select(['link1.l_from AS family', 'link1.l_to AS child1', 'link2.l_to AS child2', new Expression(DB::prefix('child2.d_julianday2') . ' - ' . DB::prefix('child1.d_julianday1') . ' AS age')])
-            ->orderBy('age', 'DESC')
+            ->orderBy('age', SortOrder::Descending->value)
             ->take($limit)
             ->get()
             ->map(fn (object $row): object => (object) [
@@ -988,7 +998,7 @@ readonly class StatisticsData
     /**
      * @return Collection<int,Individual>
      */
-    public function topTenOldestAliveQuery(string $sex, int $limit): Collection
+    public function topTenOldestAliveQuery(Sex|null $sex, int $limit): Collection
     {
         $query = DB::table('dates')
             ->join('individuals', static function (JoinClause $join): void {
@@ -1003,12 +1013,12 @@ readonly class StatisticsData
             ->where('i_gedcom', 'NOT LIKE', "%\n1 BURI%")
             ->where('i_gedcom', 'NOT LIKE', "%\n1 CREM%");
 
-        if ($sex === 'F' || $sex === 'M' || $sex === 'U' || $sex === 'X') {
-            $query->where('i_sex', '=', $sex);
+        if ($sex !== null) {
+            $query->where('i_sex', '=', $sex->value);
         }
 
         return $query
-            ->groupBy(['i_id', 'i_file'])
+            ->groupBy(['i_id', 'i_file', 'i_rin', 'i_sex', 'i_gedcom'])
             ->orderBy(new Expression('MIN(d_julianday1)'))
             ->select(['individuals.*'])
             ->take($limit)
@@ -1088,7 +1098,7 @@ readonly class StatisticsData
      *
      * @return array<object{days:int}>
      */
-    public function statsAgeQuery(string $sex, int $year1, int $year2): array
+    public function statsAgeQuery(Sex|null $sex, int $year1, int $year2): array
     {
         $query = $this->birthAndDeathQuery($sex);
 
@@ -1101,13 +1111,13 @@ readonly class StatisticsData
 
         return $query
             ->select([new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
-            ->orderBy('days', 'desc')
+            ->orderBy('days', SortOrder::Descending->value)
             ->get()
             ->map(static fn (object $row): object => (object) ['days' => (int) $row->days])
             ->all();
     }
 
-    private function birthAndDeathQuery(string $sex): Builder
+    private function birthAndDeathQuery(Sex|null $sex): Builder
     {
         $query = DB::table('individuals')
             ->where('i_file', '=', $this->tree->id())
@@ -1126,8 +1136,8 @@ readonly class StatisticsData
             ->whereColumn('death.d_julianday1', '>=', 'birth.d_julianday2')
             ->where('birth.d_julianday2', '<>', 0);
 
-        if ($sex !== 'ALL') {
-            $query->where('i_sex', '=', $sex);
+        if ($sex !== null) {
+            $query->where('i_sex', '=', $sex->value);
         }
 
         return $query;
@@ -1136,10 +1146,10 @@ readonly class StatisticsData
     /**
      * @return object{individual:Individual,days:int}|null
      */
-    public function longlifeQuery(string $sex): object|null
+    public function longlifeQuery(Sex|null $sex): object|null
     {
         return $this->birthAndDeathQuery($sex)
-            ->orderBy('days', 'desc')
+            ->orderBy('days', SortOrder::Descending->value)
             ->select(['individuals.*', new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
             ->take(1)
             ->get()
@@ -1153,11 +1163,11 @@ readonly class StatisticsData
     /**
      * @return Collection<int,object{individual:Individual,days:int}>
      */
-    public function topTenOldestQuery(string $sex, int $limit): Collection
+    public function topTenOldestQuery(Sex|null $sex, int $limit): Collection
     {
         return $this->birthAndDeathQuery($sex)
-            ->groupBy(['i_id', 'i_file'])
-            ->orderBy('days', 'desc')
+            ->groupBy(['i_id', 'i_file', 'i_rin', 'i_sex', 'i_gedcom'])
+            ->orderBy('days', SortOrder::Descending->value)
             ->select(['individuals.*', new Expression('MAX(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
             ->take($limit)
             ->get()
@@ -1168,63 +1178,53 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string>
+     * Build a lookup from country names and alpha-3 codes to ISO 3166-1 numeric codes.
+     * The numeric codes match the feature IDs used by world-atlas topology data.
+     *
+     * @return array<string,int>
      */
-    private function getIso3166Countries(): array
+    private function getCountryToNumericMap(): array
     {
-        // Get the country names for each language
-        $country_to_iso3166 = [];
+        $country_to_numeric = [];
 
         $current_language = I18N::languageTag();
 
-        foreach (I18N::activeLocales() as $locale) {
-            I18N::init($locale->languageTag());
+        foreach (I18N::allLanguages() as $language_tag => $endonym) {
+            I18N::init($language_tag);
 
             $countries = $this->getAllCountries();
 
-            foreach ($this->iso3166() as $three => $two) {
-                $country_to_iso3166[$three]             = $two;
-                $country_to_iso3166[$countries[$three]] = $two;
+            foreach ($this->iso3166Numeric() as $three => $numeric) {
+                $country_to_numeric[$three]             = $numeric;
+                $country_to_numeric[$countries[$three]] = $numeric;
             }
         }
 
         I18N::init($current_language);
 
-        return $country_to_iso3166;
+        return $country_to_numeric;
     }
 
     /**
-     * Returns the data structure required by google geochart.
-     *
-     * @param array<int> $places
-     *
-     * @return array<int,array<int|string|array<string,string>>>
+     * @param array<int,int> $places
      */
-    private function createChartData(array $places): array
+    private function createChartData(array $places): GeoChartData
     {
-        $data = [
-            [
-                I18N::translate('Country'),
-                I18N::translate('Total'),
-            ],
-        ];
+        $features = [];
 
-        // webtrees uses 3-letter country codes and localised country names, but google uses 2 letter codes.
-        foreach ($places as $country => $count) {
-            $data[] = [
-                [
-                    'v' => $country,
-                    'f' => $this->mapTwoLetterToName($country),
-                ],
-                $count
+        foreach ($places as $numeric_code => $count) {
+            $features[] = [
+                'id'    => sprintf('%03d', $numeric_code),
+                'label' => $this->mapNumericToName($numeric_code),
+                'value' => $count,
             ];
         }
 
-        return $data;
+        return new GeoChartData($features);
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countIndividualsByCountry(Tree $tree): array
     {
@@ -1247,10 +1247,10 @@ readonly class StatisticsData
 
         $totals = [];
 
-        $country_to_iso3166 = $this->getIso3166Countries();
+        $country_to_numeric = $this->getCountryToNumericMap();
 
         foreach ($rows as $country => $count) {
-            $country_code = $country_to_iso3166[$country] ?? null;
+            $country_code = $country_to_numeric[$country] ?? null;
 
             if ($country_code !== null) {
                 $totals[$country_code] ??= 0;
@@ -1262,7 +1262,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countSurnamesByCountry(Tree $tree, string $surname): array
     {
@@ -1286,10 +1286,10 @@ readonly class StatisticsData
 
         $totals = [];
 
-        $country_to_iso3166 = $this->getIso3166Countries();
+        $country_to_numeric = $this->getCountryToNumericMap();
 
         foreach ($rows as $country => $count) {
-            $country_code = $country_to_iso3166[$country] ?? null;
+            $country_code = $country_to_numeric[$country] ?? null;
 
             if ($country_code !== null) {
                 $totals[$country_code] ??= 0;
@@ -1301,7 +1301,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countFamilyEventsByCountry(Tree $tree, string $fact): array
     {
@@ -1324,7 +1324,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function countIndividualEventsByCountry(Tree $tree, string $fact): array
     {
@@ -1347,16 +1347,16 @@ readonly class StatisticsData
     }
 
     /**
-     * @return array<string,int>
+     * @return array<int,int>
      */
     private function filterEventPlaces(Builder $query, string $fact): array
     {
         $totals = [];
 
-        $country_to_iso3166 = $this->getIso3166Countries();
+        $country_to_numeric = $this->getCountryToNumericMap();
 
         foreach ($query->cursor() as $row) {
-            $country_code = $country_to_iso3166[$row->place] ?? null;
+            $country_code = $country_to_numeric[$row->place] ?? null;
 
             if ($country_code !== null) {
                 $place_regex = '/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC.*[, ]' . preg_quote($row->place, '(?:\n|$)/i') . '\n/';
@@ -1386,7 +1386,7 @@ readonly class StatisticsData
             case 'surname_distribution_chart':
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
                 $surnames    = $this->commonSurnames(1, 0, 'count');
-                $surname     = implode(I18N::$list_separator, array_keys(array_shift($surnames) ?? []));
+                $surname     = I18N::listAnd(array_keys(array_shift($surnames) ?? []));
                 $data        = $this->createChartData($this->countSurnamesByCountry($this->tree, $surname));
                 break;
 
@@ -1417,7 +1417,7 @@ readonly class StatisticsData
             'chart_color2' => '84beff',
             'chart_color3' => 'c3dfff',
             'region'       => $chart_shows,
-            'data'         => $data,
+            'chart_data'   => $data,
             'language'     => I18N::languageTag(),
         ]);
     }
@@ -1445,8 +1445,8 @@ readonly class StatisticsData
                     ->where('gchildren.l_type', '=', 'CHIL');
             })
             ->where('f_file', '=', $this->tree->id())
-            ->groupBy(['f_id', 'f_file'])
-            ->orderBy(new Expression('COUNT(*)'), 'DESC')
+            ->groupBy(['f_id', 'f_file', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil'])
+            ->orderBy(new Expression('COUNT(*)'), SortOrder::Descending->value)
             ->select(['families.*'])
             ->limit($limit)
             ->get()
@@ -1619,7 +1619,7 @@ readonly class StatisticsData
     {
         return DB::table('families')
             ->where('f_file', '=', $this->tree->id())
-            ->orderBy('f_numchil', 'DESC')
+            ->orderBy('f_numchil', SortOrder::Descending->value)
             ->limit($limit)
             ->get()
             ->map(Registry::familyFactory()->mapper($this->tree))
@@ -1649,17 +1649,12 @@ readonly class StatisticsData
         ]);
     }
 
-    public function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
+    public function parentsQuery(string $type, SortOrder $order, Sex $sex, bool $show_years): string
     {
-        if ($sex === 'F') {
-            $sex_field = 'WIFE';
-        } else {
-            $sex_field = 'HUSB';
-        }
-
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
-        }
+        $sex_field = match ($sex) {
+            Sex::Female => 'WIFE',
+            default     => 'HUSB',
+        };
 
         $row = DB::table('link AS parentfamily')
             ->join('link AS childfamily', static function (JoinClause $join): void {
@@ -1686,7 +1681,7 @@ readonly class StatisticsData
             ->where('childbirth.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
             ->select(['parentfamily.l_to AS id', new Expression(DB::prefix('childbirth.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age')])
             ->take(1)
-            ->orderBy('age', $age_dir)
+            ->orderBy('age', $order->value)
             ->get()
             ->first();
 
@@ -1727,12 +1722,8 @@ readonly class StatisticsData
 
     /**
      * General query on age at marriage.
-     *
-     * @param string $type
-     * @param string $age_dir "ASC" or "DESC"
-     * @param int    $limit
      */
-    public function ageOfMarriageQuery(string $type, string $age_dir, int $limit): string
+    public function ageOfMarriageQuery(string $type, SortOrder $order, int $limit): string
     {
         $hrows = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
@@ -1816,7 +1807,7 @@ readonly class StatisticsData
             }
         }
 
-        if ($age_dir === 'DESC') {
+        if ($order === SortOrder::Descending) {
             arsort($rows);
         } else {
             asort($rows);
@@ -1842,8 +1833,8 @@ readonly class StatisticsData
             if (
                 $husb instanceof Individual &&
                 $wife instanceof Individual &&
-                ($husb->getAllDeathDates() || !$husb->isDead()) &&
-                ($wife->getAllDeathDates() || !$wife->isDead())
+                ($husb->getAllDeathDates() !== [] || !$husb->isDead()) &&
+                ($wife->getAllDeathDates() !== [] || !$wife->isDead())
             ) {
                 if ($family->canShow()) {
                     if ($type === 'list') {
@@ -1864,7 +1855,7 @@ readonly class StatisticsData
             $top10 = implode('; ', $top10);
         }
 
-        if (I18N::direction() === 'rtl') {
+        if (I18N::textDirection() === TextDirection::RTL) {
             $top10 = str_replace([
                 '[',
                 ']',
@@ -1890,7 +1881,7 @@ readonly class StatisticsData
     /**
      * @return array<array{family:Family,age:string}>
      */
-    private function ageBetweenSpousesQuery(string $age_dir, int $limit): array
+    private function ageBetweenSpousesQuery(SortOrder $order, int $limit): array
     {
         $query = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
@@ -1909,28 +1900,28 @@ readonly class StatisticsData
                     ->where('husb.d_julianday1', '<>', 0);
             });
 
-        if ($age_dir === 'DESC') {
+        if ($order === SortOrder::Descending) {
             $query
                 ->whereColumn('wife.d_julianday1', '>=', 'husb.d_julianday1')
-                ->orderBy(new Expression('MIN(' . DB::prefix('wife.d_julianday1') . ') - MIN(' . DB::prefix('husb.d_julianday1') . ')'), 'DESC');
+                ->orderBy(new Expression('MIN(' . DB::prefix('wife.d_julianday1') . ') - MIN(' . DB::prefix('husb.d_julianday1') . ')'), 'desc');
         } else {
             $query
                 ->whereColumn('husb.d_julianday1', '>=', 'wife.d_julianday1')
-                ->orderBy(new Expression('MIN(' . DB::prefix('husb.d_julianday1') . ') - MIN(' . DB::prefix('wife.d_julianday1') . ')'), 'DESC');
+                ->orderBy(new Expression('MIN(' . DB::prefix('husb.d_julianday1') . ') - MIN(' . DB::prefix('wife.d_julianday1') . ')'), 'desc');
         }
 
         return $query
-            ->groupBy(['f_id', 'f_file'])
+            ->groupBy(['f_id', 'f_file', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil'])
             ->select(['families.*'])
             ->take($limit)
             ->get()
             ->map(Registry::familyFactory()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
-            ->map(function (Family $family) use ($age_dir): array {
+            ->map(function (Family $family) use ($order): array {
                 $husb_birt_jd = $family->husband()->getBirthDate()->minimumJulianDay();
                 $wife_birt_jd = $family->wife()->getBirthDate()->minimumJulianDay();
 
-                if ($age_dir === 'DESC') {
+                if ($order === SortOrder::Descending) {
                     $diff = $wife_birt_jd - $husb_birt_jd;
                 } else {
                     $diff = $husb_birt_jd - $wife_birt_jd;
@@ -1946,7 +1937,7 @@ readonly class StatisticsData
 
     public function ageBetweenSpousesMF(int $limit = 10): string
     {
-        $records = $this->ageBetweenSpousesQuery('DESC', $limit);
+        $records = $this->ageBetweenSpousesQuery(SortOrder::Descending, $limit);
 
         return view('statistics/families/top10-nolist-spouses', [
             'records' => $records,
@@ -1955,7 +1946,7 @@ readonly class StatisticsData
 
     public function ageBetweenSpousesMFList(int $limit = 10): string
     {
-        $records = $this->ageBetweenSpousesQuery('DESC', $limit);
+        $records = $this->ageBetweenSpousesQuery(SortOrder::Descending, $limit);
 
         return view('statistics/families/top10-list-spouses', [
             'records' => $records,
@@ -1965,32 +1956,37 @@ readonly class StatisticsData
     public function ageBetweenSpousesFM(int $limit = 10): string
     {
         return view('statistics/families/top10-nolist-spouses', [
-            'records' => $this->ageBetweenSpousesQuery('ASC', $limit),
+            'records' => $this->ageBetweenSpousesQuery(SortOrder::Ascending, $limit),
         ]);
     }
 
     public function ageBetweenSpousesFMList(int $limit = 10): string
     {
         return view('statistics/families/top10-list-spouses', [
-            'records' => $this->ageBetweenSpousesQuery('ASC', $limit),
+            'records' => $this->ageBetweenSpousesQuery(SortOrder::Ascending, $limit),
         ]);
     }
 
     /**
      * @return array<object{f_id:string,d_gid:string,age:int}>
      */
-    public function statsMarrAgeQuery(string $sex, int $year1, int $year2): array
+    public function statsMarrAgeQuery(Sex $sex, int $year1, int $year2): array
     {
+        $spouse_field = match ($sex) {
+            Sex::Female => 'f_wife',
+            default     => 'f_husb',
+        };
+
         $query = DB::table('dates AS married')
             ->join('families', static function (JoinClause $join): void {
                 $join
                     ->on('f_file', '=', 'married.d_file')
                     ->on('f_id', '=', 'married.d_gid');
             })
-            ->join('dates AS birth', static function (JoinClause $join) use ($sex): void {
+            ->join('dates AS birth', static function (JoinClause $join) use ($spouse_field): void {
                 $join
                     ->on('birth.d_file', '=', 'married.d_file')
-                    ->on('birth.d_gid', '=', $sex === 'M' ? 'f_husb' : 'f_wife')
+                    ->on('birth.d_gid', '=', $spouse_field)
                     ->where('birth.d_julianday1', '<>', 0)
                     ->where('birth.d_fact', '=', 'BIRT')
                     ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@']);
@@ -2019,21 +2015,13 @@ readonly class StatisticsData
      * Query the database for marriage tags.
      *
      * @param string $show    "full", "name" or "age"
-     * @param string $age_dir "ASC" or "DESC"
-     * @param string $sex     "F" or "M"
-     * @param bool   $show_years
      */
-    public function marriageQuery(string $show, string $age_dir, string $sex, bool $show_years): string
+    public function marriageQuery(string $show, SortOrder $order, Sex $sex, bool $show_years): string
     {
-        if ($sex === 'F') {
-            $sex_field = 'f_wife';
-        } else {
-            $sex_field = 'f_husb';
-        }
-
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
-        }
+        $sex_field = match ($sex) {
+            Sex::Female => 'f_wife',
+            default     => 'f_husb',
+        };
 
         $row = DB::table('families')
             ->join('dates AS married', static function (JoinClause $join): void {
@@ -2057,7 +2045,7 @@ readonly class StatisticsData
             })
             ->where('f_file', '=', $this->tree->id())
             ->where('married.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
-            ->orderBy(new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1')), $age_dir)
+            ->orderBy(new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1')), $order->value)
             ->select(['f_id AS famid', $sex_field, new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age'), 'i_id'])
             ->take(1)
             ->get()
@@ -2160,8 +2148,8 @@ readonly class StatisticsData
 
                 $content .= ' - ' . e($user->userName());
 
-                if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE && Auth::id() !== $user->id()) {
-                    $content .= '<a href="' . e(route(MessagePage::class, ['to' => $user->userName(), 'tree' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                if (ContactMethod::fromUser($user)->isContactable() && Auth::id() !== $user->id()) {
+                    $content .= '<a href="' . e(route(Message::class, ['to' => $user->userName(), 'tree' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
 
                 if ($type === 'list') {
@@ -2743,270 +2731,271 @@ readonly class StatisticsData
     }
 
     /**
-     * ISO3166 3 letter codes, with their 2 letter equivalent.
-     * NOTE: this is not 1:1. ENG/SCO/WAL/NIR => GB
-     * NOTE: this also includes chapman codes and others. Should it?
+     * Map ISO 3166-1 alpha-3 country codes to numeric codes.
+     * The numeric codes are the feature IDs used by world-atlas topology data.
+     * Countries that share a numeric code (e.g. ENG, NIR, SCT, WLS → 826/GBR)
+     * are listed after the primary entry.
      *
-     * @return array<string>
+     * @return array<string,int>
      */
-    private function iso3166(): array
+    private function iso3166Numeric(): array
     {
         return [
-            'GBR' => 'GB', // Must come before ENG, NIR, SCT and WLS
-            'ABW' => 'AW',
-            'AFG' => 'AF',
-            'AGO' => 'AO',
-            'AIA' => 'AI',
-            'ALA' => 'AX',
-            'ALB' => 'AL',
-            'AND' => 'AD',
-            'ARE' => 'AE',
-            'ARG' => 'AR',
-            'ARM' => 'AM',
-            'ASM' => 'AS',
-            'ATA' => 'AQ',
-            'ATF' => 'TF',
-            'ATG' => 'AG',
-            'AUS' => 'AU',
-            'AUT' => 'AT',
-            'AZE' => 'AZ',
-            'BDI' => 'BI',
-            'BEL' => 'BE',
-            'BEN' => 'BJ',
-            'BFA' => 'BF',
-            'BGD' => 'BD',
-            'BGR' => 'BG',
-            'BHR' => 'BH',
-            'BHS' => 'BS',
-            'BIH' => 'BA',
-            'BLR' => 'BY',
-            'BLZ' => 'BZ',
-            'BMU' => 'BM',
-            'BOL' => 'BO',
-            'BRA' => 'BR',
-            'BRB' => 'BB',
-            'BRN' => 'BN',
-            'BTN' => 'BT',
-            'BVT' => 'BV',
-            'BWA' => 'BW',
-            'CAF' => 'CF',
-            'CAN' => 'CA',
-            'CCK' => 'CC',
-            'CHE' => 'CH',
-            'CHL' => 'CL',
-            'CHN' => 'CN',
-            'CIV' => 'CI',
-            'CMR' => 'CM',
-            'COD' => 'CD',
-            'COG' => 'CG',
-            'COK' => 'CK',
-            'COL' => 'CO',
-            'COM' => 'KM',
-            'CPV' => 'CV',
-            'CRI' => 'CR',
-            'CUB' => 'CU',
-            'CXR' => 'CX',
-            'CYM' => 'KY',
-            'CYP' => 'CY',
-            'CZE' => 'CZ',
-            'DEU' => 'DE',
-            'DJI' => 'DJ',
-            'DMA' => 'DM',
-            'DNK' => 'DK',
-            'DOM' => 'DO',
-            'DZA' => 'DZ',
-            'ECU' => 'EC',
-            'EGY' => 'EG',
-            'ENG' => 'GB',
-            'ERI' => 'ER',
-            'ESH' => 'EH',
-            'ESP' => 'ES',
-            'EST' => 'EE',
-            'ETH' => 'ET',
-            'FIN' => 'FI',
-            'FJI' => 'FJ',
-            'FLK' => 'FK',
-            'FRA' => 'FR',
-            'FRO' => 'FO',
-            'FSM' => 'FM',
-            'GAB' => 'GA',
-            'GEO' => 'GE',
-            'GHA' => 'GH',
-            'GIB' => 'GI',
-            'GIN' => 'GN',
-            'GLP' => 'GP',
-            'GMB' => 'GM',
-            'GNB' => 'GW',
-            'GNQ' => 'GQ',
-            'GRC' => 'GR',
-            'GRD' => 'GD',
-            'GRL' => 'GL',
-            'GTM' => 'GT',
-            'GUF' => 'GF',
-            'GUM' => 'GU',
-            'GUY' => 'GY',
-            'HKG' => 'HK',
-            'HMD' => 'HM',
-            'HND' => 'HN',
-            'HRV' => 'HR',
-            'HTI' => 'HT',
-            'HUN' => 'HU',
-            'IDN' => 'ID',
-            'IND' => 'IN',
-            'IOT' => 'IO',
-            'IRL' => 'IE',
-            'IRN' => 'IR',
-            'IRQ' => 'IQ',
-            'ISL' => 'IS',
-            'ISR' => 'IL',
-            'ITA' => 'IT',
-            'JAM' => 'JM',
-            'JOR' => 'JO',
-            'JPN' => 'JP',
-            'KAZ' => 'KZ',
-            'KEN' => 'KE',
-            'KGZ' => 'KG',
-            'KHM' => 'KH',
-            'KIR' => 'KI',
-            'KNA' => 'KN',
-            'KOR' => 'KO',
-            'KWT' => 'KW',
-            'LAO' => 'LA',
-            'LBN' => 'LB',
-            'LBR' => 'LR',
-            'LBY' => 'LY',
-            'LCA' => 'LC',
-            'LIE' => 'LI',
-            'LKA' => 'LK',
-            'LSO' => 'LS',
-            'LTU' => 'LT',
-            'LUX' => 'LU',
-            'LVA' => 'LV',
-            'MAC' => 'MO',
-            'MAR' => 'MA',
-            'MCO' => 'MC',
-            'MDA' => 'MD',
-            'MDG' => 'MG',
-            'MDV' => 'MV',
-            'MEX' => 'MX',
-            'MHL' => 'MH',
-            'MKD' => 'MK',
-            'MLI' => 'ML',
-            'MLT' => 'MT',
-            'MMR' => 'MM',
-            'MNG' => 'MN',
-            'MNP' => 'MP',
-            'MNT' => 'ME',
-            'MOZ' => 'MZ',
-            'MRT' => 'MR',
-            'MSR' => 'MS',
-            'MTQ' => 'MQ',
-            'MUS' => 'MU',
-            'MWI' => 'MW',
-            'MYS' => 'MY',
-            'MYT' => 'YT',
-            'NAM' => 'NA',
-            'NCL' => 'NC',
-            'NER' => 'NE',
-            'NFK' => 'NF',
-            'NGA' => 'NG',
-            'NIC' => 'NI',
-            'NIR' => 'GB',
-            'NIU' => 'NU',
-            'NLD' => 'NL',
-            'NOR' => 'NO',
-            'NPL' => 'NP',
-            'NRU' => 'NR',
-            'NZL' => 'NZ',
-            'OMN' => 'OM',
-            'PAK' => 'PK',
-            'PAN' => 'PA',
-            'PCN' => 'PN',
-            'PER' => 'PE',
-            'PHL' => 'PH',
-            'PLW' => 'PW',
-            'PNG' => 'PG',
-            'POL' => 'PL',
-            'PRI' => 'PR',
-            'PRK' => 'KP',
-            'PRT' => 'PT',
-            'PRY' => 'PY',
-            'PSE' => 'PS',
-            'PYF' => 'PF',
-            'QAT' => 'QA',
-            'REU' => 'RE',
-            'ROM' => 'RO',
-            'RUS' => 'RU',
-            'RWA' => 'RW',
-            'SAU' => 'SA',
-            'SCT' => 'GB',
-            'SDN' => 'SD',
-            'SEN' => 'SN',
-            'SER' => 'RS',
-            'SGP' => 'SG',
-            'SGS' => 'GS',
-            'SHN' => 'SH',
-            'SJM' => 'SJ',
-            'SLB' => 'SB',
-            'SLE' => 'SL',
-            'SLV' => 'SV',
-            'SMR' => 'SM',
-            'SOM' => 'SO',
-            'SPM' => 'PM',
-            'STP' => 'ST',
-            'SUR' => 'SR',
-            'SVK' => 'SK',
-            'SVN' => 'SI',
-            'SWE' => 'SE',
-            'SWZ' => 'SZ',
-            'SYC' => 'SC',
-            'SYR' => 'SY',
-            'TCA' => 'TC',
-            'TCD' => 'TD',
-            'TGO' => 'TG',
-            'THA' => 'TH',
-            'TJK' => 'TJ',
-            'TKL' => 'TK',
-            'TKM' => 'TM',
-            'TLS' => 'TL',
-            'TON' => 'TO',
-            'TTO' => 'TT',
-            'TUN' => 'TN',
-            'TUR' => 'TR',
-            'TUV' => 'TV',
-            'TWN' => 'TW',
-            'TZA' => 'TZ',
-            'UGA' => 'UG',
-            'UKR' => 'UA',
-            'UMI' => 'UM',
-            'URY' => 'UY',
-            'USA' => 'US',
-            'UZB' => 'UZ',
-            'VAT' => 'VA',
-            'VCT' => 'VC',
-            'VEN' => 'VE',
-            'VGB' => 'VG',
-            'VIR' => 'VI',
-            'VNM' => 'VN',
-            'VUT' => 'VU',
-            'WLF' => 'WF',
-            'WLS' => 'GB',
-            'WSM' => 'WS',
-            'YEM' => 'YE',
-            'ZAF' => 'ZA',
-            'ZMB' => 'ZM',
-            'ZWE' => 'ZW',
+            'GBR' => 826, // Must come before ENG, NIR, SCT and WLS
+            'ABW' => 533,
+            'AFG' => 4,
+            'AGO' => 24,
+            'AIA' => 660,
+            'ALA' => 248,
+            'ALB' => 8,
+            'AND' => 20,
+            'ARE' => 784,
+            'ARG' => 32,
+            'ARM' => 51,
+            'ASM' => 16,
+            'ATA' => 10,
+            'ATF' => 260,
+            'ATG' => 28,
+            'AUS' => 36,
+            'AUT' => 40,
+            'AZE' => 31,
+            'BDI' => 108,
+            'BEL' => 56,
+            'BEN' => 204,
+            'BFA' => 854,
+            'BGD' => 50,
+            'BGR' => 100,
+            'BHR' => 48,
+            'BHS' => 44,
+            'BIH' => 70,
+            'BLR' => 112,
+            'BLZ' => 84,
+            'BMU' => 60,
+            'BOL' => 68,
+            'BRA' => 76,
+            'BRB' => 52,
+            'BRN' => 96,
+            'BTN' => 64,
+            'BVT' => 74,
+            'BWA' => 72,
+            'CAF' => 140,
+            'CAN' => 124,
+            'CCK' => 166,
+            'CHE' => 756,
+            'CHL' => 152,
+            'CHN' => 156,
+            'CIV' => 384,
+            'CMR' => 120,
+            'COD' => 180,
+            'COG' => 178,
+            'COK' => 184,
+            'COL' => 170,
+            'COM' => 174,
+            'CPV' => 132,
+            'CRI' => 188,
+            'CUB' => 192,
+            'CXR' => 162,
+            'CYM' => 136,
+            'CYP' => 196,
+            'CZE' => 203,
+            'DEU' => 276,
+            'DJI' => 262,
+            'DMA' => 212,
+            'DNK' => 208,
+            'DOM' => 214,
+            'DZA' => 12,
+            'ECU' => 218,
+            'EGY' => 818,
+            'ENG' => 826,
+            'ERI' => 232,
+            'ESH' => 732,
+            'ESP' => 724,
+            'EST' => 233,
+            'ETH' => 231,
+            'FIN' => 246,
+            'FJI' => 242,
+            'FLK' => 238,
+            'FRA' => 250,
+            'FRO' => 234,
+            'FSM' => 583,
+            'GAB' => 266,
+            'GEO' => 268,
+            'GHA' => 288,
+            'GIB' => 292,
+            'GIN' => 324,
+            'GLP' => 312,
+            'GMB' => 270,
+            'GNB' => 624,
+            'GNQ' => 226,
+            'GRC' => 300,
+            'GRD' => 308,
+            'GRL' => 304,
+            'GTM' => 320,
+            'GUF' => 254,
+            'GUM' => 316,
+            'GUY' => 328,
+            'HKG' => 344,
+            'HMD' => 334,
+            'HND' => 340,
+            'HRV' => 191,
+            'HTI' => 332,
+            'HUN' => 348,
+            'IDN' => 360,
+            'IND' => 356,
+            'IOT' => 86,
+            'IRL' => 372,
+            'IRN' => 364,
+            'IRQ' => 368,
+            'ISL' => 352,
+            'ISR' => 376,
+            'ITA' => 380,
+            'JAM' => 388,
+            'JOR' => 400,
+            'JPN' => 392,
+            'KAZ' => 398,
+            'KEN' => 404,
+            'KGZ' => 417,
+            'KHM' => 116,
+            'KIR' => 296,
+            'KNA' => 659,
+            'KOR' => 410,
+            'KWT' => 414,
+            'LAO' => 418,
+            'LBN' => 422,
+            'LBR' => 430,
+            'LBY' => 434,
+            'LCA' => 662,
+            'LIE' => 438,
+            'LKA' => 144,
+            'LSO' => 426,
+            'LTU' => 440,
+            'LUX' => 442,
+            'LVA' => 428,
+            'MAC' => 446,
+            'MAR' => 504,
+            'MCO' => 492,
+            'MDA' => 498,
+            'MDG' => 450,
+            'MDV' => 462,
+            'MEX' => 484,
+            'MHL' => 584,
+            'MKD' => 807,
+            'MLI' => 466,
+            'MLT' => 470,
+            'MMR' => 104,
+            'MNG' => 496,
+            'MNP' => 580,
+            'MNT' => 499,
+            'MOZ' => 508,
+            'MRT' => 478,
+            'MSR' => 500,
+            'MTQ' => 474,
+            'MUS' => 480,
+            'MWI' => 454,
+            'MYS' => 458,
+            'MYT' => 175,
+            'NAM' => 516,
+            'NCL' => 540,
+            'NER' => 562,
+            'NFK' => 574,
+            'NGA' => 566,
+            'NIC' => 558,
+            'NIR' => 826,
+            'NIU' => 570,
+            'NLD' => 528,
+            'NOR' => 578,
+            'NPL' => 524,
+            'NRU' => 520,
+            'NZL' => 554,
+            'OMN' => 512,
+            'PAK' => 586,
+            'PAN' => 591,
+            'PCN' => 612,
+            'PER' => 604,
+            'PHL' => 608,
+            'PLW' => 585,
+            'PNG' => 598,
+            'POL' => 616,
+            'PRI' => 630,
+            'PRK' => 408,
+            'PRT' => 620,
+            'PRY' => 600,
+            'PSE' => 275,
+            'PYF' => 258,
+            'QAT' => 634,
+            'REU' => 638,
+            'ROM' => 642,
+            'RUS' => 643,
+            'RWA' => 646,
+            'SAU' => 682,
+            'SCT' => 826,
+            'SDN' => 729,
+            'SEN' => 686,
+            'SER' => 688,
+            'SGP' => 702,
+            'SGS' => 239,
+            'SHN' => 654,
+            'SJM' => 744,
+            'SLB' => 90,
+            'SLE' => 694,
+            'SLV' => 222,
+            'SMR' => 674,
+            'SOM' => 706,
+            'SPM' => 666,
+            'STP' => 678,
+            'SUR' => 740,
+            'SVK' => 703,
+            'SVN' => 705,
+            'SWE' => 752,
+            'SWZ' => 748,
+            'SYC' => 690,
+            'SYR' => 760,
+            'TCA' => 796,
+            'TCD' => 148,
+            'TGO' => 768,
+            'THA' => 764,
+            'TJK' => 762,
+            'TKL' => 772,
+            'TKM' => 795,
+            'TLS' => 626,
+            'TON' => 776,
+            'TTO' => 780,
+            'TUN' => 788,
+            'TUR' => 792,
+            'TUV' => 798,
+            'TWN' => 158,
+            'TZA' => 834,
+            'UGA' => 800,
+            'UKR' => 804,
+            'UMI' => 581,
+            'URY' => 858,
+            'USA' => 840,
+            'UZB' => 860,
+            'VAT' => 336,
+            'VCT' => 670,
+            'VEN' => 862,
+            'VGB' => 92,
+            'VIR' => 850,
+            'VNM' => 704,
+            'VUT' => 548,
+            'WLF' => 876,
+            'WLS' => 826,
+            'WSM' => 882,
+            'YEM' => 887,
+            'ZAF' => 710,
+            'ZMB' => 894,
+            'ZWE' => 716,
         ];
     }
 
     /**
-     * Returns the translated country name based on the given two letter country code.
+     * Returns the translated country name for the given ISO 3166-1 numeric code.
      */
-    private function mapTwoLetterToName(string $twoLetterCode): string
+    private function mapNumericToName(int $numeric_code): string
     {
-        $threeLetterCode = array_search($twoLetterCode, $this->iso3166(), true);
-        $threeLetterCode = $threeLetterCode ?: '???';
+        $three_letter_code = array_search($numeric_code, $this->iso3166Numeric(), true);
+        $three_letter_code = $three_letter_code !== false ? $three_letter_code : '???';
 
-        return $this->getAllCountries()[$threeLetterCode];
+        return $this->getAllCountries()[$three_letter_code];
     }
 }

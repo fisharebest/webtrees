@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
+use Fisharebest\Webtrees\Http\Controllers\Logout;
+use Fisharebest\Webtrees\Http\Controllers\SelectLanguage;
+use Fisharebest\Webtrees\Http\Controllers\SelectTheme;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
@@ -44,10 +44,10 @@ class CheckCsrf implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+        if ($request->getMethod() === HttpRequestMethod::POST->value) {
             $route = Validator::attributes($request)->route();
 
-            if (!in_array($route->name, self::EXCLUDE_ROUTES, true)) {
+            if (!in_array($route->controller, self::EXCLUDE_ROUTES, true)) {
                 $params        = (array) $request->getParsedBody();
                 $client_token  = $params['_csrf'] ?? $request->getHeaderLine('X-CSRF-TOKEN');
                 $session_token = Session::get('CSRF_TOKEN');

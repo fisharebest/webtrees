@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsData;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsDelete;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsDownload;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogs;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -92,7 +91,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A button label. */ I18N::translate('search') ?>
         </button>
 
-        <a href="<?= e(route(SiteLogsPage::class)) ?>" type="submit" class="btn btn-secondary">
+        <a href="<?= e(route(SiteLogs::class)) ?>" type="submit" class="btn btn-secondary">
             <?= view('icons/cancel') ?>
             <?= /* I18N: A button label. */ I18N::translate('reset') ?>
         </a>
@@ -113,9 +112,9 @@ use Illuminate\Support\Collection;
 
 <table
     id="wt-datatables-admin-logs"
-    class="table table-bordered table-sm table-hover table-site-logs datatables"
+    class="table table-bordered table-sm table-hover table-site-logs wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    data-ajax="<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>"
+    data-ajax='{"url":"<?= e(route(SiteLogsData::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>","method":"POST"}'
     data-server-side="true"
     data-filter="false"
     data-processing="true"

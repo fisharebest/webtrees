@@ -105,11 +105,6 @@ class Site
 
     /**
      * Set the site’s configuration settings.
-     *
-     * @param string $setting_name
-     * @param string $setting_value
-     *
-     * @return void
      */
     public static function setPreference(string $setting_name, string $setting_value): void
     {
@@ -137,10 +132,6 @@ class Site
 
     /**
      * Get the site’s configuration settings
-     *
-     * @param string $setting_name
-     *
-     * @return string
      */
     public static function getPreference(string $setting_name): string
     {

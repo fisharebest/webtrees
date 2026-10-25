@@ -38,19 +38,12 @@ class XrefParser implements InlineParserInterface
 
     /**
      * We are only interested in text that begins with '@'.
-     *
-     * @return InlineParserMatch
      */
     public function getMatchDefinition(): InlineParserMatch
     {
         return InlineParserMatch::regex('@(' . Gedcom::REGEX_XREF . ')@');
     }
 
-    /**
-     * @param InlineParserContext $inlineContext
-     *
-     * @return bool
-     */
     public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();

@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
+use Fisharebest\Webtrees\Http\Controllers\Account;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -37,9 +37,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
 
     private ModuleService $module_service;
 
-    /**
-     * @param ModuleService $module_service
-     */
     public function __construct(ModuleService $module_service)
     {
         $this->module_service = $module_service;
@@ -60,12 +57,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -96,13 +88,13 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         }
 
         $links[] = [
-            'url'   => route(AccountEdit::class, ['tree' => $tree->name()]),
+            'url'   => route(Account::class, ['tree' => $tree->name()]),
             'title' => I18N::translate('My account'),
             'class' => 'icon-mypage',
             'icon'  => view('icons/account'),
         ];
 
-        $content = view('modules/user_welcome/welcome', ['links' => $links]);
+        $content = view('modules/user-welcome/welcome', ['links' => $links]);
 
         $real_name = "\u{2068}" . e(Auth::user()->realName()) . "\u{2069}";
 
@@ -126,8 +118,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
      */
     public function loadAjax(): bool
     {
@@ -136,8 +126,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the user’s home page?
-     *
-     * @return bool
      */
     public function isUserBlock(): bool
     {
@@ -146,8 +134,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
      */
     public function isTreeBlock(): bool
     {

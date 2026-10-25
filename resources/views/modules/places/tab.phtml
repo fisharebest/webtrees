@@ -11,131 +11,18 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div class="row gx-1 wt-places-tab-wrapper wt-fullscreen-container">
+<div
+    class="row gx-1 wt-places-tab-wrapper wt-fullscreen-container"
+    data-wt-places-tab-map
+    data-wt-leaflet-config="<?= e(json_encode($leaflet_config, JSON_THROW_ON_ERROR)) ?>"
+    data-wt-map-data="<?= e(json_encode($data, JSON_THROW_ON_ERROR)) ?>"
+    data-wt-nothing-to-show="<?= e(I18N::translate('Nothing to show')) ?>"
+>
     <div class="col-sm-9">
-        <div id="wt-map" class="wt-map" dir="ltr"><?= view('icons/spinner') ?></div>
+        <div id="wt-map" class="wt-map" data-wt-map-canvas dir="ltr"><?= view('icons/spinner') ?></div>
     </div>
     <div class="col-sm-3">
-        <ul class="wt-map-sidebar list-unstyled mb-0"></ul>
+        <ul class="wt-map-sidebar list-unstyled mb-0" data-wt-map-sidebar></ul>
     </div>
 </div>
 
-<script>
-  'use strict';
-
-  (function () {
-    const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
-
-    let map = null;
-    const sidebar = document.querySelector('.wt-map-sidebar');
-
-    const scrollOptions = {
-      behavior: "smooth",
-      block: "nearest",
-      inline: "start"
-    };
-
-    // Map components
-    let markers = L.markerClusterGroup({
-        showCoverageOnHover: false,
-    });
-
-    /**
-     * Passed to resetControl to
-     * perform necessary reset actions on map
-     *
-     * @param {Event} event
-     */
-    let resetCallback = function (event) {
-      event.preventDefault();
-      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
-    }
-
-    /**
-     *
-     * @private
-     */
-    let _drawMap = function() {
-      map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
-    };
-
-    /**
-     *
-     * @private
-     */
-    let _buildMapData = function() {
-      let data = <?= json_encode($data, JSON_THROW_ON_ERROR) ?>;
-
-      if (data.features.length === 0) {
-        map.fitWorld();
-        sidebar.innerHTML = '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show'), JSON_THROW_ON_ERROR) ?> + '</div>';
-      } else {
-        sidebar.innerHTML = '';
-        let geoJsonLayer = L.geoJson(data, {
-          pointToLayer: function(feature, latlng) {
-            return new L.Marker(latlng, {
-              icon: L.BeautifyIcon.icon({
-                icon           : feature.properties.icon["name"],
-                borderColor    : "transparent",
-                backgroundColor: feature.properties.icon["color"],
-                iconShape      : "marker",
-                textColor      : "white",
-              }),
-              title: feature.properties.tooltip,
-              id   : feature.id,
-            })
-            .on("popupopen", function(e) {
-              let item = document.querySelector('.wt-places-tab-wrapper [data-wt-feature-id="' + e.target.feature.id + '"]');
-              item.classList.add('messagebox');
-              item.scrollIntoView(scrollOptions);
-            })
-            .on("popupclose", function() {
-              sidebar.childNodes.forEach(e => e.classList.remove('messagebox'));
-            });
-          },
-          onEachFeature: function(feature, layer) {
-              layer.bindPopup(feature.properties.summary);
-              sidebar.innerHTML += `<li class="mb-1 wt-page-options-value" data-wt-feature-id=${feature.id}>${feature.properties.summary}</li>`;
-          },
-        });
-        markers.addLayer(geoJsonLayer);
-        map.addLayer(markers);
-        map.fitBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
-      }
-    };
-
-    // Can't use window.onload here. seems to be because of AJAX loading
-    const _loadListeners = function() {
-      // Activate marker popup when sidebar entry clicked
-      sidebar.querySelectorAll('.wt-places-tab-wrapper [data-wt-feature-id]').forEach((element) => {
-        const eventId = parseInt(element.dataset.wtFeatureId);
-
-        element.addEventListener('click', () => {
-          // first close any existing
-          map.closePopup();
-          //find the marker corresponding to the clicked event
-          const mkrLayer = markers.getLayers().filter(function (v) {
-            return v.feature !== undefined && v.feature.id === eventId;
-          });
-
-          let mkr = mkrLayer.pop();
-
-          markers.zoomToShowLayer(mkr, function (e) {
-            mkr.openPopup();
-          });
-        });
-
-        // stop click on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        });
-      });
-    };
-
-    _drawMap();
-    _buildMapData();
-    _loadListeners();
-  })();
-</script>

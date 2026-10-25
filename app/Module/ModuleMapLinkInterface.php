@@ -26,10 +26,5 @@ use Fisharebest\Webtrees\Fact;
  */
 interface ModuleMapLinkInterface extends ModuleInterface
 {
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
     public function mapLink(Fact $fact): string;
 }

@@ -32,10 +32,7 @@ class FlashMessages
     /**
      * Add a message to the session storage.
      *
-     * @param string $text
      * @param string $status "success", "info", "warning" or "danger"
-     *
-     * @return void
      */
     public static function addMessage(string $text, string $status = 'info'): void
     {

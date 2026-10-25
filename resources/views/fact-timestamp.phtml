@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Registry;
+
+/**
+ * @var Fact $fact
+ */
+
+$factrec = $fact->gedcom();
+$html    = '';
+
+// Extract the DATE and TIME sub-records from the CHAN fact
+if (preg_match('/\n2 DATE (.+)/', $factrec, $date_match) === 1) {
+    $date_string = $date_match[1];
+    $time_string = '';
+
+    if (preg_match('/\n3 TIME (.+)/', $factrec, $time_match) === 1) {
+        $time_string = trim($time_match[1]);
+    }
+
+    // Normalize the GEDCOM date (e.g., "29 JUL 2026") to title case for PHP date parsing
+    $normalized_date = ucwords(strtolower($date_string));
+
+    // Strip fractional seconds (e.g., "14:30:00.123" becomes "14:30:00")
+    $normalized_time = preg_replace('/\.\d+$/', '', $time_string);
+
+    // Parse the date and time as UTC, then convert to the user's local timezone.
+    // Seconds are optional in the GEDCOM time specification.
+    $datetime = false;
+
+    if ($normalized_time !== '') {
+        $datetime = DateTimeImmutable::createFromFormat('d M Y H:i:s', $normalized_date . ' ' . $normalized_time, new DateTimeZone('UTC'));
+
+        if (!$datetime instanceof DateTimeImmutable) {
+            $datetime = DateTimeImmutable::createFromFormat('d M Y H:i', $normalized_date . ' ' . $normalized_time, new DateTimeZone('UTC'));
+        }
+    } else {
+        $datetime = DateTimeImmutable::createFromFormat('d M Y', $normalized_date, new DateTimeZone('UTC'));
+    }
+
+    if ($datetime instanceof DateTimeImmutable) {
+        $html = Registry::timestampFactory()->fromDateTime($datetime, Auth::user())->isoFormat('LLLL');
+    } else {
+        $html = e($date_string) . ' ' . e($time_string);
+    }
+}
+
+?>
+<span class="wt-fact-date-age">
+    <?= $html ?>
+</span>

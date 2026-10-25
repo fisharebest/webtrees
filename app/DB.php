@@ -21,14 +21,16 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Connection;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use PDO;
 use PDOException;
 use RuntimeException;
 use SensitiveParameter;
 
-final class DB extends Manager
+final class DB
 {
     // Supported drivers
     public const string MARIADB    = 'mariadb';
@@ -67,12 +69,31 @@ final class DB extends Manager
     ];
 
     private const array DRIVER_INITIALIZATION = [
-        self::MARIADB    => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
-        self::POSTGRESQL => '',
-        self::SQLITE     => 'PRAGMA foreign_keys = ON',
-        self::SQL_SERVER => 'SET language us_english', // For timestamp columns
-        self::FIREBIRD   => '',
+        self::MARIADB    =>
+            'SET NAMES utf8mb4;' .
+            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+            "SET TIME_ZONE            := '+00:00';" .
+            'SET SQL_BIG_SELECTS      := 1;' .
+            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+        self::MYSQL      =>
+            'SET NAMES utf8mb4;' .
+            "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
+            "SET TIME_ZONE            := '+00:00';" .
+            'SET SQL_BIG_SELECTS      := 1;' .
+            'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+        self::POSTGRESQL =>
+            "SET timezone  = 'UTC';" .
+            "SET datestyle = 'ISO, YMD';",
+        self::SQLITE     =>
+            'PRAGMA journal_mode = WAL;' .
+            'PRAGMA foreign_keys = ON;' .
+            'PRAGMA synchronous  = NORMAL;' .
+            'PRAGMA busy_timeout = 5000;' .
+            'PRAGMA cache_size   = -16000;',
+        self::SQL_SERVER =>
+            'SET language us_english;', // For timestamp columns
+        self::FIREBIRD   =>
+            'SET NAMES UTF8;',
     ];
 
     public static function connect(
@@ -107,19 +128,22 @@ final class DB extends Manager
         // MySQL/MariaDB support encrypted connections
         if (
             ($driver === self::MYSQL || $driver === self::MARIADB) &&
-            $key !== '' && $certificate !== '' && $ca !== ''
+            $key !== '' && $certificate !== ''
         ) {
             $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $verify_certificate;
             $options[PDO::MYSQL_ATTR_SSL_KEY]                = Webtrees::ROOT_DIR . 'data/' . $key;
             $options[PDO::MYSQL_ATTR_SSL_CERT]               = Webtrees::ROOT_DIR . 'data/' . $certificate;
-            $options[PDO::MYSQL_ATTR_SSL_CA]                 = Webtrees::ROOT_DIR . 'data/' . $ca;
+
+            if ($ca !== '') {
+                $options[PDO::MYSQL_ATTR_SSL_CA] = Webtrees::ROOT_DIR . 'data/' . $ca;
+            }
         }
 
         if ($driver === self::SQLITE && $database !== ':memory:') {
             $database = Webtrees::ROOT_DIR . 'data/' . $database . '.sqlite';
         }
 
-        $capsule = new self();
+        $capsule = new Manager();
         $capsule->addConnection([
             'driver'                   => $driver,
             'host'                     => $host,
@@ -143,9 +167,7 @@ final class DB extends Manager
 
         $sql = self::DRIVER_INITIALIZATION[$driver];
 
-        if ($sql !== '') {
-            self::exec($sql);
-        }
+        self::exec($sql);
     }
 
     public static function driverName(): string
@@ -172,7 +194,7 @@ final class DB extends Manager
 
     private static function pdo(): PDO
     {
-        return parent::connection()->getPdo();
+        return Manager::connection()->getPdo();
     }
 
     /**
@@ -182,7 +204,7 @@ final class DB extends Manager
      */
     public static function prefix(string $identifier): string
     {
-        return parent::connection()->getTablePrefix() . $identifier;
+        return Manager::connection()->getTablePrefix() . $identifier;
     }
 
     public static function collation(): string|null
@@ -211,7 +233,7 @@ final class DB extends Manager
 
     public static function rollBack(): void
     {
-        parent::connection()->rollBack();
+        Manager::connection()->rollBack();
     }
 
     /**
@@ -251,7 +273,9 @@ final class DB extends Manager
     }
 
     /**
-     * @return Expression<string>
+     * @param literal-string $column
+     * @param literal-string|null $alias
+     * @return Expression<literal-string>
      */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
@@ -273,11 +297,44 @@ final class DB extends Manager
         return self::REGEX_OPERATOR[self::driverName()];
     }
 
-    /**
-     * PHPSTAN can't detect the magic methods in the parent class.
-     */
-    public static function query(): Builder
+    public static function query(): QueryBuilder
     {
-        return parent::connection()->query();
+        return Manager::connection()->query();
+    }
+
+    public static function schema(): SchemaBuilder
+    {
+        return Manager::schema();
+    }
+
+    public static function table(string $table): QueryBuilder
+    {
+        return Manager::connection()->table(table: $table);
+    }
+
+    /**
+     * Execute a callback within a transaction, retrying on concurrency errors.
+     *
+     * @template T
+     * @param Closure(): T $callback
+     *
+     * @return T
+     */
+    public static function transaction(Closure $callback, int $attempts = 1): mixed
+    {
+        return Manager::connection()->transaction($callback, $attempts);
+    }
+
+    public static function enableQueryLog(): void
+    {
+        Manager::connection()->enableQueryLog();
+    }
+
+    /**
+     * @return array<array{query:string,bindings:array<int|string|float|null>,time:float|null}>
+     */
+    public static function getQueryLog(): array
+    {
+        return Manager::connection()->getQueryLog();
     }
 }

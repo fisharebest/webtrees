@@ -33,10 +33,6 @@ class HierarchicalRelationship extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -58,7 +54,7 @@ class HierarchicalRelationship extends AbstractElement
             'CULT' => /* I18N: Type of location hierarchy */ I18N::translate('cultural'),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
 
         return $values;
     }

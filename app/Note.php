@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Factories\MarkdownFactory;
-use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
+use Fisharebest\Webtrees\Http\Controllers\NotePage;
 use Illuminate\Support\Str;
 
 use function explode;
@@ -42,8 +43,6 @@ class Note extends GedcomRecord
 
     /**
      * Get the text contents of the note
-     *
-     * @return string
      */
     public function getNote(): string
     {
@@ -56,12 +55,8 @@ class Note extends GedcomRecord
 
     /**
      * Each object type may have its own special rules, and re-implement this function.
-     *
-     * @param int $access_level
-     *
-     * @return bool
      */
-    protected function canShowByType(int $access_level): bool
+    protected function canShowByType(AccessLevel $access_level): bool
     {
         // Hide notes if they are attached to private records
         $linked_ids = DB::table('link')
@@ -83,8 +78,6 @@ class Note extends GedcomRecord
     /**
      * Create a name for this note - apply (and remove) markup, then take
      * a maximum of 100 characters from the first non-empty line.
-     *
-     * @return void
      */
     public function extractNames(): void
     {
@@ -103,10 +96,6 @@ class Note extends GedcomRecord
 
     /**
      * Notes are converted to HTML for display.  We want the first line
-     *
-     * @param string $html
-     *
-     * @return string
      */
     public static function firstLineOfTextFromHtml(string $html): string
     {

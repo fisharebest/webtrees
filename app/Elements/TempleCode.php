@@ -32,10 +32,6 @@ class TempleCode extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -207,7 +203,7 @@ class TempleCode extends AbstractElement
             'WINTE' => /* I18N: Location of an LDS church temple */ I18N::translate('Winter Quarters, Nebraska, United States'),
         ];
 
-        uasort($values, I18N::comparator());
+        uasort($values, I18N::compare(...));
         $values = ['' => I18N::translate('No temple - living ordinance')] + $values;
 
         return $values;

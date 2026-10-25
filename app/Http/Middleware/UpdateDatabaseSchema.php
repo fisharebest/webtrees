@@ -30,9 +30,6 @@ class UpdateDatabaseSchema implements MiddlewareInterface
 {
     private MigrationService $migration_service;
 
-    /**
-     * @param MigrationService $migration_service
-     */
     public function __construct(MigrationService $migration_service)
     {
         $this->migration_service = $migration_service;
@@ -40,11 +37,6 @@ class UpdateDatabaseSchema implements MiddlewareInterface
 
     /**
      * Update the database schema, if necessary.
-     *
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage;
+use Fisharebest\Webtrees\Http\Controllers\AddNewFact;
+use Fisharebest\Webtrees\Http\Controllers\DeleteRecord;
+use Fisharebest\Webtrees\Http\Controllers\EditFact;
+use Fisharebest\Webtrees\Http\Controllers\EditRawRecord;
+use Fisharebest\Webtrees\Http\Controllers\ReorderFamilies;
+use Fisharebest\Webtrees\Http\Controllers\ReorderMedia;
+use Fisharebest\Webtrees\Http\Controllers\ReorderNames;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
@@ -46,7 +46,7 @@ use Illuminate\Support\Collection;
         </a>
 
         <?php if ($record->facts(['NAME'], false, null, true)->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderNamesPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(ReorderNames::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order names') ?>
             </a>
@@ -68,7 +68,7 @@ use Illuminate\Support\Collection;
 
         <?php foreach ($record->facts(['SEX'], false, null, true) as $fact) : ?>
             <?php if ($fact->canEdit()) : ?>
-                <a class="dropdown-item" href="<?= e(route(EditFactPage::class, ['xref' => $record->xref(), 'fact_id' => $fact->id(), 'tree' => $record->tree()->name()])) ?>">
+                <a class="dropdown-item" href="<?= e(route(EditFact::class, ['xref' => $record->xref(), 'fact_id' => $fact->id(), 'tree' => $record->tree()->name()])) ?>">
                     <?= view('icons/edit') ?>
                     <?= I18N::translate('Edit the sex') ?>
                 </a>
@@ -78,7 +78,7 @@ use Illuminate\Support\Collection;
         <div class="dropdown-divider"></div>
 
         <?php if ($record->spouseFamilies()->count() > 1 || $record->childFamilies()->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderFamiliesPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(ReorderFamilies::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order families') ?>
             </a>
@@ -99,7 +99,7 @@ use Illuminate\Support\Collection;
         <?php endif ?>
 
         <?php if ($record->facts(['OBJE'], false, null, true)->count() > 1) : ?>
-            <a class="dropdown-item" href="<?= e(route(ReorderMediaPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(ReorderMedia::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order media') ?>
             </a>
@@ -124,7 +124,7 @@ use Illuminate\Support\Collection;
         </a>
 
         <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD') === '1') : ?>
-            <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="<?= e(route(EditRawRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>
             </a>

@@ -52,7 +52,7 @@ $count_families = DB::table('families')
 
 <table
     id="wt-datatables-submitters"
-    class="table table-bordered table-sm wt-table-submitter datatables d-none"
+    class="table table-bordered table-sm wt-table-submitter wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
         ['type' => 'html'],
@@ -92,7 +92,7 @@ $count_families = DB::table('families')
                     <?= I18N::number($count_families[$submitter->xref()] ?? 0) ?>
                 </td>
 
-                <td data-sort="<?= sprintf('x%07d', $submitter->lastChangeTimestamp()->timestamp()) ?>">
+                <td data-sort="<?= sprintf('x%07d', $submitter->lastChangeTimestamp()->getTimestamp()) ?>">
                     <?= view('components/datetime', ['timestamp' => $submitter->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

@@ -19,15 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
-use Fisharebest\Webtrees\Elements\RestrictionNotice;
+use Fisharebest\Webtrees\Comparators\TagComparator;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Restriction;
+use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
-use function array_flip;
-use function array_key_exists;
-use function count;
 use function e;
 use function implode;
 use function in_array;
@@ -35,114 +34,12 @@ use function preg_match;
 use function preg_replace;
 use function str_contains;
 use function str_ends_with;
-use function str_starts_with;
-use function usort;
 
 /**
  * A GEDCOM fact or event object.
  */
 class Fact
 {
-    private const array FACT_ORDER = [
-        'BIRT',
-        '_HNM',
-        'ALIA',
-        '_AKA',
-        '_AKAN',
-        'ADOP',
-        '_ADPF',
-        '_ADPF',
-        '_BRTM',
-        'CHR',
-        'BAPM',
-        'FCOM',
-        'CONF',
-        'BARM',
-        'BASM',
-        'EDUC',
-        'GRAD',
-        '_DEG',
-        'EMIG',
-        'IMMI',
-        'NATU',
-        '_MILI',
-        '_MILT',
-        'ENGA',
-        'MARB',
-        'MARC',
-        'MARL',
-        '_MARI',
-        '_MBON',
-        'MARR',
-        '_COML',
-        '_STAT',
-        '_SEPR',
-        'DIVF',
-        'MARS',
-        'DIV',
-        'ANUL',
-        'CENS',
-        'OCCU',
-        'RESI',
-        'PROP',
-        'CHRA',
-        'RETI',
-        'FACT',
-        'EVEN',
-        '_NMR',
-        '_NMAR',
-        'NMR',
-        'NCHI',
-        'WILL',
-        '_HOL',
-        '_????_',
-        'DEAT',
-        '_FNRL',
-        'CREM',
-        'BURI',
-        '_INTE',
-        '_YART',
-        '_NLIV',
-        'PROB',
-        'TITL',
-        'COMM',
-        'NATI',
-        'CITN',
-        'CAST',
-        'RELI',
-        'SSN',
-        'IDNO',
-        'TEMP',
-        'SLGC',
-        'BAPL',
-        'CONL',
-        'ENDL',
-        'SLGS',
-        'NO',
-        'ADDR',
-        'PHON',
-        'EMAIL',
-        '_EMAIL',
-        'EMAL',
-        'FAX',
-        'WWW',
-        'URL',
-        '_URL',
-        '_FSFTID',
-        'AFN',
-        'REFN',
-        '_PRMN',
-        'REF',
-        'RIN',
-        '_UID',
-        'OBJE',
-        'NOTE',
-        'SOUR',
-        'CREA',
-        'CHAN',
-        '_TODO',
-    ];
-
     // Unique identifier for this fact (currently implemented as a hash of the raw data).
     private string $id;
 
@@ -163,9 +60,6 @@ class Fact
 
     private Place $place;
 
-    // Used to sort facts
-    public int $sortOrder;
-
     // Used by anniversary calculations
     public int $jd;
     public int $anniv;
@@ -174,12 +68,6 @@ class Fact
      * Create an event object from a gedcom fragment.
      * We need the parent object (to check privacy) and a (pseudo) fact ID to
      * identify the fact within the record.
-     *
-     * @param string       $gedcom
-     * @param GedcomRecord $parent
-     * @param string       $id
-     *
-     * @throws InvalidArgumentException
      */
     public function __construct(string $gedcom, GedcomRecord $parent, string $id)
     {
@@ -196,8 +84,6 @@ class Fact
     /**
      * Get the value of level 1 data in the fact
      * Allow for multi-line values
-     *
-     * @return string
      */
     public function value(): string
     {
@@ -261,7 +147,6 @@ class Fact
     /**
      * Get the value of level 2 data in the fact
      *
-     * @param string $tag
      *
      * @return string
      */
@@ -306,28 +191,15 @@ class Fact
 
     /**
      * Do the privacy rules allow us to display this fact to the current user
-     *
-     * @param int|null $access_level
-     *
-     * @return bool
      */
-    public function canShow(int|null $access_level = null): bool
+    public function canShow(AccessLevel|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
-        $element     = new RestrictionNotice('');
-        $restriction = $element->canonical($this->attribute('RESN'));
-
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
-            return Auth::PRIV_NONE >= $access_level;
-        }
-
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
-            return Auth::PRIV_USER >= $access_level;
-        }
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
-            return true;
+        $restriction_level = Restriction::fromString($this->attribute('RESN'))->accessLevel();
+        if ($restriction_level !== null) {
+            return $restriction_level->allows($access_level);
         }
 
         // A link to a record of the same type: NOTE=>NOTE, OBJE=>OBJE, SOUR=>SOUR, etc.
@@ -343,10 +215,10 @@ class Fact
         $fact_privacy            = $this->record->tree()->getFactPrivacy();
         $individual_fact_privacy = $this->record->tree()->getIndividualFactPrivacy();
         if (isset($individual_fact_privacy[$xref][$this->tag])) {
-            return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
+            return $individual_fact_privacy[$xref][$this->tag]->allows($access_level);
         }
         if (isset($fact_privacy[$this->tag])) {
-            return $fact_privacy[$this->tag] >= $access_level;
+            return $fact_privacy[$this->tag]->allows($access_level);
         }
 
         // No restrictions - it must be public
@@ -355,8 +227,6 @@ class Fact
 
     /**
      * Check whether this fact is protected against edit
-     *
-     * @return bool
      */
     public function canEdit(): bool
     {
@@ -369,13 +239,11 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && !str_ends_with($this->attribute('RESN'), RestrictionNotice::VALUE_LOCKED) && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && Restriction::fromString($this->attribute('RESN'))->isUnlocked() && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**
      * The place where the event occurred.
-     *
-     * @return Place
      */
     public function place(): Place
     {
@@ -388,8 +256,6 @@ class Fact
      * Get the date for this fact.
      * We can call this function many times, especially when sorting,
      * so keep a copy of the date.
-     *
-     * @return Date
      */
     public function date(): Date
     {
@@ -400,8 +266,6 @@ class Fact
 
     /**
      * The raw GEDCOM data for this fact
-     *
-     * @return string
      */
     public function gedcom(): string
     {
@@ -410,8 +274,6 @@ class Fact
 
     /**
      * Get a (pseudo) primary key for this fact.
-     *
-     * @return string
      */
     public function id(): string
     {
@@ -420,8 +282,6 @@ class Fact
 
     /**
      * What is the tag (type) of this fact, such as BIRT, MARR or DEAT.
-     *
-     * @return string
      */
     public function tag(): string
     {
@@ -430,8 +290,6 @@ class Fact
 
     /**
      * The GEDCOM record where this Fact came from
-     *
-     * @return GedcomRecord
      */
     public function record(): GedcomRecord
     {
@@ -440,8 +298,6 @@ class Fact
 
     /**
      * Get the name of this fact type, for use as a label.
-     *
-     * @return string
      */
     public function label(): string
     {
@@ -482,8 +338,6 @@ class Fact
 
     /**
      * This is a newly deleted fact, pending approval.
-     *
-     * @return void
      */
     public function setPendingDeletion(): void
     {
@@ -493,8 +347,6 @@ class Fact
 
     /**
      * Is this a newly deleted fact, pending approval.
-     *
-     * @return bool
      */
     public function isPendingDeletion(): bool
     {
@@ -503,8 +355,6 @@ class Fact
 
     /**
      * This is a newly added fact, pending approval.
-     *
-     * @return void
      */
     public function setPendingAddition(): void
     {
@@ -514,8 +364,6 @@ class Fact
 
     /**
      * Is this a newly added fact, pending approval.
-     *
-     * @return bool
      */
     public function isPendingAddition(): bool
     {
@@ -524,8 +372,6 @@ class Fact
 
     /**
      * A one-line summary of the fact - for charts, etc.
-     *
-     * @return string
      */
     public function summary(): string
     {
@@ -573,8 +419,6 @@ class Fact
 
     /**
      * A one-line summary of the fact - for the clipboard, etc.
-     *
-     * @return string
      */
     public function name(): string
     {
@@ -592,7 +436,7 @@ class Fact
 
             // Fact date
             if ($this->date()->isOK()) {
-                $items[] = $this->date()->minimumDate()->format('%Y');
+                $items[] = $this->date()->yearOnly()->display();
             }
 
             // Fact place
@@ -605,181 +449,7 @@ class Fact
     }
 
     /**
-     * Helper functions to sort facts
-     *
-     * @return Closure(Fact,Fact):int
-     */
-    private static function dateComparator(): Closure
-    {
-        return static function (Fact $a, Fact $b): int {
-            if ($a->date()->isOK() && $b->date()->isOK()) {
-                // If both events have dates, compare by date
-                $ret = Date::compare($a->date(), $b->date());
-
-                if ($ret === 0) {
-                    // If dates overlap, compare by fact type
-                    $ret = self::typeComparator()($a, $b);
-
-                    // If the fact type is also the same, retain the initial order
-                    if ($ret === 0) {
-                        $ret = $a->sortOrder <=> $b->sortOrder;
-                    }
-                }
-
-                return $ret;
-            }
-
-            // One or both events have no date - retain the initial order
-            return $a->sortOrder <=> $b->sortOrder;
-        };
-    }
-
-    /**
-     * Helper functions to sort facts.
-     *
-     * @return Closure(Fact,Fact):int
-     */
-    public static function typeComparator(): Closure
-    {
-        static $factsort = [];
-
-        if ($factsort === []) {
-            $factsort = array_flip(self::FACT_ORDER);
-        }
-
-        return static function (Fact $a, Fact $b) use ($factsort): int {
-            // Facts from same families stay grouped together
-            // Keep MARR and DIV from the same families from mixing with events from other FAMs
-            // Use the original order in which the facts were added
-            if ($a->record instanceof Family && $b->record instanceof Family && $a->record !== $b->record) {
-                return $a->sortOrder <=> $b->sortOrder;
-            }
-
-            // NO events sort as the non-event itself.
-            $atag = $a->tag === 'NO' ? $a->value() : $a->tag;
-            $btag = $b->tag === 'NO' ? $b->value() : $b->tag;
-
-            // Events not in the above list get mapped onto one that is.
-            if (!array_key_exists($atag, $factsort)) {
-                $atag = '_????_';
-            }
-
-            if (!array_key_exists($btag, $factsort)) {
-                $btag = '_????_';
-            }
-
-            // - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
-            // - Treat dated after BURI facts as BURI instead
-            if ($a->attribute('DATE') !== '' && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
-                $atag = 'BURI';
-            }
-
-            if ($b->attribute('DATE') !== '' && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
-                $btag = 'BURI';
-            }
-
-            // If facts are the same then put dated facts before non-dated facts
-            if ($atag === $btag) {
-                if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
-                    return -1;
-                }
-
-                if ($b->attribute('DATE') !== '' && $a->attribute('DATE') === '') {
-                    return 1;
-                }
-
-                // If no sorting preference, then keep original ordering
-                return $a->sortOrder <=> $b->sortOrder;
-            }
-
-            return $factsort[$atag] <=> $factsort[$btag];
-        };
-    }
-
-    /**
-     * A multi-key sort
-     * 1. First divide the facts into two arrays one set with dates and one set without dates
-     * 2. Sort each of the two new arrays, the date using the compare date function, the non-dated
-     * using the compare type function
-     * 3. Then merge the arrays back into the original array using the compare type function
-     *
-     * @param Collection<int,Fact> $unsorted
-     *
-     * @return Collection<int,Fact>
-     */
-    public static function sortFacts(Collection $unsorted): Collection
-    {
-        $dated    = [];
-        $nondated = [];
-        $sorted   = [];
-
-        // Split the array into dated and non-dated arrays
-        $order = 0;
-
-        foreach ($unsorted as $fact) {
-            $fact->sortOrder = $order;
-            $order++;
-
-            if ($fact->date()->isOK()) {
-                $dated[] = $fact;
-            } else {
-                $nondated[] = $fact;
-            }
-        }
-
-        usort($dated, self::dateComparator());
-        usort($nondated, self::typeComparator());
-
-        // Merge the arrays
-        $dc = count($dated);
-        $nc = count($nondated);
-        $i  = 0;
-        $j  = 0;
-
-        // while there is anything in the dated array continue merging
-        while ($i < $dc) {
-            // compare each fact by type to merge them in order
-            if ($j < $nc && self::typeComparator()($dated[$i], $nondated[$j]) > 0) {
-                $sorted[] = $nondated[$j];
-                $j++;
-            } else {
-                $sorted[] = $dated[$i];
-                $i++;
-            }
-        }
-
-        // get anything that might be left in the nondated array
-        while ($j < $nc) {
-            $sorted[] = $nondated[$j];
-            $j++;
-        }
-
-        return new Collection($sorted);
-    }
-
-    /**
-     * Sort fact/event tags using the same order that we use for facts.
-     *
-     * @param Collection<int,string> $unsorted
-     *
-     * @return Collection<int,string>
-     */
-    public static function sortFactTags(Collection $unsorted): Collection
-    {
-        $tag_order = array_flip(self::FACT_ORDER);
-
-        return $unsorted->sort(static function (string $x, string $y) use ($tag_order): int {
-            $sort_x = $tag_order[$x] ?? $tag_order['_????_'];
-            $sort_y = $tag_order[$y] ?? $tag_order['_????_'];
-
-            return $sort_x - $sort_y;
-        });
-    }
-
-    /**
      * Allow native PHP functions such as array_unique() to work with objects
-     *
-     * @return string
      */
     public function __toString(): string
     {

@@ -31,14 +31,14 @@ use Illuminate\Support\Collection;
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" data-bs-toggle="tab" role="tab" href="#details">
+        <a class="nav-link active" id="details-tab" data-bs-toggle="tab" role="tab" aria-controls="details" aria-selected="true" href="#details">
             <?= I18N::translate('Details') ?>
         </a>
     </li>
 
     <?php if ($linked_individuals instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#individuals">
+            <a class="nav-link" id="individuals-tab" data-bs-toggle="tab" role="tab" aria-controls="individuals" aria-selected="false" href="#individuals">
                 <?= I18N::translate('Individuals') ?>
                 <?= view('components/badge', ['count' => $linked_individuals->count()]) ?>
             </a>
@@ -47,7 +47,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_families instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#families">
+            <a class="nav-link" id="families-tab" data-bs-toggle="tab" role="tab" aria-controls="families" aria-selected="false" href="#families">
                 <?= I18N::translate('Families') ?>
                 <?= view('components/badge', ['count' => $linked_families->count()]) ?>
             </a>
@@ -56,7 +56,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_media_objects instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#media">
+            <a class="nav-link" id="media-tab" data-bs-toggle="tab" role="tab" aria-controls="media" aria-selected="false" href="#media">
                 <?= I18N::translate('Media objects') ?>
                 <?= view('components/badge', ['count' => $linked_media_objects->count()]) ?>
             </a>
@@ -65,7 +65,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_sources instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#sources">
+            <a class="nav-link" id="sources-tab" data-bs-toggle="tab" role="tab" aria-controls="sources" aria-selected="false" href="#sources">
                 <?= I18N::translate('Sources') ?>
                 <?= view('components/badge', ['count' => $linked_sources->count()]) ?>
             </a>
@@ -74,7 +74,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_notes instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#notes">
+            <a class="nav-link" id="notes-tab" data-bs-toggle="tab" role="tab" aria-controls="notes" aria-selected="false" href="#notes">
                 <?= I18N::translate('Notes') ?>
                 <?= view('components/badge', ['count' => $linked_notes->count()]) ?>
             </a>
@@ -83,7 +83,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_repositories instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#repositories">
+            <a class="nav-link" id="repositories-tab" data-bs-toggle="tab" role="tab" aria-controls="repositories" aria-selected="false" href="#repositories">
                 <?= I18N::translate('Repositories') ?>
                 <?= view('components/badge', ['count' => $linked_repositories->count()]) ?>
             </a>
@@ -92,7 +92,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_submitters instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#submitters">
+            <a class="nav-link" id="submitters-tab" data-bs-toggle="tab" role="tab" aria-controls="submitters" aria-selected="false" href="#submitters">
                 <?= I18N::translate('Submitters') ?>
                 <?= view('components/badge', ['count' => $linked_submitters->count()]) ?>
             </a>
@@ -101,7 +101,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_locations instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#locations">
+            <a class="nav-link" id="locations-tab" data-bs-toggle="tab" role="tab" aria-controls="locations" aria-selected="false" href="#locations">
                 <?= I18N::translate('Locations') ?>
                 <?= view('components/badge', ['count' => $linked_locations->count()]) ?>
             </a>
@@ -110,54 +110,54 @@ use Illuminate\Support\Collection;
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade show active" role="tabpanel" id="details">
+    <div class="tab-pane fade show active" role="tabpanel" id="details" aria-labelledby="details-tab">
         <?= $details ?>
     </div>
 
     <?php if ($linked_individuals instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="individuals">
+        <div class="tab-pane fade" role="tabpanel" id="individuals" aria-labelledby="individuals-tab">
             <?= view('lists/individuals-table', ['individuals' => $linked_individuals, 'sosa' => false, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_families instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="families">
+        <div class="tab-pane fade" role="tabpanel" id="families" aria-labelledby="families-tab">
             <?= view('lists/families-table', ['families' => $linked_families, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_media_objects instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="media">
+        <div class="tab-pane fade" role="tabpanel" id="media" aria-labelledby="media-tab">
             <?= view('lists/media-table', ['media_objects' => $linked_media_objects, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_sources instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="sources">
+        <div class="tab-pane fade" role="tabpanel" id="sources" aria-labelledby="sources-tab">
             <?= view('lists/sources-table', ['sources' => $linked_sources, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_notes instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="notes">
+        <div class="tab-pane fade" role="tabpanel" id="notes" aria-labelledby="notes-tab">
             <?= view('lists/notes-table', ['notes' => $linked_notes, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_repositories instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="repositories">
+        <div class="tab-pane fade" role="tabpanel" id="repositories" aria-labelledby="repositories-tab">
             <?= view('lists/repositories-table', ['repositories' => $linked_repositories, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_submitters instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="submitters">
+        <div class="tab-pane fade" role="tabpanel" id="submitters" aria-labelledby="submitters-tab">
             <?= view('lists/submitters-table', ['submitters' => $linked_submitters, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 
     <?php if ($linked_locations instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="locations">
+        <div class="tab-pane fade" role="tabpanel" id="locations" aria-labelledby="locations-tab">
             <?= view('lists/locations-table', ['locations' => $linked_locations, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>

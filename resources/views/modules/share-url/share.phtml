@@ -13,21 +13,16 @@ use Fisharebest\Webtrees\I18N;
 
     <input type="text" class="form-control" aria-label="" value="<?= e($record->url()) ?>" readonly="readonly" id="share-url-input">
 
-    <button class="btn btn-primary" type="button" id="share-url-button">
+    <button
+        class="btn btn-primary"
+        type="button"
+        id="share-url-button"
+        data-wt-copy-button
+        data-wt-copy-target="#share-url-input"
+        data-wt-copy-message="<?= e(I18N::translate('The URL was copied to the clipboard')) ?>"
+    >
         <?= view('icons/copy') ?>
         <?= I18N::translate('Copy') ?>
     </button>
 </div>
 
-<script>
-    document.getElementById('share-url-button').addEventListener('click', function () {
-        const input = document.getElementById('share-url-input');
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(input.value);
-        } else {
-            input.select();
-            document.execCommand("copy");
-        }
-        alert(<?= json_encode(I18N::translate('The URL was copied to the clipboard'), JSON_THROW_ON_ERROR) ?>);
-    });
-</script>

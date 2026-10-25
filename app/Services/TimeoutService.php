@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Registry;
+use Psr\Clock\ClockInterface;
 
 /**
  * Check for PHP timeouts.
@@ -37,9 +37,10 @@ class TimeoutService
 
     public function __construct(
         private PhpService $php_service,
+        private readonly ClockInterface $clock,
         float|null $start_time = null,
     ) {
-        $this->start_time = $start_time ?? Registry::timeFactory()->now();
+        $this->start_time = $start_time ?? (float) $this->clock->now()->format('U.u');
     }
 
     /**
@@ -54,7 +55,7 @@ class TimeoutService
             return false;
         }
 
-        $now = Registry::timeFactory()->now();
+        $now = (float) $this->clock->now()->format('U.u');
 
         return $now + $threshold > $this->start_time + (float) $max_execution_time;
     }
@@ -64,7 +65,7 @@ class TimeoutService
      */
     public function isTimeLimitUp(float $limit = self::TIME_LIMIT): bool
     {
-        $now = Registry::timeFactory()->now();
+        $now = (float) $this->clock->now()->format('U.u');
 
         return $now > $this->start_time + $limit;
     }

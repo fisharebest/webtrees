@@ -1,0 +1,90 @@
+name: Node version compatibility
+
+on: [push, pull_request]
+
+# Change default permissions from all to none.
+permissions: {}
+
+# Cancel previous runs of the same workflow for the same pull request or branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and hash output for Node ${{ matrix.node-version }}
+    if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['22', '24', '26']
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          # Don't leave GITHUB_TOKEN in .git/config
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Show versions
+        run: |
+          node --version
+          npm --version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Create hashes of minified CSS and JS files
+        run: |
+          sha256sum public/css/*.min.css public/js/*.min.js > build.sha256
+
+      - name: Upload build hash
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: hash-node-${{ matrix.node-version }}
+          path: build.sha256
+
+  compare:
+    name: Compare build hashes
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build hashes
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: hash-node-*
+          path: hashes
+
+      - name: Compare hashes
+        run: |
+          echo "Build hashes:"
+          for file in hashes/*/build.sha256; do
+            echo
+            echo "=== $file ==="
+            cat "$file"
+          done
+
+          echo
+          echo "Comparing..."
+
+          first_hash=$(sha256sum hashes/*/build.sha256 | head -1 | cut -d' ' -f1)
+
+          for file in hashes/*/build.sha256; do
+            hash=$(sha256sum "$file" | cut -d' ' -f1)
+
+            if [ "$hash" != "$first_hash" ]; then
+              echo "ERROR: Build output differs: $file"
+              exit 1
+            fi
+          done
+
+          echo "All Node versions produced identical build output."

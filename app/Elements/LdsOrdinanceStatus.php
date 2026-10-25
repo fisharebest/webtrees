@@ -31,17 +31,13 @@ class LdsOrdinanceStatus extends AbstractElement
     private const array CORRECTIONS = [
         // PhpGedView misspells this tag.
         'CANCELLED' => 'CANCELED',
-        // GEDCOM 5.5.1
-        'DNS/CAN'   => 'DNS_CAN',
-        'PRE-1970'  => 'PRE_1970',
+        // GEDCOM 7.0 uses slightly different values
+        'DNS_CAN'   => 'DNS/CAN',
+        'PRE_1970'  => 'PRE-1970',
     ];
 
     /**
      * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
      */
     public function canonical(string $value): string
     {
@@ -74,7 +70,7 @@ class LdsOrdinanceStatus extends AbstractElement
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
             'INFANT'  => I18N::translate('Died less than 1 year old, sealing not required.'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-            'PRE_1970'  => I18N::translate('Completed before 1970; date not available'),
+            'PRE-1970'  => I18N::translate('Completed before 1970; date not available'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
             'STILLBORN' => I18N::translate('Stillborn: exempt'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */

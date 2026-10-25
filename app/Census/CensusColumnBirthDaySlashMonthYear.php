@@ -25,6 +25,8 @@ final readonly class CensusColumnBirthDaySlashMonthYear extends AbstractCensusCo
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%j/%n %Y');
+        $date = $individual->getEstimatedBirthDate()->minimumDate();
+
+        return sprintf('%d/%d %d', $date->day(), $date->month(), $date->year());
     }
 }
