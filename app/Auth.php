@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\Role;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
@@ -172,7 +172,7 @@ class Auth
     public static function checkComponentAccess(ModuleInterface $module, string $interface, Tree $tree, UserInterface $user): void
     {
         if ($module->accessLevel($tree, $interface)->disallows(self::accessLevel($tree, $user))) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
     }
 
@@ -194,7 +194,7 @@ class Auth
             return $family;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkHeaderAccess(Header|null $header, bool $edit = false): Header
@@ -215,7 +215,7 @@ class Auth
             return $header;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     /**
@@ -243,7 +243,7 @@ class Auth
             return $individual;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkLocationAccess(Location|null $location, bool $edit = false): Location
@@ -264,7 +264,7 @@ class Auth
             return $location;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkMediaAccess(Media|null $media, bool $edit = false): Media
@@ -285,7 +285,7 @@ class Auth
             return $media;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkNoteAccess(Note|null $note, bool $edit = false): Note
@@ -306,7 +306,7 @@ class Auth
             return $note;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkSharedNoteAccess(SharedNote|null $shared_note, bool $edit = false): SharedNote
@@ -327,7 +327,7 @@ class Auth
             return $shared_note;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkRecordAccess(GedcomRecord|null $record, bool $edit = false): GedcomRecord
@@ -348,7 +348,7 @@ class Auth
             return $record;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkRepositoryAccess(Repository|null $repository, bool $edit = false): Repository
@@ -369,7 +369,7 @@ class Auth
             return $repository;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkSourceAccess(Source|null $source, bool $edit = false): Source
@@ -390,7 +390,7 @@ class Auth
             return $source;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkSubmitterAccess(Submitter|null $submitter, bool $edit = false): Submitter
@@ -411,7 +411,7 @@ class Auth
             return $submitter;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function checkSubmissionAccess(Submission|null $submission, bool $edit = false): Submission
@@ -432,7 +432,7 @@ class Auth
             return $submission;
         }
 
-        throw new HttpAccessDeniedException($message);
+        throw new HttpForbiddenException($message);
     }
 
     public static function canUploadMedia(Tree $tree, UserInterface $user): bool

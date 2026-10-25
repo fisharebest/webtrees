@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Charts\BarChartData;
 use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -105,7 +106,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
-        return route('module', [
+        return route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Chart',
                 'tree'    => $individual->tree()->name(),
@@ -123,22 +124,22 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         $tabs = [
-            I18N::translate('Individuals') => route('module', [
+            I18N::translate('Individuals') => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Individuals',
                 'tree'    => $tree->name(),
             ]),
-            I18N::translate('Families')    => route('module', [
+            I18N::translate('Families')    => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Families',
                 'tree'    => $tree->name(),
             ]),
-            I18N::translate('Other')       => route('module', [
+            I18N::translate('Other')       => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Other',
                 'tree'    => $tree->name(),
             ]),
-            I18N::translate('Custom')      => route('module', [
+            I18N::translate('Custom')      => route(ModuleAction::class, [
                 'module' => $this->name(),
                 'action' => 'Custom',
                 'tree'    => $tree->name(),

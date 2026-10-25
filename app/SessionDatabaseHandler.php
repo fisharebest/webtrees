@@ -117,4 +117,18 @@ class SessionDatabaseHandler implements SessionHandlerInterface
             ->where('session_time', '<', $this->clock->now()->modify('-' . $max_lifetime . ' seconds')->format('Y-m-d H:i:s'))
             ->delete();
     }
+
+
+    // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps -- required by SessionHandlerInterface since PHP8.6
+    public function create_sid(): string
+    {
+        return session_create_id();
+    }
+
+    public function validateId(string $id): bool
+    {
+        return DB::table('session')
+            ->where('session_id', '=', $id)
+            ->exists();
+    }
 }

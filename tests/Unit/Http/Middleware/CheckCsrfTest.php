@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -41,13 +41,13 @@ class CheckCsrfTest extends TestCase
         $uri_factory = Registry::container()->get(UriFactoryInterface::class);
         self::assertInstanceOf(UriFactoryInterface::class, $uri_factory);
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_POST)
+        $request = self::createRequest(HttpRequestMethod::POST->value)
             ->withUri($uri_factory->createUri('https://example.com'));
 
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::Found->value, $response->getStatusCode());
         self::assertSame('https://example.com', $response->getHeaderLine('Location'));
     }
 }

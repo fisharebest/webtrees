@@ -57,7 +57,7 @@ final class WriteTranslation extends AbstractCommand
     protected function configure(): void
     {
         $this
-            ->setName('ai:write-translation')
+            ->setName('dev:write-translation')
             ->setDescription('Write a fuzzy translation to a PO file, for review by a native speaker')
             ->addArgument('po-file', InputArgument::REQUIRED, 'The path to the PO file (e.g. "resources/lang/de/messages.po")')
             ->addArgument('msgid', InputArgument::REQUIRED, 'The English source string (msgid)')

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesAction;
+use Fisharebest\Webtrees\Http\Controllers\ReorderFamilies;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(ReorderFamiliesAction::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(ReorderFamilies::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
     <?php if ($fams_facts->count() < 2) : ?>
         <?php foreach ($fams_facts as $fact) : ?>
             <input type="hidden" name="order[]" value="<?= e($fact->id()) ?>">

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -42,6 +42,6 @@ class DoHousekeepingTest extends TestCase
         $middleware = new DoHousekeeping($housekeeping_service);
         $response   = $middleware->process($request, $handler);
 
-        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
 }

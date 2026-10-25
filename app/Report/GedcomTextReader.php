@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use Fisharebest\Webtrees\Elements\NamePersonal;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -55,10 +56,10 @@ final class GedcomTextReader
             return '';
         }
         // Adding \n before and after gedrec to simplify boundary matching
-        $gedrec            = "\n" . $gedrec . "\n";
-        $tag               = trim($tag);
-        $searchTarget      = "~[\n]" . $tag . "[\s]~";
-        $match_count       = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+        $gedrec       = "\n" . $gedrec . "\n";
+        $tag          = trim($tag);
+        $searchTarget = "~[\n]" . $tag . "[\s]~";
+        $match_count  = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
         if ($match_count < $num) {
             return '';
         }
@@ -81,7 +82,7 @@ final class GedcomTextReader
      * Extracts and merges all CONT continuation lines at the given level,
      * returning them as a single string with newlines preserved.
      *
-     * @param int    $level The level of the CONT lines to extract
+     * @param int    $level  The level of the CONT lines to extract
      * @param string $record The GEDCOM sub-record to search within
      */
     public static function getCont(int $level, string $record): string
@@ -109,12 +110,13 @@ final class GedcomTextReader
      * string from the first BIRT event.  When the final tag is NOTE and the
      * value is a cross-reference, the linked note text is returned.
      *
-     * @param string $tag    Colon-delimited tag path (e.g. "BIRT:DATE")
-     * @param int    $level  Starting level (0 means auto-detect from record)
-     * @param string $gedrec The GEDCOM record to search within
-     * @param Tree   $tree   The tree context (used to resolve NOTE cross-references)
+     * @param string $tag     Colon-delimited tag path (e.g. "BIRT:DATE")
+     * @param int    $level   Starting level (0 means auto-detect from record)
+     * @param string $gedrec  The GEDCOM record to search within
+     * @param Tree   $tree    The tree context (used to resolve NOTE cross-references)
+     * @param string $context GEDCOM context (e.g. "INDI" or "INDI:BIRT")
      */
-    public static function getGedcomValue(string $tag, int $level, string $gedrec, Tree $tree): string
+    public static function getGedcomValue(string $tag, int $level, string $gedrec, Tree $tree, string $context): string
     {
         if ($gedrec === '') {
             return '';
@@ -177,9 +179,13 @@ final class GedcomTextReader
                 $value .= self::getCont($level + 1, $subrecord);
             }
 
-            // Strip name-delimiting slashes from NAME-type values
-            if ($tag === 'NAME' || $tag === '_MARNM' || $tag === '_AKA') {
-                return strtr($value, ['/' => '']);
+            // Normalize the value using the corresponding GEDCOM element.
+            $element = Registry::elementFactory()->make($context . ':' . $tag);
+            $value   = $element->canonical($value);
+
+            // Strip surname delimiters from NAMEs
+            if ($element instanceof NamePersonal) {
+                $value = strtr($value, ['/' => '']);
             }
 
             return $value;

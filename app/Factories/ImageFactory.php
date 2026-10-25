@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use DOMDocument;
 use DOMElement;
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Enums\ExifOrientation;
 use Fisharebest\Webtrees\Enums\ImageOperation;
@@ -128,13 +128,13 @@ readonly class ImageFactory implements ImageFactoryInterface
             return $filesystem->mimeType(path: $path);
         } catch (UnableToRetrieveMetadata $exception) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                status_code: HttpStatusCode::NotFound,
                 filename: $path,
                 error: 'Unable to read MIME type: ' . $exception->getMessage(),
             );
         } catch (FilesystemException $exception) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                status_code: HttpStatusCode::NotFound,
                 filename: $path,
                 error: 'Filesystem error while reading MIME type: ' . $exception->getMessage(),
             );
@@ -244,7 +244,7 @@ readonly class ImageFactory implements ImageFactoryInterface
     {
         if (!$this->php_service->extensionLoaded(extension: 'dom')) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: $filename,
                 error: 'PHP extension ext-dom is not installed',
             );
@@ -252,7 +252,7 @@ readonly class ImageFactory implements ImageFactoryInterface
 
         if ($this->svgContainsActiveContent(data: $data)) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_FORBIDDEN,
+                status_code: HttpStatusCode::Forbidden,
                 filename: $filename,
                 error: 'SVG contains active content',
             );
@@ -265,13 +265,13 @@ readonly class ImageFactory implements ImageFactoryInterface
             return $filesystem->read(location: $path);
         } catch (UnableToReadFile $exception) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                status_code: HttpStatusCode::NotFound,
                 filename: $filename,
                 error: 'Unable to read file contents: ' . $exception->getMessage(),
             );
         } catch (FilesystemException $exception) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_NOT_FOUND,
+                status_code: HttpStatusCode::NotFound,
                 filename: $filename,
                 error: 'Filesystem error while reading file: ' . $exception->getMessage(),
             );
@@ -342,7 +342,7 @@ readonly class ImageFactory implements ImageFactoryInterface
     {
         if (!$this->php_service->extensionLoaded(extension: 'gd')) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: '',
                 error: 'PHP extension ext-gd is not installed',
             );
@@ -357,7 +357,7 @@ readonly class ImageFactory implements ImageFactoryInterface
 
         if (!$image instanceof GdImage) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: $filename,
                 error: 'Unable to decode image',
             );
@@ -376,7 +376,7 @@ readonly class ImageFactory implements ImageFactoryInterface
 
         if ($stream === false) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: $filename,
                 error: 'Unable to read EXIF metadata',
             );
@@ -414,7 +414,7 @@ readonly class ImageFactory implements ImageFactoryInterface
 
         if (!$rotated instanceof GdImage) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: '',
                 error: 'Unable to rotate image',
             );
@@ -427,7 +427,7 @@ readonly class ImageFactory implements ImageFactoryInterface
     {
         if (!imageflip($image, $mode)) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: '',
                 error: 'Unable to flip image',
             );
@@ -455,7 +455,7 @@ readonly class ImageFactory implements ImageFactoryInterface
             ob_end_clean();
 
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: $mime_type,
                 error: 'Unable to encode image',
             );
@@ -465,7 +465,7 @@ readonly class ImageFactory implements ImageFactoryInterface
 
         if (!is_string($data)) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: $mime_type,
                 error: 'Unable to capture image data',
             );
@@ -488,7 +488,7 @@ readonly class ImageFactory implements ImageFactoryInterface
             };
         } catch (RuntimeException $exception) {
             throw new ImageException(
-                status_code: StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR,
+                status_code: HttpStatusCode::InternalServerError,
                 filename: $filename,
                 error: 'Unable to resize image: ' . $exception->getMessage(),
             );

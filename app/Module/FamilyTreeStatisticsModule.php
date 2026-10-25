@@ -141,7 +141,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             $surnames = '';
         }
 
-        $content = view('modules/gedcom_stats/statistics', [
+        $content = view('modules/gedcom-stats/statistics', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,
@@ -278,7 +278,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
         $stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
         $stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
-        return view('modules/gedcom_stats/config', [
+        return view('modules/gedcom-stats/config', [
             'show_last_update'     => $show_last_update,
             'show_common_surnames' => $show_common_surnames,
             'number_of_surnames'   => $number_of_surnames,

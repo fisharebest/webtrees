@@ -19,7 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAnalytics;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -98,7 +99,7 @@ trait ModuleAnalyticsTrait
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/analytics-edit', [
-            'action'      => route('module', ['module' => $this->name(), 'action' => 'Admin']),
+            'action'      => route(ModuleAction::class, ['module' => $this->name(), 'action' => 'Admin']),
             'form_fields' => $this->analyticsFormFields(),
             'preview'     => $this->analyticsSnippet($this->analyticsParameters()),
             'title'       => $this->title(),
@@ -165,6 +166,6 @@ trait ModuleAnalyticsTrait
             $this->setPreference($parameter, $new_value);
         }
 
-        return redirect(route(ModulesAnalyticsPage::class));
+        return redirect(route(ModulesAnalytics::class));
     }
 }

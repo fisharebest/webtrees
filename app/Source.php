@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Enums\AccessLevel;
-use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Fisharebest\Webtrees\Http\Controllers\SourcePage;
 
 /**
  * A GEDCOM source (SOUR) object.

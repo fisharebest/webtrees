@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -12,7 +13,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'tree' => $tree->name()])) ?>" data-wt-descendancy-sidebar data-wt-descendancy-search-url="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name(), 'search' => ''])) ?>" data-wt-descendancy-placeholder="<?= e(I18N::translate('Search')) ?>">
+<form method="post" action="<?= e(route(ModuleAction::class, ['module' => 'descendancy', 'action' => 'Descendants', 'tree' => $tree->name()])) ?>" data-wt-descendancy-sidebar data-wt-descendancy-search-url="<?= e(route(ModuleAction::class, ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name(), 'search' => ''])) ?>" data-wt-descendancy-placeholder="<?= e(I18N::translate('Search')) ?>">
     <input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">
 
     <?= csrf_field() ?>

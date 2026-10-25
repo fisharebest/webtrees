@@ -127,16 +127,24 @@ final class PlaceholderExpander
      * strings, then evaluates the resulting boolean expression.
      *
      * @param string $condition  The raw condition from the `condition` attribute
-     * @param string $gedrec    Current GEDCOM record text
-     * @param string $fact      Current fact tag (e.g. "BIRT")
-     * @param string $desc      Current description text
+     * @param string $gedrec     Current GEDCOM record text
+     * @param string $fact       Current fact tag (e.g. "BIRT")
+     * @param string $desc       Current description text
      * @param int    $generation Current generation number
-     * @param Tree   $tree      Tree context used to resolve GEDCOM paths
+     * @param Tree   $tree       Tree context used to resolve GEDCOM paths
+     * @param string $context    Parent element tag prefix (e.g. "INDI:NAME")
      *
      * @return bool The result of evaluating the condition
      */
-    public function evaluateCondition(string $condition, string $gedrec, string $fact, string $desc, int $generation, Tree $tree): bool
-    {
+    public function evaluateCondition(
+        string $condition,
+        string $gedrec,
+        string $fact,
+        string $desc,
+        int $generation,
+        Tree $tree,
+        string $context,
+    ): bool {
         $condition = $this->substituteVars($condition, true);
         $condition = str_replace([' LT ', ' GT ', '@fact:'], ['<', '>', $fact . ':'], $condition);
 
@@ -162,10 +170,10 @@ final class PlaceholderExpander
                 if ($level === 0) {
                     $level++;
                 }
-                $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $tree);
+                $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $tree, $context);
                 if ($value === '') {
                     $level++;
-                    $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $tree);
+                    $value = GedcomTextReader::getGedcomValue($id, $level, $gedrec, $tree, $context);
                 }
                 $value = preg_replace('/^@(' . Gedcom::REGEX_XREF . ')@$/', '$1', $value);
                 $value = '"' . addslashes($value) . '"';

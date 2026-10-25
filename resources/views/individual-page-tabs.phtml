@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Illuminate\Support\Collection;
@@ -16,7 +17,7 @@ use Illuminate\Support\Collection;
     <ul class="nav nav-tabs flex-wrap" role="tablist">
         <?php foreach ($tabs as $tab) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" id="<?= $tab->name() ?>-tab" data-bs-toggle="tab" role="tab" aria-controls="<?= $tab->name() ?>" aria-selected="false" data-wt-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
+                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" id="<?= $tab->name() ?>-tab" data-bs-toggle="tab" role="tab" aria-controls="<?= $tab->name() ?>" aria-selected="false" data-wt-href="<?= e(route(ModuleAction::class, ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
                     <?= $tab->tabTitle() ?>
                 </a>
             </li>

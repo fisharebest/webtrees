@@ -254,10 +254,10 @@ final readonly class Tamil extends AbstractLanguage
             Relationship::fixed('உறவினர்', 'உறவினரின் %s')->parent()->sibling()->son(),
             Relationship::fixed('உறவினர்', 'உறவினரின் %s')->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'பாட்டி', 'பாட்டியின்'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'தாத்தா', 'தாத்தாவின்'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'தாத்தா-பாட்டி', 'தாத்தா-பாட்டியின்'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'பேரக்குழந்தை', 'பேரக்குழந்தையின்'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'பாட்டி', 'பாட்டியின்'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'தாத்தா', 'தாத்தாவின்'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'தாத்தா-பாட்டி', 'தாத்தா-பாட்டியின்'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'பேரக்குழந்தை', 'பேரக்குழந்தையின்'))->descendant(),
         ];
     }
 }

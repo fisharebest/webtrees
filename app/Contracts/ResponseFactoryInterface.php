@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -37,19 +37,19 @@ interface ResponseFactoryInterface
     public function redirect(
         string $route_name,
         array $parameters = [],
-        int $status = StatusCodeInterface::STATUS_FOUND
+        HttpStatusCode $status = HttpStatusCode::Found
     ): ResponseInterface;
 
     /**
      * Redirect to a URL.
      */
-    public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface;
+    public function redirectUrl(UriInterface|string $url, HttpStatusCode $code = HttpStatusCode::Found): ResponseInterface;
 
     /**
      * @param string|array<mixed>|object $content
      * @param array<string,string>       $headers
      */
-    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface;
+    public function response(string|array|object $content = '', HttpStatusCode $code = HttpStatusCode::OK, array $headers = []): ResponseInterface;
 
     /**
      * Create and render a view, and embed it in an HTML page.
@@ -59,7 +59,7 @@ interface ResponseFactoryInterface
     public function view(
         string $view_name,
         array $view_data,
-        int $status = StatusCodeInterface::STATUS_OK,
+        HttpStatusCode $status = HttpStatusCode::OK,
         string $layout_name = Webtrees::LAYOUT_DEFAULT
     ): ResponseInterface;
 }

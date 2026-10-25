@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
+use Fisharebest\Webtrees\Http\Controllers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
@@ -222,7 +222,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         $sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
         $days     = $this->getBlockSetting($block_id, 'days', '1');
 
-        return view('modules/review_changes/config', [
+        return view('modules/review-changes/config', [
             'days'     => $days,
             'sendmail' => $sendmail,
         ]);

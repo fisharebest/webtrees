@@ -191,96 +191,101 @@ final readonly class Kurdish extends AbstractLanguage
 
     protected const array JALALI_MONTHS_INSTRUMENTAL = self::JALALI_MONTHS_NOMINATIVE;
 
+    /** @return array{string, string} */
+    private function ku(string $s): array
+    {
+        return [$s, $s . ' yê %s'];
+    }
+
+    /** @return array{string, string} */
+    private function great(int $n, string $nominative): array
+    {
+        $prefix = str_repeat('kal', $n);
+
+        return [$prefix . $nominative, $prefix . $nominative . ' yê %s'];
+    }
+
     /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Kurmanji genitive: ezafe construction — "yê" linking
-        $ku = static fn (string $s): array => [$s, $s . ' yê %s'];
-
-        // "kal" prefix for great-grandparents, repeating for each generation
-        $great = static function (int $n, string $nom): array {
-            $prefix = str_repeat('kal', $n);
-
-            return [$prefix . $nom, $prefix . $nom . ' yê %s'];
-        };
 
         return [
             // Parents
-            Relationship::fixed(...$ku('dayik'))->mother(),
-            Relationship::fixed(...$ku('bav'))->father(),
-            Relationship::fixed(...$ku('dêûbav'))->parent(),
+            Relationship::fixed(...$this->ku('dayik'))->mother(),
+            Relationship::fixed(...$this->ku('bav'))->father(),
+            Relationship::fixed(...$this->ku('dêûbav'))->parent(),
             // Children
-            Relationship::fixed(...$ku('keç'))->daughter(),
-            Relationship::fixed(...$ku('kur'))->son(),
-            Relationship::fixed(...$ku('zarok'))->child(),
+            Relationship::fixed(...$this->ku('keç'))->daughter(),
+            Relationship::fixed(...$this->ku('kur'))->son(),
+            Relationship::fixed(...$this->ku('zarok'))->child(),
             // Siblings
-            Relationship::fixed(...$ku('xwişk'))->sister(),
-            Relationship::fixed(...$ku('bira'))->brother(),
-            Relationship::fixed(...$ku('xwişkûbira'))->sibling(),
+            Relationship::fixed(...$this->ku('xwişk'))->sister(),
+            Relationship::fixed(...$this->ku('bira'))->brother(),
+            Relationship::fixed(...$this->ku('xwişkûbira'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$ku('nîvxwişk'))->parent()->daughter(),
-            Relationship::fixed(...$ku('nîvbira'))->parent()->son(),
-            Relationship::fixed(...$ku('nîvxwişkûbira'))->parent()->child(),
+            Relationship::fixed(...$this->ku('nîvxwişk'))->parent()->daughter(),
+            Relationship::fixed(...$this->ku('nîvbira'))->parent()->son(),
+            Relationship::fixed(...$this->ku('nîvxwişkûbira'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$ku('diya'))->parent()->wife(),
-            Relationship::fixed(...$ku('bavê'))->parent()->husband(),
-            Relationship::fixed(...$ku('dêûbavê zincîrî'))->parent()->married()->spouse(),
-            Relationship::fixed(...$ku('keça zincîrî'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$ku('kurê zincîrî'))->married()->spouse()->son(),
-            Relationship::fixed(...$ku('zarokê zincîrî'))->married()->spouse()->child(),
-            Relationship::fixed(...$ku('xwişka zincîrî'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$ku('birayê zincîrî'))->parent()->spouse()->son(),
-            Relationship::fixed(...$ku('xwişkûbirayê zincîrî'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->ku('diya'))->parent()->wife(),
+            Relationship::fixed(...$this->ku('bavê'))->parent()->husband(),
+            Relationship::fixed(...$this->ku('dêûbavê zincîrî'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->ku('keça zincîrî'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->ku('kurê zincîrî'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->ku('zarokê zincîrî'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->ku('xwişka zincîrî'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->ku('birayê zincîrî'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->ku('xwişkûbirayê zincîrî'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$ku('hevjîna berê'))->divorced()->partner()->female(),
-            Relationship::fixed(...$ku('hevjînê berê'))->divorced()->partner()->male(),
-            Relationship::fixed(...$ku('hevjînê berê'))->divorced()->partner(),
-            Relationship::fixed(...$ku('destgirtî'))->engaged()->partner()->female(),
-            Relationship::fixed(...$ku('destgirtî'))->engaged()->partner()->male(),
-            Relationship::fixed(...$ku('jin'))->wife(),
-            Relationship::fixed(...$ku('mêr'))->husband(),
-            Relationship::fixed(...$ku('hevjîn'))->spouse(),
-            Relationship::fixed(...$ku('hevkar'))->partner(),
+            Relationship::fixed(...$this->ku('hevjîna berê'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->ku('hevjînê berê'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->ku('hevjînê berê'))->divorced()->partner(),
+            Relationship::fixed(...$this->ku('destgirtî'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->ku('destgirtî'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->ku('jin'))->wife(),
+            Relationship::fixed(...$this->ku('mêr'))->husband(),
+            Relationship::fixed(...$this->ku('hevjîn'))->spouse(),
+            Relationship::fixed(...$this->ku('hevkar'))->partner(),
             // In-laws
-            Relationship::fixed(...$ku('xesû'))->married()->spouse()->mother(),
-            Relationship::fixed(...$ku('xezûr'))->married()->spouse()->father(),
-            Relationship::fixed(...$ku('xesûxezûr'))->married()->spouse()->parent(),
-            Relationship::fixed(...$ku('bûk'))->child()->wife(),
-            Relationship::fixed(...$ku('zava'))->child()->husband(),
-            Relationship::fixed(...$ku('jinbira'))->spouse()->sister(),
-            Relationship::fixed(...$ku('hêvir'))->spouse()->brother(),
-            Relationship::fixed(...$ku('bûk'))->sibling()->wife(),
-            Relationship::fixed(...$ku('hêvir'))->sibling()->husband(),
+            Relationship::fixed(...$this->ku('xesû'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->ku('xezûr'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->ku('xesûxezûr'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->ku('bûk'))->child()->wife(),
+            Relationship::fixed(...$this->ku('zava'))->child()->husband(),
+            Relationship::fixed(...$this->ku('jinbira'))->spouse()->sister(),
+            Relationship::fixed(...$this->ku('hêvir'))->spouse()->brother(),
+            Relationship::fixed(...$this->ku('bûk'))->sibling()->wife(),
+            Relationship::fixed(...$this->ku('hêvir'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$ku('dapîr'))->parent()->mother(),
-            Relationship::fixed(...$ku('bapîr'))->parent()->father(),
-            Relationship::fixed(...$ku('dapîr û bapîr'))->parent()->parent(),
+            Relationship::fixed(...$this->ku('dapîr'))->parent()->mother(),
+            Relationship::fixed(...$this->ku('bapîr'))->parent()->father(),
+            Relationship::fixed(...$this->ku('dapîr û bapîr'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$ku('nevîça'))->child()->daughter(),
-            Relationship::fixed(...$ku('nevî'))->child()->son(),
-            Relationship::fixed(...$ku('nevî'))->child()->child(),
+            Relationship::fixed(...$this->ku('nevîça'))->child()->daughter(),
+            Relationship::fixed(...$this->ku('nevî'))->child()->son(),
+            Relationship::fixed(...$this->ku('nevî'))->child()->child(),
             // Aunts and uncles — maternal/paternal
-            Relationship::fixed(...$ku('xaltî'))->mother()->sister(),
-            Relationship::fixed(...$ku('xal'))->mother()->brother(),
-            Relationship::fixed(...$ku('met'))->father()->sister(),
-            Relationship::fixed(...$ku('ap'))->father()->brother(),
-            Relationship::fixed(...$ku('xaltî'))->parent()->sister(),
-            Relationship::fixed(...$ku('ap'))->parent()->brother(),
+            Relationship::fixed(...$this->ku('xaltî'))->mother()->sister(),
+            Relationship::fixed(...$this->ku('xal'))->mother()->brother(),
+            Relationship::fixed(...$this->ku('met'))->father()->sister(),
+            Relationship::fixed(...$this->ku('ap'))->father()->brother(),
+            Relationship::fixed(...$this->ku('xaltî'))->parent()->sister(),
+            Relationship::fixed(...$this->ku('ap'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$ku('keça xwişk/birayî'))->sibling()->daughter(),
-            Relationship::fixed(...$ku('kurê xwişk/birayî'))->sibling()->son(),
-            Relationship::fixed(...$ku('zarokê xwişk/birayî'))->sibling()->child(),
+            Relationship::fixed(...$this->ku('keça xwişk/birayî'))->sibling()->daughter(),
+            Relationship::fixed(...$this->ku('kurê xwişk/birayî'))->sibling()->son(),
+            Relationship::fixed(...$this->ku('zarokê xwişk/birayî'))->sibling()->child(),
             // Cousins — flat
-            Relationship::fixed(...$ku('pismam'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$ku('pismam'))->parent()->sibling()->son(),
-            Relationship::fixed(...$ku('pismam'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->ku('pismam'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->ku('pismam'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->ku('pismam'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'dapîr'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'bapîr'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'bapîr'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nevî'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'dapîr'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'bapîr'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'bapîr'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'nevî'))->descendant(),
         ];
     }
 }

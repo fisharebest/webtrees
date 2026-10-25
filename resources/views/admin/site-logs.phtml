@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload;
-use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsData;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsDelete;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogsDownload;
+use Fisharebest\Webtrees\Http\Controllers\SiteLogs;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -91,7 +91,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A button label. */ I18N::translate('search') ?>
         </button>
 
-        <a href="<?= e(route(SiteLogsPage::class)) ?>" type="submit" class="btn btn-secondary">
+        <a href="<?= e(route(SiteLogs::class)) ?>" type="submit" class="btn btn-secondary">
             <?= view('icons/cancel') ?>
             <?= /* I18N: A button label. */ I18N::translate('reset') ?>
         </a>

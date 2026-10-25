@@ -124,7 +124,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         if ($rows->isEmpty()) {
             $content = I18N::plural('There have been no changes within the last %s day.', 'There have been no changes within the last %s days.', $days, I18N::number($days));
         } elseif ($infoStyle === 'list') {
-            $content = view('modules/recent_changes/changes-list', [
+            $content = view('modules/recent-changes/changes-list', [
                 'id'         => $block_id,
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
@@ -133,7 +133,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'show_user'  => $show_user,
             ]);
         } else {
-            $content = view('modules/recent_changes/changes-table', [
+            $content = view('modules/recent-changes/changes-table', [
                 'limit_low'  => self::LIMIT_LOW,
                 'limit_high' => self::LIMIT_HIGH,
                 'rows'       => $rows,
@@ -237,7 +237,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             self::SOURCE_GEDCOM   => I18N::translate('show changes recorded in the genealogy data'),
         ];
 
-        return view('modules/recent_changes/config', [
+        return view('modules/recent-changes/config', [
             'days'        => $days,
             'infoStyle'   => $infoStyle,
             'info_styles' => $info_styles,

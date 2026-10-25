@@ -312,13 +312,20 @@ final readonly class Czech extends AbstractLanguage
         ];
     }
 
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function pra(int $n, string $nominative, string $genitive): array
     {
-        $pra = static fn (int $n, string $nominative, string $genitive): array => [
+        return [
             ($n > 3 ? 'pra ×' . $n . ' ' : str_repeat('pra', $n)) . $nominative,
             ($n > 3 ? 'pra ×' . $n . ' ' : str_repeat('pra', $n)) . $genitive,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Parents
             Relationship::fixed('otec', '%s otce')->father(),
@@ -383,9 +390,9 @@ final readonly class Czech extends AbstractLanguage
             Relationship::fixed('prababička', '%s prababičky')->parent()->parent()->mother(),
             Relationship::fixed('praprarodič', '%s praprarodiče')->parent()->parent()->parent(),
             // Ancestors (dynamic)
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'dědeček', '%s pradědečka'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'babička', '%s prababičky'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'prarodič', '%s praprarodiče'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'dědeček', '%s pradědečka'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'babička', '%s prababičky'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'prarodič', '%s praprarodiče'))->ancestor(),
             // Grandchildren
             Relationship::fixed('vnuk', '%s vnuka')->child()->son(),
             Relationship::fixed('vnučka', '%s vnučky')->child()->daughter(),
@@ -395,27 +402,27 @@ final readonly class Czech extends AbstractLanguage
             Relationship::fixed('pravnučka', '%s pravnučky')->child()->child()->daughter(),
             Relationship::fixed('pravnouče', '%s pravnoučete')->child()->child()->child(),
             // Descendants (dynamic)
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'vnuk', '%s pravnuka'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'vnučka', '%s pravnučky'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'vnouče', '%s pravnoučete'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'vnuk', '%s pravnuka'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'vnučka', '%s pravnučky'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'vnouče', '%s pravnoučete'))->descendant(),
             // Aunts and uncles
             Relationship::fixed('strýc', '%s strýce')->parent()->brother(),
             Relationship::fixed('teta', '%s tety')->parent()->sister(),
             // Great-aunts and great-uncles
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prastrýc', '%s prastrýce'))->ancestor()->brother(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prateta', '%s pratety'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'prastrýc', '%s prastrýce'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'prateta', '%s pratety'))->ancestor()->sister(),
             // Nieces and nephews
             Relationship::fixed('neteř', '%s neteře')->sibling()->daughter(),
             Relationship::fixed('synovec', '%s synovce')->sibling()->son(),
             Relationship::fixed('synovec/neteř', '%s synovce/neteře')->sibling()->child(),
             // Great-nieces and great-nephews
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prasynovec', '%s prasynovce'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'praneteř', '%s praneteře'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prasynovec/praneteř', '%s prasynovce/praneteře'))->sibling()->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'prasynovec', '%s prasynovce'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'praneteř', '%s praneteře'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'prasynovec/praneteř', '%s prasynovce/praneteře'))->sibling()->descendant(),
             // Cousins
-            Relationship::dynamic(static fn (int $n): array => ['sestřenice', '%s sestřenice'])->symmetricCousin()->female(),
-            Relationship::dynamic(static fn (int $n): array => ['bratranec', '%s bratrance'])->symmetricCousin()->male(),
-            Relationship::dynamic(static fn (int $n): array => ['bratranec/sestřenice', '%s bratrance/sestřenice'])->symmetricCousin(),
+            Relationship::dynamic(fn (int $n): array => ['sestřenice', '%s sestřenice'])->symmetricCousin()->female(),
+            Relationship::dynamic(fn (int $n): array => ['bratranec', '%s bratrance'])->symmetricCousin()->male(),
+            Relationship::dynamic(fn (int $n): array => ['bratranec/sestřenice', '%s bratrance/sestřenice'])->symmetricCousin(),
         ];
     }
 

@@ -163,7 +163,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 }
             }
 
-            $content = view('modules/upcoming_events/empty', ['message' => $message]);
+            $content = view('modules/upcoming-events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,
@@ -257,7 +257,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
             $all_events[$event] = Registry::elementFactory()->make($tag)->label();
         }
 
-        return view('modules/upcoming_events/config', [
+        return view('modules/upcoming-events/config', [
             'all_events'  => $all_events,
             'days'        => $days,
             'event_array' => $event_array,

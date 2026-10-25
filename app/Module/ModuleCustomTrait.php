@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
@@ -92,7 +93,7 @@ trait ModuleCustomTrait
                 $request         = $request_factory->createRequest('GET', $this->customModuleLatestVersionUrl());
                 $response        = $http_client->sendRequest($request);
 
-                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+                if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                     $version = $response->getBody()->getContents();
 
                     // Does the response look like a version?
@@ -139,7 +140,7 @@ trait ModuleCustomTrait
         // Add the file's modification time to the URL, so we can set long expiry cache headers.
         $hash = filemtime($file);
 
-        return route('module', [
+        return route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Asset',
             'asset'  => $asset,
@@ -157,7 +158,7 @@ trait ModuleCustomTrait
 
         // Do not allow requests that try to access parent folders.
         if (str_contains($asset, '..')) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         // Find the file for this asset.
@@ -173,7 +174,7 @@ trait ModuleCustomTrait
         $extension = strtoupper(pathinfo($asset, PATHINFO_EXTENSION));
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
+        return response($content, HttpStatusCode::OK, [
             'cache-control'  => 'public,max-age=31536000',
             'content-type'   => $mime_type,
         ]);

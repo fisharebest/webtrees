@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ReportSetupPage;
+use Fisharebest\Webtrees\Http\Controllers\ReportSetup;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 
@@ -50,7 +50,7 @@ trait ModuleReportTrait
     {
         return new Menu(
             $this->title(),
-            route(ReportSetupPage::class, [
+            route(ReportSetup::class, [
                 'xref'   => $individual->xref(),
                 'tree'   => $individual->tree()->name(),
                 'report' => $this->name(),

@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Enums\PluralRule;
 
+use function str_repeat;
+
 final readonly class German extends AbstractLanguage
 {
     protected const PluralRule PLURAL_RULE = PluralRule::TwoFormsSingularForOne;
@@ -188,124 +190,152 @@ final readonly class German extends AbstractLanguage
     }
 
     /**
+     * Generate nominative and genitive forms with the feminine article "der".
+     *
+     * @return array{string, string}
+     */
+    private function der(string $nominative): array
+    {
+        return [$nominative, '%s der ' . $nominative];
+    }
+
+    /**
+     * Generate nominative and genitive forms with the masculine/neuter article "des".
+     *
+     * German masculine/neuter nouns take a genitive -s/-es suffix.
+     * Irregular forms can be passed explicitly.
+     *
+     * @return array{string, string}
+     */
+    private function des(string $nominative, string $genitive = ''): array
+    {
+        return [$nominative, '%s des ' . ($genitive !== '' ? $genitive : $nominative . 's')];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "Ur" prefix.
+     *
+     * Großmutter → Urgroßmutter → Ururgroßmutter
+     *
+     * @return array{string, string}
+     */
+    private function ur(int $n, string $suffix, string $article): array
+    {
+        $nominative = ($n > 3 ? 'Ur×' . $n . '-' : str_repeat('Ur', $n)) . $suffix;
+
+        return [$nominative, '%s ' . $article . $nominative];
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        $genitive = static fn (string $nominative, string $article): array => [$nominative, '%s ' . $article . $nominative];
-
-        // "der" for feminine, "des" for masculine/neuter (with genitive -s/-es suffix on the noun)
-        $der = static fn (string $s): array => $genitive($s, 'der ');
-        $des = static fn (string $s, string $gen = ''): array => [$s, '%s des ' . ($gen !== '' ? $gen : $s . 's')];
-
-        $great = static fn (int $n, string $prefix, string $suffix, string $article): array => $genitive(
-            $prefix . ($n > 3 ? 'Ur×' . $n . '-' : str_repeat('Ur', $n)) . $suffix,
-            $article,
-        );
 
         return [
             // Adopted
-            Relationship::fixed(...$der('Adoptivmutter'))->adoptive()->mother(),
-            Relationship::fixed(...$des('Adoptivvater', 'Adoptivvaters'))->adoptive()->father(),
-            Relationship::fixed(...$des('Adoptivelternteil', 'Adoptivelternteils'))->adoptive()->parent(),
-            Relationship::fixed(...$der('Adoptivtochter'))->adopted()->daughter(),
-            Relationship::fixed(...$des('Adoptivsohn', 'Adoptivsohnes'))->adopted()->son(),
-            Relationship::fixed(...$des('Adoptivkind', 'Adoptivkindes'))->adopted()->child(),
+            Relationship::fixed(...$this->der('Adoptivmutter'))->adoptive()->mother(),
+            Relationship::fixed(...$this->des('Adoptivvater', 'Adoptivvaters'))->adoptive()->father(),
+            Relationship::fixed(...$this->des('Adoptivelternteil', 'Adoptivelternteils'))->adoptive()->parent(),
+            Relationship::fixed(...$this->der('Adoptivtochter'))->adopted()->daughter(),
+            Relationship::fixed(...$this->des('Adoptivsohn', 'Adoptivsohnes'))->adopted()->son(),
+            Relationship::fixed(...$this->des('Adoptivkind', 'Adoptivkindes'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$der('Pflegemutter'))->fostering()->mother(),
-            Relationship::fixed(...$des('Pflegevater', 'Pflegevaters'))->fostering()->father(),
-            Relationship::fixed(...$des('Pflegeelternteil', 'Pflegeelternteils'))->fostering()->parent(),
-            Relationship::fixed(...$der('Pflegetochter'))->fostered()->daughter(),
-            Relationship::fixed(...$des('Pflegesohn', 'Pflegesohnes'))->fostered()->son(),
-            Relationship::fixed(...$des('Pflegekind', 'Pflegekindes'))->fostered()->child(),
+            Relationship::fixed(...$this->der('Pflegemutter'))->fostering()->mother(),
+            Relationship::fixed(...$this->des('Pflegevater', 'Pflegevaters'))->fostering()->father(),
+            Relationship::fixed(...$this->des('Pflegeelternteil', 'Pflegeelternteils'))->fostering()->parent(),
+            Relationship::fixed(...$this->der('Pflegetochter'))->fostered()->daughter(),
+            Relationship::fixed(...$this->des('Pflegesohn', 'Pflegesohnes'))->fostered()->son(),
+            Relationship::fixed(...$this->des('Pflegekind', 'Pflegekindes'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$der('Mutter'))->mother(),
-            Relationship::fixed(...$des('Vater', 'Vaters'))->father(),
-            Relationship::fixed(...$des('Elternteil', 'Elternteils'))->parent(),
+            Relationship::fixed(...$this->der('Mutter'))->mother(),
+            Relationship::fixed(...$this->des('Vater', 'Vaters'))->father(),
+            Relationship::fixed(...$this->des('Elternteil', 'Elternteils'))->parent(),
             // Children
-            Relationship::fixed(...$der('Tochter'))->daughter(),
-            Relationship::fixed(...$des('Sohn', 'Sohnes'))->son(),
-            Relationship::fixed(...$des('Kind', 'Kindes'))->child(),
+            Relationship::fixed(...$this->der('Tochter'))->daughter(),
+            Relationship::fixed(...$this->des('Sohn', 'Sohnes'))->son(),
+            Relationship::fixed(...$this->des('Kind', 'Kindes'))->child(),
             // Siblings
-            Relationship::fixed(...$der('Zwillingsschwester'))->multiple()->sister(),
-            Relationship::fixed(...$des('Zwillingsbruder', 'Zwillingsbruders'))->multiple()->brother(),
-            Relationship::fixed(...$des('Zwillingsgeschwister', 'Zwillingsgeschwisters'))->multiple()->sibling(),
-            Relationship::fixed(...$der('große Schwester'))->older()->sister(),
-            Relationship::fixed(...$des('großer Bruder', 'großen Bruders'))->older()->brother(),
-            Relationship::fixed(...$des('älteres Geschwister', 'älteren Geschwisters'))->older()->sibling(),
-            Relationship::fixed(...$der('kleine Schwester'))->younger()->sister(),
-            Relationship::fixed(...$des('kleiner Bruder', 'kleinen Bruders'))->younger()->brother(),
-            Relationship::fixed(...$des('jüngeres Geschwister', 'jüngeren Geschwisters'))->younger()->sibling(),
-            Relationship::fixed(...$der('Schwester'))->sister(),
-            Relationship::fixed(...$des('Bruder', 'Bruders'))->brother(),
-            Relationship::fixed(...$des('Geschwister', 'Geschwisters'))->sibling(),
+            Relationship::fixed(...$this->der('Zwillingsschwester'))->multiple()->sister(),
+            Relationship::fixed(...$this->des('Zwillingsbruder', 'Zwillingsbruders'))->multiple()->brother(),
+            Relationship::fixed(...$this->des('Zwillingsgeschwister', 'Zwillingsgeschwisters'))->multiple()->sibling(),
+            Relationship::fixed(...$this->der('große Schwester'))->older()->sister(),
+            Relationship::fixed(...$this->des('großer Bruder', 'großen Bruders'))->older()->brother(),
+            Relationship::fixed(...$this->des('älteres Geschwister', 'älteren Geschwisters'))->older()->sibling(),
+            Relationship::fixed(...$this->der('kleine Schwester'))->younger()->sister(),
+            Relationship::fixed(...$this->des('kleiner Bruder', 'kleinen Bruders'))->younger()->brother(),
+            Relationship::fixed(...$this->des('jüngeres Geschwister', 'jüngeren Geschwisters'))->younger()->sibling(),
+            Relationship::fixed(...$this->der('Schwester'))->sister(),
+            Relationship::fixed(...$this->des('Bruder', 'Bruders'))->brother(),
+            Relationship::fixed(...$this->des('Geschwister', 'Geschwisters'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$der('Halbschwester'))->parent()->daughter(),
-            Relationship::fixed(...$des('Halbbruder', 'Halbbruders'))->parent()->son(),
-            Relationship::fixed(...$des('Halbgeschwister', 'Halbgeschwisters'))->parent()->child(),
+            Relationship::fixed(...$this->der('Halbschwester'))->parent()->daughter(),
+            Relationship::fixed(...$this->des('Halbbruder', 'Halbbruders'))->parent()->son(),
+            Relationship::fixed(...$this->des('Halbgeschwister', 'Halbgeschwisters'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$der('Stiefmutter'))->parent()->wife(),
-            Relationship::fixed(...$des('Stiefvater', 'Stiefvaters'))->parent()->husband(),
-            Relationship::fixed(...$des('Stiefelternteil', 'Stiefelternteils'))->parent()->married()->spouse(),
-            Relationship::fixed(...$der('Stieftochter'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$des('Stiefsohn', 'Stiefsohnes'))->married()->spouse()->son(),
-            Relationship::fixed(...$des('Stiefkind', 'Stiefkindes'))->married()->spouse()->child(),
-            Relationship::fixed(...$der('Stiefschwester'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$des('Stiefbruder', 'Stiefbruders'))->parent()->spouse()->son(),
-            Relationship::fixed(...$des('Stiefgeschwister', 'Stiefgeschwisters'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->der('Stiefmutter'))->parent()->wife(),
+            Relationship::fixed(...$this->des('Stiefvater', 'Stiefvaters'))->parent()->husband(),
+            Relationship::fixed(...$this->des('Stiefelternteil', 'Stiefelternteils'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->der('Stieftochter'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->des('Stiefsohn', 'Stiefsohnes'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->des('Stiefkind', 'Stiefkindes'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->der('Stiefschwester'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->des('Stiefbruder', 'Stiefbruders'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->des('Stiefgeschwister', 'Stiefgeschwisters'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$der('Ex-Ehefrau'))->divorced()->partner()->female(),
-            Relationship::fixed(...$des('Ex-Ehemann', 'Ex-Ehemannes'))->divorced()->partner()->male(),
-            Relationship::fixed(...$des('Ex-Ehepartner', 'Ex-Ehepartners'))->divorced()->partner(),
-            Relationship::fixed(...$der('Verlobte'))->engaged()->partner()->female(),
-            Relationship::fixed(...$des('Verlobter', 'Verlobten'))->engaged()->partner()->male(),
-            Relationship::fixed(...$der('Ehefrau'))->wife(),
-            Relationship::fixed(...$des('Ehemann', 'Ehemannes'))->husband(),
-            Relationship::fixed(...$des('Ehepartner', 'Ehepartners'))->spouse(),
-            Relationship::fixed(...$des('Partner', 'Partners'))->partner(),
+            Relationship::fixed(...$this->der('Ex-Ehefrau'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->des('Ex-Ehemann', 'Ex-Ehemannes'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->des('Ex-Ehepartner', 'Ex-Ehepartners'))->divorced()->partner(),
+            Relationship::fixed(...$this->der('Verlobte'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->des('Verlobter', 'Verlobten'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->der('Ehefrau'))->wife(),
+            Relationship::fixed(...$this->des('Ehemann', 'Ehemannes'))->husband(),
+            Relationship::fixed(...$this->des('Ehepartner', 'Ehepartners'))->spouse(),
+            Relationship::fixed(...$this->des('Partner', 'Partners'))->partner(),
             // In-laws
-            Relationship::fixed(...$der('Schwiegermutter'))->married()->spouse()->mother(),
-            Relationship::fixed(...$des('Schwiegervater', 'Schwiegervaters'))->married()->spouse()->father(),
-            Relationship::fixed(...$des('Schwiegerelternteil', 'Schwiegerelternteils'))->married()->spouse()->parent(),
-            Relationship::fixed(...$der('Schwiegertochter'))->child()->wife(),
-            Relationship::fixed(...$des('Schwiegersohn', 'Schwiegersohnes'))->child()->husband(),
-            Relationship::fixed(...$des('Schwiegerkind', 'Schwiegerkindes'))->child()->married()->spouse(),
-            Relationship::fixed(...$der('Schwägerin'))->spouse()->sister(),
-            Relationship::fixed(...$des('Schwager', 'Schwagers'))->spouse()->brother(),
-            Relationship::fixed(...$der('Schwägerin'))->sibling()->wife(),
-            Relationship::fixed(...$des('Schwager', 'Schwagers'))->sibling()->husband(),
+            Relationship::fixed(...$this->der('Schwiegermutter'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->des('Schwiegervater', 'Schwiegervaters'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->des('Schwiegerelternteil', 'Schwiegerelternteils'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->der('Schwiegertochter'))->child()->wife(),
+            Relationship::fixed(...$this->des('Schwiegersohn', 'Schwiegersohnes'))->child()->husband(),
+            Relationship::fixed(...$this->des('Schwiegerkind', 'Schwiegerkindes'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->der('Schwägerin'))->spouse()->sister(),
+            Relationship::fixed(...$this->des('Schwager', 'Schwagers'))->spouse()->brother(),
+            Relationship::fixed(...$this->der('Schwägerin'))->sibling()->wife(),
+            Relationship::fixed(...$this->des('Schwager', 'Schwagers'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$der('Großmutter'))->parent()->mother(),
-            Relationship::fixed(...$des('Großvater', 'Großvaters'))->parent()->father(),
-            Relationship::fixed(...$des('Großelternteil', 'Großelternteils'))->parent()->parent(),
+            Relationship::fixed(...$this->der('Großmutter'))->parent()->mother(),
+            Relationship::fixed(...$this->des('Großvater', 'Großvaters'))->parent()->father(),
+            Relationship::fixed(...$this->des('Großelternteil', 'Großelternteils'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$der('Enkelin'))->child()->daughter(),
-            Relationship::fixed(...$des('Enkel', 'Enkels'))->child()->son(),
-            Relationship::fixed(...$des('Enkelkind', 'Enkelkindes'))->child()->child(),
+            Relationship::fixed(...$this->der('Enkelin'))->child()->daughter(),
+            Relationship::fixed(...$this->des('Enkel', 'Enkels'))->child()->son(),
+            Relationship::fixed(...$this->des('Enkelkind', 'Enkelkindes'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$der('Tante'))->parent()->sister(),
-            Relationship::fixed(...$des('Onkel', 'Onkels'))->parent()->brother(),
+            Relationship::fixed(...$this->der('Tante'))->parent()->sister(),
+            Relationship::fixed(...$this->des('Onkel', 'Onkels'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$der('Nichte'))->sibling()->daughter(),
-            Relationship::fixed(...$des('Neffe', 'Neffen'))->sibling()->son(),
-            Relationship::fixed(...$der('Nichte'))->married()->spouse()->sibling()->daughter(),
-            Relationship::fixed(...$des('Neffe', 'Neffen'))->married()->spouse()->sibling()->son(),
+            Relationship::fixed(...$this->der('Nichte'))->sibling()->daughter(),
+            Relationship::fixed(...$this->des('Neffe', 'Neffen'))->sibling()->son(),
+            Relationship::fixed(...$this->der('Nichte'))->married()->spouse()->sibling()->daughter(),
+            Relationship::fixed(...$this->des('Neffe', 'Neffen'))->married()->spouse()->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$der('Cousine'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$des('Cousin', 'Cousins'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->der('Cousine'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->des('Cousin', 'Cousins'))->parent()->sibling()->son(),
             // Dynamic relationships
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Tante', 'der '))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Onkel', 'des '))->ancestor()->brother(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Nichte', 'der '))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Nichte', 'der '))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Neffe', 'des '))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Neffe', 'des '))->married()->spouse()->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Großmutter', 'der '))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Großvater', 'des '))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'Großelternteil', 'des '))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'Enkelin', 'der '))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'Enkel', 'des '))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'Enkelkind', 'des '))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Tante', 'der '))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Onkel', 'des '))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Nichte', 'der '))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Nichte', 'der '))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Neffe', 'des '))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Neffe', 'des '))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Großmutter', 'der '))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Großvater', 'des '))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 1, 'Großelternteil', 'des '))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 2, 'Enkelin', 'der '))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 2, 'Enkel', 'des '))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->ur($n - 2, 'Enkelkind', 'des '))->descendant(),
         ];
     }
 }

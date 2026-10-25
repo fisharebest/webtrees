@@ -262,117 +262,132 @@ final readonly class Lithuanian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+    /** @return array{string, string} */
+    private function rel(string $nominative, string $genitive): array
+    {
+        return [$nominative, '%s ' . $genitive];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "pro" prefix.
+     *
+     * @return array{string, string}
+     */
+    private function pro(int $n, string $nominative, string $genitive): array
+    {
+        return [
+            str_repeat('pro', $n) . $nominative,
+            '%s ' . str_repeat('pro', $n) . $genitive,
+        ];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Lithuanian genitive: nominative + genitive form
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
-
-        // Dynamic prefix for great- generations: pro- repeats
-        $pro = static fn (int $n, string $nom, string $gen): array => [
-            str_repeat('pro', $n) . $nom,
-            '%s ' . str_repeat('pro', $n) . $gen,
-        ];
 
         return [
             // Adopted
-            Relationship::fixed(...$rel('įdukra', 'įdukros'))->adopted()->daughter(),
-            Relationship::fixed(...$rel('įsūnis', 'įsūnio'))->adopted()->son(),
-            Relationship::fixed(...$rel('įvaikis', 'įvaikio'))->adopted()->child(),
-            Relationship::fixed(...$rel('įmotė', 'įmotės'))->adoptive()->mother(),
-            Relationship::fixed(...$rel('įtėvis', 'įtėvio'))->adoptive()->father(),
-            Relationship::fixed(...$rel('įtėvis/įmotė', 'įtėvio/įmotės'))->adoptive()->parent(),
+            Relationship::fixed(...$this->rel('įdukra', 'įdukros'))->adopted()->daughter(),
+            Relationship::fixed(...$this->rel('įsūnis', 'įsūnio'))->adopted()->son(),
+            Relationship::fixed(...$this->rel('įvaikis', 'įvaikio'))->adopted()->child(),
+            Relationship::fixed(...$this->rel('įmotė', 'įmotės'))->adoptive()->mother(),
+            Relationship::fixed(...$this->rel('įtėvis', 'įtėvio'))->adoptive()->father(),
+            Relationship::fixed(...$this->rel('įtėvis/įmotė', 'įtėvio/įmotės'))->adoptive()->parent(),
             // Foster
-            Relationship::fixed(...$rel('globotinė', 'globotinės'))->fostered()->daughter(),
-            Relationship::fixed(...$rel('globotinis', 'globotinio'))->fostered()->son(),
-            Relationship::fixed(...$rel('globotinis', 'globotinio'))->fostered()->child(),
-            Relationship::fixed(...$rel('globėja', 'globėjos'))->fostering()->mother(),
-            Relationship::fixed(...$rel('globėjas', 'globėjo'))->fostering()->father(),
-            Relationship::fixed(...$rel('globėjas/globėja', 'globėjo/globėjos'))->fostering()->parent(),
+            Relationship::fixed(...$this->rel('globotinė', 'globotinės'))->fostered()->daughter(),
+            Relationship::fixed(...$this->rel('globotinis', 'globotinio'))->fostered()->son(),
+            Relationship::fixed(...$this->rel('globotinis', 'globotinio'))->fostered()->child(),
+            Relationship::fixed(...$this->rel('globėja', 'globėjos'))->fostering()->mother(),
+            Relationship::fixed(...$this->rel('globėjas', 'globėjo'))->fostering()->father(),
+            Relationship::fixed(...$this->rel('globėjas/globėja', 'globėjo/globėjos'))->fostering()->parent(),
             // Parents
-            Relationship::fixed(...$rel('motina', 'motinos'))->mother(),
-            Relationship::fixed(...$rel('tėvas', 'tėvo'))->father(),
-            Relationship::fixed(...$rel('tėvas/motina', 'tėvo/motinos'))->parent(),
+            Relationship::fixed(...$this->rel('motina', 'motinos'))->mother(),
+            Relationship::fixed(...$this->rel('tėvas', 'tėvo'))->father(),
+            Relationship::fixed(...$this->rel('tėvas/motina', 'tėvo/motinos'))->parent(),
             // Children
-            Relationship::fixed(...$rel('dukra', 'dukros'))->daughter(),
-            Relationship::fixed(...$rel('sūnus', 'sūnaus'))->son(),
-            Relationship::fixed(...$rel('vaikas', 'vaiko'))->child(),
+            Relationship::fixed(...$this->rel('dukra', 'dukros'))->daughter(),
+            Relationship::fixed(...$this->rel('sūnus', 'sūnaus'))->son(),
+            Relationship::fixed(...$this->rel('vaikas', 'vaiko'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('sesuo', 'sesers'))->sister(),
-            Relationship::fixed(...$rel('brolis', 'brolio'))->brother(),
-            Relationship::fixed(...$rel('brolis/sesuo', 'brolio/sesers'))->sibling(),
+            Relationship::fixed(...$this->rel('sesuo', 'sesers'))->sister(),
+            Relationship::fixed(...$this->rel('brolis', 'brolio'))->brother(),
+            Relationship::fixed(...$this->rel('brolis/sesuo', 'brolio/sesers'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('pusseserė', 'pusseserės'))->parent()->daughter(),
-            Relationship::fixed(...$rel('pusbrolis', 'pusbrolio'))->parent()->son(),
+            Relationship::fixed(...$this->rel('pusseserė', 'pusseserės'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('pusbrolis', 'pusbrolio'))->parent()->son(),
             // Stepfamily
-            Relationship::fixed(...$rel('pamotė', 'pamotės'))->parent()->wife(),
-            Relationship::fixed(...$rel('patėvis', 'patėvio'))->parent()->husband(),
-            Relationship::fixed(...$rel('podukra', 'podukros'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('posūnis', 'posūnio'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('posūnis', 'posūnio'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('pamotė', 'pamotės'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('patėvis', 'patėvio'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('podukra', 'podukros'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('posūnis', 'posūnio'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('posūnis', 'posūnio'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('buvusi žmona', 'buvusios žmonos'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('buvęs vyras', 'buvusio vyro'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('buvęs sutuoktinis', 'buvusio sutuoktinio'))->divorced()->partner(),
-            Relationship::fixed(...$rel('sužadėtinė', 'sužadėtinės'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('sužadėtinis', 'sužadėtinio'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('žmona', 'žmonos'))->wife(),
-            Relationship::fixed(...$rel('vyras', 'vyro'))->husband(),
-            Relationship::fixed(...$rel('sutuoktinis', 'sutuoktinio'))->spouse(),
-            Relationship::fixed(...$rel('partneris', 'partnerio'))->partner(),
+            Relationship::fixed(...$this->rel('buvusi žmona', 'buvusios žmonos'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('buvęs vyras', 'buvusio vyro'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('buvęs sutuoktinis', 'buvusio sutuoktinio'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('sužadėtinė', 'sužadėtinės'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('sužadėtinis', 'sužadėtinio'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('žmona', 'žmonos'))->wife(),
+            Relationship::fixed(...$this->rel('vyras', 'vyro'))->husband(),
+            Relationship::fixed(...$this->rel('sutuoktinis', 'sutuoktinio'))->spouse(),
+            Relationship::fixed(...$this->rel('partneris', 'partnerio'))->partner(),
             // In-laws — wife's parents
-            Relationship::fixed(...$rel('uošvė', 'uošvės'))->wife()->mother(),
-            Relationship::fixed(...$rel('uošvis', 'uošvio'))->wife()->father(),
+            Relationship::fixed(...$this->rel('uošvė', 'uošvės'))->wife()->mother(),
+            Relationship::fixed(...$this->rel('uošvis', 'uošvio'))->wife()->father(),
             // In-laws — husband's parents
-            Relationship::fixed(...$rel('anyta', 'anytos'))->husband()->mother(),
-            Relationship::fixed(...$rel('šešuras', 'šešuro'))->husband()->father(),
+            Relationship::fixed(...$this->rel('anyta', 'anytos'))->husband()->mother(),
+            Relationship::fixed(...$this->rel('šešuras', 'šešuro'))->husband()->father(),
             // In-laws — spouse's parents (generic)
-            Relationship::fixed(...$rel('uošvė', 'uošvės'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('uošvis', 'uošvio'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('uošvė', 'uošvės'))->spouse()->mother(),
-            Relationship::fixed(...$rel('uošvis', 'uošvio'))->spouse()->father(),
+            Relationship::fixed(...$this->rel('uošvė', 'uošvės'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('uošvis', 'uošvio'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('uošvė', 'uošvės'))->spouse()->mother(),
+            Relationship::fixed(...$this->rel('uošvis', 'uošvio'))->spouse()->father(),
             // Children-in-law
-            Relationship::fixed(...$rel('marti', 'marčios'))->child()->wife(),
-            Relationship::fixed(...$rel('žentas', 'žento'))->child()->husband(),
+            Relationship::fixed(...$this->rel('marti', 'marčios'))->child()->wife(),
+            Relationship::fixed(...$this->rel('žentas', 'žento'))->child()->husband(),
             // Siblings-in-law (spouse's siblings)
-            Relationship::fixed(...$rel('svainė', 'svainės'))->spouse()->sister(),
-            Relationship::fixed(...$rel('svainis', 'svainio'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('svainė', 'svainės'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('svainis', 'svainio'))->spouse()->brother(),
             // Siblings-in-law (sibling's spouses)
-            Relationship::fixed(...$rel('brolienė', 'brolienės'))->brother()->wife(),
-            Relationship::fixed(...$rel('svainis', 'svainio'))->sister()->husband(),
-            Relationship::fixed(...$rel('svainė', 'svainės'))->sibling()->wife(),
-            Relationship::fixed(...$rel('svainis', 'svainio'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('brolienė', 'brolienės'))->brother()->wife(),
+            Relationship::fixed(...$this->rel('svainis', 'svainio'))->sister()->husband(),
+            Relationship::fixed(...$this->rel('svainė', 'svainės'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('svainis', 'svainio'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('senelė', 'senelės'))->parent()->mother(),
-            Relationship::fixed(...$rel('senelis', 'senelio'))->parent()->father(),
-            Relationship::fixed(...$rel('senelė/senelis', 'senelės/senelio'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('senelė', 'senelės'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('senelis', 'senelio'))->parent()->father(),
+            Relationship::fixed(...$this->rel('senelė/senelis', 'senelės/senelio'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('anūkė', 'anūkės'))->child()->daughter(),
-            Relationship::fixed(...$rel('anūkas', 'anūko'))->child()->son(),
-            Relationship::fixed(...$rel('anūkas', 'anūko'))->child()->child(),
+            Relationship::fixed(...$this->rel('anūkė', 'anūkės'))->child()->daughter(),
+            Relationship::fixed(...$this->rel('anūkas', 'anūko'))->child()->son(),
+            Relationship::fixed(...$this->rel('anūkas', 'anūko'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('teta', 'tetos'))->parent()->sister(),
-            Relationship::fixed(...$rel('dėdė', 'dėdės'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('teta', 'tetos'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('dėdė', 'dėdės'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$rel('dukterėčia', 'dukterėčios'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('sūnėnas', 'sūnėno'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('dukterėčia', 'dukterėčios'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('sūnėnas', 'sūnėno'))->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$rel('pusseserė', 'pusseserės'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('pusbrolis', 'pusbrolio'))->parent()->sibling()->son(),
-            Relationship::fixed(...$rel('pusbrolis', 'pusbrolio'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('pusseserė', 'pusseserės'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('pusbrolis', 'pusbrolio'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('pusbrolis', 'pusbrolio'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond (pro- prefix)
-            Relationship::dynamic(static fn (int $n) => $pro($n - 2, 'senelė', 'senelės'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $pro($n - 2, 'senelis', 'senelio'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $pro($n - 2, 'senelis', 'senelio'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 2, 'senelė', 'senelės'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 2, 'senelis', 'senelio'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 2, 'senelis', 'senelio'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => $pro($n - 2, 'anūkė', 'anūkės'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pro($n - 2, 'anūkas', 'anūko'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $pro($n - 2, 'anūkas', 'anūko'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 2, 'anūkė', 'anūkės'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 2, 'anūkas', 'anūko'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 2, 'anūkas', 'anūko'))->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $pro($n - 1, 'teta', 'tetos'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $pro($n - 1, 'dėdė', 'dėdės'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 1, 'teta', 'tetos'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 1, 'dėdė', 'dėdės'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $pro($n - 1, 'dukterėčia', 'dukterėčios'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pro($n - 1, 'sūnėnas', 'sūnėno'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 1, 'dukterėčia', 'dukterėčios'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pro($n - 1, 'sūnėnas', 'sūnėno'))->sibling()->descendant()->male(),
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\LinkChildToFamilyAction;
+use Fisharebest\Webtrees\Http\Controllers\LinkChildToFamily;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(LinkChildToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
+<form method="post" action="<?= e(route(LinkChildToFamily::class, ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="famid">
             <?= I18N::translate('Family') ?>

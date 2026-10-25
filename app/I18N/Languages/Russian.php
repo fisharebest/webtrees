@@ -416,13 +416,24 @@ final readonly class Russian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "пра" prefix.
+     *
+     * @return array{string, string}
+     */
+    private function pra(int $n, string $nominative, string $genitive): array
+    {
+        $prefix = $n > 3 ? 'пра×' . $n . '-' : str_repeat('пра', $n);
+
+        return [$prefix . $nominative, $prefix . $genitive];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Russian genitive: nominative, genitive form with %s placeholder
-        $pra = static fn (int $n, string $nominative, string $genitive): array => [
-            ($n > 3 ? 'пра×' . $n . '-' : str_repeat('пра', $n)) . $nominative,
-            ($n > 3 ? 'пра×' . $n . '-' : str_repeat('пра', $n)) . $genitive,
-        ];
 
         return [
             // Adopted
@@ -523,21 +534,21 @@ final readonly class Russian extends AbstractLanguage
             Relationship::fixed('двоюродный брат', '%s двоюродного брата')->parent()->sibling()->son(),
             // Dynamic relationships
             // Great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'тётя', '%s тёти'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'дядя', '%s дяди'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'тётя', '%s тёти'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'дядя', '%s дяди'))->ancestor()->brother(),
             // Great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'племянница', '%s племянницы'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'племянница', '%s племянницы'))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'племянник', '%s племянника'))->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'племянник', '%s племянника'))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'племянница', '%s племянницы'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'племянница', '%s племянницы'))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'племянник', '%s племянника'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'племянник', '%s племянника'))->married()->spouse()->sibling()->descendant()->male(),
             // Ancestors
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'бабушка', '%s бабушки'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'дедушка', '%s дедушки'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'дедушка/бабушка', '%s дедушки/бабушки'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'бабушка', '%s бабушки'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'дедушка', '%s дедушки'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'дедушка/бабушка', '%s дедушки/бабушки'))->ancestor(),
             // Descendants
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'внучка', '%s внучки'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'внук', '%s внука'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'внук/внучка', '%s внука/внучки'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'внучка', '%s внучки'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'внук', '%s внука'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'внук/внучка', '%s внука/внучки'))->descendant(),
         ];
     }
 }

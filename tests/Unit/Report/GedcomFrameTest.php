@@ -28,10 +28,11 @@ class GedcomFrameTest extends TestCase
 {
     public function testConstructorAssignsProperties(): void
     {
-        $frame = new GedcomFrame('0 @I1@ INDI', 'NAME', 'John /Doe/');
+        $frame = new GedcomFrame('0 @I1@ INDI', 'NAME', 'John /Doe/', 'INDI');
 
         self::assertSame('0 @I1@ INDI', $frame->gedrec);
         self::assertSame('NAME', $frame->fact);
         self::assertSame('John /Doe/', $frame->desc);
+        self::assertSame('INDI', $frame->context);
     }
 }

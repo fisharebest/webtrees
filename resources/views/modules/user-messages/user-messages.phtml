@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 use Carbon\CarbonImmutable;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\Message;
+use Fisharebest\Webtrees\Http\Controllers\MessageSelect;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Registry;
@@ -58,7 +59,7 @@ use Illuminate\Support\Collection;
 
 <form
     method="post"
-    action="<?= e(route('module', ['action' => 'DeleteMessage', 'module' => $module->name(), 'context' => $context, 'tree' => $tree->name()])) ?>"
+    action="<?= e(route(ModuleAction::class, ['action' => 'DeleteMessage', 'module' => $module->name(), 'context' => $context, 'tree' => $tree->name()])) ?>"
     id="messageform"
     name="messageform"
 >
@@ -126,7 +127,7 @@ use Illuminate\Support\Collection;
 
                                 // If this user still exists, show a reply link.
                                 if ($user instanceof User) {
-                                    $reply_url = route(MessagePage::class, [
+                                    $reply_url = route(Message::class, [
                                         'subject' => $message->subject,
                                         'to'      => $user->userName(),
                                         'tree'    => $tree->name(),

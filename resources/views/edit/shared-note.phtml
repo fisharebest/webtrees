@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\EditNoteAction;
+use Fisharebest\Webtrees\Http\Controllers\EditNote;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Tree;
@@ -17,7 +17,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditNoteAction::class, ['tree' => $tree->name(), 'xref' => $note->xref()])) ?>" class="wt-page-options">
+<form method="post" action="<?= e(route(EditNote::class, ['tree' => $tree->name(), 'xref' => $note->xref()])) ?>" class="wt-page-options">
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="NOTE">
             <?= I18N::translate('Shared note') ?>

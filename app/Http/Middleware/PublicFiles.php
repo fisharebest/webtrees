@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
@@ -49,7 +49,7 @@ class PublicFiles implements MiddlewareInterface
                 $extension = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
                 $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
-                return response($content, StatusCodeInterface::STATUS_OK, [
+                return response($content, HttpStatusCode::OK, [
                     'cache-control' => 'public,max-age=31536000',
                     'content-type'  => $mime_type,
                 ]);

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageMedia;
+use Fisharebest\Webtrees\Http\Controllers\ManageMediaData;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <div id="admin-media-page">
-    <form method="post" action="<?= e(route(ManageMediaAction::class)) ?>" id="admin-media-form">
+    <form method="post" action="<?= e(route(ManageMedia::class)) ?>" id="admin-media-form">
         <table class="table table-bordered table-sm">
             <thead>
                 <tr>

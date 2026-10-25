@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
-use Aura\Router\Route;
+use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -206,7 +206,7 @@ class ValidatorTest extends TestCase
 
     public function testRequiredRouteParameter(): void
     {
-        $route = self::createStub(Route::class);
+        $route = new Route(url: '/test', controller: 'test', middleware: []);
 
         $request = self::createStub(ServerRequestInterface::class);
         $request

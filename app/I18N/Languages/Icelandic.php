@@ -168,120 +168,138 @@ final readonly class Icelandic extends AbstractLanguage
     }
 
     /**
+     * Generate nominative and genitive forms from explicit noun forms.
+     *
+     * @return array{string, string}
+     */
+    private function rel(string $nominative, string $genitive): array
+    {
+        return [$nominative, '%s ' . $genitive];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "lang" prefix.
+     *
+     * amma → langamma → langlangamma
+     *
+     * @return array{string, string}
+     */
+    private function lang(int $n, string $nominative, string $genitive): array
+    {
+        return [
+            str_repeat('lang', $n) . $nominative,
+            '%s ' . str_repeat('lang', $n) . $genitive,
+        ];
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Icelandic genitive helper: [nominative, '%s ' . genitive]
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
-
-        // Dynamic "lang-" prefix for great-grandparents
-        $lang = static fn (int $n, string $nom, string $gen): array => [
-            str_repeat('lang', $n) . $nom,
-            '%s ' . str_repeat('lang', $n) . $gen,
-        ];
 
         return [
             // Adopted / foster
-            Relationship::fixed(...$rel('fósturmóðir', 'fósturmóður'))->adoptive()->mother(),
-            Relationship::fixed(...$rel('fósturfaðir', 'fósturföður'))->adoptive()->father(),
-            Relationship::fixed(...$rel('fósturforeldri', 'fósturforeldris'))->adoptive()->parent(),
-            Relationship::fixed(...$rel('fósturdóttir', 'fósturdóttur'))->adopted()->daughter(),
-            Relationship::fixed(...$rel('fóstursonur', 'fóstursonar'))->adopted()->son(),
-            Relationship::fixed(...$rel('fósturbarn', 'fósturbarns'))->adopted()->child(),
+            Relationship::fixed(...$this->rel('fósturmóðir', 'fósturmóður'))->adoptive()->mother(),
+            Relationship::fixed(...$this->rel('fósturfaðir', 'fósturföður'))->adoptive()->father(),
+            Relationship::fixed(...$this->rel('fósturforeldri', 'fósturforeldris'))->adoptive()->parent(),
+            Relationship::fixed(...$this->rel('fósturdóttir', 'fósturdóttur'))->adopted()->daughter(),
+            Relationship::fixed(...$this->rel('fóstursonur', 'fóstursonar'))->adopted()->son(),
+            Relationship::fixed(...$this->rel('fósturbarn', 'fósturbarns'))->adopted()->child(),
             // Parents
-            Relationship::fixed(...$rel('móðir', 'móður'))->mother(),
-            Relationship::fixed(...$rel('faðir', 'föður'))->father(),
-            Relationship::fixed(...$rel('foreldri', 'foreldris'))->parent(),
+            Relationship::fixed(...$this->rel('móðir', 'móður'))->mother(),
+            Relationship::fixed(...$this->rel('faðir', 'föður'))->father(),
+            Relationship::fixed(...$this->rel('foreldri', 'foreldris'))->parent(),
             // Children
-            Relationship::fixed(...$rel('dóttir', 'dóttur'))->daughter(),
-            Relationship::fixed(...$rel('sonur', 'sonar'))->son(),
-            Relationship::fixed(...$rel('barn', 'barns'))->child(),
+            Relationship::fixed(...$this->rel('dóttir', 'dóttur'))->daughter(),
+            Relationship::fixed(...$this->rel('sonur', 'sonar'))->son(),
+            Relationship::fixed(...$this->rel('barn', 'barns'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('tvíburasystir', 'tvíburasystur'))->multiple()->sister(),
-            Relationship::fixed(...$rel('tvíburabróðir', 'tvíburabróður'))->multiple()->brother(),
-            Relationship::fixed(...$rel('tvíburi', 'tvíbura'))->multiple()->sibling(),
-            Relationship::fixed(...$rel('eldri systir', 'eldri systur'))->older()->sister(),
-            Relationship::fixed(...$rel('eldri bróðir', 'eldri bróður'))->older()->brother(),
-            Relationship::fixed(...$rel('yngri systir', 'yngri systur'))->younger()->sister(),
-            Relationship::fixed(...$rel('yngri bróðir', 'yngri bróður'))->younger()->brother(),
-            Relationship::fixed(...$rel('systir', 'systur'))->sister(),
-            Relationship::fixed(...$rel('bróðir', 'bróður'))->brother(),
-            Relationship::fixed(...$rel('systkini', 'systkina'))->sibling(),
+            Relationship::fixed(...$this->rel('tvíburasystir', 'tvíburasystur'))->multiple()->sister(),
+            Relationship::fixed(...$this->rel('tvíburabróðir', 'tvíburabróður'))->multiple()->brother(),
+            Relationship::fixed(...$this->rel('tvíburi', 'tvíbura'))->multiple()->sibling(),
+            Relationship::fixed(...$this->rel('eldri systir', 'eldri systur'))->older()->sister(),
+            Relationship::fixed(...$this->rel('eldri bróðir', 'eldri bróður'))->older()->brother(),
+            Relationship::fixed(...$this->rel('yngri systir', 'yngri systur'))->younger()->sister(),
+            Relationship::fixed(...$this->rel('yngri bróðir', 'yngri bróður'))->younger()->brother(),
+            Relationship::fixed(...$this->rel('systir', 'systur'))->sister(),
+            Relationship::fixed(...$this->rel('bróðir', 'bróður'))->brother(),
+            Relationship::fixed(...$this->rel('systkini', 'systkina'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('hálfsystir', 'hálfsystur'))->parent()->daughter(),
-            Relationship::fixed(...$rel('hálfbróðir', 'hálfbróður'))->parent()->son(),
-            Relationship::fixed(...$rel('hálfsystkini', 'hálfsystkina'))->parent()->child(),
+            Relationship::fixed(...$this->rel('hálfsystir', 'hálfsystur'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('hálfbróðir', 'hálfbróður'))->parent()->son(),
+            Relationship::fixed(...$this->rel('hálfsystkini', 'hálfsystkina'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$rel('stjúpmóðir', 'stjúpmóður'))->parent()->wife(),
-            Relationship::fixed(...$rel('stjúpfaðir', 'stjúpföður'))->parent()->husband(),
-            Relationship::fixed(...$rel('stjúpforeldri', 'stjúpforeldris'))->parent()->married()->spouse(),
-            Relationship::fixed(...$rel('stjúpdóttir', 'stjúpdóttur'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('stjúpsonur', 'stjúpsonar'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('stjúpbarn', 'stjúpbarns'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('stjúpmóðir', 'stjúpmóður'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('stjúpfaðir', 'stjúpföður'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('stjúpforeldri', 'stjúpforeldris'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->rel('stjúpdóttir', 'stjúpdóttur'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('stjúpsonur', 'stjúpsonar'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('stjúpbarn', 'stjúpbarns'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('fyrrverandi eiginkona', 'fyrrverandi eiginkonu'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('fyrrverandi eiginmaður', 'fyrrverandi eiginmanns'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('fyrrverandi maki', 'fyrrverandi maka'))->divorced()->partner(),
-            Relationship::fixed(...$rel('unnusta', 'unnustu'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('unnusti', 'unnusta'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('eiginkona', 'eiginkonu'))->wife(),
-            Relationship::fixed(...$rel('eiginmaður', 'eiginmanns'))->husband(),
-            Relationship::fixed(...$rel('maki', 'maka'))->spouse(),
-            Relationship::fixed(...$rel('maki', 'maka'))->partner(),
+            Relationship::fixed(...$this->rel('fyrrverandi eiginkona', 'fyrrverandi eiginkonu'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('fyrrverandi eiginmaður', 'fyrrverandi eiginmanns'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('fyrrverandi maki', 'fyrrverandi maka'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('unnusta', 'unnustu'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('unnusti', 'unnusta'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('eiginkona', 'eiginkonu'))->wife(),
+            Relationship::fixed(...$this->rel('eiginmaður', 'eiginmanns'))->husband(),
+            Relationship::fixed(...$this->rel('maki', 'maka'))->spouse(),
+            Relationship::fixed(...$this->rel('maki', 'maka'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$rel('tengdamóðir', 'tengdamóður'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('tengdafaðir', 'tengdaföður'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('tengdaforeldri', 'tengdaforeldris'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->rel('tengdamóðir', 'tengdamóður'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('tengdafaðir', 'tengdaföður'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('tengdaforeldri', 'tengdaforeldris'))->married()->spouse()->parent(),
             // Children-in-law
-            Relationship::fixed(...$rel('tengdadóttir', 'tengdadóttur'))->child()->wife(),
-            Relationship::fixed(...$rel('tengdasonur', 'tengdasonar'))->child()->husband(),
+            Relationship::fixed(...$this->rel('tengdadóttir', 'tengdadóttur'))->child()->wife(),
+            Relationship::fixed(...$this->rel('tengdasonur', 'tengdasonar'))->child()->husband(),
             // Siblings-in-law
-            Relationship::fixed(...$rel('mágkona', 'mágkonu'))->spouse()->sister(),
-            Relationship::fixed(...$rel('mágur', 'mágs'))->spouse()->brother(),
-            Relationship::fixed(...$rel('mágkona', 'mágkonu'))->sibling()->wife(),
-            Relationship::fixed(...$rel('mágur', 'mágs'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('mágkona', 'mágkonu'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('mágur', 'mágs'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('mágkona', 'mágkonu'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('mágur', 'mágs'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('amma', 'ömmu'))->parent()->mother(),
-            Relationship::fixed(...$rel('afi', 'afa'))->parent()->father(),
-            Relationship::fixed(...$rel('amma/afi', 'ömmu/afa'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('amma', 'ömmu'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('afi', 'afa'))->parent()->father(),
+            Relationship::fixed(...$this->rel('amma/afi', 'ömmu/afa'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('sonarsonur', 'sonarsonar'))->son()->son(),
-            Relationship::fixed(...$rel('sonardóttir', 'sonardóttur'))->son()->daughter(),
-            Relationship::fixed(...$rel('dóttursonur', 'dóttursonar'))->daughter()->son(),
-            Relationship::fixed(...$rel('dótturdóttir', 'dótturdóttur'))->daughter()->daughter(),
-            Relationship::fixed(...$rel('barnabarn', 'barnabarns'))->child()->child(),
+            Relationship::fixed(...$this->rel('sonarsonur', 'sonarsonar'))->son()->son(),
+            Relationship::fixed(...$this->rel('sonardóttir', 'sonardóttur'))->son()->daughter(),
+            Relationship::fixed(...$this->rel('dóttursonur', 'dóttursonar'))->daughter()->son(),
+            Relationship::fixed(...$this->rel('dótturdóttir', 'dótturdóttur'))->daughter()->daughter(),
+            Relationship::fixed(...$this->rel('barnabarn', 'barnabarns'))->child()->child(),
             // Aunts and uncles (paternal / maternal)
-            Relationship::fixed(...$rel('föðursystir', 'föðursystur'))->father()->sister(),
-            Relationship::fixed(...$rel('móðursystir', 'móðursystur'))->mother()->sister(),
-            Relationship::fixed(...$rel('föðurbróðir', 'föðurbróður'))->father()->brother(),
-            Relationship::fixed(...$rel('móðurbróðir', 'móðurbróður'))->mother()->brother(),
-            Relationship::fixed(...$rel('föðursystir', 'föðursystur'))->parent()->sister(),
-            Relationship::fixed(...$rel('föðurbróðir', 'föðurbróður'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('föðursystir', 'föðursystur'))->father()->sister(),
+            Relationship::fixed(...$this->rel('móðursystir', 'móðursystur'))->mother()->sister(),
+            Relationship::fixed(...$this->rel('föðurbróðir', 'föðurbróður'))->father()->brother(),
+            Relationship::fixed(...$this->rel('móðurbróðir', 'móðurbróður'))->mother()->brother(),
+            Relationship::fixed(...$this->rel('föðursystir', 'föðursystur'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('föðurbróðir', 'föðurbróður'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$rel('bróðurdóttir', 'bróðurdóttur'))->brother()->daughter(),
-            Relationship::fixed(...$rel('systurdóttir', 'systurdóttur'))->sister()->daughter(),
-            Relationship::fixed(...$rel('bróðursonur', 'bróðursonar'))->brother()->son(),
-            Relationship::fixed(...$rel('systursonur', 'systursonar'))->sister()->son(),
-            Relationship::fixed(...$rel('bróðurdóttir', 'bróðurdóttur'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('bróðursonur', 'bróðursonar'))->sibling()->son(),
-            Relationship::fixed(...$rel('systkinabarn', 'systkinabarns'))->sibling()->child(),
+            Relationship::fixed(...$this->rel('bróðurdóttir', 'bróðurdóttur'))->brother()->daughter(),
+            Relationship::fixed(...$this->rel('systurdóttir', 'systurdóttur'))->sister()->daughter(),
+            Relationship::fixed(...$this->rel('bróðursonur', 'bróðursonar'))->brother()->son(),
+            Relationship::fixed(...$this->rel('systursonur', 'systursonar'))->sister()->son(),
+            Relationship::fixed(...$this->rel('bróðurdóttir', 'bróðurdóttur'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('bróðursonur', 'bróðursonar'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('systkinabarn', 'systkinabarns'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$rel('frænka', 'frænku'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('frændi', 'frænda'))->parent()->sibling()->son(),
-            Relationship::fixed(...$rel('frændi/frænka', 'frænda/frænku'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('frænka', 'frænku'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('frændi', 'frænda'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('frændi/frænka', 'frænda/frænku'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents
-            Relationship::dynamic(static fn (int $n) => $lang($n - 2, 'amma', 'ömmu'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $lang($n - 2, 'afi', 'afa'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $lang($n - 2, 'afi/amma', 'afa/ömmu'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 2, 'amma', 'ömmu'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 2, 'afi', 'afa'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 2, 'afi/amma', 'afa/ömmu'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => $lang($n - 2, 'barnabarn', 'barnabarns'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 2, 'barnabarn', 'barnabarns'))->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $lang($n - 1, 'föðursystir', 'föðursystur'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $lang($n - 1, 'föðurbróðir', 'föðurbróður'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 1, 'föðursystir', 'föðursystur'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 1, 'föðurbróðir', 'föðurbróður'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $lang($n - 1, 'bróðurdóttir', 'bróðurdóttur'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $lang($n - 1, 'bróðursonur', 'bróðursonar'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 1, 'bróðurdóttir', 'bróðurdóttur'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->lang($n - 1, 'bróðursonur', 'bróðursonar'))->sibling()->descendant()->male(),
         ];
     }
 }

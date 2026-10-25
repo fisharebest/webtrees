@@ -20,15 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\FamilyPage;
+use Fisharebest\Webtrees\Http\Controllers\IndividualPage;
+use Fisharebest\Webtrees\Http\Controllers\MediaPage;
+use Fisharebest\Webtrees\Http\Controllers\NotePage;
+use Fisharebest\Webtrees\Http\Controllers\RepositoryPage;
+use Fisharebest\Webtrees\Http\Controllers\SourcePage;
+use Fisharebest\Webtrees\Http\Controllers\SubmitterPage;
+use Fisharebest\Webtrees\Http\Controllers\TreePage;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
@@ -108,9 +108,9 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         $user  = Validator::attributes($request)->user();
 
         if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER') === '1') {
-            $page_name = self::PAGE_NAMES[$route->name] ?? '';
+            $page_name = self::PAGE_NAMES[$route->controller] ?? '';
 
-            switch ($route->name) {
+            switch ($route->controller) {
                 case FamilyPage::class:
                 case IndividualPage::class:
                 case MediaPage::class:

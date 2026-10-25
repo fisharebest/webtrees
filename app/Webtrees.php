@@ -48,7 +48,8 @@ use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
-use Fisharebest\Webtrees\Http\Dispatcher;
+use Fisharebest\Webtrees\Http\Middleware\HandleBootstrapExceptions;
+use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
@@ -60,7 +61,7 @@ use Fisharebest\Webtrees\Http\Middleware\ContentLength;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\ErrorHandler;
-use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
+use Fisharebest\Webtrees\Http\Middleware\HandleApplicationExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\PublicFiles;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
@@ -154,10 +155,10 @@ class Webtrees
     private const array MIDDLEWARE = [
         ErrorHandler::class,
         EmitResponse::class,
+        HandleBootstrapExceptions::class,
         ReadConfigIni::class,
         BaseUrl::class,
         SecurityHeaders::class,
-        HandleExceptions::class,
         PublicFiles::class,
         ClientIp::class,
         ContentLength::class,
@@ -171,6 +172,7 @@ class Webtrees
         CheckForMaintenanceMode::class,
         UseTheme::class,
         DoHousekeeping::class,
+        HandleApplicationExceptions::class,
         UseTransaction::class,
         CheckForNewVersion::class,
         LoadRoutes::class,
@@ -281,6 +283,10 @@ class Webtrees
 
         $request = $server_request_creator->fromGlobals();
 
-        return Dispatcher::dispatch(middleware: self::MIDDLEWARE, request: $request);
+        $pipeline = new MiddlewarePipeline(container: Registry::container());
+
+        return $pipeline
+            ->build(middleware: self::MIDDLEWARE)
+            ->handle(request: $request);
     }
 }

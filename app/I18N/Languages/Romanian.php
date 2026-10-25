@@ -212,109 +212,118 @@ final readonly class Romanian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function rel(string $nom, string $gen): array
     {
-        // Romanian genitive helper: returns [nominative, genitive-format]
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
+        return [$nom, '%s ' . $gen];
+    }
 
-        // Dynamic "stră-" prefix for great-grandparents
-        $stra = static fn (int $n, string $nom, string $gen): array => [
+    /** @return array{string, string} */
+    private function stra(int $n, string $nom, string $gen): array
+    {
+        return [
             str_repeat('stră', $n) . $nom,
             '%s ' . str_repeat('stră', $n) . $gen,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Adopted
-            Relationship::fixed(...$rel('mamă adoptivă', 'mamei adoptive'))->adoptive()->mother(),
-            Relationship::fixed(...$rel('tată adoptiv', 'tatălui adoptiv'))->adoptive()->father(),
-            Relationship::fixed(...$rel('părinte adoptiv', 'părintelui adoptiv'))->adoptive()->parent(),
-            Relationship::fixed(...$rel('fiică adoptivă', 'fiicei adoptive'))->adopted()->daughter(),
-            Relationship::fixed(...$rel('fiu adoptiv', 'fiului adoptiv'))->adopted()->son(),
-            Relationship::fixed(...$rel('copil adoptiv', 'copilului adoptiv'))->adopted()->child(),
+            Relationship::fixed(...$this->rel('mamă adoptivă', 'mamei adoptive'))->adoptive()->mother(),
+            Relationship::fixed(...$this->rel('tată adoptiv', 'tatălui adoptiv'))->adoptive()->father(),
+            Relationship::fixed(...$this->rel('părinte adoptiv', 'părintelui adoptiv'))->adoptive()->parent(),
+            Relationship::fixed(...$this->rel('fiică adoptivă', 'fiicei adoptive'))->adopted()->daughter(),
+            Relationship::fixed(...$this->rel('fiu adoptiv', 'fiului adoptiv'))->adopted()->son(),
+            Relationship::fixed(...$this->rel('copil adoptiv', 'copilului adoptiv'))->adopted()->child(),
             // Parents
-            Relationship::fixed(...$rel('mamă', 'mamei'))->mother(),
-            Relationship::fixed(...$rel('tată', 'tatălui'))->father(),
-            Relationship::fixed(...$rel('părinte', 'părintelui'))->parent(),
+            Relationship::fixed(...$this->rel('mamă', 'mamei'))->mother(),
+            Relationship::fixed(...$this->rel('tată', 'tatălui'))->father(),
+            Relationship::fixed(...$this->rel('părinte', 'părintelui'))->parent(),
             // Children
-            Relationship::fixed(...$rel('fiică', 'fiicei'))->daughter(),
-            Relationship::fixed(...$rel('fiu', 'fiului'))->son(),
-            Relationship::fixed(...$rel('copil', 'copilului'))->child(),
+            Relationship::fixed(...$this->rel('fiică', 'fiicei'))->daughter(),
+            Relationship::fixed(...$this->rel('fiu', 'fiului'))->son(),
+            Relationship::fixed(...$this->rel('copil', 'copilului'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('soră geamănă', 'surorii geamăne'))->multiple()->sister(),
-            Relationship::fixed(...$rel('frate geamăn', 'fratelui geamăn'))->multiple()->brother(),
-            Relationship::fixed(...$rel('geamăn/ă', 'geamănului/ei'))->multiple()->sibling(),
-            Relationship::fixed(...$rel('soră mai mare', 'surorii mai mari'))->older()->sister(),
-            Relationship::fixed(...$rel('frate mai mare', 'fratelui mai mare'))->older()->brother(),
-            Relationship::fixed(...$rel('soră mai mică', 'surorii mai mici'))->younger()->sister(),
-            Relationship::fixed(...$rel('frate mai mic', 'fratelui mai mic'))->younger()->brother(),
-            Relationship::fixed(...$rel('soră', 'surorii'))->sister(),
-            Relationship::fixed(...$rel('frate', 'fratelui'))->brother(),
-            Relationship::fixed(...$rel('frate/soră', 'fratelui/surorii'))->sibling(),
+            Relationship::fixed(...$this->rel('soră geamănă', 'surorii geamăne'))->multiple()->sister(),
+            Relationship::fixed(...$this->rel('frate geamăn', 'fratelui geamăn'))->multiple()->brother(),
+            Relationship::fixed(...$this->rel('geamăn/ă', 'geamănului/ei'))->multiple()->sibling(),
+            Relationship::fixed(...$this->rel('soră mai mare', 'surorii mai mari'))->older()->sister(),
+            Relationship::fixed(...$this->rel('frate mai mare', 'fratelui mai mare'))->older()->brother(),
+            Relationship::fixed(...$this->rel('soră mai mică', 'surorii mai mici'))->younger()->sister(),
+            Relationship::fixed(...$this->rel('frate mai mic', 'fratelui mai mic'))->younger()->brother(),
+            Relationship::fixed(...$this->rel('soră', 'surorii'))->sister(),
+            Relationship::fixed(...$this->rel('frate', 'fratelui'))->brother(),
+            Relationship::fixed(...$this->rel('frate/soră', 'fratelui/surorii'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('soră vitregă', 'surorii vitrege'))->parent()->daughter(),
-            Relationship::fixed(...$rel('frate vitreg', 'fratelui vitreg'))->parent()->son(),
-            Relationship::fixed(...$rel('frate/soră vitregă', 'fratelui/surorii vitrege'))->parent()->child(),
+            Relationship::fixed(...$this->rel('soră vitregă', 'surorii vitrege'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('frate vitreg', 'fratelui vitreg'))->parent()->son(),
+            Relationship::fixed(...$this->rel('frate/soră vitregă', 'fratelui/surorii vitrege'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$rel('mamă vitregă', 'mamei vitrege'))->parent()->wife(),
-            Relationship::fixed(...$rel('tată vitreg', 'tatălui vitreg'))->parent()->husband(),
-            Relationship::fixed(...$rel('părinte vitreg', 'părintelui vitreg'))->parent()->married()->spouse(),
-            Relationship::fixed(...$rel('fiică vitregă', 'fiicei vitrege'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('fiu vitreg', 'fiului vitreg'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('copil vitreg', 'copilului vitreg'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('mamă vitregă', 'mamei vitrege'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('tată vitreg', 'tatălui vitreg'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('părinte vitreg', 'părintelui vitreg'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->rel('fiică vitregă', 'fiicei vitrege'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('fiu vitreg', 'fiului vitreg'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('copil vitreg', 'copilului vitreg'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('fostă soție', 'fostei soții'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('fost soț', 'fostului soț'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('fost/ă partener/ă', 'fostului/ei partener/e'))->divorced()->partner(),
-            Relationship::fixed(...$rel('logodnică', 'logodnicei'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('logodnic', 'logodnicului'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('soție', 'soției'))->wife(),
-            Relationship::fixed(...$rel('soț', 'soțului'))->husband(),
-            Relationship::fixed(...$rel('soț/soție', 'soțului/soției'))->spouse(),
-            Relationship::fixed(...$rel('partener/ă', 'partenerului/ei'))->partner(),
+            Relationship::fixed(...$this->rel('fostă soție', 'fostei soții'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('fost soț', 'fostului soț'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('fost/ă partener/ă', 'fostului/ei partener/e'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('logodnică', 'logodnicei'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('logodnic', 'logodnicului'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('soție', 'soției'))->wife(),
+            Relationship::fixed(...$this->rel('soț', 'soțului'))->husband(),
+            Relationship::fixed(...$this->rel('soț/soție', 'soțului/soției'))->spouse(),
+            Relationship::fixed(...$this->rel('partener/ă', 'partenerului/ei'))->partner(),
             // In-laws
-            Relationship::fixed(...$rel('soacră', 'soacrei'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('socru', 'socrului'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('socru/soacră', 'socrului/soacrei'))->married()->spouse()->parent(),
-            Relationship::fixed(...$rel('noră', 'nurorii'))->child()->wife(),
-            Relationship::fixed(...$rel('ginere', 'ginerelui'))->child()->husband(),
-            Relationship::fixed(...$rel('ginere/noră', 'ginerelui/nurorii'))->child()->married()->spouse(),
-            Relationship::fixed(...$rel('cumnată', 'cumnatei'))->spouse()->sister(),
-            Relationship::fixed(...$rel('cumnat', 'cumnatului'))->spouse()->brother(),
-            Relationship::fixed(...$rel('cumnată', 'cumnatei'))->sibling()->wife(),
-            Relationship::fixed(...$rel('cumnat', 'cumnatului'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('soacră', 'soacrei'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('socru', 'socrului'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('socru/soacră', 'socrului/soacrei'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->rel('noră', 'nurorii'))->child()->wife(),
+            Relationship::fixed(...$this->rel('ginere', 'ginerelui'))->child()->husband(),
+            Relationship::fixed(...$this->rel('ginere/noră', 'ginerelui/nurorii'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->rel('cumnată', 'cumnatei'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('cumnat', 'cumnatului'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('cumnată', 'cumnatei'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('cumnat', 'cumnatului'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('bunică', 'bunicii'))->parent()->mother(),
-            Relationship::fixed(...$rel('bunic', 'bunicului'))->parent()->father(),
-            Relationship::fixed(...$rel('bunic/ă', 'bunicului/ii'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('bunică', 'bunicii'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('bunic', 'bunicului'))->parent()->father(),
+            Relationship::fixed(...$this->rel('bunic/ă', 'bunicului/ii'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('nepoată', 'nepoatei'))->child()->daughter(),
-            Relationship::fixed(...$rel('nepot', 'nepotului'))->child()->son(),
-            Relationship::fixed(...$rel('nepot/nepoată', 'nepotului/nepoatei'))->child()->child(),
+            Relationship::fixed(...$this->rel('nepoată', 'nepoatei'))->child()->daughter(),
+            Relationship::fixed(...$this->rel('nepot', 'nepotului'))->child()->son(),
+            Relationship::fixed(...$this->rel('nepot/nepoată', 'nepotului/nepoatei'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('mătușă', 'mătușii'))->parent()->sister(),
-            Relationship::fixed(...$rel('unchi', 'unchiului'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('mătușă', 'mătușii'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('unchi', 'unchiului'))->parent()->brother(),
             // Nieces and nephews (same word as grandchild in Romanian)
-            Relationship::fixed(...$rel('nepoată', 'nepoatei'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('nepot', 'nepotului'))->sibling()->son(),
-            Relationship::fixed(...$rel('nepot/nepoată', 'nepotului/nepoatei'))->sibling()->child(),
+            Relationship::fixed(...$this->rel('nepoată', 'nepoatei'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('nepot', 'nepotului'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('nepot/nepoată', 'nepotului/nepoatei'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$rel('verișoară', 'verișoarei'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('văr', 'vărului'))->parent()->sibling()->son(),
-            Relationship::fixed(...$rel('văr/verișoară', 'vărului/verișoarei'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('verișoară', 'verișoarei'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('văr', 'vărului'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('văr/verișoară', 'vărului/verișoarei'))->parent()->sibling()->child(),
             // Dynamic relationships — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $stra($n - 2, 'bunică', 'bunicii'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $stra($n - 2, 'bunic', 'bunicului'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $stra($n - 2, 'bunic/ă', 'bunicului/ii'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 2, 'bunică', 'bunicii'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 2, 'bunic', 'bunicului'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 2, 'bunic/ă', 'bunicului/ii'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => $stra($n - 2, 'nepoată', 'nepoatei'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $stra($n - 2, 'nepot', 'nepotului'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $stra($n - 2, 'nepot/nepoată', 'nepotului/nepoatei'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 2, 'nepoată', 'nepoatei'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 2, 'nepot', 'nepotului'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 2, 'nepot/nepoată', 'nepotului/nepoatei'))->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $stra($n - 1, 'mătușă', 'mătușii'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $stra($n - 1, 'unchi', 'unchiului'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 1, 'mătușă', 'mătușii'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 1, 'unchi', 'unchiului'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $stra($n - 1, 'nepoată', 'nepoatei'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $stra($n - 1, 'nepot', 'nepotului'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 1, 'nepoată', 'nepoatei'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->stra($n - 1, 'nepot', 'nepotului'))->sibling()->descendant()->male(),
         ];
     }
 }

@@ -152,99 +152,105 @@ final readonly class Divehi extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+        /** @return array{string, string} */
+    private function dv(string $s): array
+    {
+        return [$s, $s . 'ގެ %s'];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Divehi genitive: "-ގެ" suffix (ge = of)
-        $dv = static fn (string $s): array => [$s, $s . 'ގެ %s'];
-
         return [
             // Parents
-            Relationship::fixed(...$dv('މަންމަ'))->mother(),
-            Relationship::fixed(...$dv('ބައްޕަ'))->father(),
-            Relationship::fixed(...$dv('ބެލެނިވެރި'))->parent(),
+            Relationship::fixed(...$this->dv('މަންމަ'))->mother(),
+            Relationship::fixed(...$this->dv('ބައްޕަ'))->father(),
+            Relationship::fixed(...$this->dv('ބެލެނިވެރި'))->parent(),
             // Children
-            Relationship::fixed(...$dv('އަންހެން ދަރި'))->daughter(),
-            Relationship::fixed(...$dv('ފިރިހެން ދަރި'))->son(),
-            Relationship::fixed(...$dv('ދަރި'))->child(),
+            Relationship::fixed(...$this->dv('އަންހެން ދަރި'))->daughter(),
+            Relationship::fixed(...$this->dv('ފިރިހެން ދަރި'))->son(),
+            Relationship::fixed(...$this->dv('ދަރި'))->child(),
             // Siblings
-            Relationship::fixed(...$dv('ދައްތަ'))->older()->sister(),
-            Relationship::fixed(...$dv('ބޭބެ'))->older()->brother(),
-            Relationship::fixed(...$dv('ކޮއްކޮ'))->younger()->sister(),
-            Relationship::fixed(...$dv('ކޮއްކޮ'))->younger()->brother(),
-            Relationship::fixed(...$dv('ދައްތަ'))->sister(),
-            Relationship::fixed(...$dv('ބޭބެ'))->brother(),
-            Relationship::fixed(...$dv('އެއްބަނޑު'))->sibling(),
+            Relationship::fixed(...$this->dv('ދައްތަ'))->older()->sister(),
+            Relationship::fixed(...$this->dv('ބޭބެ'))->older()->brother(),
+            Relationship::fixed(...$this->dv('ކޮއްކޮ'))->younger()->sister(),
+            Relationship::fixed(...$this->dv('ކޮއްކޮ'))->younger()->brother(),
+            Relationship::fixed(...$this->dv('ދައްތަ'))->sister(),
+            Relationship::fixed(...$this->dv('ބޭބެ'))->brother(),
+            Relationship::fixed(...$this->dv('އެއްބަނޑު'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$dv('އެއްބައްޕަ ދައްތަ'))->parent()->daughter(),
-            Relationship::fixed(...$dv('އެއްބައްޕަ ބޭބެ'))->parent()->son(),
-            Relationship::fixed(...$dv('އެއްބައްޕަ'))->parent()->child(),
+            Relationship::fixed(...$this->dv('އެއްބައްޕަ ދައްތަ'))->parent()->daughter(),
+            Relationship::fixed(...$this->dv('އެއްބައްޕަ ބޭބެ'))->parent()->son(),
+            Relationship::fixed(...$this->dv('އެއްބައްޕަ'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$dv('ދޮންމަންމަ'))->parent()->wife(),
-            Relationship::fixed(...$dv('ދޮންބައްޕަ'))->parent()->husband(),
-            Relationship::fixed(...$dv('ދޮން ބެލެނިވެރި'))->parent()->married()->spouse(),
-            Relationship::fixed(...$dv('ދޮން އަންހެން ދަރި'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$dv('ދޮން ފިރިހެން ދަރި'))->married()->spouse()->son(),
-            Relationship::fixed(...$dv('ދޮން ދަރި'))->married()->spouse()->child(),
-            Relationship::fixed(...$dv('ދޮން ދައްތަ'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$dv('ދޮން ބޭބެ'))->parent()->spouse()->son(),
-            Relationship::fixed(...$dv('ދޮން އެއްބަނޑު'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->dv('ދޮންމަންމަ'))->parent()->wife(),
+            Relationship::fixed(...$this->dv('ދޮންބައްޕަ'))->parent()->husband(),
+            Relationship::fixed(...$this->dv('ދޮން ބެލެނިވެރި'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->dv('ދޮން އަންހެން ދަރި'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->dv('ދޮން ފިރިހެން ދަރި'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->dv('ދޮން ދަރި'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->dv('ދޮން ދައްތަ'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->dv('ދޮން ބޭބެ'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->dv('ދޮން އެއްބަނޑު'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$dv('ކުރީގެ ބައިވެރިޔާ'))->divorced()->partner()->female(),
-            Relationship::fixed(...$dv('ކުރީގެ ބައިވެރިޔާ'))->divorced()->partner()->male(),
-            Relationship::fixed(...$dv('ކުރީގެ ބައިވެރިޔާ'))->divorced()->partner(),
-            Relationship::fixed(...$dv('ކައިވެނި ހަމަޖެހިފައި'))->engaged()->partner()->female(),
-            Relationship::fixed(...$dv('ކައިވެނި ހަމަޖެހިފައި'))->engaged()->partner()->male(),
-            Relationship::fixed(...$dv('އަނބި'))->wife(),
-            Relationship::fixed(...$dv('ފިރިމީހާ'))->husband(),
-            Relationship::fixed(...$dv('ބައިވެރިޔާ'))->spouse(),
-            Relationship::fixed(...$dv('ޕާޓްނަރ'))->partner(),
+            Relationship::fixed(...$this->dv('ކުރީގެ ބައިވެރިޔާ'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->dv('ކުރީގެ ބައިވެރިޔާ'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->dv('ކުރީގެ ބައިވެރިޔާ'))->divorced()->partner(),
+            Relationship::fixed(...$this->dv('ކައިވެނި ހަމަޖެހިފައި'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->dv('ކައިވެނި ހަމަޖެހިފައި'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->dv('އަނބި'))->wife(),
+            Relationship::fixed(...$this->dv('ފިރިމީހާ'))->husband(),
+            Relationship::fixed(...$this->dv('ބައިވެރިޔާ'))->spouse(),
+            Relationship::fixed(...$this->dv('ޕާޓްނަރ'))->partner(),
             // In-laws
-            Relationship::fixed(...$dv('މައިދައިތަ'))->married()->spouse()->mother(),
-            Relationship::fixed(...$dv('ބަފައިކަލުންގެ'))->married()->spouse()->father(),
-            Relationship::fixed(...$dv('ފިރިމީހާގެ ބެލެނިވެރި'))->married()->spouse()->parent(),
-            Relationship::fixed(...$dv('ޅީދަރި'))->child()->wife(),
-            Relationship::fixed(...$dv('ޅީ ފިރިހެން ދަރި'))->child()->husband(),
-            Relationship::fixed(...$dv('ފަހަރި'))->spouse()->sister(),
-            Relationship::fixed(...$dv('ޅިޔަނު'))->spouse()->brother(),
-            Relationship::fixed(...$dv('ފަހަރި'))->sibling()->wife(),
-            Relationship::fixed(...$dv('ޅިޔަނު'))->sibling()->husband(),
+            Relationship::fixed(...$this->dv('މައިދައިތަ'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->dv('ބަފައިކަލުންގެ'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->dv('ފިރިމީހާގެ ބެލެނިވެރި'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->dv('ޅީދަރި'))->child()->wife(),
+            Relationship::fixed(...$this->dv('ޅީ ފިރިހެން ދަރި'))->child()->husband(),
+            Relationship::fixed(...$this->dv('ފަހަރި'))->spouse()->sister(),
+            Relationship::fixed(...$this->dv('ޅިޔަނު'))->spouse()->brother(),
+            Relationship::fixed(...$this->dv('ފަހަރި'))->sibling()->wife(),
+            Relationship::fixed(...$this->dv('ޅިޔަނު'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$dv('މާމަ'))->parent()->mother(),
-            Relationship::fixed(...$dv('ކާފަ'))->parent()->father(),
-            Relationship::fixed(...$dv('މާމަ ނުވަތަ ކާފަ'))->parent()->parent(),
+            Relationship::fixed(...$this->dv('މާމަ'))->parent()->mother(),
+            Relationship::fixed(...$this->dv('ކާފަ'))->parent()->father(),
+            Relationship::fixed(...$this->dv('މާމަ ނުވަތަ ކާފަ'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$dv('މާމަ ދަރި'))->child()->daughter(),
-            Relationship::fixed(...$dv('ކާފަ ދަރި'))->child()->son(),
-            Relationship::fixed(...$dv('މާމަ/ކާފަ ދަރި'))->child()->child(),
+            Relationship::fixed(...$this->dv('މާމަ ދަރި'))->child()->daughter(),
+            Relationship::fixed(...$this->dv('ކާފަ ދަރި'))->child()->son(),
+            Relationship::fixed(...$this->dv('މާމަ/ކާފަ ދަރި'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$dv('ބޮޑުދައިތަ'))->mother()->sister(),
-            Relationship::fixed(...$dv('ބޮޑުބޭބެ'))->mother()->brother(),
-            Relationship::fixed(...$dv('ބޮޑުދައިތަ'))->father()->sister(),
-            Relationship::fixed(...$dv('ބޮޑުބައްޕަ'))->father()->brother(),
-            Relationship::fixed(...$dv('ބޮޑުދައިތަ'))->parent()->sister(),
-            Relationship::fixed(...$dv('ބޮޑުބައްޕަ'))->parent()->brother(),
+            Relationship::fixed(...$this->dv('ބޮޑުދައިތަ'))->mother()->sister(),
+            Relationship::fixed(...$this->dv('ބޮޑުބޭބެ'))->mother()->brother(),
+            Relationship::fixed(...$this->dv('ބޮޑުދައިތަ'))->father()->sister(),
+            Relationship::fixed(...$this->dv('ބޮޑުބައްޕަ'))->father()->brother(),
+            Relationship::fixed(...$this->dv('ބޮޑުދައިތަ'))->parent()->sister(),
+            Relationship::fixed(...$this->dv('ބޮޑުބައްޕަ'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$dv('އެއްބަނޑު މީހެއްގެ އަންހެން ދަރި'))->sibling()->daughter(),
-            Relationship::fixed(...$dv('އެއްބަނޑު މީހެއްގެ ފިރިހެން ދަރި'))->sibling()->son(),
-            Relationship::fixed(...$dv('އެއްބަނޑު މީހެއްގެ ދަރި'))->sibling()->child(),
+            Relationship::fixed(...$this->dv('އެއްބަނޑު މީހެއްގެ އަންހެން ދަރި'))->sibling()->daughter(),
+            Relationship::fixed(...$this->dv('އެއްބަނޑު މީހެއްގެ ފިރިހެން ދަރި'))->sibling()->son(),
+            Relationship::fixed(...$this->dv('އެއްބަނޑު މީހެއްގެ ދަރި'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$dv('ދެބެއިންގެ ދެ ދަރި'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$dv('ދެބެއިންގެ ދެ ދަރި'))->parent()->sibling()->son(),
-            Relationship::fixed(...$dv('ދެބެއިންގެ ދެ ދަރި'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->dv('ދެބެއިންގެ ދެ ދަރި'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->dv('ދެބެއިންގެ ދެ ދަރި'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->dv('ދެބެއިންގެ ދެ ދަރި'))->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'މާމަ',
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'މާމަ' . 'ގެ %s',
             ])->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'ކާފަ',
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'ކާފަ' . 'ގެ %s',
             ])->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'ކާފަ',
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'ކާފަ' . 'ގެ %s',
             ])->ancestor(),
-            Relationship::dynamic(static fn (int $n) => [
+            Relationship::dynamic(fn (int $n) => [
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'ދަރި',
                 'މުނި' . str_repeat('މުނި', $n - 3) . 'ދަރި' . 'ގެ %s',
             ])->descendant(),

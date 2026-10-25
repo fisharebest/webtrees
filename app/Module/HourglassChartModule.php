@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
@@ -27,16 +26,16 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 use function view;
 
-class HourglassChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class HourglassChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -59,10 +58,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -115,7 +111,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             ] + $parameters + self::DEFAULT_PARAMETERS);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $xref        = Validator::attributes($request)->isXref()->string('xref');
@@ -124,15 +120,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $spouses     = Validator::attributes($request)->boolean('spouses', self::DEFAULT_SPOUSES);
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
-                'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
-                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
-                'spouses'     => Validator::parsedBody($request)->boolean('spouses', self::DEFAULT_SPOUSES),
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -201,6 +188,16 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             'children'    => $children,
             'generations' => 1,
             'spouses'     => $spouses,
+        ]));
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        return redirect(route(static::class, [
+            'tree'        => $tree->name(),
+            'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+            'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+            'spouses'     => Validator::parsedBody($request)->boolean('spouses', self::DEFAULT_SPOUSES),
         ]));
     }
 }

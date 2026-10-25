@@ -103,7 +103,7 @@ export function buildLeafletJsMap(id, config, resetCallback) {
         defaultLayer = child.layer;
       }
 
-      if (defaultLayer === null && provider.default && child.default) {
+      if (defaultLayer === null && child.default) {
         defaultLayer = child.layer;
       }
     }

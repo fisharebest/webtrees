@@ -19,15 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use RuntimeException;
 
-/**
- * Application level exceptions.
- */
 class HttpException extends RuntimeException
 {
-    public function __construct(string $message, int $status_code)
+    public function __construct(string $message, HttpStatusCode $status_code)
     {
-        parent::__construct($message, $status_code);
+        parent::__construct($message, $status_code->value);
     }
 }

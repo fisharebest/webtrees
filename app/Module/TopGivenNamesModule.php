@@ -62,14 +62,14 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($infoStyle) {
             case 'list':
-                $content = view('modules/top10_givnnames/block', [
+                $content = view('modules/top10-givnnames/block', [
                     'males'   => $statistics->commonGivenMaleListTotals('1', $num),
                     'females' => $statistics->commonGivenFemaleListTotals('1', $num),
                 ]);
                 break;
             default:
             case 'table':
-                $content = view('modules/top10_givnnames/block', [
+                $content = view('modules/top10-givnnames/block', [
                     'males'   => $statistics->commonGivenMaleTable('1', $num),
                     'females' => $statistics->commonGivenFemaleTable('1', $num),
                 ]);
@@ -152,7 +152,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
             'table' => I18N::translate('table'),
         ];
 
-        return view('modules/top10_givnnames/config', [
+        return view('modules/top10-givnnames/config', [
             'info_style'  => $info_style,
             'info_styles' => $info_styles,
             'num'         => $num,

@@ -71,7 +71,7 @@ class LinkedRecordService
             ->union($union)
             ->pluck('l_from')
             ->map(static fn (string $xref) => Registry::gedcomRecordFactory()->make($xref, $record->tree()))
-            ->filter(static fn (GedcomRecord|null $record): bool => $record instanceof GedcomRecord)
+            ->whereInstanceOf(GedcomRecord::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -98,7 +98,7 @@ class LinkedRecordService
             ->select(['families.*'])
             ->get()
             ->map(Registry::familyFactory()->mapper($record->tree()))
-            ->filter(static fn (Family|null $record): bool => $record instanceof Family)
+            ->whereInstanceOf(Family::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -125,7 +125,7 @@ class LinkedRecordService
             ->select(['individuals.*'])
             ->get()
             ->map(Registry::individualFactory()->mapper($record->tree()))
-            ->filter(static fn (Individual|null $record): bool => $record instanceof Individual)
+            ->whereInstanceOf(Individual::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -147,7 +147,7 @@ class LinkedRecordService
             ->select(['other.*'])
             ->get()
             ->map(Registry::locationFactory()->mapper($record->tree()))
-            ->filter(static fn (Location|null $record): bool => $record instanceof Location)
+            ->whereInstanceOf(Location::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -168,7 +168,7 @@ class LinkedRecordService
             ->select(['media.*'])
             ->get()
             ->map(Registry::mediaFactory()->mapper($record->tree()))
-            ->filter(static fn (Media|null $record): bool => $record instanceof Media)
+            ->whereInstanceOf(Media::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -190,7 +190,7 @@ class LinkedRecordService
             ->select(['other.*'])
             ->get()
             ->map(Registry::noteFactory()->mapper($record->tree()))
-            ->filter(static fn (Note|null $record): bool => $record instanceof Note)
+            ->whereInstanceOf(Note::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -212,7 +212,7 @@ class LinkedRecordService
             ->select(['other.*'])
             ->get()
             ->map(Registry::repositoryFactory()->mapper($record->tree()))
-            ->filter(static fn (Repository|null $record): bool => $record instanceof Repository)
+            ->whereInstanceOf(Repository::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -233,7 +233,7 @@ class LinkedRecordService
             ->select(['sources.*'])
             ->get()
             ->map(Registry::sourceFactory()->mapper($record->tree()))
-            ->filter(static fn (Source|null $record): bool => $record instanceof Source)
+            ->whereInstanceOf(Source::class)
             ->filter(GedcomRecord::accessFilter());
     }
 
@@ -256,7 +256,7 @@ class LinkedRecordService
             ->distinct()
             ->get()
             ->map(Registry::submitterFactory()->mapper($record->tree()))
-            ->filter(static fn (Submitter|null $record): bool => $record instanceof Submitter)
+            ->whereInstanceOf(Submitter::class)
             ->filter(GedcomRecord::accessFilter());
     }
 }

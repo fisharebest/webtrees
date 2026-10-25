@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -20,8 +21,8 @@ use Fisharebest\Webtrees\Individual;
 <div
     id="census-assistant"
     hidden
-    data-wt-census-header-url="<?= e(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()])) ?>"
-    data-wt-census-individual-url="<?= e(route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()])) ?>"
+    data-wt-census-header-url="<?= e(route(ModuleAction::class, ['module' => 'GEDFact_assistant', 'action' => 'CensusHeader', 'tree' => $individual->tree()->name()])) ?>"
+    data-wt-census-individual-url="<?= e(route(ModuleAction::class, ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'tree' => $individual->tree()->name()])) ?>"
     data-wt-census-transcript-label="<?= e(I18N::translate('Census transcript')) ?>"
     data-wt-census-household-label="<?= e(I18N::translate('Household')) ?>"
     data-wt-census-individual-name="<?= e(strip_tags($individual->fullName())) ?>"

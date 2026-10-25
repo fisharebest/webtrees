@@ -63,7 +63,7 @@ final class UserEdit extends AbstractCommand
         $delete    = $this->boolOption(input: $input, name: 'delete');
 
         if ($user_name === '') {
-            $io->error(message: 'The user- name cannot be empty.');
+            $io->error(message: 'The user-name cannot be empty.');
 
             return Command::INVALID;
         }

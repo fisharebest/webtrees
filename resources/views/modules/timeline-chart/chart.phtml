@@ -160,7 +160,7 @@ foreach ($individuals as $index => $individual) {
 
             foreach ($record->spouses() as $spouse) {
                 if ($spouse->getBirthDate()->isOK()) {
-                    $age = (string) new Age($spouse->getBirthDate(), $gdate);
+                    $age = (new Age($spouse->getBirthDate(), $gdate))->toString();
                     if ($spouse->sex() === Sex::Female) {
                         echo '<span class="age"> ', I18N::translate('Wife’s age'), ' ', $age, '</span>';
                     } else {

@@ -322,107 +322,116 @@ final readonly class Finnish extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function rel(string $nom, string $gen): array
     {
-        // Finnish genitive: nominative + genitive form for possessive constructions
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
+        return [$nom, '%s ' . $gen];
+    }
 
-        // Finnish uses "iso" prefix for great- generations: isoisoäiti = great-grandmother
-        $iso = static fn (int $n, string $nom, string $gen): array => [
+    /** @return array{string, string} */
+    private function iso(int $n, string $nom, string $gen): array
+    {
+        return [
             str_repeat('iso', $n) . $nom,
             '%s ' . str_repeat('iso', $n) . $gen,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Parents
-            Relationship::fixed(...$rel('äiti', 'äidin'))->mother(),
-            Relationship::fixed(...$rel('isä', 'isän'))->father(),
-            Relationship::fixed(...$rel('vanhempi', 'vanhemman'))->parent(),
+            Relationship::fixed(...$this->rel('äiti', 'äidin'))->mother(),
+            Relationship::fixed(...$this->rel('isä', 'isän'))->father(),
+            Relationship::fixed(...$this->rel('vanhempi', 'vanhemman'))->parent(),
             // Children
-            Relationship::fixed(...$rel('tytär', 'tyttären'))->daughter(),
-            Relationship::fixed(...$rel('poika', 'pojan'))->son(),
-            Relationship::fixed(...$rel('lapsi', 'lapsen'))->child(),
+            Relationship::fixed(...$this->rel('tytär', 'tyttären'))->daughter(),
+            Relationship::fixed(...$this->rel('poika', 'pojan'))->son(),
+            Relationship::fixed(...$this->rel('lapsi', 'lapsen'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('isosisko', 'siskon'))->older()->sister(),
-            Relationship::fixed(...$rel('isoveli', 'veljen'))->older()->brother(),
-            Relationship::fixed(...$rel('pikkusisko', 'siskon'))->younger()->sister(),
-            Relationship::fixed(...$rel('pikkuveli', 'veljen'))->younger()->brother(),
-            Relationship::fixed(...$rel('sisko', 'siskon'))->sister(),
-            Relationship::fixed(...$rel('veli', 'veljen'))->brother(),
-            Relationship::fixed(...$rel('sisarus', 'sisaruksen'))->sibling(),
+            Relationship::fixed(...$this->rel('isosisko', 'siskon'))->older()->sister(),
+            Relationship::fixed(...$this->rel('isoveli', 'veljen'))->older()->brother(),
+            Relationship::fixed(...$this->rel('pikkusisko', 'siskon'))->younger()->sister(),
+            Relationship::fixed(...$this->rel('pikkuveli', 'veljen'))->younger()->brother(),
+            Relationship::fixed(...$this->rel('sisko', 'siskon'))->sister(),
+            Relationship::fixed(...$this->rel('veli', 'veljen'))->brother(),
+            Relationship::fixed(...$this->rel('sisarus', 'sisaruksen'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('sisarpuoli', 'sisarpuolen'))->parent()->daughter(),
-            Relationship::fixed(...$rel('velipuoli', 'velipuolen'))->parent()->son(),
-            Relationship::fixed(...$rel('sisaruspuoli', 'sisaruspuolen'))->parent()->child(),
+            Relationship::fixed(...$this->rel('sisarpuoli', 'sisarpuolen'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('velipuoli', 'velipuolen'))->parent()->son(),
+            Relationship::fixed(...$this->rel('sisaruspuoli', 'sisaruspuolen'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$rel('äitipuoli', 'äitipuolen'))->parent()->wife(),
-            Relationship::fixed(...$rel('isäpuoli', 'isäpuolen'))->parent()->husband(),
-            Relationship::fixed(...$rel('vanhempipuoli', 'vanhempipuolen'))->parent()->married()->spouse(),
-            Relationship::fixed(...$rel('tytärpuoli', 'tytärpuolen'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('poikapuoli', 'poikapuolen'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('lapsipuoli', 'lapsipuolen'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('äitipuoli', 'äitipuolen'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('isäpuoli', 'isäpuolen'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('vanhempipuoli', 'vanhempipuolen'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->rel('tytärpuoli', 'tytärpuolen'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('poikapuoli', 'poikapuolen'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('lapsipuoli', 'lapsipuolen'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('ex-vaimo', 'ex-vaimon'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('ex-aviomies', 'ex-aviomiehen'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('ex-puoliso', 'ex-puolison'))->divorced()->partner(),
-            Relationship::fixed(...$rel('morsian', 'morsiamen'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('sulhanen', 'sulhasen'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('vaimo', 'vaimon'))->wife(),
-            Relationship::fixed(...$rel('aviomies', 'aviomiehen'))->husband(),
-            Relationship::fixed(...$rel('puoliso', 'puolison'))->spouse(),
-            Relationship::fixed(...$rel('kumppani', 'kumppanin'))->partner(),
+            Relationship::fixed(...$this->rel('ex-vaimo', 'ex-vaimon'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('ex-aviomies', 'ex-aviomiehen'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('ex-puoliso', 'ex-puolison'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('morsian', 'morsiamen'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('sulhanen', 'sulhasen'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('vaimo', 'vaimon'))->wife(),
+            Relationship::fixed(...$this->rel('aviomies', 'aviomiehen'))->husband(),
+            Relationship::fixed(...$this->rel('puoliso', 'puolison'))->spouse(),
+            Relationship::fixed(...$this->rel('kumppani', 'kumppanin'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$rel('anoppi', 'anopin'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('appi', 'apin'))->married()->spouse()->father(),
-            Relationship::fixed(...$rel('anoppi', 'anopin'))->spouse()->mother(),
-            Relationship::fixed(...$rel('appi', 'apin'))->spouse()->father(),
+            Relationship::fixed(...$this->rel('anoppi', 'anopin'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('appi', 'apin'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('anoppi', 'anopin'))->spouse()->mother(),
+            Relationship::fixed(...$this->rel('appi', 'apin'))->spouse()->father(),
             // Children-in-law
-            Relationship::fixed(...$rel('miniä', 'miniän'))->child()->wife(),
-            Relationship::fixed(...$rel('vävy', 'vävyn'))->child()->husband(),
+            Relationship::fixed(...$this->rel('miniä', 'miniän'))->child()->wife(),
+            Relationship::fixed(...$this->rel('vävy', 'vävyn'))->child()->husband(),
             // Siblings-in-law
-            Relationship::fixed(...$rel('käly', 'kälyn'))->spouse()->sister(),
-            Relationship::fixed(...$rel('lanko', 'langon'))->spouse()->brother(),
-            Relationship::fixed(...$rel('käly', 'kälyn'))->sibling()->wife(),
-            Relationship::fixed(...$rel('lanko', 'langon'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('käly', 'kälyn'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('lanko', 'langon'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('käly', 'kälyn'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('lanko', 'langon'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('isoäiti', 'isoäidin'))->parent()->mother(),
-            Relationship::fixed(...$rel('isoisä', 'isoisän'))->parent()->father(),
-            Relationship::fixed(...$rel('isovanhempi', 'isovanhemman'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('isoäiti', 'isoäidin'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('isoisä', 'isoisän'))->parent()->father(),
+            Relationship::fixed(...$this->rel('isovanhempi', 'isovanhemman'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('tyttärentytär', 'tyttärentyttären'))->daughter()->daughter(),
-            Relationship::fixed(...$rel('tyttärenpoika', 'tyttärenpojan'))->daughter()->son(),
-            Relationship::fixed(...$rel('pojanpoika', 'pojanpojan'))->son()->son(),
-            Relationship::fixed(...$rel('pojantytär', 'pojantyttären'))->son()->daughter(),
-            Relationship::fixed(...$rel('lapsenlapsi', 'lapsenlapsen'))->child()->child(),
+            Relationship::fixed(...$this->rel('tyttärentytär', 'tyttärentyttären'))->daughter()->daughter(),
+            Relationship::fixed(...$this->rel('tyttärenpoika', 'tyttärenpojan'))->daughter()->son(),
+            Relationship::fixed(...$this->rel('pojanpoika', 'pojanpojan'))->son()->son(),
+            Relationship::fixed(...$this->rel('pojantytär', 'pojantyttären'))->son()->daughter(),
+            Relationship::fixed(...$this->rel('lapsenlapsi', 'lapsenlapsen'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('täti', 'tädin'))->parent()->sister(),
-            Relationship::fixed(...$rel('eno', 'enon'))->mother()->brother(),
-            Relationship::fixed(...$rel('setä', 'sedän'))->father()->brother(),
-            Relationship::fixed(...$rel('setä', 'sedän'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('täti', 'tädin'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('eno', 'enon'))->mother()->brother(),
+            Relationship::fixed(...$this->rel('setä', 'sedän'))->father()->brother(),
+            Relationship::fixed(...$this->rel('setä', 'sedän'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$rel('veljentytär', 'veljentyttären'))->brother()->daughter(),
-            Relationship::fixed(...$rel('veljenpoika', 'veljenpojan'))->brother()->son(),
-            Relationship::fixed(...$rel('siskontytär', 'siskontyttären'))->sister()->daughter(),
-            Relationship::fixed(...$rel('siskonpoika', 'siskonpojan'))->sister()->son(),
-            Relationship::fixed(...$rel('sisarenlapsi', 'sisarenlapsen'))->sibling()->child(),
+            Relationship::fixed(...$this->rel('veljentytär', 'veljentyttären'))->brother()->daughter(),
+            Relationship::fixed(...$this->rel('veljenpoika', 'veljenpojan'))->brother()->son(),
+            Relationship::fixed(...$this->rel('siskontytär', 'siskontyttären'))->sister()->daughter(),
+            Relationship::fixed(...$this->rel('siskonpoika', 'siskonpojan'))->sister()->son(),
+            Relationship::fixed(...$this->rel('sisarenlapsi', 'sisarenlapsen'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$rel('serkku', 'serkun'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('serkku', 'serkun'))->parent()->sibling()->son(),
-            Relationship::fixed(...$rel('serkku', 'serkun'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('serkku', 'serkun'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('serkku', 'serkun'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('serkku', 'serkun'))->parent()->sibling()->child(),
             // Dynamic relationships — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'äiti', 'äidin'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'isä', 'isän'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'vanhempi', 'vanhemman'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'äiti', 'äidin'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'isä', 'isän'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'vanhempi', 'vanhemman'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => $iso($n - 2, 'lapsenlapsi', 'lapsenlapsen'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 2, 'lapsenlapsi', 'lapsenlapsen'))->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'täti', 'tädin'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'setä', 'sedän'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'täti', 'tädin'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'setä', 'sedän'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'veljentytär', 'veljentyttären'))->brother()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'veljenpoika', 'veljenpojan'))->brother()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'siskontytär', 'siskontyttären'))->sister()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $iso($n - 1, 'siskonpoika', 'siskonpojan'))->sister()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'veljentytär', 'veljentyttären'))->brother()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'veljenpoika', 'veljenpojan'))->brother()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'siskontytär', 'siskontyttären'))->sister()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->iso($n - 1, 'siskonpoika', 'siskonpojan'))->sister()->descendant()->male(),
         ];
     }
 }

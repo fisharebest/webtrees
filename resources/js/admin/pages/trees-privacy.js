@@ -105,7 +105,11 @@ export function initializeTreesPrivacyPage () {
   addResnButton.addEventListener('click', () => {
     tableBody.insertAdjacentHTML('afterbegin', resnTemplate.innerHTML);
 
-    const row = requireElement(tableBody, 'tr', HTMLTableRowElement, 'new privacy restriction row');
+    const row = tableBody.rows[0];
+
+    if (!(row instanceof HTMLTableRowElement)) {
+      throw new Error('Expected new privacy restriction row.');
+    }
 
     if (typeof window.webtrees?.initializeTomSelect !== 'function') {
       throw new Error('Missing webtrees.initializeTomSelect().');

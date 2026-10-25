@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
+use Fisharebest\Webtrees\Http\Controllers\EditNote;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Shared note') ?>
             <?php if (Auth::isEditor($record->tree())) : ?>
                 <div class="pt-2 wt-fact-edit-links">
-                    <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
+                    <a class="btn btn-link" href="<?= e(route(EditNote::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
                         <?= view('icons/edit') ?>
                         <span class="visually-hidden">
                             <?= I18N::translate('Edit') ?>

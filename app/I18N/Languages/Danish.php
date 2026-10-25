@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Enums\PluralRule;
 
 use function mb_substr;
+use function str_repeat;
 use function str_starts_with;
 
 final readonly class Danish extends AbstractLanguage
@@ -237,102 +238,118 @@ final readonly class Danish extends AbstractLanguage
     }
 
     /**
+     * Generate nominative and genitive forms with the Danish "-s" suffix.
+     *
+     * @return array{string, string}
+     */
+    private function gen(string $nominative): array
+    {
+        return [$nominative, '%s ' . $nominative . 's'];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the Danish "olde/tip" prefix pattern.
+     *
+     * bedstemor → oldemor → tipoldemor → tiptipoldemor
+     *
+     * @return array{string, string}
+     */
+    private function olde(int $n, string $suffix): array
+    {
+        return $this->gen(($n > 3 ? 'tip×' . $n . '-olde' : ($n === 1 ? 'olde' : str_repeat('tip', $n - 1) . 'olde')) . $suffix);
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Danish genitive: "-s" suffix
-        $gen = static fn (string $s): array => [$s, '%s ' . $s . 's'];
-
-        $great = static fn (int $n, string $prefix, string $suffix): array => [
-            $prefix . ($n > 3 ? 'tip×' . $n . '-olde' : ($n === 1 ? 'olde' : str_repeat('tip', $n - 1) . 'olde')) . $suffix,
-            '%s ' . $prefix . ($n > 3 ? 'tip×' . $n . '-olde' : ($n === 1 ? 'olde' : str_repeat('tip', $n - 1) . 'olde')) . $suffix . 's',
-        ];
 
         return [
             // Parents
-            Relationship::fixed(...$gen('mor'))->mother(),
-            Relationship::fixed(...$gen('far'))->father(),
-            Relationship::fixed(...$gen('forælder'))->parent(),
+            Relationship::fixed(...$this->gen('mor'))->mother(),
+            Relationship::fixed(...$this->gen('far'))->father(),
+            Relationship::fixed(...$this->gen('forælder'))->parent(),
             // Children
-            Relationship::fixed(...$gen('datter'))->daughter(),
-            Relationship::fixed(...$gen('søn'))->son(),
-            Relationship::fixed(...$gen('barn'))->child(),
+            Relationship::fixed(...$this->gen('datter'))->daughter(),
+            Relationship::fixed(...$this->gen('søn'))->son(),
+            Relationship::fixed(...$this->gen('barn'))->child(),
             // Siblings
-            Relationship::fixed(...$gen('tvillingsøster'))->multiple()->sister(),
-            Relationship::fixed(...$gen('tvillingbror'))->multiple()->brother(),
-            Relationship::fixed(...$gen('tvilling'))->multiple()->sibling(),
-            Relationship::fixed(...$gen('storesøster'))->older()->sister(),
-            Relationship::fixed(...$gen('storebror'))->older()->brother(),
-            Relationship::fixed(...$gen('ældre søskende'))->older()->sibling(),
-            Relationship::fixed(...$gen('lillesøster'))->younger()->sister(),
-            Relationship::fixed(...$gen('lillebror'))->younger()->brother(),
-            Relationship::fixed(...$gen('yngre søskende'))->younger()->sibling(),
-            Relationship::fixed(...$gen('søster'))->sister(),
-            Relationship::fixed(...$gen('bror'))->brother(),
-            Relationship::fixed(...$gen('søskende'))->sibling(),
+            Relationship::fixed(...$this->gen('tvillingsøster'))->multiple()->sister(),
+            Relationship::fixed(...$this->gen('tvillingbror'))->multiple()->brother(),
+            Relationship::fixed(...$this->gen('tvilling'))->multiple()->sibling(),
+            Relationship::fixed(...$this->gen('storesøster'))->older()->sister(),
+            Relationship::fixed(...$this->gen('storebror'))->older()->brother(),
+            Relationship::fixed(...$this->gen('ældre søskende'))->older()->sibling(),
+            Relationship::fixed(...$this->gen('lillesøster'))->younger()->sister(),
+            Relationship::fixed(...$this->gen('lillebror'))->younger()->brother(),
+            Relationship::fixed(...$this->gen('yngre søskende'))->younger()->sibling(),
+            Relationship::fixed(...$this->gen('søster'))->sister(),
+            Relationship::fixed(...$this->gen('bror'))->brother(),
+            Relationship::fixed(...$this->gen('søskende'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$gen('halvsøster'))->parent()->daughter(),
-            Relationship::fixed(...$gen('halvbror'))->parent()->son(),
-            Relationship::fixed(...$gen('halvsøskende'))->parent()->child(),
+            Relationship::fixed(...$this->gen('halvsøster'))->parent()->daughter(),
+            Relationship::fixed(...$this->gen('halvbror'))->parent()->son(),
+            Relationship::fixed(...$this->gen('halvsøskende'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$gen('stedmor'))->parent()->wife(),
-            Relationship::fixed(...$gen('stedfar'))->parent()->husband(),
-            Relationship::fixed(...$gen('stedforælder'))->parent()->married()->spouse(),
-            Relationship::fixed(...$gen('steddatter'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$gen('stedsøn'))->married()->spouse()->son(),
-            Relationship::fixed(...$gen('stedbarn'))->married()->spouse()->child(),
-            Relationship::fixed(...$gen('stedsøster'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$gen('stedbror'))->parent()->spouse()->son(),
-            Relationship::fixed(...$gen('stedsøskende'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->gen('stedmor'))->parent()->wife(),
+            Relationship::fixed(...$this->gen('stedfar'))->parent()->husband(),
+            Relationship::fixed(...$this->gen('stedforælder'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->gen('steddatter'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->gen('stedsøn'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->gen('stedbarn'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->gen('stedsøster'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->gen('stedbror'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->gen('stedsøskende'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$gen('ekskone'))->divorced()->partner()->female(),
-            Relationship::fixed(...$gen('eksmand'))->divorced()->partner()->male(),
-            Relationship::fixed(...$gen('ekspartner'))->divorced()->partner(),
-            Relationship::fixed(...$gen('forlovede'))->engaged()->partner()->female(),
-            Relationship::fixed(...$gen('forlovede'))->engaged()->partner()->male(),
-            Relationship::fixed(...$gen('hustru'))->wife(),
-            Relationship::fixed(...$gen('mand'))->husband(),
-            Relationship::fixed(...$gen('ægtefælle'))->spouse(),
-            Relationship::fixed(...$gen('partner'))->partner(),
+            Relationship::fixed(...$this->gen('ekskone'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->gen('eksmand'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->gen('ekspartner'))->divorced()->partner(),
+            Relationship::fixed(...$this->gen('forlovede'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->gen('forlovede'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->gen('hustru'))->wife(),
+            Relationship::fixed(...$this->gen('mand'))->husband(),
+            Relationship::fixed(...$this->gen('ægtefælle'))->spouse(),
+            Relationship::fixed(...$this->gen('partner'))->partner(),
             // In-laws
-            Relationship::fixed(...$gen('svigermor'))->married()->spouse()->mother(),
-            Relationship::fixed(...$gen('svigerfar'))->married()->spouse()->father(),
-            Relationship::fixed(...$gen('svigerforælder'))->married()->spouse()->parent(),
-            Relationship::fixed(...$gen('svigerdatter'))->child()->wife(),
-            Relationship::fixed(...$gen('svigersøn'))->child()->husband(),
-            Relationship::fixed(...$gen('svigerinde'))->spouse()->sister(),
-            Relationship::fixed(...$gen('svoger'))->spouse()->brother(),
-            Relationship::fixed(...$gen('svigerinde'))->sibling()->wife(),
-            Relationship::fixed(...$gen('svoger'))->sibling()->husband(),
+            Relationship::fixed(...$this->gen('svigermor'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->gen('svigerfar'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->gen('svigerforælder'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->gen('svigerdatter'))->child()->wife(),
+            Relationship::fixed(...$this->gen('svigersøn'))->child()->husband(),
+            Relationship::fixed(...$this->gen('svigerinde'))->spouse()->sister(),
+            Relationship::fixed(...$this->gen('svoger'))->spouse()->brother(),
+            Relationship::fixed(...$this->gen('svigerinde'))->sibling()->wife(),
+            Relationship::fixed(...$this->gen('svoger'))->sibling()->husband(),
             // Grandparents - maternal/paternal
-            Relationship::fixed(...$gen('mormor'))->mother()->mother(),
-            Relationship::fixed(...$gen('morfar'))->mother()->father(),
-            Relationship::fixed(...$gen('farmor'))->father()->mother(),
-            Relationship::fixed(...$gen('farfar'))->father()->father(),
-            Relationship::fixed(...$gen('bedstemor'))->parent()->mother(),
-            Relationship::fixed(...$gen('bedstefar'))->parent()->father(),
-            Relationship::fixed(...$gen('bedsteforælder'))->parent()->parent(),
+            Relationship::fixed(...$this->gen('mormor'))->mother()->mother(),
+            Relationship::fixed(...$this->gen('morfar'))->mother()->father(),
+            Relationship::fixed(...$this->gen('farmor'))->father()->mother(),
+            Relationship::fixed(...$this->gen('farfar'))->father()->father(),
+            Relationship::fixed(...$this->gen('bedstemor'))->parent()->mother(),
+            Relationship::fixed(...$this->gen('bedstefar'))->parent()->father(),
+            Relationship::fixed(...$this->gen('bedsteforælder'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$gen('barnebarn'))->child()->child(),
+            Relationship::fixed(...$this->gen('barnebarn'))->child()->child(),
             // Aunts and uncles - maternal/paternal
-            Relationship::fixed(...$gen('moster'))->mother()->sister(),
-            Relationship::fixed(...$gen('morbror'))->mother()->brother(),
-            Relationship::fixed(...$gen('faster'))->father()->sister(),
-            Relationship::fixed(...$gen('farbror'))->father()->brother(),
-            Relationship::fixed(...$gen('tante'))->parent()->sister(),
-            Relationship::fixed(...$gen('onkel'))->parent()->brother(),
+            Relationship::fixed(...$this->gen('moster'))->mother()->sister(),
+            Relationship::fixed(...$this->gen('morbror'))->mother()->brother(),
+            Relationship::fixed(...$this->gen('faster'))->father()->sister(),
+            Relationship::fixed(...$this->gen('farbror'))->father()->brother(),
+            Relationship::fixed(...$this->gen('tante'))->parent()->sister(),
+            Relationship::fixed(...$this->gen('onkel'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$gen('niece'))->sibling()->daughter(),
-            Relationship::fixed(...$gen('nevø'))->sibling()->son(),
+            Relationship::fixed(...$this->gen('niece'))->sibling()->daughter(),
+            Relationship::fixed(...$this->gen('nevø'))->sibling()->son(),
             // Cousins
-            Relationship::fixed(...$gen('kusine'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$gen('fætter'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->gen('kusine'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->gen('fætter'))->parent()->sibling()->son(),
             // Dynamic relationships
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'mor'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'far'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'forælder'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'barn'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'mor'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'far'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->olde($n - 1, 'forælder'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->olde($n - 2, 'barn'))->descendant(),
         ];
     }
 }

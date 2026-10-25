@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -73,7 +73,7 @@ trait ModuleMapGeoLocationTrait
             $request  = $this->searchLocationsRequest($place);
             $response = $this->http_client->sendRequest($request);
 
-            if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+            if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                 return $this->extractLocationsFromResponse($response);
             }
 

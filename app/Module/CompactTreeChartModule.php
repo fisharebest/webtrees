@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
@@ -27,14 +26,14 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
+class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
@@ -52,10 +51,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -108,20 +104,13 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
             ] + $parameters);
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
         $xref = Validator::attributes($request)->isXref()->string('xref');
         $ajax = Validator::queryParams($request)->boolean('ajax', false);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
-                'tree' => $tree->name(),
-                'xref' => Validator::parsedBody($request)->string('xref', ''),
-            ]));
-        }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -148,5 +137,13 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
             'title'      => $this->chartTitle($individual),
             'tree'       => $tree,
         ]);
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        return redirect(route(static::class, [
+            'tree' => $tree->name(),
+            'xref' => Validator::parsedBody($request)->string('xref', ''),
+        ]));
     }
 }

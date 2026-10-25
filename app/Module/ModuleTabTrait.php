@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\AccessLevel;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -112,7 +112,7 @@ trait ModuleTabTrait
         $record = Auth::checkIndividualAccess($record);
 
         if ($this->accessLevel($tree, ModuleTabInterface::class)->disallows(Auth::accessLevel($tree, $user))) {
-            throw new HttpAccessDeniedException();
+            throw new HttpForbiddenException();
         }
 
         $layout = view('layouts/ajax', [

@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\Validator;
@@ -63,12 +63,12 @@ function csrf_token(): string
     return WebtreesSession::getCsrfToken();
 }
 
-function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+function redirect(string $url, HttpStatusCode $code = HttpStatusCode::Found): ResponseInterface
 {
     $response_factory = Registry::container()->get(ResponseFactoryInterface::class);
 
     return $response_factory
-        ->createResponse($code)
+        ->createResponse($code->value)
         ->withHeader('location', $url);
 }
 
@@ -78,7 +78,7 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
  * @param array<mixed>|object|string $content
  * @param array<string>              $headers
  */
-function response(array|object|string $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+function response(array|object|string $content = '', HttpStatusCode $code = HttpStatusCode::OK, array $headers = []): ResponseInterface
 {
     return Registry::responseFactory()->response($content, $code, $headers);
 }
@@ -86,7 +86,7 @@ function response(array|object|string $content = '', int $code = StatusCodeInter
 /**
  * Generate a URL for a named route.
  *
- * @param array<bool|int|string|array<string>|null> $parameters
+ * @param array<mixed> $parameters
  */
 function route(string $route_name, array $parameters = []): string
 {

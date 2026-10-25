@@ -302,10 +302,10 @@ final readonly class Uzbek extends AbstractLanguage
             Relationship::fixed('amakivachcha', '%s amakivachchaning')->parent()->sibling()->son(),
             Relationship::fixed('amakivachcha', '%s amakivachchaning')->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'buvi', 'buvining'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'bobo', 'boboning'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'buvi yoki bobo', 'buvi yoki boboning'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nevara', 'nevaraning'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'buvi', 'buvining'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'bobo', 'boboning'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'buvi yoki bobo', 'buvi yoki boboning'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $great($n - 2, 'nevara', 'nevaraning'))->descendant(),
         ];
     }
 }

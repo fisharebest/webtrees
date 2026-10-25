@@ -287,25 +287,35 @@ final readonly class Hungarian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using Hungarian generational prefixes.
+     *
+     * n=1: déd (great-grand), n=2: ük (great-great-grand),
+     * n=3: szép (3×great), n>3: n×szép-
+     *
+     * @return array{string, string}
+     */
+    private function great(int $n, string $nominative, string $genitive): array
+    {
+        if ($n === 1) {
+            $prefix = 'déd';
+        } elseif ($n === 2) {
+            $prefix = 'ük';
+        } elseif ($n === 3) {
+            $prefix = 'szép';
+        } else {
+            $prefix = $n . '×szép-';
+        }
+
+        return [$prefix . $nominative, '%s ' . $prefix . $genitive];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Hungarian great-grandparent prefixes:
-        // n=1: déd (great-grand), n=2: ük (great-great-grand), n=3: szép (3×great)
-        // n>3: n×szép- prefix
-        $great = static function (int $n, string $nom, string $gen): array {
-            if ($n === 1) {
-                $prefix = 'déd';
-            } elseif ($n === 2) {
-                $prefix = 'ük';
-            } elseif ($n === 3) {
-                $prefix = 'szép';
-            } else {
-                $prefix = ($n) . '×szép-';
-            }
-
-            return [$prefix . $nom, '%s ' . $prefix . $gen];
-        };
-
         return [
             // Parents
             Relationship::fixed('anya', '%s anyja')->mother(),
@@ -371,10 +381,10 @@ final readonly class Hungarian extends AbstractLanguage
             Relationship::fixed('unokatestvér', '%s unokatestvére')->parent()->sibling()->daughter(),
             Relationship::fixed('unokatestvér', '%s unokatestvére')->parent()->sibling()->son(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nagymama', 'nagymamája'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nagypapa', 'nagypapája'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'nagyszülő', 'nagyszülője'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'unoka', 'unokája'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'nagymama', 'nagymamája'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'nagypapa', 'nagypapája'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'nagyszülő', 'nagyszülője'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'unoka', 'unokája'))->descendant(),
         ];
     }
 }

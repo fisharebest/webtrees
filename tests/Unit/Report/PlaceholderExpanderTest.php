@@ -233,7 +233,7 @@ class PlaceholderExpanderTest extends TestCase
     {
         $expander = $this->createExpander(['x' => '5']);
 
-        $result = $expander->evaluateCondition('$x == "5"', '', '', '', 1, $this->createTree());
+        $result = $expander->evaluateCondition('$x == "5"', '', '', '', 1, $this->createTree(), '');
 
         self::assertTrue($result);
     }
@@ -242,7 +242,7 @@ class PlaceholderExpanderTest extends TestCase
     {
         $expander = $this->createExpander(['x' => '5']);
 
-        $result = $expander->evaluateCondition('$x == "3"', '', '', '', 1, $this->createTree());
+        $result = $expander->evaluateCondition('$x == "3"', '', '', '', 1, $this->createTree(), '');
 
         self::assertFalse($result);
     }
@@ -252,7 +252,7 @@ class PlaceholderExpanderTest extends TestCase
         $expander = $this->createExpander();
         $gedrec   = "0 @I99@ INDI\n1 NAME Test /Person/";
 
-        $result = $expander->evaluateCondition('@ID == "I99"', $gedrec, '', '', 1, $this->createTree());
+        $result = $expander->evaluateCondition('@ID == "I99"', $gedrec, '', '', 1, $this->createTree(), 'INDI');
 
         self::assertTrue($result);
     }
@@ -261,7 +261,7 @@ class PlaceholderExpanderTest extends TestCase
     {
         $expander = $this->createExpander(['x' => '10']);
 
-        $result = $expander->evaluateCondition('$x GT 5', '', '', '', 1, $this->createTree());
+        $result = $expander->evaluateCondition('$x GT 5', '', '', '', 1, $this->createTree(), '');
 
         self::assertTrue($result);
     }

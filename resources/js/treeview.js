@@ -23,14 +23,15 @@ const COMPACT_COOKIE_NAME = 'wt_interactive_tree_compact';
  * @returns {{pageX: number, pageY: number}}
  */
 function getPointerPosition(event) {
-  if (event instanceof TouchEvent && event.touches.length > 0) {
+  // TouchEvent is not defined in all browsers (e.g. desktop Firefox).
+  if (typeof TouchEvent !== 'undefined' && event instanceof TouchEvent && event.touches.length > 0) {
     return {
       pageX: event.touches[0].pageX,
       pageY: event.touches[0].pageY,
     };
   }
 
-  if (event instanceof TouchEvent && event.changedTouches.length > 0) {
+  if (typeof TouchEvent !== 'undefined' && event instanceof TouchEvent && event.changedTouches.length > 0) {
     return {
       pageX: event.changedTouches[0].pageX,
       pageY: event.changedTouches[0].pageY,
@@ -65,13 +66,13 @@ function getElementOffset(element) {
  * @param {{left: number, top: number}} coordinates
  */
 function setElementOffset(element, coordinates) {
-  const offsetParent = element.offsetParent instanceof HTMLElement
-    ? element.offsetParent
-    : document.documentElement;
-  const parentOffset = getElementOffset(offsetParent);
+  const currentOffset = getElementOffset(element);
+  const currentLeft = parseFloat(element.style.left) || 0;
+  const currentTop = parseFloat(element.style.top) || 0;
 
-  element.style.left = coordinates.left - parentOffset.left + 'px';
-  element.style.top = coordinates.top - parentOffset.top + 'px';
+  // Adjust the CSS offset by the difference between target and current page position.
+  element.style.left = currentLeft + (coordinates.left - currentOffset.left) + 'px';
+  element.style.top = currentTop + (coordinates.top - currentOffset.top) + 'px';
 }
 
 export class TreeViewHandler {
@@ -124,6 +125,11 @@ export class TreeViewHandler {
     let dragStartY = 0;
 
     const startDrag = (event) => {
+      // Prevent native drag-and-drop so the browser does not hijack mousemove events.
+      if (event instanceof MouseEvent) {
+        event.preventDefault();
+      }
+
       const pointer = getPointerPosition(event);
       const treeOffset = getElementOffset(this.treeview);
       dragStartX = treeOffset.left - pointer.pageX;
@@ -178,6 +184,11 @@ export class TreeViewHandler {
 
     this.treeview.addEventListener('mousedown', startDrag);
     this.treeview.addEventListener('touchstart', startDrag, { passive: true });
+
+    // Prevent native drag-and-drop on images and links inside the tree canvas.
+    this.treeview.addEventListener('dragstart', (event) => {
+      event.preventDefault();
+    });
   }
 
   bindControlHandlers() {
@@ -535,4 +546,3 @@ function readCookie(name) {
 
   return null;
 }
-

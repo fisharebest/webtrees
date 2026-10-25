@@ -205,124 +205,133 @@ final readonly class Hebrew extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+        /** @return array{string, string} */
+    private function he(string $s): array
+    {
+        return [$s, '%s של ה' . $s];
+    }
+
+    /** @return array{string, string} */
+    private function he2(string $nom, string $gen): array
+    {
+        return [$nom, '%s של ה' . $gen];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Hebrew genitive: "של ה" (shel ha-) = "of the"
-        $he = static fn (string $s): array => [$s, '%s של ה' . $s];
-
-        // When nominative and genitive stems differ
-        $he2 = static fn (string $nom, string $gen): array => [$nom, '%s של ה' . $gen];
-
         return [
             // Adopted
-            Relationship::fixed(...$he('אם מאמצת'))->adoptive()->mother(),
-            Relationship::fixed(...$he('אב מאמץ'))->adoptive()->father(),
-            Relationship::fixed(...$he('הורה מאמץ'))->adoptive()->parent(),
-            Relationship::fixed(...$he('בת מאומצת'))->adopted()->daughter(),
-            Relationship::fixed(...$he('בן מאומץ'))->adopted()->son(),
-            Relationship::fixed(...$he('ילד/ה מאומץ/צת'))->adopted()->child(),
+            Relationship::fixed(...$this->he('אם מאמצת'))->adoptive()->mother(),
+            Relationship::fixed(...$this->he('אב מאמץ'))->adoptive()->father(),
+            Relationship::fixed(...$this->he('הורה מאמץ'))->adoptive()->parent(),
+            Relationship::fixed(...$this->he('בת מאומצת'))->adopted()->daughter(),
+            Relationship::fixed(...$this->he('בן מאומץ'))->adopted()->son(),
+            Relationship::fixed(...$this->he('ילד/ה מאומץ/צת'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$he('אם אומנת'))->fostering()->mother(),
-            Relationship::fixed(...$he('אב אומן'))->fostering()->father(),
-            Relationship::fixed(...$he('הורה אומן'))->fostering()->parent(),
-            Relationship::fixed(...$he('בת אומנה'))->fostered()->daughter(),
-            Relationship::fixed(...$he('בן אומנה'))->fostered()->son(),
-            Relationship::fixed(...$he('ילד/ה אומנה'))->fostered()->child(),
+            Relationship::fixed(...$this->he('אם אומנת'))->fostering()->mother(),
+            Relationship::fixed(...$this->he('אב אומן'))->fostering()->father(),
+            Relationship::fixed(...$this->he('הורה אומן'))->fostering()->parent(),
+            Relationship::fixed(...$this->he('בת אומנה'))->fostered()->daughter(),
+            Relationship::fixed(...$this->he('בן אומנה'))->fostered()->son(),
+            Relationship::fixed(...$this->he('ילד/ה אומנה'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$he('אם'))->mother(),
-            Relationship::fixed(...$he('אב'))->father(),
-            Relationship::fixed(...$he('הורה'))->parent(),
+            Relationship::fixed(...$this->he('אם'))->mother(),
+            Relationship::fixed(...$this->he('אב'))->father(),
+            Relationship::fixed(...$this->he('הורה'))->parent(),
             // Children
-            Relationship::fixed(...$he('בת'))->daughter(),
-            Relationship::fixed(...$he('בן'))->son(),
-            Relationship::fixed(...$he('ילד/ה'))->child(),
+            Relationship::fixed(...$this->he('בת'))->daughter(),
+            Relationship::fixed(...$this->he('בן'))->son(),
+            Relationship::fixed(...$this->he('ילד/ה'))->child(),
             // Siblings
-            Relationship::fixed(...$he('אחות תאומה'))->multiple()->sister(),
-            Relationship::fixed(...$he('אח תאום'))->multiple()->brother(),
-            Relationship::fixed(...$he('תאום/ה'))->multiple()->sibling(),
-            Relationship::fixed(...$he('אחות גדולה'))->older()->sister(),
-            Relationship::fixed(...$he('אח גדול'))->older()->brother(),
-            Relationship::fixed(...$he('אחות קטנה'))->younger()->sister(),
-            Relationship::fixed(...$he('אח קטן'))->younger()->brother(),
-            Relationship::fixed(...$he2('אחות', 'אחות'))->sister(),
-            Relationship::fixed(...$he2('אח', 'אח'))->brother(),
-            Relationship::fixed(...$he('אח/ות'))->sibling(),
+            Relationship::fixed(...$this->he('אחות תאומה'))->multiple()->sister(),
+            Relationship::fixed(...$this->he('אח תאום'))->multiple()->brother(),
+            Relationship::fixed(...$this->he('תאום/ה'))->multiple()->sibling(),
+            Relationship::fixed(...$this->he('אחות גדולה'))->older()->sister(),
+            Relationship::fixed(...$this->he('אח גדול'))->older()->brother(),
+            Relationship::fixed(...$this->he('אחות קטנה'))->younger()->sister(),
+            Relationship::fixed(...$this->he('אח קטן'))->younger()->brother(),
+            Relationship::fixed(...$this->he2('אחות', 'אחות'))->sister(),
+            Relationship::fixed(...$this->he2('אח', 'אח'))->brother(),
+            Relationship::fixed(...$this->he('אח/ות'))->sibling(),
             // Half-siblings (paternal)
-            Relationship::fixed(...$he('אחות חורגת מהאב'))->father()->daughter(),
-            Relationship::fixed(...$he('אח חורג מהאב'))->father()->son(),
+            Relationship::fixed(...$this->he('אחות חורגת מהאב'))->father()->daughter(),
+            Relationship::fixed(...$this->he('אח חורג מהאב'))->father()->son(),
             // Half-siblings (maternal)
-            Relationship::fixed(...$he('אחות חורגת מהאם'))->mother()->daughter(),
-            Relationship::fixed(...$he('אח חורג מהאם'))->mother()->son(),
+            Relationship::fixed(...$this->he('אחות חורגת מהאם'))->mother()->daughter(),
+            Relationship::fixed(...$this->he('אח חורג מהאם'))->mother()->son(),
             // Half-siblings (generic)
-            Relationship::fixed(...$he('אחות חורגת'))->parent()->daughter(),
-            Relationship::fixed(...$he('אח חורג'))->parent()->son(),
-            Relationship::fixed(...$he('אח/ות חורג/ת'))->parent()->child(),
+            Relationship::fixed(...$this->he('אחות חורגת'))->parent()->daughter(),
+            Relationship::fixed(...$this->he('אח חורג'))->parent()->son(),
+            Relationship::fixed(...$this->he('אח/ות חורג/ת'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$he('אם חורגת'))->parent()->wife(),
-            Relationship::fixed(...$he('אב חורג'))->parent()->husband(),
-            Relationship::fixed(...$he('בת חורגת'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$he('בן חורג'))->married()->spouse()->son(),
-            Relationship::fixed(...$he('ילד/ה חורג/ת'))->married()->spouse()->child(),
-            Relationship::fixed(...$he('בת חורגת'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$he('בן חורג'))->parent()->spouse()->son(),
-            Relationship::fixed(...$he('ילד/ה חורג/ת'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->he('אם חורגת'))->parent()->wife(),
+            Relationship::fixed(...$this->he('אב חורג'))->parent()->husband(),
+            Relationship::fixed(...$this->he('בת חורגת'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->he('בן חורג'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->he('ילד/ה חורג/ת'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->he('בת חורגת'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->he('בן חורג'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->he('ילד/ה חורג/ת'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$he('גרושה'))->divorced()->partner()->female(),
-            Relationship::fixed(...$he('גרוש'))->divorced()->partner()->male(),
-            Relationship::fixed(...$he('גרוש/ה'))->divorced()->partner(),
-            Relationship::fixed(...$he('ארוסה'))->engaged()->partner()->female(),
-            Relationship::fixed(...$he('ארוס'))->engaged()->partner()->male(),
-            Relationship::fixed(...$he2('אישה', 'אישה'))->wife(),
-            Relationship::fixed(...$he2('בעל', 'בעל'))->husband(),
-            Relationship::fixed(...$he('בן/בת זוג'))->spouse(),
-            Relationship::fixed(...$he('בן/בת זוג'))->partner(),
+            Relationship::fixed(...$this->he('גרושה'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->he('גרוש'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->he('גרוש/ה'))->divorced()->partner(),
+            Relationship::fixed(...$this->he('ארוסה'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->he('ארוס'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->he2('אישה', 'אישה'))->wife(),
+            Relationship::fixed(...$this->he2('בעל', 'בעל'))->husband(),
+            Relationship::fixed(...$this->he('בן/בת זוג'))->spouse(),
+            Relationship::fixed(...$this->he('בן/בת זוג'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$he2('חמות', 'חמות'))->married()->spouse()->mother(),
-            Relationship::fixed(...$he2('חם', 'חם'))->married()->spouse()->father(),
-            Relationship::fixed(...$he('הורה של בן/בת הזוג'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->he2('חמות', 'חמות'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->he2('חם', 'חם'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->he('הורה של בן/בת הזוג'))->married()->spouse()->parent(),
             // In-laws (child's spouse)
-            Relationship::fixed(...$he2('כלה', 'כלה'))->child()->wife(),
-            Relationship::fixed(...$he2('חתן', 'חתן'))->child()->husband(),
-            Relationship::fixed(...$he('כלה/חתן'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->he2('כלה', 'כלה'))->child()->wife(),
+            Relationship::fixed(...$this->he2('חתן', 'חתן'))->child()->husband(),
+            Relationship::fixed(...$this->he('כלה/חתן'))->child()->married()->spouse(),
             // In-laws (spouse's siblings)
-            Relationship::fixed(...$he('גיסה'))->spouse()->sister(),
-            Relationship::fixed(...$he('גיס'))->spouse()->brother(),
+            Relationship::fixed(...$this->he('גיסה'))->spouse()->sister(),
+            Relationship::fixed(...$this->he('גיס'))->spouse()->brother(),
             // In-laws (sibling's spouse)
-            Relationship::fixed(...$he('גיסה'))->sibling()->wife(),
-            Relationship::fixed(...$he('גיס'))->sibling()->husband(),
+            Relationship::fixed(...$this->he('גיסה'))->sibling()->wife(),
+            Relationship::fixed(...$this->he('גיס'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$he2('סבתא', 'סבתא'))->parent()->mother(),
-            Relationship::fixed(...$he2('סבא', 'סבא'))->parent()->father(),
-            Relationship::fixed(...$he('סב/תא'))->parent()->parent(),
+            Relationship::fixed(...$this->he2('סבתא', 'סבתא'))->parent()->mother(),
+            Relationship::fixed(...$this->he2('סבא', 'סבא'))->parent()->father(),
+            Relationship::fixed(...$this->he('סב/תא'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$he2('נכדה', 'נכדה'))->child()->daughter(),
-            Relationship::fixed(...$he2('נכד', 'נכד'))->child()->son(),
-            Relationship::fixed(...$he('נכד/ה'))->child()->child(),
+            Relationship::fixed(...$this->he2('נכדה', 'נכדה'))->child()->daughter(),
+            Relationship::fixed(...$this->he2('נכד', 'נכד'))->child()->son(),
+            Relationship::fixed(...$this->he('נכד/ה'))->child()->child(),
             // Aunts/uncles
-            Relationship::fixed(...$he2('דודה', 'דודה'))->parent()->sister(),
-            Relationship::fixed(...$he2('דוד', 'דוד'))->parent()->brother(),
+            Relationship::fixed(...$this->he2('דודה', 'דודה'))->parent()->sister(),
+            Relationship::fixed(...$this->he2('דוד', 'דוד'))->parent()->brother(),
             // Nieces/nephews
-            Relationship::fixed(...$he2('אחיינית', 'אחיינית'))->sibling()->daughter(),
-            Relationship::fixed(...$he2('אחיין', 'אחיין'))->sibling()->son(),
-            Relationship::fixed(...$he('אחיין/ית'))->sibling()->child(),
+            Relationship::fixed(...$this->he2('אחיינית', 'אחיינית'))->sibling()->daughter(),
+            Relationship::fixed(...$this->he2('אחיין', 'אחיין'))->sibling()->son(),
+            Relationship::fixed(...$this->he('אחיין/ית'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$he('בת דוד/ה'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$he('בן דוד/ה'))->parent()->sibling()->son(),
-            Relationship::fixed(...$he('בן/בת דוד/ה'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->he('בת דוד/ה'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->he('בן דוד/ה'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->he('בן/בת דוד/ה'))->parent()->sibling()->child(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $he('דודה רבה' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $he('דוד רבא' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->he('דודה רבה' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->he('דוד רבא' . ($n > 2 ? ' ×' . ($n - 1) : '')))->ancestor()->brother(),
             // Dynamic: grand-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $he('אחיינית גדולה' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $he('אחיין גדול' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->he('אחיינית גדולה' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->he('אחיין גדול' . ($n > 2 ? ' ×' . ($n - 1) : '')))->sibling()->descendant()->male(),
             // Dynamic: ancestors
-            Relationship::dynamic(static fn (int $n) => $he2('סבתא רבה' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'סבתא רבה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $he2('סבא רבא' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'סבא רבא' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $he('סב/תא רב/ה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->he2('סבתא רבה' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'סבתא רבה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->he2('סבא רבא' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'סבא רבא' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->he('סב/תא רב/ה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->ancestor(),
             // Dynamic: descendants
-            Relationship::dynamic(static fn (int $n) => $he2('נינה' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'נינה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $he2('נין' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'נין' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $he('נין/ה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->he2('נינה' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'נינה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->he2('נין' . ($n > 3 ? ' ×' . ($n - 2) : ''), 'נין' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->he('נין/ה' . ($n > 3 ? ' ×' . ($n - 2) : '')))->descendant(),
         ];
     }
 }

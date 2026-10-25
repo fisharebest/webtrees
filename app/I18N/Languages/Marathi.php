@@ -168,152 +168,158 @@ final readonly class Marathi extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
+        /** @return array{string, string} */
+    private function mr(string $s): array
+    {
+        return [$s, $s . ' चा %s', $s . ' ची %s'];
+    }
+
+    /**
+     * @return array<Relationship>
+     */
     public function relationships(): array
     {
-        // Marathi genitive: postposition चा (cha, masculine possessed) / ची (chi, feminine possessed)
-        $mr = static fn (string $s): array => [$s, $s . ' चा %s', $s . ' ची %s'];
-
         return [
             // Adopted
-            Relationship::fixed(...$mr('दत्तक आई'))->adoptive()->mother(),
-            Relationship::fixed(...$mr('दत्तक वडील'))->adoptive()->father(),
-            Relationship::fixed(...$mr('दत्तक पालक'))->adoptive()->parent(),
-            Relationship::fixed(...$mr('दत्तक मुलगी'))->adopted()->daughter(),
-            Relationship::fixed(...$mr('दत्तक मुलगा'))->adopted()->son(),
-            Relationship::fixed(...$mr('दत्तक मूल'))->adopted()->child(),
+            Relationship::fixed(...$this->mr('दत्तक आई'))->adoptive()->mother(),
+            Relationship::fixed(...$this->mr('दत्तक वडील'))->adoptive()->father(),
+            Relationship::fixed(...$this->mr('दत्तक पालक'))->adoptive()->parent(),
+            Relationship::fixed(...$this->mr('दत्तक मुलगी'))->adopted()->daughter(),
+            Relationship::fixed(...$this->mr('दत्तक मुलगा'))->adopted()->son(),
+            Relationship::fixed(...$this->mr('दत्तक मूल'))->adopted()->child(),
             // Fostered
-            Relationship::fixed(...$mr('पोषक आई'))->fostering()->mother(),
-            Relationship::fixed(...$mr('पोषक वडील'))->fostering()->father(),
-            Relationship::fixed(...$mr('पोषक पालक'))->fostering()->parent(),
-            Relationship::fixed(...$mr('पोषित मुलगी'))->fostered()->daughter(),
-            Relationship::fixed(...$mr('पोषित मुलगा'))->fostered()->son(),
-            Relationship::fixed(...$mr('पोषित मूल'))->fostered()->child(),
+            Relationship::fixed(...$this->mr('पोषक आई'))->fostering()->mother(),
+            Relationship::fixed(...$this->mr('पोषक वडील'))->fostering()->father(),
+            Relationship::fixed(...$this->mr('पोषक पालक'))->fostering()->parent(),
+            Relationship::fixed(...$this->mr('पोषित मुलगी'))->fostered()->daughter(),
+            Relationship::fixed(...$this->mr('पोषित मुलगा'))->fostered()->son(),
+            Relationship::fixed(...$this->mr('पोषित मूल'))->fostered()->child(),
             // Parents
-            Relationship::fixed(...$mr('आई'))->mother(),
-            Relationship::fixed(...$mr('वडील'))->father(),
-            Relationship::fixed(...$mr('पालक'))->parent(),
+            Relationship::fixed(...$this->mr('आई'))->mother(),
+            Relationship::fixed(...$this->mr('वडील'))->father(),
+            Relationship::fixed(...$this->mr('पालक'))->parent(),
             // Children
-            Relationship::fixed(...$mr('मुलगी'))->daughter(),
-            Relationship::fixed(...$mr('मुलगा'))->son(),
-            Relationship::fixed(...$mr('मूल'))->child(),
+            Relationship::fixed(...$this->mr('मुलगी'))->daughter(),
+            Relationship::fixed(...$this->mr('मुलगा'))->son(),
+            Relationship::fixed(...$this->mr('मूल'))->child(),
             // Siblings — twins
-            Relationship::fixed(...$mr('जुळी बहीण'))->multiple()->sister(),
-            Relationship::fixed(...$mr('जुळा भाऊ'))->multiple()->brother(),
-            Relationship::fixed(...$mr('जुळे भावंड'))->multiple()->sibling(),
+            Relationship::fixed(...$this->mr('जुळी बहीण'))->multiple()->sister(),
+            Relationship::fixed(...$this->mr('जुळा भाऊ'))->multiple()->brother(),
+            Relationship::fixed(...$this->mr('जुळे भावंड'))->multiple()->sibling(),
             // Siblings — elder/younger
-            Relationship::fixed(...$mr('मोठी बहीण'))->older()->sister(),
-            Relationship::fixed(...$mr('लहान बहीण'))->younger()->sister(),
-            Relationship::fixed(...$mr('मोठा भाऊ'))->older()->brother(),
-            Relationship::fixed(...$mr('लहान भाऊ'))->younger()->brother(),
-            Relationship::fixed(...$mr('बहीण'))->sister(),
-            Relationship::fixed(...$mr('भाऊ'))->brother(),
-            Relationship::fixed(...$mr('भावंड'))->sibling(),
+            Relationship::fixed(...$this->mr('मोठी बहीण'))->older()->sister(),
+            Relationship::fixed(...$this->mr('लहान बहीण'))->younger()->sister(),
+            Relationship::fixed(...$this->mr('मोठा भाऊ'))->older()->brother(),
+            Relationship::fixed(...$this->mr('लहान भाऊ'))->younger()->brother(),
+            Relationship::fixed(...$this->mr('बहीण'))->sister(),
+            Relationship::fixed(...$this->mr('भाऊ'))->brother(),
+            Relationship::fixed(...$this->mr('भावंड'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$mr('सावत्र बहीण'))->father()->daughter(),
-            Relationship::fixed(...$mr('सावत्र भाऊ'))->father()->son(),
-            Relationship::fixed(...$mr('सावत्र बहीण'))->mother()->daughter(),
-            Relationship::fixed(...$mr('सावत्र भाऊ'))->mother()->son(),
-            Relationship::fixed(...$mr('सावत्र बहीण'))->parent()->daughter(),
-            Relationship::fixed(...$mr('सावत्र भाऊ'))->parent()->son(),
-            Relationship::fixed(...$mr('भावंड'))->parent()->child(),
+            Relationship::fixed(...$this->mr('सावत्र बहीण'))->father()->daughter(),
+            Relationship::fixed(...$this->mr('सावत्र भाऊ'))->father()->son(),
+            Relationship::fixed(...$this->mr('सावत्र बहीण'))->mother()->daughter(),
+            Relationship::fixed(...$this->mr('सावत्र भाऊ'))->mother()->son(),
+            Relationship::fixed(...$this->mr('सावत्र बहीण'))->parent()->daughter(),
+            Relationship::fixed(...$this->mr('सावत्र भाऊ'))->parent()->son(),
+            Relationship::fixed(...$this->mr('भावंड'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$mr('सावत्र आई'))->parent()->wife(),
-            Relationship::fixed(...$mr('सावत्र वडील'))->parent()->husband(),
-            Relationship::fixed(...$mr('सावत्र मुलगी'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$mr('सावत्र मुलगा'))->married()->spouse()->son(),
-            Relationship::fixed(...$mr('सावत्र मूल'))->married()->spouse()->child(),
-            Relationship::fixed(...$mr('सावत्र मुलगी'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$mr('सावत्र मुलगा'))->parent()->spouse()->son(),
-            Relationship::fixed(...$mr('सावत्र मूल'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->mr('सावत्र आई'))->parent()->wife(),
+            Relationship::fixed(...$this->mr('सावत्र वडील'))->parent()->husband(),
+            Relationship::fixed(...$this->mr('सावत्र मुलगी'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->mr('सावत्र मुलगा'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->mr('सावत्र मूल'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->mr('सावत्र मुलगी'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->mr('सावत्र मुलगा'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->mr('सावत्र मूल'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$mr('माजी पत्नी'))->divorced()->partner()->female(),
-            Relationship::fixed(...$mr('माजी पती'))->divorced()->partner()->male(),
-            Relationship::fixed(...$mr('माजी जोडीदार'))->divorced()->partner(),
-            Relationship::fixed(...$mr('मंगेतर'))->engaged()->partner()->female(),
-            Relationship::fixed(...$mr('मंगेतर'))->engaged()->partner()->male(),
-            Relationship::fixed(...$mr('पत्नी'))->wife(),
-            Relationship::fixed(...$mr('पती'))->husband(),
-            Relationship::fixed(...$mr('जोडीदार'))->spouse(),
-            Relationship::fixed(...$mr('साथीदार'))->partner(),
+            Relationship::fixed(...$this->mr('माजी पत्नी'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->mr('माजी पती'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->mr('माजी जोडीदार'))->divorced()->partner(),
+            Relationship::fixed(...$this->mr('मंगेतर'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->mr('मंगेतर'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->mr('पत्नी'))->wife(),
+            Relationship::fixed(...$this->mr('पती'))->husband(),
+            Relationship::fixed(...$this->mr('जोडीदार'))->spouse(),
+            Relationship::fixed(...$this->mr('साथीदार'))->partner(),
             // In-laws (spouse's parents)
-            Relationship::fixed(...$mr('सासू'))->married()->spouse()->mother(),
-            Relationship::fixed(...$mr('सासरे'))->married()->spouse()->father(),
-            Relationship::fixed(...$mr('सासू/सासरे'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->mr('सासू'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->mr('सासरे'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->mr('सासू/सासरे'))->married()->spouse()->parent(),
             // In-laws (child's spouse)
-            Relationship::fixed(...$mr('सून'))->child()->wife(),
-            Relationship::fixed(...$mr('जावई'))->child()->husband(),
-            Relationship::fixed(...$mr('सून/जावई'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->mr('सून'))->child()->wife(),
+            Relationship::fixed(...$this->mr('जावई'))->child()->husband(),
+            Relationship::fixed(...$this->mr('सून/जावई'))->child()->married()->spouse(),
             // In-laws (husband's siblings)
-            Relationship::fixed(...$mr('नणंद'))->husband()->sister(),
-            Relationship::fixed(...$mr('दीर'))->husband()->brother(),
+            Relationship::fixed(...$this->mr('नणंद'))->husband()->sister(),
+            Relationship::fixed(...$this->mr('दीर'))->husband()->brother(),
             // In-laws (wife's siblings)
-            Relationship::fixed(...$mr('मेहुणी'))->wife()->sister(),
-            Relationship::fixed(...$mr('मेहुणा'))->wife()->brother(),
+            Relationship::fixed(...$this->mr('मेहुणी'))->wife()->sister(),
+            Relationship::fixed(...$this->mr('मेहुणा'))->wife()->brother(),
             // In-laws (sibling's spouse)
-            Relationship::fixed(...$mr('वहिनी'))->brother()->wife(),
-            Relationship::fixed(...$mr('भावोजी'))->sister()->husband(),
+            Relationship::fixed(...$this->mr('वहिनी'))->brother()->wife(),
+            Relationship::fixed(...$this->mr('भावोजी'))->sister()->husband(),
             // Grandparents (Marathi does not distinguish paternal/maternal)
-            Relationship::fixed(...$mr('आजी'))->parent()->mother(),
-            Relationship::fixed(...$mr('आजोबा'))->parent()->father(),
-            Relationship::fixed(...$mr('आजी-आजोबा'))->parent()->parent(),
+            Relationship::fixed(...$this->mr('आजी'))->parent()->mother(),
+            Relationship::fixed(...$this->mr('आजोबा'))->parent()->father(),
+            Relationship::fixed(...$this->mr('आजी-आजोबा'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$mr('नात'))->child()->daughter(),
-            Relationship::fixed(...$mr('नातू'))->child()->son(),
-            Relationship::fixed(...$mr('नातवंड'))->child()->child(),
+            Relationship::fixed(...$this->mr('नात'))->child()->daughter(),
+            Relationship::fixed(...$this->mr('नातू'))->child()->son(),
+            Relationship::fixed(...$this->mr('नातवंड'))->child()->child(),
             // Aunts — paternal
-            Relationship::fixed(...$mr('आत्या'))->father()->sister(),
+            Relationship::fixed(...$this->mr('आत्या'))->father()->sister(),
             // Aunts — maternal
-            Relationship::fixed(...$mr('मावशी'))->mother()->sister(),
+            Relationship::fixed(...$this->mr('मावशी'))->mother()->sister(),
             // Aunts — generic
-            Relationship::fixed(...$mr('आत्या/मावशी'))->parent()->sister(),
+            Relationship::fixed(...$this->mr('आत्या/मावशी'))->parent()->sister(),
             // Uncles — paternal
-            Relationship::fixed(...$mr('काका'))->father()->brother(),
+            Relationship::fixed(...$this->mr('काका'))->father()->brother(),
             // Uncles — maternal
-            Relationship::fixed(...$mr('मामा'))->mother()->brother(),
+            Relationship::fixed(...$this->mr('मामा'))->mother()->brother(),
             // Uncles — generic
-            Relationship::fixed(...$mr('काका/मामा'))->parent()->brother(),
+            Relationship::fixed(...$this->mr('काका/मामा'))->parent()->brother(),
             // Uncle/aunt spouses
-            Relationship::fixed(...$mr('काकू'))->father()->brother()->wife(),
-            Relationship::fixed(...$mr('मामी'))->mother()->brother()->wife(),
-            Relationship::fixed(...$mr('मावसा'))->mother()->sister()->husband(),
+            Relationship::fixed(...$this->mr('काकू'))->father()->brother()->wife(),
+            Relationship::fixed(...$this->mr('मामी'))->mother()->brother()->wife(),
+            Relationship::fixed(...$this->mr('मावसा'))->mother()->sister()->husband(),
             // Nieces/Nephews — through brother
-            Relationship::fixed(...$mr('पुतणी'))->brother()->daughter(),
-            Relationship::fixed(...$mr('पुतण्या'))->brother()->son(),
+            Relationship::fixed(...$this->mr('पुतणी'))->brother()->daughter(),
+            Relationship::fixed(...$this->mr('पुतण्या'))->brother()->son(),
             // Nieces/Nephews — through sister
-            Relationship::fixed(...$mr('भाची'))->sister()->daughter(),
-            Relationship::fixed(...$mr('भाचा'))->sister()->son(),
+            Relationship::fixed(...$this->mr('भाची'))->sister()->daughter(),
+            Relationship::fixed(...$this->mr('भाचा'))->sister()->son(),
             // Generic niece/nephew
-            Relationship::fixed(...$mr('पुतणी/भाची'))->sibling()->daughter(),
-            Relationship::fixed(...$mr('पुतण्या/भाचा'))->sibling()->son(),
+            Relationship::fixed(...$this->mr('पुतणी/भाची'))->sibling()->daughter(),
+            Relationship::fixed(...$this->mr('पुतण्या/भाचा'))->sibling()->son(),
             // Cousins — paternal uncle's children (चुलत)
-            Relationship::fixed(...$mr('चुलत बहीण'))->father()->brother()->daughter(),
-            Relationship::fixed(...$mr('चुलत भाऊ'))->father()->brother()->son(),
+            Relationship::fixed(...$this->mr('चुलत बहीण'))->father()->brother()->daughter(),
+            Relationship::fixed(...$this->mr('चुलत भाऊ'))->father()->brother()->son(),
             // Cousins — paternal aunt's children (आत्ये)
-            Relationship::fixed(...$mr('आत्ये बहीण'))->father()->sister()->daughter(),
-            Relationship::fixed(...$mr('आत्ये भाऊ'))->father()->sister()->son(),
+            Relationship::fixed(...$this->mr('आत्ये बहीण'))->father()->sister()->daughter(),
+            Relationship::fixed(...$this->mr('आत्ये भाऊ'))->father()->sister()->son(),
             // Cousins — maternal uncle's children (मामे)
-            Relationship::fixed(...$mr('मामे बहीण'))->mother()->brother()->daughter(),
-            Relationship::fixed(...$mr('मामे भाऊ'))->mother()->brother()->son(),
+            Relationship::fixed(...$this->mr('मामे बहीण'))->mother()->brother()->daughter(),
+            Relationship::fixed(...$this->mr('मामे भाऊ'))->mother()->brother()->son(),
             // Cousins — maternal aunt's children (मावस)
-            Relationship::fixed(...$mr('मावस बहीण'))->mother()->sister()->daughter(),
-            Relationship::fixed(...$mr('मावस भाऊ'))->mother()->sister()->son(),
+            Relationship::fixed(...$this->mr('मावस बहीण'))->mother()->sister()->daughter(),
+            Relationship::fixed(...$this->mr('मावस भाऊ'))->mother()->sister()->son(),
             // Generic cousin fallback
-            Relationship::fixed(...$mr('चुलत/मामे बहीण'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$mr('चुलत/मामे भाऊ'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->mr('चुलत/मामे बहीण'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->mr('चुलत/मामे भाऊ'))->parent()->sibling()->son(),
             // Dynamic: great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $mr('आत्या/मावशी' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठी')))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $mr('काका/मामा' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठे')))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->mr('आत्या/मावशी' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठी')))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->mr('काका/मामा' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठे')))->ancestor()->brother(),
             // Dynamic: grand-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $mr('पुतणी/भाची' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठी')))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $mr('पुतण्या/भाचा' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठा')))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->mr('पुतणी/भाची' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठी')))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->mr('पुतण्या/भाचा' . ($n > 2 ? ' — पिढी ' . ($n - 1) : ' मोठा')))->sibling()->descendant()->male(),
             // Dynamic: ancestors (पणजी/पणजोबा for great-grandparents, खापर- prefix for deeper)
-            Relationship::dynamic(static fn (int $n) => $mr(str_repeat('खापर-', $n - 3) . 'पणजी'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $mr(str_repeat('खापर-', $n - 3) . 'पणजोबा'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $mr(str_repeat('खापर-', $n - 3) . 'पणजी/पणजोबा'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->mr(str_repeat('खापर-', $n - 3) . 'पणजी'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->mr(str_repeat('खापर-', $n - 3) . 'पणजोबा'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->mr(str_repeat('खापर-', $n - 3) . 'पणजी/पणजोबा'))->ancestor(),
             // Dynamic: descendants (पणती/पणतू for great-grandchildren, खापर- prefix for deeper)
-            Relationship::dynamic(static fn (int $n) => $mr(str_repeat('खापर-', $n - 3) . 'पणती'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $mr(str_repeat('खापर-', $n - 3) . 'पणतू'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $mr(str_repeat('खापर-', $n - 3) . 'पणतवंड'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->mr(str_repeat('खापर-', $n - 3) . 'पणती'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->mr(str_repeat('खापर-', $n - 3) . 'पणतू'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->mr(str_repeat('खापर-', $n - 3) . 'पणतवंड'))->descendant(),
         ];
     }
 }

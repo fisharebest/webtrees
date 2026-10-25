@@ -61,9 +61,9 @@ foreach ($amatches as $amatch) {
         if ($person !== $parent && $person->getBirthDate()->isOK() && $fact->date()->isOK()) {
             $age = new Age($person->getBirthDate(), $fact->date());
             $age_text = match ($person->sex()) {
-                Sex::Male     => ' ' . I18N::translateContext('Male', '(aged %s)', (string) $age),
-                Sex::Female   => ' ' . I18N::translateContext('Female', '(aged %s)', (string) $age),
-                default => ' ' . I18N::translate('(aged %s)', (string) $age),
+                Sex::Male     => ' ' . I18N::translateContext('Male', '(aged %s)', $age->toString()),
+                Sex::Female   => ' ' . I18N::translateContext('Female', '(aged %s)', $age->toString()),
+                default => ' ' . I18N::translate('(aged %s)', $age->toString()),
             };
         } else {
             $age_text = '';

@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -91,7 +91,7 @@ class UpgradeService
             $zip->extractTo($target_folder);
             $zip->close();
         } else {
-            throw new HttpServerErrorException('Cannot read ZIP file. Is it corrupt?');
+            throw new HttpInternalServerErrorException('Cannot read ZIP file. Is it corrupt?');
         }
     }
 
@@ -146,7 +146,7 @@ class UpgradeService
 
             if ($this->timeout_service->isTimeNearlyUp()) {
                 $stream->close();
-                throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                throw new HttpInternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
             }
         }
 
@@ -177,7 +177,7 @@ class UpgradeService
                 $source->delete($attributes->path());
 
                 if ($this->timeout_service->isTimeNearlyUp()) {
-                    throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
+                    throw new HttpInternalServerErrorException(I18N::translate('The server’s time limit has been reached.'));
                 }
             } else {
                 $folders[] = $attributes->path();
@@ -293,7 +293,7 @@ class UpgradeService
                 $request  = $this->request_factory->createRequest('GET', $url);
                 $response = $this->http_client->sendRequest($request);
 
-                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+                if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_ERROR', '');
                 } else {

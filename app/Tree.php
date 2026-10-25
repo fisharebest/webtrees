@@ -153,36 +153,6 @@ class Tree
 
     public function setPreference(string $setting_name, string $setting_value): self
     {
-        switch ($setting_name) {
-            case 'CONTACT_USER_ID':
-            case 'WEBMASTER_USER_ID':
-                trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')
-                    ->where('gedcom_id', '=', $this->id)
-                    ->update(['support_user_id' => $setting_value === '' ? null : (int) $setting_value]);
-
-                return $this;
-
-            case 'imported':
-            case 'REQUIRE_AUTHENTICATION':
-                trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')
-                    ->where('gedcom_id', '=', $this->id)
-                    ->update(['private' => (int) $setting_value]);
-
-                return $this;
-
-            case 'gedcom_filename':
-            case 'MEDIA_DIRECTORY':
-            case 'title':
-                trigger_error('Deprecated since 2.2.6 - update the table directly');
-                DB::table('gedcom')
-                    ->where('gedcom_id', '=', $this->id)
-                    ->update(['title' => $setting_value]);
-
-                return $this;
-        }
-
         if ($setting_value !== $this->getPreference($setting_name)) {
             DB::table('gedcom_setting')->updateOrInsert([
                 'gedcom_id'    => $this->id,
@@ -201,42 +171,6 @@ class Tree
 
     public function getPreference(string $setting_name, string|null $default = null): string
     {
-        switch ($setting_name) {
-            case 'CONTACT_USER_ID':
-                trigger_error('Deprecated since 2.2.6 - use Tree::contactUserId().', E_USER_DEPRECATED);
-
-                return (string) $this->contactUserId();
-
-            case 'gedcom_filename':
-                trigger_error('Deprecated since 2.2.6 - use Tree::gedcomFile().', E_USER_DEPRECATED);
-
-                return $this->gedcomFilename();
-
-            case 'imported':
-                trigger_error('Deprecated since 2.2.6 - use Tree::imported().', E_USER_DEPRECATED);
-
-                return $this->imported() ? '1' : '';
-
-            case 'MEDIA_DIRECTORY':
-                trigger_error('Deprecated since 2.2.6 - use Tree::mediaFolder().', E_USER_DEPRECATED);
-
-                return $this->mediaFolder();
-
-            case 'REQUIRE_AUTHENTICATION':
-                trigger_error('Deprecated since 2.2.6 - use Tree::private().', E_USER_DEPRECATED);
-
-                return $this->private() ? '1' : '';
-
-            case 'WEBMASTER_USER_ID':
-                trigger_error('Deprecated since 2.2.6 - use Tree::supportUserId().', E_USER_DEPRECATED);
-                return (string) $this->supportUserId();
-
-            case 'title':
-                trigger_error('Deprecated since 2.2.6 - use Tree::title().', E_USER_DEPRECATED);
-
-                return $this->title();
-        }
-
         if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')
                 ->where('gedcom_id', '=', $this->id)

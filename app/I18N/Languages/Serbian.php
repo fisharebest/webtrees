@@ -241,115 +241,124 @@ final readonly class Serbian extends AbstractLanguage
     /**
      * @return array<Relationship>
      */
-    public function relationships(): array
+        /** @return array{string, string} */
+    private function rel(string $nom, string $gen): array
     {
-        // Serbian genitive helper: [nominative, '%s ' . genitive]
-        $rel = static fn (string $nom, string $gen): array => [$nom, '%s ' . $gen];
+        return [$nom, '%s ' . $gen];
+    }
 
-        // Dynamic "пра-" prefix for great-grandparents
-        $pra = static fn (int $n, string $nom, string $gen): array => [
+    /** @return array{string, string} */
+    private function pra(int $n, string $nom, string $gen): array
+    {
+        return [
             str_repeat('пра', $n) . $nom,
             '%s ' . str_repeat('пра', $n) . $gen,
         ];
+    }
 
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
         return [
             // Adopted
-            Relationship::fixed(...$rel('усвојитељка', 'усвојитељке'))->adoptive()->mother(),
-            Relationship::fixed(...$rel('усвојитељ', 'усвојитеља'))->adoptive()->father(),
-            Relationship::fixed(...$rel('усвојитељ', 'усвојитеља'))->adoptive()->parent(),
-            Relationship::fixed(...$rel('усвојена ћерка', 'усвојене ћерке'))->adopted()->daughter(),
-            Relationship::fixed(...$rel('усвојени син', 'усвојеног сина'))->adopted()->son(),
-            Relationship::fixed(...$rel('усвојено дете', 'усвојеног детета'))->adopted()->child(),
+            Relationship::fixed(...$this->rel('усвојитељка', 'усвојитељке'))->adoptive()->mother(),
+            Relationship::fixed(...$this->rel('усвојитељ', 'усвојитеља'))->adoptive()->father(),
+            Relationship::fixed(...$this->rel('усвојитељ', 'усвојитеља'))->adoptive()->parent(),
+            Relationship::fixed(...$this->rel('усвојена ћерка', 'усвојене ћерке'))->adopted()->daughter(),
+            Relationship::fixed(...$this->rel('усвојени син', 'усвојеног сина'))->adopted()->son(),
+            Relationship::fixed(...$this->rel('усвојено дете', 'усвојеног детета'))->adopted()->child(),
             // Parents
-            Relationship::fixed(...$rel('мајка', 'мајке'))->mother(),
-            Relationship::fixed(...$rel('отац', 'оца'))->father(),
-            Relationship::fixed(...$rel('родитељ', 'родитеља'))->parent(),
+            Relationship::fixed(...$this->rel('мајка', 'мајке'))->mother(),
+            Relationship::fixed(...$this->rel('отац', 'оца'))->father(),
+            Relationship::fixed(...$this->rel('родитељ', 'родитеља'))->parent(),
             // Children
-            Relationship::fixed(...$rel('ћерка', 'ћерке'))->daughter(),
-            Relationship::fixed(...$rel('син', 'сина'))->son(),
-            Relationship::fixed(...$rel('дете', 'детета'))->child(),
+            Relationship::fixed(...$this->rel('ћерка', 'ћерке'))->daughter(),
+            Relationship::fixed(...$this->rel('син', 'сина'))->son(),
+            Relationship::fixed(...$this->rel('дете', 'детета'))->child(),
             // Siblings
-            Relationship::fixed(...$rel('сестра близнакиња', 'сестре близнакиње'))->multiple()->sister(),
-            Relationship::fixed(...$rel('брат близанац', 'брата близанца'))->multiple()->brother(),
-            Relationship::fixed(...$rel('близанац', 'близанца'))->multiple()->sibling(),
-            Relationship::fixed(...$rel('старија сестра', 'старије сестре'))->older()->sister(),
-            Relationship::fixed(...$rel('старији брат', 'старијег брата'))->older()->brother(),
-            Relationship::fixed(...$rel('млађа сестра', 'млађе сестре'))->younger()->sister(),
-            Relationship::fixed(...$rel('млађи брат', 'млађег брата'))->younger()->brother(),
-            Relationship::fixed(...$rel('сестра', 'сестре'))->sister(),
-            Relationship::fixed(...$rel('брат', 'брата'))->brother(),
-            Relationship::fixed(...$rel('брат/сестра', 'брата/сестре'))->sibling(),
+            Relationship::fixed(...$this->rel('сестра близнакиња', 'сестре близнакиње'))->multiple()->sister(),
+            Relationship::fixed(...$this->rel('брат близанац', 'брата близанца'))->multiple()->brother(),
+            Relationship::fixed(...$this->rel('близанац', 'близанца'))->multiple()->sibling(),
+            Relationship::fixed(...$this->rel('старија сестра', 'старије сестре'))->older()->sister(),
+            Relationship::fixed(...$this->rel('старији брат', 'старијег брата'))->older()->brother(),
+            Relationship::fixed(...$this->rel('млађа сестра', 'млађе сестре'))->younger()->sister(),
+            Relationship::fixed(...$this->rel('млађи брат', 'млађег брата'))->younger()->brother(),
+            Relationship::fixed(...$this->rel('сестра', 'сестре'))->sister(),
+            Relationship::fixed(...$this->rel('брат', 'брата'))->brother(),
+            Relationship::fixed(...$this->rel('брат/сестра', 'брата/сестре'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$rel('полусестра', 'полусестре'))->parent()->daughter(),
-            Relationship::fixed(...$rel('полубрат', 'полубрата'))->parent()->son(),
-            Relationship::fixed(...$rel('полубрат/полусестра', 'полубрата/полусестре'))->parent()->child(),
+            Relationship::fixed(...$this->rel('полусестра', 'полусестре'))->parent()->daughter(),
+            Relationship::fixed(...$this->rel('полубрат', 'полубрата'))->parent()->son(),
+            Relationship::fixed(...$this->rel('полубрат/полусестра', 'полубрата/полусестре'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$rel('маћеха', 'маћехе'))->parent()->wife(),
-            Relationship::fixed(...$rel('очух', 'очуха'))->parent()->husband(),
-            Relationship::fixed(...$rel('поочим', 'поочима'))->parent()->married()->spouse(),
-            Relationship::fixed(...$rel('пасторка', 'пасторке'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$rel('пасторак', 'пасторка'))->married()->spouse()->son(),
-            Relationship::fixed(...$rel('пасторче', 'пасторчета'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->rel('маћеха', 'маћехе'))->parent()->wife(),
+            Relationship::fixed(...$this->rel('очух', 'очуха'))->parent()->husband(),
+            Relationship::fixed(...$this->rel('поочим', 'поочима'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->rel('пасторка', 'пасторке'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->rel('пасторак', 'пасторка'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->rel('пасторче', 'пасторчета'))->married()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$rel('бивша супруга', 'бивше супруге'))->divorced()->partner()->female(),
-            Relationship::fixed(...$rel('бивши супруг', 'бившег супруга'))->divorced()->partner()->male(),
-            Relationship::fixed(...$rel('бивши партнер', 'бившег партнера'))->divorced()->partner(),
-            Relationship::fixed(...$rel('вереница', 'веренице'))->engaged()->partner()->female(),
-            Relationship::fixed(...$rel('вереник', 'вереника'))->engaged()->partner()->male(),
-            Relationship::fixed(...$rel('супруга', 'супруге'))->wife(),
-            Relationship::fixed(...$rel('супруг', 'супруга'))->husband(),
-            Relationship::fixed(...$rel('супружник', 'супружника'))->spouse(),
-            Relationship::fixed(...$rel('партнер', 'партнера'))->partner(),
+            Relationship::fixed(...$this->rel('бивша супруга', 'бивше супруге'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->rel('бивши супруг', 'бившег супруга'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->rel('бивши партнер', 'бившег партнера'))->divorced()->partner(),
+            Relationship::fixed(...$this->rel('вереница', 'веренице'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->rel('вереник', 'вереника'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->rel('супруга', 'супруге'))->wife(),
+            Relationship::fixed(...$this->rel('супруг', 'супруга'))->husband(),
+            Relationship::fixed(...$this->rel('супружник', 'супружника'))->spouse(),
+            Relationship::fixed(...$this->rel('партнер', 'партнера'))->partner(),
             // In-laws (wife's parents — ташта/таст)
-            Relationship::fixed(...$rel('ташта', 'таште'))->married()->spouse()->mother(),
-            Relationship::fixed(...$rel('таст', 'таста'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->rel('ташта', 'таште'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->rel('таст', 'таста'))->married()->spouse()->father(),
             // In-laws (husband's parents — свекрва/свекар)
-            Relationship::fixed(...$rel('свекрва', 'свекрве'))->spouse()->mother(),
-            Relationship::fixed(...$rel('свекар', 'свекра'))->spouse()->father(),
+            Relationship::fixed(...$this->rel('свекрва', 'свекрве'))->spouse()->mother(),
+            Relationship::fixed(...$this->rel('свекар', 'свекра'))->spouse()->father(),
             // Children-in-law
-            Relationship::fixed(...$rel('снаха', 'снахе'))->child()->wife(),
-            Relationship::fixed(...$rel('зет', 'зета'))->child()->husband(),
-            Relationship::fixed(...$rel('зет/снаха', 'зета/снахе'))->child()->married()->spouse(),
+            Relationship::fixed(...$this->rel('снаха', 'снахе'))->child()->wife(),
+            Relationship::fixed(...$this->rel('зет', 'зета'))->child()->husband(),
+            Relationship::fixed(...$this->rel('зет/снаха', 'зета/снахе'))->child()->married()->spouse(),
             // Siblings-in-law
-            Relationship::fixed(...$rel('заова', 'заове'))->spouse()->sister(),
-            Relationship::fixed(...$rel('девер', 'девера'))->spouse()->brother(),
-            Relationship::fixed(...$rel('свастика', 'свастике'))->sibling()->wife(),
-            Relationship::fixed(...$rel('шурак', 'шурака'))->sibling()->husband(),
+            Relationship::fixed(...$this->rel('заова', 'заове'))->spouse()->sister(),
+            Relationship::fixed(...$this->rel('девер', 'девера'))->spouse()->brother(),
+            Relationship::fixed(...$this->rel('свастика', 'свастике'))->sibling()->wife(),
+            Relationship::fixed(...$this->rel('шурак', 'шурака'))->sibling()->husband(),
             // Grandparents
-            Relationship::fixed(...$rel('бака', 'баке'))->parent()->mother(),
-            Relationship::fixed(...$rel('деда', 'деде'))->parent()->father(),
-            Relationship::fixed(...$rel('бака/деда', 'баке/деде'))->parent()->parent(),
+            Relationship::fixed(...$this->rel('бака', 'баке'))->parent()->mother(),
+            Relationship::fixed(...$this->rel('деда', 'деде'))->parent()->father(),
+            Relationship::fixed(...$this->rel('бака/деда', 'баке/деде'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$rel('унука', 'унуке'))->child()->daughter(),
-            Relationship::fixed(...$rel('унук', 'унука'))->child()->son(),
-            Relationship::fixed(...$rel('унук/унука', 'унука/унуке'))->child()->child(),
+            Relationship::fixed(...$this->rel('унука', 'унуке'))->child()->daughter(),
+            Relationship::fixed(...$this->rel('унук', 'унука'))->child()->son(),
+            Relationship::fixed(...$this->rel('унук/унука', 'унука/унуке'))->child()->child(),
             // Aunts and uncles
-            Relationship::fixed(...$rel('тетка', 'тетке'))->parent()->sister(),
-            Relationship::fixed(...$rel('ујак', 'ујака'))->mother()->brother(),
-            Relationship::fixed(...$rel('стриц', 'стрица'))->father()->brother(),
-            Relationship::fixed(...$rel('стриц', 'стрица'))->parent()->brother(),
+            Relationship::fixed(...$this->rel('тетка', 'тетке'))->parent()->sister(),
+            Relationship::fixed(...$this->rel('ујак', 'ујака'))->mother()->brother(),
+            Relationship::fixed(...$this->rel('стриц', 'стрица'))->father()->brother(),
+            Relationship::fixed(...$this->rel('стриц', 'стрица'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$rel('нећакиња', 'нећакиње'))->sibling()->daughter(),
-            Relationship::fixed(...$rel('нећак', 'нећака'))->sibling()->son(),
-            Relationship::fixed(...$rel('нећак/нећакиња', 'нећака/нећакиње'))->sibling()->child(),
+            Relationship::fixed(...$this->rel('нећакиња', 'нећакиње'))->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('нећак', 'нећака'))->sibling()->son(),
+            Relationship::fixed(...$this->rel('нећак/нећакиња', 'нећака/нећакиње'))->sibling()->child(),
             // Cousins
-            Relationship::fixed(...$rel('сестрична', 'сестричне'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$rel('братић', 'братића'))->parent()->sibling()->son(),
-            Relationship::fixed(...$rel('братић/сестрична', 'братића/сестричне'))->parent()->sibling()->child(),
+            Relationship::fixed(...$this->rel('сестрична', 'сестричне'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->rel('братић', 'братића'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->rel('братић/сестрична', 'братића/сестричне'))->parent()->sibling()->child(),
             // Dynamic relationships — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'бака', 'баке'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'деда', 'деде'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'бака/деда', 'баке/деде'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'бака', 'баке'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'деда', 'деде'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'бака/деда', 'баке/деде'))->ancestor(),
             // Dynamic — great-grandchildren
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'унука', 'унуке'))->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'унук', 'унука'))->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'унук/унука', 'унука/унуке'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'унука', 'унуке'))->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'унук', 'унука'))->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 2, 'унук/унука', 'унука/унуке'))->descendant(),
             // Dynamic — great-aunts/uncles
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'тетка', 'тетке'))->ancestor()->sister(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'стриц', 'стрица'))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'тетка', 'тетке'))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'стриц', 'стрица'))->ancestor()->brother(),
             // Dynamic — great-nieces/nephews
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'нећакиња', 'нећакиње'))->sibling()->descendant()->female(),
-            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'нећак', 'нећака'))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'нећакиња', 'нећакиње'))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $this->pra($n - 1, 'нећак', 'нећака'))->sibling()->descendant()->male(),
         ];
     }
 }

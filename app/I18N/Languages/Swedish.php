@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Enums\PluralRule;
 
+use function str_repeat;
+
 final readonly class Swedish extends AbstractLanguage
 {
     protected const PluralRule PLURAL_RULE = PluralRule::TwoFormsSingularForOne;
@@ -217,110 +219,126 @@ final readonly class Swedish extends AbstractLanguage
     }
 
     /**
+     * Generate nominative and genitive forms with the Swedish "-s" suffix.
+     *
+     * @return array{string, string}
+     */
+    private function gen(string $nominative): array
+    {
+        return [$nominative, '%s ' . $nominative . 's'];
+    }
+
+    /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "gammel" prefix.
+     *
+     * mormor → gammelmormor → gammelgammelmormor
+     *
+     * @return array{string, string}
+     */
+    private function gammel(int $n, string $suffix): array
+    {
+        return $this->gen(($n > 3 ? 'gammel×' . $n . '-' : str_repeat('gammel', $n)) . $suffix);
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Swedish genitive: "-s" suffix
-        $gen = static fn (string $s): array => [$s, '%s ' . $s . 's'];
-
-        $great = static fn (int $n, string $prefix, string $suffix): array => [
-            $prefix . ($n > 3 ? 'gammel×' . $n . '-' : str_repeat('gammel', $n)) . $suffix,
-            '%s ' . $prefix . ($n > 3 ? 'gammel×' . $n . '-' : str_repeat('gammel', $n)) . $suffix . 's',
-        ];
 
         return [
             // Parents
-            Relationship::fixed(...$gen('mor'))->mother(),
-            Relationship::fixed(...$gen('far'))->father(),
-            Relationship::fixed(...$gen('förälder'))->parent(),
+            Relationship::fixed(...$this->gen('mor'))->mother(),
+            Relationship::fixed(...$this->gen('far'))->father(),
+            Relationship::fixed(...$this->gen('förälder'))->parent(),
             // Children
-            Relationship::fixed(...$gen('dotter'))->daughter(),
-            Relationship::fixed(...$gen('son'))->son(),
-            Relationship::fixed(...$gen('barn'))->child(),
+            Relationship::fixed(...$this->gen('dotter'))->daughter(),
+            Relationship::fixed(...$this->gen('son'))->son(),
+            Relationship::fixed(...$this->gen('barn'))->child(),
             // Siblings
-            Relationship::fixed(...$gen('tvillingsyster'))->multiple()->sister(),
-            Relationship::fixed(...$gen('tvillingbror'))->multiple()->brother(),
-            Relationship::fixed(...$gen('tvilling'))->multiple()->sibling(),
-            Relationship::fixed(...$gen('storasyster'))->older()->sister(),
-            Relationship::fixed(...$gen('storebror'))->older()->brother(),
-            Relationship::fixed(...$gen('äldre syskon'))->older()->sibling(),
-            Relationship::fixed(...$gen('lillasyster'))->younger()->sister(),
-            Relationship::fixed(...$gen('lillebror'))->younger()->brother(),
-            Relationship::fixed(...$gen('yngre syskon'))->younger()->sibling(),
-            Relationship::fixed(...$gen('syster'))->sister(),
-            Relationship::fixed(...$gen('bror'))->brother(),
-            Relationship::fixed(...$gen('syskon'))->sibling(),
+            Relationship::fixed(...$this->gen('tvillingsyster'))->multiple()->sister(),
+            Relationship::fixed(...$this->gen('tvillingbror'))->multiple()->brother(),
+            Relationship::fixed(...$this->gen('tvilling'))->multiple()->sibling(),
+            Relationship::fixed(...$this->gen('storasyster'))->older()->sister(),
+            Relationship::fixed(...$this->gen('storebror'))->older()->brother(),
+            Relationship::fixed(...$this->gen('äldre syskon'))->older()->sibling(),
+            Relationship::fixed(...$this->gen('lillasyster'))->younger()->sister(),
+            Relationship::fixed(...$this->gen('lillebror'))->younger()->brother(),
+            Relationship::fixed(...$this->gen('yngre syskon'))->younger()->sibling(),
+            Relationship::fixed(...$this->gen('syster'))->sister(),
+            Relationship::fixed(...$this->gen('bror'))->brother(),
+            Relationship::fixed(...$this->gen('syskon'))->sibling(),
             // Half-siblings
-            Relationship::fixed(...$gen('halvsyster'))->parent()->daughter(),
-            Relationship::fixed(...$gen('halvbror'))->parent()->son(),
-            Relationship::fixed(...$gen('halvsyskon'))->parent()->child(),
+            Relationship::fixed(...$this->gen('halvsyster'))->parent()->daughter(),
+            Relationship::fixed(...$this->gen('halvbror'))->parent()->son(),
+            Relationship::fixed(...$this->gen('halvsyskon'))->parent()->child(),
             // Stepfamily
-            Relationship::fixed(...$gen('styvmor'))->parent()->wife(),
-            Relationship::fixed(...$gen('styvfar'))->parent()->husband(),
-            Relationship::fixed(...$gen('styvförälder'))->parent()->married()->spouse(),
-            Relationship::fixed(...$gen('styvdotter'))->married()->spouse()->daughter(),
-            Relationship::fixed(...$gen('styvson'))->married()->spouse()->son(),
-            Relationship::fixed(...$gen('styvbarn'))->married()->spouse()->child(),
-            Relationship::fixed(...$gen('styvsyster'))->parent()->spouse()->daughter(),
-            Relationship::fixed(...$gen('styvbror'))->parent()->spouse()->son(),
-            Relationship::fixed(...$gen('styvsyskon'))->parent()->spouse()->child(),
+            Relationship::fixed(...$this->gen('styvmor'))->parent()->wife(),
+            Relationship::fixed(...$this->gen('styvfar'))->parent()->husband(),
+            Relationship::fixed(...$this->gen('styvförälder'))->parent()->married()->spouse(),
+            Relationship::fixed(...$this->gen('styvdotter'))->married()->spouse()->daughter(),
+            Relationship::fixed(...$this->gen('styvson'))->married()->spouse()->son(),
+            Relationship::fixed(...$this->gen('styvbarn'))->married()->spouse()->child(),
+            Relationship::fixed(...$this->gen('styvsyster'))->parent()->spouse()->daughter(),
+            Relationship::fixed(...$this->gen('styvbror'))->parent()->spouse()->son(),
+            Relationship::fixed(...$this->gen('styvsyskon'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$gen('ex-fru'))->divorced()->partner()->female(),
-            Relationship::fixed(...$gen('ex-man'))->divorced()->partner()->male(),
-            Relationship::fixed(...$gen('ex-make/maka'))->divorced()->partner(),
-            Relationship::fixed(...$gen('fästmö'))->engaged()->partner()->female(),
-            Relationship::fixed(...$gen('fästman'))->engaged()->partner()->male(),
-            Relationship::fixed(...$gen('hustru'))->wife(),
-            Relationship::fixed(...$gen('make'))->husband(),
-            Relationship::fixed(...$gen('make/maka'))->spouse(),
-            Relationship::fixed(...$gen('partner'))->partner(),
+            Relationship::fixed(...$this->gen('ex-fru'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->gen('ex-man'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->gen('ex-make/maka'))->divorced()->partner(),
+            Relationship::fixed(...$this->gen('fästmö'))->engaged()->partner()->female(),
+            Relationship::fixed(...$this->gen('fästman'))->engaged()->partner()->male(),
+            Relationship::fixed(...$this->gen('hustru'))->wife(),
+            Relationship::fixed(...$this->gen('make'))->husband(),
+            Relationship::fixed(...$this->gen('make/maka'))->spouse(),
+            Relationship::fixed(...$this->gen('partner'))->partner(),
             // In-laws
-            Relationship::fixed(...$gen('svärmor'))->married()->spouse()->mother(),
-            Relationship::fixed(...$gen('svärfar'))->married()->spouse()->father(),
-            Relationship::fixed(...$gen('svärförälder'))->married()->spouse()->parent(),
-            Relationship::fixed(...$gen('svärdotter'))->child()->wife(),
-            Relationship::fixed(...$gen('svärson'))->child()->husband(),
-            Relationship::fixed(...$gen('svägerska'))->spouse()->sister(),
-            Relationship::fixed(...$gen('svåger'))->spouse()->brother(),
-            Relationship::fixed(...$gen('svägerska'))->sibling()->wife(),
-            Relationship::fixed(...$gen('svåger'))->sibling()->husband(),
+            Relationship::fixed(...$this->gen('svärmor'))->married()->spouse()->mother(),
+            Relationship::fixed(...$this->gen('svärfar'))->married()->spouse()->father(),
+            Relationship::fixed(...$this->gen('svärförälder'))->married()->spouse()->parent(),
+            Relationship::fixed(...$this->gen('svärdotter'))->child()->wife(),
+            Relationship::fixed(...$this->gen('svärson'))->child()->husband(),
+            Relationship::fixed(...$this->gen('svägerska'))->spouse()->sister(),
+            Relationship::fixed(...$this->gen('svåger'))->spouse()->brother(),
+            Relationship::fixed(...$this->gen('svägerska'))->sibling()->wife(),
+            Relationship::fixed(...$this->gen('svåger'))->sibling()->husband(),
             // Grandparents - maternal/paternal
-            Relationship::fixed(...$gen('mormor'))->mother()->mother(),
-            Relationship::fixed(...$gen('morfar'))->mother()->father(),
-            Relationship::fixed(...$gen('farmor'))->father()->mother(),
-            Relationship::fixed(...$gen('farfar'))->father()->father(),
-            Relationship::fixed(...$gen('mormor/farmor'))->parent()->mother(),
-            Relationship::fixed(...$gen('morfar/farfar'))->parent()->father(),
-            Relationship::fixed(...$gen('mor-/farförälder'))->parent()->parent(),
+            Relationship::fixed(...$this->gen('mormor'))->mother()->mother(),
+            Relationship::fixed(...$this->gen('morfar'))->mother()->father(),
+            Relationship::fixed(...$this->gen('farmor'))->father()->mother(),
+            Relationship::fixed(...$this->gen('farfar'))->father()->father(),
+            Relationship::fixed(...$this->gen('mormor/farmor'))->parent()->mother(),
+            Relationship::fixed(...$this->gen('morfar/farfar'))->parent()->father(),
+            Relationship::fixed(...$this->gen('mor-/farförälder'))->parent()->parent(),
             // Grandchildren
-            Relationship::fixed(...$gen('dotterdotter'))->daughter()->daughter(),
-            Relationship::fixed(...$gen('dotterson'))->daughter()->son(),
-            Relationship::fixed(...$gen('sonson'))->son()->son(),
-            Relationship::fixed(...$gen('sondotter'))->son()->daughter(),
-            Relationship::fixed(...$gen('barnbarn'))->child()->child(),
+            Relationship::fixed(...$this->gen('dotterdotter'))->daughter()->daughter(),
+            Relationship::fixed(...$this->gen('dotterson'))->daughter()->son(),
+            Relationship::fixed(...$this->gen('sonson'))->son()->son(),
+            Relationship::fixed(...$this->gen('sondotter'))->son()->daughter(),
+            Relationship::fixed(...$this->gen('barnbarn'))->child()->child(),
             // Aunts and uncles - maternal/paternal
-            Relationship::fixed(...$gen('moster'))->mother()->sister(),
-            Relationship::fixed(...$gen('morbror'))->mother()->brother(),
-            Relationship::fixed(...$gen('faster'))->father()->sister(),
-            Relationship::fixed(...$gen('farbror'))->father()->brother(),
-            Relationship::fixed(...$gen('tant'))->parent()->sister(),
-            Relationship::fixed(...$gen('farbror/morbror'))->parent()->brother(),
+            Relationship::fixed(...$this->gen('moster'))->mother()->sister(),
+            Relationship::fixed(...$this->gen('morbror'))->mother()->brother(),
+            Relationship::fixed(...$this->gen('faster'))->father()->sister(),
+            Relationship::fixed(...$this->gen('farbror'))->father()->brother(),
+            Relationship::fixed(...$this->gen('tant'))->parent()->sister(),
+            Relationship::fixed(...$this->gen('farbror/morbror'))->parent()->brother(),
             // Nieces and nephews
-            Relationship::fixed(...$gen('brorsdotter'))->brother()->daughter(),
-            Relationship::fixed(...$gen('brorson'))->brother()->son(),
-            Relationship::fixed(...$gen('systerdotter'))->sister()->daughter(),
-            Relationship::fixed(...$gen('systerson'))->sister()->son(),
+            Relationship::fixed(...$this->gen('brorsdotter'))->brother()->daughter(),
+            Relationship::fixed(...$this->gen('brorson'))->brother()->son(),
+            Relationship::fixed(...$this->gen('systerdotter'))->sister()->daughter(),
+            Relationship::fixed(...$this->gen('systerson'))->sister()->son(),
             // Cousins
-            Relationship::fixed(...$gen('kusin'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$gen('kusin'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->gen('kusin'))->parent()->sibling()->daughter(),
+            Relationship::fixed(...$this->gen('kusin'))->parent()->sibling()->son(),
             // Dynamic relationships
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'mormor'))->mother()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'morfar'))->mother()->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'farmor'))->father()->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'farfar'))->father()->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'mor-/farförälder'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'barnbarn'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'mormor'))->mother()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'morfar'))->mother()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'farmor'))->father()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'farfar'))->father()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'mor-/farförälder'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->gammel($n - 2, 'barnbarn'))->descendant(),
         ];
     }
 }

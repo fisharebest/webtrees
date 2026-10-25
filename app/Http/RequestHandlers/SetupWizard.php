@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\LanguageFactory;
-use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MigrationService;
@@ -48,14 +47,13 @@ use function file_put_contents;
 use function random_bytes;
 use function realpath;
 use function redirect;
+use function response;
 use function touch;
 use function unlink;
 use function view;
 
 final class SetupWizard implements RequestHandlerInterface
 {
-    use ViewResponseTrait;
-
     private const string DEFAULT_DBTYPE = DB::MYSQL;
     private const string DEFAULT_PREFIX = 'wt_';
     private const array  DEFAULT_DATA   = [
@@ -100,7 +98,6 @@ final class SetupWizard implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $this->layout = 'layouts/setup';
 
         // Some functions need a cache, but we don't have one yet.
         Registry::cache(new CacheFactory());
@@ -195,7 +192,7 @@ final class SetupWizard implements RequestHandlerInterface
      */
     private function step1Language(array $data): ResponseInterface
     {
-        return $this->viewResponse('setup/step-1-language', $data);
+        return response(view('layouts/setup', ['content' => view('setup/step-1-language', $data)]));
     }
 
     /**
@@ -203,7 +200,7 @@ final class SetupWizard implements RequestHandlerInterface
      */
     private function step2CheckServer(array $data): ResponseInterface
     {
-        return $this->viewResponse('setup/step-2-server-checks', $data);
+        return response(view('layouts/setup', ['content' => view('setup/step-2-server-checks', $data)]));
     }
 
     /**
@@ -212,10 +209,10 @@ final class SetupWizard implements RequestHandlerInterface
     private function step3DatabaseType(array $data): ResponseInterface
     {
         if ($data['errors']->isNotEmpty()) {
-            return $this->viewResponse('setup/step-2-server-checks', $data);
+            return response(view('layouts/setup', ['content' => view('setup/step-2-server-checks', $data)]));
         }
 
-        return $this->viewResponse('setup/step-3-database-type', $data);
+        return response(view('layouts/setup', ['content' => view('setup/step-3-database-type', $data)]));
     }
 
     /**
@@ -229,7 +226,7 @@ final class SetupWizard implements RequestHandlerInterface
 
         $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
-        return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+        return response(view('layouts/setup', ['content' => view('setup/step-4-database-' . $data['dbtype'], $data)]));
     }
 
     /**
@@ -250,7 +247,7 @@ final class SetupWizard implements RequestHandlerInterface
         if ($data['errors']->isNotEmpty()) {
             $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
-            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+            return response(view('layouts/setup', ['content' => view('setup/step-4-database-' . $data['dbtype'], $data)]));
         }
 
         try {
@@ -261,10 +258,10 @@ final class SetupWizard implements RequestHandlerInterface
             // Don't jump to step 4, as the error will make it jump to step 3.
             $data['mysql_local'] = 'localhost:' . $this->php_service->pdoMysqlDefaultSocket();
 
-            return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
+            return response(view('layouts/setup', ['content' => view('setup/step-4-database-' . $data['dbtype'], $data)]));
         }
 
-        return $this->viewResponse('setup/step-5-administrator', $data);
+        return response(view('layouts/setup', ['content' => view('setup/step-5-administrator', $data)]));
     }
 
     /**
@@ -282,8 +279,8 @@ final class SetupWizard implements RequestHandlerInterface
 
         try {
             $this->createConfigFile($data);
-        } catch (Throwable $exception) {
-            return $this->viewResponse('setup/step-6-failed', ['exception' => $exception]);
+        } catch (Throwable $ex) {
+            return response(view('layouts/setup', ['content' => view('setup/step-6-failed', ['exception' => $ex])]));
         }
 
         // Done - start using webtrees!

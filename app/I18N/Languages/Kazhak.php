@@ -219,18 +219,23 @@ final readonly class Kazhak extends AbstractLanguage
     }
 
     /**
+     * Generate nominative and genitive forms for a dynamic relationship
+     * using the repeated "арғы" prefix.
+     *
+     * @return array{string, string}
+     */
+    private function great(int $n, string $nominative, string $genitive): array
+    {
+        $prefix = str_repeat('арғы ', $n);
+
+        return [$prefix . $nominative, '%s ' . $prefix . $genitive];
+    }
+
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
     {
-        // Kazakh genitive: possessive suffix "-ның/-нің" (vowel harmony)
-        // "арғы" prefix for great-grandparents
-        $great = static function (int $n, string $nom, string $gen): array {
-            $prefix = str_repeat('арғы ', $n);
-
-            return [$prefix . $nom, '%s ' . $prefix . $gen];
-        };
-
         return [
             // Parents
             Relationship::fixed('ана', '%s ананың')->mother(),
@@ -306,10 +311,10 @@ final readonly class Kazhak extends AbstractLanguage
             Relationship::fixed('жиен', '%s жиеннің')->parent()->sibling()->son(),
             Relationship::fixed('жиен', '%s жиеннің')->parent()->sibling()->child(),
             // Dynamic — great-grandparents and beyond
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'әже', 'әженің'))->ancestor()->female(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'ата', 'атаның'))->ancestor()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'ата-ана', 'ата-ананың'))->ancestor(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'немере', 'немеренің'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'әже', 'әженің'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'ата', 'атаның'))->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'ата-ана', 'ата-ананың'))->ancestor(),
+            Relationship::dynamic(fn (int $n) => $this->great($n - 2, 'немере', 'немеренің'))->descendant(),
         ];
     }
 }

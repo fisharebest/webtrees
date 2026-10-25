@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\FamilyComparator;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
@@ -40,7 +39,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_search;
 use function e;
@@ -58,7 +56,7 @@ use function strtolower;
 use function usort;
 use function view;
 
-class BranchesListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+class BranchesListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
@@ -76,10 +74,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->extras(['middleware' => [AuthNotRobot::class]]);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class, [AuthNotRobot::class]);
     }
 
     public function title(): string
@@ -131,21 +126,13 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         return [];
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        // Convert POST requests into GET requests for pretty URLs.
-        if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect($this->listUrl($tree, [
-                'soundex_dm'  => Validator::parsedBody($request)->boolean('soundex_dm', false),
-                'soundex_std' => Validator::parsedBody($request)->boolean('soundex_std', false),
-                'surname'     => Validator::parsedBody($request)->string('surname'),
-            ]));
-        }
 
         $surname     = Validator::attributes($request)->string('surname', '');
         $soundex_std = Validator::queryParams($request)->boolean('soundex_std', false);
@@ -435,5 +422,14 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $generation = (int) log($sosa, 2) + 1;
 
         return '<sup title="' . I18N::translate('Generation') . '">' . $generation . '</sup>';
+    }
+
+    public function post(ServerRequestInterface $request, Tree $tree): ResponseInterface
+    {
+        return redirect($this->listUrl($tree, [
+            'soundex_dm'  => Validator::parsedBody($request)->boolean('soundex_dm', false),
+            'soundex_std' => Validator::parsedBody($request)->boolean('soundex_std', false),
+            'surname'     => Validator::parsedBody($request)->string('surname'),
+        ]));
     }
 }
