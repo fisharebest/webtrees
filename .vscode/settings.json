@@ -1,0 +1,7 @@
+{
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "editor.defaultFoldingRangeProvider": "bmewburn.vscode-intelephense-client",
+    "php.validate.executablePath": "D:/TOOLS/php-8.4.26-Win32-vs17-x64",
+    "php.debug.executablePath": "D:/TOOLS/php-8.4.26-Win32-vs17-x64",
+    "intelephense.environment.documentRoot": "D:\\laragon870\\www"
+}
