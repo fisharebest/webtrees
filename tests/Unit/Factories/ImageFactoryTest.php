@@ -229,6 +229,32 @@ class ImageFactoryTest extends TestCase
         self::assertLessThan(100, imagesx($image));
     }
 
+    public function testGuardrailMediaFileThumbnailIgnoresAnEmptyCrop(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $media_file    = $this->createMediaFileStub(
+            filesystem: $this->mediaFilesystem(),
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $thumbnail = $image_factory->mediaFileThumbnail(
+            media_file: $media_file,
+            width: 100,
+            height: 100,
+            operation: ImageOperation::Contain,
+            add_watermark: false,
+            crop: new MediaCrop(top: 0, left: 0, height: 0, width: 0),
+        );
+
+        $image = imagecreatefromstring($thumbnail);
+
+        self::assertNotFalse($image);
+        // The whole portrait, as without a crop: taller than wide.
+        self::assertLessThan(imagesy($image), imagesx($image));
+    }
+
     // Guardrails and failure handling.
 
     public function testGuardrailFileContentsBlocksSvgWithActiveContent(): void
