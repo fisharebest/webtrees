@@ -49,7 +49,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     private const string DEFAULT_DELAY = '6';
 
     // New data is normalized.  Old data may contain jpg/jpeg, tif/tiff.
-    private const array SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
+    private const array SUPPORTED_FORMATS = ['BMP', 'GIF', 'JPEG', 'JPG', 'PNG', 'TIF', 'TIFF', 'WEBP'];
 
     private LinkedRecordService $linked_record_service;
 

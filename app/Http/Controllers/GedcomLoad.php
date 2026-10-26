@@ -193,7 +193,7 @@ final class GedcomLoad
             if ($this->causedByConcurrencyError($ex)) {
                 return $this->viewResponse('admin/import-progress', [
                     'errors'   => '',
-                    'progress' => $progress,
+                    'progress' => $progress ?? 0,
                     'status'   => e($ex->getMessage()),
                     'tree'     => $tree,
                 ]);
