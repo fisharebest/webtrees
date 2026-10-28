@@ -13,40 +13,95 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import autoComplete from '@tarekraafat/autocomplete.js';
+
+/**
+ * Build the fetch URL for an autocomplete query.
+ *
+ * @param {HTMLElement} element
+ * @param {string} query
+ * @returns {string}
+ */
+function buildUrl(element, query) {
+  const baseUrl = element.dataset.wtAutocompleteUrl;
+  const symbol = baseUrl.includes('?') ? '&' : '?';
+  let url = baseUrl + symbol + 'query=' + encodeURIComponent(query);
+
+  if (element.dataset.wtAutocompleteExtra === 'SOUR') {
+    const nestedFields = element.closest('.wt-nested-edit-fields');
+
+    if (!(nestedFields instanceof HTMLElement)) {
+      throw new Error('SOUR autocomplete failed: missing nested field container.');
+    }
+
+    let row_group = nestedFields.previousElementSibling;
+    while (row_group !== null && row_group.querySelector('select') === null) {
+      row_group = row_group.previousElementSibling;
+    }
+
+    if (row_group === null) {
+      throw new Error('SOUR autocomplete failed: could not find the source selector field.');
+    }
+
+    const sourceSelect = row_group.querySelector('select');
+
+    if (!(sourceSelect instanceof HTMLSelectElement)) {
+      throw new Error('SOUR autocomplete failed: source selector field is invalid.');
+    }
+
+    const selected = sourceSelect.options[sourceSelect.selectedIndex];
+
+    if (selected === undefined) {
+      throw new Error('SOUR autocomplete failed: source selector has no selected value.');
+    }
+
+    const extra = selected.value.replace(/@/g, '');
+    url += '&extra=' + encodeURIComponent(extra);
+  }
+
+  return url;
+}
+
 /**
  * Initialize autocomplete elements.
  *
  * @param {string} selector
+ * @param {ParentNode} root
  */
-export function autocomplete(selector) {
-  // Use typeahead/bloodhound for autocomplete
-  $(selector).each(function () {
-    const that = this;
-    $(this).typeahead(null, {
-      display: 'value',
-      limit: 10,
-      minLength: 2,
-      source: new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-          url: this.dataset.wtAutocompleteUrl,
-          replace: function (url, uriEncodedQuery) {
-            const symbol = (url.indexOf('?') > 0) ? '&' : '?';
-            if (that.dataset.wtAutocompleteExtra === 'SOUR') {
-              let row_group = that.closest('.wt-nested-edit-fields').previousElementSibling;
-              while (row_group.querySelector('select') === null) {
-                row_group = row_group.previousElementSibling;
-              }
-              const element = row_group.querySelector('select');
-              const extra = element.options[element.selectedIndex].value.replace(/@/g, '');
-              return url + symbol + 'query=' + uriEncodedQuery + '&extra=' + encodeURIComponent(extra);
-            }
-            return url + symbol + 'query=' + uriEncodedQuery;
-          }
-        }
-      })
+export function autocomplete(selector, root) {
+  root.querySelectorAll(selector).forEach((element) => {
+    if (!(element instanceof HTMLInputElement)) {
+      return;
+    }
+
+    new autoComplete({
+      selector: () => element,
+      data: {
+        src: async (query) => {
+          const url = buildUrl(element, query);
+          const response = await fetch(url);
+          return await response.json();
+        },
+        keys: ['value'],
+      },
+      threshold: 2,
+      debounce: 200,
+      resultsList: {
+        class: 'autoComplete_list',
+        maxResults: 10,
+        noResults: false,
+      },
+      resultItem: {
+        class: 'autoComplete_result',
+        highlight: true,
+      },
+      events: {
+        input: {
+          selection: (event) => {
+            element.value = event.detail.selection.value.value;
+          },
+        },
+      },
     });
   });
 }
-

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterAction;
+use Fisharebest\Webtrees\Http\Controllers\CreateSubmitter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<form method="post" action="<?= e(route(CreateSubmitterAction::class, ['tree' => $tree->name()])) ?>" id="wt-modal-form">
+<form method="post" action="<?= e(route(CreateSubmitter::class, ['tree' => $tree->name()])) ?>" id="wt-modal-form" data-wt-modal-submit>
     <?= view('modals/header', ['title' => I18N::translate('Create a submitter')]) ?>
 
     <div class="modal-body">
@@ -23,7 +23,3 @@ use Fisharebest\Webtrees\Tree;
 
     <?= csrf_field() ?>
 </form>
-
-<script>
-  document.getElementById('wt-modal-form').addEventListener('submit', webtrees.createRecordModalSubmit);
-</script>

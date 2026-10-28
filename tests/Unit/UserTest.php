@@ -31,11 +31,10 @@ use Fisharebest\Webtrees\User;
 #[CoversClass(User::class)]
 class UserTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     protected function setUp(): void
     {
         parent::setUp();
+        self::createDatabase();
 
         $cache_factory = self::createStub(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
@@ -54,7 +53,7 @@ class UserTest extends TestCase
 
     public function testGettersAndSetters(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         self::assertSame(1, $user->id());
@@ -78,7 +77,7 @@ class UserTest extends TestCase
 
     public function testPreferences(): void
     {
-        $user_service = new UserService();
+        $user_service = new UserService(new \Fisharebest\Webtrees\Clock\SystemClock());
         $user         = $user_service->create('user', 'User', 'user@example.com', 'secret');
 
         self::assertSame('', $user->getPreference('foo'));

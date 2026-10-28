@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
+use Fisharebest\Webtrees\Http\Controllers\AddParentToIndividual;
+use Fisharebest\Webtrees\Http\Controllers\AddSpouseToFamily;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php elseif ($parent_family === null) : ?>
                     <div class="wt-chart-box wt-chart-box-m">
                         <?php if ($individual->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividual::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php elseif ($parent_family->husband() === null) : ?>
                     <div class="wt-chart-box wt-chart-box-m">
                         <?php if ($parent_family->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamily::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
@@ -62,7 +62,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php elseif ($parent_family === null) : ?>
                     <div class="wt-chart-box wt-chart-box-f">
                         <?php if ($individual->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividual::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>
@@ -70,7 +70,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php elseif ($parent_family->wife() === null) : ?>
                     <div class="wt-chart-box wt-chart-box-f">
                         <?php if ($parent_family->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamily::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>

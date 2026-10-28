@@ -30,12 +30,22 @@ class I18NTest extends TestCase
     {
         self::assertSame(I18N::strtoupper(''), '');
         self::assertSame(I18N::strtoupper('Abc'), 'ABC');
+        self::assertSame(I18N::strtoupper('école'), 'ÉCOLE');
+
+        I18N::init('tr');
+        self::assertSame('I', I18N::strtoupper('ı'));
+        self::assertSame('İ', I18N::strtoupper('i'));
     }
 
     public function testStrtolower(): void
     {
         self::assertSame(I18N::strtolower(''), '');
         self::assertSame(I18N::strtolower('Abc'), 'abc');
+        self::assertSame(I18N::strtolower('ÉCOLE'), 'école');
+
+        I18N::init('tr');
+        self::assertSame('ı', I18N::strtolower('I'));
+        self::assertSame('i', I18N::strtolower('İ'));
     }
 
     public function testComparator(): void

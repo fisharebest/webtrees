@@ -19,91 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleHu;
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-
-use function mb_substr;
-use function str_starts_with;
+use Fisharebest\Webtrees\I18N\Languages\Hungarian;
 
 class LanguageHungarian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return array<int,string>
-     */
-    public function alphabet(): array
+    public function __construct()
     {
-        return [
-            'A',
-            UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
-            'B',
-            'C',
-            'CS',
-            'D',
-            'DZ',
-            'DZS',
-            'E',
-            UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
-            'F',
-            'G',
-            'GY',
-            'H',
-            'I',
-            UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
-            'J',
-            'K',
-            'L',
-            'LY',
-            'M',
-            'N',
-            'NY',
-            'O',
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
-            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DOUBLE_ACUTE,
-            'P',
-            'Q',
-            'R',
-            'S',
-            'SZ',
-            'T',
-            'TY',
-            'U',
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
-            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DOUBLE_ACUTE,
-            'V',
-            'W',
-            'X',
-            'Y',
-            'Z',
-            'ZS',
-        ];
+        $this->language = new Hungarian();
     }
-
-    public function dateOrder(): string
-    {
-        return 'YMD';
-    }
-
-    public function initialLetter(string $string): string
-    {
-        foreach (['CS', 'DZS', 'DZ', 'GY', 'LY', 'NY', 'SZ', 'TY', 'ZS'] as $digraph) {
-            if (str_starts_with($string, $digraph)) {
-                return $digraph;
-            }
-        }
-
-        return mb_substr($string, 0, 1);
-    }
-
-    public function locale(): LocaleInterface
-    {
-        return new LocaleHu();
-    }
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

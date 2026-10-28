@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
-use Fisharebest\Webtrees\Http\RequestHandlers\MergeFactsAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageTrees;
+use Fisharebest\Webtrees\Http\Controllers\MergeFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(MergeFactsAction::class, ['tree' => $tree->name()])) ?>">
+<form method="post" action="<?= e(route(MergeFacts::class, ['tree' => $tree->name()])) ?>">
     <input type="hidden" name="xref1" value="<?= e($record1->xref()) ?>">
     <input type="hidden" name="xref2" value="<?= e($record2->xref()) ?>">
 

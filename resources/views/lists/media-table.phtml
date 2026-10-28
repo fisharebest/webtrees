@@ -61,7 +61,7 @@ $count_sources = DB::table('sources')
 
 <table
     id="wt-datatables-media"
-    class="table table-bordered table-sm wt-table-media datatables d-none"
+    class="table table-bordered table-sm wt-table-media wt-datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
         null,
@@ -120,7 +120,7 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= sprintf('x%07d', $media_object->lastChangeTimestamp()->timestamp()) ?>">
+                <td data-sort="<?= sprintf('x%07d', $media_object->lastChangeTimestamp()->getTimestamp()) ?>">
                     <?= view('components/datetime', ['timestamp' => $media_object->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

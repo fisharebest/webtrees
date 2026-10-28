@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Timestamp;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PageOrientation;
 use Fisharebest\Webtrees\Report\PaperSize;
@@ -61,7 +61,7 @@ trait ElementTestTrait
             align_rtl: 'left',
             entity_rtl: '&lrm;',
             font: 'dejavusans',
-            timestamp: new Timestamp(0, 'UTC', 'en-US'),
+            timestamp: CarbonImmutable::createFromTimestamp(0),
         ));
 
         return $renderer;

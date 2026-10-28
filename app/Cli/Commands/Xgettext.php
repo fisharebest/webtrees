@@ -19,11 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Localization\Translation;
+use Fisharebest\Webtrees\I18N\Translation;
 use Fisharebest\Webtrees\Webtrees;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Input\InputInterface;
@@ -34,7 +35,6 @@ use function array_key_exists;
 use function array_filter;
 use function array_merge;
 use function array_map;
-use function array_slice;
 use function array_unique;
 use function array_values;
 use function addcslashes;
@@ -69,7 +69,6 @@ use function sort;
 use function ksort;
 use function sprintf;
 use function str_ends_with;
-use function str_contains;
 use function str_starts_with;
 use function str_replace;
 use function sys_get_temp_dir;
@@ -109,7 +108,7 @@ final class Xgettext extends AbstractCommand
     protected function configure(): void
     {
         $this
-            ->setName('xgettext')
+            ->setName('dev:xgettext')
             ->setDescription('Extract PHP, PHTML, JavaScript and XML translation templates');
     }
 
@@ -118,7 +117,9 @@ final class Xgettext extends AbstractCommand
         $io = new SymfonyStyle($input, $output);
         $template_rows = [];
 
-        $php_files        = $this->collectFiles(self::ROOT_DIRECTORY, 'app', '.php');
+        $io->info('Extracting translations from PHP files.');
+
+        $php_files = $this->collectFiles(self::ROOT_DIRECTORY, 'app', '.php');
 
         if ($php_files === []) {
             $io->error('No PHP files found for extraction.');
@@ -143,6 +144,8 @@ final class Xgettext extends AbstractCommand
             $this->formatNumber($this->countMessages(self::ROOT_DIRECTORY . self::PHP_TEMPLATE)),
             $this->formatNumber((int) round((microtime(true) - $php_started_at) * 1000)) . 'ms',
         ];
+
+        $io->info('Extracting translations from PHTML files.');
 
         $phtml_files = $this->collectFiles(self::ROOT_DIRECTORY, 'resources/views', '.phtml');
 
@@ -170,6 +173,8 @@ final class Xgettext extends AbstractCommand
             $this->formatNumber((int) round((microtime(true) - $phtml_started_at) * 1000)) . 'ms',
         ];
 
+        $io->info('Extracting translations from JavaScript files.');
+
         $javascript_files = $this->collectFiles(self::ROOT_DIRECTORY, 'resources/js', '.js');
 
         if ($javascript_files === []) {
@@ -195,6 +200,8 @@ final class Xgettext extends AbstractCommand
             $this->formatNumber($this->countMessages(self::ROOT_DIRECTORY . self::JAVASCRIPT_TEMPLATE)),
             $this->formatNumber((int) round((microtime(true) - $javascript_started_at) * 1000)) . 'ms',
         ];
+
+        $io->info('Extracting translations from XML files.');
 
         $xml_files = $this->collectFiles(self::ROOT_DIRECTORY, 'resources/xml/reports', '.xml');
 
@@ -297,10 +304,19 @@ final class Xgettext extends AbstractCommand
         $language_rows = [];
         $error         = false;
 
+        $io->info('Processing language catalogs.');
+
+        $progress_bar = new ProgressBar($output, count($language_catalog_filenames));
+        $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%% %message%');
+        $progress_bar->setMessage('');
+        $progress_bar->start();
+
         try {
             foreach ($language_catalog_filenames as $language_catalog_filename) {
                 $language_started_at = microtime(true);
                 $language_name = basename(dirname($language_catalog_filename));
+                $progress_bar->setMessage($language_name);
+
                 $po_file       = self::ROOT_DIRECTORY . $language_catalog_filename;
                 $php_file      = self::ROOT_DIRECTORY . self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php';
                 $js_file       = self::ROOT_DIRECTORY . self::JAVASCRIPT_DIRECTORY . '/' . $language_name . '.js';
@@ -318,6 +334,7 @@ final class Xgettext extends AbstractCommand
                         self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                         $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                     ];
+                    $progress_bar->advance();
                     continue;
                 }
 
@@ -335,6 +352,7 @@ final class Xgettext extends AbstractCommand
                         self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                         $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                     ];
+                    $progress_bar->advance();
                     continue;
                 }
 
@@ -357,8 +375,13 @@ final class Xgettext extends AbstractCommand
                     self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                     $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                 ];
+
+                $progress_bar->advance();
             }
         } finally {
+            $progress_bar->finish();
+            $output->writeln('');
+
             if (file_exists($merged_template_filename)) {
                 unlink($merged_template_filename);
             }
@@ -469,6 +492,17 @@ final class Xgettext extends AbstractCommand
             return false;
         }
 
+        // Remove obsolete #~ entries left over from deleted source strings
+        $cleaned = $this->runCommand(sprintf(
+            'msgattrib --no-wrap --no-obsolete --output=%s %s',
+            escapeshellarg($po_file),
+            escapeshellarg($po_file),
+        ), self::ROOT_DIRECTORY);
+
+        if (!$cleaned) {
+            return false;
+        }
+
         $sorted = $this->runCommand(sprintf(
             'msgcat --no-wrap --sort-output --output=%s %s',
             escapeshellarg($po_file),
@@ -552,7 +586,6 @@ final class Xgettext extends AbstractCommand
         foreach ($lines as $line) {
             if ($line === '') {
                 if ($entry !== null && $entry['msgid'] !== null) {
-                    $entry['msgid'] = $entry['msgid'] ?? '';
                     $entries[] = [
                         'translator_comments' => $entry['translator_comments'],
                         'extracted_comments' => $entry['extracted_comments'],
@@ -768,15 +801,15 @@ final class Xgettext extends AbstractCommand
         return '"' . addcslashes($value, "\\\"\n\r\t") . '"';
     }
 
-
     /**
      * @return array<string,string>|null
      */
     private function compilePoFile(string $po_file, string $php_file): array|null
     {
-        $translation  = new Translation($po_file);
-        $translations = $translation->asArray();
-
+        $stream       = fopen($po_file, 'rb');
+        $translation  = Translation::fromPoStream($stream);
+        fclose($stream);
+        $translations = $translation->toArray();
 
         $php_code = "<?php\n\nreturn " . var_export($translations, true) . ";\n";
         $written  = file_put_contents($php_file, $php_code);
@@ -866,40 +899,9 @@ final class Xgettext extends AbstractCommand
         $current_msgstrs = [];
         $active_field    = null;
 
-        $finalize_entry = function () use (&$issues, &$current_msgid, &$current_plural, &$current_msgstrs): void {
-            if ($current_msgid === null || $current_msgid === '' || $current_msgstrs === []) {
-                return;
-            }
-
-            $expected_singular = $this->countPlaceholders($current_msgid);
-            $expected_plural   = $current_plural === null ? $expected_singular : $this->countPlaceholders($current_plural);
-
-            foreach ($current_msgstrs as $index => $translated_value) {
-                if ($translated_value === '') {
-                    continue;
-                }
-
-                $source_value = $index === 0 || $current_plural === null ? $current_msgid : $current_plural;
-
-                if ($this->isPlaceholderCheckException($source_value)) {
-                    continue;
-                }
-
-                $expected_placeholders = $index === 0 ? $expected_singular : $expected_plural;
-                $actual_placeholders   = $this->countPlaceholders($translated_value);
-
-                if ($expected_placeholders !== $actual_placeholders) {
-                    $issues[] = [
-                        'source' => $source_value,
-                        'translated' => $translated_value,
-                    ];
-                }
-            }
-        };
-
         foreach ($lines as $line) {
             if ($line === '') {
-                $finalize_entry();
+                $issues = $this->appendPoPlaceholderIssues($issues, $current_msgid, $current_plural, $current_msgstrs);
                 $current_msgid   = null;
                 $current_plural  = null;
                 $current_msgstrs = [];
@@ -966,7 +968,47 @@ final class Xgettext extends AbstractCommand
             }
         }
 
-        $finalize_entry();
+        $issues = $this->appendPoPlaceholderIssues($issues, $current_msgid, $current_plural, $current_msgstrs);
+
+        return $issues;
+    }
+
+    /**
+     * @param array<int,array{source:string,translated:string}> $issues
+     * @param array<int,string>                                  $current_msgstrs
+     *
+     * @return array<int,array{source:string,translated:string}>
+     */
+    private function appendPoPlaceholderIssues(array $issues, string|null $current_msgid, string|null $current_plural, array $current_msgstrs): array
+    {
+        if ($current_msgid === null || $current_msgid === '' || $current_msgstrs === []) {
+            return $issues;
+        }
+
+        $expected_singular = $this->countPlaceholders($current_msgid);
+        $expected_plural   = $current_plural === null ? $expected_singular : $this->countPlaceholders($current_plural);
+
+        foreach ($current_msgstrs as $index => $translated_value) {
+            if ($translated_value === '') {
+                continue;
+            }
+
+            $source_value = $index === 0 || $current_plural === null ? $current_msgid : $current_plural;
+
+            if ($this->isPlaceholderCheckException($source_value)) {
+                continue;
+            }
+
+            $expected_placeholders = $index === 0 ? $expected_singular : $expected_plural;
+            $actual_placeholders   = $this->countPlaceholders($translated_value);
+
+            if ($expected_placeholders !== $actual_placeholders) {
+                $issues[] = [
+                    'source' => $source_value,
+                    'translated' => $translated_value,
+                ];
+            }
+        }
 
         return $issues;
     }
@@ -1112,8 +1154,8 @@ final class Xgettext extends AbstractCommand
             '--add-location=file',
             '--language=JavaScript',
             '--from-code=utf-8',
-            '--keyword=i18n.get:1',
-            '--keyword=webtrees.i18n.get:1',
+            '--keyword=i18n.gettext:1',
+            '--keyword=webtrees.i18n.gettext:1',
         ], $files);
     }
 
@@ -1169,8 +1211,6 @@ final class Xgettext extends AbstractCommand
 
         return $files;
     }
-
-
 
     /**
      * @param array<int,string> $xml_files

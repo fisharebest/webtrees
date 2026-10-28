@@ -22,7 +22,7 @@ $add_facts = (new GedcomEditService())->factsToAdd($record, false);
 // Add from pick list
 switch ($record->tag()) {
     case Individual::RECORD_TYPE:
-        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK')));
+        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK')), static fn (string $value): bool => $value !== '');
         usort($quick_facts, TagComparator::byOrder(...));
         $unique_facts = [
             'ADOP',
@@ -62,7 +62,7 @@ switch ($record->tag()) {
         break;
 
     case Family::RECORD_TYPE:
-        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK')));
+        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK')), static fn (string $value): bool => $value !== '');
         usort($quick_facts, TagComparator::byOrder(...));
         $unique_facts = [
             'DIV',
@@ -82,7 +82,6 @@ switch ($record->tag()) {
 $filter_fn = static fn (string $tag): bool => !in_array($tag, $unique_facts, true) || $record->facts([$tag])->isEmpty();
 
 $quick_facts = array_filter($quick_facts, $filter_fn);
-
 
 // Create a label for a subtag
 $label_fn = static fn (string $subtag): string => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();

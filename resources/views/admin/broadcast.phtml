@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\Broadcast;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -21,7 +21,7 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(BroadcastAction::class, ['to' => $to])) ?>">
+<form method="post" action="<?= e(route(Broadcast::class, ['to' => $to])) ?>">
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="from">
             <?= I18N::translateContext('Email sender', 'From') ?>

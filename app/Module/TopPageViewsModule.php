@@ -83,7 +83,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             }
         }
 
-        $content = view('modules/top10_pageviews/list', ['results' => $results]);
+        $content = view('modules/top10-pageviews/list', ['results' => $results]);
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
@@ -141,7 +141,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
     {
         $num = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER_TO_SHOW);
 
-        return view('modules/top10_pageviews/config', [
+        return view('modules/top10-pageviews/config', [
             'num' => $num,
         ]);
     }

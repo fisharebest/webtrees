@@ -1,5 +1,7 @@
 .phpunit.cache/
 
+/build
+
 /modules_v4/
 
 /node_modules/
@@ -19,6 +21,4 @@
 
 /robots.txt
 
-/tests/clover.xml
-/tests/coverage
 /vendor/

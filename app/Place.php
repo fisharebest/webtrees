@@ -230,7 +230,7 @@ class Place
             return '';
         }
 
-        $full_name = $this->parts->implode(I18N::$list_separator);
+        $full_name = I18N::list($this->parts->all());
 
         if ($link) {
             $url = $this->url();
@@ -257,7 +257,7 @@ class Place
             $parts = $this->firstParts($SHOW_PEDIGREE_PLACES);
         }
 
-        $short_name = $parts->implode(I18N::$list_separator);
+        $short_name = I18N::list($parts->all());
 
         if ($link) {
             $url = $this->url();

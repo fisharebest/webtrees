@@ -18,20 +18,20 @@ use Illuminate\Support\Collection;
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" data-bs-toggle="tab" role="tab" href="#individuals">
+        <a class="nav-link active" id="individuals-tab" data-bs-toggle="tab" role="tab" aria-controls="individuals" aria-selected="true" href="#individuals">
             <?= I18N::translate('Individuals') ?>
             <?= view('components/badge', ['count' => count($indilist)]) ?>
         </a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link" data-bs-toggle="tab" role="tab" href="#families">
+        <a class="nav-link" id="families-tab" data-bs-toggle="tab" role="tab" aria-controls="families" aria-selected="false" href="#families">
             <?= I18N::translate('Families') ?>
             <?= view('components/badge', ['count' => count($famlist)]) ?>
         </a>
     </li>
 </ul>
 <div class="tab-content">
-    <div class="tab-pane fade show active" role="tabpanel" id="individuals">
+    <div class="tab-pane fade show active" role="tabpanel" id="individuals" aria-labelledby="individuals-tab">
         <?php if ($indilist->isEmpty()) : ?>
             <p><?= I18N::translate('No results found.') ?></p>
         <?php else : ?>
@@ -43,7 +43,7 @@ use Illuminate\Support\Collection;
         <?php endif ?>
     </div>
 
-    <div class="tab-pane fade" role="tabpanel" id="families">
+    <div class="tab-pane fade" role="tabpanel" id="families" aria-labelledby="families-tab">
         <?php if ($famlist->isEmpty()) : ?>
             <p><?= I18N::translate('No results found.') ?></p>
         <?php else : ?>

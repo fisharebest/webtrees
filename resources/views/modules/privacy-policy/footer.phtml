@@ -2,41 +2,142 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
+use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
 
 /**
- * @var Tree $tree
- * @var bool $uses_analytics
+ * @var Tree                                      $tree
+ * @var Collection<int,ModuleAnalyticsInterface>  $analytics
+ * @var Collection<int,ModuleAnalyticsInterface>  $needs_consent
  */
 
 ?>
 
 <div class="wt-footer wt-footer-privacy-policy text-center my-2">
-    <a href="<?= e(route('module', ['module' => 'privacy-policy', 'action' => 'Page', 'tree' => $tree->name()])) ?>">
+    <a href="<?= e(route(ModuleAction::class, ['module' => 'privacy-policy', 'action' => 'Page', 'tree' => $tree->name()])) ?>">
         <?= I18N::translate('Privacy policy') ?>
     </a>
 
-    <?php if ($uses_analytics) : ?>
-        <div class="alert alert-info alert-dismissible fade collapse mb-0" id="privacy-warning">
-            <?= I18N::translate('This website uses cookies to learn about visitor behavior.') ?>
+    <?php if ($needs_consent->isNotEmpty()) : ?>
+        <div class="alert alert-info mt-2 mb-0 text-start col-12 col-md-10 col-lg-8 mx-auto" id="cookie-consent-banner">
+            <p class="mb-2">
+                <?= I18N::translate('This website uses third-party services to understand visitor behavior. These services may use cookies or similar tracking technology.') ?>
+            </p>
 
-            <button type="button" id="privacy-warning-button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
-            </button>
-        </div>
+            <?php foreach ($needs_consent as $module) : ?>
+                <div class="row align-items-center mb-2">
+                    <div class="col-12 col-sm mb-1 mb-sm-0">
+                        <?= $module->title() ?>
+                        <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
+                            — <a href="<?= e($module->externalUrl()) ?>" target="_blank" rel="noopener"><?= e($module->externalUrl()) ?></a>
+                        <?php endif ?>
+                    </div>
+                    <div class="col-auto">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"
+                                   name="banner_consent_<?= e($module->name()) ?>"
+                                   id="banner_accept_<?= e($module->name()) ?>"
+                                   value="1"
+                                   data-banner-consent-module="<?= e($module->name()) ?>">
+                            <label class="form-check-label" for="banner_accept_<?= e($module->name()) ?>">
+                                <?= I18N::translate('accept') ?>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"
+                                   name="banner_consent_<?= e($module->name()) ?>"
+                                   id="banner_decline_<?= e($module->name()) ?>"
+                                   value="0"
+                                   data-banner-consent-module="<?= e($module->name()) ?>">
+                            <label class="form-check-label" for="banner_decline_<?= e($module->name()) ?>">
+                                <?= I18N::translate('decline') ?>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
 
-        <?php View::push('javascript') ?>
+            <?php if ($needs_consent->count() > 1) : ?>
+                <div class="row mt-2">
+                    <div class="col-12 col-sm"></div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-sm btn-outline-primary" id="banner_accept_all">
+                            <?= I18N::translate('accept all') ?>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-sm btn-outline-primary" id="banner_decline_all">
+                            <?= I18N::translate('decline all') ?>
+                        </button>
+                    </div>
+                </div>
+            <?php endif ?>
+
             <script>
-                if (localStorage.getItem("cookie-warning") !== "ok") {
-                    document.getElementById("privacy-warning").classList.add("show");
-                }
-                document.getElementById("privacy-warning-button").addEventListener("click", function () {
-                    localStorage.setItem("cookie-warning", "ok");
-                });
+                (function () {
+                    var banner = document.getElementById('cookie-consent-banner');
+                    var radios = banner.querySelectorAll('[data-banner-consent-module]');
+                    var moduleCount = <?= $needs_consent->count() ?>;
+                    var expiry = new Date();
+                    expiry.setFullYear(expiry.getFullYear() + 1);
+                    var cookieOptions = ';path=/;expires=' + expiry.toUTCString() + ';SameSite=Lax';
+                    var anyAccepted = false;
+
+                    function setConsentFor(name, value) {
+                        document.cookie = 'analytics_consent_' + name + '=' + value + cookieOptions;
+                        if (value === '1') {
+                            anyAccepted = true;
+                        }
+                    }
+
+                    function checkAllDecided() {
+                        var decided = banner.querySelectorAll('[data-banner-consent-module]:checked').length;
+                        if (decided >= moduleCount) {
+                            banner.remove();
+                            if (anyAccepted) {
+                                location.reload();
+                            }
+                        }
+                    }
+
+                    // Per-provider radio buttons
+                    radios.forEach(function (radio) {
+                        radio.addEventListener('change', function () {
+                            setConsentFor(radio.dataset.bannerConsentModule, radio.value);
+                            checkAllDecided();
+                        });
+                    });
+
+                    // Accept all / Decline all buttons
+                    var acceptAllBtn = document.getElementById('banner_accept_all');
+                    var declineAllBtn = document.getElementById('banner_decline_all');
+
+                    if (acceptAllBtn) {
+                        acceptAllBtn.addEventListener('click', function () {
+                            banner.querySelectorAll('[data-banner-consent-module][value="1"]').forEach(function (r) {
+                                r.checked = true;
+                                setConsentFor(r.dataset.bannerConsentModule, '1');
+                            });
+                            checkAllDecided();
+                        });
+                    }
+                    if (declineAllBtn) {
+                        declineAllBtn.addEventListener('click', function () {
+                            banner.querySelectorAll('[data-banner-consent-module][value="0"]').forEach(function (r) {
+                                r.checked = true;
+                                setConsentFor(r.dataset.bannerConsentModule, '0');
+                            });
+                            checkAllDecided();
+                        });
+                    }
+                })();
             </script>
-        <?php View::endpush() ?>
+        </div>
     <?php endif ?>
 </div>
-
-

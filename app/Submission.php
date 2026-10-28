@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SubmissionPage;
+use Fisharebest\Webtrees\Http\Controllers\SubmissionPage;
 
 /**
  * A GEDCOM submission (SUBN) object.

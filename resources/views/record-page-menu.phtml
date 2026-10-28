@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRecordPage;
+use Fisharebest\Webtrees\Http\Controllers\DeleteRecord;
+use Fisharebest\Webtrees\Http\Controllers\EditRecord;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
     </button>
 
     <div class="dropdown-menu dropdown-menu-end wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item" href="<?= route(EditRecordPage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()]) ?>">
+        <a class="dropdown-item" href="<?= route(EditRecord::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()]) ?>">
             <?= view('icons/edit') ?>
             <?= I18N::translate('Edit') ?>
         </a>

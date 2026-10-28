@@ -17,11 +17,12 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Tests\Unit;
+namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
 use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
 use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
+use Fisharebest\Webtrees\SurnameTradition\GreekSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition;
@@ -50,6 +51,7 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(PolishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::POLISH));
         self::assertInstanceOf(PortugueseSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::PORTUGUESE));
         self::assertInstanceOf(SpanishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::SPANISH));
+        self::assertInstanceOf(GreekSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::GREEK));
     }
 
     public function testCreateInvalid(): void
@@ -62,6 +64,6 @@ class SurnameTraditionFactoryTest extends TestCase
     public function testAllDescriptions(): void
     {
         $descriptions = Registry::surnameTraditionFactory()->list();
-        self::assertCount(9, $descriptions);
+        self::assertCount(10, $descriptions);
     }
 }

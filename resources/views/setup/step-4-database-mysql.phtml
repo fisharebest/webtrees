@@ -3,15 +3,20 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string                 $dbca
+ * @var string                 $dbcert
  * @var string                 $dbhost
+ * @var string                 $dbkey
  * @var string                 $dbname
  * @var string                 $dbpass
  * @var string                 $dbport
  * @var string                 $dbtype
  * @var string                 $dbuser
+ * @var string                 $dbverify
  * @var Collection<int,string> $errors
  * @var string                 $lang
  * @var string                 $mysql_local
@@ -25,7 +30,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<form method="post" autocomplete="off">
+<form method="post" autocomplete="off" data-wt-setup-mysql-connection>
     <input name="lang" type="hidden" value="<?= e($lang) ?>">
     <input name="dbtype" type="hidden" value="<?= e($dbtype) ?>">
     <input name="wtname" type="hidden" value="<?= e($wtname) ?>">
@@ -95,7 +100,7 @@ use Illuminate\Support\Collection;
                     <input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= e($dbhost === 'localhost' ? '' : $dbhost) ?>" dir="ltr">
                 </div>
                 <div class="col-4">
-                    <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport ?: '3306') ?>" dir="ltr">
+                    <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport !== '' ? $dbport : '3306') ?>" dir="ltr">
                 </div>
             </div>
         </div>
@@ -144,6 +149,63 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
+    <details class="mb-3" <?= ($dbkey !== '' || $dbcert !== '' || $dbca !== '') ? 'open' : '' ?>>
+        <summary>
+            <?= I18N::translate('Encrypted connection') ?>
+        </summary>
+
+        <p class="small text-muted mt-3">
+            <?= I18N::translate('If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key.') ?>
+        </p>
+
+        <div class="row mb-3">
+            <label class="col-form-label col-sm-3" for="dbkey">
+                <?= I18N::translate('SSL key') ?>
+            </label>
+            <div class="col-sm-9">
+                <div class="input-group" dir="ltr">
+                    <span class="input-group-text"><?= e((string) realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
+                    <input class="form-control" id="dbkey" name="dbkey" type="text" value="<?= e($dbkey) ?>">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label col-sm-3" for="dbcert">
+                <?= I18N::translate('SSL certificate') ?>
+            </label>
+            <div class="col-sm-9">
+                <div class="input-group" dir="ltr">
+                    <span class="input-group-text"><?= e((string) realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
+                    <input class="form-control" id="dbcert" name="dbcert" type="text" value="<?= e($dbcert) ?>">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="form-check-label col-sm-3" for="dbverify">
+                <?= I18N::translate('Verify server certificate') ?>
+            </label>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input class="form-check-input" id="dbverify" name="dbverify" type="checkbox" value="1" <?= $dbverify !== '' ? 'checked' : '' ?>>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-form-label col-sm-3" for="dbca">
+                <?= I18N::translate('SSL certificate authority') ?>
+            </label>
+            <div class="col-sm-9">
+                <div class="input-group" dir="ltr">
+                    <span class="input-group-text"><?= e((string) realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
+                    <input class="form-control" id="dbca" name="dbca" type="text" value="<?= e($dbca) ?>">
+                </div>
+            </div>
+        </div>
+    </details>
+
     <hr>
 
     <div class="d-flex justify-content-between">
@@ -156,28 +218,3 @@ use Illuminate\Support\Collection;
         </button>
     </div>
 </form>
-
-<script>
-  (function () {
-    const inputDbHost = document.getElementById('dbhost');
-
-    document.getElementById('mysql-type-local').addEventListener('click', () => inputDbHost.value = '');
-
-    inputDbHost.addEventListener('change', () => {
-      if (inputDbHost.value === 'localhost') {
-        inputDbHost.value = '';
-      }
-      if (inputDbHost.value === '') {
-        document.getElementById('mysql-type-local').click();
-      } else {
-        document.getElementById('mysql-type-network').click();
-      }
-    });
-
-    document.querySelector('form').addEventListener('submit', () => {
-      if (inputDbHost.value === '') {
-        inputDbHost.value = 'localhost'
-      }
-    });
-  })();
-</script>

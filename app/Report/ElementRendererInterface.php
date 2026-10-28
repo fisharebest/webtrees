@@ -29,6 +29,5 @@ interface ElementRendererInterface
 
     public function getStringWidth(string $text): float;
 
-
     public function getStyle(string $style): Style;
 }

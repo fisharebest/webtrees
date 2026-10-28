@@ -19,17 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
+use Carbon\CarbonImmutable;
+
 /**
- * Create a timestamp object.
+ * Create localized CarbonImmutable instances with the user's timezone and language.
  */
 interface TimestampFactoryInterface
 {
-    public function make(int $timestamp, UserInterface|null $user = null): TimestampInterface;
+    /** Create a localized CarbonImmutable from a DateTimeImmutable. */
+    public function fromDateTime(\DateTimeImmutable $datetime, UserInterface|null $user = null): CarbonImmutable;
+
+    /** Create a localized CarbonImmutable from a unix epoch integer. */
+    public function fromEpoch(int $timestamp, UserInterface|null $user = null): CarbonImmutable;
 
     /**
-     * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * Create a localized CarbonImmutable from a date-time string.
+     *
+     * @param string|null $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
      */
-    public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface;
+    public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): CarbonImmutable;
 
-    public function now(UserInterface|null $user = null): TimestampInterface;
+    /** Create a localized CarbonImmutable for the current moment. */
+    public function now(UserInterface|null $user = null): CarbonImmutable;
+
+    /** Today's Julian Day number in the user's timezone. */
+    public function todayJulianDay(UserInterface|null $user = null): int;
 }

@@ -22,7 +22,9 @@ namespace Fisharebest\Webtrees\Tests\Unit\Report;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\AbstractParser;
 use Fisharebest\Webtrees\Report\AbstractRenderer;
@@ -121,7 +123,12 @@ use function preg_replace;
 #[CoversClass(VariableTable::class)]
 class ReportRegressionTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+        (new Gedcom())->registerTags(Registry::elementFactory(), true);
+    }
 
     private const string REPORTS_DIR  = __DIR__ . '/../../../resources/xml/reports/';
     private const string SNAPSHOT_DIR = __DIR__ . '/../../data/report_snapshots/';
@@ -189,7 +196,7 @@ class ReportRegressionTest extends TestCase
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
         $author       = Webtrees::NAME;
-        $timestamp    = Registry::timestampFactory()->make(0);
+        $timestamp    = Registry::timestampFactory()->fromEpoch(0);
 
         $renderer = new HtmlRenderer();
         (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
@@ -208,7 +215,7 @@ class ReportRegressionTest extends TestCase
         $vars         = $this->buildVars($xml_filename, $overrides);
         $tree         = $this->prepareTreeAndLogin();
         $author       = Webtrees::NAME;
-        $timestamp    = Registry::timestampFactory()->make(0);
+        $timestamp    = Registry::timestampFactory()->fromEpoch(0);
 
         $renderer = new PdfRenderer();
         (new ParserGenerate($xml_filename, $renderer, $vars, $tree, $author, $timestamp))->process();
@@ -244,7 +251,7 @@ class ReportRegressionTest extends TestCase
 
     private function prepareTreeAndLogin(): \Fisharebest\Webtrees\Tree
     {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -266,7 +273,7 @@ class ReportRegressionTest extends TestCase
         Registry::imageFactory($image_factory);
 
         $tree = $this->importTree('demo.ged');
-        $tree->setPreference('SHOW_NO_WATERMARK', (string) Auth::PRIV_NONE);
+        $tree->setPreference('SHOW_NO_WATERMARK', (string) AccessLevel::Manager->value);
 
         return $tree;
     }
@@ -281,24 +288,22 @@ class ReportRegressionTest extends TestCase
 
     /**
      * Replace non-deterministic fields in the PDF output with fixed placeholders.
-     *
-     * The tc-lib-pdf library embeds the current time and a random file ID
-     * into the PDF document metadata.  We normalise these so that snapshot
-     * comparisons remain stable regardless of when the tests run.
      */
     private function normalisePdf(string $pdf): string
     {
-        // PDF date strings: (D:YYYYMMDDHHmmSS+HH'MM') or (D:YYYYMMDDHHMMSSZ)
+        // TCPDF version string embedded in Producer metadata.
+        // The info dictionary encodes this as UTF-16BE with null-byte separators.
         $pdf = (string) preg_replace(
-            '/\(D:\d{14}[^)]*\)/',
-            '(D:19700101000000Z)',
+            '/\xFE\xFF\x00T\x00C\x00P\x00D\x00F\x00[^\x00]\x00\d(?:\x00\.\x00\d){1,3}(?:\x00[-+~_.A-Za-z0-9])*/',
+            "\xFE\xFF\x00T\x00C\x00P\x00D\x00F\x00 \x000\x00.\x000\x00.\x000",
             $pdf
         );
 
-        // PDF trailer file ID: /ID [ <32-hex-chars> <32-hex-chars> ]
+        // XMP/plain metadata may contain the same Producer value as ASCII.
+        // Allow non-standard separators/suffixes used by upstream releases.
         $pdf = (string) preg_replace(
-            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> \]/',
-            '/ID [ <cfcd208495d565ef66e7dff9f98764da> <cfcd208495d565ef66e7dff9f98764da> ]',
+            '/TCPDF[^\d<\r\n]{0,8}\d+(?:\.\d+){1,3}(?:[-+~_.A-Za-z0-9]*)?/',
+            'TCPDF 0.0.0',
             $pdf
         );
 
@@ -306,13 +311,6 @@ class ReportRegressionTest extends TestCase
         $pdf = (string) preg_replace(
             '/uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/',
             'uuid:cfcd2084-95d5-65ef-66e7-dff9f98764da',
-            $pdf
-        );
-
-        // XMP ISO date strings: YYYY-MM-DDTHH:MM:SS(Z or +offset)
-        $pdf = (string) preg_replace(
-            '/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[Z+][^<]*/',
-            '1970-01-01T00:00:00Z',
             $pdf
         );
 

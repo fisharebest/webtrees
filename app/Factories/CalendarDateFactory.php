@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use DomainException;
 use Fisharebest\Webtrees\Contracts\CalendarDateFactoryInterface;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -29,6 +28,7 @@ use Fisharebest\Webtrees\Date\JalaliDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Date\RomanDate;
+use Fisharebest\Webtrees\Enums\CalendarEscape;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -43,10 +43,10 @@ class CalendarDateFactory implements CalendarDateFactoryInterface
     {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
-            $cal  = $match[1];
+            $cal  = CalendarEscape::from($match[1]);
             $date = $match[2];
         } else {
-            $cal = '';
+            $cal = null;
         }
         // A date with a month: DM, M, MY or DMY
         if (preg_match('/^(\d?\d?) ?(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN) ?((?:\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)?)$/', $date, $match)) {
@@ -79,55 +79,39 @@ class CalendarDateFactory implements CalendarDateFactoryInterface
 
         // Unambiguous dates - override calendar escape
         if (preg_match('/^(TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL)$/', $m)) {
-            $cal = JewishDate::ESCAPE;
+            $cal = CalendarEscape::Jewish;
         } elseif (preg_match('/^(VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP)$/', $m)) {
-            $cal = FrenchDate::ESCAPE;
+            $cal = CalendarEscape::French;
         } elseif (preg_match('/^(MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH)$/', $m)) {
-            $cal = HijriDate::ESCAPE; // This is a WT extension
+            $cal = CalendarEscape::Hijri; // This is a WT extension
         } elseif (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
-            $cal = JalaliDate::ESCAPE; // This is a WT extension
+            $cal = CalendarEscape::Jalali; // This is a WT extension
         } elseif (preg_match('/^\d{1,4}( B\.C\.)|\d\d\d\d\/\d\d$/', $y)) {
-            $cal = JulianDate::ESCAPE;
+            $cal = CalendarEscape::Julian;
         }
 
         // Ambiguous dates - don't override calendar escape
-        if ($cal === '') {
+        if ($cal === null) {
             if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
-                $cal = GregorianDate::ESCAPE;
+                $cal = CalendarEscape::Gregorian;
             } elseif (preg_match('/^[345]\d\d\d$/', $y)) {
                 // Year 3000-5999
-                $cal = JewishDate::ESCAPE;
+                $cal = CalendarEscape::Jewish;
             } else {
-                $cal = GregorianDate::ESCAPE;
+                $cal = CalendarEscape::Gregorian;
             }
         }
 
         // Now construct an object of the correct type
-        switch ($cal) {
-            case GregorianDate::ESCAPE:
-                return new GregorianDate([$y, $m, $d]);
-
-            case JulianDate::ESCAPE:
-                return new JulianDate([$y, $m, $d]);
-
-            case JewishDate::ESCAPE:
-                return new JewishDate([$y, $m, $d]);
-
-            case HijriDate::ESCAPE:
-                return new HijriDate([$y, $m, $d]);
-
-            case FrenchDate::ESCAPE:
-                return new FrenchDate([$y, $m, $d]);
-
-            case JalaliDate::ESCAPE:
-                return new JalaliDate([$y, $m, $d]);
-
-            case RomanDate::ESCAPE:
-                return new RomanDate([$y, $m, $d]);
-
-            default:
-                throw new DomainException('Invalid calendar');
-        }
+        return match ($cal) {
+            CalendarEscape::French    => new FrenchDate([$y, $m, $d]),
+            CalendarEscape::Gregorian => new GregorianDate([$y, $m, $d]),
+            CalendarEscape::Hijri     => new HijriDate([$y, $m, $d]),
+            CalendarEscape::Jalali    => new JalaliDate([$y, $m, $d]),
+            CalendarEscape::Jewish    => new JewishDate([$y, $m, $d]),
+            CalendarEscape::Julian    => new JulianDate([$y, $m, $d]),
+            CalendarEscape::Roman     => new RomanDate([$y, $m, $d]),
+        };
     }
 
     /**

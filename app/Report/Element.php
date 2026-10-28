@@ -52,7 +52,6 @@ class Element
 
     protected string $text = '';
 
-
     public function addText(string $text): void
     {
         // Whitespace-only chunks that contain a newline are XML formatting
@@ -69,11 +68,6 @@ class Element
         // exist, or convert them if defined using: <!ENTITY nbsp "&#xA0;">
 
         $text = strtr($text, ['<br>' => "\n"]);
-
-        // Embedded variables report logic should not generate HTML.
-        if ($text !== strip_tags($text)) {
-            throw new LogicException('HTML tags are not allowed in text: ' . $text);
-        }
 
         $this->text = preg_replace('/ {2,}/', ' ', $this->text . $text);
     }
@@ -107,7 +101,6 @@ class Element
     {
         return str_contains($this->text, self::TOTAL_PAGES_TOKEN);
     }
-
 
     public function getValue(): string
     {

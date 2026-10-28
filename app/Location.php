@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
+use Fisharebest\Webtrees\Http\Controllers\LocationPage;
 
 /**
  * A GEDCOM location (_LOC) object.

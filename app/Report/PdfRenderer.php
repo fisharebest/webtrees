@@ -40,7 +40,6 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
      */
     private const bool UNICODE = true;
 
-
     private TcLibPdfAdaptor $adaptor;
 
     private readonly PdfWriter $pdf_writer;
@@ -50,7 +49,6 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
         parent::__construct();
         $this->pdf_writer = new PdfWriter();
     }
-
 
     public function header(float $origin_x = 0.0, float $origin_y = 0.0): void
     {
@@ -132,6 +130,17 @@ final class PdfRenderer extends AbstractRenderer implements ElementFactoryInterf
 
         // Emit page transparency groups only when the page actually blends.
         $tcpdf->setPageTransparencyGroup('auto');
+
+        // Make PDF metadata deterministic for regression testing and reproducible output.
+        $timestamp = $this->config->timestamp->getTimestamp();
+        $unique_id = md5(json_encode($this->config));
+        // @TODO - we can't set the TCPDF version string, so need to normalize this in the tests.
+
+        $tcpdf->setDocCreationDate($timestamp);
+        $tcpdf->setDocModificationDate($timestamp);
+        $tcpdf->setFileId($unique_id);
+        $tcpdf->setDocumentId($unique_id);
+        $tcpdf->setProducerSuffix('');
 
         $this->adaptor = new TcLibPdfAdaptor($tcpdf, $this, $this->config);
     }

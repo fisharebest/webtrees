@@ -102,7 +102,11 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(VariableTable::class)]
 class IndividualFamiliesReportModuleTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     /**
      * @return array<int,array<string,string>>
@@ -202,7 +206,7 @@ class IndividualFamiliesReportModuleTest extends TestCase
         string $sortby,
         string $sources,
     ): void {
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
@@ -225,9 +229,9 @@ class IndividualFamiliesReportModuleTest extends TestCase
 
         $parser = new ParserSetup($xml);
         $parser->process();
-        $this->assertNotEmpty($parser->reportDescription());
-        $this->assertNotEmpty($parser->reportTitle());
-        $this->assertNotEmpty($parser->reportInputs());
+        self::assertNotEmpty($parser->reportDescription());
+        self::assertNotEmpty($parser->reportTitle());
+        self::assertNotEmpty($parser->reportInputs());
 
         Site::setPreference('INDEX_DIRECTORY', 'tests/data/');
 

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -49,7 +50,7 @@ abstract class AbstractGedcomRecordFactory
             ->array()
             ->remember(self::class . $tree->id(), static fn (): Collection => DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
-                ->where('status', '=', 'pending')
+                ->where('status', '=', ChangeStatus::Pending->value)
                 ->orderBy('change_id')
                 ->pluck('new_gedcom', 'xref'));
     }

@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
+use DateTimeImmutable;
+use DateTimeZone;
+use Fisharebest\Webtrees\Clock\FrozenClock;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException;
 use Fisharebest\Webtrees\Services\RateLimitService;
@@ -29,14 +32,14 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use function explode;
 use function implode;
 use function range;
-use function time;
 
 #[CoversClass(RateLimitService::class)]
 class RateLimitServiceTest extends TestCase
 {
     public function testTooMuchHistory(): void
     {
-        $rate_limit_service = new RateLimitService();
+        $clock = new FrozenClock(new DateTimeImmutable('now', new DateTimeZone('UTC')));
+        $rate_limit_service = new RateLimitService($clock);
 
         $user = new GuestUser();
 
@@ -47,7 +50,8 @@ class RateLimitServiceTest extends TestCase
 
     public function testLimitNotReached(): void
     {
-        $rate_limit_service = new RateLimitService();
+        $clock = new FrozenClock(new DateTimeImmutable('now', new DateTimeZone('UTC')));
+        $rate_limit_service = new RateLimitService($clock);
 
         $user = new GuestUser();
 
@@ -66,11 +70,14 @@ class RateLimitServiceTest extends TestCase
 
     public function testOldEventsIgnored(): void
     {
-        $rate_limit_service = new RateLimitService();
+        $now   = new DateTimeImmutable('now', new DateTimeZone('UTC'));
+        $clock = new FrozenClock($now);
+        $rate_limit_service = new RateLimitService($clock);
 
         $user = new GuestUser();
 
-        $history = implode(',', range(time() - 35, time() - 31));
+        $timestamp = $now->getTimestamp();
+        $history   = implode(',', range($timestamp - 35, $timestamp - 31));
         $user->setPreference('rate-limit', $history);
 
         $rate_limit_service->limitRateForUser($user, 5, 30, 'rate-limit');
@@ -80,11 +87,14 @@ class RateLimitServiceTest extends TestCase
 
     public function testLimitReached(): void
     {
-        $rate_limit_service = new RateLimitService();
+        $now   = new DateTimeImmutable('now', new DateTimeZone('UTC'));
+        $clock = new FrozenClock($now);
+        $rate_limit_service = new RateLimitService($clock);
 
         $user = new GuestUser();
 
-        $history = implode(',', range(time() - 5, time() - 1));
+        $timestamp = $now->getTimestamp();
+        $history   = implode(',', range($timestamp - 5, $timestamp - 1));
         $user->setPreference('rate-limit', $history);
 
         $this->expectException(HttpTooManyRequestsException::class);

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -64,7 +65,7 @@ interface ModuleInterface
      *
      * @param class-string<T> $interface
      */
-    public function accessLevel(Tree $tree, string $interface): int;
+    public function accessLevel(Tree $tree, string $interface): AccessLevel;
 
     /**
      * Get a module setting. Return a default if the setting is not set.

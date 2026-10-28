@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Registry;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7\Request;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -55,21 +55,17 @@ trait ModuleMapAutocompleteTrait
 
         try {
             return $cache->remember($key, function () use ($place) {
-                $request = $this->createPlaceNameSearchRequest($place);
+                $request     = $this->createPlaceNameSearchRequest($place);
+                $http_client = Registry::container()->get(ClientInterface::class);
+                $response    = $http_client->sendRequest($request);
 
-                $client = new Client([
-                    'timeout' => 3,
-                ]);
-
-                $response = $client->send($request);
-
-                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+                if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                     return $this->parsePlaceNameSearchResponse($response);
                 }
 
                 return [];
             }, $ttl);
-        } catch (GuzzleException) {
+        } catch (ClientExceptionInterface) {
             // Service down?  Quota exceeded?
             // Don't try for another hour.
             $cache->remember($key, fn () => [], 3600);
@@ -80,7 +76,7 @@ trait ModuleMapAutocompleteTrait
 
     protected function createPlaceNameSearchRequest(string $place): RequestInterface
     {
-        return new Request('GET', '');
+        return Registry::container()->get(RequestFactoryInterface::class)->createRequest('GET', '');
     }
 
     /**

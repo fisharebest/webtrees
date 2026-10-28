@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModuleDeleteSettings;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllAction;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ModuleDeleteSettings;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAll;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
@@ -54,10 +53,10 @@ use Illuminate\Support\Collection;
     </div>
 <?php endforeach ?>
 
-<form method="post" action="<?= e(route(ModulesAllAction::class)) ?>">
+<form method="post" action="<?= e(route(ModulesAll::class)) ?>">
     <table
         id="wt-datatables-admin-modules"
-        class="table table-bordered table-hover table-sm table-module-administration datatables"
+        class="table table-bordered table-hover table-sm table-module-administration wt-datatables d-none"
         <?= view('lists/datatables-attributes') ?>
         data-info="false"
         data-paging="false"

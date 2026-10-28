@@ -25,7 +25,7 @@ export const i18n = {
    * @param {string} key
    * @returns {string}
    */
-  get(key) {
+  gettext(key) {
     if (this.has(key)) {
       return catalog[key];
     }

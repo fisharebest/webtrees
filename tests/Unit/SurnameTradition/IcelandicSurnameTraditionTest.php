@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\SurnameTradition;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -53,7 +54,7 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME Jonsson\n2 TYPE BIRTH\n2 GIVN Jonsson"],
-            $this->surname_tradition->newChildNames($father, $mother, 'M')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Male)
         );
     }
 
@@ -73,7 +74,7 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME Jonsdottir\n2 TYPE BIRTH\n2 GIVN Jonsdottir"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
     }
 
@@ -93,7 +94,7 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME\n2 TYPE BIRTH"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -107,7 +108,7 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME Einar\n2 TYPE BIRTH\n2 GIVN Einar"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
     }
 
@@ -121,7 +122,7 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME Eva\n2 TYPE BIRTH\n2 GIVN Eva"],
-            $this->surname_tradition->newParentNames($individual, 'F')
+            $this->surname_tradition->newParentNames($individual, Sex::Female)
         );
     }
 
@@ -135,7 +136,7 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'U')
+            $this->surname_tradition->newParentNames($individual, Sex::Unknown)
         );
     }
 
@@ -149,17 +150,17 @@ class IcelandicSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'M')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'U')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Unknown)
         );
     }
 

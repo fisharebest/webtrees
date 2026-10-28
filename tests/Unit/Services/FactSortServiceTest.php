@@ -33,8 +33,6 @@ use function array_map;
 #[CoversClass(FactSortService::class)]
 class FactSortServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     private FactSortService $fact_sort_service;
 
     protected function setUp(): void

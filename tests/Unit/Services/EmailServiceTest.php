@@ -31,7 +31,11 @@ use function function_exists;
 #[CoversClass(EmailService::class)]
 class EmailServiceTest extends TestCase
 {
-    protected static bool $uses_database = true;
+    protected function setUp(): void
+    {
+        parent::setUp();
+        self::createDatabase();
+    }
 
     public function testSend(): void
     {

@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\Tests\TestCase;
 #[CoversClass(Fact::class)]
 class FactTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     public function testAttribute(): void
     {
         $individual = self::createStub(Individual::class);

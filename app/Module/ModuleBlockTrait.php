@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockEdit;
+use Fisharebest\Webtrees\Http\Controllers\TreePageBlockEdit;
+use Fisharebest\Webtrees\Http\Controllers\UserPageBlockEdit;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 

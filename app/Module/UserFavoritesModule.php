@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
+use Fisharebest\Webtrees\Http\Controllers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -151,7 +151,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
         if (Auth::check()) {
             if ($type === 'url' && $url !== '') {
-                $this->addUrlFavorite($tree, $user, $url, $title ?: $url, $note);
+                $this->addUrlFavorite($tree, $user, $url, $title !== '' ? $title : $url, $note);
             }
 
             if ($record instanceof GedcomRecord && $record->canShow()) {

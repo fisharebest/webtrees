@@ -30,7 +30,7 @@
 @import "_sortable.css";
 @import "_tab-album.css";
 @import "_tab-relatives.css";
-@import "_typeaheadjs.css";
+@import "_autocompletejs.css";
 
 /* Some icons need to be reversed on right-to-left pages */
 /* rtl:ignore */

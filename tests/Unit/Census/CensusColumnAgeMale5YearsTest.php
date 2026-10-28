@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -34,7 +35,7 @@ class CensusColumnAgeMale5YearsTest extends TestCase
     public function testMale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
         $census = self::createStub(CensusInterface::class);
@@ -48,7 +49,7 @@ class CensusColumnAgeMale5YearsTest extends TestCase
     public function testFemale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
 
         $census = self::createStub(CensusInterface::class);
 
@@ -60,7 +61,7 @@ class CensusColumnAgeMale5YearsTest extends TestCase
     public function testUnknownSex(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('U');
+        $individual->method('sex')->willReturn(Sex::Unknown);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
         $census = self::createStub(CensusInterface::class);
@@ -68,13 +69,13 @@ class CensusColumnAgeMale5YearsTest extends TestCase
 
         $column = new CensusColumnAgeMale5Years($census, '', '');
 
-        self::assertSame('30', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     public function testLessThanOneYear(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
         $census = self::createStub(CensusInterface::class);
@@ -88,7 +89,7 @@ class CensusColumnAgeMale5YearsTest extends TestCase
     public function testLessThanFifteenYears(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
         $census = self::createStub(CensusInterface::class);
@@ -102,7 +103,7 @@ class CensusColumnAgeMale5YearsTest extends TestCase
     public function testRoundedDownToFiveYears(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
         $census = self::createStub(CensusInterface::class);

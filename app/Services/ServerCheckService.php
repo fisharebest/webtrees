@@ -279,11 +279,6 @@ class ServerCheckService
     private function databaseDriverWarnings(string $driver): Collection
     {
         switch ($driver) {
-            case DB::SQLITE:
-                return new Collection([
-                    I18N::translate('SQLite is only suitable for small sites, testing and evaluation.'),
-                ]);
-
             case DB::POSTGRESQL:
                 return new Collection([
                     I18N::translate('Support for PostgreSQL is experimental.'),

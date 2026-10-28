@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -27,7 +28,7 @@ final readonly class CensusColumnAgeMale extends AbstractCensusColumn implements
 {
     public function generate(Individual $individual, Individual $head): string
     {
-        if ($individual->sex() === 'F') {
+        if ($individual->sex() !== Sex::Male) {
             return '';
         }
 

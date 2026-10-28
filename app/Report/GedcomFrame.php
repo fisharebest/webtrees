@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Snapshot of the GEDCOM-record state that handlers must restore when
  * exiting a nested <Gedcom>...</Gedcom> scope.
- *
- * Replaces the previous anonymous tuple
- * [$this->gedrec, $this->fact, $this->desc] pushed onto $gedrec_stack.
  */
 final readonly class GedcomFrame
 {
@@ -32,6 +29,7 @@ final readonly class GedcomFrame
         public string $gedrec,
         public string $fact,
         public string $desc,
+        public string $context,
     ) {
     }
 }

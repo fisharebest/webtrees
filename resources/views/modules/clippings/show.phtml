@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -44,7 +45,7 @@ use Fisharebest\Webtrees\Tree;
                         </a>
                     </td>
                     <td>
-                        <form method="post" action="<?= e(route('module', ['module' => $module, 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
+                        <form method="post" action="<?= e(route(ModuleAction::class, ['module' => $module, 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
                             <button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
                                 <?= view('icons/delete') ?>
                             </button>

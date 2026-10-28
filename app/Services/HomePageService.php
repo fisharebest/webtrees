@@ -109,7 +109,7 @@ class HomePageService
             return $block;
         }
 
-        throw new HttpNotFoundException('Block not found');
+        throw new HttpNotFoundException();
     }
 
     /**

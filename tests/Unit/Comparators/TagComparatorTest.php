@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\Comparators;
 
 use Fisharebest\Webtrees\Comparators\TagComparator;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 

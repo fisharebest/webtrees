@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ModulesAll;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAll::class) => I18N::translate('Modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 <p>
@@ -40,10 +40,15 @@ use Illuminate\Support\Collection;
         </div>
 
         <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-3">
+            <!-- For Safari -->
+            <legend class="visually-hidden">
                 <?= /* I18N: Configuration option */
                 I18N::translate('How much recursion to use when searching for relationships') ?>
             </legend>
+            <div class="col-form-label col-sm-3" aria-hidden="true">
+                <?= /* I18N: Configuration option */
+                I18N::translate('How much recursion to use when searching for relationships') ?>
+            </div>
             <div class="col-sm-9">
                 <?= view('components/radios-inline', ['name' => 'relationship-recursion-' . $tree->id(), 'options' => $recursion_options, 'selected' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion)]) ?>
             </div>

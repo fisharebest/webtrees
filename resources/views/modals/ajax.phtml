@@ -1,28 +1,8 @@
 <!-- A dynamic modal, with content loaded using AJAX. -->
-<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="wt-ajax-modal" aria-labelledBy="wt-ajax-modal-title">
+<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="wt-ajax-modal" aria-labelledby="wt-ajax-modal-title">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div id="wt-ajax-modal-title"></div>
         </div>
     </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    $('#wt-ajax-modal')
-      .on('show.bs.modal', function (event) {
-        let modal_content = this.querySelector('.modal-content');
-
-        // If we need to paste the result into a tom-select control
-        modal_content.dataset.wtSelectId = event.relatedTarget.dataset.wtSelectId;
-
-        // Clear existing content (to prevent FOUC) and load new content.
-        $(modal_content)
-          .empty()
-          .load(event.relatedTarget.dataset.wtHref, function () {
-            // Activate autocomplete fields
-            this.querySelectorAll('.tom-select').forEach(element => webtrees.initializeTomSelect(element));
-          });
-      });
-  });
-</script>

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Services\PhpService;
 use Transliterator;
 
-use function in_array;
 use function preg_replace;
 use function strip_tags;
 use function trim;
@@ -39,10 +38,10 @@ class SlugFactory implements SlugFactoryInterface
     public function __construct(private PhpService $php_service)
     {
         if ($this->php_service->extensionLoaded(extension: 'intl')) {
-            $ids = Transliterator::listIDs();
+            $transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
 
-            if ($ids !== false && in_array('Any-Latin', $ids, true) && in_array('Latin-ASCII', $ids, true)) {
-                $this->transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
+            if ($transliterator instanceof Transliterator) {
+                $this->transliterator = $transliterator;
             }
         }
     }

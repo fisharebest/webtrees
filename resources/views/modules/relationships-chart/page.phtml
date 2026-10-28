@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 
 /**
  * @var string               $ajax_url
@@ -47,8 +46,11 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
+            <?= I18N::translate('Find relationships via ancestors') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true"></div>
         <div class="col-sm-9 wt-page-options-value">
             <?php if ($ancestors_only) : ?>
                 <input type="hidden" name="ancestors" value="1">
@@ -60,8 +62,11 @@ use Fisharebest\Webtrees\View;
     </fieldset>
 
     <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
+            <?= I18N::translate('Find the closest relationships') ?>
         </legend>
+        <div class="col-form-label col-sm-3 wt-page-options-label" aria-hidden="true"></div>
         <div class="col-sm-9 wt-page-options-value">
             <?php if ($max_recursion === 0) : ?>
                 <?= I18N::translate('Find the closest relationships') ?>
@@ -79,7 +84,7 @@ use Fisharebest\Webtrees\View;
                 <?= /* I18N: A button label. */ I18N::translate('view') ?>
             </button>
 
-            <button class="btn btn-link" id="btn-swap-individuals" type="button">
+            <button class="btn btn-link" type="button" data-wt-swap-individuals-button data-wt-swap-first="#xref" data-wt-swap-second="#xref2" data-wt-swap-form=".wt-page-options-relationships-chart">
                 <?= /* I18N: Reverse the order of two individuals */
                 I18N::translate('Swap individuals') ?>
             </button>
@@ -94,14 +99,3 @@ use Fisharebest\Webtrees\View;
         <?= view('icons/spinner') ?>
     </div>
 <?php endif ?>
-
-<?php View::push('javascript') ?>
-<script>
-  $('#btn-swap-individuals').click(function () {
-      // Swap the name attributes
-      document.getElementById("xref").name = "xref2";
-      document.getElementById("xref2").name = "xref";
-      document.querySelector(".wt-page-options-relationships-chart").submit();
-  });
-</script>
-<?php View::endpush() ?>

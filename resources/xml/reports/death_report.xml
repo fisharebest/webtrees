@@ -63,7 +63,7 @@
             <GetPersonName/>
             <if condition="$adlist=='_MARNM'">
               <RepeatTag tag="NAME">
-                <if condition="@NAME:TYPE=='married'">
+                <if condition="@NAME:TYPE=='MARRIED'">
                   <br/>
                   <GedcomValue tag="NAME"/>
                 </if>

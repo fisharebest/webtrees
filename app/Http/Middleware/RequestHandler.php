@@ -26,19 +26,13 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function is_string;
-
 class RequestHandler implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $route = Validator::attributes($request)->route();
 
-        $request_handler = $route->handler;
-
-        if (is_string($request_handler)) {
-            $request_handler = Registry::container()->get($request_handler);
-        }
+        $request_handler = Registry::container()->get($route->controller);
 
         return $request_handler->handle($request);
     }

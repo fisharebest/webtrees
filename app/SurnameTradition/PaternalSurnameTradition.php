@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -28,17 +29,11 @@ use Fisharebest\Webtrees\Individual;
  */
 class PaternalSurnameTradition extends PatrilinealSurnameTradition
 {
-    /**
-     * The name of this surname tradition
-     */
     public function name(): string
     {
         return I18N::translateContext('Surname tradition', 'paternal');
     }
 
-    /**
-     * A short description of this surname tradition
-     */
     public function description(): string
     {
         /* I18N: In the paternal surname tradition, ... */
@@ -48,14 +43,11 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
     }
 
     /**
-     * What name is given to a new parent
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newParentNames(Individual $child, string $sex): array
+    public function newParentNames(Individual $child, Sex $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
+        if ($sex === Sex::Female && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];
@@ -70,14 +62,11 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
     }
 
     /**
-     * What names are given to a new spouse
-     *
-     *
-     * @return array<int,string>
+     * @return list<string>
      */
-    public function newSpouseNames(Individual $spouse, string $sex): array
+    public function newSpouseNames(Individual $spouse, Sex $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($spouse), $match) === 1) {
+        if ($sex === Sex::Female && preg_match(self::REGEX_SPFX_SURN, $this->extractName($spouse), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];

@@ -28,7 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function memory_get_peak_usage;
 use function sprintf;
-use function Symfony\Component\String\s;
 
 class DebugLogger implements MiddlewareInterface
 {
@@ -43,9 +42,9 @@ class DebugLogger implements MiddlewareInterface
         $start = microtime(true);
 
         // Log SQL queries in response headers
-        DB::connection()->enableQueryLog();
+        DB::enableQueryLog();
         $response = $handler->handle($request);
-        $queries  = DB::connection()->getQueryLog();
+        $queries  = DB::getQueryLog();
         $slowest  = max(array_column($queries, 'time'));
         $total    = array_sum(array_column($queries, 'time'));
         $message  = sprintf('Queries: %d, slowest: %.3f ms, total: %.3f ms', count($queries), $slowest, $total);

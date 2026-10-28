@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction;
+use Fisharebest\Webtrees\Http\Controllers\SearchPhonetic;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -26,7 +26,7 @@ use Illuminate\Support\Collection;
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route(SearchPhoneticAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print mb-4" name="searchform">
+<form method="post" action="<?= e(route(SearchPhonetic::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print mb-4" name="searchform">
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="firstname">
             <?= I18N::translate('Given name') ?>
@@ -61,9 +61,13 @@ use Illuminate\Support\Collection;
     </div>
 
     <fieldset class="row">
-            <label class="col-sm-3 col-form-label wt-page-options-label">
+        <!-- For Safari -->
+        <legend class="visually-hidden">
             <?= I18N::translate('Phonetic algorithm') ?>
-        </label>
+        </legend>
+        <div class="col-sm-3 col-form-label wt-page-options-label" aria-hidden="true">
+            <?= I18N::translate('Phonetic algorithm') ?>
+        </div>
         <div class="col-sm-9 wt-page-options-value">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="soundex" value="Russell" <?= $soundex === 'Russell' ? 'checked' : '' ?> id="russell">

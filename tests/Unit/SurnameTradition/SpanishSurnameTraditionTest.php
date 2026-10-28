@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\SurnameTradition;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -53,17 +54,17 @@ class SpanishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Garcia/ /Ruiz/\n2 TYPE BIRTH\n2 SURN Garcia,Ruiz"],
-            $this->surname_tradition->newChildNames($father, $mother, 'M')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME /Garcia/ /Ruiz/\n2 TYPE BIRTH\n2 SURN Garcia,Ruiz"],
-            $this->surname_tradition->newChildNames($father, $mother, 'F')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME /Garcia/ /Ruiz/\n2 TYPE BIRTH\n2 SURN Garcia,Ruiz"],
-            $this->surname_tradition->newChildNames($father, $mother, 'U')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Unknown)
         );
     }
 
@@ -71,7 +72,7 @@ class SpanishSurnameTraditionTest extends TestCase
     {
         self::assertSame(
             ["1 NAME // //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newChildNames(null, null, 'U')
+            $this->surname_tradition->newChildNames(null, null, Sex::Unknown)
         );
     }
 
@@ -91,7 +92,7 @@ class SpanishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Garcia/ /Ruiz/\n2 TYPE BIRTH\n2 SURN Garcia,Ruiz"],
-            $this->surname_tradition->newChildNames($father, $mother, 'M')
+            $this->surname_tradition->newChildNames($father, $mother, Sex::Male)
         );
     }
 
@@ -105,17 +106,17 @@ class SpanishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME /Garcia/ //\n2 TYPE BIRTH\n2 SURN Garcia"],
-            $this->surname_tradition->newParentNames($individual, 'M')
+            $this->surname_tradition->newParentNames($individual, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME /Iglesias/ //\n2 TYPE BIRTH\n2 SURN Iglesias"],
-            $this->surname_tradition->newParentNames($individual, 'F')
+            $this->surname_tradition->newParentNames($individual, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME // //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newParentNames($individual, 'U')
+            $this->surname_tradition->newParentNames($individual, Sex::Unknown)
         );
     }
 
@@ -129,17 +130,17 @@ class SpanishSurnameTraditionTest extends TestCase
 
         self::assertSame(
             ["1 NAME // //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'M')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Male)
         );
 
         self::assertSame(
             ["1 NAME // //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'F')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Female)
         );
 
         self::assertSame(
             ["1 NAME // //\n2 TYPE BIRTH"],
-            $this->surname_tradition->newSpouseNames($individual, 'U')
+            $this->surname_tradition->newSpouseNames($individual, Sex::Unknown)
         );
     }
 

@@ -69,7 +69,7 @@ class NamePersonal extends AbstractElement
     ];
 
     // For some languages, we want to show the surname field first.
-    protected const array SURNAME_FIRST_LANGUAGES = ['hu', 'jp', 'ko', 'zh-Hans', 'zh-Hant'];
+    protected const array SURNAME_FIRST_LANGUAGES = ['hu', 'ja', 'ko', 'vi', 'zh-Hans', 'zh-Hant'];
 
     protected const array SUBTAGS_SURNAME_FIRST = [
         'TYPE' => '0:1',

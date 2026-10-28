@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Enums\Role;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -35,21 +37,21 @@ use Fisharebest\Webtrees\Tree;
 #[CoversClass(GedcomRecord::class)]
 class GedcomRecordTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     private User $user;
     private Tree $tree;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-        $user_service = new UserService();
+        self::createDatabase();
+
+        $user_service = new UserService(new SystemClock());
         $this->user   = $user_service->create('test', 'test', 'test', '*');
         Auth::login($this->user);
 
         $tree_service = new TreeService(new GedcomImportService());
         $this->tree   = $tree_service->create('test', 'test');
-        $this->tree->setUserPreference($this->user, UserInterface::PREF_TREE_ROLE, UserInterface::ROLE_MANAGER);
+        $this->tree->setUserPreference($this->user, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
     }
 
     public function tearDown(): void
@@ -57,7 +59,7 @@ class GedcomRecordTest extends TestCase
         $tree_service = new TreeService(new GedcomImportService());
         $tree_service->delete($this->tree);
 
-        $user_service = new UserService();
+        $user_service = new UserService(new SystemClock());
         $user_service->delete($this->user);
 
         parent::tearDown();
@@ -137,6 +139,29 @@ class GedcomRecordTest extends TestCase
         self::assertSame('1 FACT foo', $facts[1]->gedcom());
         self::assertSame('1 FACT baz', $facts[2]->gedcom());
         self::assertSame('1 FACT bar', $facts[3]->gedcom());
+    }
+
+    public function testEditingKeepsFactsWithRestrictionNotice(): void
+    {
+        $individual = $this->tree->createIndividual("0 @@ INDI\n1 FACT foo\n2 RESN confidential\n1 FACT bar\n2 RESN privacy\n1 FACT baz\n2 RESN none\n1 FACT qux");
+
+        // The manager can see all of them...
+        $facts = $individual->facts(['FACT']);
+
+        self::assertCount(4, $facts);
+
+        // ...and editing the record must not delete them.
+        $individual->updateFact($facts[3]->id(), '1 FACT quux', false);
+        $individual->createFact('1 FACT corge', false);
+
+        $facts = $individual->facts(['FACT']);
+
+        self::assertCount(5, $facts);
+        self::assertSame("1 FACT foo\n2 RESN confidential", $facts[0]->gedcom());
+        self::assertSame("1 FACT bar\n2 RESN privacy", $facts[1]->gedcom());
+        self::assertSame("1 FACT baz\n2 RESN none", $facts[2]->gedcom());
+        self::assertSame('1 FACT quux', $facts[3]->gedcom());
+        self::assertSame('1 FACT corge', $facts[4]->gedcom());
     }
 
     public function updateFactWithInvalidData(): void

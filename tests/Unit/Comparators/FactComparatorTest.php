@@ -31,15 +31,15 @@ class FactComparatorTest extends TestCase
 {
     public function testByTypeSortsUsingFactOrder(): void
     {
-        $record = $this->createStub(GedcomRecord::class);
+        $record = self::createStub(GedcomRecord::class);
 
-        $birth = $this->createStub(Fact::class);
+        $birth = self::createStub(Fact::class);
         $birth->method('record')->willReturn($record);
         $birth->method('tag')->willReturn('INDI:BIRT');
         $birth->method('value')->willReturn('');
         $birth->method('attribute')->willReturn('');
 
-        $death = $this->createStub(Fact::class);
+        $death = self::createStub(Fact::class);
         $death->method('record')->willReturn($record);
         $death->method('tag')->willReturn('INDI:DEAT');
         $death->method('value')->willReturn('');
@@ -50,16 +50,16 @@ class FactComparatorTest extends TestCase
 
     public function testByDateFallsBackToTypeForSameDate(): void
     {
-        $record = $this->createStub(GedcomRecord::class);
+        $record = self::createStub(GedcomRecord::class);
 
-        $birth = $this->createStub(Fact::class);
+        $birth = self::createStub(Fact::class);
         $birth->method('date')->willReturn(new Date('1 JAN 1900'));
         $birth->method('record')->willReturn($record);
         $birth->method('tag')->willReturn('INDI:BIRT');
         $birth->method('value')->willReturn('');
         $birth->method('attribute')->willReturn('1 JAN 1900');
 
-        $death = $this->createStub(Fact::class);
+        $death = self::createStub(Fact::class);
         $death->method('date')->willReturn(new Date('1 JAN 1900'));
         $death->method('record')->willReturn($record);
         $death->method('tag')->willReturn('INDI:DEAT');

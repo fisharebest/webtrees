@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Enums\DateType;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Sabre\VObject\Component\VCalendar;
 
 use function response;
@@ -40,7 +40,7 @@ use function route;
 use function strip_tags;
 use function view;
 
-class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterface, RequestHandlerInterface
+class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterface
 {
     use ModuleShareTrait;
 
@@ -54,8 +54,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
      */
     public function boot(): void
     {
-        Registry::routeFactory()->routeMap()
-            ->get(static::class, static::ROUTE_URL, $this);
+        Registry::routeFactory()->routeMap()->add(static::ROUTE_URL, static::class);
     }
 
     public function title(): string
@@ -86,7 +85,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         $facts = $facts
             ->flatten()
             ->filter(fn (Fact $fact): bool => $fact->date()->isOK())
-            ->filter(fn (Fact $fact): bool => $fact->date()->qual1 === '')
+            ->filter(fn (Fact $fact): bool => $fact->date()->type === DateType::Exact)
             ->filter(fn (Fact $fact): bool => $fact->date()->minimumDate() instanceof GregorianDate)
             ->filter(fn (Fact $fact): bool => $fact->date()->minimumJulianDay() === $fact->date()->maximumJulianDay())
             ->mapWithKeys(fn (Fact $fact): array => [
@@ -104,7 +103,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         return '';
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function get(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
@@ -115,9 +114,10 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         $fact = $record->facts()->first(fn (Fact $fact): bool => $fact->id() === $fact_id);
 
         if ($fact instanceof Fact) {
+            $date = $fact->date()->minimumDate();
             $vcalendar = new VCalendar([
                 'VEVENT' => [
-                    'DTSTART' => $fact->date()->minimumDate()->format('%Y%m%d'),
+                    'DTSTART' => sprintf('%04d%02d%02d', $date->year(), $date->month(), $date->day()),
                     'RRULE'   => 'FREQ=YEARLY',
                     'SUMMARY' => strip_tags($record->fullName()) . ' — ' . $fact->label(),
                 ],

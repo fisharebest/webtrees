@@ -24,12 +24,12 @@ namespace Fisharebest\Webtrees\Enums;
  */
 enum ExifOrientation: int
 {
-    case Normal = 1;
-    case MirrorHorizontal = 2;
-    case Rotate180 = 3;
-    case MirrorVertical = 4;
-    case Transpose = 5;
-    case Rotate90Clockwise = 6;
-    case Transverse = 7;
+    case Normal                   = 1;
+    case MirrorHorizontal         = 2;
+    case Rotate180                = 3;
+    case MirrorVertical           = 4;
+    case Transpose                = 5;
+    case Rotate90Clockwise        = 6;
+    case Transverse               = 7;
     case Rotate90CounterClockwise = 8;
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
+use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
+use Fisharebest\Webtrees\Http\Controllers\ManageMedia;
+use Fisharebest\Webtrees\Http\Controllers\UploadMedia;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -17,7 +17,7 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ManageMediaPage::class) => I18N::translate('Manage media'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ManageMedia::class) => I18N::translate('Manage media'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -26,7 +26,7 @@ use Illuminate\Support\Collection;
     <?= I18N::translate('Maximum upload size: ') ?><?= e($filesize) ?>
 </p>
 
-<form method="post" action="<?= e(route(UploadMediaPage::class)) ?>" name="uploadmedia" enctype="multipart/form-data">
+<form method="post" action="<?= e(route(UploadMedia::class)) ?>" name="uploadmedia" enctype="multipart/form-data">
     <?php for ($i = 1; $i <= $max_upload_files; $i++) : ?>
         <h2><?= I18N::translate('Media file') ?> <?= I18N::number($i) ?></h2>
 

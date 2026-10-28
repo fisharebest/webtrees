@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectFromFile;
+use Fisharebest\Webtrees\Http\Controllers\CreateMediaObjectFromFile;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -10,14 +10,14 @@ use Fisharebest\Webtrees\I18N;
  */
 ?>
 
-<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="modal-create-media-from-file">
+<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="modal-create-media-from-file-title" id="modal-create-media-from-file">
     <form method="post" action="<?= e(route(CreateMediaObjectFromFile::class)) ?>" id="modal-create-media-from-file-form">
         <input type="hidden" name="action" value="create-media-object-from-file">
         <input type="hidden" name="tree" id="tree" value="">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title"><?= I18N::translate('Create a media object') ?></h3>
+                    <h3 class="modal-title" id="modal-create-media-from-file-title"><?= I18N::translate('Create a media object') ?></h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
                     </button>
                 </div>

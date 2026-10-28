@@ -2,88 +2,258 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
+use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
+use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<int,UserInterface>            $administrators
- * @var Collection<int,ModuleAnalyticsInterface> $analytics
- * @var string                                   $title
+ * @var string                                                            $title
+ * @var array<string,array{title:string,text:string,fields:list<string>}> $statements
+ * @var string                                                            $controller_name
+ * @var string                                                            $controller_email
+ * @var string                                                            $controller_address
+ * @var string                                                            $impressum_name
+ * @var string                                                            $impressum_email
+ * @var string                                                            $impressum_address
+ * @var string                                                            $impressum_phone
+ * @var string                                                            $ml_name
+ * @var string                                                            $ml_email
+ * @var string                                                            $ml_address
+ * @var string                                                            $ml_phone
+ * @var string                                                            $ml_hosting
+ * @var string                                                            $dpo_name
+ * @var string                                                            $dpo_email
+ * @var string                                                            $children_age
+ * @var string                                                            $authority_name
+ * @var string                                                            $authority_url
+ * @var string                                                            $server_country
+ * @var Collection<int,ModuleAnalyticsInterface>                          $analytics
+ * @var Collection<int,ModuleMapProviderInterface>                        $map_providers
+ * @var Collection<int,ModuleMapGeoLocationInterface>                     $geo_providers
+ * @var array<string,string>                                              $cookies
  */
 
 ?>
 
 <h2><?= $title ?></h2>
 
-<h3><?= I18N::translate('Personal data') ?></h3>
+<?php if ($statements === []) : ?>
+    <p class="text-muted"><?= I18N::translate('No privacy policy has been configured for this website.') ?></p>
+<?php else : ?>
+    <?php foreach ($statements as $key => $statement) : ?>
+        <h3><?= $statement['title'] ?></h3>
+        <p><?= $statement['text'] ?></p>
 
-<ul>
-    <li>
-        <?= I18N::translate('This website processes personal data for the purpose of historical and genealogical research.') ?>
-    </li>
-    <li>
-        <?= I18N::translate('This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations.') ?>
-    </li>
-</ul>
+        <?php if ($key === 'controller') : ?>
+            <?php if ($controller_name !== '' || $controller_email !== '' || $controller_address !== '') : ?>
+                <ul>
+                    <?php if ($controller_name !== '') : ?>
+                        <li><?= e($controller_name) ?></li>
+                    <?php endif ?>
+                    <?php if ($controller_email !== '') : ?>
+                        <li><a href="mailto:<?= e($controller_email) ?>"><?= e($controller_email) ?></a></li>
+                    <?php endif ?>
+                    <?php if ($controller_address !== '') : ?>
+                        <li><?= nl2br(e($controller_address)) ?></li>
+                    <?php endif ?>
+                </ul>
+            <?php endif ?>
+        <?php endif ?>
 
-<h3><?= I18N::translate('Cookies') ?></h3>
-
-<ul>
-    <li>
-        <?= I18N::translate('This website uses cookies to enable login sessions, and to remember preferences such as your chosen language.') ?>
-    </li>
-    <li>
-        <?= I18N::translate('These cookies are “essential”, and do not require consent.') ?>
-    </li>
-</ul>
-
-<?php if ($analytics->isNotEmpty()) : ?>
-    <h3><?= I18N::translate('Tracking and analytics') ?></h3>
-
-    <ul>
-        <li>
-            <?= I18N::translate('This website uses third-party services to learn about visitor behavior.') ?>
+        <?php if ($key === 'impressum') : ?>
             <ul>
-                <?php foreach ($analytics as $module) : ?>
-                    <li>
-                        <?= $module->title() ?>
-                        <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
-                            — <a href="<?= e($module->externalUrl()) ?>"><?= e($module->externalUrl()) ?></a>
-                        <?php endif ?>
-                    </li>
+                <?php if ($impressum_name !== '') : ?>
+                    <li><?= e($impressum_name) ?></li>
+                <?php endif ?>
+                <?php if ($impressum_address !== '') : ?>
+                    <li><?= nl2br(e($impressum_address)) ?></li>
+                <?php endif ?>
+                <?php if ($impressum_email !== '') : ?>
+                    <li><a href="mailto:<?= e($impressum_email) ?>"><?= e($impressum_email) ?></a></li>
+                <?php endif ?>
+                <?php if ($impressum_phone !== '') : ?>
+                    <li><?= e($impressum_phone) ?></li>
+                <?php endif ?>
+            </ul>
+        <?php endif ?>
+
+        <?php if ($key === 'mentions_legales') : ?>
+            <ul>
+                <?php if ($ml_name !== '') : ?>
+                    <li><?= e($ml_name) ?></li>
+                <?php endif ?>
+                <?php if ($ml_address !== '') : ?>
+                    <li><?= nl2br(e($ml_address)) ?></li>
+                <?php endif ?>
+                <?php if ($ml_email !== '') : ?>
+                    <li><a href="mailto:<?= e($ml_email) ?>"><?= e($ml_email) ?></a></li>
+                <?php endif ?>
+                <?php if ($ml_phone !== '') : ?>
+                    <li><?= e($ml_phone) ?></li>
+                <?php endif ?>
+            </ul>
+            <?php if ($ml_hosting !== '') : ?>
+                <p><?= I18N::translate('Hosted by:') ?> <?= e($ml_hosting) ?></p>
+            <?php endif ?>
+        <?php endif ?>
+
+        <?php if ($key === 'dpo') : ?>
+            <?php if ($dpo_name !== '' || $dpo_email !== '') : ?>
+                <ul>
+                    <?php if ($dpo_name !== '') : ?>
+                        <li><?= e($dpo_name) ?></li>
+                    <?php endif ?>
+                    <?php if ($dpo_email !== '') : ?>
+                        <li><a href="mailto:<?= e($dpo_email) ?>"><?= e($dpo_email) ?></a></li>
+                    <?php endif ?>
+                </ul>
+            <?php endif ?>
+        <?php endif ?>
+
+        <?php if ($key === 'children' && $children_age !== '') : ?>
+            <p><?= I18N::translate('Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years.', e($children_age)) ?></p>
+        <?php endif ?>
+
+        <?php if ($key === 'analytics' && $analytics->isNotEmpty()) : ?>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th><?= I18N::translate('Service') ?></th>
+                        <th><?= I18N::translate('accept') ?></th>
+                        <th><?= I18N::translate('decline') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($analytics as $module) : ?>
+                        <?php $consent = $cookies['analytics_consent_' . $module->name()] ?? null; ?>
+                        <tr>
+                            <td>
+                                <?= $module->title() ?>
+                                <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
+                                    — <a href="<?= e($module->externalUrl()) ?>"><?= e($module->externalUrl()) ?></a>
+                                <?php endif ?>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                           name="consent_<?= e($module->name()) ?>"
+                                           id="accept_<?= e($module->name()) ?>"
+                                           value="1"
+                                           data-consent-module="<?= e($module->name()) ?>"
+                                           <?= $consent === '1' ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="accept_<?= e($module->name()) ?>">
+                                        <?= I18N::translate('accept') ?>
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                           name="consent_<?= e($module->name()) ?>"
+                                           id="decline_<?= e($module->name()) ?>"
+                                           value="0"
+                                           data-consent-module="<?= e($module->name()) ?>"
+                                           <?= $consent === '0' ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="decline_<?= e($module->name()) ?>">
+                                        <?= I18N::translate('decline') ?>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+                <?php if ($analytics->count() > 1) : ?>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-outline-primary" id="accept_all">
+                                    <?= I18N::translate('accept all') ?>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-outline-primary" id="decline_all">
+                                    <?= I18N::translate('decline all') ?>
+                                </button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                <?php endif ?>
+            </table>
+
+            <script>
+                (function () {
+                    var expiry = new Date();
+                    expiry.setFullYear(expiry.getFullYear() + 1);
+                    var cookieOptions = ';path=/;expires=' + expiry.toUTCString() + ';SameSite=Lax';
+
+                    function setConsentFor(name, value) {
+                        document.cookie = 'analytics_consent_' + name + '=' + value + cookieOptions;
+                    }
+
+                    // Per-provider radio buttons
+                    document.querySelectorAll('[data-consent-module]').forEach(function (radio) {
+                        radio.addEventListener('change', function () {
+                            setConsentFor(radio.dataset.consentModule, radio.value);
+                        });
+                    });
+
+                    // Accept all / Decline all buttons (only rendered when multiple analytics modules exist)
+                    var acceptAll = document.getElementById('accept_all');
+                    var declineAll = document.getElementById('decline_all');
+
+                    if (acceptAll) {
+                        acceptAll.addEventListener('click', function () {
+                            document.querySelectorAll('[data-consent-module][value="1"]').forEach(function (r) {
+                                r.checked = true;
+                                setConsentFor(r.dataset.consentModule, '1');
+                            });
+                        });
+                    }
+
+                    if (declineAll) {
+                        declineAll.addEventListener('click', function () {
+                            document.querySelectorAll('[data-consent-module][value="0"]').forEach(function (r) {
+                                r.checked = true;
+                                setConsentFor(r.dataset.consentModule, '0');
+                            });
+                        });
+                    }
+                })();
+            </script>
+        <?php endif ?>
+
+        <?php if ($key === 'third_party_services' && ($map_providers->isNotEmpty() || $geo_providers->isNotEmpty())) : ?>
+            <ul>
+                <?php foreach ($map_providers as $module) : ?>
+                    <li><?= I18N::translate('Map tiles') ?> — <?= $module->title() ?></li>
+                <?php endforeach ?>
+                <?php foreach ($geo_providers as $module) : ?>
+                    <li><?= I18N::translate('Geocoding') ?> — <?= $module->title() ?></li>
                 <?php endforeach ?>
             </ul>
-        </li>
+        <?php endif ?>
 
-        <li>
-            <?= I18N::translate('These services may use cookies or other tracking technology.') ?>
-        </li>
+        <?php if ($key === 'complaint') : ?>
+            <?php if ($authority_name !== '' || $authority_url !== '') : ?>
+                <ul>
+                    <?php if ($authority_name !== '' && $authority_url !== '') : ?>
+                        <li><a href="<?= e($authority_url) ?>"><?= e($authority_name) ?></a></li>
+                    <?php elseif ($authority_name !== '') : ?>
+                        <li><?= e($authority_name) ?></li>
+                    <?php elseif ($authority_url !== '') : ?>
+                        <li><a href="<?= e($authority_url) ?>"><?= e($authority_url) ?></a></li>
+                    <?php endif ?>
+                </ul>
+            <?php endif ?>
+        <?php endif ?>
 
-        <li>
-            <?= I18N::translate('You can opt out of tracking by setting the “Do Not Track” header in your browser preferences.') ?>
-        </li>
-    </ul>
+        <?php if ($key === 'data_localization' && $server_country !== '') : ?>
+            <p><strong><?= e($server_country) ?></strong></p>
+        <?php endif ?>
+
+    <?php endforeach ?>
 <?php endif ?>
-
-<h3><?= I18N::translate('Data controller') ?></h3>
-
-<ul>
-    <li>
-        <?= I18N::translate('This website is operated by the following individuals.') ?>
-
-        <ul>
-            <?php foreach ($administrators as $administrator) : ?>
-                <li>
-                    <?= e($administrator->realName()) ?> —
-                    <a href="mailto:<?= e($administrator->email()) ?>"><?= e($administrator->email()) ?></a>
-
-
-                </li>
-            <?php endforeach ?>
-        </ul>
-
-    </li>
-</ul>

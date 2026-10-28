@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Report;
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Report\CellAlign;
 use Fisharebest\Webtrees\Report\HtmlWriter;
 use Fisharebest\Webtrees\Report\LayoutBlock;
@@ -56,7 +56,7 @@ class HtmlWriterTest extends TestCase
             align_rtl: 'left',
             entity_rtl: '&lrm;',
             font: 'dejavusans',
-            timestamp: $this->createStub(TimestampInterface::class),
+            timestamp: CarbonImmutable::now(),
         );
     }
 

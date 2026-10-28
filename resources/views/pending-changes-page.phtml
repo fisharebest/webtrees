@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptChange;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptTree;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectChange;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectTree;
+use Fisharebest\Webtrees\Http\Controllers\Message;
+use Fisharebest\Webtrees\Http\Controllers\PendingChangesAcceptChange;
+use Fisharebest\Webtrees\Http\Controllers\PendingChangesAcceptTree;
+use Fisharebest\Webtrees\Http\Controllers\PendingChangesRejectChange;
+use Fisharebest\Webtrees\Http\Controllers\PendingChangesRejectTree;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
@@ -18,7 +18,7 @@ use Fisharebest\Webtrees\Tree;
  *     change_id:string,
  *     old_gedcom:string|null,
  *     new_gedcom:string|null,
- *     change_time:TimestampInterface,
+ *     change_time:CarbonImmutable,
  *     record:GedcomRecord,
  *     user_name:string,
  *     real_name:string
@@ -88,7 +88,7 @@ use Fisharebest\Webtrees\Tree;
                     </td>
 
                     <td>
-                        <a href="<?= e(route(MessagePage::class, ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $tree->name()])) ?>" title="<?= I18N::translate('Send a message') ?>">
+                        <a href="<?= e(route(Message::class, ['to' => $record_change->user_name, 'subject' => I18N::translate('Pending changes') . ' - ' . strip_tags($record_change->record->fullName()), 'body' => $record_change->record->url(), 'tree' => $tree->name()])) ?>" title="<?= I18N::translate('Send a message') ?>">
                             <?= e($record_change->real_name) ?> - <?= e($record_change->user_name) ?>
                         </a>
                     </td>

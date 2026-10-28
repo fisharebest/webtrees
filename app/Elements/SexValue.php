@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Tree;
 
 use function strtoupper;
@@ -67,9 +67,9 @@ class SexValue extends AbstractElement
     public function values(): array
     {
         return [
-            'M' => I18N::translate('Male'),
-            'F' => I18N::translate('Female'),
-            'U' => I18N::translateContext('unknown sex', 'Unknown'),
+            Sex::Female->value => Sex::Female->label(),
+            Sex::Male->value => Sex::Male->label(),
+            Sex::Unknown->value => Sex::Unknown->label(),
         ];
     }
 }

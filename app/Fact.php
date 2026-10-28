@@ -20,7 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Comparators\TagComparator;
-use Fisharebest\Webtrees\Elements\RestrictionNotice;
+use Fisharebest\Webtrees\Enums\AccessLevel;
+use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
@@ -33,10 +34,6 @@ use function preg_match;
 use function preg_replace;
 use function str_contains;
 use function str_ends_with;
-use function str_starts_with;
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
 
 /**
  * A GEDCOM fact or event object.
@@ -195,23 +192,14 @@ class Fact
     /**
      * Do the privacy rules allow us to display this fact to the current user
      */
-    public function canShow(int|null $access_level = null): bool
+    public function canShow(AccessLevel|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
-        $element     = new RestrictionNotice('');
-        $restriction = $element->canonical($this->attribute('RESN'));
-
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
-            return Auth::PRIV_NONE >= $access_level;
-        }
-
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
-            return Auth::PRIV_USER >= $access_level;
-        }
-        if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
-            return true;
+        $restriction_level = Restriction::fromString($this->attribute('RESN'))->accessLevel();
+        if ($restriction_level !== null) {
+            return $restriction_level->allows($access_level);
         }
 
         // A link to a record of the same type: NOTE=>NOTE, OBJE=>OBJE, SOUR=>SOUR, etc.
@@ -227,10 +215,10 @@ class Fact
         $fact_privacy            = $this->record->tree()->getFactPrivacy();
         $individual_fact_privacy = $this->record->tree()->getIndividualFactPrivacy();
         if (isset($individual_fact_privacy[$xref][$this->tag])) {
-            return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
+            return $individual_fact_privacy[$xref][$this->tag]->allows($access_level);
         }
         if (isset($fact_privacy[$this->tag])) {
-            return $fact_privacy[$this->tag] >= $access_level;
+            return $fact_privacy[$this->tag]->allows($access_level);
         }
 
         // No restrictions - it must be public
@@ -251,7 +239,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && !str_ends_with($this->attribute('RESN'), RestrictionNotice::VALUE_LOCKED) && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && Restriction::fromString($this->attribute('RESN'))->isUnlocked() && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**
@@ -448,7 +436,7 @@ class Fact
 
             // Fact date
             if ($this->date()->isOK()) {
-                $items[] = $this->date()->minimumDate()->format('%Y');
+                $items[] = $this->date()->yearOnly()->display();
             }
 
             // Fact place
@@ -458,48 +446,6 @@ class Fact
         }
 
         return implode(' — ', $items);
-    }
-
-    /**
-     * Sort a collection of facts.
-     *
-     * 1. Split facts into dated (have a parseable date) and nondated.
-     * 2. Sort dated facts chronologically, using type order as tiebreaker.
-     * 3. Group nondated facts: individual facts stay separate; family facts
-     *    are grouped by family identity so they are inserted as a unit.
-     * 4. Insert each family group near its family's dated facts, or before
-     *    any later-input families' facts (preserving original family order).
-     * 5. Insert individual nondated facts at their type-order position in the result.
-     *
-     * @param Collection<int,Fact> $unsorted
-     *
-     * @return Collection<int,Fact>
-     */
-    public static function sortFacts(Collection $unsorted): Collection
-    {
-        trigger_error(
-            'Fact::sortFacts() is deprecated and will be removed in version 2.3. Use FactSortService::sort() instead.',
-            E_USER_DEPRECATED
-        );
-
-        return (new FactSortService())->sort($unsorted);
-    }
-
-    /**
-     * Sort fact/event tags using the same order that we use for facts.
-     *
-     * @param Collection<int,string> $unsorted
-     *
-     * @return Collection<int,string>
-     */
-    public static function sortFactTags(Collection $unsorted): Collection
-    {
-        trigger_error(
-            'Fact::sortFactTags() is deprecated and will be removed in version 2.3. Use TagComparator::byOrder(...) instead.',
-            E_USER_DEPRECATED
-        );
-
-        return $unsorted->sort(TagComparator::byOrder(...));
     }
 
     /**

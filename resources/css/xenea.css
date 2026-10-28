@@ -308,23 +308,6 @@ table {
 .menu-list-subm::before {
     content: url(xenea/menu/list-indi.png);
 }
-
-.menu-calendar .nav-link::before {
-    content: url(xenea/menu/calendar.png);
-}
-
-.menu-calendar-day::before {
-    content: url(xenea/menu/calendar-calendar.png);
-}
-
-.menu-calendar-month::before {
-    content: url(xenea/menu/calendar-calendar.png);
-}
-
-.menu-calendar-year::before {
-    content: url(xenea/menu/calendar-calendar.png);
-}
-
 .menu-report .nav-link::before {
     content: url(xenea/menu/report.png);
 }
@@ -554,11 +537,6 @@ table {
 }
 
 /* ====== Round Corners ======== */
-
-:focus {
-    outline-style: none;
-}
-
 .flash-messages {
     clear: both;
     text-align: center;
@@ -669,10 +647,6 @@ div.fact_SHARED_NOTE {
 
 .details_label {
     font-weight: bold;
-}
-
-.date {
-    color: #337;
 }
 
 .label {

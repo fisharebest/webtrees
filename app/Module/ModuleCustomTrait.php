@@ -19,14 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Http\Exceptions\HttpForbiddenException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -86,13 +88,12 @@ trait ModuleCustomTrait
 
         return Registry::cache()->file()->remember($this->name() . '-latest-version', function (): string {
             try {
-                $client = new Client([
-                    'timeout' => 3,
-                ]);
+                $http_client     = Registry::container()->get(ClientInterface::class);
+                $request_factory = Registry::container()->get(RequestFactoryInterface::class);
+                $request         = $request_factory->createRequest('GET', $this->customModuleLatestVersionUrl());
+                $response        = $http_client->sendRequest($request);
 
-                $response = $client->get($this->customModuleLatestVersionUrl());
-
-                if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
+                if ($response->getStatusCode() === HttpStatusCode::OK->value) {
                     $version = $response->getBody()->getContents();
 
                     // Does the response look like a version?
@@ -100,7 +101,7 @@ trait ModuleCustomTrait
                         return $version;
                     }
                 }
-            } catch (GuzzleException) {
+            } catch (ClientExceptionInterface) {
                 // Can't connect to the server?
             }
 
@@ -139,7 +140,7 @@ trait ModuleCustomTrait
         // Add the file's modification time to the URL, so we can set long expiry cache headers.
         $hash = filemtime($file);
 
-        return route('module', [
+        return route(ModuleAction::class, [
             'module' => $this->name(),
             'action' => 'Asset',
             'asset'  => $asset,
@@ -157,7 +158,7 @@ trait ModuleCustomTrait
 
         // Do not allow requests that try to access parent folders.
         if (str_contains($asset, '..')) {
-            throw new HttpAccessDeniedException($asset);
+            throw new HttpForbiddenException();
         }
 
         // Find the file for this asset.
@@ -166,14 +167,14 @@ trait ModuleCustomTrait
         $file = $this->resourcesFolder() . $asset;
 
         if (!file_exists($file)) {
-            throw new HttpNotFoundException(e($file));
+            throw new HttpNotFoundException();
         }
 
         $content   = file_get_contents($file);
         $extension = strtoupper(pathinfo($asset, PATHINFO_EXTENSION));
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
+        return response($content, HttpStatusCode::OK, [
             'cache-control'  => 'public,max-age=31536000',
             'content-type'   => $mime_type,
         ]);

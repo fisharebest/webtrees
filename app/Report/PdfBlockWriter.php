@@ -384,7 +384,6 @@ final class PdfBlockWriter
             }
         }
 
-
         return $cursor_y;
     }
 
@@ -403,7 +402,6 @@ final class PdfBlockWriter
 
         return [$line_count, $last_line_width];
     }
-
 
     private function renderTextFlowFootnoteRef(
         PdfRenderTargetInterface $renderer,

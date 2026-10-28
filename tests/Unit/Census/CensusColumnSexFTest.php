@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
+use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -33,7 +34,7 @@ class CensusColumnSexFTest extends TestCase
     public function testMale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('M');
+        $individual->method('sex')->willReturn(Sex::Male);
 
         $census = self::createStub(CensusInterface::class);
 
@@ -45,7 +46,7 @@ class CensusColumnSexFTest extends TestCase
     public function testFeale(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('F');
+        $individual->method('sex')->willReturn(Sex::Female);
 
         $census = self::createStub(CensusInterface::class);
 
@@ -57,7 +58,7 @@ class CensusColumnSexFTest extends TestCase
     public function testUnknownSex(): void
     {
         $individual = self::createStub(Individual::class);
-        $individual->method('sex')->willReturn('U');
+        $individual->method('sex')->willReturn(Sex::Unknown);
 
         $census = self::createStub(CensusInterface::class);
 

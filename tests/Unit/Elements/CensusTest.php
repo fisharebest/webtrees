@@ -19,19 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Elements;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Elements\Census;
+use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\Element;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Element::class)]
 #[CoversClass(Census::class)]
 class CensusTest extends AbstractElementTestCase
 {
-    protected static bool $uses_database = true;
-
     public function setUp(): void
     {
         parent::setUp();
+
+        $module_service = self::createStub(ModuleService::class);
+        $module_service->method('findByInterface')->willReturn(new Collection());
+        Registry::container()->set(ModuleService::class, $module_service);
+
+        Registry::individualFactory(self::createStub(IndividualFactory::class));
 
         self::$element = new Census('label');
     }

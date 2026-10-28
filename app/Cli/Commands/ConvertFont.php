@@ -40,7 +40,7 @@ final class ConvertFont extends AbstractCommand
     protected function configure(): void
     {
         $this
-            ->setName(name: 'convert-font')
+            ->setName(name: 'dev:convert-font')
             ->setDescription(description: 'Convert a TTF font to tc-lib-pdf-font JSON format')
             ->addArgument(name: 'font', mode: InputArgument::REQUIRED, description: 'Filename of the TTF font in /resources/fonts/');
     }

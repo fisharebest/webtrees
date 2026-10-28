@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -176,11 +177,11 @@ final class ListBuilder
                 $query->select([new Expression('MAX(change_id)')])
                     ->from('change')
                     ->where('gedcom_id', '=', $this->tree->id())
-                    ->where('status', '=', 'pending')
+                    ->where('status', '=', ChangeStatus::Pending->value)
                     ->groupBy(['xref']);
             })
             ->get()
-            ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom ?: $row->old_gedcom))
+            ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom !== '' ? $row->new_gedcom : $row->old_gedcom))
             ->filter()
             ->all();
 
@@ -390,7 +391,6 @@ final class ListBuilder
             ->filter()
             ->all();
 
-
         return $this->applyPhpFilters($list, $attrs, $gedrec, $fact, $desc, $variables);
     }
 
@@ -459,11 +459,12 @@ final class ListBuilder
                     if (count($tags) > 1) {
                         $level = 1;
                         $t     = 'XXXX';
-                        foreach ($tags as $t) {
+                        foreach ($tags as $current_tag) {
+                            $t = $current_tag;
                             if ($searchstr !== '') {
                                 $searchstr .= "[^\n]*(\n[2-9][^\n]*)*\n";
                             }
-                            $searchstr .= $level . ' ' . $t;
+                            $searchstr .= $level . ' ' . $current_tag;
                             $level++;
                         }
                     } else {
@@ -519,7 +520,7 @@ final class ListBuilder
                         }
                         $tags = explode(':', $tag);
                         $t    = end($tags);
-                        $v    = GedcomTextReader::getGedcomValue($tag, 1, $grec, $this->tree);
+                        $v    = GedcomTextReader::getGedcomValue($tag, 1, $grec, $this->tree, $indi->tag());
 
                         switch ($expr) {
                             case 'GTE':
