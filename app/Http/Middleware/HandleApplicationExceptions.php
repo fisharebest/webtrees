@@ -19,10 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Exceptions\ImageException;
+use Fisharebest\Webtrees\Http\Controllers\Login;
 use Fisharebest\Webtrees\Http\Exceptions\HttpException;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
@@ -38,7 +41,9 @@ use RuntimeException;
 use Throwable;
 
 use function e;
+use function in_array;
 use function response;
+use function route;
 use function view;
 
 final readonly class HandleApplicationExceptions extends AbstractExceptionHandler implements MiddlewareInterface
@@ -71,6 +76,12 @@ final readonly class HandleApplicationExceptions extends AbstractExceptionHandle
         $status_code = HttpStatusCode::from($exception->getCode());
 
         $html = view('components/alert-danger', ['alert' => $exception->getMessage()]);
+
+        // A visitor may simply not be signed in - offer to sign in and come back here.
+        if (!Auth::check() && in_array($status_code, [HttpStatusCode::Forbidden, HttpStatusCode::NotFound], true) && !$this->isAjaxRequest($request)) {
+            $login = route(Login::class, ['tree' => $request->getAttribute('tree'), 'url' => (string) $request->getUri()]);
+            $html .= '<p>' . I18N::translate('Please <a href="%s">sign in</a> to see private data.', e($login)) . '</p>';
+        }
 
         if ($this->isAjaxRequest($request)) {
             return response($html, $status_code);
