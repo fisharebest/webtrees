@@ -62,8 +62,9 @@ class XrefSubmissionTest extends TestCase
         self::assertEquals(1, $select_nodes->count());
 
         foreach ($select_nodes as $select_node) {
+            // The empty option, and the pointer to nothing
             $option_nodes = $select_node->getElementsByTagName('option');
-            self::assertEquals(1, $option_nodes->count());
+            self::assertEquals(2, $option_nodes->count());
         }
     }
     public function testEscape(): void
