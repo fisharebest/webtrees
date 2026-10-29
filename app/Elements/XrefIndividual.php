@@ -41,6 +41,7 @@ class XrefIndividual extends AbstractXrefElement
             'individual' => Registry::individualFactory()->make(trim($value, '@'), $tree),
             'tree'       => $tree,
             'at'         => '@',
+            'void'       => $this->isVoid($value),
         ]);
     }
 
