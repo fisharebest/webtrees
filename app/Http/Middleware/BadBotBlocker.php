@@ -1623,7 +1623,7 @@ class BadBotBlocker implements MiddlewareInterface
             // Use a 200 status code, as some webserver configs replace
             // 4xx with a default error page.
             return response($content)
-                ->withHeader('set-cookie', 'x=y; Path=/; HttpOnly; SameSite=Strict');
+                ->withHeader('set-cookie', 'x=y; Path=/; HttpOnly; SameSite=Lax');
         }
 
         // Bots get restricted access
