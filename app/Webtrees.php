@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Cli\Console;
+use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\CalendarDateFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
@@ -46,10 +47,7 @@ use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
-use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
-use Fisharebest\Webtrees\Http\Middleware\HandleBootstrapExceptions;
-use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
@@ -58,28 +56,31 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
 use Fisharebest\Webtrees\Http\Middleware\ContentLength;
+use Fisharebest\Webtrees\Http\Middleware\DebugLogger;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\ErrorHandler;
 use Fisharebest\Webtrees\Http\Middleware\HandleApplicationExceptions;
+use Fisharebest\Webtrees\Http\Middleware\HandleBootstrapExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
+use Fisharebest\Webtrees\Http\Middleware\PrettyUrls;
 use Fisharebest\Webtrees\Http\Middleware\PublicFiles;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
-use Fisharebest\Webtrees\Http\Middleware\DebugLogger;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
 use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
+use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Services\PhpService;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
-use Psr\Http\Client\ClientInterface;
 use Psr\Clock\ClockInterface;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -127,9 +128,9 @@ class Webtrees
 
     // Page layouts for various page types.
     public const string LAYOUT_ADMINISTRATION = 'layouts/administration';
-    public const string LAYOUT_AJAX    = 'layouts/ajax';
-    public const string LAYOUT_DEFAULT = 'layouts/default';
-    public const string LAYOUT_ERROR   = 'layouts/error';
+    public const string LAYOUT_AJAX           = 'layouts/ajax';
+    public const string LAYOUT_DEFAULT        = 'layouts/default';
+    public const string LAYOUT_ERROR          = 'layouts/error';
 
     // The name of the application.
     public const string NAME = 'webtrees';
@@ -158,6 +159,7 @@ class Webtrees
         HandleBootstrapExceptions::class,
         ReadConfigIni::class,
         BaseUrl::class,
+        PrettyUrls::class,
         SecurityHeaders::class,
         PublicFiles::class,
         ClientIp::class,
