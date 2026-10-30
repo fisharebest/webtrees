@@ -183,7 +183,7 @@ final class PlaceholderExpander
         }
 
         // Evaluate the boolean expression
-        $expression_provider = new ExpressionLanguageProvider();
+        $expression_provider = new ExpressionLanguageProvider($tree);
         $expression_cache    = new NullAdapter();
         $expression_language = new ExpressionLanguage($expression_cache, [$expression_provider]);
 
