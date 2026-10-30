@@ -288,27 +288,9 @@ class ReportRegressionTest extends TestCase
 
     /**
      * Replace non-deterministic fields in the PDF output with fixed placeholders.
-     *
-     * The tc-lib-pdf library embeds the current time and a random file ID
-     * into the PDF document metadata.  We normalise these so that snapshot
-     * comparisons remain stable regardless of when the tests run.
      */
     private function normalisePdf(string $pdf): string
     {
-        // PDF date strings: (D:YYYYMMDDHHmmSS+HH'MM') or (D:YYYYMMDDHHMMSSZ)
-        $pdf = (string) preg_replace(
-            '/\(D:\d{14}[^)]*\)/',
-            '(D:19700101000000Z)',
-            $pdf
-        );
-
-        // PDF trailer file ID: /ID [ <32-hex-chars> <32-hex-chars> ]
-        $pdf = (string) preg_replace(
-            '/\/ID \[ <[0-9a-f]{32}> <[0-9a-f]{32}> ]/',
-            '/ID [ <cfcd208495d565ef66e7dff9f98764da> <cfcd208495d565ef66e7dff9f98764da> ]',
-            $pdf
-        );
-
         // TCPDF version string embedded in Producer metadata.
         // The info dictionary encodes this as UTF-16BE with null-byte separators.
         $pdf = (string) preg_replace(
@@ -329,13 +311,6 @@ class ReportRegressionTest extends TestCase
         $pdf = (string) preg_replace(
             '/uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/',
             'uuid:cfcd2084-95d5-65ef-66e7-dff9f98764da',
-            $pdf
-        );
-
-        // XMP ISO date strings: YYYY-MM-DDTHH:MM:SS(Z or +offset)
-        $pdf = (string) preg_replace(
-            '/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[Z+][^<]*/',
-            '1970-01-01T00:00:00Z',
             $pdf
         );
 

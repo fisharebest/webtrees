@@ -1065,29 +1065,6 @@ class SearchService
     }
 
     /**
-     * Find the media object that uses a particular media file.
-     *
-     *
-     * @return array<Media>
-     */
-    public function findMediaObjectsForMediaFile(string $file): array
-    {
-        return DB::table('media')
-            ->join('media_file', static function (JoinClause $join): void {
-                $join
-                    ->on('media_file.m_file', '=', 'media.m_file')
-                    ->on('media_file.m_id', '=', 'media.m_id');
-            })
-            ->join('gedcom_setting', 'media.m_file', '=', 'gedcom_setting.gedcom_id')
-            ->where(new Expression(DB::concat(['setting_value', 'multimedia_file_refn'])), '=', $file)
-            ->select(['media.*'])
-            ->distinct()
-            ->get()
-            ->map($this->mediaRowMapper())
-            ->all();
-    }
-
-    /**
      * A closure to filter records by privacy-filtered GEDCOM data.
      *
      * @param array<string> $search_terms
@@ -1185,7 +1162,7 @@ class SearchService
     }
 
     /**
-     * Convert a row from any tree in the media table into an media object.
+     * Convert a row from any tree in the media table into a media object.
      *
      * @return Closure(object):Media
      */
