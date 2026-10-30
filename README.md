@@ -69,6 +69,12 @@ Full installation and upgrade guides are available at <https://webtrees.net/>.
 
 ---
 
+## One-Click Deploy
+
+[![Deploy on RepoCloud](https://d16t0pc4846x52.cloudfront.net/deploylobe.svg)](https://repocloud.io/details/webtrees/)
+
+---
+
 ## Technical architecture
 
 ### Project structure
