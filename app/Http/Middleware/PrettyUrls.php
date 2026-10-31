@@ -30,6 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_key_first;
 use function http_build_query;
 use function is_string;
+use function strlen;
 
 final readonly class PrettyUrls implements MiddlewareInterface
 {
@@ -37,10 +38,12 @@ final readonly class PrettyUrls implements MiddlewareInterface
     {
         // For sites that do not support URL rewriting, we store the path of the "pretty" URL in
         // a query parameter "route".  This path includes any subfolder.
+        $uri   = $request->getUri();
         $query = $request->getQueryParams();
         $route = $query['route'] ?? null;
 
-        if (is_string($route)) {
+        // We don't generate an empty route parameter, but a third-party might.
+        if (is_string($route) && $route !== '') {
             // We generate URLs with the route parameter first.
             if (array_key_first($query) !== 'route') {
                 throw new HttpBadRequestException();
@@ -48,7 +51,7 @@ final readonly class PrettyUrls implements MiddlewareInterface
 
             // Convert the ugly URL into a pretty URL.
             unset($query['route']);
-            $uri = $request->getUri()
+            $uri = $uri
                 ->withQuery(http_build_query($query))
                 ->withPath($route);
 
@@ -61,15 +64,24 @@ final readonly class PrettyUrls implements MiddlewareInterface
                     ->redirectUrl($uri, HttpStatusCode::PermanentRedirect)
                     ->withHeader('Link', '<' . $uri . '>; rel="canonical"');
             }
+        } else {
+            // We don't generate a URL with index.php and no route parameter, but a third party might.
+            $path = $uri->getPath();
 
-            // Continue processing with a pretty URL.
-            $request = $request->withUri($uri);
-        } elseif ($route !== null) {
-            // Parameter present, but not a string? Could be an array? Ignore it.
-            unset($query['route']);
-            $uri     = $request->getUri()->withQuery(http_build_query($query));
-            $request = $request->withUri($uri);
+            if (str_ends_with($path, '/index.php')) {
+                $path = substr($path, 0, -strlen('index.php'));
+                $uri  = $uri->withPath($path);
+            }
+
+            if ($route !== null) {
+                // Parameter present, but not a non-empty-string? Ignore it.
+                unset($query['route']);
+                $uri = $uri->withQuery(http_build_query($query));
+            }
         }
+
+        // Continue processing with a pretty URL.
+        $request = $request->withUri($uri);
 
         return $handler->handle($request);
     }

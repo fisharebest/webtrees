@@ -72,6 +72,31 @@ class PrettyUrlsTest extends TestCase
         $middleware->process($request, $handler);
     }
 
+    public function testTrailingIndexPhpIsRemoved(): void
+    {
+        $uri_factory     = Registry::container()->get(UriFactoryInterface::class);
+        $uri             = $uri_factory->createUri('https://example.com/foo/index.php');
+        $request_factory = Registry::container()->get(ServerRequestFactoryInterface::class);
+        $request         = $request_factory->createServerRequest('GET', $uri);
+        $handler         = $this->createMock(RequestHandlerInterface::class);
+        $handler
+            ->expects($this->once())
+            ->method('handle')
+            ->with(
+                $this->callback(function (
+                    ServerRequestInterface $request
+                ) {
+                    $this->assertSame('/foo/', $request->getUri()->getPath());
+
+                    return true;
+                })
+            )
+            ->willReturn($this->createStub(ResponseInterface::class));
+
+        $middleware = new PrettyUrls();
+        $middleware->process($request, $handler);
+    }
+
     public function testMissingRouteParameterIsPassedThrough(): void
     {
         $uri_factory     = Registry::container()->get(UriFactoryInterface::class);
