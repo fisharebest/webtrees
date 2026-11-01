@@ -19,15 +19,37 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Services\PhpService;
+use Fisharebest\Webtrees\Services\ServerCheckService;
+use Fisharebest\Webtrees\Tests\TestCase;
+use LogicException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Component\Clock\Clock;
 
 #[CoversClass(ReadConfigIni::class)]
 class ReadConfigIniTest extends TestCase
 {
-    public function testClass(): void
+    public function testMissingBaseUrlThrowsException(): void
     {
-        self::assertTrue(class_exists(ReadConfigIni::class));
+        $uri_factory     = Registry::container()->get(UriFactoryInterface::class);
+        $uri             = $uri_factory->createUri('https://example.com/');
+        $request_factory = Registry::container()->get(ServerRequestFactoryInterface::class);
+        $request         = $request_factory->createServerRequest('GET', $uri);
+        $handler         = self::createStub(RequestHandlerInterface::class);
+        $setup_wizard    = Registry::container()->get(SetupWizard::class);
+        $middleware      = new ReadConfigIni($setup_wizard);
+
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('data/config.ini.php does not define base_url');
+
+        $middleware->process($request, $handler);
     }
 }
