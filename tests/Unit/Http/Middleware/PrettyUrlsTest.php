@@ -30,15 +30,15 @@ class PrettyUrlsTest extends TestCase
             ->expects($this->once())
             ->method('handle')
             ->with(
-                $this->callback(function (
+                self::callback(function (
                     ServerRequestInterface $request
                 ) {
-                    $this->assertSame('/foo/bar', $request->getUri()->getPath());
+                    self::assertSame('/foo/bar', $request->getUri()->getPath());
 
                     return true;
                 })
             )
-            ->willReturn($this->createStub(ResponseInterface::class));
+            ->willReturn(self::createStub(ResponseInterface::class));
 
         $middleware = new PrettyUrls();
         $middleware->process($request, $handler);
@@ -50,12 +50,12 @@ class PrettyUrlsTest extends TestCase
         $uri             = $uri_factory->createUri('https://example.com/foo/index.php?route=/foo/bar');
         $request_factory = Registry::container()->get(ServerRequestFactoryInterface::class);
         $request         = $request_factory->createServerRequest('GET', $uri)->withAttribute('rewrite_urls', '1');
-        $handler         = $this->createStub(RequestHandlerInterface::class);
+        $handler         = self::createStub(RequestHandlerInterface::class);
         $middleware      = new PrettyUrls();
         $response        = $middleware->process($request, $handler);
 
-        $this->assertSame(HttpStatusCode::PermanentRedirect->value, $response->getStatusCode());
-        $this->assertSame('https://example.com/foo/bar', $response->getHeaderLine('Location'));
+        self::assertSame(HttpStatusCode::PermanentRedirect->value, $response->getStatusCode());
+        self::assertSame('https://example.com/foo/bar', $response->getHeaderLine('Location'));
     }
 
     public function testRouteParameterShouldBeFirst(): void
@@ -64,7 +64,7 @@ class PrettyUrlsTest extends TestCase
         $uri             = $uri_factory->createUri('https://example.com/foo/index.php?foo=bar&route=/bar/baz');
         $request_factory = Registry::container()->get(ServerRequestFactoryInterface::class);
         $request         = $request_factory->createServerRequest('GET', $uri);
-        $handler         = $this->createStub(RequestHandlerInterface::class);
+        $handler         = self::createStub(RequestHandlerInterface::class);
         $middleware      = new PrettyUrls();
 
         $this->expectException(HttpBadRequestException::class);
@@ -83,15 +83,15 @@ class PrettyUrlsTest extends TestCase
             ->expects($this->once())
             ->method('handle')
             ->with(
-                $this->callback(function (
+                self::callback(function (
                     ServerRequestInterface $request
                 ) {
-                    $this->assertSame('/foo/', $request->getUri()->getPath());
+                    self::assertSame('/foo/', $request->getUri()->getPath());
 
                     return true;
                 })
             )
-            ->willReturn($this->createStub(ResponseInterface::class));
+            ->willReturn(self::createStub(ResponseInterface::class));
 
         $middleware = new PrettyUrls();
         $middleware->process($request, $handler);
@@ -108,15 +108,15 @@ class PrettyUrlsTest extends TestCase
             ->expects($this->once())
             ->method('handle')
             ->with(
-                $this->callback(function (
+                self::callback(function (
                     ServerRequestInterface $request
                 ) {
-                    $this->assertSame('/foo', $request->getUri()->getPath());
+                    self::assertSame('/foo', $request->getUri()->getPath());
 
                     return true;
                 })
             )
-            ->willReturn($this->createStub(ResponseInterface::class));
+            ->willReturn(self::createStub(ResponseInterface::class));
 
         $middleware = new PrettyUrls();
         $middleware->process($request, $handler);
@@ -133,15 +133,15 @@ class PrettyUrlsTest extends TestCase
             ->expects($this->once())
             ->method('handle')
             ->with(
-                $this->callback(function (
+                self::callback(function (
                     ServerRequestInterface $request
                 ) {
-                    $this->assertSame('https://example.com/foo', $request->getUri()->__toString());
+                    self::assertSame('https://example.com/foo', $request->getUri()->__toString());
 
                     return true;
                 })
             )
-            ->willReturn($this->createStub(ResponseInterface::class));
+            ->willReturn(self::createStub(ResponseInterface::class));
 
         $middleware = new PrettyUrls();
         $middleware->process($request, $handler);
@@ -158,15 +158,15 @@ class PrettyUrlsTest extends TestCase
             ->expects($this->once())
             ->method('handle')
             ->with(
-                $this->callback(function (
+                self::callback(function (
                     ServerRequestInterface $r
                 ) use ($request) {
-                    $this->assertSame($request, $r);
+                    self::assertSame($request, $r);
 
                     return true;
                 })
             )
-            ->willReturn($this->createStub(ResponseInterface::class));
+            ->willReturn(self::createStub(ResponseInterface::class));
 
         $middleware = new PrettyUrls();
         $middleware->process($request, $handler);
