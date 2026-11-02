@@ -30,5 +30,9 @@ use Fisharebest\Webtrees\I18N;
         </h1>
 
         <?= $content ?>
+
+        <script>
+            <?= file_get_contents(__DIR__ . '/../../../public/js/setup.min.js') ?>
+        </script>
     </body>
 </html>
