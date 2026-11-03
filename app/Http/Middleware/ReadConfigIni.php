@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
 use Fisharebest\Webtrees\Webtrees;
+use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -45,6 +46,11 @@ class ReadConfigIni implements MiddlewareInterface
             // Store the configuration settings as request attributes.
             foreach ($config as $key => $value) {
                 $request = $request->withAttribute($key, $value);
+            }
+
+            $base_url = (string) $request->getAttribute('base_url');
+            if ($base_url === '') {
+                throw new LogicException('data/config.ini.php does not define base_url');
             }
         } else {
             // No configuration file? Run the setup wizard to create one.

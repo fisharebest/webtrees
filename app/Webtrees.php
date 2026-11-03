@@ -158,7 +158,6 @@ class Webtrees
         EmitResponse::class,
         HandleBootstrapExceptions::class,
         ReadConfigIni::class,
-        BaseUrl::class,
         PrettyUrls::class,
         SecurityHeaders::class,
         PublicFiles::class,

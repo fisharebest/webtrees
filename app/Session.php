@@ -62,7 +62,6 @@ class Session
 
         $url    = Validator::attributes($request)->string('base_url');
         $secure = parse_url($url, PHP_URL_SCHEME) === 'https';
-        $domain = (string) parse_url($url, PHP_URL_HOST);
         $path   = (string) parse_url($url, PHP_URL_PATH);
 
         // Paths containing UTF-8 characters need special handling.
@@ -73,7 +72,6 @@ class Session
         session_set_cookie_params([
             'lifetime' => 0,
             'path'     => $path . '/',
-            'domain'   => $domain,
             'secure'   => $secure,
             'httponly' => true,
             'samesite' => 'Lax',
