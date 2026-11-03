@@ -202,7 +202,13 @@ class VendorModuleServiceTest extends TestCase
             return;
         }
 
-        foreach (scandir($directory) ?: [] as $entry) {
+        $entries = scandir($directory);
+
+        if ($entries === false) {
+            return;
+        }
+
+        foreach ($entries as $entry) {
             if ($entry === '.' || $entry === '..') {
                 continue;
             }
