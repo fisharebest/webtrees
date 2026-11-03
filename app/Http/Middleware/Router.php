@@ -19,9 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\NotFound;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\MiddlewarePipeline;
 use Fisharebest\Webtrees\Http\Routing\Route;
 use Fisharebest\Webtrees\Http\Routing\RouteCollection;
@@ -30,14 +28,15 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function explode;
-use function str_contains;
+use function is_string;
+use function strlen;
+
+use const PHP_URL_PATH;
 
 readonly class Router implements MiddlewareInterface
 {
@@ -50,25 +49,7 @@ readonly class Router implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Ugly URLs store the path in a query parameter.
-        $url_route = Validator::queryParams($request)->string('route', '');
-
-        if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
-            // We are creating pretty URLs, but received an ugly one. Probably a search-engine. Redirect it.
-            if ($url_route !== '') {
-                $uri = $request->getUri()
-                    ->withPath($url_route)
-                    ->withQuery(explode('&', $request->getUri()->getQuery(), 2)[1] ?? '');
-
-                return Registry::responseFactory()
-                    ->redirectUrl($uri, HttpStatusCode::PermanentRedirect)
-                    ->withHeader('Link', '<' . $uri . '>; rel="canonical"');
-            }
-
-            $path = $request->getUri()->getPath();
-        } else {
-            $path = $url_route;
-        }
+        $path = $request->getUri()->getPath();
 
         // Strip the base path prefix — the Router expects route-relative paths.
         $base_url  = $request->getAttribute('base_url');
@@ -76,7 +57,6 @@ readonly class Router implements MiddlewareInterface
         $base_path = is_string($base_path) ? $base_path : '';
 
         if (str_starts_with($path, $base_path)) {
-            // The URL path should always start with the path in the base URL.
             $path = substr($path, strlen($base_path));
         }
 
