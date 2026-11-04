@@ -9130,7 +9130,7 @@ msgstr "Anekart"
 #: app/Module/PedigreeMapModule.php
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "%s's anekart"
+msgstr "Anekart for %s"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php
