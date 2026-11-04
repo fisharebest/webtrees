@@ -17,6 +17,9 @@ declare(strict_types=1);
 # CAUTION!  This robots.txt needs to be copied to the root folder.
 <?php endif ?>
 
+User-Agent: __usage_ai-training
+Disallow: /
+
 <?php foreach ($bad_user_agents as $bad_user_agent) : ?>
 User-agent: <?= $bad_user_agent ?>
 
