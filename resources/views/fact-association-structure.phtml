@@ -95,8 +95,20 @@ foreach ($amatches as $amatch) {
 
         $asso  = I18N::translate('%1$s: %2$s', $label, $value);
     } elseif ($amatch[2] === 'VOID') {
-        $label = '<span class="label">' . I18N::translate('Associate') . '</span>';
-        $value = I18N::translate('Not recorded');
+        // An associate without a record may have a name (PHRASE) and a role (RELA or ROLE)
+        if (preg_match('/\n3 (RELA|ROLE) (.+)/', $amatch[3], $rmatch) === 1) {
+            $label = Registry::elementFactory()->make($fact->tag() . ':' . $amatch[1] . ':' . $rmatch[1])->value($rmatch[2], $parent->tree());
+        } else {
+            $label = I18N::translate('Associate');
+        }
+
+        if (preg_match('/\n3 PHRASE (.+)/', $amatch[3], $pmatch) === 1) {
+            $value = '<span class="field" dir="auto">' . e($pmatch[1]) . '</span>';
+        } else {
+            $value = I18N::translate('Not recorded');
+        }
+
+        $label = '<span class="label">' . $label . '</span>';
         $asso  = I18N::translate('%1$s: %2$s', $label, $value);
     } elseif (Auth::isEditor($fact->record()->tree())) {
         $label = '<span class="label">' . I18N::translate('Associate') . '</span>';
