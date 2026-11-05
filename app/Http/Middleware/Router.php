@@ -60,6 +60,11 @@ readonly class Router implements MiddlewareInterface
             $path = substr($path, strlen($base_path));
         }
 
+        // A request for index.php without a route, or for the base path itself, is the home page.
+        if ($path === '') {
+            $path = '/';
+        }
+
         // Match the request to a route.
         $matcher = new RouteMatcher($this->route_collection, Registry::container());
         $result  = $matcher->match($path);
