@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Enums\ExifOrientation;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Exceptions\ImageException;
+use Fisharebest\Webtrees\MediaCrop;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Webtrees;
@@ -186,6 +187,7 @@ readonly class ImageFactory implements ImageFactoryInterface
         int $height,
         ImageOperation $operation,
         bool $add_watermark,
+        MediaCrop|null $crop = null,
     ): string {
         $filesystem = $media_file->media()->tree()->mediaFilesystem();
         $path       = $media_file->filename();
@@ -193,6 +195,11 @@ readonly class ImageFactory implements ImageFactoryInterface
         $binary     = $this->readFile($filesystem, $path, $filename);
         $image      = $this->decodeImage(binary: $binary, filename: $filename);
         $image      = $this->autoRotateImage(image: $image, binary: $binary, filename: $filename);
+
+        if ($crop !== null) {
+            $image = $this->cropImage(image: $image, crop: $crop);
+        }
+
         $image      = $this->resizeImage(image: $image, width: $width, height: $height, operation: $operation, filename: $filename);
         $mime_type  = $media_file->mimeType();
 
@@ -493,6 +500,30 @@ readonly class ImageFactory implements ImageFactoryInterface
                 error: 'Unable to resize image: ' . $exception->getMessage(),
             );
         }
+    }
+
+    /**
+     * Keep only part of an image, such as one face in a group photo.
+     * A crop outside the image is limited to its edges.
+     */
+    private function cropImage(GdImage $image, MediaCrop $crop): GdImage
+    {
+        $image_width  = imagesx($image);
+        $image_height = imagesy($image);
+        $left         = min($crop->left, $image_width - 1);
+        $top          = min($crop->top, $image_height - 1);
+        $width        = min($crop->width ?? $image_width, $image_width - $left);
+        $height       = min($crop->height ?? $image_height, $image_height - $top);
+
+        if ($width < 1 || $height < 1) {
+            return $image;
+        }
+
+        $target = $this->createCanvas(width: $width, height: $height);
+
+        imagecopy($target, $image, 0, 0, $left, $top, $width, $height);
+
+        return $target;
     }
 
     private function cropToFit(GdImage $image, int $width, int $height): GdImage
