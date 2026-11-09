@@ -259,7 +259,7 @@ final readonly class NorwegianBokmal extends AbstractLanguage
         return $this->gen(($n > 2 ? ($n - 2) . 'x tippolde' : str_repeat('tipp', $n - 1) . 'olde') . $suffix);
     }
 
-	/**
+    /**
      * @return array<Relationship>
      */
     public function relationships(): array
