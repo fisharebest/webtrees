@@ -33,40 +33,45 @@ class SeedDefaultResnTable implements SeedInterface
     {
         // Set default privacy settings for new trees
         DB::identityInsert(table: 'default_resn', callback: static function (): void {
-            DB::query(table: 'default_resn')->upsert([
+            DB::query(table: 'default_resn')->insertOrUpdate([
                 'default_resn_id' => 1,
-                'gedcom_id'       => -1,
-                'tag_type'        => 'SSN',
-                'resn'            => 'confidential',
-            ], ['default_resn_id'], ['resn']);
+            ], [
+                'gedcom_id' => -1,
+                'tag_type'  => 'SSN',
+                'resn'      => 'confidential',
+            ], ['resn' => 'confidential']);
 
-            DB::query(table: 'default_resn')->upsert([
+            DB::query(table: 'default_resn')->insertOrUpdate([
                 'default_resn_id' => 2,
-                'gedcom_id'       => -1,
-                'tag_type'        => 'SOUR',
-                'resn'            => 'privacy',
-            ], ['default_resn_id'], ['resn']);
+            ], [
+                'gedcom_id' => -1,
+                'tag_type'  => 'SOUR',
+                'resn'      => 'privacy',
+            ], ['resn' => 'privacy']);
 
-            DB::query(table: 'default_resn')->upsert([
+            DB::query(table: 'default_resn')->insertOrUpdate([
                 'default_resn_id' => 3,
-                'gedcom_id'       => -1,
-                'tag_type'        => 'REPO',
-                'resn'            => 'privacy',
-            ], ['default_resn_id'], ['resn']);
+            ], [
+                'gedcom_id' => -1,
+                'tag_type'  => 'REPO',
+                'resn'      => 'privacy',
+            ], ['resn' => 'privacy']);
 
-            DB::query(table: 'default_resn')->upsert([
+            DB::query(table: 'default_resn')->insertOrUpdate([
                 'default_resn_id' => 4,
-                'gedcom_id'       => -1,
-                'tag_type'        => 'SUBM',
-                'resn'            => 'confidential',
-            ], ['default_resn_id'], ['resn']);
+            ], [
+                'gedcom_id' => -1,
+                'tag_type'  => 'SUBM',
+                'resn'      => 'confidential',
+            ], ['resn' => 'confidential']);
 
-            DB::query(table: 'default_resn')->upsert([
+            DB::query(table: 'default_resn')->insertOrUpdate([
                 'default_resn_id' => 5,
-                'gedcom_id'       => -1,
-                'tag_type'        => 'SUBN',
-                'resn'            => 'confidential',
-            ], ['default_resn_id'], ['resn']);
+            ], [
+                'gedcom_id' => -1,
+                'tag_type'  => 'SUBN',
+                'resn'      => 'confidential',
+            ], ['resn' => 'confidential']);
         });
     }
 }

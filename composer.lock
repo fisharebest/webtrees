@@ -555,12 +555,12 @@
             "source": {
                 "type": "git",
                 "url": "https://codeberg.org/fisharebest/database.git",
-                "reference": "ef98aef290c6634e8333516090e6f01cf1240e4f"
+                "reference": "d8fa3c3030024a55eb34600a87f816d71ebc489d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://codeberg.org/api/v1/repos/fisharebest/database/archive/ef98aef290c6634e8333516090e6f01cf1240e4f.zip",
-                "reference": "ef98aef290c6634e8333516090e6f01cf1240e4f",
+                "url": "https://codeberg.org/api/v1/repos/fisharebest/database/archive/d8fa3c3030024a55eb34600a87f816d71ebc489d.zip",
+                "reference": "d8fa3c3030024a55eb34600a87f816d71ebc489d",
                 "shasum": ""
             },
             "require": {
@@ -606,7 +606,7 @@
                 "issues": "https://codeberg.org/fisharebest/database/issues",
                 "source": "https://codeberg.org/fisharebest/database/branch/main"
             },
-            "time": "2026-11-12T15:17:10+00:00"
+            "time": "2026-11-13T09:57:03+00:00"
         },
         {
             "name": "fisharebest/ext-calendar",

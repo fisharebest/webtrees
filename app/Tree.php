@@ -154,11 +154,12 @@ class Tree
     public function setPreference(string $setting_name, string $setting_value): self
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
-            DB::query(table: 'gedcom_setting')->upsert([
+            DB::query(table: 'gedcom_setting')->insertOrUpdate([
                 'gedcom_id'    => $this->id,
                 'setting_name' => $setting_name,
+            ], [
                 'setting_value' => $setting_value,
-            ], ['gedcom_id', 'setting_name'], ['setting_value']);
+            ]);
 
             $this->preferences[$setting_name] = $setting_value;
 
@@ -295,12 +296,13 @@ class Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
-            DB::query(table: 'user_gedcom_setting')->upsert([
+            DB::query(table: 'user_gedcom_setting')->insertOrUpdate([
                 'gedcom_id'    => $this->id(),
                 'user_id'      => $user->id(),
                 'setting_name' => $setting_name,
+            ], [
                 'setting_value' => $setting_value,
-            ], ['user_id', 'gedcom_id', 'setting_name'], ['setting_value']);
+            ]);
 
             // Update the cache
             $this->user_preferences[$user->id()][$setting_name] = $setting_value;

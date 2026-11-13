@@ -155,11 +155,12 @@ class User implements UserInterface
     public function setPreference(string $setting_name, string $setting_value): void
     {
         if ($this->getPreference($setting_name) !== $setting_value) {
-            DB::query(table: 'user_setting')->upsert([
+            DB::query(table: 'user_setting')->insertOrUpdate([
                 'user_id'      => $this->user_id,
                 'setting_name' => $setting_name,
+            ], [
                 'setting_value' => $setting_value,
-            ], ['user_id', 'setting_name'], ['setting_value']);
+            ]);
 
             $this->preferences[$setting_name] = $setting_value;
         }

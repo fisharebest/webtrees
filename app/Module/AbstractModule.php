@@ -82,11 +82,12 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
-        DB::query(table: 'block_setting')->upsert([
+        DB::query(table: 'block_setting')->insertOrUpdate([
             'block_id'      => $block_id,
             'setting_name'  => $setting_name,
+        ], [
             'setting_value' => $setting_value,
-        ], ['block_id', 'setting_name'], ['setting_value']);
+        ]);
 
         return $this;
     }
@@ -150,11 +151,12 @@ abstract class AbstractModule implements ModuleInterface
      */
     final public function setPreference(string $setting_name, string $setting_value): void
     {
-        DB::query(table: 'module_setting')->upsert([
+        DB::query(table: 'module_setting')->insertOrUpdate([
             'module_name'  => $this->name(),
             'setting_name' => $setting_name,
+        ], [
             'setting_value' => $setting_value,
-        ], ['module_name', 'setting_name'], ['setting_value']);
+        ]);
     }
 
     /**

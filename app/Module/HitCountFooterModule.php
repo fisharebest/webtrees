@@ -149,21 +149,22 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
             return (int) Session::get('last_count');
         }
 
+        DB::query(table: 'hit_counter')->insertOrUpdate([
+            'gedcom_id'      => $tree->id(),
+            'page_name'      => $page,
+            'page_parameter' => $parameter,
+        ], [
+            'page_count' => 1,
+        ], [
+            'page_count' => DB::raw('page_count + 1'),
+        ]);
+
         $count = (int) DB::query()
             ->from('hit_counter')
             ->whereEqual('gedcom_id', $tree->id())
             ->whereEqual('page_name', $page)
             ->whereEqual('page_parameter', $parameter)
             ->value('page_count');
-
-        $count++;
-
-        DB::query(table: 'hit_counter')->upsert([
-            'gedcom_id'      => $tree->id(),
-            'page_name'      => $page,
-            'page_parameter' => $parameter,
-            'page_count' => $count,
-        ], ['gedcom_id', 'page_name', 'page_parameter'], ['page_count']);
 
         Session::put('last_gedcom_id', $tree->id());
         Session::put('last_page_name', $page);

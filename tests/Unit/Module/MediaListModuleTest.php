@@ -77,11 +77,12 @@ class MediaListModuleTest extends TestCase
                 'descriptive_title'    => $title,
             ]);
 
-            DB::query(table: 'media')->upsert([
+            DB::query(table: 'media')->insertOrUpdate([
                 'm_id'     => $xref,
                 'm_file'   => $tree_id,
+            ], [
                 'm_gedcom' => "0 @$xref@ OBJE\n1 FILE $path\n2 FORM jpg\n2 TITL $title",
-            ], ['m_id', 'm_file'], ['m_gedcom']);
+            ]);
         }
 
         self::assertFalse($module->listIsEmpty($tree));

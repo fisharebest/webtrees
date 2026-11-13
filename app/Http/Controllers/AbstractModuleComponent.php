@@ -126,12 +126,13 @@ abstract class AbstractModuleComponent
                 $access_level = AccessLevel::from(Validator::parsedBody($request)->integer($key));
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
-                    DB::query(table: 'module_privacy')->upsert([
+                    DB::query(table: 'module_privacy')->insertOrUpdate([
                         'module_name' => $module->name(),
                         'gedcom_id'   => $tree->id(),
                         'interface'   => $interface,
+                    ], [
                         'access_level' => $access_level->value,
-                    ], ['module_name', 'gedcom_id', 'interface'], ['access_level']);
+                    ]);
                 }
             }
         }

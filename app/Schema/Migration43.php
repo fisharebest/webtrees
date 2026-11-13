@@ -36,9 +36,10 @@ class Migration43 implements MigrationInterface
             ->value('setting_value');
 
         // Now it is a site-setting.
-        DB::query(table: 'site_setting')->upsert([
+        DB::query(table: 'site_setting')->insertOrUpdate([
             'setting_name' => 'LANGUAGE',
+        ], [
             'setting_value' => $language ?? 'en-US',
-        ], ['setting_name'], ['setting_value']);
+        ]);
     }
 }
