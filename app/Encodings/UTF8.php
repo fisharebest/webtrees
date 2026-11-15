@@ -510,6 +510,12 @@ class UTF8 extends AbstractEncoding
     public const string ARABIC_LETTER_ALEF_MAKSURA                            = "\u{0649}";
     public const string ARABIC_LETTER_YEH                                     = "\u{064A}";
     public const string ARABIC_LETTER_ALEF_WASLA                              = "\u{0671}";
+    public const string ARABIC_LETTER_PEH                                     = "\u{067E}";
+    public const string ARABIC_LETTER_TCHEH                                   = "\u{0686}";
+    public const string ARABIC_LETTER_JEH                                     = "\u{0698}";
+    public const string ARABIC_LETTER_KEHEH                                   = "\u{06A9}";
+    public const string ARABIC_LETTER_GAF                                     = "\u{06AF}";
+    public const string ARABIC_LETTER_FARSI_YEH                               = "\u{06CC}";
     public const string ARABIC_PERCENT_SIGN                                   = "\u{066A}";
     public const string ARABIC_DECIMAL_SEPARATOR                              = "\u{066B}";
     public const string ARABIC_THOUSANDS_SEPARATOR                            = "\u{066C}";
