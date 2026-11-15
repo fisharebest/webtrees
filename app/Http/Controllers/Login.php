@@ -57,8 +57,9 @@ final class Login
         #[SensitiveParameter] string $username = '',
         string $url = '',
     ): ResponseInterface {
-        $this->validate->localUrl($url, 'url');
-
+        if ($url !== '') {
+            $this->validate->localUrl($url, 'url');
+        }
         $title = I18N::translate('Sign in');
 
         switch (Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
