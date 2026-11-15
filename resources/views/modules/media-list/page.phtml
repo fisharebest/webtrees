@@ -99,14 +99,14 @@ use Illuminate\Support\Collection;
     <?php if ($media_objects->isNotEmpty()) : ?>
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
             <?php foreach ($media_objects as $media_object) : ?>
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-header">
-                            <h4 class="card-title">
+                            <h3 class="card-title fs-6">
                                 <a href="<?= e($media_object->url()) ?>"><?= $media_object->fullName() ?></a>
-                            </h4>
+                            </h3>
                         </div>
                         <div class="card-body">
                             <?php foreach ($media_object->mediaFiles() as $media_file) : ?>

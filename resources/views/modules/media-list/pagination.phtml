@@ -20,8 +20,8 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<nav aria-label="<?= I18N::translate('Pagination') ?>">
-<div class="row text-center">
+<nav class="my-3" aria-label="<?= I18N::translate('Pagination') ?>">
+<div class="row text-center align-items-center">
     <div class="col">
         <?php if ($page > 1) : ?>
             <a class="btn btn-outline-secondary" href="<?= e($module->listUrl($tree, ['go' => '1', 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'page' => 1])) ?>">
