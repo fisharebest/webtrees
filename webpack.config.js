@@ -28,6 +28,7 @@ module.exports = (env, argv) => ({
       'js/vendor.min': path.resolve(__dirname, 'resources/js/vendor.js'),
       'js/tinymce.min': path.resolve(__dirname, 'resources/js/tinymce.js'),
       'js/administration.min': path.resolve(__dirname, 'resources/js/administration.js'),
+      'js/setup.min': path.resolve(__dirname, 'resources/js/setup.js'),
       'js/webtrees.min': [
         path.resolve(__dirname, 'resources/js/webtrees.js'),
         path.resolve(__dirname, 'resources/js/statistics.js'),
