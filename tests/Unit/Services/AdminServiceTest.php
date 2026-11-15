@@ -19,9 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Illuminate\Database\Capsule\Manager;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -64,6 +68,74 @@ class AdminServiceTest extends TestCase
         self::assertCount(count($initial_xrefs) + 2, $duplicate_xrefs);
         self::assertSame('INDI', $duplicate_xrefs['I1']);
         self::assertSame('SOUR', $duplicate_xrefs['S1']);
+    }
+
+    public function testOnlyPendingChangesContributeToSharedXrefs(): void
+    {
+        self::createDatabase();
+
+        $import_service = new GedcomImportService();
+        $tree_service   = new TreeService($import_service);
+        $first_tree     = $tree_service->create('first', 'First');
+        $second_tree    = $tree_service->create('second', 'Second');
+        $user           = (new UserService(new SystemClock()))
+            ->create('tester', 'Tester', 'tester@example.com', 'secret');
+        $admin_service  = new AdminService();
+        $initial_count  = $admin_service->countCommonXrefs($first_tree, $second_tree);
+
+        $import_service->importRecord("0 @I1@ INDI\n1 NAME First /Person/", $first_tree, true);
+        $import_service->importRecord("0 @S1@ SOUR\n1 TITL Second source", $second_tree, true);
+
+        foreach (
+            [
+                [$first_tree->id(), 'S1', ChangeStatus::Accepted->value],
+                [$first_tree->id(), 'S1', ChangeStatus::Rejected->value],
+                [$second_tree->id(), 'I1', ChangeStatus::Accepted->value],
+                [$second_tree->id(), 'I1', ChangeStatus::Rejected->value],
+            ] as [$tree_id, $xref, $status]
+        ) {
+            DB::query(table: 'change')->insert([
+                'gedcom_id'  => $tree_id,
+                'xref'       => $xref,
+                'status'     => $status,
+                'old_gedcom' => '',
+                'new_gedcom' => '0 @' . $xref . '@ INDI',
+                'user_id'    => $user->id(),
+            ]);
+        }
+
+        self::assertSame($initial_count, $admin_service->countCommonXrefs($first_tree, $second_tree));
+
+        foreach (
+            [
+                [$first_tree->id(), 'S1'],
+                [$second_tree->id(), 'I1'],
+            ] as [$tree_id, $xref]
+        ) {
+            DB::query(table: 'change')->insert([
+                'gedcom_id'  => $tree_id,
+                'xref'       => $xref,
+                'status'     => ChangeStatus::Pending->value,
+                'old_gedcom' => '',
+                'new_gedcom' => '0 @' . $xref . '@ INDI',
+                'user_id'    => $user->id(),
+            ]);
+        }
+
+        self::assertSame($initial_count + 2, $admin_service->countCommonXrefs($first_tree, $second_tree));
+
+        foreach ([$first_tree->id(), $second_tree->id()] as $tree_id) {
+            DB::query(table: 'change')->insert([
+                'gedcom_id'  => $tree_id,
+                'xref'       => 'Z999999',
+                'status'     => ChangeStatus::Pending->value,
+                'old_gedcom' => '',
+                'new_gedcom' => '0 @Z999999@ INDI',
+                'user_id'    => $user->id(),
+            ]);
+        }
+
+        self::assertSame($initial_count + 3, $admin_service->countCommonXrefs($first_tree, $second_tree));
     }
 
     public function testFindsDuplicateRecordsWithinOneTree(): void
