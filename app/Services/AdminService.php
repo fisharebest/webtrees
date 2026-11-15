@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
@@ -60,6 +61,7 @@ class AdminService
             ->select('xref AS xref1')
             ->from('change')
             ->whereEqual('gedcom_id', $tree1->id())
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->union(DB::query()
                 ->select('i_id AS xref')
                 ->from('individuals')
@@ -86,6 +88,7 @@ class AdminService
             ->select('xref AS xref2')
             ->from('change')
             ->whereEqual('gedcom_id', $tree2->id())
+            ->whereEqual('status', ChangeStatus::Pending->value)
             ->union(DB::query()
                 ->select('i_id AS xref')
                 ->from('individuals')
