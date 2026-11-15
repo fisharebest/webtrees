@@ -19,14 +19,96 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Census\CensusOfUnitedStates1790;
+use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CensusAssistantModule::class)]
 class CensusAssistantModuleTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(CensusAssistantModule::class));
+    }
+
+    public function testPostCensusHeaderAcceptsOfferedCensus(): void
+    {
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST)->withParsedBody([
+            'census' => CensusOfUnitedStates1790::class,
+        ]);
+
+        $response = (new CensusAssistantModule())->postCensusHeaderAction($request);
+
+        self::assertStringContainsString('wt-census-assistant-row', (string) $response->getBody());
+    }
+
+    public function testPostCensusHeaderRejectsNonCensusClass(): void
+    {
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, params: [
+            'census' => CacheFactory::class,
+        ]);
+
+        $this->expectException(HttpBadRequestException::class);
+
+        (new CensusAssistantModule())->postCensusHeaderAction($request);
+    }
+
+    public function testPostCensusHeaderRejectsUnknownClass(): void
+    {
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, params: [
+            'census' => 'NonexistentCensus',
+        ]);
+
+        $this->expectException(HttpBadRequestException::class);
+
+        (new CensusAssistantModule())->postCensusHeaderAction($request);
+    }
+
+    public function testPostCensusIndividualAcceptsOfferedCensus(): void
+    {
+        $tree = (new TreeService(new GedcomImportService()))->create('test-tree', 'Test tree');
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, params: [
+            'census' => CensusOfUnitedStates1790::class,
+        ], attributes: ['tree' => $tree]);
+
+        $response = (new CensusAssistantModule())->postCensusIndividualAction($request);
+
+        self::assertStringContainsString('wt-census-assistant-row', (string) $response->getBody());
+    }
+
+    public function testPostCensusIndividualRejectsNonCensusClass(): void
+    {
+        $tree = (new TreeService(new GedcomImportService()))->create('test-tree', 'Test tree');
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST, params: [
+            'census' => CacheFactory::class,
+        ], attributes: ['tree' => $tree]);
+
+        $this->expectException(HttpBadRequestException::class);
+
+        (new CensusAssistantModule())->postCensusIndividualAction($request);
+    }
+
+    public function testUpdateCensusAssistantRejectsNonCensusClass(): void
+    {
+        $request = self::createRequest(RequestMethodInterface::METHOD_POST)->withParsedBody([
+            'ca_title'       => '',
+            'ca_place'       => '',
+            'ca_citation'    => '',
+            'ca_individuals' => ['xref' => []],
+            'ca_notes'       => '',
+            'ca_census'      => CacheFactory::class,
+        ]);
+
+        $this->expectException(HttpBadRequestException::class);
+
+        (new CensusAssistantModule())->updateCensusAssistant($request, self::createStub(Individual::class), '', '', false);
     }
 }
