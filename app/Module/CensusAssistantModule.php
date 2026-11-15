@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Census\CensusInterface;
+use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -30,6 +32,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function array_keys;
 use function count;
 use function e;
+use function get_class;
 use function response;
 use function str_repeat;
 use function str_replace;
@@ -53,7 +56,7 @@ class CensusAssistantModule extends AbstractModule
     {
         $census_class = Validator::parsedBody($request)->string('census');
 
-        $html = $this->censusTableHeader(new $census_class());
+        $html = $this->censusTableHeader($this->census($census_class));
 
         return response($html);
     }
@@ -66,7 +69,7 @@ class CensusAssistantModule extends AbstractModule
         $individual   = Registry::individualFactory()->make($indi_xref, $tree);
         $head         = Registry::individualFactory()->make($head_xref, $tree);
         $census_class = Validator::parsedBody($request)->string('census');
-        $census       = new $census_class();
+        $census       = $this->census($census_class);
 
         // Generate columns (e.g. relationship name) using the correct language.
         I18N::init($census->censusLanguage());
@@ -100,7 +103,7 @@ class CensusAssistantModule extends AbstractModule
         $ca_census      = Validator::parsedBody($request)->string('ca_census');
 
         if ($ca_census !== '' && $ca_individuals !== []) {
-            $census = new $ca_census();
+            $census = $this->census($ca_census);
 
             $note_text   = $this->createNoteText($census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes);
             $note_gedcom = '0 @@ NOTE ' . str_replace("\n", "\n1 CONT ", $note_text);
@@ -118,6 +121,19 @@ class CensusAssistantModule extends AbstractModule
         }
 
         return $newged;
+    }
+
+    private function census(string $census_class): CensusInterface
+    {
+        foreach (Census::censusPlaces(I18N::languageTag()) as $census_place) {
+            foreach ($census_place->allCensusDates() as $census) {
+                if (get_class($census) === $census_class) {
+                    return $census;
+                }
+            }
+        }
+
+        throw new HttpBadRequestException('Invalid census');
     }
 
     /**
