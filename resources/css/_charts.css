@@ -26,6 +26,18 @@
 @import "_chart-statistics.css";
 @import "_chart-timeline.css";
 
+/* Some charts are wider than the page. */
+.wt-chart {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+@media print {
+    .wt-chart {
+        overflow: visible;
+    }
+}
+
 /* Lines for "vertical" charts, such as the ancestors and descendants chart. */
 .wt-chart-horizontal-indent {
     width: 3rem;

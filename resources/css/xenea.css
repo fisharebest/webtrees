@@ -1368,12 +1368,6 @@ a > .wt-icon-arrow-up:hover {
     overflow: auto;
 }
 
-/* Some charts are wider than the page. */
-.wt-chart {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
 /* Forms */
 .col-form-label {
     font-weight: bold;

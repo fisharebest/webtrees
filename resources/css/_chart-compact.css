@@ -19,10 +19,6 @@
  * wt-chart, wt-chart-compact
  * +---- wt-chart-compact-table
  */
-.wt-chart.wt-chart-compact {
-    overflow-x: inherit;
-}
-
 .wt-chart-compact .wt-chart-box {
     min-width: 5rem;
 }
