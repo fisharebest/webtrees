@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaCrop;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Tests\TestCase;
@@ -33,6 +34,9 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function dirname;
+use function imagecreatefromstring;
+use function imagesx;
+use function imagesy;
 
 #[CoversClass(ImageFactory::class)]
 class ImageFactoryTest extends TestCase
@@ -170,6 +174,85 @@ class ImageFactoryTest extends TestCase
         );
 
         self::assertNotSame('', $thumbnail);
+    }
+
+    public function testHappyPathMediaFileThumbnailShowsOnlyTheCroppedPart(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->mediaFilesystem();
+        $media_file    = $this->createMediaFileStub(
+            filesystem: $filesystem,
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $thumbnail = $image_factory->mediaFileThumbnail(
+            media_file: $media_file,
+            width: 100,
+            height: 100,
+            operation: ImageOperation::Contain,
+            add_watermark: false,
+            crop: new MediaCrop(top: 10, left: 20, height: 30, width: 50),
+        );
+
+        $image = imagecreatefromstring($thumbnail);
+
+        self::assertNotFalse($image);
+        self::assertSame(100, imagesx($image));
+        self::assertSame(60, imagesy($image));
+    }
+
+    public function testGuardrailMediaFileThumbnailLimitsCropToTheImage(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $filesystem    = $this->mediaFilesystem();
+        $media_file    = $this->createMediaFileStub(
+            filesystem: $filesystem,
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $thumbnail = $image_factory->mediaFileThumbnail(
+            media_file: $media_file,
+            width: 100,
+            height: 100,
+            operation: ImageOperation::Contain,
+            add_watermark: false,
+            crop: new MediaCrop(top: 0, left: 150, height: null, width: 1000),
+        );
+
+        $image = imagecreatefromstring($thumbnail);
+
+        self::assertNotFalse($image);
+        self::assertLessThan(100, imagesx($image));
+    }
+
+    public function testGuardrailMediaFileThumbnailIgnoresAnEmptyCrop(): void
+    {
+        $image_factory = new ImageFactory(new PhpService());
+        $media_file    = $this->createMediaFileStub(
+            filesystem: $this->mediaFilesystem(),
+            filename: 'Elizabeth_II.jpg',
+            mime_type: 'image/jpeg',
+            is_image: true,
+        );
+
+        $thumbnail = $image_factory->mediaFileThumbnail(
+            media_file: $media_file,
+            width: 100,
+            height: 100,
+            operation: ImageOperation::Contain,
+            add_watermark: false,
+            crop: new MediaCrop(top: 0, left: 0, height: 0, width: 0),
+        );
+
+        $image = imagecreatefromstring($thumbnail);
+
+        self::assertNotFalse($image);
+        // The whole portrait, as without a crop: taller than wide.
+        self::assertLessThan(imagesy($image), imagesx($image));
     }
 
     // Guardrails and failure handling.

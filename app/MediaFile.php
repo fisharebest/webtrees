@@ -153,18 +153,19 @@ class MediaFile
      * @param int                  $height           Pixels
      * @param string               $fit              "crop" or "contain"
      * @param array<string,string> $image_attributes Additional HTML attributes
+     * @param MediaCrop|null       $crop             Show only this part of the image
      */
-    public function displayImage(int $width, int $height, string $fit, array $image_attributes = []): string
+    public function displayImage(int $width, int $height, string $fit, array $image_attributes = [], MediaCrop|null $crop = null): string
     {
         if ($this->isExternal()) {
             $src    = $this->multimedia_file_refn;
             $srcset = [];
         } else {
             // Generate multiple images for displays with higher pixel densities.
-            $src    = $this->imageUrl($width, $height, $fit);
+            $src    = $this->imageUrl($width, $height, $fit, $crop);
             $srcset = [];
             foreach ([2, 3, 4] as $x) {
-                $srcset[] = $this->imageUrl($width * $x, $height * $x, $fit) . ' ' . $x . 'x';
+                $srcset[] = $this->imageUrl($width * $x, $height * $x, $fit, $crop) . ' ' . $x . 'x';
             }
         }
 
@@ -206,9 +207,10 @@ class MediaFile
      *
      * @param int    $width  Maximum width in pixels
      * @param int    $height Maximum height in pixels
-     * @param string $fit    "crop" or "contain"
+     * @param string         $fit    "crop" or "contain"
+     * @param MediaCrop|null $crop   Show only this part of the image
      */
-    public function imageUrl(int $width, int $height, string $fit): string
+    public function imageUrl(int $width, int $height, string $fit, MediaCrop|null $crop = null): string
     {
         // Sign the URL, to protect against mass-resize attacks.
         $glide_key = Site::getPreference('glide-key');
@@ -228,6 +230,10 @@ class MediaFile
             'fit'       => $fit,
             'mark'      => Auth::needsWatermark($this->media->tree()),
         ];
+
+        if ($crop !== null) {
+            $params['crop'] = $crop->toString();
+        }
 
         $params['s'] = $this->signature($params);
 

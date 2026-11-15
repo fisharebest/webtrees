@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Exceptions\ImageException;
+use Fisharebest\Webtrees\MediaCrop;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -91,6 +92,7 @@ final class MediaFileThumbnail
 
                 $width         = (int) $params['w'];
                 $height        = (int) $params['h'];
+                $crop          = MediaCrop::fromString($params['crop'] ?? '');
                 $add_watermark = Auth::needsWatermark($media_file->media()->tree(), $this->user);
                 $path          = $media_file->filename();
                 $filesystem    = $media_file->media()->tree()->mediaFilesystem();
@@ -112,6 +114,7 @@ final class MediaFileThumbnail
                     (string) $height,
                     $operation->value,
                     (string) $add_watermark,
+                    $crop?->toString() ?? '',
                 ]);
 
                 $thumbnail = Registry::cache()->file()->remember(
@@ -122,6 +125,7 @@ final class MediaFileThumbnail
                         height: $height,
                         operation: $operation,
                         add_watermark: $add_watermark,
+                        crop: $crop,
                     ),
                     ttl: self::THUMBNAIL_CACHE_TTL,
                 );

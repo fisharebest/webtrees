@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\Enums\ImageOperation;
+use Fisharebest\Webtrees\MediaCrop;
 use Fisharebest\Webtrees\MediaFile;
 use League\Flysystem\FilesystemOperator;
 
@@ -44,6 +45,7 @@ interface ImageFactoryInterface
         int $width,
         int $height,
         ImageOperation $operation,
-        bool $add_watermark
+        bool $add_watermark,
+        MediaCrop|null $crop = null
     ): string;
 }

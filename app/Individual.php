@@ -285,18 +285,26 @@ class Individual extends GedcomRecord
      */
     public function findHighlightedMediaFile(): MediaFile|null
     {
-        $fact = $this->facts(['OBJE'])
-            ->first(static function (Fact $fact): bool {
-                $media = $fact->target();
-
-                return $media instanceof Media && $media->firstImageFile() instanceof MediaFile;
-            });
+        $fact = $this->findHighlightedMediaLink();
 
         if ($fact instanceof Fact && $fact->target() instanceof Media) {
             return $fact->target()->firstImageFile();
         }
 
         return null;
+    }
+
+    /**
+     * Find the link to the highlighted media object for an individual
+     */
+    private function findHighlightedMediaLink(): Fact|null
+    {
+        return $this->facts(['OBJE'])
+            ->first(static function (Fact $fact): bool {
+                $media = $fact->target();
+
+                return $media instanceof Media && $media->firstImageFile() instanceof MediaFile;
+            });
     }
 
     /**
@@ -310,10 +318,17 @@ class Individual extends GedcomRecord
      */
     public function displayImage(int $width, int $height, string $fit, array $attributes): string
     {
-        $media_file = $this->findHighlightedMediaFile();
+        $fact = $this->findHighlightedMediaLink();
 
-        if ($media_file !== null) {
-            return $media_file->displayImage($width, $height, $fit, $attributes);
+        if ($fact instanceof Fact && $fact->target() instanceof Media) {
+            $media_file = $fact->target()->firstImageFile();
+
+            if ($media_file !== null) {
+                // The link may show only part of the image, such as one face in a group photo.
+                $crop = MediaCrop::fromGedcom($fact->gedcom());
+
+                return $media_file->displayImage($width, $height, $fit, $attributes, $crop);
+            }
         }
 
         if ($this->tree->getPreference('USE_SILHOUETTE') === '1') {
