@@ -51,6 +51,8 @@ if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match) === 1) {
 // Calculated age
 [, $tag] = explode(':', $fact->tag());
 
+$calculate_age = !in_array($tag, ['BIRT', '_CREA', '_TODO', 'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS'], true);
+
 if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
     $date = new Date($match[1]);
     $html .= ' ' . $date->display($cal_link ? $record->tree() : null, null, true);
@@ -69,7 +71,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
             $html .= view('fact-parents-age', ['individual' => $record, 'birth_date' => $date]);
         }
 
-        if ($tag !== 'BIRT') {
+        if ($calculate_age) {
             // age at event
             $birth_date = $record->getBirthDate();
             // Can't use getDeathDate(), as this also gives BURI/CREM events, which
@@ -134,7 +136,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
                 $html .= ' <span class="age">' . $age_text . '</span>';
             }
         }
-    } elseif ($record instanceof Family) {
+    } elseif ($record instanceof Family && $calculate_age) {
         // Calculate ages of both spouses at family events
         $spouses = [
             'husb' => $record->husband(),
