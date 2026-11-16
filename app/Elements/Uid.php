@@ -35,13 +35,8 @@ class Uid extends AbstractElement
 
     public function canonical(string $value): string
     {
-        $value = strtolower(parent::canonical($value));
-
-        if (preg_match('/([0-9a-f]{8})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{12})/', $value, $match) === 1) {
-            return $match[1] . '-' . $match[2] . '-' . $match [3] . '-' . $match[4] . '-' . $match[5];
-        }
-
-        // Do not change or invent identifiers, see #5293.
+        // The GEDCOM spec says:
+        // "it should be used without modification, not even whitespace or letter case normalization."
         return $value;
     }
 
