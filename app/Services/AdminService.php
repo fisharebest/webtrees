@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
@@ -164,6 +165,9 @@ class AdminService
         $families = DB::query()
             ->from('families')
             ->whereEqual('f_file', $tree->id())
+            ->whereNested(static fn (Predicates $p): Predicates => $p
+                ->notEqual('f_husb', '')
+                ->orNotEqual('f_wife', ''))
             ->groupBy(
                 DB::least(DB::column('f_husb'), DB::column('f_wife')),
                 DB::greatest(DB::column('f_husb'), DB::column('f_wife')),
