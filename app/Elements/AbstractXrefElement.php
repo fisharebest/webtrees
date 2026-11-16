@@ -50,6 +50,14 @@ abstract class AbstractXrefElement extends AbstractElement
     }
 
     /**
+     * GEDCOM 7.0 allows a pointer to nothing, e.g. "2 ASSO @VOID@" + "3 PHRASE John Smith".
+     */
+    protected function isVoid(string $value): bool
+    {
+        return $value === '@VOID@';
+    }
+
+    /**
      * Display the value of this type of element - convert XREFs to links.
      */
     protected function valueXrefLink(string $value, Tree $tree, GedcomRecordFactoryInterface $factory): string

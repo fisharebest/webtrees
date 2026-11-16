@@ -145,6 +145,11 @@ class GedcomEditService
             while ($j < $count && $levels[$j] > $levels[$i]) {
                 if ($values[$j] !== '') {
                     $children_with_values = true;
+
+                    // A pointer to nothing, e.g. "2 ASSO @VOID@" + "3 PHRASE John Smith"
+                    if ($element instanceof AbstractXrefElement && $values[$i] === '' && $tags[$j] === 'PHRASE' && (int) $levels[$j] === (int) $levels[$i] + 1) {
+                        $values[$i] = '@VOID@';
+                    }
                 }
                 $j++;
             }

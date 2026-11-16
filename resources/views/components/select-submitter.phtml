@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Http\Controllers\TomSelectSubmitter;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -13,6 +14,7 @@ use Fisharebest\Webtrees\Tree;
  * @var string|null       $id
  * @var string            $name
  * @var Tree              $tree
+ * @var bool|null         $void      Is a pointer to nothing selected? (or unset)
  */
 
 $at = $at ?? '';
@@ -39,4 +41,7 @@ $at = $at ?? '';
     <?php else : ?>
         <option value="">&nbsp;</option>
     <?php endif ?>
+    <option value="@VOID@" <?= ($void ?? false) ? 'selected="selected"' : '' ?>>
+        <?= I18N::translate('Not recorded') ?>
+    </option>
 </select>

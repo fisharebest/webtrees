@@ -215,6 +215,11 @@ final class CheckTree
                         $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag);
                     }
                 } elseif ($element instanceof AbstractXrefElement) {
+                    // GEDCOM 7.0 points to nothing with @VOID@
+                    if ($value === '@VOID@') {
+                        continue;
+                    }
+
                     if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $value, $match) === 1) {
                         $xref1  = $match[1];
                         $xref2  = $xrefs[strtoupper($xref1)] ?? '';
