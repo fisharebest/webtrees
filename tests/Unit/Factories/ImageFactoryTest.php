@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
+use ErrorException;
 use Fisharebest\Webtrees\Enums\ImageOperation;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Factories\ImageFactory;
@@ -33,6 +34,12 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function dirname;
+use function imagecreatetruecolor;
+use function imagepng;
+use function ob_get_clean;
+use function ob_start;
+use function restore_error_handler;
+use function set_error_handler;
 
 #[CoversClass(ImageFactory::class)]
 class ImageFactoryTest extends TestCase
@@ -84,6 +91,38 @@ class ImageFactoryTest extends TestCase
         );
 
         self::assertNotSame('', $thumbnail);
+    }
+
+    public function testHappyPathThumbnailContentsSkipsUnreadableExif(): void
+    {
+        $image      = imagecreatetruecolor(3, 3);
+        $filesystem = self::createStub(FilesystemOperator::class);
+
+        ob_start();
+        imagepng($image);
+        $binary = ob_get_clean();
+        self::assertIsString($binary);
+
+        $filesystem->method('read')->willReturn($binary);
+        $filesystem->method('mimeType')->willReturn('image/png');
+
+        set_error_handler(static function (int $severity, string $message): never {
+            throw new ErrorException($message, 0, $severity);
+        });
+
+        try {
+            $thumbnail = (new ImageFactory(new PhpService()))->thumbnailContents(
+                filesystem: $filesystem,
+                path: 'image.png',
+                width: 3,
+                height: 3,
+                operation: ImageOperation::Contain,
+            );
+        } finally {
+            restore_error_handler();
+        }
+
+        self::assertStringStartsWith("\x89PNG\r\n\x1a\n", $thumbnail);
     }
 
     public function testHappyPathMediaFileContentsReturnsOriginalContentsWhenNoWatermarkRequested(): void
