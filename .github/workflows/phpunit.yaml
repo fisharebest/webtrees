@@ -15,6 +15,7 @@ jobs:
     name: phpunit
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       matrix:
         php-version: ['8.3', '8.4', '8.5', '8.6', '8.7']

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\I18N\Languages;
 use Collator;
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
@@ -285,7 +284,7 @@ abstract readonly class AbstractLanguage implements LanguageInterface
 
         // Hebrew uses Hebrew digits for Hebrew dates.  Normal digits otherwise.
         if ($date instanceof JewishDate && $this->script() === Script::Hebr) {
-            return (new JewishCalendar())->numberToHebrewNumerals($date->day(), true);
+            return Hebrew::numberToHebrewNumerals($date->day(), true);
         }
 
         return $this->digits($date->day());
@@ -367,7 +366,7 @@ abstract readonly class AbstractLanguage implements LanguageInterface
     protected function formatJewishYear(AbstractCalendarDate $date): string
     {
         if ($this->script() === Script::Hebr) {
-            return (new JewishCalendar())->numberToHebrewNumerals($date->year(), true);
+            return Hebrew::numberToHebrewNumerals($date->year(), true);
         }
 
         return $this->digits($date->year());
@@ -377,7 +376,9 @@ abstract readonly class AbstractLanguage implements LanguageInterface
     {
         if ($date->year() < 0) {
             return sprintf(static::ERA_BCE, $this->digits(abs($date->year())));
-        } elseif ($date->new_old_style && $date->year() > 1) {
+        }
+
+        if ($date->new_old_style && $date->year() > 1) {
             $year = sprintf('%d/%02d', $date->year() - 1, $date->year() % 100);
         } else {
             $year = (string) $date->year();

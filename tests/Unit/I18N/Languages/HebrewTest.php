@@ -93,6 +93,31 @@ class HebrewTest extends AbstractLanguageTestCase
         self::assertSame('‎-123,456.0789%', self::language()->percentage(-1234.560789));
     }
 
+    public function testNumberToHebrewNumerals(): void
+    {
+        $examples = [
+            [0, true, ''],
+            [1, true, 'א׳'],
+            [15, true, 'ט״ו'],
+            [16, true, 'ט״ז'],
+            [19, true, 'י״ט'],
+            [20, true, 'כ׳'],
+            [21, true, 'כ״א'],
+            [420, true, 'ת״ך'],
+            [450, true, 'ת״ן'],
+            [480, true, 'ת״ף'],
+            [490, true, 'ת״ץ'],
+            [5000, false, 'ה׳ אלפים'],
+            [5782, true, 'ה׳תשפ״ב'],
+            [5782, false, 'תשפ״ב'],
+            [10000, true, 'י׳ אלפים'],
+        ];
+
+        foreach ($examples as [$number, $show_thousands, $expected]) {
+            self::assertSame($expected, Hebrew::numberToHebrewNumerals($number, $show_thousands));
+        }
+    }
+
     protected static function expectedDateOrder(): string
     {
         return 'DMY';

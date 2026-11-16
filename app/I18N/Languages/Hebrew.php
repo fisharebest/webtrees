@@ -29,6 +29,11 @@ use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Report\PaperSize;
 use Fisharebest\Webtrees\Enums\PluralRule;
 
+use function intdiv;
+use function mb_strlen;
+use function mb_substr;
+use function strtr;
+
 final readonly class Hebrew extends AbstractLanguage
 {
     protected const PluralRule PLURAL_RULE = PluralRule::TwoFormsSingularForOne;
@@ -191,6 +196,53 @@ final readonly class Hebrew extends AbstractLanguage
     /** @var array<int,string> */
     protected const array ALPHABET = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'];
 
+    /** @var array<int,string> */
+    private const array HEBREW_NUMERALS = [
+        400 => UTF8::HEBREW_LETTER_TAV,
+        300 => UTF8::HEBREW_LETTER_SHIN,
+        200 => UTF8::HEBREW_LETTER_RESH,
+        100 => UTF8::HEBREW_LETTER_QOF,
+        90  => UTF8::HEBREW_LETTER_TSADI,
+        80  => UTF8::HEBREW_LETTER_PE,
+        70  => UTF8::HEBREW_LETTER_AYIN,
+        60  => UTF8::HEBREW_LETTER_SAMEKH,
+        50  => UTF8::HEBREW_LETTER_NUN,
+        40  => UTF8::HEBREW_LETTER_MEM,
+        30  => UTF8::HEBREW_LETTER_LAMED,
+        20  => UTF8::HEBREW_LETTER_KAF,
+        19  => UTF8::HEBREW_LETTER_YOD . UTF8::HEBREW_LETTER_TET,
+        18  => UTF8::HEBREW_LETTER_YOD . UTF8::HEBREW_LETTER_HET,
+        17  => UTF8::HEBREW_LETTER_YOD . UTF8::HEBREW_LETTER_ZAYIN,
+        16  => UTF8::HEBREW_LETTER_TET . UTF8::HEBREW_LETTER_ZAYIN,
+        15  => UTF8::HEBREW_LETTER_TET . UTF8::HEBREW_LETTER_VAV,
+        10  => UTF8::HEBREW_LETTER_YOD,
+        9   => UTF8::HEBREW_LETTER_TET,
+        8   => UTF8::HEBREW_LETTER_HET,
+        7   => UTF8::HEBREW_LETTER_ZAYIN,
+        6   => UTF8::HEBREW_LETTER_VAV,
+        5   => UTF8::HEBREW_LETTER_HE,
+        4   => UTF8::HEBREW_LETTER_DALET,
+        3   => UTF8::HEBREW_LETTER_GIMEL,
+        2   => UTF8::HEBREW_LETTER_BET,
+        1   => UTF8::HEBREW_LETTER_ALEF,
+    ];
+
+    /** @var array<string,string> */
+    private const array FINAL_FORMS = [
+        UTF8::HEBREW_LETTER_KAF   => UTF8::HEBREW_LETTER_FINAL_KAF,
+        UTF8::HEBREW_LETTER_MEM   => UTF8::HEBREW_LETTER_FINAL_MEM,
+        UTF8::HEBREW_LETTER_NUN   => UTF8::HEBREW_LETTER_FINAL_NUN,
+        UTF8::HEBREW_LETTER_PE    => UTF8::HEBREW_LETTER_FINAL_PE,
+        UTF8::HEBREW_LETTER_TSADI => UTF8::HEBREW_LETTER_FINAL_TSADI,
+    ];
+
+    private const string THOUSANDS_WORD =
+        UTF8::HEBREW_LETTER_ALEF .
+        UTF8::HEBREW_LETTER_LAMED .
+        UTF8::HEBREW_LETTER_PE .
+        UTF8::HEBREW_LETTER_YOD .
+        UTF8::HEBREW_LETTER_FINAL_MEM;
+
     public function calendar(): CalendarInterface
     {
         return new JewishCalendar();
@@ -199,7 +251,7 @@ final readonly class Hebrew extends AbstractLanguage
     protected function formatJewishYear(AbstractCalendarDate $date): string
     {
         // Hebrew locale traditionally omits the thousands-marker for Jewish years.
-        return (new JewishCalendar())->numberToHebrewNumerals($date->year(), false);
+        return self::numberToHebrewNumerals($date->year(), false);
     }
 
     /**
@@ -215,6 +267,44 @@ final readonly class Hebrew extends AbstractLanguage
     private function he2(string $nom, string $gen): array
     {
         return [$nom, '%s של ה' . $gen];
+    }
+
+    public static function numberToHebrewNumerals(int $number, bool $show_thousands): string
+    {
+        // A multiple of 1000 needs its thousands shown, since the remainder is empty.
+        $thousands = 0;
+        if ($show_thousands || $number % 1000 === 0) {
+            $thousands = intdiv($number, 1000);
+        }
+
+        $number %= 1000;
+        $numerals = '';
+
+        foreach (self::HEBREW_NUMERALS as $value => $letters) {
+            while ($number >= $value) {
+                $numerals .= $letters;
+                $number -= $value;
+            }
+        }
+
+        if (mb_strlen($numerals) === 1) {
+            $numerals .= UTF8::HEBREW_PUNCTUATION_GERESH;
+        } elseif ($numerals !== '') {
+            $last_letter = mb_substr($numerals, -1);
+            $numerals    = mb_substr($numerals, 0, -1) . UTF8::HEBREW_PUNCTUATION_GERSHAYIM . strtr($last_letter, self::FINAL_FORMS);
+        }
+
+        if ($thousands > 0) {
+            $prefix = self::numberToHebrewNumerals($thousands, $show_thousands);
+
+            if ($numerals === '') {
+                return $prefix . ' ' . self::THOUSANDS_WORD;
+            }
+
+            return $prefix . $numerals;
+        }
+
+        return $numerals;
     }
 
     /**
