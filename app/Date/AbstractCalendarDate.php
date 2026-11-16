@@ -204,7 +204,7 @@ abstract class AbstractCalendarDate
             $this->maximum_julian_day = 0;
         } elseif ($this->month === 0) {
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, 1, 1);
-            $this->maximum_julian_day = $this->calendar->ymdToJd($this->nextYear($this->year), 1, 1) - 1;
+            $this->maximum_julian_day = $this->calendar->ymdToJd($this->nextYear(), 1, 1) - 1;
         } elseif ($this->day === 0) {
             [$ny, $nm] = $this->nextMonth();
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, $this->month, 1);
@@ -218,9 +218,9 @@ abstract class AbstractCalendarDate
     /**
      * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
      */
-    protected function nextYear(int $year): int
+    protected function nextYear(): int
     {
-        return $year + 1;
+        return $this->year + 1;
     }
 
     /**
@@ -321,11 +321,11 @@ abstract class AbstractCalendarDate
     }
 
     /**
-     * How many months in a year
+     * How many months in the current year
      */
     public function monthsInYear(): int
     {
-        return $this->calendar->monthsInYear();
+        return $this->calendar->monthsInYear($this->year);
     }
 
     /**
@@ -358,8 +358,8 @@ abstract class AbstractCalendarDate
     protected function nextMonth(): array
     {
         return [
-            $this->month === $this->calendar->monthsInYear() ? $this->nextYear($this->year) : $this->year,
-            $this->month % $this->calendar->monthsInYear() + 1,
+            $this->month === $this->monthsInYear() ? $this->nextYear() : $this->year,
+            $this->month % $this->monthsInYear() + 1,
         ];
     }
 

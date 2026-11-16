@@ -32,13 +32,13 @@ final class JulianDate extends AbstractGregorianJulianDate
     /**
      * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
      */
-    protected function nextYear(int $year): int
+    protected function nextYear(): int
     {
-        if ($year === -1) {
+        if ($this->year === -1) {
             return 1;
         }
 
-        return $year + 1;
+        return $this->year + 1;
     }
 
     /**
