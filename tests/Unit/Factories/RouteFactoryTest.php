@@ -19,10 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
+use Fisharebest\Webtrees\Factories\RouteFactory;
 use Fisharebest\Webtrees\Http\Controllers\HomePage;
+use Fisharebest\Webtrees\Http\Controllers\Ping;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Http\Routing\UrlGenerator;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Factories\RouteFactory;
 
 #[CoversClass(RouteFactory::class)]
 class RouteFactoryTest extends TestCase
@@ -35,5 +39,20 @@ class RouteFactoryTest extends TestCase
 
         self::assertStringNotContainsString('foo=', $url);
         self::assertStringContainsString('bar=', $url);
+    }
+
+    public function testUglyUrlIncludesSubfolderInRouteParameter(): void
+    {
+        self::createRequest(attributes: ['base_url' => 'https://webtrees.test/webtrees']);
+
+        $routes = Registry::container()->get(RouteCollection::class);
+        Registry::container()->set(UrlGenerator::class, new UrlGenerator($routes, '/webtrees'));
+
+        $url = (new RouteFactory())->route(Ping::class, ['foo' => 'bar']);
+
+        self::assertSame(
+            'https://webtrees.test/webtrees/index.php?route=%2Fwebtrees%2Fping&foo=bar',
+            $url,
+        );
     }
 }
