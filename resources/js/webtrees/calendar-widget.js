@@ -236,12 +236,8 @@ export function calendarWidget(dateDivId, dateFieldId) {
   let dateDiv = document.getElementById(dateDivId);
   let dateField = document.getElementById(dateFieldId);
 
-  if (dateDiv.style.visibility === 'visible') {
-    dateDiv.style.visibility = 'hidden';
-    return false;
-  }
-  if (dateDiv.style.visibility === 'show') {
-    dateDiv.style.visibility = 'hide';
+  if (dateDiv.classList.contains('wt-calendar-widget-visible')) {
+    dateDiv.classList.remove('wt-calendar-widget-visible');
     return false;
   }
 
@@ -260,15 +256,7 @@ export function calendarWidget(dateDivId, dateFieldId) {
 
   dateDiv.innerHTML = calGenerateSelectorContent(dateFieldId, dateDivId, date);
   bindCalendarUpdateHandlers(dateDiv, dateFieldId, dateDivId);
-  if (dateDiv.style.visibility === 'hidden') {
-    dateDiv.style.visibility = 'visible';
-    return false;
-  }
-  if (dateDiv.style.visibility === 'hide') {
-    dateDiv.style.visibility = 'show';
-    return false;
-  }
-
+  dateDiv.classList.add('wt-calendar-widget-visible');
   return false;
 }
 
@@ -439,4 +427,3 @@ export function reformatDate(datefield, dmy) {
     datefield.value = datestr;
   }
 }
-
