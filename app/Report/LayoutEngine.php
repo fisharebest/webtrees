@@ -266,6 +266,22 @@ final class LayoutEngine
         if ($this->needsPageBreak($height)) {
             $this->newPage();
             $y = $this->cursor_y;
+
+            if ($this->cell_row_block_indexes !== []) {
+                $row_start_index = $this->cell_row_block_indexes[0];
+                array_splice($this->blocks, -1, 1);
+                array_splice($this->blocks, $row_start_index, 0, [LayoutBlock::pageBreak($this->current_page - 1)]);
+
+                foreach ($this->cell_row_block_indexes as $index => $block_index) {
+                    $block_index++;
+                    $this->blocks[$block_index] = $this->blocks[$block_index]
+                        ->withPage($this->current_page)
+                        ->withY($y);
+                    $this->cell_row_block_indexes[$index] = $block_index;
+                }
+            }
+
+            $this->cell_row_y = $y;
         }
 
         // Emit the block

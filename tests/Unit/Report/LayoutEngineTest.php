@@ -55,6 +55,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_column;
 use function array_filter;
+use function array_slice;
 use function array_values;
 use function count;
 
@@ -466,6 +467,68 @@ class LayoutEngineTest extends TestCase
         self::assertCount(2, $blocks);
         self::assertGreaterThan(20.0, $blocks[1]->height);
         self::assertEqualsWithDelta($blocks[1]->height, $blocks[0]->height, 0.01);
+    }
+
+    public function testTallLaterCellMovesEntireRowBeforePageBreak(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $style = $this->makeStyle();
+        $cells = [];
+        $rows = [
+            ['Preface', 75.0, CellNewline::NextLine],
+            ['First', 20.0, CellNewline::Right],
+            ['Line one<br>Line two<br>Line three', 20.0, CellNewline::Right],
+            ['Last', 20.0, CellNewline::NextLine],
+            ['Following row', 20.0, CellNewline::NextLine],
+        ];
+
+        foreach ($rows as [$text, $height, $newline]) {
+            $cell = new Cell(
+                width: 100.0,
+                height: $height,
+                border: '',
+                align: CellAlign::Left,
+                background_color: '',
+                style: $style,
+                newline: $newline,
+                top: Element::CURRENT_POSITION,
+                left: Element::CURRENT_POSITION,
+                border_color: '',
+                text_color: '',
+            );
+            $cell->addText($text);
+            $cells[] = $cell;
+        }
+
+        $blocks = $engine->layout($cells);
+
+        self::assertCount(6, $blocks);
+        self::assertInstanceOf(PageBreakData::class, $blocks[1]->data);
+        self::assertSame([0, 0, 1, 1, 1, 1], array_column($blocks, 'page'));
+        self::assertGreaterThan(40.0, $blocks[3]->height);
+        foreach (array_slice($blocks, 2, 3) as $block) {
+            self::assertEqualsWithDelta(0.0, $block->y, 0.01);
+            self::assertEqualsWithDelta($blocks[3]->height, $block->height, 0.01);
+        }
+        self::assertEqualsWithDelta($blocks[3]->height, $blocks[5]->y, 0.01);
+    }
+
+    public function testFirstCellPageBreakKeepsLaterCellsInSameRow(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $style = $this->makeStyle();
+
+        $preface = new Cell(100.0, 75.0, '', CellAlign::Left, '', $style, CellNewline::NextLine, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+        $first = new Cell(100.0, 40.0, '', CellAlign::Left, '', $style, CellNewline::Right, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+        $second = new Cell(100.0, 60.0, '', CellAlign::Left, '', $style, CellNewline::NextLine, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+
+        $blocks = $engine->layout([$preface, $first, $second]);
+
+        self::assertSame([0, 0, 1, 1], array_column($blocks, 'page'));
+        self::assertInstanceOf(PageBreakData::class, $blocks[1]->data);
+        self::assertSame($blocks[2]->row_id, $blocks[3]->row_id);
+        self::assertEqualsWithDelta(60.0, $blocks[2]->height, 0.01);
+        self::assertEqualsWithDelta(0.0, $blocks[3]->y, 0.01);
     }
 
     public function testAdjacentTextBoxesShareRowMetadataOnRectAndTextFlow(): void

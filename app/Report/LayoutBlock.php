@@ -96,6 +96,23 @@ final readonly class LayoutBlock
     }
 
     /**
+     * Return a copy of this block with an updated vertical position.
+     */
+    public function withY(float $y): self
+    {
+        return new self(
+            page: $this->page,
+            x: $this->x,
+            y: $y,
+            width: $this->width,
+            height: $this->height,
+            data: $this->data,
+            row_id: $this->row_id,
+            column_id: $this->column_id,
+        );
+    }
+
+    /**
      * Create a text cell block.
      */
     public static function textCell(
