@@ -53,6 +53,9 @@ use Fisharebest\Webtrees\Report\TextWrapper;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+use function array_column;
+use function array_filter;
+use function array_values;
 use function count;
 
 #[CoversClass(LayoutEngine::class)]
@@ -770,6 +773,78 @@ class LayoutEngineTest extends TestCase
         self::assertCount(1, $flow_blocks);
         self::assertSame(1, $flow_blocks[0]->page);
         self::assertLessThan(10.0, $flow_blocks[0]->y);
+    }
+
+    public function testTextBoxWithoutPagecheckDoesNotOverflowPdfPage(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $style = $this->makeStyle();
+        $boxes = [];
+
+        for ($index = 0; $index < 4; $index++) {
+            $box = new TextBox(
+                width: 300.0,
+                height: 40.0,
+                border: false,
+                background_color: '',
+                newline: true,
+                left: Element::CURRENT_POSITION,
+                top: Element::CURRENT_POSITION,
+                check_page_break: false,
+                padding: true,
+                reset_height: false,
+            );
+            $text = new Text($style, '', 0.0);
+            $text->addText('Box ' . $index);
+            $box->addElement($text);
+            $boxes[] = $box;
+        }
+
+        $flows = array_values(array_filter(
+            $engine->layout($boxes),
+            fn (LayoutBlock $block): bool => $block->data instanceof TextFlowData,
+        ));
+
+        self::assertSame([0, 0, 1, 1], array_column($flows, 'page'));
+        foreach ($flows as $flow) {
+            self::assertLessThanOrEqual(100.0, $flow->y + $flow->height);
+        }
+    }
+
+    public function testTallSecondColumnMovesEntireTextBoxRow(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $style = $this->makeStyle();
+
+        $preface = new Cell(200.0, 75.0, '', CellAlign::Left, '', $style, CellNewline::NextLine, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+        $preface->addText('Preface');
+
+        $short_box = new TextBox(200.0, 20.0, true, '', false, Element::CURRENT_POSITION, Element::CURRENT_POSITION, false, true, false);
+        $short_text = new Text($style, '', 0.0);
+        $short_text->addText('First column');
+        $short_box->addElement($short_text);
+
+        $tall_box = new TextBox(200.0, 40.0, true, '', true, Element::CURRENT_POSITION, Element::CURRENT_POSITION, false, true, false);
+        $tall_text = new Text($style, '', 0.0);
+        $tall_text->addText('Second column');
+        $tall_box->addElement($tall_text);
+
+        $blocks = $engine->layout([$preface, $short_box, $tall_box]);
+        $flows = array_values(array_filter(
+            $blocks,
+            fn (LayoutBlock $block): bool => $block->data instanceof TextFlowData,
+        ));
+        $rects = array_values(array_filter(
+            $blocks,
+            fn (LayoutBlock $block): bool => $block->data instanceof RectData,
+        ));
+
+        self::assertCount(2, $flows);
+        self::assertCount(2, $rects);
+        self::assertSame([1, 1], array_column($flows, 'page'));
+        self::assertSame([1, 1], array_column($rects, 'page'));
+        self::assertEqualsWithDelta($rects[0]->height, $rects[1]->height, 0.01);
+        self::assertEqualsWithDelta($flows[0]->y, $flows[1]->y, 0.01);
     }
 
     public function testLandscapeUsesSwappedPrintableWidth(): void

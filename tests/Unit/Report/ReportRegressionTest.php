@@ -80,6 +80,7 @@ use function file_put_contents;
 use function getenv;
 use function is_dir;
 use function mkdir;
+use function preg_match_all;
 use function preg_replace;
 
 #[CoversClass(AbstractParser::class)]
@@ -226,6 +227,19 @@ class ReportRegressionTest extends TestCase
         $pdf = $this->normalisePdf($pdf);
 
         $this->assertSnapshot($snapshot_key, $pdf, 'pdf');
+    }
+
+    public function testBirthDeathMarriagePdfPaginatesAllResults(): void
+    {
+        $xml_filename = self::REPORTS_DIR . 'bdm_report.xml';
+        $vars = $this->buildVars($xml_filename, []);
+        $tree = $this->prepareTreeAndLogin();
+        $timestamp = Registry::timestampFactory()->fromEpoch(0);
+
+        $renderer = new PdfRenderer();
+        (new ParserGenerate($xml_filename, $renderer, $vars, $tree, Webtrees::NAME, $timestamp))->process();
+
+        self::assertSame(10, preg_match_all('/\/Type\s*\/Page\b/', $renderer->output()));
     }
 
     /**

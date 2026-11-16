@@ -480,8 +480,42 @@ final class LayoutEngine
         // Check page break for the whole box
         // Child layout may have already paginated (for example via FootnoteTexts).
         // In that case, do not apply an additional container-level page break.
-        if ($text_box->check_page_break && $child_end_page === $box_start_page && $this->needsPageBreak($box_height)) {
+        if (
+            $child_end_page === $box_start_page
+            && $this->needsPageBreak($box_height)
+            && (
+                $text_box->check_page_break
+                || (!$text_box->reset_height && $box_height <= $this->content_height)
+            )
+        ) {
+            $row_start_index = $child_blocks_start;
+            while (
+                $row_start_index > 0
+                && $this->blocks[$row_start_index - 1]->row_id === $this->textbox_row_id
+                && $this->blocks[$row_start_index - 1]->page === $box_start_page
+            ) {
+                $row_start_index--;
+            }
+
             $this->newPage();
+
+            if ($row_start_index < $child_blocks_start) {
+                // Keep the columns of a row together when a later column is taller.
+                array_splice($this->blocks, -1, 1);
+                array_splice($this->blocks, $row_start_index, 0, [LayoutBlock::pageBreak($box_start_page)]);
+                $child_blocks_start++;
+
+                for ($index = $row_start_index + 1; $index < $child_blocks_start; $index++) {
+                    $this->blocks[$index] = $this->offsetBlock($this->blocks[$index], 0.0, -$box_y)
+                        ->withPage($this->current_page);
+                }
+
+                foreach ($this->textbox_row_rect_indexes as &$rect_index) {
+                    $rect_index++;
+                }
+                unset($rect_index);
+            }
+
             $box_y = $this->cursor_y;
 
             // Child blocks were laid out before the container-level break check.
