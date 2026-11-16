@@ -41,4 +41,10 @@ class UidTest extends AbstractElementTestCase
             self::$element->canonical('FEF44ca3ca7543ed9a05f00591315274'),
         );
     }
+
+    public function testCanonicalKeepsValuesThatAreNotUuids(): void
+    {
+        self::assertSame('my-identifier', self::$element->canonical('my-identifier'));
+        self::assertSame('', self::$element->canonical(''));
+    }
 }
