@@ -108,7 +108,7 @@ export function calLocalize(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, no
  */
 function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   let i, j;
-  let content = '<table border="1"><tr>';
+  let content = '<table><tr>';
   content += '<td><select class="form-select" id="' + dateFieldId + '_daySelect" data-wt-calendar-update="1">';
   for (i = 1; i < 32; i++) {
     content += '<option value="' + i + '"';
@@ -129,7 +129,7 @@ function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   content += '</select></td>';
   content += '<td><input class="form-control" type="text" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" data-wt-calendar-update="1" /></td></tr>';
   content += '<tr><td colspan="3">';
-  content += '<table width="100%">';
+  content += '<table>';
   content += '<tr>';
   j = weekStart;
   for (i = 0; i < 7; i++) {
