@@ -166,13 +166,25 @@ class AdminServiceTest extends TestCase
         $import_service->importRecord("0 @I1@ INDI\n1 NAME Same /Person/\n1 BIRT\n2 DATE 1 JAN 1900", $tree, true);
         $import_service->importRecord("0 @I2@ INDI\n1 NAME Same /Person/\n1 BIRT\n2 DATE 1 JAN 1900", $tree, true);
         $import_service->importRecord("0 @F1@ FAM\n1 HUSB @I1@\n1 WIFE @I2@", $tree, true);
-        $import_service->importRecord("0 @F2@ FAM\n1 HUSB @I1@\n1 WIFE @I2@", $tree, true);
+        $import_service->importRecord("0 @F2@ FAM\n1 HUSB @I2@\n1 WIFE @I1@", $tree, true);
+        $import_service->importRecord("0 @F3@ FAM", $tree, true);
+        $import_service->importRecord("0 @F4@ FAM", $tree, true);
+        $import_service->importRecord("0 @F5@ FAM\n1 HUSB @I1@", $tree, true);
+        $import_service->importRecord("0 @F6@ FAM\n1 WIFE @I1@", $tree, true);
+        $import_service->importRecord("0 @F7@ FAM\n1 HUSB @I2@", $tree, true);
+        $import_service->importRecord("0 @F8@ FAM\n1 HUSB @I1@\n1 WIFE @I2@", $other_tree, true);
 
         $duplicates = (new AdminService())->duplicateRecords($tree);
 
         self::assertSame(['S1', 'S2'], array_map(static fn ($source): string => $source->xref(), $duplicates['Sources'][0]));
         self::assertSame(['M1', 'M2'], array_map(static fn ($media): string => $media->xref(), $duplicates['Media objects'][0]));
         self::assertSame(['I1', 'I2'], array_map(static fn ($individual): string => $individual->xref(), $duplicates['Individuals'][0]));
-        self::assertSame(['F1', 'F2'], array_map(static fn ($family): string => $family->xref(), $duplicates['Families'][0]));
+        self::assertEqualsCanonicalizing(
+            [['F1', 'F2'], ['F5', 'F6']],
+            array_map(
+                static fn (array $families): array => array_map(static fn ($family): string => $family->xref(), $families),
+                $duplicates['Families'],
+            ),
+        );
     }
 }
