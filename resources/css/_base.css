@@ -141,6 +141,11 @@ a:hover, .btn-link:hover, .nav-link:hover {
     visibility: visible;
 }
 
+.wt-calendar-widget .wt-calendar-widget-day-outside-month {
+    background-color: var(--bs-secondary-bg);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+}
+
 .wt-text-overflow-elipsis {
     white-space: nowrap;
     overflow: hidden;

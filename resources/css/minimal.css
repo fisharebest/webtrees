@@ -561,7 +561,9 @@ div.faq_body {
     vertical-align: bottom;
 }
 
-.optionbox, .descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day,
+.wt-calendar-widget-day-selected {
     border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
     vertical-align: top;
     padding: 3px;

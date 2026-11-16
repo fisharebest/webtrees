@@ -133,9 +133,7 @@ function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   content += '<tr>';
   j = weekStart;
   for (i = 0; i < 7; i++) {
-    content += '<td ';
-    content += 'class="descriptionbox"';
-    content += '>';
+    content += '<td class="wt-calendar-widget-weekday">';
     content += daysOfWeek[j];
     content += '</td>';
     j++;
@@ -154,17 +152,15 @@ function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   for (j = 0; j < 6; j++) {
     content += '<tr>';
     for (i = 0; i < 7; i++) {
-      content += '<td ';
+      content += '<td class="wt-calendar-widget-day';
       if (tdate.getMonth() === date.getMonth()) {
         if (tdate.getDate() === date.getDate()) {
-          content += 'class="descriptionbox"';
-        } else {
-          content += 'class="optionbox"';
+          content += ' wt-calendar-widget-day-selected';
         }
       } else {
-        content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
+        content += ' wt-calendar-widget-day-outside-month';
       }
-      content += '><a href="#" data-wt-calendar-date="1" data-wt-calendar-year="' + tdate.getFullYear() + '" data-wt-calendar-month="' + tdate.getMonth() + '" data-wt-calendar-day="' + tdate.getDate() + '">';
+      content += '"><a href="#" data-wt-calendar-date="1" data-wt-calendar-year="' + tdate.getFullYear() + '" data-wt-calendar-month="' + tdate.getMonth() + '" data-wt-calendar-day="' + tdate.getDate() + '">';
       content += tdate.getDate();
       content += '</a></td>';
       let datemilli = tdate.getTime() + daymilli;
