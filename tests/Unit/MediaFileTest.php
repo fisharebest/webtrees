@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MediaFile::class)]
 class MediaFileTest extends TestCase
@@ -29,5 +30,24 @@ class MediaFileTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(MediaFile::class));
+    }
+
+    public function testDisplayImageDisablesNativeDragging(): void
+    {
+        $media = self::createMock(Media::class);
+        $media->expects(self::exactly(2))->method('fullName')->willReturn('Portrait');
+        $media->expects(self::once())->method('url')->willReturn('/media');
+
+        $media_file = $this->getMockBuilder(MediaFile::class)
+            ->setConstructorArgs(["1 FILE portrait.jpg", $media])
+            ->onlyMethods(['imageUrl', 'downloadUrl'])
+            ->getMock();
+        $media_file->expects(self::exactly(4))->method('imageUrl')->willReturn('/thumbnail');
+        $media_file->expects(self::once())->method('downloadUrl')->willReturn('/image');
+
+        $html = $media_file->displayImage(100, 100, 'contain');
+
+        self::assertStringContainsString('<a href="/image" draggable="false"', $html);
+        self::assertStringContainsString('<img draggable="false"', $html);
     }
 }

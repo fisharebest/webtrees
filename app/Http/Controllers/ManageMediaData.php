@@ -122,16 +122,16 @@ final class ManageMediaData
 
                 if (str_starts_with($mime_type, 'image/')) {
                     $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
-                    $img = '<img src="' . e($url) . '">';
+                    $img = '<img draggable="false" src="' . e($url) . '">';
                 } else {
                     $img = view('icons/mime', ['type' => $mime_type]);
                 }
 
                 $url = route(AdminMediaFileDownload::class, ['path' => $path]);
-                $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row->multimedia_file_refn) . '">' . $img . '</a>';
+                $img = '<a href="' . e($url) . '" draggable="false" data-wt-gallery="1" data-wt-gallery-title="' . e($row->multimedia_file_refn) . '">' . $img . '</a>';
             } catch (UnableToReadFile) {
                 $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
-                $img = '<img src="' . e($url) . '">';
+                $img = '<img draggable="false" src="' . e($url) . '">';
             }
 
             return [
@@ -208,13 +208,13 @@ final class ManageMediaData
 
                     if (str_starts_with($mime_type, 'image/')) {
                         $url = route(AdminMediaFileThumbnail::class, ['path' => $row[0]]);
-                        $img = '<img src="' . e($url) . '">';
+                        $img = '<img draggable="false" src="' . e($url) . '">';
                     } else {
                         $img = view('icons/mime', ['type' => $mime_type]);
                     }
 
                     $url = route(AdminMediaFileDownload::class, ['path' => $row[0]]);
-                    $img = '<a href="' . e($url) . '" data-wt-gallery="1" data-wt-gallery-title="' . e($row[0]) . '">' . $img . '</a>';
+                    $img = '<a href="' . e($url) . '" draggable="false" data-wt-gallery="1" data-wt-gallery-title="' . e($row[0]) . '">' . $img . '</a>';
 
                     // Form to create new media object in each tree
                     $create_form = '';

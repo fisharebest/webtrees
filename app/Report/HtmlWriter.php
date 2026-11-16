@@ -671,10 +671,10 @@ final class HtmlWriter
 
         $inline_style = implode(';', $style_parts);
 
-        $img = '<img class="report-image" src="' . $this->escape($data->src) . '" style="' . $inline_style . '" alt="">';
+        $img = '<img class="report-image" draggable="false" src="' . $this->escape($data->src) . '" style="' . $inline_style . '" alt="">';
 
         if ($data->link !== '') {
-            return '<a href="' . $this->escape($data->link) . '" target="_blank" rel="noopener noreferrer">' . $img . '</a>';
+            return '<a href="' . $this->escape($data->link) . '" draggable="false" target="_blank" rel="noopener noreferrer">' . $img . '</a>';
         }
 
         return $img;

@@ -246,6 +246,31 @@ class HtmlWriterTest extends TestCase
         self::assertStringContainsString('min-height: 50pt', $html);
     }
 
+    public function testImagesAreNotDraggable(): void
+    {
+        $html = (new HtmlWriter())->render(
+            config: $this->createConfig(),
+            styles: [],
+            header_blocks: [],
+            body_blocks: [
+                LayoutBlock::image(
+                    page: 0,
+                    x: 0.0,
+                    y: 0.0,
+                    width: 100.0,
+                    height: 100.0,
+                    src: 'example.png',
+                    align: CellAlign::Left,
+                    link: '/image',
+                ),
+            ],
+            footer_blocks: [],
+        );
+
+        self::assertStringContainsString('<img class="report-image" draggable="false"', $html);
+        self::assertStringContainsString('<a href="/image" draggable="false"', $html);
+    }
+
     public function testSingleColumnHeadingBetweenFlowRowsKeepsAbsoluteTop(): void
     {
         $writer = new HtmlWriter();

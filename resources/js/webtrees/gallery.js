@@ -207,7 +207,7 @@ class GalleryModal {
       '    <button type="button" class="wt-gallery-button wt-gallery-button-close" data-wt-gallery-action="close" aria-label="' + i18n.gettext('close') + '"><i class="fa-solid fa-check"></i></button>',
       '  </div>',
       '  <div class="wt-gallery-stage">',
-      '    <img class="wt-gallery-image">',
+      '    <img class="wt-gallery-image" draggable="false">',
       '    <button type="button" class="wt-gallery-button wt-gallery-button-previous" data-wt-gallery-action="previous" aria-label="' + i18n.gettext('previous') + '">&lt;</button>',
       '    <button type="button" class="wt-gallery-button wt-gallery-button-next" data-wt-gallery-action="next" aria-label="' + i18n.gettext('next') + '">&gt;</button>',
       '  </div>',

@@ -170,14 +170,16 @@ class MediaFile
 
         if ($this->isImage()) {
             $image = '<img ' . Html::attributes($image_attributes + [
-                        'dir'    => 'auto',
-                        'src'    => $src,
-                        'srcset' => implode(',', $srcset),
-                        'alt'    => strip_tags($this->media->fullName()),
+                        'draggable' => 'false',
+                        'dir'       => 'auto',
+                        'src'       => $src,
+                        'srcset'    => implode(',', $srcset),
+                        'alt'       => strip_tags($this->media->fullName()),
                     ]) . '>';
 
             $link_attributes = Html::attributes([
                 'href'                  => $this->downloadUrl('inline'),
+                'draggable'             => 'false',
                 'data-wt-gallery'       => '1',
                 'data-wt-gallery-title' => strip_tags($this->media->fullName()),
                 'data-wt-gallery-title-url' => $this->media->url(),
