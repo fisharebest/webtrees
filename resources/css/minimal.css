@@ -571,6 +571,16 @@ div.faq_body {
     min-width: 2.5rem;
 }
 
+.wt-calendar-widget-day,
+.wt-calendar-widget-day-selected {
+    padding: 0;
+}
+
+.wt-calendar-widget-day a {
+    display: block;
+    padding: 3px;
+}
+
 [dir] .wt-calendar-widget > table,
 [dir] .wt-calendar-widget > table > tbody > tr > td {
     border: 0;
