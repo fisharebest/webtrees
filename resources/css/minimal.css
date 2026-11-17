@@ -581,6 +581,11 @@ div.faq_body {
     padding: 3px;
 }
 
+.wt-calendar-widget-day:not(.wt-calendar-widget-day-selected) a:hover,
+.wt-calendar-widget-day:not(.wt-calendar-widget-day-selected) a:focus-visible {
+    background-color: var(--bs-tertiary-bg);
+}
+
 [dir] .wt-calendar-widget > table,
 [dir] .wt-calendar-widget > table > tbody > tr > td {
     border: 0;
