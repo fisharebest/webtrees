@@ -685,8 +685,8 @@ class SwedishTest extends AbstractLanguageTestCase
         );
 
         // Partners
-        self::assertRelationshipNames('hustru', 'make', [$husband, $fm, $wife]);
-        self::assertRelationshipNames('ex-man', 'ex-fru', [$wife, $fd, $exHusband]);
+        self::assertRelationshipNames('maka', 'make', [$husband, $fm, $wife]);
+        self::assertRelationshipNames('exmake', 'exmaka', [$wife, $fd, $exHusband]);
         self::assertRelationshipNames('fästmö', 'fästman', [$fiance, $fe, $engaged]);
 
         // Parents
