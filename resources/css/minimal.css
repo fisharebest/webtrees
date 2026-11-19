@@ -561,10 +561,54 @@ div.faq_body {
     vertical-align: bottom;
 }
 
-.optionbox, .descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day,
+.wt-calendar-widget-day-selected {
     border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+    text-align: center;
     vertical-align: top;
     padding: 3px;
+    min-width: 2.5rem;
+}
+
+.wt-calendar-widget-day,
+.wt-calendar-widget-day-selected {
+    padding: 0;
+}
+
+.wt-calendar-widget-day a {
+    display: block;
+    padding: 3px;
+}
+
+.wt-calendar-widget-day:not(.wt-calendar-widget-day-selected) a:hover,
+.wt-calendar-widget-day:not(.wt-calendar-widget-day-selected) a:focus-visible {
+    background-color: var(--bs-tertiary-bg);
+}
+
+[dir] .wt-calendar-widget > table,
+[dir] .wt-calendar-widget > table > tbody > tr > td {
+    border: 0;
+}
+
+.wt-calendar-widget {
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+}
+
+.wt-calendar-widget > table > tbody > tr > td > table {
+    border-collapse: collapse;
+}
+
+.wt-calendar-widget-day-selected {
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.wt-calendar-widget-day-selected a {
+    color: var(--bs-primary-text-emphasis);
+    font-weight: 600;
 }
 
 #childbox {
