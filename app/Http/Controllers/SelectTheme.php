@@ -20,8 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Session;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 use function response;
 
@@ -32,10 +34,16 @@ final class SelectTheme
     ) {
     }
 
-    public function post(string $theme): ResponseInterface
+    public function post(ServerRequestInterface $request, string $theme): ResponseInterface
     {
-        Session::put('theme', $theme);
-        $this->user->setPreference(UserInterface::PREF_THEME, $theme);
+        // A theme chosen on a mobile device is only used on mobile devices.
+        if ($request->getAttribute(UseTheme::ATTRIBUTE_MOBILE) === true) {
+            Session::put('theme-mobile', $theme);
+            $this->user->setPreference(UserInterface::PREF_THEME_MOBILE, $theme);
+        } else {
+            Session::put('theme', $theme);
+            $this->user->setPreference(UserInterface::PREF_THEME, $theme);
+        }
 
         return response();
     }

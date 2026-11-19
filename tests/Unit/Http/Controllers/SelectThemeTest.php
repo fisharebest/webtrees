@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Controllers\SelectTheme;
+use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Tests\TestCase;
 use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -35,7 +36,7 @@ class SelectThemeTest extends TestCase
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
         $controller = new SelectTheme($user);
-        $response   = $controller->post('FOO');
+        $response   = $controller->post(self::createRequest(), 'FOO');
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }
@@ -46,7 +47,19 @@ class SelectThemeTest extends TestCase
         $user->expects($this->once())->method('setPreference')->with('theme', 'FOO');
 
         $controller = new SelectTheme($user);
-        $response   = $controller->post('FOO');
+        $response   = $controller->post(self::createRequest(), 'FOO');
+
+        self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
+    }
+
+    public function testSelectThemeOnMobileDevice(): void
+    {
+        $user = $this->createMock(User::class);
+        $user->expects($this->once())->method('setPreference')->with('theme-mobile', 'FOO');
+
+        $request    = self::createRequest()->withAttribute(UseTheme::ATTRIBUTE_MOBILE, true);
+        $controller = new SelectTheme($user);
+        $response   = $controller->post($request, 'FOO');
 
         self::assertSame(HttpStatusCode::NoContent->value, $response->getStatusCode());
     }

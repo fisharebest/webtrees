@@ -37,6 +37,7 @@ interface UserInterface
     public const string PREF_TIMESTAMP_ACTIVE     = 'sessiontime';
     public const string PREF_TIME_ZONE            = 'TIMEZONE';
     public const string PREF_THEME                = 'theme';
+    public const string PREF_THEME_MOBILE         = 'theme-mobile';
     public const string PREF_VERIFICATION_TOKEN   = 'reg_hashcode';
 
     // For historic reasons, user-tree preferences have inconsistent and confusing names.
