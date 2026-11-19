@@ -55,6 +55,9 @@ Disallow: <?= $base_path ?>/module/statistics_chart
 Disallow: <?= $base_path ?>/module/tree
 Crawl-delay: 10
 
+# https://contentsignals.org
+Content-Signal: search=yes, ai-train=no
+
 <?php if ($sitemap_url !== '') : ?>
 Sitemap: <?= $sitemap_url ?>
 <?php endif ?>
