@@ -225,7 +225,8 @@ final readonly class Swedish extends AbstractLanguage
      */
     private function gen(string $nominative): array
     {
-        return [$nominative, '%s ' . $nominative . 's'];
+        $genitive = $nominative . 's';
+        return [$nominative, $genitive . ' %s'];
     }
 
     /**
@@ -284,12 +285,12 @@ final readonly class Swedish extends AbstractLanguage
             Relationship::fixed(...$this->gen('styvbror'))->parent()->spouse()->son(),
             Relationship::fixed(...$this->gen('styvsyskon'))->parent()->spouse()->child(),
             // Partners
-            Relationship::fixed(...$this->gen('ex-fru'))->divorced()->partner()->female(),
-            Relationship::fixed(...$this->gen('ex-man'))->divorced()->partner()->male(),
-            Relationship::fixed(...$this->gen('ex-make/maka'))->divorced()->partner(),
+            Relationship::fixed(...$this->gen('exmaka'))->divorced()->partner()->female(),
+            Relationship::fixed(...$this->gen('exmake'))->divorced()->partner()->male(),
+            Relationship::fixed(...$this->gen('exmake/exmaka'))->divorced()->partner(),
             Relationship::fixed(...$this->gen('fästmö'))->engaged()->partner()->female(),
             Relationship::fixed(...$this->gen('fästman'))->engaged()->partner()->male(),
-            Relationship::fixed(...$this->gen('hustru'))->wife(),
+            Relationship::fixed(...$this->gen('maka'))->wife(),
             Relationship::fixed(...$this->gen('make'))->husband(),
             Relationship::fixed(...$this->gen('make/maka'))->spouse(),
             Relationship::fixed(...$this->gen('partner'))->partner(),
@@ -330,8 +331,7 @@ final readonly class Swedish extends AbstractLanguage
             Relationship::fixed(...$this->gen('systerdotter'))->sister()->daughter(),
             Relationship::fixed(...$this->gen('systerson'))->sister()->son(),
             // Cousins
-            Relationship::fixed(...$this->gen('kusin'))->parent()->sibling()->daughter(),
-            Relationship::fixed(...$this->gen('kusin'))->parent()->sibling()->son(),
+            Relationship::fixed(...$this->gen('kusin'))->parent()->sibling()->child(),
             // Dynamic relationships
             Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'mormor'))->mother()->ancestor()->female(),
             Relationship::dynamic(fn (int $n) => $this->gammel($n - 1, 'morfar'))->mother()->ancestor()->male(),
