@@ -29,8 +29,24 @@ final readonly class IndividualComparator
         return Date::compare($first->getEstimatedBirthDate(), $second->getEstimatedBirthDate());
     }
 
+    public static function byBirthPlace(Individual $first, Individual $second): int
+    {
+        return PlaceComparator::byPlaceName($first->getBirthPlace(), $second->getBirthPlace());
+    }
+
     public static function byDeathDate(Individual $first, Individual $second): int
     {
         return Date::compare($first->getEstimatedDeathDate(), $second->getEstimatedDeathDate());
     }
+
+    public static function byDeathPlace(Individual $first, Individual $second): int
+    {
+        return PlaceComparator::byPlaceName($first->getDeathPlace(), $second->getDeathPlace());
+    }
+
+    public static function byBurialPlace(Individual $first, Individual $second): int
+    {
+        return PlaceComparator::byPlaceName($first->getBurialPlace(), $second->getBurialPlace());
+    }
+
 }
