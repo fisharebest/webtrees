@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\LanguageFactory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Schema\WebtreesSchema;
 use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -78,7 +78,7 @@ final class SetupWizard implements RequestHandlerInterface
     ];
 
     public function __construct(
-        private readonly MigrationService $migration_service,
+        private readonly WebtreesSchema $webtrees_schema,
         private readonly LanguageFactory $language_factory,
         private readonly PhpService $php_service,
         private readonly ServerCheckService $server_check_service,
@@ -309,10 +309,10 @@ final class SetupWizard implements RequestHandlerInterface
     {
         // Create/update the database tables.
         $this->connectToDatabase($data);
-        $this->migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        $this->webtrees_schema->updateSchema();
 
         // Add some default/necessary configuration data.
-        $this->migration_service->seedDatabase();
+        $this->webtrees_schema->seedDatabase();
 
         // If we are re-installing, then this user may already exist.
         $admin = $this->user_service->findByIdentifier($data['wtemail']);

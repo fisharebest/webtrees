@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
@@ -153,6 +155,27 @@ class TreeTest extends TestCase
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '1');
         $record = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
         self::assertFalse($record->isPendingAddition());
+    }
+
+    public function testCreateIndividualSetsChangeTime(): void
+    {
+        $tree = (new TreeService(new GedcomImportService()))->create('name', 'title');
+        $user = (new UserService(new \Fisharebest\Webtrees\Clock\SystemClock()))->create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $before = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
+        $record = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $after = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
+
+        $change_time = DB::query(table: 'change')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('xref', $record->xref())
+            ->value('change_time');
+
+        self::assertMatchesRegularExpression('/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d\.\d{6}$/', $change_time);
+        self::assertGreaterThanOrEqual($before, $change_time);
+        self::assertLessThanOrEqual($after, $change_time);
     }
 
     public function testCreateInvalidFamily(): void

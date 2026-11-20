@@ -32,8 +32,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -67,7 +66,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ->select('*')
             ->from('news')
             ->whereEqual('user_id', Auth::id())
-            ->orderBy(DB::desc('updated'))
+            ->orderBy(DB::descending('updated'))
             ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 $row->updated = Registry::timestampFactory()->fromString($row->updated);
@@ -84,7 +83,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),

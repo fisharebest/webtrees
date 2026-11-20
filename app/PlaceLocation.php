@@ -19,9 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use LogicException;
 
 use function max;
@@ -36,7 +35,7 @@ class PlaceLocation
     // e.g. "Westminster, London, England"
     private string $location_name;
 
-    /** @var Collection<int,string> The parts of a location name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection<non-empty-string> The parts of a location name, e.g. ["Westminster", "London", "England"] */
     private Collection $parts;
 
     /**
@@ -198,9 +197,9 @@ class PlaceLocation
         $latitudes = DB::query()
             ->from('place_location')
             ->whereNotNull('latitude')
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->equal('parent_id', $location_id)
-                ->orEqual('id', $location_id))
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereEqual('parent_id', $location_id)
+                ->orWhereEqual('id', $location_id))
             ->groupBy('latitude')
             ->pluck('latitude', in: Collection::class)
             ->map(static fn (string $x): float => (float) $x);
@@ -208,9 +207,9 @@ class PlaceLocation
         $longitudes = DB::query()
             ->from('place_location')
             ->whereNotNull('longitude')
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->equal('parent_id', $location_id)
-                ->orEqual('id', $location_id))
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereEqual('parent_id', $location_id)
+                ->orWhereEqual('id', $location_id))
             ->groupBy('longitude')
             ->pluck('longitude', in: Collection::class)
             ->map(static fn (string $x): float => (float) $x);

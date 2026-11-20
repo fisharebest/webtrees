@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\FactSortService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function preg_match;
 
@@ -32,7 +32,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    /** @var Collection<array-key,Fact>|null  */
+    /** @var Collection<Fact>|null  */
     private Collection|null $facts = null;
 
     public function __construct(
@@ -94,7 +94,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * Get all the facts for an individual which contain notes.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     private function getFactsWithNotes(Individual $individual): Collection
     {
@@ -130,7 +130,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function supportedFacts(): Collection
     {

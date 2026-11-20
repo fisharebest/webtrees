@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -91,7 +91,7 @@ class GedcomExportService
      * @param string                                          $line_endings CRLF or LF
      * @param string                                          $filename     Name of download file, without an extension
      * @param string                                          $format       One of: gedcom, zip, zipmedia, gedzip
-     * @param Collection<int,string|object|GedcomRecord>|null $records
+     * @param Collection<string|object|GedcomRecord>|null $records
      */
     public function downloadResponse(
         Tree $tree,
@@ -159,7 +159,7 @@ class GedcomExportService
      * @param string                                          $encoding       Convert from UTF-8 to other encoding
      * @param AccessLevel                                     $access_level   Apply privacy filtering
      * @param string                                          $line_endings   CRLF or LF
-     * @param Collection<int,string|object|GedcomRecord>|null $records        Just export these records
+     * @param Collection<string|object|GedcomRecord>|null $records        Just export these records
      * @param ZipArchive|FilesystemOperator|null              $zip_filesystem Write media files to this filesystem
      * @param string|null                                     $media_path     Location within the zip filesystem
      *
@@ -374,7 +374,10 @@ class GedcomExportService
 
         if ($sort_by_xref) {
             $query = $query
-                ->orderBy(DB::length('f_id'), 'f_id');
+                ->orderBy(
+                    DB::ascending(DB::length('f_id')),
+                    DB::ascending('f_id'),
+                );
         }
 
         return $query;
@@ -389,7 +392,10 @@ class GedcomExportService
 
         if ($sort_by_xref) {
             $query = $query
-                ->orderBy(DB::length('i_id'), 'i_id');
+                ->orderBy(
+                    DB::ascending(DB::length('i_id')),
+                    DB::ascending('i_id'),
+                );
         }
 
         return $query;
@@ -404,7 +410,10 @@ class GedcomExportService
 
         if ($sort_by_xref) {
             $query = $query
-                ->orderBy(DB::length('s_id'), 's_id');
+                ->orderBy(
+                    DB::ascending(DB::length('s_id')),
+                    DB::ascending('s_id'),
+                );
         }
 
         return $query;
@@ -419,7 +428,10 @@ class GedcomExportService
 
         if ($sort_by_xref) {
             $query = $query
-                ->orderBy(DB::length('m_id'), 'm_id');
+                ->orderBy(
+                    DB::ascending(DB::length('m_id')),
+                    DB::ascending('m_id'),
+                );
         }
 
         return $query;
@@ -435,7 +447,11 @@ class GedcomExportService
 
         if ($sort_by_xref) {
             $query = $query
-                ->orderBy('o_type', DB::length('o_id'), 'o_id');
+                ->orderBy(
+                    DB::ascending('o_type'),
+                    DB::ascending(DB::length('o_id')),
+                    DB::ascending('o_id'),
+                );
         }
 
         return $query;

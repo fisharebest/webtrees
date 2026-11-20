@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -65,7 +65,7 @@ final class SearchPhonetic
             ->filter(static fn (Tree $tree): bool => in_array($tree->name(), $search_tree_names, true));
 
         if ($search_trees->isEmpty()) {
-            $search_trees->add($tree);
+            $search_trees->push($tree);
         }
 
         $individuals = new Collection();
@@ -74,10 +74,10 @@ final class SearchPhonetic
             // Log search requests for visitors
             if (Auth::id() === null) {
                 $message = 'Phonetic: first=' . $firstname . ', last=' . $lastname . ', place=' . $place;
-                Log::addSearchLog($message, $search_trees->all());
+                Log::addSearchLog($message, $search_trees->array());
             }
 
-            $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees->all());
+            $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees->array());
         }
 
         $title = I18N::translate('Phonetic search');

@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -75,7 +75,7 @@ final class DataFixUpdateAll
 
         $records = $rows
             ->map(fn (object $row): GedcomRecord|null => $this->data_fix_service->getRecordByType($row->xref, $tree, $row->type))
-            ->whereInstanceOf(GedcomRecord::class)
+            ->filterInstanceOf(GedcomRecord::class)
             ->filter(static fn (GedcomRecord $record): bool => !$record->isPendingDeletion() && $module->doesRecordNeedUpdate($record, $params));
 
         foreach ($records as $record) {
@@ -86,7 +86,7 @@ final class DataFixUpdateAll
     }
 
     /**
-     * @param Collection<int,object{xref:string,type:string}> $rows
+     * @param Collection<object{xref:string,type:string}> $rows
      * @param array<string>                                   $params
      */
     private function createUpdateRanges(
@@ -119,7 +119,7 @@ final class DataFixUpdateAll
                     'progress' => I18N::percentage($count / $total, 1),
                 ];
             })
-            ->all();
+            ->array();
 
         return response(json_encode($updates, JSON_THROW_ON_ERROR));
     }

@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -74,7 +74,7 @@ final class Unconnected
             ->whereEqual('i_file', $tree->id())
             ->pluck('i_id', in: Collection::class)
             ->mapWithKeys(static fn (string $xref): array => [$xref => []])
-            ->all();
+            ->array();
 
         foreach ($rows as $row) {
             $graph[$row->l_from][$row->l_to] = 1;

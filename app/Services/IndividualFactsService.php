@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function explode;
 use function preg_match;
@@ -47,9 +47,9 @@ class IndividualFactsService
     /**
      * The individuals own facts, such as birth and death.
      *
-     * @param Collection<int,string> $exclude_facts
+     * @param Collection<string> $exclude_facts
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function individualFacts(Individual $individual, Collection $exclude_facts): Collection
     {
@@ -60,9 +60,9 @@ class IndividualFactsService
     /**
      * The individuals own family facts, such as marriage and divorce.
      *
-     * @param Collection<int,string> $exclude_facts
+     * @param Collection<string> $exclude_facts
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function familyFacts(Individual $individual, Collection $exclude_facts): Collection
     {
@@ -75,7 +75,7 @@ class IndividualFactsService
     /**
      * Get the events of associates.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function associateFacts(Individual $individual): Collection
     {
@@ -86,7 +86,7 @@ class IndividualFactsService
         $asso3 = $this->linked_record_service->linkedFamilies($individual, 'ASSO');
         $asso4 = $this->linked_record_service->linkedFamilies($individual, '_ASSO');
 
-        $associates = $asso1->merge($asso2)->merge($asso3)->merge($asso4);
+        $associates = new Collection([...$asso1, ...$asso2, ...$asso3, ...$asso4]);
 
         foreach ($associates as $associate) {
             foreach ($associate->facts() as $fact) {
@@ -117,7 +117,7 @@ class IndividualFactsService
     /**
      * Get the events of close relatives.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function relativeFacts(Individual $individual): Collection
     {
@@ -139,13 +139,19 @@ class IndividualFactsService
         return $parent_facts
             ->merge($child_facts)
             ->merge($spouse_facts)
-            ->unique();
+            ->unique(static fn (Fact $fact): array => [
+                $fact->record(),
+                $fact->id(),
+                $fact->gedcom(),
+                $fact->isPendingAddition(),
+                $fact->isPendingDeletion(),
+            ]);
     }
 
     /**
      * Get any historical events.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function historicFacts(Individual $individual): Collection
     {
@@ -157,7 +163,7 @@ class IndividualFactsService
     /**
      * Get the events of children and grandchildren.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     private function childFacts(Individual $person, Family $family, string $option, string $relation, Date $min_date, Date $max_date): Collection
     {
@@ -445,7 +451,7 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a half-sibling'),
         ];
 
-        /** @var Collection<int,Fact> $facts */
+        /** @var Collection<Fact> $facts */
         $facts = new Collection();
 
         // Deal with recursion.
@@ -456,17 +462,17 @@ class IndividualFactsService
                     switch ($child->sex()) {
                         case Sex::Male:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
-                                $facts[] = $fact;
+                                $facts->push($fact);
                             }
                             break;
                         case Sex::Female:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'dau', $min_date, $max_date) as $fact) {
-                                $facts[] = $fact;
+                                $facts->push($fact);
                             }
                             break;
                         default:
                             foreach ($this->childFacts($person, $cfamily, '_GCHI', 'chi', $min_date, $max_date) as $fact) {
-                                $facts[] = $fact;
+                                $facts->push($fact);
                             }
                             break;
                     }
@@ -489,24 +495,24 @@ class IndividualFactsService
                             case '_GCHI':
                                 switch ($relation) {
                                     case 'dau':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild1[$fact->tag()], $child->sex());
+                                        $facts->push($this->convertEvent($fact, $birth_of_a_grandchild1[$fact->tag()], $child->sex()));
                                         break;
                                     case 'son':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild2[$fact->tag()], $child->sex());
+                                        $facts->push($this->convertEvent($fact, $birth_of_a_grandchild2[$fact->tag()], $child->sex()));
                                         break;
                                     case 'chil':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild[$fact->tag()], $child->sex());
+                                        $facts->push($this->convertEvent($fact, $birth_of_a_grandchild[$fact->tag()], $child->sex()));
                                         break;
                                 }
                                 break;
                             case '_SIBL':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_sibling[$fact->tag()], $child->sex());
+                                $facts->push($this->convertEvent($fact, $birth_of_a_sibling[$fact->tag()], $child->sex()));
                                 break;
                             case '_HSIB':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_half_sibling[$fact->tag()], $child->sex());
+                                $facts->push($this->convertEvent($fact, $birth_of_a_half_sibling[$fact->tag()], $child->sex()));
                                 break;
                             case '_CHIL':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_child[$fact->tag()], $child->sex());
+                                $facts->push($this->convertEvent($fact, $birth_of_a_child[$fact->tag()], $child->sex()));
                                 break;
                         }
                     }
@@ -520,24 +526,24 @@ class IndividualFactsService
                             case '_GCHI':
                                 switch ($relation) {
                                     case 'dau':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild1[$fact->tag()], $child->sex());
+                                        $facts->push($this->convertEvent($fact, $death_of_a_grandchild1[$fact->tag()], $child->sex()));
                                         break;
                                     case 'son':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild2[$fact->tag()], $child->sex());
+                                        $facts->push($this->convertEvent($fact, $death_of_a_grandchild2[$fact->tag()], $child->sex()));
                                         break;
                                     case 'chi':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild[$fact->tag()], $child->sex());
+                                        $facts->push($this->convertEvent($fact, $death_of_a_grandchild[$fact->tag()], $child->sex()));
                                         break;
                                 }
                                 break;
                             case '_SIBL':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_sibling[$fact->tag()], $child->sex());
+                                $facts->push($this->convertEvent($fact, $death_of_a_sibling[$fact->tag()], $child->sex()));
                                 break;
                             case '_HSIB':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->tag()], $child->sex());
+                                $facts->push($this->convertEvent($fact, $death_of_a_half_sibling[$fact->tag()], $child->sex()));
                                 break;
                             case '_CHIL':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->tag()], $child->sex());
+                                $facts->push($this->convertEvent($fact, $death_of_a_child[$fact->tag()], $child->sex()));
                                 break;
                         }
                     }
@@ -553,24 +559,24 @@ class IndividualFactsService
                                 case '_GCHI':
                                     switch ($relation) {
                                         case 'dau':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild1, $child->sex());
+                                            $facts->push($this->convertEvent($fact, $marriage_of_a_grandchild1, $child->sex()));
                                             break;
                                         case 'son':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild2, $child->sex());
+                                            $facts->push($this->convertEvent($fact, $marriage_of_a_grandchild2, $child->sex()));
                                             break;
                                         case 'chi':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild, $child->sex());
+                                            $facts->push($this->convertEvent($fact, $marriage_of_a_grandchild, $child->sex()));
                                             break;
                                     }
                                     break;
                                 case '_SIBL':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_sibling, $child->sex());
+                                    $facts->push($this->convertEvent($fact, $marriage_of_a_sibling, $child->sex()));
                                     break;
                                 case '_HSIB':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_half_sibling, $child->sex());
+                                    $facts->push($this->convertEvent($fact, $marriage_of_a_half_sibling, $child->sex()));
                                     break;
                                 case '_CHIL':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_child, $child->sex());
+                                    $facts->push($this->convertEvent($fact, $marriage_of_a_child, $child->sex()));
                                     break;
                             }
                         }
@@ -585,7 +591,7 @@ class IndividualFactsService
     /**
      * Get the events of parents and grandparents.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     private function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): Collection
     {
@@ -669,27 +675,27 @@ class IndividualFactsService
             'U' => I18N::translate('Marriage of a parent'),
         ];
 
-        /** @var Collection<int,Fact> $facts */
+        /** @var Collection<Fact> $facts */
         $facts = new Collection();
 
         if ($sosa === 1) {
             foreach ($person->childFamilies() as $family) {
                 // Add siblings
                 foreach ($this->childFacts($person, $family, '_SIBL', '', $min_date, $max_date) as $fact) {
-                    $facts[] = $fact;
+                    $facts->push($fact);
                 }
                 foreach ($family->spouses() as $spouse) {
                     foreach ($spouse->spouseFamilies() as $sfamily) {
                         if ($family !== $sfamily) {
                             // Add half-siblings
                             foreach ($this->childFacts($person, $sfamily, '_HSIB', '', $min_date, $max_date) as $fact) {
-                                $facts[] = $fact;
+                                $facts->push($fact);
                             }
                         }
                     }
                     // Add grandparents
                     foreach ($this->parentFacts($spouse, $spouse->sex() === Sex::Female ? 3 : 2, $min_date, $max_date) as $fact) {
-                        $facts[] = $fact;
+                        $facts->push($fact);
                     }
                 }
             }
@@ -700,7 +706,7 @@ class IndividualFactsService
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
-                            $facts[] = $this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], Sex::Unknown);
+                            $facts->push($this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], Sex::Unknown));
                         }
                     }
                 }
@@ -708,7 +714,7 @@ class IndividualFactsService
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
-                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent, Sex::Unknown);
+                            $facts->push($this->convertEvent($fact, $marriage_of_a_parent, Sex::Unknown));
                         }
                     }
                 }
@@ -723,15 +729,15 @@ class IndividualFactsService
                         if ($sosa === 1 && Date::compare($fact->date(), $min_date) < 0 || $this->includeFact($fact, $min_date, $max_date)) {
                             switch ($sosa) {
                                 case 1:
-                                    $facts[] = $this->convertEvent($fact, $death_of_a_parent[$fact->tag()], $parent->sex());
+                                    $facts->push($this->convertEvent($fact, $death_of_a_parent[$fact->tag()], $parent->sex()));
                                     break;
                                 case 2:
                                 case 3:
-                                    $facts[] = match ($person->sex()) {
+                                    $facts->push(match ($person->sex()) {
                                         Sex::Male   => $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $parent->sex()),
                                         Sex::Female => $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $parent->sex()),
                                         default     => $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $parent->sex()),
-                                    };
+                                    });
                             }
                         }
                     }
@@ -748,7 +754,7 @@ class IndividualFactsService
      * @param Individual $individual Show events that occurred during the lifetime of this individual
      * @param Individual $spouse     Show events of this individual
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     private function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): Collection
     {
@@ -772,13 +778,13 @@ class IndividualFactsService
             ],
         ];
 
-        /** @var Collection<int,Fact> $facts */
+        /** @var Collection<Fact> $facts */
         $facts = new Collection();
 
         if (str_contains($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
             foreach ($spouse->facts(['DEAT', 'BURI', 'CREM']) as $fact) {
                 if ($this->includeFact($fact, $min_date, $max_date)) {
-                    $facts[] = $this->convertEvent($fact, $death_of_a_spouse[$fact->tag()], $spouse->sex());
+                    $facts->push($this->convertEvent($fact, $death_of_a_spouse[$fact->tag()], $spouse->sex()));
                 }
             }
         }

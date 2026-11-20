@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Factories;
 
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Factories\TimestampFactory;
 
 #[CoversClass(TimestampFactory::class)]
 class TimestampFactoryTest extends TestCase
@@ -29,5 +31,19 @@ class TimestampFactoryTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(TimestampFactory::class));
+    }
+
+    public function testFromStringAcceptsWholeAndFractionalSeconds(): void
+    {
+        self::createDatabase();
+
+        $user = self::createStub(UserInterface::class);
+        $user->method('getPreference')->willReturn('UTC');
+        $factory = new TimestampFactory(new SystemClock());
+
+        self::assertSame('2026-01-02 03:04:05.000000', $factory->fromString('2026-01-02 03:04:05', user: $user)->format('Y-m-d H:i:s.u'));
+        self::assertSame('2026-01-02 03:04:05.123400', $factory->fromString('2026-01-02 03:04:05.1234', user: $user)->format('Y-m-d H:i:s.u'));
+        self::assertSame('2026-01-02 03:04:05.123456', $factory->fromString('2026-01-02 03:04:05.123456', user: $user)->format('Y-m-d H:i:s.u'));
+        self::assertSame('2026-01-02 03:04:05.123456', $factory->fromString('2026-01-02 03:04:05.1234560', user: $user)->format('Y-m-d H:i:s.u'));
     }
 }

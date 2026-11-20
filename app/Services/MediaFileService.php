@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
@@ -27,7 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
@@ -127,7 +126,7 @@ class MediaFileService
             ->pluck('multimedia_file_refn');
 
         $media_filesystem = $tree->mediaFilesystem();
-        $disk_files       = $this->allFilesOnDisk($media_filesystem, '', FilesystemReader::LIST_DEEP)->all();
+        $disk_files       = $this->allFilesOnDisk($media_filesystem, '', FilesystemReader::LIST_DEEP)->array();
         $unused_files     = array_diff($disk_files, $used_files);
 
         sort($unused_files);
@@ -273,7 +272,7 @@ class MediaFileService
      * @param string             $folder     Root folder
      * @param bool               $subfolders Include subfolders
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function allFilesOnDisk(FilesystemOperator $filesystem, string $folder, bool $subfolders): Collection
     {
@@ -297,7 +296,7 @@ class MediaFileService
      * @param string $media_folder Root folder
      * @param bool   $subfolders   Include subfolders
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function allFilesInDatabase(string $media_folder, bool $subfolders): Collection
     {
@@ -306,7 +305,7 @@ class MediaFileService
 
         $query = DB::query()
             ->from('media_file')
-            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom_id', 'm_file'))
+            ->join('gedcom', ['gedcom_id' => 'm_file'])
             ->whereNotLike('multimedia_file_refn', 'http://%')
             ->whereNotLike('multimedia_file_refn', 'https://%')
             ->whereLike($path_expression, $escaped_folder . '%');
@@ -316,14 +315,14 @@ class MediaFileService
         }
 
         return $query
-            ->orderBy($path_expression)
+            ->orderBy(DB::ascending($path_expression))
             ->pluck($path_expression, in: Collection::class);
     }
 
     /**
      * Generate a list of all folders used by a tree.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      * @throws FilesystemException
      */
     public function mediaFolders(Tree $tree): Collection
@@ -341,14 +340,14 @@ class MediaFileService
     /**
      * Generate a list of all folders in either the database or the filesystem.
      *
-     * @return Collection<array-key,string>
+     * @return Collection<string>
      * @throws FilesystemException
      */
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
         $db_folders = DB::query()
             ->from('media_file')
-            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom_id', 'm_file'))
+            ->join('gedcom', ['gedcom_id' => 'm_file'])
             ->whereNotLike('multimedia_file_refn', 'http://%')
             ->whereNotLike('multimedia_file_refn', 'https://%')
             ->pluck(DB::concat(DB::column('media_folder'), DB::column('multimedia_file_refn')), in: Collection::class)
@@ -358,7 +357,7 @@ class MediaFileService
             ->from('gedcom')
             ->whereGreaterThan('gedcom.gedcom_id', 0)
             ->pluck('media_folder', in: Collection::class)
-            ->uniqueStrict();
+            ->unique();
 
         $disk_folders = new Collection($media_roots);
 
@@ -374,7 +373,7 @@ class MediaFileService
         }
 
         return $disk_folders->concat($db_folders)
-            ->uniqueStrict()
+            ->unique()
             ->sort(I18N::compare(...))
             ->mapWithKeys(static fn (string $folder): array => [$folder => $folder]);
     }

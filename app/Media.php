@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Http\Controllers\MediaPage;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_filter;
 use function array_unique;
@@ -62,7 +62,7 @@ class Media extends GedcomRecord
     /**
      * Get the media files for this media object
      *
-     * @return Collection<int,MediaFile>
+     * @return Collection<MediaFile>
      */
     public function mediaFiles(): Collection
     {

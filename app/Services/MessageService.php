@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_combine;
 use function array_filter;
@@ -98,6 +98,7 @@ class MessageService
                 'user_id'    => $recipient->id(),
                 'subject'    => $subject,
                 'body'       => $body_text,
+                'created'    => DB::now(),
             ]);
         }
 
@@ -120,7 +121,7 @@ class MessageService
     /**
      * Convert a username (or mailing list name) into an array of recipients.
      *
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function recipientUsers(string $to): Collection
     {

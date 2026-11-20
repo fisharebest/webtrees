@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_map;
 
@@ -92,10 +92,15 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(array_map(static fn (string $tag): string => 'INDI:' . $tag, static::HANDLED_FACTS));
+        return new Collection(array_map(static fn (string $tag): string => self::factTag($tag), static::HANDLED_FACTS));
+    }
+
+    private static function factTag(string $tag): string
+    {
+        return 'INDI:' . $tag;
     }
 }

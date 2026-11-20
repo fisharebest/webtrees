@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\FactSortService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function preg_match;
 
@@ -93,7 +93,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * Get all the facts for an individual which contain media objects.
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     protected function getFactsWithMedia(Individual $individual): Collection
     {
@@ -123,7 +123,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function supportedFacts(): Collection
     {

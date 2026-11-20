@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function str_starts_with;
 
@@ -36,7 +36,7 @@ abstract class AbstractGedcomRecordFactory
 {
     /**
      *
-     * @return Collection<array-key,string>
+     * @return Collection<string>
      */
     protected function pendingChanges(Tree $tree): Collection
     {
@@ -52,7 +52,7 @@ abstract class AbstractGedcomRecordFactory
                 ->from('change')
                 ->whereEqual('gedcom_id', $tree->id())
                 ->whereEqual('status', ChangeStatus::Pending->value)
-                ->orderBy('change_id')
+                ->orderBy(DB::ascending('change_id'))
                 ->pluck('new_gedcom', 'xref', in: Collection::class));
     }
 

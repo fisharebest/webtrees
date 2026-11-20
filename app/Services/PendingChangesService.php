@@ -24,7 +24,6 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Carbon\CarbonImmutable;
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -43,7 +42,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function addcslashes;
 use function preg_match;
@@ -73,7 +72,7 @@ class PendingChangesService
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function pendingXrefs(Tree $tree): Collection
     {
@@ -82,7 +81,7 @@ class PendingChangesService
             ->whereEqual('status', ChangeStatus::Pending->value)
             ->whereEqual('gedcom_id', $tree->id())
             ->groupBy('xref')
-            ->orderBy('xref')
+            ->orderBy(DB::ascending('xref'))
             ->pluck('xref', in: Collection::class);
     }
 
@@ -105,11 +104,11 @@ class PendingChangesService
         $rows = DB::query()
             ->select('change.*', 'user.user_name', 'user.real_name')
             ->from('change')
-            ->join('user', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'change.user_id'))
+            ->join('user', ['user.user_id' => 'change.user_id'])
             ->whereEqual('status', ChangeStatus::Pending->value)
             ->whereEqual('gedcom_id', $tree->id())
-            ->whereIn('xref', $xrefs->slice(0, $n)->all())
-            ->orderBy('change.change_id')
+            ->whereIn('xref', $xrefs->slice(0, $n)->array())
+            ->orderBy(DB::ascending('change.change_id'))
             ->get();
 
         $changes = [];
@@ -151,8 +150,8 @@ class PendingChangesService
             ->from('change')
             ->whereEqual('gedcom_id', $tree->id())
             ->whereEqual('status', ChangeStatus::Pending->value)
-            ->whereIn('xref', $xrefs->slice(0, $n)->all())
-            ->orderBy('change_id')
+            ->whereIn('xref', $xrefs->slice(0, $n)->array())
+            ->orderBy(DB::ascending('change_id'))
             ->forUpdate()
             ->get();
 
@@ -179,7 +178,7 @@ class PendingChangesService
             ->whereEqual('gedcom_id', $record->tree()->id())
             ->whereEqual('xref', $record->xref())
             ->whereEqual('status', ChangeStatus::Pending->value)
-            ->orderBy('change_id')
+            ->orderBy(DB::ascending('change_id'))
             ->forUpdate()
             ->get();
 
@@ -207,7 +206,7 @@ class PendingChangesService
             ->whereEqual('xref', $xref)
             ->whereLessThanOrEqual('change_id', $change_id)
             ->whereEqual('status', ChangeStatus::Pending->value)
-            ->orderBy('change_id')
+            ->orderBy(DB::ascending('change_id'))
             ->get();
 
         foreach ($changes as $change) {
@@ -269,8 +268,8 @@ class PendingChangesService
         $query = DB::query()
             ->select('change.*', DB::alias(DB::coalesce(DB::column('user_name'), DB::value('<none>')), 'user_name'), 'gedcom_name')
             ->from('change')
-            ->leftJoin('user', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'change.user_id'))
-            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom.gedcom_id', 'change.gedcom_id'))
+            ->leftJoin('user', ['user.user_id' => 'change.user_id'])
+            ->join('gedcom', ['gedcom.gedcom_id' => 'change.gedcom_id'])
             ->whereEqual('gedcom_name', $tree);
 
         $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));

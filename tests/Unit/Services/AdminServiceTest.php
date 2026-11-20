@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Database\Capsule\Manager;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_map;
@@ -95,6 +94,7 @@ class AdminServiceTest extends TestCase
             ] as [$tree_id, $xref, $status]
         ) {
             DB::query(table: 'change')->insert([
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => $xref,
                 'status'     => $status,
@@ -113,6 +113,7 @@ class AdminServiceTest extends TestCase
             ] as [$tree_id, $xref]
         ) {
             DB::query(table: 'change')->insert([
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => $xref,
                 'status'     => ChangeStatus::Pending->value,
@@ -126,6 +127,7 @@ class AdminServiceTest extends TestCase
 
         foreach ([$first_tree->id(), $second_tree->id()] as $tree_id) {
             DB::query(table: 'change')->insert([
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => 'Z999999',
                 'status'     => ChangeStatus::Pending->value,
@@ -142,7 +144,7 @@ class AdminServiceTest extends TestCase
     {
         self::createDatabase();
 
-        $pdo = Manager::connection()->getPdo();
+        $pdo = DB::connection()->pdo();
         if (method_exists($pdo, 'createFunction')) {
             $pdo->createFunction('LEAST', min(...), 2);
             $pdo->createFunction('GREATEST', max(...), 2);

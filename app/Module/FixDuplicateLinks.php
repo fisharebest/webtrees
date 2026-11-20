@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function preg_match;
 use function preg_replace;
@@ -57,7 +57,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function familiesToFix(Tree $tree, array $params): Collection
     {
@@ -72,7 +72,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
@@ -87,7 +87,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function mediaToFix(Tree $tree, array $params): Collection
     {
@@ -102,7 +102,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function notesToFix(Tree $tree, array $params): Collection
     {
@@ -117,7 +117,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function repositoriesToFix(Tree $tree, array $params): Collection
     {
@@ -132,7 +132,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function sourcesToFix(Tree $tree, array $params): Collection
     {
@@ -147,7 +147,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function submittersToFix(Tree $tree, array $params): Collection
     {

@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Database\Exceptions\QueryException;
+use Fisharebest\Database\StatementLoggerInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -26,8 +28,22 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_column;
+use function array_slice;
+use function array_sum;
+use function count;
+use function intdiv;
+use function is_string;
+use function max;
+use function mb_strlen;
+use function mb_substr;
 use function memory_get_peak_usage;
+use function microtime;
+use function ord;
+use function preg_replace;
+use function preg_replace_callback;
 use function sprintf;
+use function strtr;
 
 class DebugLogger implements MiddlewareInterface
 {
@@ -41,11 +57,28 @@ class DebugLogger implements MiddlewareInterface
 
         $start = microtime(true);
 
-        // Log SQL queries in response headers
-        DB::enableQueryLog();
-        $response = $handler->handle($request);
-        $queries  = DB::getQueryLog();
-        $slowest  = max(array_column($queries, 'time'));
+        $logger = new class implements StatementLoggerInterface {
+            /** @var list<array{query:string,bindings:list<float|int|string|null>,time:float}> */
+            public array $queries = [];
+
+            public function log(string $sql, array $bindings, float $duration, QueryException|null $error): void
+            {
+                $this->queries[] = ['query' => $sql, 'bindings' => $bindings, 'time' => $duration * 1000];
+            }
+        };
+
+        $connection      = DB::connection();
+        $previous_logger = $connection->statementLogger();
+        $connection->setStatementLogger($logger);
+
+        try {
+            $response = $handler->handle($request);
+        } finally {
+            $connection->setStatementLogger($previous_logger);
+        }
+
+        $queries  = $logger->queries;
+        $slowest  = $queries === [] ? 0.0 : max(array_column($queries, 'time'));
         $total    = array_sum(array_column($queries, 'time'));
         $message  = sprintf('Queries: %d, slowest: %.3f ms, total: %.3f ms', count($queries), $slowest, $total);
         $response = $response->withAddedHeader('x-debug-sql', $message);

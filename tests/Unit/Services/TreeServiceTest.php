@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Services;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -59,7 +61,7 @@ class TreeServiceTest extends TestCase
         }
 
         Registry::cache()->array()->forget('all-trees');
-        self::assertSame(['public'], $service->all()->keys()->all());
+        self::assertSame(['public'], $service->all()->keys()->array());
         self::assertSame(['public' => 'Public'], $service->titles());
 
         $user = (new UserService(new SystemClock()))->create('tester', 'Tester', 'tester@example.com', 'secret');
@@ -69,16 +71,16 @@ class TreeServiceTest extends TestCase
         $visitor_tree->setUserPreference($user, UserInterface::PREF_TREE_ROLE, Role::Visitor->value);
 
         Registry::cache()->array()->forget('all-trees');
-        self::assertSame(['private', 'public'], $service->all()->keys()->all());
+        self::assertSame(['private', 'public'], $service->all()->keys()->array());
 
         $unimported_tree->setUserPreference($user, UserInterface::PREF_TREE_ROLE, Role::Manager->value);
         Registry::cache()->array()->forget('all-trees');
-        self::assertSame(['private', 'public', 'unimported'], $service->all()->keys()->all());
+        self::assertSame(['private', 'public', 'unimported'], $service->all()->keys()->array());
 
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Registry::cache()->array()->forget('user-' . $user->id());
         Registry::cache()->array()->forget('all-trees');
-        self::assertSame(['private', 'public', 'unimported', 'visitor'], $service->all()->keys()->all());
+        self::assertSame(['private', 'public', 'unimported', 'visitor'], $service->all()->keys()->array());
     }
 
     public function testClass(): void
@@ -101,9 +103,12 @@ class TreeServiceTest extends TestCase
             'tag_type'  => 'NAME',
             'resn'      => 'privacy',
             'comment'   => 'test-comment',
+            'updated'   => '2000-01-01 00:00:00',
         ]);
 
+        $before = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
         $tree = (new TreeService(new GedcomImportService()))->create('name', 'title');
+        $after = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
 
         self::assertSame('test-value', DB::query()
             ->from('gedcom_setting')
@@ -115,6 +120,13 @@ class TreeServiceTest extends TestCase
             ->whereEqual('gedcom_id', $tree->id())
             ->whereEqual('tag_type', 'NAME')
             ->value('resn'));
+        $updated = DB::query()
+            ->from('default_resn')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('tag_type', 'NAME')
+            ->value('updated');
+        self::assertGreaterThanOrEqual($before, $updated);
+        self::assertLessThanOrEqual($after, $updated);
     }
 
     public function testDeleteRemovesOnlyThisTreesBlockSettings(): void

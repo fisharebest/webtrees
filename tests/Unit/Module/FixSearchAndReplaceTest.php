@@ -56,7 +56,7 @@ class FixSearchAndReplaceTest extends TestCase
                 'case' => '',
             ]);
 
-            self::assertSame([$xref], $records->pluck('xref')->all(), $type);
+            self::assertSame([$xref], $records->map(static fn (object $record): string => $record->xref)->array(), $type);
         }
 
         self::assertSame([], $module->recordsToFix($tree, [
@@ -66,7 +66,7 @@ class FixSearchAndReplaceTest extends TestCase
             'case' => '',
             'start' => 'S2',
             'end' => 'S9',
-        ])->all());
+        ])->array());
     }
 
     public function testCaseInsensitiveLikeAndRegexFindCandidates(): void
@@ -86,7 +86,7 @@ class FixSearchAndReplaceTest extends TestCase
                 'case' => 'i',
             ]);
 
-            self::assertSame(['I1'], $records->pluck('xref')->all(), $method);
+            self::assertSame(['I1'], $records->map(static fn (object $record): string => $record->xref)->array(), $method);
         }
 
         self::assertSame([], $module->recordsToFix($tree, [
@@ -94,6 +94,6 @@ class FixSearchAndReplaceTest extends TestCase
             'search-for' => 'needle',
             'method' => 'regex',
             'case' => '',
-        ])->all());
+        ])->array());
     }
 }

@@ -373,12 +373,13 @@ class Tree
 
         // Create a pending change
         DB::query(table: 'change')->insert(values: [
-            'gedcom_id'  => $this->id,
-            'xref'       => $xref,
-            'old_gedcom' => '',
-            'new_gedcom' => $gedcom,
-            'status'     => ChangeStatus::Pending->value,
-            'user_id'    => Auth::id(),
+            'gedcom_id'   => $this->id,
+            'xref'        => $xref,
+            'old_gedcom'  => '',
+            'new_gedcom'  => $gedcom,
+            'status'      => ChangeStatus::Pending->value,
+            'user_id'     => Auth::id(),
+            'change_time' => DB::now(),
         ]);
 
         // Accept this pending change
@@ -410,12 +411,13 @@ class Tree
 
         // Create a pending change
         DB::query(table: 'change')->insert(values: [
-            'gedcom_id'  => $this->id,
-            'xref'       => $xref,
-            'old_gedcom' => '',
-            'new_gedcom' => $gedcom,
-            'status'     => ChangeStatus::Pending->value,
-            'user_id'    => Auth::id(),
+            'gedcom_id'   => $this->id,
+            'xref'        => $xref,
+            'old_gedcom'  => '',
+            'new_gedcom'  => $gedcom,
+            'status'      => ChangeStatus::Pending->value,
+            'user_id'     => Auth::id(),
+            'change_time' => DB::now(),
         ]);
 
         // Accept this pending change
@@ -447,12 +449,13 @@ class Tree
 
         // Create a pending change
         DB::query(table: 'change')->insert(values: [
-            'gedcom_id'  => $this->id,
-            'xref'       => $xref,
-            'old_gedcom' => '',
-            'new_gedcom' => $gedcom,
-            'status'     => ChangeStatus::Pending->value,
-            'user_id'    => Auth::id(),
+            'gedcom_id'   => $this->id,
+            'xref'        => $xref,
+            'old_gedcom'  => '',
+            'new_gedcom'  => $gedcom,
+            'status'      => ChangeStatus::Pending->value,
+            'user_id'     => Auth::id(),
+            'change_time' => DB::now(),
         ]);
 
         // Accept this pending change
@@ -484,12 +487,13 @@ class Tree
 
         // Create a pending change
         DB::query(table: 'change')->insert(values: [
-            'gedcom_id'  => $this->id,
-            'xref'       => $xref,
-            'old_gedcom' => '',
-            'new_gedcom' => $gedcom,
-            'status'     => ChangeStatus::Pending->value,
-            'user_id'    => Auth::id(),
+            'gedcom_id'   => $this->id,
+            'xref'        => $xref,
+            'old_gedcom'  => '',
+            'new_gedcom'  => $gedcom,
+            'status'      => ChangeStatus::Pending->value,
+            'user_id'     => Auth::id(),
+            'change_time' => DB::now(),
         ]);
 
         // Accept this pending change
@@ -537,7 +541,7 @@ class Tree
             $xref = DB::query()
                 ->from('individuals')
                 ->whereEqual('i_file', $this->id())
-                ->orderBy('i_id')
+                ->orderBy(DB::ascending('i_id'))
                 ->value('i_id');
 
             if (is_string($xref)) {

@@ -79,81 +79,81 @@ use Fisharebest\Webtrees\Module\SubmitterListModule;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
- * @var Collection<int,User>                           $administrators
- * @var Collection<int,ModuleInterface>                $all_modules_disabled
- * @var Collection<int,ModuleInterface>                $all_modules_enabled
- * @var Collection<int,Tree>                           $all_trees
- * @var Collection<int,User>                           $all_users
- * @var Collection<int,ModuleAnalyticsInterface>       $analytics_modules_disabled
- * @var Collection<int,ModuleAnalyticsInterface>       $analytics_modules_enabled
- * @var Collection<int,ModuleBlockInterface>           $block_modules_disabled
- * @var Collection<int,ModuleBlockInterface>           $block_modules_enabled
+ * @var Collection<User>                           $administrators
+ * @var Collection<ModuleInterface>                $all_modules_disabled
+ * @var Collection<ModuleInterface>                $all_modules_enabled
+ * @var Collection<Tree>                           $all_trees
+ * @var Collection<User>                           $all_users
+ * @var Collection<ModuleAnalyticsInterface>       $analytics_modules_disabled
+ * @var Collection<ModuleAnalyticsInterface>       $analytics_modules_enabled
+ * @var Collection<ModuleBlockInterface>           $block_modules_disabled
+ * @var Collection<ModuleBlockInterface>           $block_modules_enabled
  * @var array<int,int>                                 $changes
- * @var Collection<int,ModuleChartInterface>           $chart_modules_disabled
- * @var Collection<int,ModuleChartInterface>           $chart_modules_enabled
- * @var Collection<int,ModuleCustomInterface>          $custom_updates
- * @var Collection<int,ModuleDataFixInterface>         $data_fix_modules_disabled
- * @var Collection<int,ModuleDataFixInterface>         $data_fix_modules_enabled
- * @var Collection<array-key,int>                      $families
+ * @var Collection<ModuleChartInterface>           $chart_modules_disabled
+ * @var Collection<ModuleChartInterface>           $chart_modules_enabled
+ * @var Collection<ModuleCustomInterface>          $custom_updates
+ * @var Collection<ModuleDataFixInterface>         $data_fix_modules_disabled
+ * @var Collection<ModuleDataFixInterface>         $data_fix_modules_enabled
+ * @var Collection<int>                      $families
  * @var FamilyListModule|null                          $family_list_module
  * @var list<string>                                   $files_to_delete
- * @var Collection<int,ModuleFooterInterface>          $footer_modules_disabled
- * @var Collection<int,ModuleFooterInterface>          $footer_modules_enabled
- * @var Collection<int,ModuleHistoricEventsInterface>  $history_modules_disabled
- * @var Collection<int,ModuleHistoricEventsInterface>  $history_modules_enabled
- * @var Collection<array-key,int>                      $individuals
+ * @var Collection<ModuleFooterInterface>          $footer_modules_disabled
+ * @var Collection<ModuleFooterInterface>          $footer_modules_enabled
+ * @var Collection<ModuleHistoricEventsInterface>  $history_modules_disabled
+ * @var Collection<ModuleHistoricEventsInterface>  $history_modules_enabled
+ * @var Collection<int>                      $individuals
  * @var IndividualListModule|null                      $individual_list_module
- * @var Collection<int,ModuleLanguageInterface>        $language_modules_disabled
- * @var Collection<int,ModuleLanguageInterface>        $language_modules_enabled
+ * @var Collection<ModuleLanguageInterface>        $language_modules_disabled
+ * @var Collection<ModuleLanguageInterface>        $language_modules_enabled
  * @var string                                         $latest_version
  * @var string                                         $latest_version_error
  * @var CarbonImmutable                                $latest_version_timestamp
  * @var int                                            $now
- * @var Collection<int,ModuleListInterface>            $list_modules_disabled
- * @var Collection<int,ModuleListInterface>            $list_modules_enabled
- * @var Collection<int,ModuleMapLinkInterface>         $map_link_modules_disabled
- * @var Collection<int,ModuleMapLinkInterface>         $map_link_modules_enabled
- * @var Collection<int,ModuleMapAutocompleteInterface> $map_autocomplete_modules_disabled
- * @var Collection<int,ModuleMapAutocompleteInterface> $map_autocomplete_modules_enabled
- * @var Collection<int,ModuleMapProviderInterface>     $map_provider_modules_disabled
- * @var Collection<int,ModuleMapProviderInterface>     $map_provider_modules_enabled
- * @var Collection<int,ModuleMapGeoLocationInterface>  $map_search_modules_disabled
- * @var Collection<int,ModuleMapGeoLocationInterface>  $map_search_modules_enabled
- * @var Collection<int,User>                           $managers
- * @var Collection<array-key,int>                      $media
+ * @var Collection<ModuleListInterface>            $list_modules_disabled
+ * @var Collection<ModuleListInterface>            $list_modules_enabled
+ * @var Collection<ModuleMapLinkInterface>         $map_link_modules_disabled
+ * @var Collection<ModuleMapLinkInterface>         $map_link_modules_enabled
+ * @var Collection<ModuleMapAutocompleteInterface> $map_autocomplete_modules_disabled
+ * @var Collection<ModuleMapAutocompleteInterface> $map_autocomplete_modules_enabled
+ * @var Collection<ModuleMapProviderInterface>     $map_provider_modules_disabled
+ * @var Collection<ModuleMapProviderInterface>     $map_provider_modules_enabled
+ * @var Collection<ModuleMapGeoLocationInterface>  $map_search_modules_disabled
+ * @var Collection<ModuleMapGeoLocationInterface>  $map_search_modules_enabled
+ * @var Collection<User>                           $managers
+ * @var Collection<int>                      $media
  * @var MediaListModule|null                           $media_list_module
- * @var Collection<int,ModuleMenuInterface>            $menu_modules_disabled
- * @var Collection<int,ModuleMenuInterface>            $menu_modules_enabled
- * @var Collection<int,User>                           $moderators
- * @var Collection<array-key,int>                      $notes
+ * @var Collection<ModuleMenuInterface>            $menu_modules_disabled
+ * @var Collection<ModuleMenuInterface>            $menu_modules_enabled
+ * @var Collection<User>                           $moderators
+ * @var Collection<int>                      $notes
  * @var NoteListModule|null                            $note_list_module
- * @var Collection<int,ModuleInterface>                $other_modules
+ * @var Collection<ModuleInterface>                $other_modules
  * @var array<string,string>                           $recipients
- * @var Collection<int,ModuleReportInterface>          $report_modules_disabled
- * @var Collection<int,ModuleReportInterface>          $report_modules_enabled
- * @var Collection<array-key,int>                      $repositories
+ * @var Collection<ModuleReportInterface>          $report_modules_disabled
+ * @var Collection<ModuleReportInterface>          $report_modules_enabled
+ * @var Collection<int>                      $repositories
  * @var RepositoryListModule|null                      $repository_list_module
- * @var Collection<int,string>                         $server_errors
- * @var Collection<int,string>                         $server_warnings
+ * @var Collection<string>                         $server_errors
+ * @var Collection<string>                         $server_warnings
  * @var bool                                           $show_synchronize
- * @var Collection<int,ModuleShareInterface>           $share_modules_disabled
- * @var Collection<int,ModuleShareInterface>           $share_modules_enabled
- * @var Collection<int,ModuleSidebarInterface>         $sidebar_modules_disabled
- * @var Collection<int,ModuleSidebarInterface>         $sidebar_modules_enabled
- * @var Collection<array-key,int>                      $sources
+ * @var Collection<ModuleShareInterface>           $share_modules_disabled
+ * @var Collection<ModuleShareInterface>           $share_modules_enabled
+ * @var Collection<ModuleSidebarInterface>         $sidebar_modules_disabled
+ * @var Collection<ModuleSidebarInterface>         $sidebar_modules_enabled
+ * @var Collection<int>                      $sources
  * @var SourceListModule|null                          $source_list_module
- * @var Collection<array-key,int>                      $submitters
+ * @var Collection<int>                      $submitters
  * @var SubmitterListModule|null                       $submitter_list_module
- * @var Collection<int,ModuleTabInterface>             $tab_modules_disabled
- * @var Collection<int,ModuleTabInterface>             $tab_modules_enabled
- * @var Collection<int,ModuleThemeInterface>           $theme_modules_disabled
- * @var Collection<int,ModuleThemeInterface>           $theme_modules_enabled
+ * @var Collection<ModuleTabInterface>             $tab_modules_disabled
+ * @var Collection<ModuleTabInterface>             $tab_modules_enabled
+ * @var Collection<ModuleThemeInterface>           $theme_modules_disabled
+ * @var Collection<ModuleThemeInterface>           $theme_modules_enabled
  * @var string                                         $title
- * @var Collection<int,User>                           $unapproved
- * @var Collection<int,User>                           $unverified
+ * @var Collection<User>                           $unapproved
+ * @var Collection<User>                           $unverified
  */
 
 ?>
@@ -373,77 +373,77 @@ use Illuminate\Support\Collection;
                             <?php endif ?>
                         </td>
                         <td class="d-none d-sm-table-cell align-digits">
-                            <?php if ($individuals[$tree->id()] > 0) : ?>
+                            <?php if ($individuals->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($individual_list_module instanceof IndividualListModule) : ?>
-                                    <a href="<?= e($individual_list_module->listUrl($tree)) ?>"><?= I18N::number($individuals[$tree->id()]) ?></a>
+                                    <a href="<?= e($individual_list_module->listUrl($tree)) ?>"><?= I18N::number($individuals->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($individuals[$tree->id()]) ?>
+                                    <?= I18N::number($individuals->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -
                             <?php endif ?>
                         </td>
                         <td class="d-none d-lg-table-cell align-digits">
-                            <?php if ($families[$tree->id()] > 0) : ?>
+                            <?php if ($families->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($family_list_module instanceof FamilyListModule) : ?>
-                                    <a href="<?= e($family_list_module->listUrl($tree)) ?>"><?= I18N::number($families[$tree->id()]) ?></a>
+                                    <a href="<?= e($family_list_module->listUrl($tree)) ?>"><?= I18N::number($families->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($families[$tree->id()]) ?>
+                                    <?= I18N::number($families->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -
                             <?php endif ?>
                         </td>
                         <td class="d-none d-sm-table-cell align-digits">
-                            <?php if ($sources[$tree->id()] > 0) : ?>
+                            <?php if ($sources->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($source_list_module instanceof SourceListModule) : ?>
-                                    <a href="<?= e($source_list_module->listUrl($tree)) ?>"><?= I18N::number($sources[$tree->id()]) ?></a>
+                                    <a href="<?= e($source_list_module->listUrl($tree)) ?>"><?= I18N::number($sources->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($sources[$tree->id()]) ?>
+                                    <?= I18N::number($sources->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -
                             <?php endif ?>
                         </td>
                         <td class="d-none d-lg-table-cell align-digits">
-                            <?php if ($repositories[$tree->id()] > 0) : ?>
+                            <?php if ($repositories->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($repository_list_module instanceof RepositoryListModule) : ?>
-                                    <a href="<?= e($repository_list_module->listUrl($tree)) ?>"><?= I18N::number($repositories[$tree->id()]) ?></a>
+                                    <a href="<?= e($repository_list_module->listUrl($tree)) ?>"><?= I18N::number($repositories->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($repositories[$tree->id()]) ?>
+                                    <?= I18N::number($repositories->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -
                             <?php endif ?>
                         </td>
                         <td class="d-none d-sm-table-cell align-digits">
-                            <?php if ($media[$tree->id()] > 0) : ?>
+                            <?php if ($media->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($media_list_module instanceof MediaListModule) : ?>
-                                    <a href="<?= e($media_list_module->listUrl($tree)) ?>"><?= I18N::number($media[$tree->id()]) ?></a>
+                                    <a href="<?= e($media_list_module->listUrl($tree)) ?>"><?= I18N::number($media->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($media[$tree->id()]) ?>
+                                    <?= I18N::number($media->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -
                             <?php endif ?>
                         </td>
                         <td class="d-none d-lg-table-cell align-digits">
-                            <?php if ($notes[$tree->id()] > 0) : ?>
+                            <?php if ($notes->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($note_list_module instanceof NoteListModule) : ?>
-                                    <a href="<?= e($note_list_module->listUrl($tree)) ?>"><?= I18N::number($notes[$tree->id()]) ?></a>
+                                    <a href="<?= e($note_list_module->listUrl($tree)) ?>"><?= I18N::number($notes->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($notes[$tree->id()]) ?>
+                                    <?= I18N::number($notes->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -
                             <?php endif ?>
                         </td>
                          <td class="d-none d-lg-table-cell align-digits">
-                            <?php if ($submitters[$tree->id()] > 0) : ?>
+                            <?php if ($submitters->get($tree->id(), 0) > 0) : ?>
                                 <?php if ($submitter_list_module instanceof SubmitterListModule) : ?>
-                                    <a href="<?= e($submitter_list_module->listUrl($tree)) ?>"><?= I18N::number($submitters[$tree->id()]) ?></a>
+                                    <a href="<?= e($submitter_list_module->listUrl($tree)) ?>"><?= I18N::number($submitters->get($tree->id(), 0)) ?></a>
                                 <?php else : ?>
-                                    <?= I18N::number($submitters[$tree->id()]) ?>
+                                    <?= I18N::number($submitters->get($tree->id(), 0)) ?>
                                 <?php endif ?>
                             <?php else : ?>
                                 -

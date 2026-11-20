@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
@@ -64,7 +63,7 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use Psr\Clock\ClockInterface;
@@ -214,115 +213,115 @@ final class ControlPanel
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('change', static fn (JoinOn $j): JoinOn => $j->on('change.gedcom_id', 'gedcom.gedcom_id')->on('change.status', DB::value(ChangeStatus::Pending->value)))
+            ->leftJoin('change', ['change.gedcom_id' => 'gedcom.gedcom_id', 'change.status' => new Value(ChangeStatus::Pending->value)])
             ->groupBy('gedcom.gedcom_id')
             ->pluck(DB::count('change_id'), 'gedcom.gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count)
-            ->all();
+            ->map(static fn (int|string $count): int => (int) $count)
+            ->array();
     }
 
     /**
      * Count the number of individuals in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalIndividuals(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'gedcom_id'))
+            ->leftJoin('individuals', ['i_file' => 'gedcom_id'])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('i_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 
     /**
      * Count the number of families in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalFamilies(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('families', static fn (JoinOn $j): JoinOn => $j->on('f_file', 'gedcom_id'))
+            ->leftJoin('families', ['f_file' => 'gedcom_id'])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('f_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 
     /**
      * Count the number of sources in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalSources(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('sources', static fn (JoinOn $j): JoinOn => $j->on('s_file', 'gedcom_id'))
+            ->leftJoin('sources', ['s_file' => 'gedcom_id'])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('s_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 
     /**
      * Count the number of media objects in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalMediaObjects(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('media', static fn (JoinOn $j): JoinOn => $j->on('m_file', 'gedcom_id'))
+            ->leftJoin('media', ['m_file' => 'gedcom_id'])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('m_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 
     /**
      * Count the number of repositories in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalRepositories(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('other', static fn (JoinOn $j): JoinOn => $j->on('o_file', 'gedcom_id')->on('o_type', DB::value(Repository::RECORD_TYPE)))
+            ->leftJoin('other', ['o_file' => 'gedcom_id', 'o_type' => new Value(Repository::RECORD_TYPE)])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('o_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 
     /**
      * Count the number of notes in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalNotes(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('other', static fn (JoinOn $j): JoinOn => $j->on('o_file', 'gedcom_id')->on('o_type', DB::value(Note::RECORD_TYPE)))
+            ->leftJoin('other', ['o_file' => 'gedcom_id', 'o_type' => new Value(Note::RECORD_TYPE)])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('o_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 
     /**
      * Count the number of submitters in each tree.
      *
-     * @return Collection<int,int>
+     * @return Collection<int>
      */
     private function totalSubmitters(): Collection
     {
         return DB::query()
             ->from('gedcom')
-            ->leftJoin('other', static fn (JoinOn $j): JoinOn => $j->on('o_file', 'gedcom_id')->on('o_type', DB::value(Submitter::RECORD_TYPE)))
+            ->leftJoin('other', ['o_file' => 'gedcom_id', 'o_type' => new Value(Submitter::RECORD_TYPE)])
             ->groupBy('gedcom_id')
             ->pluck(DB::count('o_id'), 'gedcom_id', in: Collection::class)
-            ->map(static fn (string $count): int => (int) $count);
+            ->map(static fn (int|string $count): int => (int) $count);
     }
 }

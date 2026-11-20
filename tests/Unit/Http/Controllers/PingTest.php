@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Controllers\Ping;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Ping::class)]

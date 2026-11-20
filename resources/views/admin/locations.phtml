@@ -13,14 +13,14 @@ use Fisharebest\Webtrees\Http\Controllers\MapDataList;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var array<list<object{p_place:string,tree_name:string,tree_title:string,p_id:int}>> $active
  * @var array<array-key,Tree>                                                           $all_trees
  * @var array<string,string>                                                            $breadcrumbs
  * @var int                                                                             $parent_id
- * @var Collection<int,object{
+ * @var Collection<object{
  *     id:int,
  *     key:string,
  *     place:string,

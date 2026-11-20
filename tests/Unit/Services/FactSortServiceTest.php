@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -581,11 +581,11 @@ class FactSortServiceTest extends TestCase
     }
 
     /**
-     * @param Collection<int,Fact> $facts
+     * @param Collection<Fact> $facts
      * @return array<string>
      */
     private function ids(Collection $facts): array
     {
-        return array_map(static fn (Fact $fact): string => $fact->id(), $facts->all());
+        return array_map(static fn (Fact $fact): string => $fact->id(), $facts->array());
     }
 }

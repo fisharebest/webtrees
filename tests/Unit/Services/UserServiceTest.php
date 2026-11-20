@@ -140,7 +140,7 @@ class UserServiceTest extends TestCase
         $users = $user_service->findByIndividual($indi);
 
         self::assertCount(1, $users);
-        self::assertSame($user->id(), $users[0]->id());
+        self::assertSame($user->id(), $users->get(0)->id());
     }
 
     public function testFindAllUsers(): void
@@ -152,8 +152,8 @@ class UserServiceTest extends TestCase
         $users = $user_service->all();
 
         self::assertCount(2, $users);
-        self::assertSame($user2->id(), $users[0]->id());
-        self::assertSame($user1->id(), $users[1]->id());
+        self::assertSame($user2->id(), $users->get(0)->id());
+        self::assertSame($user1->id(), $users->get(1)->id());
     }
 
     public function testFindAdministrators(): void
@@ -167,7 +167,7 @@ class UserServiceTest extends TestCase
         $users = $user_service->administrators();
 
         self::assertCount(1, $users);
-        self::assertSame($admin->id(), $users[0]->id());
+        self::assertSame($admin->id(), $users->get(0)->id());
     }
 
     public function testFindManagers(): void
@@ -187,7 +187,7 @@ class UserServiceTest extends TestCase
         $users = $user_service->managers();
 
         self::assertCount(1, $users);
-        self::assertSame($user1->id(), $users[0]->id());
+        self::assertSame($user1->id(), $users->get(0)->id());
     }
 
     public function testFindModerators(): void
@@ -207,7 +207,7 @@ class UserServiceTest extends TestCase
         $users = $user_service->moderators();
 
         self::assertCount(1, $users);
-        self::assertSame($user2->id(), $users[0]->id());
+        self::assertSame($user2->id(), $users->get(0)->id());
     }
 
     public function testFindUnapprovedAndUnverified(): void
@@ -230,14 +230,14 @@ class UserServiceTest extends TestCase
         $users = $user_service->unapproved();
 
         self::assertCount(2, $users);
-        self::assertSame('user1', $users[0]->userName());
-        self::assertSame('user3', $users[1]->userName());
+        self::assertSame('user1', $users->get(0)->userName());
+        self::assertSame('user3', $users->get(1)->userName());
 
         $users = $user_service->unverified();
 
         self::assertCount(2, $users);
-        self::assertSame('user1', $users[0]->userName());
-        self::assertSame('user2', $users[1]->userName());
+        self::assertSame('user1', $users->get(0)->userName());
+        self::assertSame('user2', $users->get(1)->userName());
     }
 
     public function testFindByTokenChecksExpirationAndTokenType(): void
@@ -265,6 +265,7 @@ class UserServiceTest extends TestCase
         foreach (['first', 'second'] as $session_id) {
             DB::query(table: 'session')->insert(values: [
                 'session_id'   => $session_id,
+                'session_time' => DB::now(),
                 'user_id'      => $active->id(),
                 'ip_address'   => '127.0.0.1',
                 'session_data' => '',

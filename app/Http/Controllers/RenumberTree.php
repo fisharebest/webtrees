@@ -367,7 +367,8 @@ final class RenumberTree
                 ->whereEqual('gedcom_id', $tree->id())
                 ->whereEqual('xref', $old_xref)
                 ->update([
-                    'xref' => $new_xref,
+                    'xref'    => $new_xref,
+                    'updated' => DB::now(),
                 ]);
 
             DB::query(table: 'hit_counter')

@@ -25,7 +25,13 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
+use UnexpectedValueException;
+
+use function ctype_lower;
+use function mb_strtolower;
+use function preg_replace;
+use function ucwords;
 
 /**
  * Class AbstractModule - common functions for blocks
@@ -106,6 +112,30 @@ abstract class AbstractModule implements ModuleInterface
     final public function name(): string
     {
         return $this->name;
+    }
+
+    /**
+     * Format the module name for its block CSS class.
+     */
+    final protected function blockCssClass(): string
+    {
+        $name = $this->name();
+
+        if (ctype_lower($name)) {
+            return $name;
+        }
+
+        $name = preg_replace('/\s+/u', '', ucwords($name));
+        if ($name === null) {
+            throw new UnexpectedValueException('Module name must contain valid UTF-8.');
+        }
+
+        $name = preg_replace('/(.)(?=[A-Z])/u', '$1-', $name);
+        if ($name === null) {
+            throw new UnexpectedValueException('Module name must contain valid UTF-8.');
+        }
+
+        return mb_strtolower($name, 'UTF-8');
     }
 
     /**

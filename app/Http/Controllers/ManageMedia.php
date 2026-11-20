@@ -68,7 +68,7 @@ final class ManageMedia
     public function post(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
-        $media_folders   = $this->media_file_service->allMediaFolders($data_filesystem)->all();
+        $media_folders   = $this->media_file_service->allMediaFolders($data_filesystem)->array();
 
         return redirect(route(self::class, [
             'files'        => Validator::parsedBody($request)->string('files'),

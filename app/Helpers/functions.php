@@ -28,6 +28,41 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
+ * Escape text for HTML content and attributes.
+ */
+function e(string|int|float|bool|\Stringable|null $value, bool $double_encode = true): string
+{
+    return \htmlspecialchars((string) $value, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8', $double_encode);
+}
+
+/**
+ * Generate a cryptographically secure alphanumeric token without modulo bias.
+ */
+function random_string(int $length): string
+{
+    if ($length < 0) {
+        throw new \InvalidArgumentException('Token length must not be negative.');
+    }
+
+    $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $token    = '';
+
+    while (\strlen($token) < $length) {
+        $bytes = \random_bytes($length - \strlen($token));
+
+        for ($index = 0; $index < \strlen($bytes) && \strlen($token) < $length; $index++) {
+            $byte = \ord($bytes[$index]);
+
+            if ($byte < 248) {
+                $token .= $alphabet[$byte % 62];
+            }
+        }
+    }
+
+    return $token;
+}
+
+/**
  * Generate a URL to an asset file in the public folder.
  * Add a version parameter for cache-busting.
  */

@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
+use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -88,14 +88,14 @@ class UserService
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function findByIndividual(Individual $individual): Collection
     {
         return DB::query()
             ->select('user.*')
             ->from('user')
-            ->join('user_gedcom_setting', static fn (JoinOn $j): JoinOn => $j->on('user_gedcom_setting.user_id', 'user.user_id'))
+            ->join('user_gedcom_setting', ['user_gedcom_setting.user_id' => 'user.user_id'])
             ->whereEqual('gedcom_id', $individual->tree()->id())
             ->whereEqual('setting_value', $individual->xref())
             ->whereEqual('setting_name', UserInterface::PREF_TREE_ACCOUNT_XREF)
@@ -108,8 +108,8 @@ class UserService
         return DB::query()
             ->select('user.*')
             ->from('user')
-            ->join('user_setting AS us1', static fn (JoinOn $j): JoinOn => $j->on('us1.user_id', 'user.user_id'))
-            ->join('user_setting AS us2', static fn (JoinOn $j): JoinOn => $j->on('us2.user_id', 'user.user_id'))
+            ->join('user_setting AS us1', ['us1.user_id' => 'user.user_id'])
+            ->join('user_setting AS us2', ['us2.user_id' => 'user.user_id'])
             ->whereEqual('us1.setting_name', 'password-token')
             ->whereEqual('us1.setting_value', $token)
             ->whereEqual('us2.setting_name', 'password-token-expire')
@@ -159,7 +159,7 @@ class UserService
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function all(): Collection
     {
@@ -167,30 +167,30 @@ class UserService
             ->select('*')
             ->from('user')
             ->whereGreaterThan('user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function administrators(): Collection
     {
         return DB::query()
             ->select('user.*')
             ->from('user')
-            ->join('user_setting', static fn (JoinOn $j): JoinOn => $j->on('user_setting.user_id', 'user.user_id'))
+            ->join('user_setting', ['user_setting.user_id' => 'user.user_id'])
             ->whereEqual('user_setting.setting_name', UserInterface::PREF_IS_ADMINISTRATOR)
             ->whereEqual('user_setting.setting_value', '1')
             ->whereGreaterThan('user.user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function managers(): Collection
     {
@@ -198,17 +198,17 @@ class UserService
             ->select('user.*')
             ->distinct()
             ->from('user')
-            ->join('user_gedcom_setting', static fn (JoinOn $j): JoinOn => $j->on('user_gedcom_setting.user_id', 'user.user_id'))
+            ->join('user_gedcom_setting', ['user_gedcom_setting.user_id' => 'user.user_id'])
             ->whereEqual('user_gedcom_setting.setting_name', UserInterface::PREF_TREE_ROLE)
             ->whereEqual('user_gedcom_setting.setting_value', Role::Manager->value)
             ->whereGreaterThan('user.user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function moderators(): Collection
     {
@@ -216,57 +216,59 @@ class UserService
             ->select('user.*')
             ->distinct()
             ->from('user')
-            ->join('user_gedcom_setting', static fn (JoinOn $j): JoinOn => $j->on('user_gedcom_setting.user_id', 'user.user_id'))
+            ->join('user_gedcom_setting', ['user_gedcom_setting.user_id' => 'user.user_id'])
             ->whereEqual('user_gedcom_setting.setting_name', UserInterface::PREF_TREE_ROLE)
             ->whereEqual('user_gedcom_setting.setting_value', Role::Moderator->value)
             ->whereGreaterThan('user.user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function unapproved(): Collection
     {
         return DB::query()
             ->select('user.*')
             ->from('user')
-            ->leftJoin('user_setting', static fn (JoinOn $j): JoinOn => $j
-                ->on('user_setting.user_id', 'user.user_id')
-                ->on('user_setting.setting_name', DB::value(UserInterface::PREF_IS_ACCOUNT_APPROVED)))
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->notEqual('user_setting.setting_value', '1')
-                ->orIsNull('user_setting.setting_value'))
+            ->leftJoin('user_setting', [
+                'user_setting.user_id'      => 'user.user_id',
+                'user_setting.setting_name' => new Value(UserInterface::PREF_IS_ACCOUNT_APPROVED),
+            ])
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNotEqual('user_setting.setting_value', '1')
+                ->orWhereNull('user_setting.setting_value'))
             ->whereGreaterThan('user.user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function unverified(): Collection
     {
         return DB::query()
             ->select('user.*')
             ->from('user')
-            ->leftJoin('user_setting', static fn (JoinOn $j): JoinOn => $j
-                ->on('user_setting.user_id', 'user.user_id')
-                ->on('user_setting.setting_name', DB::value(UserInterface::PREF_IS_EMAIL_VERIFIED)))
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->notEqual('user_setting.setting_value', '1')
-                ->orIsNull('user_setting.setting_value'))
+            ->leftJoin('user_setting', [
+                'user_setting.user_id'      => 'user.user_id',
+                'user_setting.setting_name' => new Value(UserInterface::PREF_IS_EMAIL_VERIFIED),
+            ])
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNotEqual('user_setting.setting_value', '1')
+                ->orWhereNull('user_setting.setting_value'))
             ->whereGreaterThan('user.user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }
 
     /**
-     * @return Collection<int,User>
+     * @return Collection<User>
      */
     public function allLoggedIn(): Collection
     {
@@ -274,9 +276,9 @@ class UserService
             ->select('user.*')
             ->distinct()
             ->from('user')
-            ->join('session', static fn (JoinOn $j): JoinOn => $j->on('session.user_id', 'user.user_id'))
+            ->join('session', ['session.user_id' => 'user.user_id'])
             ->whereGreaterThan('user.user_id', 0)
-            ->orderBy('real_name')
+            ->orderBy(DB::ascending('real_name'))
             ->get(in: Collection::class)
             ->map(User::rowMapper());
     }

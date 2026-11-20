@@ -84,7 +84,7 @@ final class UserSetting extends AbstractCommand
                 ->select('setting_name', 'setting_value')
                 ->from('user_setting')
                 ->whereEqual('user_id', $user_id)
-                ->orderBy('setting_name')
+                ->orderBy(DB::ascending('setting_name'))
                 ->get();
 
             foreach ($settings as $setting) {

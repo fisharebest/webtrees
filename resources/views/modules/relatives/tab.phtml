@@ -14,17 +14,17 @@ use Fisharebest\Webtrees\Http\Controllers\ReorderFamilies;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\RelationshipService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var bool                   $can_edit
  * @var AccessLevel            $fam_access_level
  * @var Individual             $individual
- * @var Collection<int,Family> $parent_families
+ * @var Collection<Family> $parent_families
  * @var RelationshipService    $relationship_service
- * @var Collection<int,Family> $spouse_families
- * @var Collection<int,Family> $step_child_families
- * @var Collection<int,Family> $step_parent_families
+ * @var Collection<Family> $spouse_families
+ * @var Collection<Family> $step_child_families
+ * @var Collection<Family> $step_parent_families
  */
 
 ?>

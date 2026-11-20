@@ -19,18 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Database\Query\JoinOn;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use stdClass;
+use UnexpectedValueException;
 
 use function abs;
 use function array_unshift;
 use function implode;
+use function is_string;
 use function mb_strtolower;
 use function round;
 
@@ -83,7 +85,7 @@ class MapDataService
         $rows = new Collection(DB::query()
             ->select('p_place', 'gedcom_name AS tree_name', 'title AS tree_title', 'p_id')
             ->from('places')
-            ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom_id', 'p_file'))
+            ->join('gedcom', ['gedcom_id' => 'p_file'])
             ->whereIn('p_parent_id', $parents)
             ->get());
 
@@ -154,7 +156,7 @@ class MapDataService
                     ->whereEqual('id', $location->id)
                     ->delete();
             } else {
-                $place_ids = $places->map(static fn (object $place): int => (int) $place->p_id)->all();
+                $place_ids = $places->map(static fn (object $place): int => (int) $place->p_id)->array();
                 $this->deleteUnusedLocations((int) $location->id, $place_ids);
             }
         }
@@ -164,20 +166,26 @@ class MapDataService
      * Find a list of child places.
      * How many children does each child place have?  How many have co-ordinates?
      *
-     * @return Collection<int,object{id:int,key:string,place:string,latitude:float|null,longitude:float|null,child_count:int,no_coord:int}>
+     * @return Collection<object{id:int,key:lowercase-string,place:string,latitude:float|null,longitude:float|null,child_count:int,no_coord:int}&\stdClass>
      */
     public function getPlaceListLocation(int|null $parent_id): Collection
     {
         return (new Collection($this->locationRowsWithCte($parent_id)))
-            ->map(static fn (object $row): object => (object) [
-                'id'          => (int) $row->id,
-                'place'       => $row->place,
-                'key'         => mb_strtolower($row->place),
-                'latitude'    => $row->latitude === null ? null : (float) $row->latitude,
-                'longitude'   => $row->longitude === null ? null : (float) $row->longitude,
-                'child_count' => (int) $row->child_count,
-                'no_coord'    => (int) $row->no_coord,
-            ])
+            ->map(static function (object $row): object {
+                if (!is_string($row->place)) {
+                    throw new UnexpectedValueException('Location query returned a non-string place name.');
+                }
+
+                return (object) [
+                    'id'          => (int) $row->id,
+                    'place'       => $row->place,
+                    'key'         => mb_strtolower($row->place),
+                    'latitude'    => $row->latitude === null ? null : (float) $row->latitude,
+                    'longitude'   => $row->longitude === null ? null : (float) $row->longitude,
+                    'child_count' => (int) $row->child_count,
+                    'no_coord'    => (int) $row->no_coord,
+                ];
+            })
             ->sort(static fn (object $x, object $y): int => I18N::compare($x->place, $y->place));
     }
 
@@ -192,7 +200,7 @@ class MapDataService
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<non-falsy-string>
      */
     private function hierarchyPaths(string $table, string $id_column, string $parent_column, string $name_column): Collection
     {
@@ -210,16 +218,19 @@ class MapDataService
                 'child.node_id',
                 'parent.' . $parent_column,
                 'parent.' . $name_column,
-                DB::raw('child.depth + 1'),
+                DB::add(DB::column('child.depth'), DB::value(1)),
             )
             ->from($table, 'parent')
-            ->join('place_hierarchy AS child', static fn (JoinOn $j): JoinOn => $j->on('parent.' . $id_column, 'child.' . $parent_column));
+            ->join('place_hierarchy AS child', ['parent.' . $id_column => 'child.' . $parent_column]);
 
         $rows = DB::query()
             ->withRecursiveCte('place_hierarchy', $initial, $recursive)
             ->select('node_id', $name_column)
             ->from('place_hierarchy')
-            ->orderBy('node_id', 'depth')
+            ->orderBy(
+                DB::ascending('node_id'),
+                DB::ascending('depth'),
+            )
             ->get();
 
         $parts = [];
@@ -240,19 +251,27 @@ class MapDataService
             ->select(
                 'parent.id AS root_id',
                 'child.id AS descendant_id',
-                DB::alias(DB::raw('CASE WHEN child.latitude IS NULL THEN 1 ELSE 0 END'), 'missing'),
+                DB::alias(DB::caseWhen(
+                    static fn (QueryBuilder $query): QueryBuilder => $query->whereNull('child.latitude'),
+                    1,
+                )->otherwise(0), 'missing'),
             )
             ->from('place_location', 'parent')
-            ->join('place_location AS child', static fn (JoinOn $j): JoinOn => $j->on('child.parent_id', 'parent.id'));
+            ->join('place_location AS child', ['child.parent_id' => 'parent.id']);
 
         $recursive = DB::query()
             ->select(
                 'path.root_id',
                 'child.id',
-                DB::raw('CASE WHEN path.missing = 1 OR child.latitude IS NULL THEN 1 ELSE 0 END'),
+                DB::caseWhen(
+                    static fn (QueryBuilder $query): QueryBuilder => $query
+                        ->whereEqual('path.missing', 1)
+                        ->orWhereNull('child.latitude'),
+                    1,
+                )->otherwise(0),
             )
             ->from('location_paths', 'path')
-            ->join('place_location AS child', static fn (JoinOn $j): JoinOn => $j->on('child.parent_id', 'path.descendant_id'));
+            ->join('place_location AS child', ['child.parent_id' => 'path.descendant_id']);
 
         // Each terminal path counts once, and is flagged if any descendant lacks coordinates.
         $counts = DB::query()
@@ -262,7 +281,7 @@ class MapDataService
                 DB::alias(DB::sum('path.missing'), 'no_coord'),
             )
             ->from('location_paths', 'path')
-            ->leftJoin('place_location AS child', static fn (JoinOn $j): JoinOn => $j->on('child.parent_id', 'path.descendant_id'))
+            ->leftJoin('place_location AS child', ['child.parent_id' => 'path.descendant_id'])
             ->whereNull('child.id')
             ->groupBy('path.root_id');
 
@@ -279,7 +298,7 @@ class MapDataService
                 DB::alias(DB::coalesce(DB::column('location_counts.no_coord'), DB::value(0)), 'no_coord'),
             )
             ->from('place_location', 'p0')
-            ->leftJoin('location_counts', static fn (JoinOn $j): JoinOn => $j->on('location_counts.root_id', 'p0.id'));
+            ->leftJoin('location_counts', ['location_counts.root_id' => 'p0.id']);
 
         if ($parent_id === null) {
             $query = $query->whereNull('p0.parent_id');

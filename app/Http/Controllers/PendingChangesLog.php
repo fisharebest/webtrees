@@ -61,11 +61,11 @@ final class PendingChangesLog
         // First and last change in the database
         $earliest = DB::query()
             ->from('change')
-            ->orderBy('change_time')
+            ->orderBy(DB::ascending('change_time'))
             ->value('change_time') ?? date('Y-m-d H:i:s');
         $latest = DB::query()
             ->from('change')
-            ->orderBy(DB::desc('change_time'))
+            ->orderBy(DB::descending('change_time'))
             ->value('change_time') ?? date('Y-m-d H:i:s');
 
         $earliest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $earliest, new DateTimeZone('UTC'))

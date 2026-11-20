@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function count;
@@ -66,7 +65,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             ->from('hit_counter')
             ->whereEqual('gedcom_id', $tree->id())
             ->whereIn('page_name', self::PAGES)
-            ->orderBy(DB::desc('page_count'));
+            ->orderBy(DB::descending('page_count'));
 
         $results = [];
         foreach ($query->cursor() as $row) {
@@ -88,7 +87,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),

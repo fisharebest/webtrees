@@ -31,6 +31,25 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractModule::class)]
 class AbstractModuleTest extends TestCase
 {
+    public function testBlockCssClassFormatsCustomModuleNames(): void
+    {
+        $module = new class () extends AbstractModule {
+            public function cssClass(): string
+            {
+                return $this->blockCssClass();
+            }
+        };
+
+        $module->setName('MyCustomModule');
+        self::assertSame('my-custom-module', $module->cssClass());
+
+        $module->setName('Family Tree News');
+        self::assertSame('family-tree-news', $module->cssClass());
+
+        $module->setName('already-kebab');
+        self::assertSame('already-kebab', $module->cssClass());
+    }
+
     public function testSelectsModuleSettingsAndPrivacy(): void
     {
         self::createDatabase();

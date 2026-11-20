@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Fact;
@@ -27,7 +26,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_keys;
 use function implode;
@@ -83,17 +82,17 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function individualsToFix(Tree $tree, array $params): Collection
     {
         return $this->individualsToFixQuery($tree, $params)
-            ->whereNested(static function (Predicates $p): Predicates {
+            ->whereNested(static function (QueryBuilder $query): QueryBuilder {
                 foreach (array_keys(self::CONVERT) as $tag) {
-                    $p = $p->orLike('i_gedcom', "%\n2 " . $tag . ' %');
+                    $query = $query->orWhereLike('i_gedcom', "%\n2 " . $tag . ' %');
                 }
 
-                return $p;
+                return $query;
             })
             ->pluck('i_id', in: Collection::class);
     }

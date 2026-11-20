@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\Element;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Element::class)]

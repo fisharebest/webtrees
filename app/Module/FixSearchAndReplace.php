@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Throwable;
 
 use function addcslashes;
@@ -110,7 +110,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function familiesToFix(Tree $tree, array $params): Collection|null
     {
@@ -131,7 +131,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
@@ -152,7 +152,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function locationsToFix(Tree $tree, array $params): Collection|null
     {
@@ -174,7 +174,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function mediaToFix(Tree $tree, array $params): Collection|null
     {
@@ -195,7 +195,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function notesToFix(Tree $tree, array $params): Collection|null
     {
@@ -217,7 +217,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function repositoriesToFix(Tree $tree, array $params): Collection|null
     {
@@ -239,7 +239,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function sourcesToFix(Tree $tree, array $params): Collection|null
     {
@@ -258,7 +258,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function submittersToFix(Tree $tree, array $params): Collection|null
     {

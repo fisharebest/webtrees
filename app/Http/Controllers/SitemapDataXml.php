@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 
 use function response;
@@ -75,7 +75,7 @@ final class SitemapDataXml
 
     /**
      *
-     * @return Collection<int,GedcomRecord>
+     * @return Collection<Family|Individual|Media|Note|Repository|Source|Submitter>
      */
     private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): Collection
     {
@@ -91,11 +91,12 @@ final class SitemapDataXml
         };
 
         // Skip private records.
-        return $records->filter(static fn (GedcomRecord $record): bool => $record->canShow(AccessLevel::Public));
+        return (new Collection($records))
+            ->filter(static fn (GedcomRecord $record): bool => $record->canShow(AccessLevel::Public));
     }
 
     /**
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     private function sitemapFamilies(Tree $tree, int $limit, int $offset): Collection
     {
@@ -103,7 +104,7 @@ final class SitemapDataXml
             ->select('*')
             ->from('families')
             ->whereEqual('f_file', $tree->id())
-            ->orderBy('f_id')
+            ->orderBy(DB::ascending('f_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)
@@ -111,7 +112,7 @@ final class SitemapDataXml
     }
 
     /**
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
@@ -119,7 +120,7 @@ final class SitemapDataXml
             ->select('*')
             ->from('individuals')
             ->whereEqual('i_file', $tree->id())
-            ->orderBy('i_id')
+            ->orderBy(DB::ascending('i_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)
@@ -127,7 +128,7 @@ final class SitemapDataXml
     }
 
     /**
-     * @return Collection<int,Media>
+     * @return Collection<Media>
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
@@ -135,7 +136,7 @@ final class SitemapDataXml
             ->select('*')
             ->from('media')
             ->whereEqual('m_file', $tree->id())
-            ->orderBy('m_id')
+            ->orderBy(DB::ascending('m_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)
@@ -143,7 +144,7 @@ final class SitemapDataXml
     }
 
     /**
-     * @return Collection<int,Note>
+     * @return Collection<Note>
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
@@ -152,7 +153,7 @@ final class SitemapDataXml
             ->from('other')
             ->whereEqual('o_file', $tree->id())
             ->whereEqual('o_type', Note::RECORD_TYPE)
-            ->orderBy('o_id')
+            ->orderBy(DB::ascending('o_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)
@@ -160,7 +161,7 @@ final class SitemapDataXml
     }
 
     /**
-     * @return Collection<int,Repository>
+     * @return Collection<Repository>
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
@@ -169,7 +170,7 @@ final class SitemapDataXml
             ->from('other')
             ->whereEqual('o_file', $tree->id())
             ->whereEqual('o_type', Repository::RECORD_TYPE)
-            ->orderBy('o_id')
+            ->orderBy(DB::ascending('o_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)
@@ -177,7 +178,7 @@ final class SitemapDataXml
     }
 
     /**
-     * @return Collection<int,Source>
+     * @return Collection<Source>
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {
@@ -185,7 +186,7 @@ final class SitemapDataXml
             ->select('*')
             ->from('sources')
             ->whereEqual('s_file', $tree->id())
-            ->orderBy('s_id')
+            ->orderBy(DB::ascending('s_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)
@@ -193,7 +194,7 @@ final class SitemapDataXml
     }
 
     /**
-     * @return Collection<int,Submitter>
+     * @return Collection<Submitter>
      */
     private function sitemapSubmitters(Tree $tree, int $limit, int $offset): Collection
     {
@@ -202,7 +203,7 @@ final class SitemapDataXml
             ->from('other')
             ->whereEqual('o_file', $tree->id())
             ->whereEqual('o_type', Submitter::RECORD_TYPE)
-            ->orderBy('o_id')
+            ->orderBy(DB::ascending('o_id'))
             ->limit($limit)
             ->offset($offset)
             ->get(in: Collection::class)

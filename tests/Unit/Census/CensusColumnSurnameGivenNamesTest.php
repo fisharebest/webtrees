@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Census\AbstractCensusColumn;
 use Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNames;

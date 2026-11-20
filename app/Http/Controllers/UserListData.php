@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -59,11 +58,11 @@ final class UserListData
                 'us5.setting_value AS verified_by_admin',
             )
             ->from('user')
-            ->leftJoin('user_setting AS us1', static fn (JoinOn $j): JoinOn => $j->on('us1.user_id', 'user.user_id')->on('us1.setting_name', DB::value('language')))
-            ->leftJoin('user_setting AS us2', static fn (JoinOn $j): JoinOn => $j->on('us2.user_id', 'user.user_id')->on('us2.setting_name', DB::value(UserInterface::PREF_TIMESTAMP_REGISTERED)))
-            ->leftJoin('user_setting AS us3', static fn (JoinOn $j): JoinOn => $j->on('us3.user_id', 'user.user_id')->on('us3.setting_name', DB::value(UserInterface::PREF_TIMESTAMP_ACTIVE)))
-            ->leftJoin('user_setting AS us4', static fn (JoinOn $j): JoinOn => $j->on('us4.user_id', 'user.user_id')->on('us4.setting_name', DB::value(UserInterface::PREF_IS_EMAIL_VERIFIED)))
-            ->leftJoin('user_setting AS us5', static fn (JoinOn $j): JoinOn => $j->on('us5.user_id', 'user.user_id')->on('us5.setting_name', DB::value(UserInterface::PREF_IS_ACCOUNT_APPROVED)))
+            ->leftJoin('user_setting AS us1', ['us1.user_id' => 'user.user_id', 'us1.setting_name' => new Value('language')])
+            ->leftJoin('user_setting AS us2', ['us2.user_id' => 'user.user_id', 'us2.setting_name' => new Value(UserInterface::PREF_TIMESTAMP_REGISTERED)])
+            ->leftJoin('user_setting AS us3', ['us3.user_id' => 'user.user_id', 'us3.setting_name' => new Value(UserInterface::PREF_TIMESTAMP_ACTIVE)])
+            ->leftJoin('user_setting AS us4', ['us4.user_id' => 'user.user_id', 'us4.setting_name' => new Value(UserInterface::PREF_IS_EMAIL_VERIFIED)])
+            ->leftJoin('user_setting AS us5', ['us5.user_id' => 'user.user_id', 'us5.setting_name' => new Value(UserInterface::PREF_IS_ACCOUNT_APPROVED)])
             ->whereGreaterThan('user.user_id', 0);
 
         $search_columns = ['user_name', 'real_name', 'email'];

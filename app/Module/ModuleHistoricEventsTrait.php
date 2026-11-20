@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 trait ModuleHistoricEventsTrait
 {
@@ -33,7 +33,7 @@ trait ModuleHistoricEventsTrait
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function historicEventsAll(string $language_tag): Collection
     {
@@ -41,7 +41,7 @@ trait ModuleHistoricEventsTrait
     }
 
     /**
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function historicEventsForIndividual(Individual $individual): Collection
     {

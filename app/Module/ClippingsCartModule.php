@@ -56,7 +56,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -279,7 +279,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     }
                 }
 
-                $records->add($gedcom);
+                $records->push($gedcom);
             }
         }
 

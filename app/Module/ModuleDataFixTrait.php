@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * Trait ModuleDataFixTrait - default implementation of ModuleDataFixTrait
@@ -53,7 +53,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,object{xref:string,type:string}>
+     * @return Collection<object{xref:string,type:string}>
      */
     public function recordsToFix(Tree $tree, array $params): Collection
     {
@@ -101,7 +101,7 @@ trait ModuleDataFixTrait
         }
 
         return $records
-            ->unique()
+            ->unique(static fn (object $record): array => [$record->xref, $record->type])
             ->sort(static fn (object $x, object $y) => $x->xref <=> $y->xref);
     }
 
@@ -139,7 +139,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function familiesToFix(Tree $tree, array $params): Collection|null
     {
@@ -167,7 +167,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
@@ -195,7 +195,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function locationsToFix(Tree $tree, array $params): Collection|null
     {
@@ -224,7 +224,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function mediaToFix(Tree $tree, array $params): Collection|null
     {
@@ -252,7 +252,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function notesToFix(Tree $tree, array $params): Collection|null
     {
@@ -281,7 +281,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function repositoriesToFix(Tree $tree, array $params): Collection|null
     {
@@ -310,7 +310,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function sourcesToFix(Tree $tree, array $params): Collection|null
     {
@@ -338,7 +338,7 @@ trait ModuleDataFixTrait
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function submittersToFix(Tree $tree, array $params): Collection|null
     {
@@ -365,9 +365,9 @@ trait ModuleDataFixTrait
     /**
      * Merge pending changes of a given type.  We need to check all pending records.
      *
-     * @param Collection<int,string> $records
+     * @param Collection<string> $records
      *
-     * @return Collection<int,object{xref:string,type:string}>
+     * @return Collection<object{xref:string,type:string}&\stdClass>
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {

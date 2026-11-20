@@ -105,7 +105,7 @@ final class UserTreeSetting extends AbstractCommand
                 ->from('user_gedcom_setting')
                 ->whereEqual('user_id', $user_id)
                 ->whereEqual('gedcom_id', $tree_id)
-                ->orderBy('setting_name')
+                ->orderBy(DB::ascending('setting_name'))
                 ->get();
 
             foreach ($settings as $setting) {

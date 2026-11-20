@@ -79,7 +79,7 @@ final class UserList extends AbstractCommand
             'last_login' => $this->formatTimestamp(timestamp: (int) $user->getPreference(setting_name: UserInterface::PREF_TIMESTAMP_ACTIVE)),
         ])
         ->values()
-        ->all();
+        ->array();
 
         switch ($format) {
             case 'table':

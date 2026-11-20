@@ -78,6 +78,6 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
             return null;
         }
 
-        return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus->all());
+        return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus->array());
     }
 }

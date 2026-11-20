@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Fact;
@@ -28,7 +27,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -63,9 +62,13 @@ final class FixLevel0MediaData
         $query = DB::query()
             ->select('media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom')
             ->from('media')
-            ->join('media_file', static fn (JoinOn $j): JoinOn => $j->on('media_file.m_file', 'media.m_file')->on('media_file.m_id', 'media.m_id'))
-            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('link.l_file', 'media.m_file')->on('link.l_to', 'media.m_id')->on('link.l_type', DB::value('OBJE')))
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('individuals.i_file', 'link.l_file')->on('individuals.i_id', 'link.l_from'))
+            ->join('media_file', ['media_file.m_file' => 'media.m_file', 'media_file.m_id' => 'media.m_id'])
+            ->join('link', [
+                'link.l_file' => 'media.m_file',
+                'link.l_to'   => 'media.m_id',
+                'link.l_type' => new Value('OBJE'),
+            ])
+            ->join('individuals', ['individuals.i_file' => 'link.l_file', 'individuals.i_id' => 'link.l_from'])
             ->whereLike('i_gedcom', DB::concat(DB::value('%\n1 OBJE @'), DB::column('media.m_id'), DB::value('@%')))
             ->whereLike('descriptive_title', '%' . addcslashes($search, '\\%_') . '%');
 

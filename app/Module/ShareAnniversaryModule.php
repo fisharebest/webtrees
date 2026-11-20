@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Sabre\VObject\Component\VCalendar;
@@ -73,8 +73,11 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
     public function share(GedcomRecord $record): string
     {
         if ($record instanceof Individual) {
-            $facts = $record->facts(static::INDIVIDUAL_EVENTS, true)
-                ->merge($record->spouseFamilies()->map(fn (Family $family): Collection => $family->facts(static::FAMILY_EVENTS, true)));
+            $facts = $record->facts(static::INDIVIDUAL_EVENTS, true);
+
+            foreach ($record->spouseFamilies() as $family) {
+                $facts = $facts->concat($family->facts(static::FAMILY_EVENTS, true));
+            }
         } elseif ($record instanceof Family) {
             $facts = $record->facts(static::FAMILY_EVENTS, true);
         } else {

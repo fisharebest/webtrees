@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -117,7 +117,7 @@ final class SearchGeneral
             ->filter(static fn (Tree $tree): bool => in_array($tree->name(), $search_tree_names, true));
 
         if ($search_trees->isEmpty()) {
-            $search_trees->add($tree);
+            $search_trees->push($tree);
         }
 
         // Do the search
@@ -131,34 +131,34 @@ final class SearchGeneral
         if ($search_terms !== []) {
             // Log search requests for visitors
             if (Auth::id() === null) {
-                Log::addSearchLog('General: ' . $query, $search_trees->all());
+                Log::addSearchLog('General: ' . $query, $search_trees->array());
             }
 
             if ($search_individuals) {
-                $individuals = $this->search_service->searchIndividuals($search_trees->all(), $search_terms);
+                $individuals = $this->search_service->searchIndividuals($search_trees->array(), $search_terms);
             }
 
             if ($search_families) {
-                $tmp1 = $this->search_service->searchFamilies($search_trees->all(), $search_terms);
-                $tmp2 = $this->search_service->searchFamilyNames($search_trees->all(), $search_terms);
+                $tmp1 = $this->search_service->searchFamilies($search_trees->array(), $search_terms);
+                $tmp2 = $this->search_service->searchFamilyNames($search_trees->array(), $search_terms);
 
-                $families = $tmp1->merge($tmp2)->unique(static fn (Family $family): string => $family->xref() . '@' . $family->tree()->id());
+                $families = $tmp1->merge($tmp2)->unique();
             }
 
             if ($search_repositories && $exist_repositories) {
-                $repositories = $this->search_service->searchRepositories($search_trees->all(), $search_terms);
+                $repositories = $this->search_service->searchRepositories($search_trees->array(), $search_terms);
             }
 
             if ($search_sources && $exist_sources) {
-                $sources = $this->search_service->searchSources($search_trees->all(), $search_terms);
+                $sources = $this->search_service->searchSources($search_trees->array(), $search_terms);
             }
 
             if ($search_notes && $exist_notes) {
-                $notes = $this->search_service->searchNotes($search_trees->all(), $search_terms);
+                $notes = $this->search_service->searchNotes($search_trees->array(), $search_terms);
             }
 
             if ($search_locations && $exist_locations) {
-                $locations = $this->search_service->searchLocations($search_trees->all(), $search_terms);
+                $locations = $this->search_service->searchLocations($search_trees->array(), $search_terms);
             }
         }
 

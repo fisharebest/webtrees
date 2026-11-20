@@ -35,7 +35,7 @@ interface TimestampFactoryInterface
     /**
      * Create a localized CarbonImmutable from a date-time string.
      *
-     * @param string|null $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * @param string|null $string YYYY-MM-DD HH:MM:SS with optional fractional seconds (as provided by SQL).
      */
     public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): CarbonImmutable;
 

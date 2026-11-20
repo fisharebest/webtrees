@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
@@ -144,7 +144,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
     /**
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      * @throws Exception
      */
     private function getPersonalFacts(Individual $individual): Collection

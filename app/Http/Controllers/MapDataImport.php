@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Eloquent\Collection;
+use Fisharebest\Collection\Collection;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ResponseInterface;
@@ -86,7 +86,7 @@ final class MapDataImport
             $files = [];
         }
 
-        $files = Collection::make($files)->sort();
+        $files = (new Collection($files))->sort();
 
         return $this->viewResponse('admin/map-import-form', [
             'folder' => $data_filesystem_name . MapDataService::PLACES_FOLDER,

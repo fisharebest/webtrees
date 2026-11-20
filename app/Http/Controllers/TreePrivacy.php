@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use stdClass;
@@ -123,6 +123,7 @@ final class TreePrivacy
                     'xref'      => $xref === '' ? null : $xref,
                     'tag_type'  => $tag_type === '' ? null : $tag_type,
                     'resn'      => $resn,
+                    'updated'   => DB::now(),
                 ]);
             }
         }
@@ -225,7 +226,7 @@ final class TreePrivacy
                 ];
             })
             ->sort(static fn (object $x, object $y): int => I18N::compare($x->label, $y->label))
-            ->all();
+            ->array();
     }
 
     /**

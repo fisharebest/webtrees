@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
@@ -98,7 +98,7 @@ class UpgradeService
     /**
      * Create a list of all the files in a webtrees .ZIP archive
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      * @throws FilesystemException
      */
     public function webtreesZipContents(string $zip_file): Collection
@@ -193,8 +193,8 @@ class UpgradeService
     /**
      * Delete files in $destination that aren't in $source.
      *
-     * @param Collection<int,string> $folders_to_clean
-     * @param Collection<int,string> $files_to_keep
+     * @param Collection<string> $folders_to_clean
+     * @param Collection<string> $files_to_keep
      */
     public function cleanFiles(FilesystemOperator $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
     {

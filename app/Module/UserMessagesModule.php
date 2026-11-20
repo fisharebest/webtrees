@@ -31,8 +31,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -96,7 +95,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->select('*')
             ->from('message')
             ->whereEqual('user_id', Auth::id())
-            ->orderBy(DB::desc('message_id'))
+            ->orderBy(DB::descending('message_id'))
             ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 $row->created = Registry::timestampFactory()->fromString($row->created);
@@ -128,7 +127,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             $count = $messages->count();
 
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),

@@ -89,7 +89,7 @@ class I18N
 
         $active_language_modules = Registry::container()->get(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class)
-            ->all();
+            ->array();
 
         $languages = [];
 

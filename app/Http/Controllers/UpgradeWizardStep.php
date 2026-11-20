@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -102,7 +102,10 @@ final class UpgradeWizardStep
 
             case self::STEP_EXPORT:
                 $tree_name = Validator::queryParams($request)->string('tree');
-                $tree      = $this->tree_service->all()[$tree_name];
+                $tree      = $this->tree_service->all()->get($tree_name);
+                if (!$tree instanceof Tree) {
+                    throw new HttpInternalServerErrorException(I18N::translate('The family tree “%s” was not found.', $tree_name));
+                }
 
                 return $this->wizardStepExport($tree);
 

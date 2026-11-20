@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(UserPage::class)]

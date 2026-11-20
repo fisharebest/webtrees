@@ -21,13 +21,11 @@ namespace Fisharebest\Webtrees\Services;
 
 use Closure;
 use Fisharebest\Database\Query\Expression;
-use Fisharebest\Database\Query\OrderedExpression;
 use Fisharebest\Database\Query\Ordinal;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use SortDirection;
@@ -48,10 +46,10 @@ class DatatablesService
      * Apply filtering and pagination to a collection, and generate a response suitable for datatables.
      *
      * @param ServerRequestInterface   $request        Includes the datatables request parameters.
-     * @param Collection<int,mixed>    $collection     All the data.
+     * @param Collection<mixed>    $collection     All the data.
      * @param array<string>|array<int> $search_columns The names of searchable columns.
      * @param array<string>|array<int> $sort_columns   Sort column mapping.
-     * @param Closure                  $callback       Converts a row-object to an array-of-columns.
+     * @param Closure(mixed): array<array-key, mixed> $callback Converts a row-object to an array-of-columns.
      */
     public function handleCollection(ServerRequestInterface $request, Collection $collection, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
@@ -108,7 +106,7 @@ class DatatablesService
             $data = $collection;
         }
 
-        $data = $data->map($callback)->values()->all();
+        $data = $data->map($callback)->values()->array();
 
         return response([
             'draw'            => $draw,
@@ -121,12 +119,12 @@ class DatatablesService
     /**
      * Apply filtering and pagination to a database query, and generate a response suitable for datatables.
      *
-     * @param ServerRequestInterface                            $request        Includes the datatables request parameters.
-     * @param QueryBuilder                                      $query          A query to fetch the unfiltered rows and columns.
-     * @param array<string>                                     $search_columns The names of searchable columns.
-     * @param array<string|Expression>                          $sort_columns   Sort column mapping.
-     * @param Closure                                           $callback       Converts a row-object to an array-of-columns.
-     * @param list<Expression|Ordinal|OrderedExpression|string> $default_sort   Applied after any user-specified sort.
+     * @param ServerRequestInterface  $request        Includes the datatables request parameters.
+     * @param QueryBuilder            $query          A query to fetch the unfiltered rows and columns.
+     * @param array<string>           $search_columns The names of searchable columns.
+     * @param array<string|Expression> $sort_columns  Sort column mapping.
+     * @param Closure                 $callback       Converts a row-object to an array-of-columns.
+     * @param list<Expression|Ordinal|string> $default_sort Applied after any user-specified sort.
      */
     public function handleQuery(
         ServerRequestInterface $request,
@@ -147,34 +145,39 @@ class DatatablesService
 
         // Filtering
         if ($search !== '' && $search_columns !== []) {
-            $query = $query->whereNested(static function (Predicates $p) use ($search, $search_columns): Predicates {
+            $query = $query->whereNested(static function (QueryBuilder $nested_query) use ($search, $search_columns): QueryBuilder {
                 $like = '%' . addcslashes($search, '\\%_') . '%';
                 $like = strtr($like, [' ' => '%']);
 
                 foreach ($search_columns as $search_column) {
-                    $p = $p->orLike($search_column, $like);
+                    $nested_query = $nested_query->orWhereILike($search_column, $like);
                 }
 
-                return $p;
+                return $nested_query;
             });
         }
 
         // Sorting
-        $sort_expressions = [];
-
+        $orders = [];
         foreach ($order as $value) {
             // Columns in datatables are numbered from zero.
             // Columns in MySQL are numbered starting with one.
             // If not specified, the Nth table column maps onto the Nth query column.
-            $sort_column = $sort_columns[$value['column']] ?? DB::ordinal(position: 1 + (int) $value['column']);
+            $sort_column = $sort_columns[$value['column']] ?? DB::ordinal(1 + (int) $value['column']);
 
-            $sort_expressions[] = DB::order(
+            $orders[] = DB::order(
                 $sort_column,
                 $value['dir'] === 'asc' ? SortDirection::Ascending : SortDirection::Descending,
             );
         }
 
-        $query = $query->orderBy(...$sort_expressions, ...$default_sort);
+        foreach ($default_sort as $sort_column) {
+            $orders[] = DB::ascending($sort_column);
+        }
+
+        if ($orders !== []) {
+            $query = $query->orderBy(...$orders);
+        }
 
         // Paginating
         if ($length > 0) {

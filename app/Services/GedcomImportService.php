@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
@@ -814,7 +813,7 @@ class GedcomImportService
                 ->select('places.p_id')
                 ->distinct()
                 ->from('places')
-                ->leftJoin('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_p_id', 'p_id')->on('pl_file', 'p_file'))
+                ->leftJoin('placelinks', ['pl_p_id' => 'p_id', 'pl_file' => 'p_file'])
                 ->whereNull('pl_p_id');
 
             $affected = DB::query(table: 'places')

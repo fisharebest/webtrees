@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Str;
 
 class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 {
@@ -96,7 +95,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $title,

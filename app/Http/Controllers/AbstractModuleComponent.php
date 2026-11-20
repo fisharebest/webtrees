@@ -54,21 +54,21 @@ abstract class AbstractModuleComponent
         $this->layout = 'layouts/administration';
 
         $modules      = $this->module_service->findByInterface($interface, true, true);
-        $uses_access  = $this->module_service->componentsWithAccess()->containsStrict($interface);
-        $uses_sorting = $this->module_service->componentsWithOrder()->containsStrict($interface);
+        $uses_access  = $this->module_service->componentsWithAccess()->contains($interface);
+        $uses_sorting = $this->module_service->componentsWithOrder()->contains($interface);
 
         $access_summary = $modules
             ->mapWithKeys(function (ModuleInterface $module) use ($interface): array {
                 $access_levels = $this->tree_service->all()
                     ->map(static fn (Tree $tree): AccessLevel => $module->accessLevel($tree, $interface))
-                    ->uniqueStrict()
+                    ->unique()
                     ->values()
                     ->map(static fn (AccessLevel $level): string => $level->label())
-                    ->all();
+                    ->array();
 
                 return [$module->name() => $access_levels];
             })
-            ->all();
+            ->array();
 
         return $this->viewResponse('admin/components', [
             'description'    => $description,

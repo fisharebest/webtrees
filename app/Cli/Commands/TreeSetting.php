@@ -89,7 +89,7 @@ final class TreeSetting extends AbstractCommand
                 ->select('setting_name', 'setting_value')
                 ->from('gedcom_setting')
                 ->whereEqual('gedcom_id', $tree_id)
-                ->orderBy('setting_name')
+                ->orderBy(DB::ascending('setting_name'))
                 ->get();
 
             foreach ($settings as $setting) {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Census\AbstractCensusColumn;
 use Fisharebest\Webtrees\Census\CensusColumnNationality;

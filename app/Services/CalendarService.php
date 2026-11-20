@@ -19,9 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\ExtCalendar\PersianCalendar;
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\Date;
@@ -38,7 +36,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_merge;
 use function assert;
@@ -57,7 +55,7 @@ class CalendarService
     /**
      * Get the list of current and upcoming events, sorted by anniversary date
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function getEventsList(int $jd1, int $jd2, string $events, bool $only_living, string $sort_by, Tree $tree): Collection
     {
@@ -197,18 +195,21 @@ class CalendarService
 
             $ind_query = $query
                 ->select('i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact')
-                ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('d_gid', 'i_id')->on('d_file', 'i_file'));
+                ->join('individuals', ['d_gid' => 'i_id', 'd_file' => 'i_file']);
 
             if ($filtersx !== '') {
                 $ind_query = $ind_query->whereEqual('i_sex', $filtersx);
             }
 
-            $queries = ['INDI' => $ind_query->orderBy('d_day', DB::desc('d_year'))];
+            $queries = ['INDI' => $ind_query->orderBy(DB::ascending('d_day'), DB::descending('d_year'))];
             if ($filtersx === '') {
                 $fam_query = $query
                     ->select('f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact')
-                    ->join('families', static fn (JoinOn $j): JoinOn => $j->on('d_gid', 'f_id')->on('d_file', 'f_file'))
-                    ->orderBy('d_day', DB::desc('d_year'));
+                    ->join('families', ['d_gid' => 'f_id', 'd_file' => 'f_file'])
+                    ->orderBy(
+                        DB::ascending('d_day'),
+                        DB::descending('d_year'),
+                    );
 
                 $queries['FAM'] = $fam_query;
             }
@@ -296,13 +297,13 @@ class CalendarService
         $tmp = new JewishDate([(string) $anniv->year(), 'CSH', '1']);
 
         if ($anniv->day() === 1 && $tmp->daysInMonth() === 29) {
-            return $query->whereNested(static fn (Predicates $p): Predicates => $p
-                ->nested(static fn (Predicates $p): Predicates => $p
-                    ->lessThanOrEqual('d_day', 1)
-                    ->equal('d_mon', 3))
-                ->orNested(static fn (Predicates $p): Predicates => $p
-                    ->equal('d_day', 30)
-                    ->equal('d_mon', 2)));
+            return $query->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereLessThanOrEqual('d_day', 1)
+                    ->whereEqual('d_mon', 3))
+                ->orWhereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereEqual('d_day', 30)
+                    ->whereEqual('d_mon', 2)));
         }
 
         if ($anniv->day === 29 && $anniv->daysInMonth() === 29) {
@@ -323,13 +324,13 @@ class CalendarService
         $tmp = new JewishDate([(string) $anniv->year(), 'KSL', '1']);
 
         if ($anniv->day === 1 && $tmp->daysInMonth() === 29) {
-            return $query->whereNested(static fn (Predicates $p): Predicates => $p
-                ->nested(static fn (Predicates $p): Predicates => $p
-                    ->lessThanOrEqual('d_day', 1)
-                    ->equal('d_mon', 4))
-                ->orNested(static fn (Predicates $p): Predicates => $p
-                    ->equal('d_day', 30)
-                    ->equal('d_mon', 3)));
+            return $query->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereLessThanOrEqual('d_day', 1)
+                    ->whereEqual('d_mon', 4))
+                ->orWhereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereEqual('d_day', 30)
+                    ->whereEqual('d_mon', 3)));
         }
 
         return $this->defaultAnniversaries($query, $anniv);
@@ -365,13 +366,13 @@ class CalendarService
     private function nisanAnniversaries(QueryBuilder $query, JewishDate $anniv): QueryBuilder
     {
         if ($anniv->day === 1 && !$anniv->isLeapYear()) {
-            return $query->whereNested(static fn (Predicates $p): Predicates => $p
-                ->nested(static fn (Predicates $p): Predicates => $p
-                    ->lessThanOrEqual('d_day', 1)
-                    ->equal('d_mon', 8))
-                ->orNested(static fn (Predicates $p): Predicates => $p
-                    ->equal('d_day', 30)
-                    ->equal('d_mon', 6)));
+            return $query->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereLessThanOrEqual('d_day', 1)
+                    ->whereEqual('d_mon', 8))
+                ->orWhereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereEqual('d_day', 30)
+                    ->whereEqual('d_mon', 6)));
         }
 
         return $this->defaultAnniversaries($query, $anniv);

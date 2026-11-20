@@ -20,14 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
+use Fisharebest\Database\Exceptions\QueryException;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
-use Illuminate\Database\DetectsConcurrencyErrors;
 use Fisharebest\Webtrees\Tree;
+use PDOException;
 use Psr\Http\Message\ResponseInterface;
 
 use function preg_split;
@@ -37,7 +38,6 @@ use function str_starts_with;
 final class GedcomLoad
 {
     use ViewResponseTrait;
-    use DetectsConcurrencyErrors;
 
     private GedcomImportService $gedcom_import_service;
 
@@ -137,7 +137,7 @@ final class GedcomLoad
                     ->from('gedcom_chunk')
                     ->whereEqual('gedcom_id', $tree->id())
                     ->whereEqual('imported', '0')
-                    ->orderBy('gedcom_chunk_id')
+                    ->orderBy(DB::ascending('gedcom_chunk_id'))
                     ->first();
 
                 if ($data === null) {
@@ -190,21 +190,23 @@ final class GedcomLoad
                 'status'   => '',
                 'tree'     => $tree,
             ]);
-        } catch (Exception $ex) {
+        } catch (Exception $exception) {
             DB::rollBack();
 
             // Deadlock? Try again.
-            if ($this->causedByConcurrencyError($ex)) {
+            $database_error = $exception instanceof QueryException ? $exception->getPrevious() : $exception;
+
+            if ($database_error instanceof PDOException && DB::connection()->adaptor()->isConcurrencyError($database_error)) {
                 return $this->viewResponse('admin/import-progress', [
                     'errors'   => '',
                     'progress' => $progress ?? 0,
-                    'status'   => e($ex->getMessage()),
+                    'status'   => e($exception->getMessage()),
                     'tree'     => $tree,
                 ]);
             }
 
             return $this->viewResponse('admin/import-fail', [
-                'error' => e($ex->getMessage()),
+                'error' => e($exception->getMessage()),
                 'tree'  => $tree,
             ]);
         }

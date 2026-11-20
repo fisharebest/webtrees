@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var string                 $dbhost
@@ -14,10 +14,10 @@ use Illuminate\Support\Collection;
  * @var string                 $dbport
  * @var string                 $dbtype
  * @var string                 $dbuser
- * @var Collection<int,string> $errors
+ * @var Collection<string> $errors
  * @var string                 $lang
  * @var string                 $tblpfx
- * @var Collection<int,string> $warnings
+ * @var Collection<string> $warnings
  * @var string                 $wtemail
  * @var string                 $wtname
  * @var string                 $wtpass
@@ -64,7 +64,7 @@ use Illuminate\Support\Collection;
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === Driver::SQLite->value ? 'checked' : '' ?>>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === Driver::SQLite->value ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-sqlite">
                     SQLite
                 </label>

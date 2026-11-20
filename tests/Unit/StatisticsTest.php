@@ -19,9 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Webtrees\Clock\SystemClock;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Statistics::class)]
 class StatisticsTest extends TestCase
@@ -29,5 +34,23 @@ class StatisticsTest extends TestCase
     public function testClass(): void
     {
         self::assertTrue(class_exists(Statistics::class));
+    }
+
+    public function testMarriageAgesByCentury(): void
+    {
+        self::createDatabase();
+
+        $tree = (new TreeService(new GedcomImportService()))->create('test', 'Test');
+        $import_service = new GedcomImportService();
+        $import_service->importRecord("0 @I1@ INDI\n1 NAME Husband /Example/\n1 BIRT\n2 DATE 1 JAN 1900", $tree, true);
+        $import_service->importRecord("0 @I2@ INDI\n1 NAME Wife /Example/\n1 BIRT\n2 DATE 1 JAN 1910", $tree, true);
+        $import_service->importRecord("0 @F1@ FAM\n1 HUSB @I1@\n1 WIFE @I2@\n1 MARR\n2 DATE 1 JAN 1930", $tree, true);
+
+        $statistics = new Statistics(new ModuleService(), $tree, new UserService(new SystemClock()));
+
+        $chart = $statistics->statsMarrAge();
+
+        self::assertStringContainsString('wt-chart-container', $chart);
+        self::assertStringContainsString('Average age at marriage', $chart);
     }
 }

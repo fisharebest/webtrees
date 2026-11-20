@@ -19,8 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\Services\MigrationService;
-use Fisharebest\Webtrees\Webtrees;
+use Fisharebest\Webtrees\Schema\WebtreesSchema;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -28,11 +27,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class UpdateDatabaseSchema implements MiddlewareInterface
 {
-    private MigrationService $migration_service;
+    private WebtreesSchema $webtrees_schema;
 
-    public function __construct(MigrationService $migration_service)
+    public function __construct(WebtreesSchema $webtrees_schema)
     {
-        $this->migration_service = $migration_service;
+        $this->webtrees_schema = $webtrees_schema;
     }
 
     /**
@@ -40,8 +39,7 @@ class UpdateDatabaseSchema implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->migration_service
-            ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        $this->webtrees_schema->updateSchema();
 
         return $handler->handle($request);
     }

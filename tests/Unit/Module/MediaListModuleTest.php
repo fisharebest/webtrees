@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use ReflectionMethod;
 
@@ -94,23 +94,23 @@ class MediaListModuleTest extends TestCase
 
         $root = $media->invoke($module, $tree, '', false, 'title', '', '');
         self::assertInstanceOf(Collection::class, $root);
-        self::assertSame(['M4', 'M1'], $root->map(static fn (Media $item): string => $item->xref())->values()->all());
+        self::assertSame(['M4', 'M1'], $root->map(static fn (Media $item): string => $item->xref())->values()->array());
 
         $folder = $media->invoke($module, $tree, 'images', false, 'title', '', '');
         self::assertInstanceOf(Collection::class, $folder);
-        self::assertSame(['M2'], $folder->map(static fn (Media $item): string => $item->xref())->values()->all());
+        self::assertSame(['M2'], $folder->map(static fn (Media $item): string => $item->xref())->values()->array());
 
         $subfolders = $media->invoke($module, $tree, 'images', true, 'file', '', '');
         self::assertInstanceOf(Collection::class, $subfolders);
-        self::assertSame(['M2', 'M3'], $subfolders->map(static fn (Media $item): string => $item->xref())->values()->all());
+        self::assertSame(['M2', 'M3'], $subfolders->map(static fn (Media $item): string => $item->xref())->values()->array());
 
         $filtered = $media->invoke($module, $tree, 'images', true, 'title', 'deep', 'document');
         self::assertInstanceOf(Collection::class, $filtered);
-        self::assertSame(['M3'], $filtered->map(static fn (Media $item): string => $item->xref())->values()->all());
+        self::assertSame(['M3'], $filtered->map(static fn (Media $item): string => $item->xref())->values()->array());
 
         $by_title = $media->invoke($module, $tree, 'images', false, 'title', 'portrait', 'photo');
         self::assertInstanceOf(Collection::class, $by_title);
-        self::assertSame(['M2'], $by_title->map(static fn (Media $item): string => $item->xref())->values()->all());
+        self::assertSame(['M2'], $by_title->map(static fn (Media $item): string => $item->xref())->values()->array());
 
         $other_tree_title = $media->invoke($module, $tree, 'images', true, 'title', 'Other', '');
         self::assertInstanceOf(Collection::class, $other_tree_title);

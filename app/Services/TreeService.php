@@ -20,8 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use DomainException;
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Auth;
@@ -33,7 +31,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\StreamInterface;
 
 use function fclose;
@@ -69,7 +67,7 @@ class TreeService
     /**
      * All the trees that the current user has permission to access.
      *
-     * @return Collection<array-key,Tree>
+     * @return Collection<Tree>
      */
     public function all(): Collection
     {
@@ -90,23 +88,28 @@ class TreeService
                         ->whereEqual('private', 0);
                 } else {
                     $query = $query
-                        ->leftJoin('user_gedcom_setting', static fn (JoinOn $j): JoinOn => $j
-                            ->on('user_gedcom_setting.gedcom_id', 'gedcom.gedcom_id')
-                            ->on('user_gedcom_setting.user_id', DB::value($user_id))
-                            ->on('user_gedcom_setting.setting_name', DB::value(UserInterface::PREF_TREE_ROLE)))
-                        ->whereNested(static fn (Predicates $p): Predicates => $p
-                            ->equal('setting_value', Role::Manager->value)
-                            ->orNested(static fn (Predicates $p): Predicates => $p
-                                ->equal('imported', 1)
-                                ->equal('private', 1)
-                                ->notEqual('setting_value', Role::Visitor->value))
-                            ->orNested(static fn (Predicates $p): Predicates => $p
-                                ->equal('imported', 1)
-                                ->equal('private', 0)));
+                        ->leftJoin('user_gedcom_setting', [
+                            'user_gedcom_setting.gedcom_id'     => 'gedcom.gedcom_id',
+                            'user_gedcom_setting.user_id'      => new Value($user_id),
+                            'user_gedcom_setting.setting_name' => new Value(UserInterface::PREF_TREE_ROLE),
+                        ])
+                        ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                            ->whereEqual('setting_value', Role::Manager->value)
+                            ->orWhereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                                ->whereEqual('imported', 1)
+                                ->whereEqual('private', 1)
+                                ->whereNotEqual('setting_value', Role::Visitor->value))
+                            ->orWhereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                                ->whereEqual('imported', 1)
+                                ->whereEqual('private', 0)));
                 }
             }
 
-            $query = $query->orderBy('gedcom.sort_order', 'gedcom.title');
+            $query = $query
+                ->orderBy(
+                    DB::ascending('gedcom.sort_order'),
+                    DB::ascending('gedcom.title'),
+                );
 
             // TODO - do we need the array keys, or would a list of trees be sufficient?
             return $query
@@ -137,7 +140,7 @@ class TreeService
     {
         return $this->all()
             ->mapWithKeys(static fn (Tree $tree): array => [$tree->name() => $tree->title()])
-            ->all();
+            ->array();
     }
 
     public function create(string $name, string $title): Tree
@@ -168,9 +171,9 @@ class TreeService
         );
 
         DB::query(table: 'default_resn')->insertFrom(
-            ['gedcom_id', 'tag_type', 'resn'],
+            ['gedcom_id', 'tag_type', 'resn', 'updated'],
             DB::query()
-                ->select(DB::value($tree->id()), 'tag_type', 'resn')
+                ->select(DB::value($tree->id()), 'tag_type', 'resn', DB::now())
                 ->from('default_resn')
                 ->whereEqual('gedcom_id', -1),
         );

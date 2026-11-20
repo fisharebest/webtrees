@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+use function date;
+
 #[CoversClass(SiteLogsDelete::class)]
 class SiteLogsDeleteTest extends TestCase
 {
@@ -39,8 +41,18 @@ class SiteLogsDeleteTest extends TestCase
     {
         $request = self::createRequest();
 
-        DB::query(table: 'log')->insert(['log_type' => 'edit', 'log_message' => 'delete me', 'ip_address' => '127.0.0.1']);
-        DB::query(table: 'log')->insert(['log_type' => 'auth', 'log_message' => 'keep me', 'ip_address' => '127.0.0.1']);
+        DB::query(table: 'log')->insert([
+            'log_time'    => date('Y-m-d H:i:s'),
+            'log_type'    => 'edit',
+            'log_message' => 'delete me',
+            'ip_address'  => '127.0.0.1',
+        ]);
+        DB::query(table: 'log')->insert([
+            'log_time'    => date('Y-m-d H:i:s'),
+            'log_type'    => 'auth',
+            'log_message' => 'keep me',
+            'ip_address'  => '127.0.0.1',
+        ]);
 
         $site_logs_service = self::createStub(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn(DB::query()->select('log.*')->from('log')->whereEqual('log_type', 'edit'));

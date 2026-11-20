@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Str;
 
 use function view;
 
@@ -103,7 +102,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $title,

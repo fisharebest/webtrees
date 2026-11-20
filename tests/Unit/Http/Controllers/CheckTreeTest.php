@@ -54,6 +54,7 @@ class CheckTreeTest extends TestCase
             ] as [$tree_id, $status, $value]
         ) {
             DB::query(table: 'change')->insert(values: [
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => 'X1',
                 'status'     => $status,

@@ -20,8 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Closure;
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\FamilyComparator;
@@ -35,7 +33,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function addcslashes;
 use function count;
@@ -185,7 +183,7 @@ final class ListBuilder
             ->get(in: Collection::class)
             ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom !== '' ? $row->new_gedcom : $row->old_gedcom))
             ->filter()
-            ->all();
+            ->array();
 
         return $this->applyPhpFilters($list, $attrs, $gedrec, $fact, $desc, $variables);
     }
@@ -221,7 +219,7 @@ final class ListBuilder
 
                 if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
                     $query = $query
-                        ->join('dates AS ' . $attr, static fn (JoinOn $j): JoinOn => $j->on($attr . '.d_gid', 'individuals.i_id')->on($attr . '.d_file', 'individuals.i_file'))
+                        ->join('dates AS ' . $attr, [$attr . '.d_gid' => 'individuals.i_id', $attr . '.d_file' => 'individuals.i_file'])
                         ->whereEqual($attr . '.d_fact', $match[1]);
 
                     $date = new Date($match[3]);
@@ -234,7 +232,7 @@ final class ListBuilder
 
                     unset($attrs[$attr]);
                 } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
-                    $query = $query->join('name AS ' . $attr, static fn (JoinOn $j): JoinOn => $j->on($attr . '.n_id', 'individuals.i_id')->on($attr . '.n_file', 'individuals.i_file'));
+                    $query = $query->join('name AS ' . $attr, [$attr . '.n_id' => 'individuals.i_id', $attr . '.n_file' => 'individuals.i_file']);
                     $names = explode(' ', $match[1]);
                     foreach ($names as $name) {
                         $query = $query->whereLike($attr . '.n_full', '%' . addcslashes($name, '\\%_') . '%');
@@ -249,8 +247,8 @@ final class ListBuilder
                 } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
                     $query = $query
-                        ->join('placelinks AS ' . $attr . 'a', static fn (JoinOn $j): JoinOn => $j->on($attr . 'a.pl_file', 'individuals.i_file')->on($attr . 'a.pl_gid', 'individuals.i_id'))
-                        ->join('places AS ' . $attr . 'b', static fn (JoinOn $j): JoinOn => $j->on($attr . 'b.p_file', $attr . 'a.pl_file')->on($attr . 'b.p_id', $attr . 'a.pl_p_id'))
+                        ->join('placelinks AS ' . $attr . 'a', [$attr . 'a.pl_file' => 'individuals.i_file', $attr . 'a.pl_gid' => 'individuals.i_id'])
+                        ->join('places AS ' . $attr . 'b', [$attr . 'b.p_file' => $attr . 'a.pl_file', $attr . 'b.p_id' => $attr . 'a.pl_p_id'])
                         ->whereLike($attr . 'b.p_place', '%' . addcslashes($match[1], '\\%_') . '%');
                 } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
@@ -270,7 +268,7 @@ final class ListBuilder
             ->get(in: Collection::class)
             ->map(fn (object $row): Individual => Registry::individualFactory()->make($row->xref, $this->tree, $row->gedcom))
             ->filter()
-            ->all();
+            ->array();
 
         return $this->applyPhpFilters($list, $attrs, $gedrec, $fact, $desc, $variables);
     }
@@ -304,7 +302,7 @@ final class ListBuilder
 
                 if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
                     $query = $query
-                        ->join('dates AS ' . $attr, static fn (JoinOn $j): JoinOn => $j->on($attr . '.d_gid', 'families.f_id')->on($attr . '.d_file', 'families.f_file'))
+                        ->join('dates AS ' . $attr, [$attr . '.d_gid' => 'families.f_id', $attr . '.d_file' => 'families.f_file'])
                         ->whereEqual($attr . '.d_fact', $match[1]);
 
                     $date = new Date($match[3]);
@@ -324,11 +322,10 @@ final class ListBuilder
                 } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
                     if ($sortby === 'NAME' || $match[1] !== '') {
                         $query = $query
-                            ->join('name AS ' . $attr, static fn (JoinOn $j): JoinOn => $j
-                                ->on($attr . '.n_file', 'families.f_file')
-                                ->onNested(static fn (JoinOn $j): JoinOn => $j
-                                    ->on($attr . '.n_id', DB::column('families.f_husb'))
-                                    ->orOn($attr . '.n_id', DB::column('families.f_wife'))));
+                            ->join('name AS ' . $attr, [$attr . '.n_file' => 'families.f_file'])
+                            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                                ->whereEqual($attr . '.n_id', DB::column('families.f_husb'))
+                                ->orWhereEqual($attr . '.n_id', DB::column('families.f_wife')));
                         if ($match[1] !== '') {
                             $names = explode(' ', $match[1]);
                             foreach ($names as $name) {
@@ -341,8 +338,8 @@ final class ListBuilder
                 } elseif (preg_match('/^(?:\w*):PLAC CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
                     $query = $query
-                        ->join('placelinks AS ' . $attr . 'a', static fn (JoinOn $j): JoinOn => $j->on($attr . 'a.pl_file', 'families.f_file')->on($attr . 'a.pl_gid', 'families.f_id'))
-                        ->join('places AS ' . $attr . 'b', static fn (JoinOn $j): JoinOn => $j->on($attr . 'b.p_file', $attr . 'a.pl_file')->on($attr . 'b.p_id', $attr . 'a.pl_p_id'))
+                        ->join('placelinks AS ' . $attr . 'a', [$attr . 'a.pl_file' => 'families.f_file', $attr . 'a.pl_gid' => 'families.f_id'])
+                        ->join('places AS ' . $attr . 'b', [$attr . 'b.p_file' => $attr . 'a.pl_file', $attr . 'b.p_id' => $attr . 'a.pl_p_id'])
                         ->whereLike($attr . 'b.p_place', '%' . addcslashes($match[1], '\\%_') . '%');
                 } elseif (preg_match('/^(\w*):(\w+) CONTAINS (.+)$/', $value, $match)) {
                     // Initial SQL filtering for performance; PHP filter still applies
@@ -362,7 +359,7 @@ final class ListBuilder
             ->get(in: Collection::class)
             ->map(fn (object $row): Family => Registry::familyFactory()->make($row->xref, $this->tree, $row->gedcom))
             ->filter()
-            ->all();
+            ->array();
 
         return $this->applyPhpFilters($list, $attrs, $gedrec, $fact, $desc, $variables);
     }

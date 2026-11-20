@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Str;
 
 use function view;
 
@@ -58,7 +57,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
 
             if ($context !== self::CONTEXT_EMBED) {
                 return view('modules/block-template', [
-                    'block'      => Str::kebab($this->name()),
+                    'block'      => $this->blockCssClass(),
                     'id'         => $block_id,
                     'config_url' => '',
                     'title'      => $this->title(),

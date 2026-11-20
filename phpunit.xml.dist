@@ -18,6 +18,9 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="Migration">
+            <directory>tests/Migration</directory>
+        </testsuite>
     </testsuites>
     <source>
         <include>

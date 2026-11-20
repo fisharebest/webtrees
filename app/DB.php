@@ -23,9 +23,11 @@ use Fisharebest\Database\DB as BaseDB;
 use Fisharebest\Database\Driver;
 use Fisharebest\Database\Query\AliasedExpression;
 use Fisharebest\Database\Query\Expression;
-use Illuminate\Database\Capsule\Manager;
-use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use PDO;
+use Pdo\Firebird;
+use Pdo\Mysql;
+use Pdo\Pgsql;
+use Pdo\Sqlite;
 use SensitiveParameter;
 
 final class DB extends BaseDB
@@ -74,22 +76,25 @@ final class DB extends BaseDB
             $database = Webtrees::ROOT_DIR . 'data/' . $database . '.sqlite';
         }
 
-        $capsule = new Manager();
-        $capsule->addConnection([
-            'driver'                   => $driver,
-            'host'                     => $host,
-            'port'                     => $port,
-            'database'                 => $database,
-            'username'                 => $username,
-            'password'                 => $password,
-            'prefix'                   => $prefix,
-            'prefix_indexes'           => true,
-            'options'                  => $options,
-            'trust_server_certificate' => true, // For SQL-Server - #5246
-        ]);
-        $capsule->setAsGlobal();
+        $dsn = match (Driver::from($driver)) {
+            Driver::MariaDB,
+            Driver::MySQL      => 'mysql:host=' . $host . ';port=' . $port . ';dbname=' . $database . ';charset=utf8mb4',
+            Driver::PostgreSQL => 'pgsql:host=' . $host . ';port=' . $port . ';dbname=' . $database,
+            Driver::SQLite     => 'sqlite:' . $database,
+            Driver::SqlServer  => 'sqlsrv:Server=' . $host . ($port === '' ? '' : ',' . $port) .
+                ';Database=' . $database . ';TrustServerCertificate=1',
+            Driver::Firebird   => 'firebird:dbname=' . ($host === '' ? '' : $host . ($port === '' ? '' : '/' . $port) . ':') .
+                $database . ';charset=UTF8',
+        };
 
-        parent::attach(pdo: Manager::connection()->getPdo(), prefix: $prefix);
+        $pdo = match (Driver::from($driver)) {
+            Driver::MariaDB,
+            Driver::MySQL      => new Mysql($dsn, $username, $password, $options),
+            Driver::PostgreSQL => new Pgsql($dsn, $username, $password, $options),
+            Driver::SQLite     => new Sqlite($dsn, $username, $password, $options),
+            Driver::Firebird   => new Firebird($dsn, $username, $password, $options),
+            Driver::SqlServer  => new PDO($dsn, $username, $password, $options),
+        };
 
         $sql = match (Driver::from($driver)) {
             Driver::MariaDB,
@@ -98,23 +103,25 @@ final class DB extends BaseDB
                 "SET sql_mode             := 'ANSI,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ONLY_FULL_GROUP_BY';" .
                 "SET TIME_ZONE            := '+00:00';" .
                 'SET SQL_BIG_SELECTS      := 1;' .
-                'SET GROUP_CONCAT_MAX_LEN := 1048576;',
+                'SET GROUP_CONCAT_MAX_LEN := 1048576;', // Update MySQL's 1024 to match MariaDB
             Driver::PostgreSQL =>
                 "SET timezone  = 'UTC';" .
                 "SET datestyle = 'ISO, YMD';",
             Driver::SQLite     =>
-                'PRAGMA journal_mode = WAL;' .
                 'PRAGMA foreign_keys = ON;' .
+                'PRAGMA journal_mode = WAL;' .
                 'PRAGMA synchronous  = NORMAL;' .
                 'PRAGMA busy_timeout = 5000;' .
                 'PRAGMA cache_size   = -16000;',
             Driver::SqlServer  =>
-            'SET language us_english;', // For timestamp columns
+                'SET language us_english;', // For timestamp columns
             Driver::Firebird   =>
-            'SET NAMES UTF8;',
+                'SET NAMES UTF8;',
         };
 
-        self::exec($sql);
+        $pdo->exec($sql);
+
+        parent::attach(pdo: $pdo, prefix: $prefix);
     }
 
     /**
@@ -159,23 +166,5 @@ final class DB extends BaseDB
     public static function rollBack(): void
     {
         parent::connection()->rollBack();
-    }
-
-    public static function schemaBuilder(): SchemaBuilder
-    {
-        return Manager::schema();
-    }
-
-    public static function enableQueryLog(): void
-    {
-        Manager::connection()->enableQueryLog();
-    }
-
-    /**
-     * @return array<array{query:string,bindings:array<int|string|float|null>,time:float|null}>
-     */
-    public static function getQueryLog(): array
-    {
-        return Manager::connection()->getQueryLog();
     }
 }

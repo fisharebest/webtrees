@@ -14,10 +14,10 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
- * @var Collection<int,Individual> $individuals
+ * @var Collection<Individual> $individuals
  * @var bool                       $sosa
  * @var Tree                       $tree
  */
@@ -147,7 +147,7 @@ $module = Registry::container()->get(ModuleService::class)
                 <td <?= $sosa ? '' : 'hidden="hidden"' ?> class="text-center" data-sort="<?= $key ?>">
                     <?php if ($sosa) : ?>
                         <?php if ($module instanceof RelationshipsChartModule) : ?>
-                            <a href="<?= e($module->chartUrl($individuals[1], ['xref2' => $individual->xref()])) ?>" rel="nofollow" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
+                            <a href="<?= e($module->chartUrl($individuals->get(1), ['xref2' => $individual->xref()])) ?>" rel="nofollow" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
                                 <?= I18N::number($key) ?>
                             </a>
                         <?php else : ?>

@@ -62,6 +62,7 @@ class PendingChangesServiceTest extends TestCase
             ] as [$tree_id, $xref, $status]
         ) {
             DB::query(table: 'change')->insert(values: [
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => $xref,
                 'status'     => $status,
@@ -72,8 +73,8 @@ class PendingChangesServiceTest extends TestCase
         }
 
         self::assertTrue($service->pendingChangesExist());
-        self::assertSame(['I1', 'I2'], $service->pendingXrefs($tree)->all());
-        self::assertSame(['I4'], $service->pendingXrefs($other_tree)->all());
+        self::assertSame(['I1', 'I2'], $service->pendingXrefs($tree)->array());
+        self::assertSame(['I4'], $service->pendingXrefs($other_tree)->array());
         self::assertSame(['I1'], array_keys($service->pendingChanges($tree, 1)));
         $changes = $service->pendingChanges($tree, 1)['I1'];
         self::assertCount(2, $changes);
@@ -93,6 +94,7 @@ class PendingChangesServiceTest extends TestCase
         foreach (['I1', 'I1', 'I1', 'I2'] as $xref) {
             $change_ids[] = DB::query(table: 'change')->insertGetId(
                 values: [
+                    'change_time' => DB::now(),
                     'gedcom_id' => $tree->id(),
                     'xref' => $xref,
                     'old_gedcom' => '',
@@ -117,7 +119,7 @@ class PendingChangesServiceTest extends TestCase
             ],
             DB::query()
                 ->from('change')
-                ->orderBy('change_id')
+                ->orderBy(DB::ascending('change_id'))
                 ->pluck('status'),
         );
     }
@@ -139,6 +141,7 @@ class PendingChangesServiceTest extends TestCase
             ] as [$tree_id, $xref, $name]
         ) {
             DB::query(table: 'change')->insert(values: [
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => $xref,
                 'old_gedcom' => '',
@@ -170,7 +173,7 @@ class PendingChangesServiceTest extends TestCase
             ],
             DB::query()
                 ->from('change')
-                ->orderBy('change_id')
+                ->orderBy(DB::ascending('change_id'))
                 ->pluck('status'),
         );
     }
@@ -191,6 +194,7 @@ class PendingChangesServiceTest extends TestCase
             ] as [$xref, $status]
         ) {
             DB::query(table: 'change')->insert(values: [
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree->id(),
                 'xref'       => $xref,
                 'status'     => $status,
@@ -215,7 +219,7 @@ class PendingChangesServiceTest extends TestCase
             ],
             DB::query()
                 ->from('change')
-                ->orderBy('change_id')
+                ->orderBy(DB::ascending('change_id'))
                 ->pluck('status'),
         );
     }

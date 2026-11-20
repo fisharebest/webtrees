@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
@@ -33,7 +32,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -493,7 +492,11 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
     protected function whereFamily(bool $fams, QueryBuilder $query): QueryBuilder
     {
         if ($fams) {
-            return $query->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'n_id')->on('l_file', 'n_file')->on('l_type', DB::value('FAMS')));
+            return $query->join('link', [
+                'l_from' => 'n_id',
+                'l_file' => 'n_file',
+                'l_type' => new Value('FAMS'),
+            ]);
         }
 
         return $query;
@@ -689,14 +692,14 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      * @param bool          $marnm         if set, include married names
      * @param bool          $fams          if set, only fetch individuals with FAMS records
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     protected function individuals(Tree $tree, array $surns_to_show, string $galpha, bool $marnm, bool $fams): Collection
     {
         $query = DB::query()
             ->select('i_id AS xref', 'i_gedcom AS gedcom', 'n_givn', 'n_surn')
             ->from('individuals')
-            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_id', 'i_id')->on('n_file', 'i_file'))
+            ->join('name', ['n_id' => 'i_id', 'n_file' => 'i_file'])
             ->whereEqual('i_file', $tree->id());
 
         $query = $this->whereFamily($fams, $query);
@@ -741,7 +744,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
      * @param string        $galpha   if set, only fetch given names starting with this letter
      * @param bool          $marnm    if set, include married names
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     protected function families(Tree $tree, array $surnames, string $galpha, bool $marnm): Collection
     {

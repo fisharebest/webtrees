@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\IndividualFactsService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function view;
 
@@ -149,7 +149,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function supportedFacts(): Collection
     {

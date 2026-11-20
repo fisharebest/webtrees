@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -45,14 +45,14 @@ abstract class AbstractAutocompleteHandler
         $data = $this->search($tree, $query, $extra)
             ->map(static fn (string $datum): array => ['value' => $datum])
             ->values()
-            ->all();
+            ->array();
 
         return response($data)
             ->withHeader('cache-control', 'public,max-age=' . static::CACHE_LIFE);
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     abstract protected function search(Tree $tree, string $query, string $extra): Collection;
 }

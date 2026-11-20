@@ -60,6 +60,7 @@ class Log
             'ip_address'  => $ip_address,
             'user_id'     => Auth::id(),
             'gedcom_id'   => $tree?->id(),
+            'log_time'    => DB::now(),
         ]);
     }
 

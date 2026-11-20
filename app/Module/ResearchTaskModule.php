@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\DateValueToday;
@@ -33,8 +32,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
@@ -95,7 +93,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 
-        $records = $individuals->merge($families);
+        $records = new Collection([...$individuals, ...$families]);
 
         $tasks = new Collection();
 
@@ -105,13 +103,13 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
                 if ($user_name === Auth::user()->userName()) {
                     // Tasks belonging to us.
-                    $tasks->add($task);
+                    $tasks->push($task);
                 } elseif ($user_name === '' && $show_unassigned === '1') {
                     // Tasks belonging to nobody.
-                    $tasks->add($task);
+                    $tasks->push($task);
                 } elseif ($user_name !== '' && $show_other === '1') {
                     // Tasks belonging to others.
-                    $tasks->add($task);
+                    $tasks->push($task);
                 }
             }
         }
@@ -128,7 +126,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),
@@ -141,7 +139,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
     {
@@ -149,7 +147,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->select('individuals.*')
             ->distinct()
             ->from('individuals')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'd_file')->on('i_id', 'd_gid'))
+            ->join('dates', ['i_file' => 'd_file', 'i_id' => 'd_gid'])
             ->whereEqual('i_file', $tree->id())
             ->whereEqual('d_fact', '_TODO')
             ->whereLessThan('d_julianday1', $max_julian_day)
@@ -160,7 +158,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
     /**
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
     {
@@ -168,7 +166,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->select('families.*')
             ->distinct()
             ->from('families')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('f_file', 'd_file')->on('f_id', 'd_gid'))
+            ->join('dates', ['f_file' => 'd_file', 'f_id' => 'd_gid'])
             ->whereEqual('f_file', $tree->id())
             ->whereEqual('d_fact', '_TODO')
             ->whereLessThan('d_julianday1', $max_julian_day)

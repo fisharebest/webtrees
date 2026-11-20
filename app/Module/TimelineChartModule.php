@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -123,7 +123,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
-            ->uniqueStrict()
+            ->unique()
             ->map(static fn (string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree))
             ->filter()
             ->filter(GedcomRecord::accessFilter());
@@ -139,7 +139,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             $remove_urls[$exclude->xref()] = route(static::class, [
                 'tree'  => $tree->name(),
                 'scale' => $scale,
-                'xrefs' => $xrefs_1->all(),
+                'xrefs' => $xrefs_1->array(),
             ]);
         }
 
@@ -245,7 +245,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         }
 
         // do not add the same fact twice (prevents marriages from being added multiple times)
-        $indifacts = $indifacts->uniqueStrict(static fn (Fact $fact): string => $fact->id());
+        $indifacts = $indifacts->unique(static fn (Fact $fact): string => $fact->id());
 
         if ($scale === 0) {
             $scale = (int) (($topyear - $baseyear) / 20 * $indifacts->count() / 4);
@@ -259,7 +259,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $baseyear -= 5;
         $topyear  += 5;
 
-        $sorted_facts = $indifacts->all();
+        $sorted_facts = $indifacts->array();
         usort($sorted_facts, FactComparator::byDate(...));
         $indifacts = new Collection($sorted_facts);
 

@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Tests\Unit\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function view;

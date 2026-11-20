@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -65,7 +65,7 @@ final class TreeList extends AbstractCommand
             ->select('*')
             ->from('gedcom')
             ->whereGreaterThan('gedcom_id', 0)
-            ->orderBy('gedcom_id')
+            ->orderBy(DB::ascending('gedcom_id'))
             ->get(in: Collection::class)
             ->map(Tree::fromDB(...));
 
@@ -82,7 +82,7 @@ final class TreeList extends AbstractCommand
             'contact_user' => $this->user_service->find($tree->contactUserId())?->userName() ?? '[NULL]',
         ])
             ->values()
-            ->all();
+            ->array();
 
         switch ($format) {
             case 'table':

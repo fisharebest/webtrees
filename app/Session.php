@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Illuminate\Support\Str;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -28,6 +27,7 @@ use function explode;
 use function implode;
 use function is_string;
 use function parse_url;
+use function random_string;
 use function rawurlencode;
 use function session_name;
 use function session_regenerate_id;
@@ -175,7 +175,7 @@ class Session
             return $csrf_token;
         }
 
-        $csrf_token = Str::random(32);
+        $csrf_token = random_string(32);
 
         self::put('CSRF_TOKEN', $csrf_token);
 

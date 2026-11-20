@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -212,10 +212,10 @@ final class SearchAdvanced
         };
 
         return $default_facts
-            ->reject(fn (string $field): bool => array_key_exists($field, $fields))
+            ->filter(fn (string $field): bool => !array_key_exists($field, $fields))
             ->sort($comparator)
             ->mapWithKeys(fn (string $fact): array => [$fact => Registry::elementFactory()->make($fact)->label()])
-            ->all();
+            ->array();
     }
 
     /**

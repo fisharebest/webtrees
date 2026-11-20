@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -40,7 +39,7 @@ final class ModuleDeleteSettings
             ->whereInSubquery('block_id', DB::query()
                 ->select('block.block_id')
                 ->from('block')
-                ->join('module', static fn (JoinOn $j): JoinOn => $j->on('module.module_name', 'block.module_name'))
+                ->join('module', ['module.module_name' => 'block.module_name'])
                 ->whereEqual('module.module_name', $module_name))
             ->delete();
 

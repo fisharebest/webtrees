@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Charts\GeoChartData;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -34,7 +32,7 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use SortDirection;
 
 use function abs;
@@ -82,14 +80,14 @@ readonly class StatisticsData
     public function averageLifespanDays(Sex|null $sex): int
     {
         $row = $this->birthAndDeathQuery($sex)
-            ->select(DB::alias(DB::raw('AVG(death.d_julianday2 - birth.d_julianday1)'), 'days'))
+            ->select(DB::alias(DB::avg(DB::subtract(DB::column('death.d_julianday2'), DB::column('birth.d_julianday1'))), 'days'))
             ->first();
 
         return (int) $row->days;
     }
 
     /**
-     * @return Collection<string,int>
+     * @return Collection<int>
      */
     public function commonGivenNames(Sex|null $sex, int $threshold, int $limit): Collection
     {
@@ -102,7 +100,7 @@ readonly class StatisticsData
 
         if ($sex !== null) {
             $query = $query
-                ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'n_file')->on('i_id', 'n_id'))
+                ->join('individuals', ['i_file' => 'n_file', 'i_id' => 'n_id'])
                 ->whereEqual('i_sex', $sex->value);
         }
 
@@ -125,7 +123,7 @@ readonly class StatisticsData
         }
 
         return (new Collection($given_names))
-            ->sortDesc()
+            ->sort(static fn (int $left, int $right): int => $right <=> $left)
             ->slice(0, $limit)
             ->filter(static fn (int $count): bool => $count >= $threshold);
     }
@@ -143,7 +141,7 @@ readonly class StatisticsData
             ->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO])
             ->groupBy('n_surn')
             ->havingGreaterThanOrEqual(DB::count('n_surn'), $threshold)
-            ->orderBy(DB::desc(DB::count('n_surn')))
+            ->orderBy(DB::descending(DB::count('n_surn')))
             ->limit($limit)
             ->pluck('n_surn');
 
@@ -156,10 +154,10 @@ readonly class StatisticsData
                 ->whereNotEqual('n_type', '_MARNM')
                 ->whereEqual('n_surn', $top_surname)
                 ->groupBy('n_surn')
-                ->orderBy('n_surn')
+                ->orderBy(DB::ascending('n_surn'))
                 ->pluck(DB::count('n_surn'), 'n_surn', in: Collection::class)
-                ->map(static fn (string $count): int => (int) $count)
-                ->all();
+                ->map(static fn (int|string $count): int => (int) $count)
+                ->array();
         }
 
         switch ($sort) {
@@ -228,18 +226,21 @@ readonly class StatisticsData
         return DB::query()
             ->select(DB::alias(DB::count('*'), 'total'), 'p_place AS place')
             ->from('places')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
+            ->join('placelinks', ['pl_file' => 'p_file', 'pl_p_id' => 'p_id'])
             ->whereEqual('p_file', $this->tree->id())
             ->whereEqual('p_parent_id', 0)
             ->groupBy('p_place')
-            ->orderBy(DB::desc(DB::count('*')), 'p_place')
+            ->orderBy(
+                DB::descending(DB::count('*')),
+                DB::ascending('p_place'),
+            )
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(fn (object $row): array => [
                 'place' => new Place($row->place, $this->tree),
                 'count' => (int) $row->total,
             ])
-            ->all();
+            ->array();
     }
 
     private function countEventQuery(string $event, int $year1 = 0, int $year2 = 0): QueryBuilder
@@ -267,8 +268,8 @@ readonly class StatisticsData
         return $this->countEventQuery($event, $year1, $year2)
             ->groupBy('d_month')
             ->pluck(DB::count(), 'd_month', in: Collection::class)
-            ->map(static fn (string $total): int => (int) $total)
-            ->all();
+            ->map(static fn (int|string $total): int => (int) $total)
+            ->array();
     }
 
     /**
@@ -278,7 +279,7 @@ readonly class StatisticsData
     {
         $rows = $this->countEventQuery($event, $year1, $year2)
             ->select('d_month', 'i_sex', DB::alias(DB::count('*'), 'total'))
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_id', 'd_gid')->on('i_file', 'd_file'))
+            ->join('individuals', ['i_id' => 'd_gid', 'i_file' => 'd_file'])
             ->groupBy('i_sex', 'd_month')
             ->get();
 
@@ -295,12 +296,15 @@ readonly class StatisticsData
     public function countEventsByCentury(string $event): array
     {
         return $this->countEventQuery($event, 0, 0)
-            ->select(DB::alias(DB::raw('ROUND((d_year + 49) / 100, 0)'), 'century'), DB::alias(DB::count('*'), 'total'))
+            ->select(
+                DB::alias(DB::round(DB::divide(DB::add(DB::column('d_year'), DB::value(49)), DB::value(100)), 0), 'century'),
+                DB::alias(DB::count('*'), 'total'),
+            )
             ->groupBy('century')
-            ->orderBy('century')
+            ->orderBy(DB::ascending('century'))
             ->get(in: Collection::class)
             ->map(fn (object $row): array => [$this->centuryName((int) $row->century), (int) $row->total])
-            ->all();
+            ->array();
     }
 
     public function countFamilies(): int
@@ -318,7 +322,7 @@ readonly class StatisticsData
     {
         return DB::query()
             ->from('dates')
-            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('f_id', 'd_gid')->on('f_file', 'd_file'))
+            ->join('families', ['f_id' => 'd_gid', 'f_file' => 'd_file'])
             ->whereEqual('d_file', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->count();
@@ -337,7 +341,7 @@ readonly class StatisticsData
     {
         return DB::query()
             ->from('families')
-            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('f_id', 'l_from')->on('f_file', 'l_file'))
+            ->join('link', ['f_id' => 'l_from', 'f_file' => 'l_file'])
             ->whereEqual('l_file', $this->tree->id())
             ->whereEqual('l_type', 'SOUR')
             ->countDistinct('f_id');
@@ -351,8 +355,8 @@ readonly class StatisticsData
         return $this->countFirstChildrenQuery($year1, $year2)
             ->groupBy('d_month')
             ->pluck(DB::count(), 'd_month', in: Collection::class)
-            ->map(static fn (string $total): int => (int) $total)
-            ->all();
+            ->map(static fn (int|string $total): int => (int) $total)
+            ->array();
     }
 
     /**
@@ -362,7 +366,7 @@ readonly class StatisticsData
     {
         $rows = $this->countFirstChildrenQuery($year1, $year2)
             ->select('d_month', 'i_sex', DB::alias(DB::count('*'), 'total'))
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'l_file')->on('i_id', 'l_to'))
+            ->join('individuals', ['i_file' => 'l_file', 'i_id' => 'l_to'])
             ->groupBy('d_month', 'i_sex')
             ->get();
 
@@ -378,7 +382,7 @@ readonly class StatisticsData
         $first_child_subquery = DB::query()
             ->select('l_from AS family_id', DB::alias(DB::min('d_julianday1'), 'min_birth_jd'))
             ->from('link')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_gid', 'l_to')->on('d_file', 'l_file'))
+            ->join('dates', ['d_gid' => 'l_to', 'd_file' => 'l_file'])
             ->whereNotEqual('d_julianday1', 0)
             ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
             ->whereEqual('l_file', $this->tree->id())
@@ -388,8 +392,8 @@ readonly class StatisticsData
         $query = DB::query()
             ->withCte('first_child', $first_child_subquery)
             ->from('link')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_gid', 'l_to')->on('d_file', 'l_file'))
-            ->join('first_child', static fn (JoinOn $j): JoinOn => $j->on('first_child.family_id', 'l_from')->on('first_child.min_birth_jd', 'd_julianday1'))
+            ->join('dates', ['d_gid' => 'l_to', 'd_file' => 'l_file'])
+            ->join('first_child', ['first_child.family_id' => 'l_from', 'first_child.min_birth_jd' => 'd_julianday1'])
             ->whereEqual('link.l_file', $this->tree->id())
             ->whereEqual('link.l_type', 'CHIL');
 
@@ -408,7 +412,7 @@ readonly class StatisticsData
         $query = DB::query()
             ->select('f_husb AS husb', 'f_wife AS wife', 'd_month AS month')
             ->from('families')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_gid', 'f_id')->on('d_file', 'f_file'))
+            ->join('dates', ['d_gid' => 'f_id', 'd_file' => 'f_file'])
             ->whereEqual('f_file', $tree->id())
             ->whereEqual('d_fact', 'MARR')
             ->whereIn('d_month', ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'])
@@ -419,7 +423,7 @@ readonly class StatisticsData
         }
 
         $rows = $query
-            ->orderBy('d_julianday2')
+            ->orderBy(DB::ascending('d_julianday2'))
             ->get();
 
         $months = [
@@ -504,12 +508,12 @@ readonly class StatisticsData
         return DB::query()
             ->from('individuals')
             ->whereEqual('i_file', $this->tree->id())
-            ->whereNested(static function (Predicates $p): Predicates {
+            ->whereNested(static function (QueryBuilder $query): QueryBuilder {
                 foreach (Gedcom::DEATH_EVENTS as $death_event) {
-                    $p = $p->orLike('i_gedcom', "%\n1 " . $death_event . '%');
+                    $query = $query->orWhereLike('i_gedcom', "%\n1 " . $death_event . '%');
                 }
 
-                return $p;
+                return $query;
             })
             ->count();
     }
@@ -534,7 +538,7 @@ readonly class StatisticsData
     {
         return DB::query()
             ->from('dates')
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_id', 'd_gid')->on('i_file', 'd_file'))
+            ->join('individuals', ['i_id' => 'd_gid', 'i_file' => 'd_file'])
             ->whereEqual('d_file', $this->tree->id())
             ->whereIn('d_fact', $events)
             ->countDistinct('i_id');
@@ -544,7 +548,7 @@ readonly class StatisticsData
     {
         return DB::query()
             ->from('individuals')
-            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('i_id', 'l_from')->on('i_file', 'l_file'))
+            ->join('link', ['i_id' => 'l_from', 'i_file' => 'l_file'])
             ->whereEqual('l_file', $this->tree->id())
             ->whereEqual('l_type', 'SOUR')
             ->countDistinct('i_id');
@@ -599,7 +603,7 @@ readonly class StatisticsData
                 $values[$element->canonical($row->source_media_type)] ?? I18N::translate('Other'),
                 (int) $row->total,
             ])
-            ->all();
+            ->array();
     }
 
     public function countMediaObjects(): int
@@ -799,14 +803,14 @@ readonly class StatisticsData
             ->select('*')
             ->from('families')
             ->whereEqual('f_file', $this->tree->id())
-            ->orderBy(DB::desc('f_numchil'))
+            ->orderBy(DB::descending('f_numchil'))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(fn (object $row): object => (object) [
                 'family'   => Registry::familyFactory()->make($row->f_id, $this->tree, $row->f_gedcom),
                 'children' => (int) $row->f_numchil,
             ])
-            ->all();
+            ->array();
     }
 
     /**
@@ -963,9 +967,9 @@ readonly class StatisticsData
     {
         $user_id = DB::query()
             ->from('user')
-            ->leftJoin('user_setting', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'user_setting.user_id'))
+            ->leftJoin('user_setting', ['user.user_id' => 'user_setting.user_id'])
             ->whereEqual('setting_name', UserInterface::PREF_TIMESTAMP_REGISTERED)
-            ->orderBy(DB::desc('setting_value'))
+            ->orderBy(DB::descending('setting_value'))
             ->value('user.user_id');
 
         if ($user_id === null) {
@@ -989,20 +993,24 @@ readonly class StatisticsData
                 'link1.l_from AS family',
                 'link1.l_to AS child1',
                 'link2.l_to AS child2',
-                DB::alias(DB::raw('child2.d_julianday2 - child1.d_julianday1'), 'age')
+                DB::alias(DB::subtract(DB::column('child2.d_julianday2'), DB::column('child1.d_julianday1')), 'age')
             )
             ->distinct()
             ->from('link AS link1')
-            ->join('link AS link2', static fn (JoinOn $j): JoinOn => $j->on('link2.l_from', 'link1.l_from')->on('link2.l_type', 'link1.l_type')->on('link2.l_file', 'link1.l_file'))
-            ->join('dates AS child1', static fn (JoinOn $j): JoinOn => $j->on('child1.d_gid', 'link1.l_to')->on('child1.d_file', 'link1.l_file'))
-            ->join('dates AS child2', static fn (JoinOn $j): JoinOn => $j->on('child2.d_gid', 'link2.l_to')->on('child2.d_file', 'link2.l_file'))
+            ->join('link AS link2', [
+                'link2.l_from' => 'link1.l_from',
+                'link2.l_type' => 'link1.l_type',
+                'link2.l_file' => 'link1.l_file',
+            ])
+            ->join('dates AS child1', ['child1.d_gid' => 'link1.l_to', 'child1.d_file' => 'link1.l_file'])
+            ->join('dates AS child2', ['child2.d_gid' => 'link2.l_to', 'child2.d_file' => 'link2.l_file'])
             ->whereEqual('child1.d_fact', 'BIRT')
             ->whereNotEqual('child1.d_julianday1', 0)
             ->whereEqual('child2.d_fact', 'BIRT')
             ->whereGreaterThan('child2.d_julianday2', DB::column('child1.d_julianday1'))
             ->whereEqual('link1.l_type', 'CHIL')
             ->whereEqual('link1.l_file', $this->tree->id())
-            ->orderBy(DB::desc('age'))
+            ->orderBy(DB::descending('age'))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(fn (object $row): object => (object) [
@@ -1014,11 +1022,11 @@ readonly class StatisticsData
             ->filter(static fn (object $row): bool => $row->family !== null)
             ->filter(static fn (object $row): bool => $row->child1 !== null)
             ->filter(static fn (object $row): bool => $row->child2 !== null)
-            ->all();
+            ->array();
     }
 
     /**
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function topTenOldestAliveQuery(Sex|null $sex, int $limit): Collection
     {
@@ -1029,7 +1037,7 @@ readonly class StatisticsData
         $query = DB::query()
             ->select('individuals.*')
             ->from('dates')
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_id', 'd_gid')->on('i_file', 'd_file'))
+            ->join('individuals', ['i_id' => 'd_gid', 'i_file' => 'd_file'])
             ->whereEqual('d_file', $this->tree->id())
             ->whereNotEqual('d_julianday1', 0)
             ->whereEqual('d_fact', 'BIRT')
@@ -1043,7 +1051,7 @@ readonly class StatisticsData
 
         return $query
             ->groupBy('i_id', 'i_file', 'i_rin', 'i_sex', 'i_gedcom')
-            ->orderBy(DB::min('d_julianday1'))
+            ->orderBy(DB::ascending(DB::min('d_julianday1')))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($this->tree))
@@ -1083,13 +1091,16 @@ readonly class StatisticsData
     {
         $rows = DB::query()
             ->select(
-                DB::alias(DB::raw('AVG(death.d_julianday2 - birth.d_julianday1) / 365.25'), 'age'),
-                DB::alias(DB::raw('ROUND((death.d_year + 49) / 100, 0)'), 'century'),
+                DB::alias(DB::divide(
+                    DB::avg(DB::subtract(DB::column('death.d_julianday2'), DB::column('birth.d_julianday1'))),
+                    DB::value(365.25),
+                ), 'age'),
+                DB::alias(DB::round(DB::divide(DB::add(DB::column('death.d_year'), DB::value(49)), DB::value(100)), 0), 'century'),
                 'i_sex AS sex',
             )
             ->from('individuals')
-            ->join('dates AS birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_file', 'i_file')->on('birth.d_gid', 'i_id'))
-            ->join('dates AS death', static fn (JoinOn $j): JoinOn => $j->on('death.d_file', 'i_file')->on('death.d_gid', 'i_id'))
+            ->join('dates AS birth', ['birth.d_file' => 'i_file', 'birth.d_gid' => 'i_id'])
+            ->join('dates AS death', ['death.d_file' => 'i_file', 'death.d_gid' => 'i_id'])
             ->whereEqual('i_file', $this->tree->id())
             ->whereEqual('birth.d_fact', 'BIRT')
             ->whereEqual('death.d_fact', 'DEAT')
@@ -1098,7 +1109,10 @@ readonly class StatisticsData
             ->whereGreaterThanOrEqual('death.d_julianday1', DB::column('birth.d_julianday2'))
             ->whereNotEqual('birth.d_julianday2', 0)
             ->groupBy('century', 'sex')
-            ->orderBy('century', 'sex')
+            ->orderBy(
+                DB::ascending('century'),
+                DB::ascending('sex'),
+            )
             ->get();
 
         return array_map(static fn (object $row): object => (object) [
@@ -1125,19 +1139,19 @@ readonly class StatisticsData
         }
 
         return $query
-            ->select(DB::alias(DB::raw('death.d_julianday2 - birth.d_julianday1'), 'days'))
-            ->orderBy(DB::desc('days'))
+            ->select(DB::alias(DB::subtract(DB::column('death.d_julianday2'), DB::column('birth.d_julianday1')), 'days'))
+            ->orderBy(DB::descending('days'))
             ->get(in: Collection::class)
             ->map(static fn (object $row): object => (object) ['days' => (int) $row->days])
-            ->all();
+            ->array();
     }
 
     private function birthAndDeathQuery(Sex|null $sex): QueryBuilder
     {
         $query = DB::query()
             ->from('individuals')
-            ->join('dates AS birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_file', 'i_file')->on('birth.d_gid', 'i_id'))
-            ->join('dates AS death', static fn (JoinOn $j): JoinOn => $j->on('death.d_file', 'i_file')->on('death.d_gid', 'i_id'))
+            ->join('dates AS birth', ['birth.d_file' => 'i_file', 'birth.d_gid' => 'i_id'])
+            ->join('dates AS death', ['death.d_file' => 'i_file', 'death.d_gid' => 'i_id'])
             ->whereEqual('i_file', $this->tree->id())
             ->whereEqual('birth.d_fact', 'BIRT')
             ->whereEqual('death.d_fact', 'DEAT')
@@ -1157,8 +1171,8 @@ readonly class StatisticsData
     public function longlifeQuery(Sex|null $sex): object|null
     {
         return $this->birthAndDeathQuery($sex)
-            ->select('individuals.*', DB::alias(DB::raw('death.d_julianday2 - birth.d_julianday1'), 'days'))
-            ->orderBy(DB::desc('days'))
+            ->select('individuals.*', DB::alias(DB::subtract(DB::column('death.d_julianday2'), DB::column('birth.d_julianday1')), 'days'))
+            ->orderBy(DB::descending('days'))
             ->limit(1)
             ->get(in: Collection::class)
             ->map(fn (object $row): object => (object) [
@@ -1169,7 +1183,7 @@ readonly class StatisticsData
     }
 
     /**
-     * @return Collection<int,object{individual:Individual,days:int}>
+     * @return Collection<object{individual:Individual,days:int}&\stdClass>
      */
     public function topTenOldestQuery(Sex|null $sex, int $limit): Collection
     {
@@ -1178,9 +1192,9 @@ readonly class StatisticsData
         }
 
         return $this->birthAndDeathQuery($sex)
-            ->select('individuals.*', DB::alias(DB::raw('MAX(death.d_julianday2 - birth.d_julianday1)'), 'days'))
+            ->select('individuals.*', DB::alias(DB::max(DB::subtract(DB::column('death.d_julianday2'), DB::column('birth.d_julianday1'))), 'days'))
             ->groupBy('i_id', 'i_file', 'i_rin', 'i_sex', 'i_gedcom')
-            ->orderBy(DB::desc('days'))
+            ->orderBy(DB::descending('days'))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(fn (object $row): object => (object) [
@@ -1242,8 +1256,8 @@ readonly class StatisticsData
     {
         $rows = DB::query()
             ->from('places')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'))
+            ->join('placelinks', ['pl_file' => 'p_file', 'pl_p_id' => 'p_id'])
+            ->join('individuals', ['pl_file' => 'i_file', 'pl_gid' => 'i_id'])
             ->whereEqual('p_file', $tree->id())
             ->whereEqual('p_parent_id', 0)
             ->groupBy('p_place')
@@ -1272,8 +1286,8 @@ readonly class StatisticsData
     {
         $rows = DB::query()
             ->from('places')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
-            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_file', 'pl_file')->on('n_id', 'pl_gid'))
+            ->join('placelinks', ['pl_file' => 'p_file', 'pl_p_id' => 'p_id'])
+            ->join('name', ['n_file' => 'pl_file', 'n_id' => 'pl_gid'])
             ->whereEqual('p_file', $tree->id())
             ->whereEqual('p_parent_id', 0)
             ->whereEqual('n_surn', $surname)
@@ -1304,8 +1318,8 @@ readonly class StatisticsData
         $query = DB::query()
             ->select('p_place AS place', 'f_gedcom AS gedcom')
             ->from('places')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
-            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'f_file')->on('pl_gid', 'f_id'))
+            ->join('placelinks', ['pl_file' => 'p_file', 'pl_p_id' => 'p_id'])
+            ->join('families', ['pl_file' => 'f_file', 'pl_gid' => 'f_id'])
             ->whereEqual('p_file', $tree->id())
             ->whereEqual('p_parent_id', 0);
 
@@ -1320,8 +1334,8 @@ readonly class StatisticsData
         $query = DB::query()
             ->select('p_place AS place', 'i_gedcom AS gedcom')
             ->from('places')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'))
+            ->join('placelinks', ['pl_file' => 'p_file', 'pl_p_id' => 'p_id'])
+            ->join('individuals', ['pl_file' => 'i_file', 'pl_gid' => 'i_id'])
             ->whereEqual('p_file', $tree->id())
             ->whereEqual('p_parent_id', 0);
 
@@ -1416,15 +1430,15 @@ readonly class StatisticsData
         return DB::query()
             ->select('families.*')
             ->from('families')
-            ->join('link AS children', static fn (JoinOn $j): JoinOn => $j->on('children.l_from', 'f_id')->on('children.l_file', 'f_file'))
-            ->join('link AS mchildren', static fn (JoinOn $j): JoinOn => $j->on('mchildren.l_file', 'children.l_file')->on('mchildren.l_from', 'children.l_to'))
-            ->join('link AS gchildren', static fn (JoinOn $j): JoinOn => $j->on('gchildren.l_file', 'mchildren.l_file')->on('gchildren.l_from', 'mchildren.l_to'))
+            ->join('link AS children', ['children.l_from' => 'f_id', 'children.l_file' => 'f_file'])
+            ->join('link AS mchildren', ['mchildren.l_file' => 'children.l_file', 'mchildren.l_from' => 'children.l_to'])
+            ->join('link AS gchildren', ['gchildren.l_file' => 'mchildren.l_file', 'gchildren.l_from' => 'mchildren.l_to'])
             ->whereEqual('children.l_type', 'CHIL')
             ->whereEqual('mchildren.l_type', 'FAMS')
             ->whereEqual('gchildren.l_type', 'CHIL')
             ->whereEqual('f_file', $this->tree->id())
             ->groupBy('f_id', 'f_file', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil')
-            ->orderBy(DB::order(DB::count('*'), SortDirection::Descending))
+            ->orderBy(DB::descending(DB::count('*')))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($this->tree))
@@ -1442,7 +1456,7 @@ readonly class StatisticsData
                     'count'  => $count,
                 ];
             })
-            ->all();
+            ->array();
     }
 
     public function topTenLargestGrandFamily(int $limit = 10): string
@@ -1574,7 +1588,7 @@ readonly class StatisticsData
 
         if ($year1 !== 0 && $year2 !== 0) {
             $query = $query
-                ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+                ->join('dates', ['d_file' => 'f_file', 'd_gid' => 'f_id'])
                 ->whereEqual('d_fact', 'MARR')
                 ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
                 ->whereBetween('d_year', $year1, $year2);
@@ -1585,7 +1599,7 @@ readonly class StatisticsData
                 'f_numchil' => (int) $row->f_numchil,
                 'total'     => (int) $row->total,
             ])
-            ->all();
+            ->array();
     }
 
     /**
@@ -1601,7 +1615,7 @@ readonly class StatisticsData
             ->select('*')
             ->from('families')
             ->whereEqual('f_file', $this->tree->id())
-            ->orderBy(DB::desc('f_numchil'))
+            ->orderBy(DB::descending('f_numchil'))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($this->tree))
@@ -1610,7 +1624,7 @@ readonly class StatisticsData
                 'family' => $family,
                 'count'  => $family->numberOfChildren(),
             ])
-            ->all();
+            ->array();
     }
 
     public function topTenLargestFamily(int $limit = 10): string
@@ -1639,11 +1653,11 @@ readonly class StatisticsData
         };
 
         $row = DB::query()
-            ->select('parentfamily.l_to AS id', DB::alias(DB::raw('childbirth.d_julianday2 - birth.d_julianday1'), 'age'))
+            ->select('parentfamily.l_to AS id', DB::alias(DB::subtract(DB::column('childbirth.d_julianday2'), DB::column('birth.d_julianday1')), 'age'))
             ->from('link AS parentfamily')
-            ->join('link AS childfamily', static fn (JoinOn $j): JoinOn => $j->on('childfamily.l_file', 'parentfamily.l_file')->on('childfamily.l_from', 'parentfamily.l_from'))
-            ->join('dates AS birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_file', 'parentfamily.l_file')->on('birth.d_gid', 'parentfamily.l_to'))
-            ->join('dates AS childbirth', static fn (JoinOn $j): JoinOn => $j->on('childbirth.d_file', 'parentfamily.l_file')->on('childbirth.d_gid', 'childfamily.l_to'))
+            ->join('link AS childfamily', ['childfamily.l_file' => 'parentfamily.l_file', 'childfamily.l_from' => 'parentfamily.l_from'])
+            ->join('dates AS birth', ['birth.d_file' => 'parentfamily.l_file', 'birth.d_gid' => 'parentfamily.l_to'])
+            ->join('dates AS childbirth', ['childbirth.d_file' => 'parentfamily.l_file', 'childbirth.d_gid' => 'childfamily.l_to'])
             ->whereEqual('childfamily.l_type', 'CHIL')
             ->whereEqual('birth.d_fact', 'BIRT')
             ->whereNotEqual('birth.d_julianday1', 0)
@@ -1695,10 +1709,10 @@ readonly class StatisticsData
     public function ageOfMarriageQuery(string $type, SortDirection $order, int $limit): string
     {
         $hrows = DB::query()
-            ->select('f_id AS family', DB::alias(DB::raw('MIN(husbdeath.d_julianday2 - married.d_julianday1)'), 'age'))
+            ->select('f_id AS family', DB::alias(DB::min(DB::subtract(DB::column('husbdeath.d_julianday2'), DB::column('married.d_julianday1'))), 'age'))
             ->from('families')
-            ->join('dates AS married', static fn (JoinOn $j): JoinOn => $j->on('married.d_file', 'f_file')->on('married.d_gid', 'f_id'))
-            ->join('dates AS husbdeath', static fn (JoinOn $j): JoinOn => $j->on('husbdeath.d_gid', 'f_husb')->on('husbdeath.d_file', 'f_file'))
+            ->join('dates AS married', ['married.d_file' => 'f_file', 'married.d_gid' => 'f_id'])
+            ->join('dates AS husbdeath', ['husbdeath.d_gid' => 'f_husb', 'husbdeath.d_file' => 'f_file'])
             ->whereEqual('f_file', $this->tree->id())
             ->whereEqual('married.d_fact', 'MARR')
             ->whereNotEqual('married.d_julianday1', 0)
@@ -1708,10 +1722,10 @@ readonly class StatisticsData
             ->get();
 
         $wrows = DB::query()
-            ->select('f_id AS family', DB::alias(DB::raw('MIN(wifedeath.d_julianday2 - married.d_julianday1)'), 'age'))
+            ->select('f_id AS family', DB::alias(DB::min(DB::subtract(DB::column('wifedeath.d_julianday2'), DB::column('married.d_julianday1'))), 'age'))
             ->from('families')
-            ->join('dates AS married', static fn (JoinOn $j): JoinOn => $j->on('married.d_file', 'f_file')->on('married.d_gid', 'f_id'))
-            ->join('dates AS wifedeath', static fn (JoinOn $j): JoinOn => $j->on('wifedeath.d_gid', 'f_wife')->on('wifedeath.d_file', 'f_file'))
+            ->join('dates AS married', ['married.d_file' => 'f_file', 'married.d_gid' => 'f_id'])
+            ->join('dates AS wifedeath', ['wifedeath.d_gid' => 'f_wife', 'wifedeath.d_file' => 'f_file'])
             ->whereEqual('f_file', $this->tree->id())
             ->whereEqual('married.d_fact', 'MARR')
             ->whereNotEqual('married.d_julianday1', 0)
@@ -1721,10 +1735,10 @@ readonly class StatisticsData
             ->get();
 
         $drows = DB::query()
-            ->select('f_id AS family', DB::alias(DB::raw('MIN(divorced.d_julianday2 - married.d_julianday1)'), 'age'))
+            ->select('f_id AS family', DB::alias(DB::min(DB::subtract(DB::column('divorced.d_julianday2'), DB::column('married.d_julianday1'))), 'age'))
             ->from('families')
-            ->join('dates AS married', static fn (JoinOn $j): JoinOn => $j->on('married.d_file', 'f_file')->on('married.d_gid', 'f_id'))
-            ->join('dates AS divorced', static fn (JoinOn $j): JoinOn => $j->on('divorced.d_gid', 'f_id')->on('divorced.d_file', 'f_file'))
+            ->join('dates AS married', ['married.d_file' => 'f_file', 'married.d_gid' => 'f_id'])
+            ->join('dates AS divorced', ['divorced.d_gid' => 'f_id', 'divorced.d_file' => 'f_file'])
             ->whereEqual('f_file', $this->tree->id())
             ->whereEqual('married.d_fact', 'MARR')
             ->whereNotEqual('married.d_julianday1', 0)
@@ -1835,8 +1849,8 @@ readonly class StatisticsData
         $query = DB::query()
             ->select('families.*')
             ->from('families')
-            ->join('dates AS wife', static fn (JoinOn $j): JoinOn => $j->on('wife.d_gid', 'f_wife')->on('wife.d_file', 'f_file'))
-            ->join('dates AS husb', static fn (JoinOn $j): JoinOn => $j->on('husb.d_gid', 'f_husb')->on('husb.d_file', 'f_file'))
+            ->join('dates AS wife', ['wife.d_gid' => 'f_wife', 'wife.d_file' => 'f_file'])
+            ->join('dates AS husb', ['husb.d_gid' => 'f_husb', 'husb.d_file' => 'f_file'])
             ->whereEqual('f_file', $this->tree->id())
             ->whereEqual('wife.d_fact', 'BIRT')
             ->whereNotEqual('wife.d_julianday1', 0)
@@ -1852,12 +1866,12 @@ readonly class StatisticsData
         }
 
         $age = $order === SortDirection::Descending
-            ? DB::raw('MIN(wife.d_julianday1) - MIN(husb.d_julianday1)')
-            : DB::raw('MIN(husb.d_julianday1) - MIN(wife.d_julianday1)');
+            ? DB::subtract(DB::min('wife.d_julianday1'), DB::min('husb.d_julianday1'))
+            : DB::subtract(DB::min('husb.d_julianday1'), DB::min('wife.d_julianday1'));
 
         return $query
             ->groupBy('f_id', 'f_file', 'f_husb', 'f_wife', 'f_gedcom', 'f_numchil')
-            ->orderBy(DB::desc($age))
+            ->orderBy(DB::descending($age))
             ->limit($limit)
             ->get(in: Collection::class)
             ->map(Registry::familyFactory()->mapper($this->tree))
@@ -1877,7 +1891,7 @@ readonly class StatisticsData
                     'age'    => $this->calculateAge($diff),
                 ];
             })
-            ->all();
+            ->array();
     }
 
     public function ageBetweenSpousesMF(int $limit = 10): string
@@ -1923,10 +1937,10 @@ readonly class StatisticsData
         };
 
         $query = DB::query()
-            ->select('f_id', 'birth.d_gid', DB::alias(DB::raw('married.d_julianday2 - birth.d_julianday1'), 'age'))
+            ->select('f_id', 'birth.d_gid', DB::alias(DB::subtract(DB::column('married.d_julianday2'), DB::column('birth.d_julianday1')), 'age'))
             ->from('dates AS married')
-            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('f_file', 'married.d_file')->on('f_id', 'married.d_gid'))
-            ->join('dates AS birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_file', 'married.d_file')->on('birth.d_gid', $spouse_field))
+            ->join('families', ['f_file' => 'married.d_file', 'f_id' => 'married.d_gid'])
+            ->join('dates AS birth', ['birth.d_file' => 'married.d_file', 'birth.d_gid' => $spouse_field])
             ->whereNotEqual('birth.d_julianday1', 0)
             ->whereEqual('birth.d_fact', 'BIRT')
             ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
@@ -1961,18 +1975,18 @@ readonly class StatisticsData
         };
 
         $row = DB::query()
-            ->select('f_id AS famid', $sex_field, DB::alias(DB::raw('married.d_julianday2 - birth.d_julianday1'), 'age'), 'i_id')
+            ->select('f_id AS famid', $sex_field, DB::alias(DB::subtract(DB::column('married.d_julianday2'), DB::column('birth.d_julianday1')), 'age'), 'i_id')
             ->from('families')
-            ->join('dates AS married', static fn (JoinOn $j): JoinOn => $j->on('married.d_file', 'f_file')->on('married.d_gid', 'f_id'))
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('i_file', 'f_file')->on('i_id', $sex_field))
-            ->join('dates AS birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_file', 'i_file')->on('birth.d_gid', 'i_id'))
+            ->join('dates AS married', ['married.d_file' => 'f_file', 'married.d_gid' => 'f_id'])
+            ->join('individuals', ['i_file' => 'f_file', 'i_id' => $sex_field])
+            ->join('dates AS birth', ['birth.d_file' => 'i_file', 'birth.d_gid' => 'i_id'])
             ->whereEqual('married.d_fact', 'MARR')
             ->whereEqual('i_sex', $sex->value)
             ->whereEqual('birth.d_fact', 'BIRT')
             ->whereNotEqual('birth.d_julianday1', 0)
             ->whereEqual('f_file', $this->tree->id())
             ->whereGreaterThan('married.d_julianday2', DB::column('birth.d_julianday1'))
-            ->orderBy(DB::order(DB::raw('married.d_julianday2 - birth.d_julianday1'), $order))
+            ->orderBy(DB::order(DB::subtract(DB::column('married.d_julianday2'), DB::column('birth.d_julianday1')), $order))
             ->first();
 
         if ($row === null) {

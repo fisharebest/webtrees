@@ -142,6 +142,7 @@ PSR standards applied:
 | PSR-15 | HTTP request handlers and middleware |
 | PSR-17 | HTTP factories |
 | PSR-18 | HTTP client |
+| PSR-20 | Clock |
 
 ### Dependencies
 
@@ -149,7 +150,7 @@ All dependencies are pinned to exact version numbers (no ranges).
 
 **Main PHP dependencies** (via Composer):
 
-* `illuminate/database` 
+* `fisharebest/collection`, `fisharebest/database`
 * `symfony/cache`, `symfony/console`, `symfony/mailer`, `symfony/http-client`
 * `league/flysystem`
 * `league/commonmark`
@@ -238,15 +239,13 @@ Third-party modules can be placed in `modules_v4/`.
 
 ### Database
 
-webtrees uses Laravel’s Illuminate Database (query builder and schema builder)
-without the full Laravel framework. Supported drivers:
+webtrees uses `fisharebest/database` for queries and schema synchronisation.
+Supported drivers:
 
 * MySQL / MariaDB
 * SQLite
 * PostgreSQL
 * SQL Server
-
-Schema migrations are in `app/Schema/`. The current schema version is tracked in
-`app/Webtrees.php`.
+* Firebird
 
 Table names use a configurable prefix so multiple instances can share a database.

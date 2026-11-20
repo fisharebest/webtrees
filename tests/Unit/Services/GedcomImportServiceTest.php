@@ -124,7 +124,7 @@ class GedcomImportServiceTest extends TestCase
             ->whereEqual('l_file', $tree->id())
             ->whereIn('l_from', ['I1', 'I2'])
             ->whereEqual('l_type', 'OBJE')
-            ->orderBy('l_from')
+            ->orderBy(DB::ascending('l_from'))
             ->pluck('l_to'));
         self::assertSame(1, DB::query()
             ->from('media_file')

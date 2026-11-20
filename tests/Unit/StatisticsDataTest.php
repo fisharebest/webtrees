@@ -81,6 +81,8 @@ class StatisticsDataTest extends TestCase
         self::assertSame('F1', $this->statistics->familiesWithTheMostChildren(1)[0]->family->xref());
         self::assertSame(['Example' => ['Example' => 2]], $this->statistics->commonSurnames(1, 1, 'alpha'));
         self::assertGreaterThan(0, $this->statistics->averageLifespanDays(Sex::Female));
+        self::assertSame([['18th', 1], ['19th', 3]], $this->statistics->countEventsByCentury('BIRT'));
+        self::assertCount(2, $this->statistics->statsAge());
         self::assertCount(1, $this->statistics->topTenOldestQuery(Sex::Female, 1));
         self::assertNotEmpty($this->statistics->statsAgeQuery(Sex::Female, 1900, 2000));
     }

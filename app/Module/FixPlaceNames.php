@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function addcslashes;
 use function preg_match;
@@ -68,7 +68,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function familiesToFix(Tree $tree, array $params): Collection|null
     {
@@ -89,7 +89,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): Collection|null
     {

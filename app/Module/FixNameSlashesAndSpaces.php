@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function preg_match;
 use function preg_replace;
@@ -57,7 +57,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): Collection|null
     {

@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Database\Driver;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use SQLite3;
 
 use function array_map;
@@ -66,11 +66,11 @@ class ServerCheckService
     /**
      * Things that may cause webtrees to break.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function serverErrors(string $driver = ''): Collection
     {
-        $errors = Collection::make([
+        $errors = new Collection([
             $this->databaseDriverErrors($driver),
             $this->checkPhpExtension('mbstring'),
             $this->checkPhpExtension('iconv'),
@@ -82,17 +82,17 @@ class ServerCheckService
 
         return $errors
             ->flatten()
-            ->filter();
+            ->filter(static fn (string $error): bool => $error !== '');
     }
 
     /**
      * Things that should be fixed, but which won't stop completely webtrees from running.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function serverWarnings(): Collection
     {
-        $warnings = Collection::make([
+        $warnings = new Collection([
             $this->checkPhpExtension('curl'),
             $this->checkPhpExtension('exif'),
             $this->checkPhpExtension('fileinfo'),
@@ -106,7 +106,7 @@ class ServerCheckService
 
         return $warnings
             ->flatten()
-            ->filter();
+            ->filter(static fn (string $warning): bool => $warning !== '');
     }
 
     private function checkPhpExtension(string $extension): string
@@ -235,20 +235,20 @@ class ServerCheckService
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     private function databaseDriverErrors(string $driver): Collection
     {
         switch ($driver) {
             case Driver::MySQL->value:
             case Driver::MariaDB->value:
-                return Collection::make([
+                return new Collection([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_mysql'),
                 ]);
 
             case Driver::SQLite->value:
-                return Collection::make([
+                return new Collection([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('sqlite3'),
                     $this->checkPhpExtension('pdo_sqlite'),
@@ -256,13 +256,13 @@ class ServerCheckService
                 ]);
 
             case Driver::PostgreSQL->value:
-                return Collection::make([
+                return new Collection([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_pgsql'),
                 ]);
 
             case Driver::SqlServer->value:
-                return Collection::make([
+                return new Collection([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_sqlsrv'),
                 ]);

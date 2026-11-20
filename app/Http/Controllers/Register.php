@@ -39,11 +39,11 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function is_string;
+use function random_string;
 use function redirect;
 use function route;
 use function view;
@@ -132,7 +132,7 @@ final class Register
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 
         $user  = $this->user_service->create($username, $realname, $email, $password);
-        $token = Str::random(32);
+        $token = random_string(32);
 
         $user->setPreference(UserInterface::PREF_LANGUAGE, I18N::languageTag());
         $user->setPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
@@ -204,6 +204,7 @@ final class Register
                 'user_id'    => $administrator->id(),
                 'subject'    => $subject,
                 'body'       => $body_text,
+                'created'    => DB::now(),
             ]);
         }
 

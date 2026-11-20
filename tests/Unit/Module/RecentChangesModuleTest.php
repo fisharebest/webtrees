@@ -62,6 +62,7 @@ class RecentChangesModuleTest extends TestCase
             ] as [$tree_id, $xref, $name, $status]
         ) {
             DB::query(table: 'change')->insert([
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree_id,
                 'xref'       => $xref,
                 'status'     => $status,

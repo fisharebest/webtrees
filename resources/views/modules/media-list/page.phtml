@@ -9,7 +9,7 @@ use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var int                   $count
@@ -21,7 +21,7 @@ use Illuminate\Support\Collection;
  * @var bool                  $go
  * @var LinkedRecordService   $linked_record_service
  * @var int                   $max
- * @var Collection<int,Media> $media_objects
+ * @var Collection<Media> $media_objects
  * @var ModuleListInterface   $module
  * @var int                   $page
  * @var int                   $pages

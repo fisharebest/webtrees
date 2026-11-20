@@ -28,8 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -66,7 +65,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => '',
                 'title'      => $this->title(),
@@ -136,7 +135,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
                 return $row;
             })
-            ->all();
+            ->array();
     }
 
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface

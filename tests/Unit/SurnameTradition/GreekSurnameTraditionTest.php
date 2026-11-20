@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\SurnameTradition\GreekSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(GreekSurnameTradition::class)]

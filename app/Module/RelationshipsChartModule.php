@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Closure;
 use Fisharebest\Algorithm\Dijkstra;
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
@@ -38,7 +37,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -258,16 +257,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $num_paths = 0;
         foreach ($paths as $path) {
-            $nodes = Collection::make($path)
+            $nodes = (new Collection($path))
                 ->map(static function (string $xref, int $key) use ($tree): GedcomRecord {
                     if ($key % 2 === 0) {
                         return Registry::individualFactory()->make($xref, $tree);
                     }
 
                     return Registry::familyFactory()->make($xref, $tree);
-                });
+                })
+                ->array();
 
-            $relationship = $this->relationship_service->nameFromPath($nodes->all(), I18N::language());
+            $relationship = $this->relationship_service->nameFromPath($nodes, I18N::language());
 
             echo '<h3>', I18N::translate('Relationship: %s', $relationship), '</h3>';
 
@@ -303,7 +303,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         $record->spouses()->contains($prev) && $record->children()->contains($next)
                     ) {
                         // Parent to child.  Move down (or diagonally if it's a change in vertical direction).
-                        if ($n > 2 && $nodes[$n - 2]->children()->contains($nodes[$n - 3]) && $nodes[$n - 2]->spouses()->contains($prev)) {
+                        if ($n > 2 && $nodes[$n - 2] instanceof Family && $nodes[$n - 2]->children()->contains($nodes[$n - 3]) && $nodes[$n - 2]->spouses()->contains($prev)) {
                             $table[$x + 1][$y - 1] =
                                 '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' .
                                 $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
@@ -318,7 +318,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         $y -= 2;
                     } else {
                         // Child to parent. Move up (or diagonally if it's a change in vertical direction).
-                        if ($n > 2 && $nodes[$n - 2]->spouses()->contains($nodes[$n - 3]) && $nodes[$n - 2]->children()->contains($prev)) {
+                        if ($n > 2 && $nodes[$n - 2] instanceof Family && $nodes[$n - 2]->spouses()->contains($nodes[$n - 3]) && $nodes[$n - 2]->children()->contains($prev)) {
                             $table[$x + 1][$y + 1] =
                                 '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' .
                                 $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
@@ -545,7 +545,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         while ($queue !== []) {
             $parents = DB::query()
                 ->from('link AS l1')
-                ->join('link AS l2', static fn (JoinOn $j): JoinOn => $j->on('l1.l_to', 'l2.l_to')->on('l1.l_file', 'l2.l_file'))
+                ->join('link AS l2', ['l1.l_to' => 'l2.l_to', 'l1.l_file' => 'l2.l_file'])
                 ->whereEqual('l1.l_file', $tree_id)
                 ->whereEqual('l1.l_type', 'FAMC')
                 ->whereEqual('l2.l_type', 'FAMS')
@@ -572,7 +572,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     {
         return DB::query()
             ->from('link AS l1')
-            ->join('link AS l2', static fn (JoinOn $j): JoinOn => $j->on('l1.l_to', 'l2.l_to')->on('l1.l_type', 'l2.l_type')->on('l1.l_file', 'l2.l_file'))
+            ->join('link AS l2', [
+                'l1.l_to'   => 'l2.l_to',
+                'l1.l_type' => 'l2.l_type',
+                'l1.l_file' => 'l2.l_file',
+            ])
             ->whereEqual('l1.l_file', $tree_id)
             ->whereEqual('l1.l_type', 'FAMS')
             ->whereEqual('l1.l_from', $xref1)

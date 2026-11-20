@@ -41,6 +41,7 @@ class PendingChangesLogDownloadTest extends TestCase
 
         foreach (['accepted', 'pending'] as $status) {
             DB::query(table: 'change')->insert([
+                'change_time' => DB::now(),
                 'gedcom_id'  => $tree->id(),
                 'xref'       => 'I1',
                 'status'     => $status,

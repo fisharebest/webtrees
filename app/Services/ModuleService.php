@@ -259,7 +259,8 @@ use Fisharebest\Webtrees\Module\YahrzeitModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
+use InvalidArgumentException;
 use Psr\Http\Server\MiddlewareInterface;
 use Throwable;
 
@@ -269,6 +270,7 @@ use function glob;
 use function is_object;
 use function str_contains;
 use function strlen;
+use function uasort;
 
 use const GLOB_NOSORT;
 
@@ -550,7 +552,7 @@ class ModuleService
      *
      * @param class-string<T> $interface
      *
-     * @return Collection<int,T>
+     * @return Collection<T>
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
@@ -565,39 +567,35 @@ class ModuleService
      *
      * @param class-string<T> $interface
      *
-     * @return Collection<int,T&ModuleInterface>
+     * @return Collection<T&ModuleInterface>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
-        /** @var Collection<int,T&ModuleInterface> $modules */
+        /** @var Collection<T&ModuleInterface> $modules */
         $modules = $this->all($include_disabled)
             ->filter($this->interfaceFilter($interface))
             ->values();
 
-        switch ($interface) {
-            case ModuleFooterInterface::class:
-                return $modules->sort($this->footerComparator());
+        $comparator = match ($interface) {
+            ModuleFooterInterface::class  => $this->footerComparator(),
+            ModuleMenuInterface::class    => $this->menuComparator(),
+            ModuleSidebarInterface::class => $this->sidebarComparator(),
+            ModuleTabInterface::class     => $this->tabComparator(),
+            default                       => $sort ? $this->moduleComparator() : null,
+        };
 
-            case ModuleMenuInterface::class:
-                return $modules->sort($this->menuComparator());
-
-            case ModuleSidebarInterface::class:
-                return $modules->sort($this->sidebarComparator());
-
-            case ModuleTabInterface::class:
-                return $modules->sort($this->tabComparator());
-
-            default:
-                if ($sort) {
-                    return $modules->sort($this->moduleComparator());
-                }
-
-                return $modules;
+        if ($comparator === null) {
+            return $modules;
         }
+
+        $sorted_modules = $modules->array();
+        uasort($sorted_modules, $comparator);
+
+        return new Collection($sorted_modules);
     }
 
     /**
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -650,11 +648,11 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<ModuleInterface>
      */
     private function coreModules(): Collection
     {
-        return Collection::make(self::CORE_MODULES)
+        return (new Collection(self::CORE_MODULES))
             ->map(static function (string $class, string $name): ModuleInterface {
                 $module = Registry::container()->get($class);
 
@@ -667,14 +665,14 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<string,ModuleCustomInterface>
+     * @return Collection<ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
         $pattern   = Webtrees::MODULES_DIR . '*/module.php';
         $filenames = glob($pattern, GLOB_NOSORT);
 
-        return Collection::make($filenames)
+        return (new Collection($filenames))
             ->filter(static function (string $filename): bool {
                 // Special characters will break PHP variable names.
                 // This also allows us to ignore modules called "foo.example" and "foo.disable"
@@ -746,41 +744,65 @@ class ModuleService
     /**
      * A function to sort footers
      *
-     * @return Closure(ModuleFooterInterface,ModuleFooterInterface):int
+     * @return Closure(ModuleInterface,ModuleInterface):int
      */
     private function footerComparator(): Closure
     {
-        return static fn (ModuleFooterInterface $x, ModuleFooterInterface $y): int => $x->getFooterOrder() <=> $y->getFooterOrder();
+        return static function (ModuleInterface $x, ModuleInterface $y): int {
+            if (!$x instanceof ModuleFooterInterface || !$y instanceof ModuleFooterInterface) {
+                throw new InvalidArgumentException('Cannot sort non-footer modules by footer order.');
+            }
+
+            return $x->getFooterOrder() <=> $y->getFooterOrder();
+        };
     }
 
     /**
      * A function to sort menus
      *
-     * @return Closure(ModuleMenuInterface,ModuleMenuInterface):int
+     * @return Closure(ModuleInterface,ModuleInterface):int
      */
     private function menuComparator(): Closure
     {
-        return static fn (ModuleMenuInterface $x, ModuleMenuInterface $y): int => $x->getMenuOrder() <=> $y->getMenuOrder();
+        return static function (ModuleInterface $x, ModuleInterface $y): int {
+            if (!$x instanceof ModuleMenuInterface || !$y instanceof ModuleMenuInterface) {
+                throw new InvalidArgumentException('Cannot sort non-menu modules by menu order.');
+            }
+
+            return $x->getMenuOrder() <=> $y->getMenuOrder();
+        };
     }
 
     /**
      * A function to sort sidebars
      *
-     * @return Closure(ModuleSidebarInterface,ModuleSidebarInterface):int
+     * @return Closure(ModuleInterface,ModuleInterface):int
      */
     private function sidebarComparator(): Closure
     {
-        return static fn (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int => $x->getSidebarOrder() <=> $y->getSidebarOrder();
+        return static function (ModuleInterface $x, ModuleInterface $y): int {
+            if (!$x instanceof ModuleSidebarInterface || !$y instanceof ModuleSidebarInterface) {
+                throw new InvalidArgumentException('Cannot sort non-sidebar modules by sidebar order.');
+            }
+
+            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
+        };
     }
 
     /**
      * A function to sort tabs
      *
-     * @return Closure(ModuleTabInterface,ModuleTabInterface):int
+     * @return Closure(ModuleInterface,ModuleInterface):int
      */
     private function tabComparator(): Closure
     {
-        return static fn (ModuleTabInterface $x, ModuleTabInterface $y): int => $x->getTabOrder() <=> $y->getTabOrder();
+        return static function (ModuleInterface $x, ModuleInterface $y): int {
+            if (!$x instanceof ModuleTabInterface || !$y instanceof ModuleTabInterface) {
+                throw new InvalidArgumentException('Cannot sort non-tab modules by tab order.');
+            }
+
+            return $x->getTabOrder() <=> $y->getTabOrder();
+        };
     }
 
     /**
@@ -809,7 +831,7 @@ class ModuleService
      * Configuration settings are available through the various "module component" pages.
      * For modules that do not provide a component, we need to list them separately.
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<ModuleInterface>
      */
     public function otherModules(bool $include_disabled = false): Collection
     {
@@ -828,7 +850,7 @@ class ModuleService
     /**
      * Generate a list of module names which exist in the database but not on disk.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function deletedModules(): Collection
     {
@@ -867,7 +889,7 @@ class ModuleService
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function componentsWithAccess(): Collection
     {
@@ -875,7 +897,7 @@ class ModuleService
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function componentsWithOrder(): Collection
     {

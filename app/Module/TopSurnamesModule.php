@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_slice;
@@ -171,7 +170,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             }
 
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $title,

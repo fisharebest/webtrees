@@ -71,7 +71,10 @@ class MergeFactsTest extends TestCase
             ->select('page_name', 'page_parameter', 'page_count')
             ->from('hit_counter')
             ->whereEqual('gedcom_id', $tree->id())
-            ->orderBy('page_name', 'page_parameter')
+            ->orderBy(
+                DB::ascending('page_name'),
+                DB::ascending('page_parameter'),
+            )
             ->get();
         $hits = array_map(static fn (object $row): array => [$row->page_name, $row->page_parameter, $row->page_count], $rows);
 

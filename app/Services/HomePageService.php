@@ -27,11 +27,12 @@ use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function is_numeric;
 use function is_object;
+use function strval;
 
 /**
  * Logic and content for the home-page blocks.
@@ -120,7 +121,7 @@ class HomePageService
     /**
      * Get all the available blocks for a tree page.
      *
-     * @return Collection<string,ModuleBlockInterface>
+     * @return Collection<ModuleBlockInterface>
      */
     public function availableTreeBlocks(Tree $tree, UserInterface $user): Collection
     {
@@ -132,7 +133,7 @@ class HomePageService
     /**
      * Get all the available blocks for a user page.
      *
-     * @return Collection<string,ModuleBlockInterface>
+     * @return Collection<ModuleBlockInterface>
      */
     public function availableUserBlocks(Tree $tree, UserInterface $user): Collection
     {
@@ -146,7 +147,7 @@ class HomePageService
      *
      * @param string        $location "main" or "side"
      *
-     * @return Collection<int,ModuleBlockInterface>
+     * @return Collection<ModuleBlockInterface>
      */
     public function treeBlocks(Tree $tree, UserInterface $user, string $location): Collection
     {
@@ -154,7 +155,7 @@ class HomePageService
             ->from('block')
             ->whereEqual('gedcom_id', $tree->id())
             ->whereEqual('location', $location)
-            ->orderBy('block_order')
+            ->orderBy(DB::ascending('block_order'))
             ->pluck('module_name', 'block_id', in: Collection::class);
 
         return $this->filterActiveBlocks($rows, $this->availableTreeBlocks($tree, $user));
@@ -195,7 +196,7 @@ class HomePageService
      *
      * @param string        $location "main" or "side"
      *
-     * @return Collection<int,ModuleBlockInterface>
+     * @return Collection<ModuleBlockInterface>
      */
     public function userBlocks(Tree $tree, UserInterface $user, string $location): Collection
     {
@@ -203,7 +204,7 @@ class HomePageService
             ->from('block')
             ->whereEqual('user_id', $user->id())
             ->whereEqual('location', $location)
-            ->orderBy('block_order')
+            ->orderBy(DB::ascending('block_order'))
             ->pluck('module_name', 'block_id', in: Collection::class);
 
         return $this->filterActiveBlocks($rows, $this->availableUserBlocks($tree, $user));
@@ -242,8 +243,8 @@ class HomePageService
     /**
      * Save the updated blocks for a user.
      *
-     * @param Collection<int,string> $main_block_ids
-     * @param Collection<int,string> $side_block_ids
+     * @param Collection<string> $main_block_ids
+     * @param Collection<string> $side_block_ids
      */
     public function updateUserBlocks(int $user_id, Collection $main_block_ids, Collection $side_block_ids): void
     {
@@ -251,7 +252,8 @@ class HomePageService
             ->from('block')
             ->whereEqual('user_id', $user_id)
             ->whereIn('location', [ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS])
-            ->pluck('block_id');
+            ->pluck('block_id', in: Collection::class)
+            ->map(static fn (int|string $block_id): string => strval($block_id));
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
@@ -297,8 +299,8 @@ class HomePageService
     /**
      * Save the updated blocks for a tree.
      *
-     * @param Collection<int,string> $main_block_ids
-     * @param Collection<int,string> $side_block_ids
+     * @param Collection<string> $main_block_ids
+     * @param Collection<string> $side_block_ids
      */
     public function updateTreeBlocks(int $tree_id, Collection $main_block_ids, Collection $side_block_ids): void
     {
@@ -306,7 +308,8 @@ class HomePageService
             ->from('block')
             ->whereEqual('gedcom_id', $tree_id)
             ->whereIn('location', [ModuleBlockInterface::MAIN_BLOCKS, ModuleBlockInterface::SIDE_BLOCKS])
-            ->pluck('block_id');
+            ->pluck('block_id', in: Collection::class)
+            ->map(static fn (int|string $block_id): string => strval($block_id));
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
@@ -352,10 +355,10 @@ class HomePageService
     /**
      * Take a list of block names and return block (module) objects.
      *
-     * @param Collection<int,string>                      $blocks
-     * @param Collection<array-key,ModuleBlockInterface> $active_blocks
+     * @param Collection<string>                      $blocks
+     * @param Collection<ModuleBlockInterface> $active_blocks
      *
-     * @return Collection<array-key,ModuleBlockInterface>
+     * @return Collection<ModuleBlockInterface>
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {

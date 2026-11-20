@@ -51,7 +51,7 @@ class ModuleServiceTest extends TestCase
     {
         $module_service = new ModuleService();
 
-        self::assertNotEmpty($module_service->all()->all());
+        self::assertNotEmpty($module_service->all()->array());
     }
 
     public function testAllAppliesPersistedModuleStatus(): void
@@ -75,29 +75,29 @@ class ModuleServiceTest extends TestCase
         $tree = $this->importTree('demo.ged');
         $user = $user_service->create('UserName', 'RealName', 'user@example.com', 'secret');
 
-        self::assertNotEmpty($module_service->findByComponent(ModuleBlockInterface::class, $tree, $user)->all());
-        self::assertNotEmpty($module_service->findByComponent(ModuleChartInterface::class, $tree, $user)->all());
-        self::assertNotEmpty($module_service->findByComponent(ModuleMenuInterface::class, $tree, $user)->all());
-        self::assertNotEmpty($module_service->findByComponent(ModuleReportInterface::class, $tree, $user)->all());
-        self::assertNotEmpty($module_service->findByComponent(ModuleSidebarInterface::class, $tree, $user)->all());
-        self::assertNotEmpty($module_service->findByComponent(ModuleTabInterface::class, $tree, $user)->all());
+        self::assertNotEmpty($module_service->findByComponent(ModuleBlockInterface::class, $tree, $user)->array());
+        self::assertNotEmpty($module_service->findByComponent(ModuleChartInterface::class, $tree, $user)->array());
+        self::assertNotEmpty($module_service->findByComponent(ModuleMenuInterface::class, $tree, $user)->array());
+        self::assertNotEmpty($module_service->findByComponent(ModuleReportInterface::class, $tree, $user)->array());
+        self::assertNotEmpty($module_service->findByComponent(ModuleSidebarInterface::class, $tree, $user)->array());
+        self::assertNotEmpty($module_service->findByComponent(ModuleTabInterface::class, $tree, $user)->array());
     }
 
     public function testFindByInterface(): void
     {
         $module_service = new ModuleService();
 
-        self::assertNotEmpty($module_service->findByInterface(ModuleAnalyticsInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleBlockInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleChartInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleConfigInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleDataFixInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleMenuInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleReportInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class, true)->all());
-        self::assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class, true)->all());
+        self::assertNotEmpty($module_service->findByInterface(ModuleAnalyticsInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleBlockInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleChartInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleConfigInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleDataFixInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleMenuInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleReportInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class, true)->array());
+        self::assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class, true)->array());
     }
 
     public function testOtherModules(): void

@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\RelationshipService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 class RelativesTabModule extends AbstractModule implements ModuleTabInterface
 {
@@ -103,7 +103,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function supportedFacts(): Collection
     {

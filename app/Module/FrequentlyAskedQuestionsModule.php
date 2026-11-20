@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\ControlPanel;
@@ -32,11 +30,13 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use UnexpectedValueException;
 
 use function in_array;
+use function is_string;
 use function redirect;
 use function route;
 
@@ -110,24 +110,24 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             return redirect(route(ControlPanel::class));
         }
 
-        $faqs = $this->faqsForTree($tree)->all();
+        $faqs = $this->faqsForTree($tree)->array();
 
         $min_block_order = (int) DB::query()
             ->from('block')
             ->whereEqual('module_name', $this->name())
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->isNull('gedcom_id')
-                ->orEqual('gedcom_id', $tree->id()))
-            ->orderBy('block_order')
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNull('gedcom_id')
+                ->orWhereEqual('gedcom_id', $tree->id()))
+            ->orderBy(DB::ascending('block_order'))
             ->value('block_order');
 
         $max_block_order = (int) DB::query()
             ->from('block')
             ->whereEqual('module_name', $this->name())
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->isNull('gedcom_id')
-                ->orEqual('gedcom_id', $tree->id()))
-            ->orderBy(DB::desc('block_order'))
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNull('gedcom_id')
+                ->orWhereEqual('gedcom_id', $tree->id()))
+            ->orderBy(DB::descending('block_order'))
             ->value('block_order');
 
         $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->title();
@@ -191,7 +191,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->from('block')
             ->whereEqual('module_name', $this->name())
             ->whereGreaterThan('block_order', (int) $block_order)
-            ->orderBy('block_order')
+            ->orderBy(DB::ascending('block_order'))
             ->first();
 
         if ($swap_block !== null) {
@@ -229,7 +229,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             ->from('block')
             ->whereEqual('module_name', $this->name())
             ->whereLessThan('block_order', (int) $block_order)
-            ->orderBy(DB::desc('block_order'))
+            ->orderBy(DB::descending('block_order'))
             ->first();
 
         if ($swap_block !== null) {
@@ -263,7 +263,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             $block_order = 1 + (int) DB::query()
                 ->from('block')
                 ->whereEqual('module_name', $this->name())
-                ->orderBy(DB::desc('block_order'))
+                ->orderBy(DB::descending('block_order'))
                 ->value('block_order');
 
             $languages = [];
@@ -289,7 +289,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $gedcom_ids = $this->tree_service->all()
             ->mapWithKeys(static fn (Tree $tree): array => [$tree->id() => $tree->title()])
-            ->all();
+            ->array();
 
         $gedcom_ids = ['' => I18N::translate('All')] + $gedcom_ids;
 
@@ -355,7 +355,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
             ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true))
-            ->all();
+            ->array();
 
         return $this->viewResponse('modules/faq/show', [
             'faqs'  => $faqs,
@@ -366,38 +366,45 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
     /**
      *
-     * @return Collection<int,object{
+     * @return Collection<object{
      *     block_id: int,
      *     block_order: int,
      *     gedcom_id: int|null,
      *     header: string,
      *     faqbody: string,
      *     languages: string
-     * }>
+     * }&\stdClass>
      */
     private function faqsForTree(Tree $tree): Collection
     {
         return DB::query()
             ->select('block.block_id', 'block_order', 'gedcom_id', 'bs1.setting_value AS header', 'bs2.setting_value AS faqbody', 'bs3.setting_value AS languages')
             ->from('block')
-            ->join('block_setting AS bs1', static fn (JoinOn $j): JoinOn => $j->on('bs1.block_id', 'block.block_id'))
-            ->join('block_setting AS bs2', static fn (JoinOn $j): JoinOn => $j->on('bs2.block_id', 'block.block_id'))
-            ->join('block_setting AS bs3', static fn (JoinOn $j): JoinOn => $j->on('bs3.block_id', 'block.block_id'))
+            ->join('block_setting AS bs1', ['bs1.block_id' => 'block.block_id'])
+            ->join('block_setting AS bs2', ['bs2.block_id' => 'block.block_id'])
+            ->join('block_setting AS bs3', ['bs3.block_id' => 'block.block_id'])
             ->whereEqual('module_name', $this->name())
             ->whereEqual('bs1.setting_name', 'header')
             ->whereEqual('bs2.setting_name', 'faqbody')
             ->whereEqual('bs3.setting_name', 'languages')
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->isNull('gedcom_id')
-                ->orEqual('gedcom_id', $tree->id()))
-            ->orderBy('block_order')
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNull('gedcom_id')
+                ->orWhereEqual('gedcom_id', $tree->id()))
+            ->orderBy(DB::ascending('block_order'))
             ->get(in: Collection::class)
             ->map(static function (object $row): object {
-                $row->block_id    = (int) $row->block_id;
-                $row->block_order = (int) $row->block_order;
-                $row->gedcom_id   = $row->gedcom_id === null ? null : (int) $row->gedcom_id;
+                if (!is_string($row->header) || !is_string($row->faqbody) || !is_string($row->languages)) {
+                    throw new UnexpectedValueException('FAQ settings must contain text.');
+                }
 
-                return $row;
+                return (object) [
+                    'block_id'    => (int) $row->block_id,
+                    'block_order' => (int) $row->block_order,
+                    'gedcom_id'   => $row->gedcom_id === null ? null : (int) $row->gedcom_id,
+                    'header'      => $row->header,
+                    'faqbody'     => $row->faqbody,
+                    'languages'   => $row->languages,
+                ];
             });
     }
 
@@ -406,12 +413,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return DB::query()
             ->select('setting_value AS languages')
             ->from('block')
-            ->join('block_setting', static fn (JoinOn $j): JoinOn => $j->on('block_setting.block_id', 'block.block_id'))
+            ->join('block_setting', ['block_setting.block_id' => 'block.block_id'])
             ->whereEqual('module_name', $this->name())
             ->whereEqual('setting_name', 'languages')
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->isNull('gedcom_id')
-                ->orEqual('gedcom_id', $tree->id()))
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNull('gedcom_id')
+                ->orWhereEqual('gedcom_id', $tree->id()))
             ->get(in: Collection::class)
             ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array($language, explode(',', $faq->languages), true))
             ->isNotEmpty();

@@ -154,6 +154,7 @@ class LinkedRecordServiceTest extends TestCase
 
         foreach ($changes as [$xref, $gedcom, $status, $tree_id]) {
             DB::query(table: 'change')->insert(values: [
+                'change_time' => DB::now(),
                 'gedcom_id' => $tree_id,
                 'xref' => $xref,
                 'old_gedcom' => '',
@@ -168,6 +169,6 @@ class LinkedRecordServiceTest extends TestCase
 
         $linked = (new LinkedRecordService())->allLinkedRecords($target);
 
-        self::assertSame(['I2', 'S2'], $linked->map(static fn ($record): string => $record->xref())->sort()->values()->all());
+        self::assertSame(['I2', 'S2'], $linked->map(static fn ($record): string => $record->xref())->sort()->values()->array());
     }
 }

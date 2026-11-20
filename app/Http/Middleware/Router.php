@@ -74,7 +74,7 @@ readonly class Router implements MiddlewareInterface
         $request = $request->withAttribute('route', $route);
 
         $route_middleware  = $route->middleware;
-        $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
+        $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->array();
 
         $middleware = [
             ...$route_middleware,

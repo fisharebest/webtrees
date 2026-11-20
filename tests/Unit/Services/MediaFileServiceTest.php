@@ -107,7 +107,7 @@ class MediaFileServiceTest extends TestCase
             'media/' => 'media/',
             'media/disk/' => 'media/disk/',
             'media/photos/' => 'media/photos/',
-        ], $service->allMediaFolders($filesystem)->all());
+        ], $service->allMediaFolders($filesystem)->array());
     }
 
     public function testAllFilesInDatabaseEscapesFolderAndRespectsSubfolders(): void
@@ -149,11 +149,11 @@ class MediaFileServiceTest extends TestCase
 
         self::assertSame(
             [$media_folder . 'portrait.jpg', $media_folder . 'subfolder/portrait.jpg'],
-            $service->allFilesInDatabase($media_folder, true)->all(),
+            $service->allFilesInDatabase($media_folder, true)->array(),
         );
         self::assertSame(
             [$media_folder . 'portrait.jpg'],
-            $service->allFilesInDatabase($media_folder, false)->all(),
+            $service->allFilesInDatabase($media_folder, false)->array(),
         );
     }
 }

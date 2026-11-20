@@ -54,7 +54,7 @@ class FixNameTagsTest extends TestCase
             ]);
         }
 
-        self::assertEqualsCanonicalizing(['I1', 'I2'], $fix->individualsToFix($tree, [])->all());
-        self::assertSame(['I2'], $fix->individualsToFix($tree, ['start' => 'I2', 'end' => 'I3'])->all());
+        self::assertEqualsCanonicalizing(['I1', 'I2'], $fix->individualsToFix($tree, [])->array());
+        self::assertSame(['I2'], $fix->individualsToFix($tree, ['start' => 'I2', 'end' => 'I3'])->array());
     }
 }

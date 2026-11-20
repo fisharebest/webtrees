@@ -19,8 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
+use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Enums\ChangeStatus;
@@ -34,7 +33,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\StorageAttributes;
@@ -116,7 +115,7 @@ class AdminService
             ->withCte('sub1', $subquery1)
             ->withCte('sub2', $subquery2)
             ->from('sub1')
-            ->join('sub2', static fn (JoinOn $j): JoinOn => $j->on('sub1.xref1', 'sub2.xref2'))
+            ->join('sub2', ['sub1.xref1' => 'sub2.xref2'])
             ->count();
     }
 
@@ -135,10 +134,10 @@ class AdminService
             ->whereEqual('s_file', $tree->id())
             ->groupBy('s_name')
             ->havingRaw('COUNT(s_id) > ?', [1])
-            ->orderBy('xrefs')
+            ->orderBy(DB::ascending('xrefs'))
             ->pluck(DB::groupConcat('s_id'), in: Collection::class)
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Source => Registry::sourceFactory()->make($xref, $tree), explode(',', $xrefs)))
-            ->all();
+            ->array();
 
         // Database agnostic way to do GROUP_CONCAT(DISTINCT x ORDER BY x)
         $distinct_order_by = static function (string $xrefs): string {
@@ -150,33 +149,33 @@ class AdminService
 
         $individuals = DB::query()
             ->from('dates')
-            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'n_file')->on('d_gid', 'n_id'))
+            ->join('name', ['d_file' => 'n_file', 'd_gid' => 'n_id'])
             ->whereEqual('d_file', $tree->id())
             ->whereIn('d_fact', ['BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI'])
             ->groupBy('d_year', 'd_month', 'd_day', 'd_type', 'd_fact', 'n_type', 'n_full')
             ->havingRaw('COUNT(DISTINCT d_gid) > ?', [1])
-            ->orderBy('xrefs')
+            ->orderBy(DB::ascending('xrefs'))
             ->pluck(DB::groupConcat('d_gid'), in: Collection::class)
             ->map($distinct_order_by)
             ->unique()
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Individual => Registry::individualFactory()->make($xref, $tree), explode(',', $xrefs)))
-            ->all();
+            ->array();
 
         $families = DB::query()
             ->from('families')
             ->whereEqual('f_file', $tree->id())
-            ->whereNested(static fn (Predicates $p): Predicates => $p
-                ->notEqual('f_husb', '')
-                ->orNotEqual('f_wife', ''))
+            ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereNotEqual('f_husb', '')
+                ->orWhereNotEqual('f_wife', ''))
             ->groupBy(
                 DB::least(DB::column('f_husb'), DB::column('f_wife')),
                 DB::greatest(DB::column('f_husb'), DB::column('f_wife')),
             )
             ->havingRaw('COUNT(f_id) > ?', [1])
-            ->orderBy('xrefs')
+            ->orderBy(DB::ascending('xrefs'))
             ->pluck(DB::groupConcat('f_id'), in: Collection::class)
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Family => Registry::familyFactory()->make($xref, $tree), explode(',', $xrefs)))
-            ->all();
+            ->array();
 
         $media = DB::query()
             ->from('media_file')
@@ -184,10 +183,10 @@ class AdminService
             ->whereNotEqual('descriptive_title', '')
             ->groupBy('descriptive_title')
             ->havingRaw('COUNT(DISTINCT m_id) > ?', [1])
-            ->orderBy('xrefs')
+            ->orderBy(DB::ascending('xrefs'))
             ->pluck(DB::groupConcat('m_id'), in: Collection::class)
             ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Media => Registry::mediaFactory()->make($xref, $tree), explode(',', $xrefs)))
-            ->all();
+            ->array();
 
         return [
             I18N::translate('Repositories')  => $repositories,
@@ -257,14 +256,14 @@ class AdminService
             ->withCte('sub1', $subquery1)
             ->withCte('sub2', $subquery2)
             ->from('sub1')
-            ->join('sub2', static fn (JoinOn $j): JoinOn => $j->on('sub2.other_xref', 'sub1.xref'))
+            ->join('sub2', ['sub2.other_xref' => 'sub1.xref'])
             ->pluck('sub1.type', 'sub1.xref');
     }
 
     /**
      * A list of GEDCOM files in the data folder.
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function gedcomFiles(FilesystemOperator $filesystem): Collection
     {
@@ -288,7 +287,7 @@ class AdminService
             $files = [];
         }
 
-        return Collection::make($files)->sort();
+        return (new Collection($files))->sort();
     }
 
     /**

@@ -5,12 +5,12 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var bool                 $can_edit
- * @var Collection<int,Fact> $clipboard_facts
- * @var Collection<int,Fact> $facts
+ * @var Collection<Fact> $clipboard_facts
+ * @var Collection<Fact> $facts
  * @var bool                 $has_associate_facts
  * @var bool                 $has_historic_facts
  * @var bool                 $has_relative_facts

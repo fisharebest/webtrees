@@ -39,7 +39,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -93,7 +93,7 @@ final class IndividualPage
             if ($media_object instanceof Media) {
                 $media_file = $media_object->firstImageFile();
                 if ($media_file instanceof MediaFile) {
-                    $individual_media->add($media_file);
+                    $individual_media->push($media_file);
                 }
             }
         }
@@ -108,7 +108,7 @@ final class IndividualPage
         $shares = $this->module_service
             ->findByInterface(ModuleShareInterface::class)
             ->map(fn (ModuleShareInterface $module) => $module->share($individual))
-            ->filter();
+            ->filter(static fn (string $share): bool => $share !== '');
 
         return $this->viewResponse('individual-page', [
             'age'              => $this->ageString($individual),
@@ -206,7 +206,7 @@ final class IndividualPage
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     * @return Collection<int,ModuleSidebarInterface>
+     * @return Collection<ModuleSidebarInterface>
      */
     public function getSidebars(Individual $individual): Collection
     {
@@ -219,7 +219,7 @@ final class IndividualPage
      * Which tabs should we show on this individual's page.
      * We don't show empty tabs.
      *
-     * @return Collection<int,ModuleTabInterface>
+     * @return Collection<ModuleTabInterface>
      */
     public function getTabs(Individual $individual): Collection
     {

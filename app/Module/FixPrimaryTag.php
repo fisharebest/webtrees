@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function e;
 use function str_contains;
@@ -59,7 +59,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function mediaToFix(Tree $tree, array $params): Collection
     {

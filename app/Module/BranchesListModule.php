@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\FamilyComparator;
@@ -38,7 +36,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -232,19 +230,19 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
             ->select('individuals.*')
             ->distinct()
             ->from('individuals')
-            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_file', 'i_file')->on('n_id', 'i_id'))
+            ->join('name', ['n_file' => 'i_file', 'n_id' => 'i_id'])
             ->whereEqual('i_file', $tree->id())
             ->whereNotEqual('n_type', '_MARNM')
-            ->whereNested(static function (Predicates $p) use ($surname, $soundex_dm, $soundex_std): Predicates {
-                $p = $p
-                    ->equal('n_surn', $surname)
-                    ->orEqual('n_surname', $surname);
+            ->whereNested(static function (QueryBuilder $query) use ($surname, $soundex_dm, $soundex_std): QueryBuilder {
+                $query = $query
+                    ->whereEqual('n_surn', $surname)
+                    ->orWhereEqual('n_surname', $surname);
 
                 if ($soundex_std) {
                     $sdx = Soundex::russell($surname);
                     if ($sdx !== '') {
                         foreach (explode(':', $sdx) as $value) {
-                            $p = $p->orLike('n_soundex_surn_std', '%' . $value . '%');
+                            $query = $query->orWhereLike('n_soundex_surn_std', '%' . $value . '%');
                         }
                     }
                 }
@@ -253,17 +251,17 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface
                     $sdx = Soundex::daitchMokotoff($surname);
                     if ($sdx !== '') {
                         foreach (explode(':', $sdx) as $value) {
-                            $p = $p->orLike('n_soundex_surn_dm', '%' . $value . '%');
+                            $query = $query->orWhereLike('n_soundex_surn_dm', '%' . $value . '%');
                         }
                     }
                 }
 
-                return $p;
+                return $query;
             })
             ->get(in: Collection::class)
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter())
-            ->all();
+            ->array();
 
         usort($individuals, IndividualComparator::byBirthDate(...));
 

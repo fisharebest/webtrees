@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 final class AutoCompletePlace extends AbstractAutocompleteHandler
 {
@@ -36,7 +36,7 @@ final class AutoCompletePlace extends AbstractAutocompleteHandler
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function search(Tree $tree, string $query, string $extra): Collection
     {

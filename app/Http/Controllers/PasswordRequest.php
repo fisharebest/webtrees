@@ -31,13 +31,13 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Str;
 use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function e;
 use function random_int;
+use function random_string;
 use function redirect;
 use function route;
 use function view;
@@ -76,7 +76,7 @@ final class PasswordRequest
         if ($user instanceof User) {
             $this->rate_limit_service->limitRateForUser($user, self::RATE_LIMIT_REQUESTS, self::RATE_LIMIT_SECONDS, 'rate-limit-pw-reset');
 
-            $token  = Str::random(self::TOKEN_LENGTH);
+            $token  = random_string(self::TOKEN_LENGTH);
             $expire = (string) ($this->clock->now()->getTimestamp() + self::TOKEN_VALIDITY_SECONDS);
             $url    = route(PasswordReset::class, [
                 'token' => $token,

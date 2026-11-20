@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var string|null            $caption
- * @var Collection<int,Source> $sources
+ * @var Collection<Source> $sources
  * @var Tree                   $tree
  */
 
@@ -24,44 +23,44 @@ use Illuminate\Support\Collection;
 // to process privacy for every record in the tree
 $count_individuals = DB::query()
     ->from('individuals')
-    ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'i_id')->on('l_file', 'i_file'))
+    ->join('link', ['l_from' => 'i_id', 'l_file' => 'i_file'])
     ->whereEqual('l_type', 'SOUR')
     ->whereEqual('l_file', $tree->id())
     ->groupBy('l_to')
     ->pluck(DB::count(), 'l_to', in: Collection::class)
-    ->map(static fn (string $n): int => (int) $n)
-    ->all();
+    ->map(static fn (int|string $n): int => (int) $n)
+    ->array();
 
 $count_families = DB::query()
     ->from('families')
-    ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'f_id')->on('l_file', 'f_file'))
+    ->join('link', ['l_from' => 'f_id', 'l_file' => 'f_file'])
     ->whereEqual('l_type', 'SOUR')
     ->whereEqual('l_file', $tree->id())
     ->groupBy('l_to')
     ->pluck(DB::count(), 'l_to', in: Collection::class)
-    ->map(static fn (string $n): int => (int) $n)
-    ->all();
+    ->map(static fn (int|string $n): int => (int) $n)
+    ->array();
 
 $count_media = DB::query()
     ->from('media')
-    ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'm_id')->on('l_file', 'm_file'))
+    ->join('link', ['l_from' => 'm_id', 'l_file' => 'm_file'])
     ->whereEqual('l_type', 'SOUR')
     ->whereEqual('l_file', $tree->id())
     ->groupBy('l_to')
     ->pluck(DB::count(), 'l_to', in: Collection::class)
-    ->map(static fn (string $n): int => (int) $n)
-    ->all();
+    ->map(static fn (int|string $n): int => (int) $n)
+    ->array();
 
 $count_notes = DB::query()
     ->from('other')
-    ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_from', 'o_id')->on('l_file', 'o_file'))
+    ->join('link', ['l_from' => 'o_id', 'l_file' => 'o_file'])
     ->whereEqual('o_type', 'NOTE')
     ->whereEqual('l_type', 'SOUR')
     ->whereEqual('l_file', $tree->id())
     ->groupBy('l_to')
     ->pluck(DB::count(), 'l_to', in: Collection::class)
-    ->map(static fn (string $n): int => (int) $n)
-    ->all();
+    ->map(static fn (int|string $n): int => (int) $n)
+    ->array();
 ?>
 
 <table

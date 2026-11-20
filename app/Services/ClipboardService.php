@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Session;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_slice;
 use function explode;
@@ -86,7 +86,7 @@ class ClipboardService
     /**
      * Create a list of facts that can be pasted into a given record
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function pastableFacts(GedcomRecord $record): Collection
     {
@@ -102,9 +102,9 @@ class ClipboardService
     /**
      * Find facts of a given type, from all records.
      *
-     * @param Collection<int,string> $types
+     * @param Collection<string> $types
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function pastableFactsOfType(GedcomRecord $record, Collection $types): Collection
     {

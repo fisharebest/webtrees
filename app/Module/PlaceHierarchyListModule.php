@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Enums\AccessLevel;
@@ -284,7 +283,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     {
         $places = $this->search_service->searchPlaces($tree, '')
             ->sort(PlaceComparator::byPlaceName(...))
-            ->all();
+            ->array();
 
         $count = count($places);
 
@@ -350,7 +349,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     {
         return DB::query()
             ->from('places')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'p_file')->on('pl_p_id', 'p_id'))
+            ->join('placelinks', ['pl_file' => 'p_file', 'pl_p_id' => 'p_id'])
             ->whereEqual('p_file', $place->tree()->id())
             ->whereEqual('p_id', $place->id());
     }
@@ -358,19 +357,19 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     private function familyPlaceLinks(Place $place): QueryBuilder
     {
         return $this->placeLinks($place)
-            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'f_file')->on('pl_gid', 'f_id'));
+            ->join('families', ['pl_file' => 'f_file', 'pl_gid' => 'f_id']);
     }
 
     private function individualPlaceLinks(Place $place): QueryBuilder
     {
         return $this->placeLinks($place)
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'));
+            ->join('individuals', ['pl_file' => 'i_file', 'pl_gid' => 'i_id']);
     }
 
     private function locationPlaceLinks(Place $place): QueryBuilder
     {
         return $this->placeLinks($place)
-            ->join('other', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'o_file')->on('pl_gid', 'o_id'))
+            ->join('other', ['pl_file' => 'o_file', 'pl_gid' => 'o_id'])
             ->whereEqual('o_type', Location::RECORD_TYPE);
     }
 }

@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var array<string,string>          $all_family_facts
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
  * @var Date                          $french_calendar_end
  * @var Date                          $french_calendar_start
  * @var Date                          $gregorian_calendar_start
- * @var Collection<int,UserInterface> $members
+ * @var Collection<UserInterface> $members
  * @var Individual|null               $pedigree_individual
  * @var array<int,string>             $privacy_options
  * @var array<int,string>             $relatives_events

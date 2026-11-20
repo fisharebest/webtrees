@@ -82,6 +82,7 @@ final class VerifyEmail
                     'user_id'    => $administrator->id(),
                     'subject'    => $subject,
                     'body'       => view('emails/verify-notify-text', ['user' => $user]),
+                    'created'    => DB::now(),
                 ]);
             }
             I18N::init($old_language);

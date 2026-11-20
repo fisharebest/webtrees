@@ -12,18 +12,18 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var Note                       $record
- * @var Collection<int,Fact>       $clipboard_facts
- * @var Collection<int,Family>     $linked_families
- * @var Collection<int,Individual> $linked_individuals
- * @var Collection<int,Location>   $linked_locations
- * @var Collection<int,Media>      $linked_media_objects
- * @var Collection<int,Repository> $linked_repositories
- * @var Collection<int,Source>     $linked_sources
- * @var Collection<int,Submitter>  $linked_submitters
+ * @var Collection<Fact>       $clipboard_facts
+ * @var Collection<Family>     $linked_families
+ * @var Collection<Individual> $linked_individuals
+ * @var Collection<Location>   $linked_locations
+ * @var Collection<Media>      $linked_media_objects
+ * @var Collection<Repository> $linked_repositories
+ * @var Collection<Source>     $linked_sources
+ * @var Collection<Submitter>  $linked_submitters
  * @var Tree                       $tree
  */
 

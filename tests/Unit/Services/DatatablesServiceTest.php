@@ -23,9 +23,10 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+use function date;
 use function json_decode;
 
 use const JSON_THROW_ON_ERROR;
@@ -42,7 +43,12 @@ class DatatablesServiceTest extends TestCase
     public function testHandleQueryFiltersSortsAndPaginates(): void
     {
         foreach (['Jane Smith', 'John Smith', 'John Jones'] as $name) {
-            DB::query(table: 'log')->insert(['log_type' => 'edit', 'log_message' => $name, 'ip_address' => '127.0.0.1']);
+            DB::query(table: 'log')->insert([
+                'log_time'    => date('Y-m-d H:i:s'),
+                'log_type'    => 'edit',
+                'log_message' => $name,
+                'ip_address'  => '127.0.0.1',
+            ]);
         }
 
         $request = self::createRequest(HttpRequestMethod::POST->value)
@@ -58,7 +64,7 @@ class DatatablesServiceTest extends TestCase
             $request,
             DB::query()->select('log_message')->from('log')->whereEqual('log_type', 'edit'),
             ['log_message'],
-            ['log_message'],
+            [],
             static fn (object $row): array => [$row->log_message],
             [],
         );
@@ -74,7 +80,12 @@ class DatatablesServiceTest extends TestCase
     public function testHandleQuerySortsAscending(): void
     {
         foreach (['Jane Smith', 'John Smith', 'John Jones'] as $name) {
-            DB::query(table: 'log')->insert(['log_type' => 'edit', 'log_message' => $name, 'ip_address' => '127.0.0.1']);
+            DB::query(table: 'log')->insert([
+                'log_time'    => date('Y-m-d H:i:s'),
+                'log_type'    => 'edit',
+                'log_message' => $name,
+                'ip_address'  => '127.0.0.1',
+            ]);
         }
 
         $request = self::createRequest(HttpRequestMethod::POST->value)
@@ -104,7 +115,12 @@ class DatatablesServiceTest extends TestCase
                 ['edit', 'Fourth'],
             ] as [$type, $message]
         ) {
-            DB::query(table: 'log')->insert(['log_type' => $type, 'log_message' => $message, 'ip_address' => '127.0.0.1']);
+            DB::query(table: 'log')->insert([
+                'log_time'    => date('Y-m-d H:i:s'),
+                'log_type'    => $type,
+                'log_message' => $message,
+                'ip_address'  => '127.0.0.1',
+            ]);
         }
 
         $request = self::createRequest(HttpRequestMethod::POST->value)
@@ -130,11 +146,55 @@ class DatatablesServiceTest extends TestCase
             ['edit', 'Second'],
             ['edit', 'Fourth'],
         ], $data['data']);
+
+        $response = (new DatatablesService())->handleQuery(
+            $request,
+            DB::query()->select('log_type', 'log_message')->from('log')->whereIn('log_type', ['auth', 'edit']),
+            [],
+            [],
+            static fn (object $row): array => [$row->log_type, $row->log_message],
+            [],
+        );
+
+        $data = json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+
+        self::assertSame([
+            ['auth', 'Third'],
+            ['auth', 'First'],
+            ['edit', 'Second'],
+            ['edit', 'Fourth'],
+        ], $data['data']);
+
+        $request = self::createRequest(HttpRequestMethod::POST->value)
+            ->withParsedBody(['order' => [['column' => '0', 'dir' => 'desc']]]);
+
+        $response = (new DatatablesService())->handleQuery(
+            $request,
+            DB::query()->select('log_type', 'log_message')->from('log')->whereIn('log_type', ['auth', 'edit']),
+            [],
+            ['log_type'],
+            static fn (object $row): array => [$row->log_type, $row->log_message],
+            ['log_message'],
+        );
+
+        $data = json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+
+        self::assertSame([
+            ['edit', 'Fourth'],
+            ['edit', 'Second'],
+            ['auth', 'First'],
+            ['auth', 'Third'],
+        ], $data['data']);
     }
 
     public function testHandleQueryReturnsAllRowsWithoutPageLength(): void
     {
-        DB::query(table: 'log')->insert(['log_type' => 'edit', 'log_message' => 'example', 'ip_address' => '127.0.0.1']);
+        DB::query(table: 'log')->insert([
+            'log_time'    => date('Y-m-d H:i:s'),
+            'log_type'    => 'edit',
+            'log_message' => 'example',
+            'ip_address'  => '127.0.0.1',
+        ]);
 
         $response = (new DatatablesService())->handleQuery(
             self::createRequest(params: ['search' => ['value' => 'nomatch']]),
@@ -150,6 +210,42 @@ class DatatablesServiceTest extends TestCase
         self::assertSame(1, $data['recordsTotal']);
         self::assertSame(1, $data['recordsFiltered']);
         self::assertSame([['example']], $data['data']);
+    }
+
+    public function testHandleQuerySearchesAcrossColumns(): void
+    {
+        foreach (
+            [
+                ['john', 'Jane'],
+                ['auth', 'John'],
+                ['auth', 'Jane'],
+            ] as [$type, $message]
+        ) {
+            DB::query(table: 'log')->insert([
+                'log_time'    => date('Y-m-d H:i:s'),
+                'log_type'    => $type,
+                'log_message' => $message,
+                'ip_address'  => '127.0.0.1',
+            ]);
+        }
+
+        $request = self::createRequest(HttpRequestMethod::POST->value)
+            ->withParsedBody(['search' => ['value' => 'John']]);
+
+        $response = (new DatatablesService())->handleQuery(
+            $request,
+            DB::query()->select('log_type', 'log_message')->from('log'),
+            ['log_type', 'log_message'],
+            [],
+            static fn (object $row): array => [$row->log_type, $row->log_message],
+            ['log_type', 'log_message'],
+        );
+
+        $data = json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+
+        self::assertSame(3, $data['recordsTotal']);
+        self::assertSame(2, $data['recordsFiltered']);
+        self::assertSame([['auth', 'John'], ['john', 'Jane']], $data['data']);
     }
 
     public function testHandleCollectionUsesPostParameters(): void

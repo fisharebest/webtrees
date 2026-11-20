@@ -97,7 +97,7 @@ final class MapDataExportGeoJson
             }
 
             $rows = $query
-                ->orderBy(DB::desc('place'))
+                ->orderBy(DB::descending('place'))
                 ->get();
 
             $next_level = count($hierarchy);

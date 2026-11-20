@@ -73,7 +73,7 @@ final class SiteSetting extends AbstractCommand
             $settings = DB::query()
                 ->select('setting_name', 'setting_value')
                 ->from('site_setting')
-                ->orderBy(column: 'setting_name')
+                ->orderBy(DB::ascending('setting_name'))
                 ->get();
 
             foreach ($settings as $setting) {

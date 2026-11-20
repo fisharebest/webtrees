@@ -78,6 +78,6 @@ class ReportsMenuModule extends AbstractModule implements ModuleMenuInterface
             return null;
         }
 
-        return new Menu(I18N::translate('Reports'), '#', 'menu-report', ['rel' => 'nofollow'], $submenus->all());
+        return new Menu(I18N::translate('Reports'), '#', 'menu-report', ['rel' => 'nofollow'], $submenus->array());
     }
 }

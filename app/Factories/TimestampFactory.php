@@ -32,7 +32,10 @@ use Psr\Clock\ClockInterface;
 
 use function date_create_from_format;
 use function GregorianToJD;
+use function str_contains;
 use function str_replace;
+use function strlen;
+use function substr;
 
 /**
  * Create localized CarbonImmutable instances with the user's timezone and language.
@@ -62,11 +65,19 @@ class TimestampFactory implements TimestampFactoryInterface
     }
 
     /**
-     * @param string|null $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * @param string|null $string YYYY-MM-DD HH:MM:SS with optional fractional seconds (as provided by SQL).
      */
     public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): CarbonImmutable
     {
         $string    ??= $this->clock->now()->format($format);
+        if ($format === 'Y-m-d H:i:s' && str_contains($string, '.')) {
+            // SQL Server DATETIME2 returns seven digits, but PHP supports six.
+            if (strlen($string) === 27 && $string[19] === '.') {
+                $string = substr($string, 0, -1);
+            }
+
+            $format .= '.u';
+        }
         $timestamp = date_create_from_format($format, $string);
 
         if ($timestamp === false) {

@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use League\Flysystem\FilesystemException;
 
 final class AutoCompleteFolder extends AbstractAutocompleteHandler
@@ -36,7 +36,7 @@ final class AutoCompleteFolder extends AbstractAutocompleteHandler
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function search(Tree $tree, string $query, string $extra): Collection
     {

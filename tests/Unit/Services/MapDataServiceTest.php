@@ -203,8 +203,12 @@ class MapDataServiceTest extends TestCase
                 $first_level_id = $parent_id;
             }
         }
+        $other_branch_id = DB::query(table: 'place_location')->insertGetId(
+            values: ['place' => 'Other branch', 'parent_id' => $first_level_id, 'latitude' => 42.5],
+            id_column: 'id',
+        );
         DB::query(table: 'place_location')->insert(values: [
-            'place' => 'Other branch', 'parent_id' => $first_level_id, 'latitude' => 42.5,
+            'place' => 'Nested coordinates', 'parent_id' => $other_branch_id, 'latitude' => 42.5,
         ]);
         DB::query(table: 'place_location')->insert(values: [
             'place' => 'Root branch', 'parent_id' => $root_id, 'latitude' => 42.5,
@@ -221,6 +225,7 @@ class MapDataServiceTest extends TestCase
         self::assertSame($first_level_id, $first_level->id);
         self::assertSame(2, $first_level->child_count);
         self::assertSame(1, $first_level->no_coord);
+        self::assertSame(0, $service->getPlaceListLocation($other_branch_id)->first()?->no_coord);
         self::assertSame(0, $service->getPlaceListLocation($penultimate_id)->first()?->no_coord);
     }
 
@@ -248,7 +253,7 @@ class MapDataServiceTest extends TestCase
 
         self::assertSame([$country_id, $used_id], DB::query()
             ->from('place_location')
-            ->orderBy('id')
+            ->orderBy(DB::ascending('id'))
             ->pluck('id'));
     }
 }

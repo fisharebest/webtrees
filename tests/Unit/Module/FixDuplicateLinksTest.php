@@ -109,13 +109,17 @@ class FixDuplicateLinksTest extends TestCase
 
         self::assertEqualsCanonicalizing(
             ['F2:FAM', 'I2:INDI', 'M2:OBJE', 'N2:NOTE', 'R2:REPO', 'S2:SOUR', 'U2:SUBM'],
-            $records->map(static fn (object $record): string => $record->xref . ':' . $record->type)->all(),
+            $records->map(static fn (object $record): string => $record->xref . ':' . $record->type)->array(),
         );
         self::assertCount(8, $this->fixDuplicateLinks->recordsToFix($this->tree, ['start' => 'Z9']));
     }
 
     public function testPendingRecordsRetainTheirTypeAndStatusFilters(): void
     {
+        DB::query(table: 'families')->insert([
+            'f_id' => 'F2', 'f_file' => $this->tree->id(), 'f_gedcom' => '0 @F2@ FAM', 'f_numchil' => 0,
+        ]);
+
         $changes = [
             ['F2', '0 @F2@ FAM\\n1 HUSB @I1@', '', 'pending'],
             ['F3', '', '0 @F3@ FAM\\n1 WIFE @I2@', 'pending'],
@@ -125,6 +129,7 @@ class FixDuplicateLinksTest extends TestCase
 
         foreach ($changes as [$xref, $old_gedcom, $new_gedcom, $status]) {
             DB::query(table: 'change')->insert([
+                'change_time' => DB::now(),
                 'gedcom_id'  => $this->tree->id(),
                 'xref'       => $xref,
                 'old_gedcom' => $old_gedcom,
@@ -136,7 +141,7 @@ class FixDuplicateLinksTest extends TestCase
 
         $records = $this->fixDuplicateLinks->recordsToFix($this->tree, []);
 
-        self::assertTrue($records->contains(static fn (object $record): bool => $record->xref === 'F2' && $record->type === 'FAM'));
+        self::assertCount(1, $records->filter(static fn (object $record): bool => $record->xref === 'F2' && $record->type === 'FAM'));
         self::assertTrue($records->contains(static fn (object $record): bool => $record->xref === 'F3' && $record->type === 'FAM'));
         self::assertFalse($records->contains(static fn (object $record): bool => $record->xref === 'I4' && $record->type === 'FAM'));
         self::assertFalse($records->contains(static fn (object $record): bool => $record->xref === 'F5'));

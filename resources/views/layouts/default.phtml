@@ -14,14 +14,14 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @var string                          $content
  * @var string|null                     $meta_description
  * @var string|null                     $meta_robots
- * @var Collection<int,ModuleInterface> $modules
+ * @var Collection<ModuleInterface> $modules
  * @var ServerRequestInterface          $request
  * @var ModuleThemeInterface            $theme
  * @var string|null                     $title
@@ -60,7 +60,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('styles') ?>
 
-        <?= $modules->whereInstanceOf(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
+        <?= $modules->filterInstanceOf(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
     <body
@@ -135,7 +135,7 @@ use Psr\Http\Message\ServerRequestInterface;
         </main>
 
         <footer class="container-lg wt-footers d-print-none">
-            <?= $modules->whereInstanceOf(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
+            <?= $modules->filterInstanceOf(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
@@ -144,6 +144,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('javascript') ?>
 
-        <?= $modules->whereInstanceOf(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
+        <?= $modules->filterInstanceOf(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
     </body>
 </html>

@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function e;
 use function is_object;
@@ -41,7 +41,7 @@ class Place
     // "Westminster, London, England"
     private string $place_name;
 
-    /** @var Collection<int,string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection<non-empty-string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
     private Collection $parts;
 
     private Tree $tree;
@@ -78,7 +78,7 @@ class Place
 
             if (is_object($row)) {
                 $id = (int) $row->p_parent_id;
-                $parts->add($row->p_place);
+                $parts->push($row->p_place);
             } else {
                 $id = 0;
             }
@@ -142,7 +142,7 @@ class Place
     /**
      * Extract the locality (first parts) of a place name.
      *
-     * @return Collection<int,string>
+     * @return Collection<non-empty-string>
      */
     public function firstParts(int $n): Collection
     {
@@ -152,7 +152,7 @@ class Place
     /**
      * Extract the country (last parts) of a place name.
      *
-     * @return Collection<int,string>
+     * @return Collection<non-empty-string>
      */
     public function lastParts(int $n): Collection
     {
@@ -179,7 +179,7 @@ class Place
             ->pluck('p_place', in: Collection::class)
             ->sort(I18N::compare(...))
             ->map(fn (string $place): Place => new self($place . $parent_text, $this->tree))
-            ->all();
+            ->array();
     }
 
     /**
@@ -230,7 +230,7 @@ class Place
             return '';
         }
 
-        $full_name = I18N::list($this->parts->all());
+        $full_name = I18N::list($this->parts->array());
 
         if ($link) {
             $url = $this->url();
@@ -257,7 +257,7 @@ class Place
             $parts = $this->firstParts($SHOW_PEDIGREE_PLACES);
         }
 
-        $short_name = I18N::list($parts->all());
+        $short_name = I18N::list($parts->array());
 
         if ($link) {
             $url = $this->url();

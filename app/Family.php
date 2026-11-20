@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Http\Controllers\FamilyPage;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * A GEDCOM family (FAM) object.
@@ -135,7 +135,7 @@ class Family extends GedcomRecord
     /**
      * Get the (zero, one or two) spouses from this family.
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function spouses(AccessLevel|null $access_level = null): Collection
     {
@@ -150,7 +150,7 @@ class Family extends GedcomRecord
     /**
      * Get a list of this family’s children.
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function children(AccessLevel|null $access_level = null): Collection
     {

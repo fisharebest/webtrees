@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_slice;
@@ -168,7 +167,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),

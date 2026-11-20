@@ -19,14 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\Value;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function preg_match_all;
 use function preg_quote;
@@ -34,7 +33,7 @@ use function preg_quote;
 final class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function search(Tree $tree, string $query, string $extra): Collection
     {
@@ -48,7 +47,7 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
             ->select('individuals.*')
             ->distinct()
             ->from('individuals')
-            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'i_file')->on('l_from', 'i_id'))
+            ->join('link', ['l_file' => 'i_file', 'l_from' => 'i_id'])
             ->whereEqual('i_file', $tree->id())
             ->whereEqual('l_to', $source->xref())
             ->whereEqual('l_type', 'SOUR')
@@ -60,7 +59,11 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
             ->select('families.*')
             ->distinct()
             ->from('families')
-            ->join('link', static fn (JoinOn $j): JoinOn => $j->on('l_file', 'f_file')->on('l_from', 'f_id')->on('l_type', DB::value('SOUR')))
+            ->join('link', [
+                'l_file' => 'f_file',
+                'l_from' => 'f_id',
+                'l_type' => new Value('SOUR'),
+            ])
             ->whereEqual('f_file', $tree->id())
             ->whereEqual('l_to', $source->xref())
             ->whereEqual('l_type', 'SOUR')
@@ -70,7 +73,7 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
 
         $pages = new Collection();
 
-        foreach ($individuals->merge($families) as $record) {
+        foreach (new Collection([...$individuals, ...$families]) as $record) {
             if (preg_match_all('/\n1 SOUR @' . $source->xref() . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
                 $pages = $pages->concat($matches[1]);
             }
@@ -80,6 +83,6 @@ final class AutoCompleteCitation extends AbstractAutocompleteHandler
             }
         }
 
-        return $pages->uniqueStrict();
+        return $pages->unique();
     }
 }

@@ -57,11 +57,11 @@ final class SiteLogs
         // First and last change in the database
         $earliest = DB::query()
             ->from('log')
-            ->orderBy('log_time')
+            ->orderBy(DB::ascending('log_time'))
             ->value('log_time') ?? date('Y-m-d H:i:s');
         $latest = DB::query()
             ->from('log')
-            ->orderBy(DB::desc('log_time'))
+            ->orderBy(DB::descending('log_time'))
             ->value('log_time') ?? date('Y-m-d H:i:s');
 
         $earliest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $earliest, new DateTimeZone('UTC'))

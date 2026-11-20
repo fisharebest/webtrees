@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+use function date;
+
 #[CoversClass(SiteLogsDownload::class)]
 class SiteLogsDownloadTest extends TestCase
 {
@@ -40,6 +42,7 @@ class SiteLogsDownloadTest extends TestCase
         $request = self::createRequest();
 
         DB::query(table: 'log')->insert([
+            'log_time'    => date('Y-m-d H:i:s'),
             'log_type'    => 'edit',
             'log_message' => 'foo,bar',
             'ip_address'  => '127.0.0.1',

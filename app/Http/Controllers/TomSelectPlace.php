@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 final class TomSelectPlace extends AbstractTomSelectHandler
 {
@@ -34,7 +34,7 @@ final class TomSelectPlace extends AbstractTomSelectHandler
     /**
      * Perform the search
      *
-     * @return Collection<int,array{text:string,value:string}>
+     * @return Collection<array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {

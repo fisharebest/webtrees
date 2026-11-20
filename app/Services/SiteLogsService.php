@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
@@ -57,8 +56,8 @@ class SiteLogsService
                 DB::alias(DB::coalesce(DB::column('gedcom_name'), DB::value('<--->')), 'gedcom_name'),
             )
             ->from('log')
-            ->leftJoin('user', static fn (JoinOn $j): JoinOn => $j->on('user.user_id', 'log.user_id'))
-            ->leftJoin('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom.gedcom_id', 'log.gedcom_id'));
+            ->leftJoin('user', ['user.user_id' => 'log.user_id'])
+            ->leftJoin('gedcom', ['gedcom.gedcom_id' => 'log.gedcom_id']);
 
         $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
         $utc = new DateTimeZone('UTC');

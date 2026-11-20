@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\DateType;
 use Fisharebest\Webtrees\Enums\Sex;
 use Fisharebest\Webtrees\Http\Controllers\IndividualPage;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_key_exists;
 use function count;
@@ -609,7 +609,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of this individual’s spouse families
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function spouseFamilies(AccessLevel|null $access_level = null): Collection
     {
@@ -669,7 +669,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of this individual’s child families (i.e. their parents).
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function childFamilies(AccessLevel|null $access_level = null): Collection
     {
@@ -694,7 +694,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of step-parent families.
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function childStepFamilies(): Collection
     {
@@ -703,20 +703,20 @@ class Individual extends GedcomRecord
         foreach ($families as $family) {
             foreach ($family->spouses() as $parent) {
                 foreach ($parent->spouseFamilies() as $step_family) {
-                    if (!$families->containsStrict($step_family)) {
-                        $step_families->add($step_family);
+                    if (!$families->contains($step_family)) {
+                        $step_families->push($step_family);
                     }
                 }
             }
         }
 
-        return $step_families->uniqueStrict(static fn (Family $family): string => $family->xref());
+        return $step_families->unique();
     }
 
     /**
      * Get a list of step-parent families.
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function spouseStepFamilies(): Collection
     {
@@ -728,7 +728,7 @@ class Individual extends GedcomRecord
 
             if ($spouse instanceof self) {
                 foreach ($family->spouse($this)->spouseFamilies() as $step_family) {
-                    if (!$families->containsStrict($step_family)) {
+                    if (!$families->contains($step_family)) {
                         $step_families[] = $step_family;
                     }
                 }

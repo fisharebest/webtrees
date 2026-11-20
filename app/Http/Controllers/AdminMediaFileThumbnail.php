@@ -45,7 +45,7 @@ final class AdminMediaFileThumbnail
     public function get(string $path): ResponseInterface
     {
         $filesystem    = Registry::filesystem()->data();
-        $media_folders = $this->media_file_service->allMediaFolders($filesystem)->all();
+        $media_folders = $this->media_file_service->allMediaFolders($filesystem)->array();
 
         foreach ($media_folders as $media_folder) {
             if (str_starts_with($path, $media_folder)) {

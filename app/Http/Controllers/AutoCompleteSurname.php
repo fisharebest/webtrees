@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 final class AutoCompleteSurname extends AbstractAutocompleteHandler
 {
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     protected function search(Tree $tree, string $query, string $extra): Collection
     {

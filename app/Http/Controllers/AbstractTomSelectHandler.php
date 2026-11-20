@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -56,7 +56,7 @@ abstract class AbstractTomSelectHandler
         }
 
         return response([
-            'data'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
+            'data'    => $results->slice(0, self::RESULTS_PER_PAGE)->array(),
             'nextUrl' => $next_url,
         ]);
     }
@@ -66,7 +66,7 @@ abstract class AbstractTomSelectHandler
      *
      * @param string $at    "@" or ""
      *
-     * @return Collection<int,array{text:string,value:string}>
+     * @return Collection<array{text:string,value:string}>
      */
     abstract protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection;
 }

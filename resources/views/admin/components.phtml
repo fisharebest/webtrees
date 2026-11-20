@@ -11,15 +11,15 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var array<string,array<string,string>> $access_summary
  * @var string                             $description
  * @var class-string<ModuleInterface>      $interface
- * @var Collection<int,ModuleInterface>    $modules
+ * @var Collection<ModuleInterface>    $modules
  * @var string                             $title
- * @var Collection<int,Tree>               $trees
+ * @var Collection<Tree>               $trees
  * @var bool                               $uses_access
  * @var bool                               $uses_sorting
  */

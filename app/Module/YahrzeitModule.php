@@ -28,8 +28,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function extract;
@@ -128,7 +127,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                                 break;
                         }
 
-                        $yahrzeits->add((object) [
+                        $yahrzeits->push((object) [
                             'individual'    => $fact->record(),
                             'fact_date'     => $fact->date(),
                             'fact'          => $fact,
@@ -160,7 +159,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),

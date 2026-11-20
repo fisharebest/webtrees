@@ -48,37 +48,37 @@ class SearchServiceTest extends TestCase
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
-        $result = $search_service->searchFamilies([$tree], ['windsor'])->all();
+        $result = $search_service->searchFamilies([$tree], ['windsor'])->array();
         self::assertCount(4, $result);
 
-        $result = $search_service->searchFamilyNames([$tree], ['victoria', 'albert'])->all();
+        $result = $search_service->searchFamilyNames([$tree], ['victoria', 'albert'])->array();
         self::assertCount(1, $result);
 
-        $result = $search_service->searchIndividuals([$tree], ['windsor'])->all();
+        $result = $search_service->searchIndividuals([$tree], ['windsor'])->array();
         self::assertCount(20, $result);
 
-        $result = $search_service->searchIndividualNames([$tree], ['cavendish'])->all();
+        $result = $search_service->searchIndividualNames([$tree], ['cavendish'])->array();
         self::assertCount(2, $result);
 
-        $result = $search_service->searchMedia([$tree], ['windsor'])->all();
+        $result = $search_service->searchMedia([$tree], ['windsor'])->array();
         self::assertCount(4, $result);
 
-        $result = $search_service->searchNotes([$tree], ['windsor'])->all();
+        $result = $search_service->searchNotes([$tree], ['windsor'])->array();
         self::assertCount(0, $result);
 
-        $result = $search_service->searchRepositories([$tree], ['national'])->all();
+        $result = $search_service->searchRepositories([$tree], ['national'])->array();
         self::assertCount(1, $result);
 
-        $result = $search_service->searchSources([$tree], ['england'])->all();
+        $result = $search_service->searchSources([$tree], ['england'])->array();
         self::assertCount(1, $result);
 
-        $result = $search_service->searchSourcesByName([$tree], ['england'])->all();
+        $result = $search_service->searchSourcesByName([$tree], ['england'])->array();
         self::assertCount(1, $result);
 
-        $result = $search_service->searchSubmitters([$tree], ['greg'])->all();
+        $result = $search_service->searchSubmitters([$tree], ['greg'])->array();
         self::assertCount(1, $result);
 
-        $result = $search_service->searchPlaces($tree, 'westminster')->all();
+        $result = $search_service->searchPlaces($tree, 'westminster')->array();
         self::assertCount(1, $result);
     }
 }

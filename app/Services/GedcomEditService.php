@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_diff;
 use function array_filter;
@@ -65,7 +65,7 @@ class GedcomEditService
 {
     /**
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function newFamilyFacts(Tree $tree): Collection
     {
@@ -80,7 +80,7 @@ class GedcomEditService
     /**
      * @param array<string> $names
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function newIndividualFacts(Tree $tree, Sex $sex, array $names): Collection
     {
@@ -89,7 +89,7 @@ class GedcomEditService
             ->filter(static fn (string $tag): bool => $tag !== '');
         $facts      = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
         $sex_fact   = new Collection([new Fact('1 SEX ' . $sex->value, $dummy, '')]);
-        $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
+        $name_facts = (new Collection($names))->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
 
         return $sex_fact->concat($name_facts)->concat($facts->sort(FactComparator::byType(...)))->values();
     }

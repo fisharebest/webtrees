@@ -172,7 +172,7 @@ class FamilyTreeFavoritesModuleTest extends TestCase
                 ->whereEqual('gedcom_id', $tree->id())
                 ->whereNull('user_id')
                 ->whereEqual('favorite_type', $favorite_type)
-                ->orderBy('favorite_id')
+                ->orderBy(DB::ascending('favorite_id'))
                 ->pluck('note'));
         }
     }

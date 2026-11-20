@@ -19,12 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\Enums\HttpRequestMethod;
 use Fisharebest\Webtrees\Http\Controllers\TreePrivacy;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
+
+use function date;
 
 #[CoversClass(TreePrivacy::class)]
 class TreePrivacyTest extends TestCase
@@ -44,12 +50,14 @@ class TreePrivacyTest extends TestCase
             'xref'      => 'Z7',
             'tag_type'  => null,
             'resn'      => 'privacy',
+            'updated'   => date('Y-m-d H:i:s'),
         ], 'default_resn_id');
         $other_rule_id = DB::query(table: 'default_resn')->insertGetId([
             'gedcom_id' => $other_tree->id(),
             'xref'      => 'Z8',
             'tag_type'  => null,
             'resn'      => 'privacy',
+            'updated'   => date('Y-m-d H:i:s'),
         ], 'default_resn_id');
 
         $html = (string) (new TreePrivacy($tree_service))->get($tree)->getBody();
@@ -58,5 +66,44 @@ class TreePrivacyTest extends TestCase
         self::assertStringContainsString('id="delete-' . $rule_id . '"', $html);
         self::assertStringNotContainsString('Z8', $html);
         self::assertStringNotContainsString('id="delete-' . $other_rule_id . '"', $html);
+    }
+
+    public function testPostSetsCurrentTimestampOnPrivacyRules(): void
+    {
+        self::createDatabase();
+
+        $tree_service = new TreeService(new GedcomImportService());
+        $created_tree = $tree_service->create('first', 'First');
+        $tree = self::createStub(Tree::class);
+        $tree->method('id')->willReturn($created_tree->id());
+        $tree->method('name')->willReturn($created_tree->name());
+        $tree->method('title')->willReturn($created_tree->title());
+        $tree->method('setPreference')->willReturnSelf();
+
+        $request = self::createRequest(HttpRequestMethod::POST->value, params: [
+            'delete'                     => [],
+            'xref'                       => ['I1'],
+            'tag_type'                   => ['NAME'],
+            'resn'                       => ['privacy'],
+            'HIDE_LIVE_PEOPLE'           => '0',
+            'MAX_ALIVE_AGE'              => '100',
+            'REQUIRE_AUTHENTICATION'     => '0',
+            'SHOW_DEAD_PEOPLE'           => '0',
+            'SHOW_LIVING_NAMES'          => '0',
+            'SHOW_PRIVATE_RELATIONSHIPS' => '0',
+        ], attributes: ['tree' => $tree]);
+
+        $before = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
+        (new TreePrivacy($tree_service))->post($request, $tree);
+        $after = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
+
+        $updated = DB::query()
+            ->from('default_resn')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereEqual('xref', 'I1')
+            ->whereEqual('tag_type', 'NAME')
+            ->value('updated');
+        self::assertGreaterThanOrEqual($before, $updated);
+        self::assertLessThanOrEqual($after, $updated);
     }
 }

@@ -10,18 +10,18 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var string                                 $age
  * @var bool                                   $can_upload_media
- * @var Collection<int,Media>                  $individual_media
- * @var Collection<int,Fact>                   $name_records
+ * @var Collection<Media>                  $individual_media
+ * @var Collection<Fact>                   $name_records
  * @var Individual                             $record
- * @var Collection<int,Fact>                   $sex_records
- * @var Collection<int,string>                 $shares
- * @var Collection<int,ModuleSidebarInterface> $sidebars
- * @var Collection<int,ModuleTabInterface>     $tabs
+ * @var Collection<Fact>                   $sex_records
+ * @var Collection<string>                 $shares
+ * @var Collection<ModuleSidebarInterface> $sidebars
+ * @var Collection<ModuleTabInterface>     $tabs
  * @var Tree                                   $tree
  * @var string                                 $user_link
  */

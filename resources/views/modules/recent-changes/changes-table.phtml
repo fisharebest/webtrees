@@ -14,13 +14,13 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Carbon\CarbonImmutable;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var int                                                                           $limit_high
  * @var int                                                                           $limit_low
  * @var array<array<int,string>>                                                      $order
- * @var Collection<int,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> $rows
+ * @var Collection<object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> $rows
  * @var bool                                                                          $show_date
  * @var bool                                                                          $show_user
  */

@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomImportService;
-use Fisharebest\Webtrees\Services\MigrationService;
+use Fisharebest\Webtrees\Schema\WebtreesSchema;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -88,11 +88,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         );
 
         // Create tables
-        $migration_service = new MigrationService();
-        $migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        $webtrees_schema = new WebtreesSchema();
+        $webtrees_schema->updateSchema();
 
         // Create config data
-        $migration_service->seedDatabase();
+        $webtrees_schema->seedDatabase();
 
         Registry::cache(new CacheFactory());
     }

@@ -55,7 +55,7 @@ use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -133,7 +133,7 @@ final class CheckTree
             ->unionAll($q4)
             ->unionAll($q5)
             ->unionAll($q6)
-            ->orderBy('priority')
+            ->orderBy(DB::ascending('priority'))
             ->get(in: Collection::class)
             ->map(static function (object $row): object {
                 // Extract type for pending record

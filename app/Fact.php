@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\Services\FactSortService;
 use Fisharebest\Webtrees\Services\GedcomService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use InvalidArgumentException;
 
 use function e;

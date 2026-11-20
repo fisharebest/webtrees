@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
@@ -31,7 +29,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -178,9 +176,9 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
             ->whereLike('multimedia_file_refn', '%/%')
             ->pluck('multimedia_file_refn', 'multimedia_file_refn', in: Collection::class)
             ->map(static fn (string $path): string => dirname($path))
-            ->uniqueStrict()
+            ->unique()
             ->sort()
-            ->all();
+            ->array();
 
         // Ensure we have an empty (top level) folder.
         array_unshift($folders, '');
@@ -197,23 +195,23 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
      * @param string $filter     optional search string
      * @param string $format     option OBJE/FILE/FORM/TYPE
      *
-     * @return Collection<int,Media>
+     * @return Collection<Media>
      */
     private function allMedia(Tree $tree, string $folder, bool $subfolders, string $sort, string $filter, string $format): Collection
     {
         $query = DB::query()
             ->select('*')
             ->from('media')
-            ->join('media_file', static fn (JoinOn $j): JoinOn => $j->on('media_file.m_file', 'media.m_file')->on('media_file.m_id', 'media.m_id'))
+            ->join('media_file', ['media_file.m_file' => 'media.m_file', 'media_file.m_id' => 'media.m_id'])
             ->whereEqual('media.m_file', $tree->id());
 
         if ($folder === '') {
             // Include external URLs in the root folder.
             if (!$subfolders) {
-                $query = $query->whereNested(static fn (Predicates $p): Predicates => $p
-                    ->notLike('multimedia_file_refn', '%/%')
-                    ->orLike('multimedia_file_refn', 'http:%')
-                    ->orLike('multimedia_file_refn', 'https:%'));
+                $query = $query->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                    ->whereNotLike('multimedia_file_refn', '%/%')
+                    ->orWhereLike('multimedia_file_refn', 'http:%')
+                    ->orWhereLike('multimedia_file_refn', 'https:%'));
             }
         } else {
             // Exclude external URLs from the root folder.
@@ -230,9 +228,9 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
         // Apply search terms
         if ($filter !== '') {
             $like = '%' . addcslashes($filter, '\\%_') . '%';
-            $query = $query->whereNested(static fn (Predicates $p): Predicates => $p
-                ->like('multimedia_file_refn', $like)
-                ->orLike('descriptive_title', $like));
+            $query = $query->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->whereLike('multimedia_file_refn', $like)
+                ->orWhereLike('descriptive_title', $like));
         }
 
         if ($format !== '') {
@@ -241,17 +239,17 @@ class MediaListModule extends AbstractModule implements ModuleListInterface
 
         switch ($sort) {
             case 'file':
-                $query = $query->orderBy('multimedia_file_refn');
+                $query = $query->orderBy(DB::ascending('multimedia_file_refn'));
                 break;
             case 'title':
-                $query = $query->orderBy('descriptive_title');
+                $query = $query->orderBy(DB::ascending('descriptive_title'));
                 break;
         }
 
         return $query
             ->get(in: Collection::class)
             ->map(Registry::mediaFactory()->mapper($tree))
-            ->uniqueStrict()
+            ->unique()
             ->filter(GedcomRecord::accessFilter());
     }
 

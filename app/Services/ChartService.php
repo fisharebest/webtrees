@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * Find ancestors, descendants, cousins, etc for drawing charts.
@@ -34,7 +34,7 @@ class ChartService
      * @param Individual $individual  Start with this individual
      * @param int        $generations Fetch this number of generations
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function sosaStradonitzAncestors(Individual $individual, int $generations): Collection
     {
@@ -125,7 +125,7 @@ class ChartService
      * @param Individual $individual  Start with this individual
      * @param int        $generations Fetch this number of generations
      *
-     * @return Collection<string,Individual>
+     * @return Collection<Individual>
      */
     public function descendants(Individual $individual, int $generations): Collection
     {
@@ -150,7 +150,7 @@ class ChartService
      * @param Individual $individual  Start with this individual
      * @param int        $generations Fetch this number of generations
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function descendantFamilies(Individual $individual, int $generations): Collection
     {

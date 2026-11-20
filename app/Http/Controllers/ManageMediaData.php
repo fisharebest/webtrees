@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
@@ -82,7 +80,7 @@ final class ManageMediaData
         $files = Validator::queryParams($request)->isInArray(['local', 'external', 'unused'])->string('files');
 
         // Files within this folder
-        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem)->all();
+        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem)->array();
         $media_folder  = Validator::queryParams($request)->isInArray($media_folders)->string('media_folder');
 
         // Show sub-folders within $media_folder
@@ -148,8 +146,8 @@ final class ManageMediaData
                 $query = DB::query()
                     ->select('media.*', 'multimedia_file_refn', 'descriptive_title', 'media_folder')
                     ->from('media_file')
-                    ->join('media', static fn (JoinOn $j): JoinOn => $j->on('media.m_file', 'media_file.m_file')->on('media.m_id', 'media_file.m_id'))
-                    ->join('gedcom', static fn (JoinOn $j): JoinOn => $j->on('gedcom.gedcom_id', 'media.m_file'))
+                    ->join('media', ['media.m_file' => 'media_file.m_file', 'media.m_id' => 'media_file.m_id'])
+                    ->join('gedcom', ['gedcom.gedcom_id' => 'media.m_file'])
                     ->whereNotLike('multimedia_file_refn', 'http://%')
                     ->whereNotLike('multimedia_file_refn', 'https://%')
                     ->whereLike(DB::concat(DB::column('media_folder'), DB::column('multimedia_file_refn')), $escaped_folder . '%');
@@ -176,10 +174,10 @@ final class ManageMediaData
                         DB::alias(DB::value(''), 'media_folder'),
                     )
                     ->from('media_file')
-                    ->join('media', static fn (JoinOn $j): JoinOn => $j->on('media.m_file', 'media_file.m_file')->on('media.m_id', 'media_file.m_id'))
-                    ->whereNested(static fn (Predicates $p): Predicates => $p
-                        ->like('multimedia_file_refn', 'http://%')
-                        ->orLike('multimedia_file_refn', 'https://%'));
+                    ->join('media', ['media.m_file' => 'media_file.m_file', 'media.m_id' => 'media_file.m_id'])
+                    ->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                        ->whereLike('multimedia_file_refn', 'http://%')
+                        ->orWhereLike('multimedia_file_refn', 'https://%'));
 
                 return $this->datatables_service->handleQuery(
                     $request,

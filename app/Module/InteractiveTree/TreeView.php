@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function count;
 
@@ -68,7 +68,7 @@ class TreeView
 
             switch ($firstLetter) {
                 case 'c':
-                    $families = Collection::make(explode(',', $json_request))
+                    $families = (new Collection(explode(',', $json_request)))
                         ->map(static fn (string $xref): Family|null => Registry::familyFactory()->make($xref, $tree))
                         ->filter();
 
@@ -150,7 +150,7 @@ class TreeView
     /**
      * Draw the children for some families
      *
-     * @param Collection<int,Family> $familyList array of families to draw the children for
+     * @param Collection<Family> $familyList array of families to draw the children for
      * @param int                    $gen        number of generations to draw
      * @param bool                   $ajax       true for an ajax call
      */

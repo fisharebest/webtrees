@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Comparators\IndividualComparator;
@@ -265,7 +264,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     {
         return DB::query()
             ->from('individuals')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'i_file')->on('d_gid', 'i_id'))
+            ->join('dates', ['d_file' => 'i_file', 'd_gid' => 'i_id'])
             ->whereEqual('i_file', $tree->id())
             ->whereLessThanOrEqual('d_julianday1', $end->maximumJulianDay())
             ->whereGreaterThanOrEqual('d_julianday2', $start->minimumJulianDay())
@@ -281,7 +280,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     {
         return DB::query()
             ->from('individuals')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'))
+            ->join('placelinks', ['pl_file' => 'i_file', 'pl_gid' => 'i_id'])
             ->whereEqual('i_file', $tree->id())
             ->whereEqual('pl_p_id', $place->id())
             ->pluck('i_id');

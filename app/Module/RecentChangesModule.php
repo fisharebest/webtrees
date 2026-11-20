@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Carbon\CarbonImmutable;
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Comparators\GedcomRecordComparator;
 use Fisharebest\Webtrees\DB;
@@ -34,9 +33,9 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ServerRequestInterface;
+use UnexpectedValueException;
 
 use function extract;
 use function view;
@@ -144,7 +143,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => I18N::plural('Changes in the last %s day', 'Changes in the last %s days', $days, I18N::number($days)),
@@ -256,7 +255,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> List of records with changes
+     * @return Collection<object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}&\stdClass> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
@@ -273,7 +272,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->withCte('recent', $subquery)
             ->select('change.*')
             ->from('change')
-            ->join('recent', static fn (JoinOn $j): JoinOn => $j->on('recent.recent_change_id', 'change.change_id'));
+            ->join('recent', ['recent.recent_change_id' => 'change.change_id']);
 
         return $query
             ->get(in: Collection::class)
@@ -282,7 +281,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'time'   => Registry::timestampFactory()->fromString($row->change_time),
                 'user'   => $this->user_service->find((int) $row->user_id),
             ])
-            ->filter(static fn (object $row): bool => $row->record instanceof GedcomRecord && $row->record->canShow());
+            ->filter(static fn (object $row): bool => $row->record instanceof GedcomRecord && $row->record->canShow())
+            ->map(static function (object $row): object {
+                if (!$row->record instanceof GedcomRecord || !$row->user instanceof UserInterface) {
+                    throw new UnexpectedValueException('Recent change has no accessible record or user.');
+                }
+
+                return self::changeRow($row->record, $row->time, $row->user);
+            });
     }
 
     /**
@@ -291,7 +297,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}> List of records with changes
+     * @return Collection<object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}&\stdClass> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {
@@ -300,7 +306,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $individuals = DB::query()
             ->select('individuals.*')
             ->from('dates')
-            ->join('individuals', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'i_file')->on('d_gid', 'i_id'))
+            ->join('individuals', ['d_file' => 'i_file', 'd_gid' => 'i_id'])
             ->whereEqual('d_file', $tree->id())
             ->whereGreaterThanOrEqual('d_julianday1', $julian_day)
             ->whereEqual('d_fact', 'CHAN')
@@ -311,7 +317,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $families = DB::query()
             ->select('families.*')
             ->from('dates')
-            ->join('families', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+            ->join('families', ['d_file' => 'f_file', 'd_gid' => 'f_id'])
             ->whereEqual('d_file', $tree->id())
             ->whereGreaterThanOrEqual('d_julianday1', $julian_day)
             ->whereEqual('d_fact', 'CHAN')
@@ -319,15 +325,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->map(Registry::familyFactory()->mapper($tree))
             ->filter(Family::accessFilter());
 
-        return $individuals->merge($families)
+        return (new Collection([...$individuals, ...$families]))
             ->map(function (GedcomRecord $record): object {
                 $user = $this->user_service->findByUserName($record->lastChangeUser());
 
-                return (object) [
-                    'record' => $record,
-                    'time'   => $record->lastChangeTimestamp(),
-                    'user'   => $user ?? new User(0, '…', '…', ''),
-                ];
+                return self::changeRow($record, $record->lastChangeTimestamp(), $user ?? new User(0, '…', '…', ''));
             });
+    }
+
+    /**
+     * @return object{record:GedcomRecord,time:CarbonImmutable,user:UserInterface}&\stdClass
+     */
+    private static function changeRow(GedcomRecord $record, CarbonImmutable $time, UserInterface $user): object
+    {
+        return (object) ['record' => $record, 'time' => $time, 'user' => $user];
     }
 }

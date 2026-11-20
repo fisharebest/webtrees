@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -187,7 +187,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             ->from('block')
             ->whereEqual('module_name', $this->name())
             ->whereEqual('gedcom_id', $tree->id())
-            ->orderBy('xref')
+            ->orderBy(DB::ascending('xref'))
             ->get();
 
         foreach ($stories as $story) {

@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Comparators\FactComparator;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_splice;
 use function count;
@@ -41,9 +41,9 @@ final class FactSortService
      *    any later-input families' facts (preserving original family order).
      * 5. Insert individual nondated facts at their type-order position in the result.
      *
-     * @param Collection<int,Fact> $unsorted
+     * @param Collection<Fact> $unsorted
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function sort(Collection $unsorted): Collection
     {

@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -117,9 +116,9 @@ final class SearchReplace
     }
 
     /**
-     * @param Collection<int,GedcomRecord> $records
+     * @param iterable<GedcomRecord> $records
      */
-    private function replaceRecords(Collection $records, string $search, string $replace): int
+    private function replaceRecords(iterable $records, string $search, string $replace): int
     {
         $count = 0;
         $query = preg_quote($search, '/');
@@ -138,10 +137,10 @@ final class SearchReplace
     }
 
     /**
-     * @param Collection<int,GedcomRecord> $records
+     * @param iterable<GedcomRecord> $records
      * @param array<string>                $name_tags
      */
-    private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
+    private function replaceIndividualNames(iterable $records, string $search, string $replace, array $name_tags): int
     {
         $pattern     = '/(\n(?:' . implode('|', $name_tags) . ') .*)' . preg_quote($search, '/') . '/i';
         $replacement = '$1' . $replace;
@@ -161,9 +160,9 @@ final class SearchReplace
     }
 
     /**
-     * @param Collection<int,GedcomRecord> $records
+     * @param iterable<GedcomRecord> $records
      */
-    private function replacePlaces(Collection $records, string $search, string $replace): int
+    private function replacePlaces(iterable $records, string $search, string $replace): int
     {
         $pattern     = '/(\n\d PLAC\b.* )' . preg_quote($search, '/') . '([,\n])/i';
         $replacement = '$1' . $replace . '$2';

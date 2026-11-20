@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Controllers;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Webtrees\Clock\SystemClock;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Controllers\RenumberTree;
@@ -333,5 +335,47 @@ class RenumberTreeTest extends TestCase
         $other_family = DB::query(table: 'families')->select('*')->whereEqual('f_file', $other_tree->id())->whereEqual('f_id', 'F2')->first();
         self::assertSame('X1', $other_family->f_husb);
         self::assertSame('X1', $other_family->f_wife);
+    }
+
+    public function testRenumberUpdatesPrivacyTimestamps(): void
+    {
+        self::createDatabase();
+
+        $tree = (new TreeService(new GedcomImportService()))->create('first', 'First');
+        DB::query(table: 'sources')->insert([
+            's_file'   => $tree->id(),
+            's_id'     => 'S1',
+            's_name'   => 'Test source',
+            's_gedcom' => '0 @S1@ SOUR',
+        ]);
+        DB::query(table: 'default_resn')->insert([
+            'gedcom_id' => $tree->id(),
+            'xref'      => 'S1',
+            'resn'      => 'privacy',
+            'updated'   => '2000-01-01 00:00:00',
+        ]);
+
+        $admin_service = self::createStub(AdminService::class);
+        $admin_service->method('duplicateXrefs')->willReturn(['S1' => 'SOUR']);
+        self::createRequest(attributes: ['tree' => $tree]);
+
+        $before = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
+        (new RenumberTree(
+            $admin_service,
+            new TimeoutService(new PhpService(), new SystemClock()),
+        ))->post($tree);
+        $after = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s.u');
+
+        $rule = DB::query()
+            ->select('xref', 'updated')
+            ->from('default_resn')
+            ->whereEqual('gedcom_id', $tree->id())
+            ->whereNotNull('xref')
+            ->first();
+
+        self::assertNotNull($rule);
+        self::assertNotSame('S1', $rule->xref);
+        self::assertGreaterThanOrEqual($before, $rule->updated);
+        self::assertLessThanOrEqual($after, $rule->updated);
     }
 }

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SiteLogsService;
@@ -39,7 +40,7 @@ final class SiteLogsDownload
     public function get(ServerRequestInterface $request): ResponseInterface
     {
         $content = $this->site_logs_service->logsQuery($request)
-            ->orderBy('log_id')
+            ->orderBy(DB::ascending('log_id'))
             ->get();
 
         $content = implode('', array_map(static fn (object $row): string => '"' . $row->log_time . '",' .

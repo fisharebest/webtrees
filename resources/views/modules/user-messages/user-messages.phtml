@@ -13,14 +13,14 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * @var int                    $block_id
  * @var string                 $context
  * @var ModuleInterface        $module
  * @var Tree                   $tree
- * @var Collection<int,object{
+ * @var Collection<object{
  *     message_id:string,
  *     sender:string,
  *     ip_address:string,
@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
  *     body:string,
  *     created:CarbonImmutable
  * }&stdClass>                 $messages
- * @var Collection<int,User>   $users
+ * @var Collection<User>   $users
  * @var UserService            $user_service
  */
 

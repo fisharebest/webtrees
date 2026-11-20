@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(HomePageService::class)]
@@ -97,8 +97,8 @@ class HomePageServiceTest extends TestCase
             DB::query(table: 'block')->insert(values: $values + ['module_name' => 'test-block']);
         }
 
-        self::assertSame([102, 101], $service->treeBlocks($tree, $user, 'main')->keys()->all());
-        self::assertSame([202, 201], $service->userBlocks($tree, $user, 'main')->keys()->all());
+        self::assertSame([102, 101], $service->treeBlocks($tree, $user, 'main')->keys()->array());
+        self::assertSame([202, 201], $service->userBlocks($tree, $user, 'main')->keys()->array());
 
         $service->updateTreeBlocks($tree->id(), new Collection(['102']), new Collection(['103']));
         $service->updateUserBlocks($user->id(), new Collection(['202']), new Collection(['203']));
@@ -106,12 +106,12 @@ class HomePageServiceTest extends TestCase
         self::assertSame([102, 103], DB::query()
             ->from('block')
             ->whereEqual('gedcom_id', $tree->id())
-            ->orderBy('block_id')
+            ->orderBy(DB::ascending('block_id'))
             ->pluck('block_id'));
         self::assertSame([202, 203], DB::query()
             ->from('block')
             ->whereEqual('user_id', $user->id())
-            ->orderBy('block_id')
+            ->orderBy(DB::ascending('block_id'))
             ->pluck('block_id'));
     }
 

@@ -89,7 +89,7 @@ final class SynchronizeTrees
         }
 
         foreach ($this->tree_service->all() as $tree) {
-            if (!$gedcom_files->containsStrict($tree->name())) {
+            if (!$gedcom_files->contains($tree->name())) {
                 $this->tree_service->delete($tree);
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
 

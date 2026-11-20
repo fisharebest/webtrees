@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function str_contains;
 
@@ -58,7 +58,7 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
      *
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function individualsToFix(Tree $tree, array $params): Collection
     {
@@ -108,10 +108,8 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
             ->map(static fn (Fact $fact): string => $fact->value());
 
         $callback = static function (Fact $x, Fact $y) use ($wt_obje_sort): int {
-            $sort1 = $wt_obje_sort->search($x->value(), true);
-            $sort2 = $wt_obje_sort->search($y->value(), true);
-            $sort1 = $sort1 === false ? PHP_INT_MAX : $sort1;
-            $sort2 = $sort2 === false ? PHP_INT_MAX : $sort2;
+            $sort1 = $wt_obje_sort->keyOf($x->value()) ?? PHP_INT_MAX;
+            $sort2 = $wt_obje_sort->keyOf($y->value()) ?? PHP_INT_MAX;
 
             return $sort1 <=> $sort2;
         };

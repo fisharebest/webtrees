@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
  * Interface ModuleHistoricEventsInterface - Show historic facts on an individual‘s page
@@ -29,12 +29,12 @@ use Illuminate\Support\Collection;
 interface ModuleHistoricEventsInterface extends ModuleInterface
 {
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function historicEventsAll(string $language_tag): Collection;
 
     /**
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function historicEventsForIndividual(Individual $individual): Collection;
 }

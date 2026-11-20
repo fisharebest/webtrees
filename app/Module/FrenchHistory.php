@@ -21,7 +21,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterface
 {
@@ -38,7 +38,7 @@ class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterf
     }
 
     /**
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function historicEventsAll(string $language_tag): Collection
     {

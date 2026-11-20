@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -475,7 +475,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
     /**
      * Find active analytics modules for a tree.
      *
-     * @return Collection<int,ModuleAnalyticsInterface>
+     * @return Collection<ModuleAnalyticsInterface>
      */
     private function analyticsModules(Tree $tree, UserInterface $user): Collection
     {
@@ -487,7 +487,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
     /**
      * Find active map provider modules for a tree.
      *
-     * @return Collection<int,ModuleMapProviderInterface>
+     * @return Collection<ModuleMapProviderInterface>
      */
     private function mapProviderModules(Tree $tree, UserInterface $user): Collection
     {
@@ -498,7 +498,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface, Mod
     /**
      * Find active geocoding modules for a tree.
      *
-     * @return Collection<int,ModuleMapGeoLocationInterface>
+     * @return Collection<ModuleMapGeoLocationInterface>
      */
     private function geoLocationModules(Tree $tree, UserInterface $user): Collection
     {

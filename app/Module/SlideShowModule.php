@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\I18N;
@@ -28,8 +27,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_filter;
@@ -112,7 +110,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $random_row = DB::query()
             ->select('media.*')
             ->from('media')
-            ->join('media_file', static fn (JoinOn $j): JoinOn => $j->on('media_file.m_file', 'media.m_file')->on('media_file.m_id', 'media.m_id'))
+            ->join('media_file', ['media_file.m_file' => 'media.m_file', 'media_file.m_id' => 'media.m_id'])
             ->whereEqual('media.m_file', $tree->id())
             ->whereIn('media_file.multimedia_format', self::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
@@ -166,7 +164,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [
-                'block'      => Str::kebab($this->name()),
+                'block'      => $this->blockCssClass(),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
                 'title'      => $this->title(),

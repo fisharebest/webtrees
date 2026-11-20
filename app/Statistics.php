@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Database\Query\JoinOn;
 use Fisharebest\Webtrees\Charts\BarChartData;
 use Fisharebest\Webtrees\Charts\ChartDataInterface;
 use Fisharebest\Webtrees\Charts\ComboChartData;
@@ -33,7 +32,7 @@ use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use InvalidArgumentException;
 use Psr\Http\Message\ServerRequestInterface;
 use ReflectionClass;
@@ -174,7 +173,7 @@ class Statistics
 
     public function chartCommonGiven(string $limit = '7'): string
     {
-        $given = $this->data->commonGivenNames(null, 1, (int) $limit)->all();
+        $given = $this->data->commonGivenNames(null, 1, (int) $limit)->array();
 
         if ($given === []) {
             return I18N::translate('This information is not available.');
@@ -332,14 +331,14 @@ class Statistics
             ->select('f_numchil AS total', 'f_id AS id')
             ->from('families')
             ->whereEqual('f_file', $this->tree->id())
-            ->orderBy(DB::desc('total'))
+            ->orderBy(DB::descending('total'))
             ->limit((int) $limit)
             ->get(in: Collection::class)
             ->map(fn (object $row): array => [
                 htmlspecialchars_decode(strip_tags(Registry::familyFactory()->make($row->id, $this->tree)->fullName())),
                 (int) $row->total,
             ])
-            ->all();
+            ->array();
 
         return $this->format->pieChart(
             $data,
@@ -406,23 +405,23 @@ class Statistics
 
         $records = DB::query()
             ->select(
-                DB::alias(DB::raw('ROUND((d_year + 49) / 100, 0)'), 'century'),
+                DB::alias(DB::round(DB::divide(DB::add(DB::column('d_year'), DB::value(49)), DB::value(100)), 0), 'century'),
                 DB::alias(DB::count('*'), 'total'),
             )
             ->from('families')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+            ->join('dates', ['d_file' => 'f_file', 'd_gid' => 'f_id'])
             ->whereEqual('f_file', $this->tree->id())
             ->whereEqual('f_numchil', 0)
             ->whereEqual('d_fact', 'MARR')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->groupBy('century')
-            ->orderBy('century')
+            ->orderBy(DB::ascending('century'))
             ->get(in: Collection::class)
             ->map(static fn (object $row): object => (object) [
                 'century' => (int) $row->century,
                 'total'   => (int) $row->total,
             ])
-            ->all();
+            ->array();
 
         $total = 0;
 
@@ -525,7 +524,7 @@ class Statistics
         $items = $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)
             ->keys()
             ->map(static fn (string $value): string => UTF8::FIRST_STRONG_ISOLATE . e($value) . UTF8::POP_DIRECTIONAL_ISOLATE)
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -535,7 +534,7 @@ class Statistics
         $items = $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)
             ->keys()
             ->map(static fn (string $value): string => UTF8::FIRST_STRONG_ISOLATE . e($value) . UTF8::POP_DIRECTIONAL_ISOLATE)
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -543,7 +542,7 @@ class Statistics
     public function commonGivenFemaleList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->array(),
             'show_totals' => false,
         ]);
     }
@@ -551,7 +550,7 @@ class Statistics
     public function commonGivenFemaleListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->array(),
             'show_totals' => true,
         ]);
     }
@@ -559,7 +558,7 @@ class Statistics
     public function commonGivenFemaleTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Female, (int) $threshold, (int) $limit)->array(),
             'order'       => [[1, 'desc']],
         ]);
     }
@@ -570,7 +569,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -578,7 +577,7 @@ class Statistics
     public function commonGivenList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->array(),
             'show_totals' => false,
         ]);
     }
@@ -586,7 +585,7 @@ class Statistics
     public function commonGivenListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->array(),
             'show_totals' => true,
         ]);
     }
@@ -597,7 +596,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -605,7 +604,7 @@ class Statistics
     public function commonGivenMaleList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->array(),
             'show_totals' => false,
         ]);
     }
@@ -613,7 +612,7 @@ class Statistics
     public function commonGivenMaleListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->array(),
             'show_totals' => true,
         ]);
     }
@@ -621,7 +620,7 @@ class Statistics
     public function commonGivenMaleTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Male, (int) $threshold, (int) $limit)->array(),
             'order'       => [[1, 'desc']],
         ]);
     }
@@ -632,7 +631,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -643,7 +642,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -651,7 +650,7 @@ class Statistics
     public function commonGivenOtherList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->array(),
             'show_totals' => false,
         ]);
     }
@@ -659,7 +658,7 @@ class Statistics
     public function commonGivenOtherListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->array(),
             'show_totals' => true,
         ]);
     }
@@ -667,7 +666,7 @@ class Statistics
     public function commonGivenOtherTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Other, (int) $threshold, (int) $limit)->array(),
             'order'       => [[1, 'desc']],
         ]);
     }
@@ -678,7 +677,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -686,7 +685,7 @@ class Statistics
     public function commonGivenTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(null, (int) $threshold, (int) $limit)->array(),
             'order'       => [[1, 'desc']],
         ]);
     }
@@ -697,7 +696,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -708,7 +707,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . '',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -716,7 +715,7 @@ class Statistics
     public function commonGivenUnknownList(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->array(),
             'show_totals' => false,
         ]);
     }
@@ -724,7 +723,7 @@ class Statistics
     public function commonGivenUnknownListTotals(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-list', [
-            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->array(),
             'show_totals' => true,
         ]);
     }
@@ -732,7 +731,7 @@ class Statistics
     public function commonGivenUnknownTable(string $threshold = '1', string $limit = '10'): string
     {
         return view('lists/given-names-table', [
-            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->all(),
+            'given_names' => $this->data->commonGivenNames(Sex::Unknown, (int) $threshold, (int) $limit)->array(),
             'order'       => [[1, 'desc']],
         ]);
     }
@@ -743,7 +742,7 @@ class Statistics
             ->mapWithKeys(static fn (int $value, int|string $key): array => [
                 $key => UTF8::FIRST_STRONG_ISOLATE . e($key) . UTF8::POP_DIRECTIONAL_ISOLATE . ' (' . I18N::number($value) . ')',
             ])
-            ->all();
+            ->array();
 
         return I18N::listAnd($items);
     }
@@ -998,7 +997,7 @@ class Statistics
             ->from('change')
             ->whereEqual('gedcom_id', $this->tree->id())
             ->whereEqual('status', ChangeStatus::Accepted->value)
-            ->orderBy(DB::desc('change_id'))
+            ->orderBy(DB::descending('change_id'))
             ->first();
 
         if ($row === null) {
@@ -1017,7 +1016,7 @@ class Statistics
 
             $exclude = ['embedTags', 'getAllTagsTable'];
 
-            $examples = Collection::make($public_methods)
+            $examples = (new Collection($public_methods))
                 ->filter(static fn (ReflectionMethod $method): bool => !in_array($method->getName(), $exclude, true))
                 ->filter(static fn (ReflectionMethod $method): bool => $method->getReturnType() instanceof ReflectionNamedType && $method->getReturnType()->getName() === 'string')
                 ->sort(static fn (ReflectionMethod $x, ReflectionMethod $y): int => $x->getName() <=> $y->getName())
@@ -1571,16 +1570,16 @@ class Statistics
         $records = DB::query()
             ->select(
                 DB::alias(DB::avg('f_numchil'), 'total'),
-                DB::alias(DB::raw('ROUND((d_year + 49) / 100, 0)'), 'century'),
+                DB::alias(DB::round(DB::divide(DB::add(DB::column('d_year'), DB::value(49)), DB::value(100)), 0), 'century'),
             )
             ->from('families')
-            ->join('dates', static fn (JoinOn $j): JoinOn => $j->on('d_file', 'f_file')->on('d_gid', 'f_id'))
+            ->join('dates', ['d_file' => 'f_file', 'd_gid' => 'f_id'])
             ->whereEqual('f_file', $this->tree->id())
             ->whereNotEqual('d_julianday1', 0)
             ->whereEqual('d_fact', 'MARR')
             ->whereIn('d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->groupBy('century')
-            ->orderBy('century')
+            ->orderBy(DB::ascending('century'))
             ->get(in: Collection::class)
             ->map(static fn (object $row): object => (object) [
                 'century' => (int) $row->century,
@@ -1695,13 +1694,19 @@ class Statistics
 
         $male = DB::query()
             ->select(
-                DB::alias(DB::raw('AVG(married.d_julianday2 - birth.d_julianday1 - 182.5) / 365.25'), 'age'),
-                DB::alias(DB::raw('ROUND((married.d_year + 49) / 100, 0)'), 'century'),
-                DB::alias(DB::raw("'M'"), 'sex'),
+                DB::alias(DB::divide(
+                    DB::avg(DB::subtract(
+                        DB::subtract(DB::column('married.d_julianday2'), DB::column('birth.d_julianday1')),
+                        DB::value(182.5),
+                    )),
+                    DB::value(365.25),
+                ), 'age'),
+                DB::alias(DB::round(DB::divide(DB::add(DB::column('married.d_year'), DB::value(49)), DB::value(100)), 0), 'century'),
+                DB::alias(DB::value('M'), 'sex'),
             )
             ->from('dates as married')
-            ->join('families as fam', static fn (JoinOn $j): JoinOn => $j->on('fam.f_id', 'married.d_gid')->on('fam.f_file', 'married.d_file'))
-            ->join('dates as birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_gid', 'fam.f_husb')->on('birth.d_file', 'fam.f_file'))
+            ->join('families as fam', ['fam.f_id' => 'married.d_gid', 'fam.f_file' => 'married.d_file'])
+            ->join('dates as birth', ['birth.d_gid' => 'fam.f_husb', 'birth.d_file' => 'fam.f_file'])
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->whereEqual('married.d_file', $this->tree->id())
             ->whereEqual('married.d_fact', 'MARR')
@@ -1713,13 +1718,22 @@ class Statistics
 
         $female = DB::query()
             ->select(
-                DB::alias(DB::raw('ROUND(AVG(married.d_julianday2 - birth.d_julianday1 - 182.5) / 365.25, 1)'), 'age'),
-                DB::alias(DB::raw('ROUND((married.d_year + 49) / 100, 0)'), 'century'),
-                DB::alias(DB::raw("'F'"), 'sex'),
+                DB::alias(DB::round(
+                    DB::divide(
+                        DB::avg(DB::subtract(
+                            DB::subtract(DB::column('married.d_julianday2'), DB::column('birth.d_julianday1')),
+                            DB::value(182.5),
+                        )),
+                        DB::value(365.25),
+                    ),
+                    1,
+                ), 'age'),
+                DB::alias(DB::round(DB::divide(DB::add(DB::column('married.d_year'), DB::value(49)), DB::value(100)), 0), 'century'),
+                DB::alias(DB::value('F'), 'sex'),
             )
             ->from('dates as married')
-            ->join('families as fam', static fn (JoinOn $j): JoinOn => $j->on('fam.f_id', 'married.d_gid')->on('fam.f_file', 'married.d_file'))
-            ->join('dates as birth', static fn (JoinOn $j): JoinOn => $j->on('birth.d_gid', 'fam.f_wife')->on('birth.d_file', 'fam.f_file'))
+            ->join('families as fam', ['fam.f_id' => 'married.d_gid', 'fam.f_file' => 'married.d_file'])
+            ->join('dates as birth', ['birth.d_gid' => 'fam.f_wife', 'birth.d_file' => 'fam.f_file'])
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->whereEqual('married.d_file', $this->tree->id())
             ->whereEqual('married.d_fact', 'MARR')
@@ -1737,7 +1751,7 @@ class Statistics
             ],
             $male
                 ->unionAll($female)
-                ->orderBy('century')
+                ->orderBy(DB::ascending('century'))
                 ->get(),
         );
 
@@ -1895,7 +1909,7 @@ class Statistics
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-nolist', [
             'records' => $records,
@@ -1913,7 +1927,7 @@ class Statistics
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-nolist', [
             'records' => $records,
@@ -1927,7 +1941,7 @@ class Statistics
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-nolist', [
             'records' => $records,
@@ -1945,7 +1959,7 @@ class Statistics
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-nolist', [
             'records' => $records,
@@ -1959,7 +1973,7 @@ class Statistics
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-list', [
             'records' => $records,
@@ -1977,7 +1991,7 @@ class Statistics
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-list', [
             'records' => $records,
@@ -1991,7 +2005,7 @@ class Statistics
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-list', [
             'records' => $records,
@@ -2009,7 +2023,7 @@ class Statistics
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-list', [
             'records' => $records,
@@ -2023,7 +2037,7 @@ class Statistics
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-nolist', [
             'records' => $records,
@@ -2041,7 +2055,7 @@ class Statistics
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-nolist', [
             'records' => $records,
@@ -2055,7 +2069,7 @@ class Statistics
                 'person' => $row->individual,
                 'age'    => $this->format->age($row->days),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-list', [
             'records' => $records,
@@ -2073,7 +2087,7 @@ class Statistics
                 'person' => $individual,
                 'age'    => $this->format->age(Registry::timestampFactory()->todayJulianDay() - $individual->getBirthDate()->minimumJulianDay()),
             ])
-            ->all();
+            ->array();
 
         return view('statistics/individuals/top10-list', [
             'records' => $records,

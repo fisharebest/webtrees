@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 class AlbumModule extends MediaTabModule
 {
@@ -61,11 +61,11 @@ class AlbumModule extends MediaTabModule
     /**
      * Get the linked media objects.
      *
-     * @return Collection<int,Media>
+     * @return Collection<Media>
      */
     private function getMedia(Individual $individual): Collection
     {
-        /** @var Collection<int|string,Media> $media */
+        /** @var Collection<Media> $media */
         $media = new Collection();
 
         foreach ($this->getFactsWithMedia($individual) as $fact) {

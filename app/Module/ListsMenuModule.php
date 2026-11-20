@@ -73,6 +73,6 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
             return null;
         }
 
-        return new Menu(I18N::translate('Lists'), '#', 'menu-list', [], $submenus->all());
+        return new Menu(I18N::translate('Lists'), '#', 'menu-list', [], $submenus->array());
     }
 }

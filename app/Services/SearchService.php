@@ -20,8 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
-use Fisharebest\Database\Query\JoinOn;
-use Fisharebest\Database\Query\Predicates;
 use Fisharebest\Database\Query\QueryBuilder;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DB;
@@ -43,7 +41,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
+use UnexpectedValueException;
 
 use function addcslashes;
 use function array_filter;
@@ -51,6 +50,7 @@ use function array_map;
 use function array_unique;
 use function explode;
 use function implode;
+use function is_string;
 use function mb_stripos;
 use function preg_match;
 use function preg_quote;
@@ -77,7 +77,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function searchFamilies(array $trees, array $search): Collection
     {
@@ -99,7 +99,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function searchFamilyNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -107,15 +107,18 @@ class SearchService
             ->select('f_file', 'f_id', 'f_gedcom')
             ->distinct()
             ->from('families')
-            ->leftJoin('name AS husb_name', static fn (JoinOn $j): JoinOn => $j->on('husb_name.n_file', 'f_file')->on('husb_name.n_id', 'f_husb'))
-            ->leftJoin('name AS wife_name', static fn (JoinOn $j): JoinOn => $j->on('wife_name.n_file', 'f_file')->on('wife_name.n_id', 'f_wife'))
+            ->leftJoin('name AS husb_name', ['husb_name.n_file' => 'f_file', 'husb_name.n_id' => 'f_husb'])
+            ->leftJoin('name AS wife_name', ['wife_name.n_file' => 'f_file', 'wife_name.n_id' => 'f_wife'])
             ->whereIn('f_file', array_map(static fn (Tree $tree) => $tree->id(), $trees))
-            ->orderBy('husb_name.n_sort', 'wife_name.n_sort');
+            ->orderBy(
+                DB::ascending('husb_name.n_sort'),
+                DB::ascending('wife_name.n_sort'),
+            );
 
         foreach ($search as $search_term) {
-            $query = $query->whereNested(static fn (Predicates $p): Predicates => $p
-                ->orILike('husb_name.n_full', '%' . addcslashes($search_term, '\\%_') . '%')
-                ->orILike('wife_name.n_full', '%' . addcslashes($search_term, '\\%_') . '%'));
+            $query = $query->whereNested(static fn (QueryBuilder $query): QueryBuilder => $query
+                ->orWhereILike('husb_name.n_full', '%' . addcslashes($search_term, '\\%_') . '%')
+                ->orWhereILike('wife_name.n_full', '%' . addcslashes($search_term, '\\%_') . '%'));
         }
 
         return $this->paginateQuery($query, $this->familyRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
@@ -123,14 +126,14 @@ class SearchService
 
     /**
      *
-     * @return Collection<int,Family>
+     * @return Collection<Family>
      */
     public function searchFamiliesInPlace(Place $place): Collection
     {
         return DB::query()
             ->select('f_file', 'f_id', 'f_gedcom')
             ->from('families')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'f_file')->on('pl_gid', 'f_id'))
+            ->join('placelinks', ['pl_file' => 'f_file', 'pl_gid' => 'f_id'])
             ->whereEqual('f_file', $place->tree()->id())
             ->whereEqual('pl_p_id', $place->id())
             ->get(in: Collection::class)
@@ -143,7 +146,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function searchIndividuals(array $trees, array $search): Collection
     {
@@ -165,7 +168,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function searchIndividualNames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -173,24 +176,24 @@ class SearchService
             ->select('i_file', 'i_id', 'i_gedcom')
             ->distinct()
             ->from('individuals')
-            ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_file', 'i_file')->on('n_id', 'i_id'))
+            ->join('name', ['n_file' => 'i_file', 'n_id' => 'i_id'])
             ->whereIn('i_file', array_map(static fn (Tree $tree) => $tree->id(), $trees))
             ->whereNested($this->whereSearch('n_full', $search))
-            ->orderBy('n_sort');
+            ->orderBy(DB::ascending('n_sort'));
 
         return $this->paginateQuery($query, $this->individualRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function searchIndividualsInPlace(Place $place): Collection
     {
         return DB::query()
             ->select('i_file', 'i_id', 'i_gedcom')
             ->from('individuals')
-            ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'))
+            ->join('placelinks', ['pl_file' => 'i_file', 'pl_gid' => 'i_id'])
             ->whereEqual('i_file', $place->tree()->id())
             ->whereEqual('pl_p_id', $place->id())
             ->get(in: Collection::class)
@@ -205,7 +208,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Location>
+     * @return Collection<Location>
      */
     public function searchLocations(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -225,7 +228,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Media>
+     * @return Collection<Media>
      */
     public function searchMedia(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -244,7 +247,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Note>
+     * @return Collection<Note>
      */
     public function searchNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -264,7 +267,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,SharedNote>
+     * @return Collection<SharedNote>
      */
     public function searchSharedNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -284,7 +287,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Repository>
+     * @return Collection<Repository>
      */
     public function searchRepositories(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -304,7 +307,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Source>
+     * @return Collection<Source>
      */
     public function searchSources(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -313,7 +316,7 @@ class SearchService
             ->from('sources')
             ->whereIn('s_file', array_map(static fn (Tree $tree) => $tree->id(), $trees))
             ->whereNested($this->whereSearch('s_gedcom', $search))
-            ->orderBy('s_name');
+            ->orderBy(DB::ascending('s_name'));
 
         return $this->paginateQuery($query, $this->sourceRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
@@ -324,7 +327,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Source>
+     * @return Collection<Source>
      */
     public function searchSourcesByName(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -333,7 +336,7 @@ class SearchService
             ->from('sources')
             ->whereIn('s_file', array_map(static fn (Tree $tree) => $tree->id(), $trees))
             ->whereNested($this->whereSearch('s_gedcom', $search))
-            ->orderBy('s_name');
+            ->orderBy(DB::ascending('s_name'));
 
         return $this->paginateQuery($query, $this->sourceRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
@@ -344,7 +347,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,string>
+     * @return Collection<string>
      */
     public function searchSurnames(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -354,12 +357,19 @@ class SearchService
             ->from('name')
             ->whereIn('n_file', array_map(static fn (Tree $tree) => $tree->id(), $trees))
             ->whereNested($this->whereSearch('n_surname', $search))
-            ->orderBy('n_surname')
+            ->orderBy(DB::ascending('n_surname'))
             ->skip($offset)
             ->take($limit)
             ->pluck('n_surname');
 
-        return new Collection($query);
+        return (new Collection($query))
+            ->map(static function (mixed $surname): string {
+                if (!is_string($surname)) {
+                    throw new UnexpectedValueException('Surname query returned a non-string value.');
+                }
+
+                return $surname;
+            });
     }
 
     /**
@@ -368,7 +378,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Submission>
+     * @return Collection<Submission>
      */
     public function searchSubmissions(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -388,7 +398,7 @@ class SearchService
      * @param array<Tree>   $trees
      * @param array<string> $search
      *
-     * @return Collection<int,Submitter>
+     * @return Collection<Submitter>
      */
     public function searchSubmitters(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -405,7 +415,7 @@ class SearchService
     /**
      * Search for places.
      *
-     * @return Collection<int,Place>
+     * @return Collection<Place>
      */
     public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
@@ -418,14 +428,14 @@ class SearchService
         $recursive = DB::query()
             ->select('parent.p_parent_id', DB::concat(DB::column('child.p_place'), DB::value(', '), DB::column('parent.p_place')))
             ->from('places AS parent')
-            ->join('place_hierarchy AS child', static fn (JoinOn $j): JoinOn => $j->on('parent.p_id', 'child.p_parent_id'));
+            ->join('place_hierarchy AS child', ['parent.p_id' => 'child.p_parent_id']);
 
         $query = DB::query()
             ->withRecursiveCte('place_hierarchy', $initial, $recursive)
             ->select('p_place')
             ->from('place_hierarchy')
             ->whereEqual('p_parent_id', 0)
-            ->orderBy('p_place');
+            ->orderBy(DB::ascending('p_place'));
 
         $row_mapper = static function (object $row) use ($tree): Place {
             $place = implode(', ', array_filter((array) $row, static fn (string|null $value): bool => $value !== null));
@@ -442,7 +452,7 @@ class SearchService
      * @param array<string,string> $fields
      * @param array<string,string> $modifiers
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function searchIndividualsAdvanced(Tree $tree, array $fields, array $modifiers): Collection
     {
@@ -491,54 +501,54 @@ class SearchService
 
         if ($father_name || $mother_name) {
             $query = $query
-                ->join('link AS l1', static fn (JoinOn $j): JoinOn => $j->on('l1.l_file', 'i_file')->on('l1.l_from', 'i_id'))
+                ->join('link AS l1', ['l1.l_file' => 'i_file', 'l1.l_from' => 'i_id'])
                 ->whereEqual('l1.l_type', 'FAMC');
 
             if ($father_name) {
                 $query = $query
-                    ->join('link AS l2', static fn (JoinOn $j): JoinOn => $j->on('l2.l_file', 'l1.l_file')->on('l2.l_from', 'l1.l_to'))
+                    ->join('link AS l2', ['l2.l_file' => 'l1.l_file', 'l2.l_from' => 'l1.l_to'])
                     ->whereEqual('l2.l_type', 'HUSB')
-                    ->join('name AS fath_name', static fn (JoinOn $j): JoinOn => $j->on('fath_name.n_file', 'l2.l_file')->on('fath_name.n_id', 'l2.l_to'));
+                    ->join('name AS fath_name', ['fath_name.n_file' => 'l2.l_file', 'fath_name.n_id' => 'l2.l_to']);
             }
 
             if ($mother_name) {
                 $query = $query
-                    ->join('link AS l3', static fn (JoinOn $j): JoinOn => $j->on('l3.l_file', 'l1.l_file')->on('l3.l_from', 'l1.l_to'))
+                    ->join('link AS l3', ['l3.l_file' => 'l1.l_file', 'l3.l_from' => 'l1.l_to'])
                     ->whereEqual('l3.l_type', 'WIFE')
-                    ->join('name AS moth_name', static fn (JoinOn $j): JoinOn => $j->on('moth_name.n_file', 'l3.l_file')->on('moth_name.n_id', 'l3.l_to'));
+                    ->join('name AS moth_name', ['moth_name.n_file' => 'l3.l_file', 'moth_name.n_id' => 'l3.l_to']);
             }
         }
 
         if ($spouse_family) {
             $query = $query
-                ->join('link AS l4', static fn (JoinOn $j): JoinOn => $j->on('l4.l_file', 'i_file')->on('l4.l_from', 'i_id'))
+                ->join('link AS l4', ['l4.l_file' => 'i_file', 'l4.l_from' => 'i_id'])
                 ->whereEqual('l4.l_type', 'FAMS')
-                ->join('families', static fn (JoinOn $j): JoinOn => $j->on('f_file', 'l4.l_file')->on('f_id', 'l4.l_to'));
+                ->join('families', ['f_file' => 'l4.l_file', 'f_id' => 'l4.l_to']);
         }
 
         if ($indi_name) {
             $query = $query
-                ->join('name AS indi_name', static fn (JoinOn $j): JoinOn => $j->on('indi_name.n_file', 'i_file')->on('indi_name.n_id', 'i_id'));
+                ->join('name AS indi_name', ['indi_name.n_file' => 'i_file', 'indi_name.n_id' => 'i_id']);
         }
 
         foreach (array_unique($indi_dates) as $indi_date) {
-            $query = $query->join('date_' . $indi_date, static fn (JoinOn $j): JoinOn => $j->on('date_' . $indi_date . '.d_file', 'i_file')->on('date_' . $indi_date . '.d_gid', 'i_id'));
+            $query = $query->join('date_' . $indi_date, ['date_' . $indi_date . '.d_file' => 'i_file', 'date_' . $indi_date . '.d_gid' => 'i_id']);
         }
 
         foreach (array_unique($fam_dates) as $fam_date) {
-            $query = $query->join('date_' . $fam_date, static fn (JoinOn $j): JoinOn => $j->on('date_' . $fam_date . '.d_file', 'f_file')->on('date_' . $fam_date . '.d_gid', 'f_id'));
+            $query = $query->join('date_' . $fam_date, ['date_' . $fam_date . '.d_file' => 'f_file', 'date_' . $fam_date . '.d_gid' => 'f_id']);
         }
 
         if ($indi_plac) {
-            $query = $query->join('placelinks AS indi_placelinks', static fn (JoinOn $j): JoinOn => $j->on('indi_placelinks.pl_file', 'i_file')->on('indi_placelinks.pl_gid', 'i_id'));
+            $query = $query->join('placelinks AS indi_placelinks', ['indi_placelinks.pl_file' => 'i_file', 'indi_placelinks.pl_gid' => 'i_id']);
 
-            $query = $query->join('places AS indi_places', static fn (JoinOn $j): JoinOn => $j->on('indi_places.p_file', 'i_file')->on('indi_places.p_id', 'i_id'));
+            $query = $query->join('places AS indi_places', ['indi_places.p_file' => 'i_file', 'indi_places.p_id' => 'i_id']);
         }
 
         if ($fam_plac) {
             $query = $query
-                ->join('placelinks AS fam_placelinks', static fn (JoinOn $j): JoinOn => $j->on('fam_placelinks.pl_file', 'f_file')->on('fam_placelinks.pl_gid', 'f_id'))
-                ->join('places AS fam_places', static fn (JoinOn $j): JoinOn => $j->on('fam_places.p_file', 'f_file')->on('fam_places.p_id', 'f_id'));
+                ->join('placelinks AS fam_placelinks', ['fam_placelinks.pl_file' => 'f_file', 'fam_placelinks.pl_gid' => 'f_id'])
+                ->join('places AS fam_places', ['fam_places.p_file' => 'f_file', 'fam_places.p_id' => 'f_id']);
         }
 
         foreach ($fields as $field_name => $field_value) {
@@ -582,23 +592,23 @@ class SearchService
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
                                 $query = $query->whereNested(
-                                    static fn (Predicates $p): Predicates => $p
-                                    ->equal('indi_name.n_surn', $field_value)
-                                    ->orEqual('indi_name.n_surname', $field_value)
+                                    static fn (QueryBuilder $query): QueryBuilder => $query
+                                    ->whereEqual('indi_name.n_surn', $field_value)
+                                    ->orWhereEqual('indi_name.n_surname', $field_value)
                                 );
                                 break;
                             case 'BEGINS':
                                 $query = $query->whereNested(
-                                    static fn (Predicates $p): Predicates => $p
-                                        ->iLike('indi_name.n_surn', $field_value . '%')
-                                        ->orILike('indi_name.n_surname', $field_value . '%')
+                                    static fn (QueryBuilder $query): QueryBuilder => $query
+                                        ->whereILike('indi_name.n_surn', $field_value . '%')
+                                        ->orWhereILike('indi_name.n_surname', $field_value . '%')
                                 );
                                 break;
                             case 'CONTAINS':
                                 $query = $query->whereNested(
-                                    static fn (Predicates $p): Predicates => $p
-                                        ->iLike('indi_name.n_surn', '%' . $field_value . '%')
-                                        ->orILike('indi_name.n_surname', '%' . $field_value . '%')
+                                    static fn (QueryBuilder $query): QueryBuilder => $query
+                                        ->whereILike('indi_name.n_surn', '%' . $field_value . '%')
+                                        ->orWhereILike('indi_name.n_surname', '%' . $field_value . '%')
                                 );
                                 break;
                             case 'SDX_STD':
@@ -608,9 +618,9 @@ class SearchService
                                 } else {
                                     // No phonetic content? Use a substring match
                                     $query = $query->whereNested(
-                                        static fn (Predicates $p): Predicates => $p
-                                            ->iLike('indi_name.n_surn', '%' . $field_value . '%')
-                                            ->orILike('indi_name.n_surname', '%' . $field_value . '%')
+                                        static fn (QueryBuilder $query): QueryBuilder => $query
+                                            ->whereILike('indi_name.n_surn', '%' . $field_value . '%')
+                                            ->orWhereILike('indi_name.n_surname', '%' . $field_value . '%')
                                     );
                                 }
                                 break;
@@ -622,9 +632,9 @@ class SearchService
                                 } else {
                                     // No phonetic content? Use a substring match
                                     $query = $query->whereNested(
-                                        static fn (Predicates $p): Predicates => $p
-                                            ->iLike('indi_name.n_surn', '%' . $field_value . '%')
-                                            ->orILike('indi_name.n_surname', '%' . $field_value . '%')
+                                        static fn (QueryBuilder $query): QueryBuilder => $query
+                                            ->whereILike('indi_name.n_surn', '%' . $field_value . '%')
+                                            ->orWhereILike('indi_name.n_surname', '%' . $field_value . '%')
                                     );
                                 }
                                 break;
@@ -718,9 +728,9 @@ class SearchService
                                 } else {
                                     // No phonetic content? Use a substring match
                                     $query = $query->whereNested(
-                                        static fn (Predicates $p): Predicates => $p
-                                            ->iLike($table . '.n_surn', '%' . $field_value . '%')
-                                            ->orILike($table . '.n_surname', '%' . $field_value . '%')
+                                        static fn (QueryBuilder $query): QueryBuilder => $query
+                                            ->whereILike($table . '.n_surn', '%' . $field_value . '%')
+                                            ->orWhereILike($table . '.n_surname', '%' . $field_value . '%')
                                     );
                                 }
                                 break;
@@ -732,9 +742,9 @@ class SearchService
                                 } else {
                                     // No phonetic content? Use a substring match
                                     $query = $query->whereNested(
-                                        static fn (Predicates $p): Predicates => $p
-                                            ->iLike($table . '.n_surn', '%' . $field_value . '%')
-                                            ->orILike($table . '.n_surname', '%' . $field_value . '%')
+                                        static fn (QueryBuilder $query): QueryBuilder => $query
+                                            ->whereILike($table . '.n_surn', '%' . $field_value . '%')
+                                            ->orWhereILike($table . '.n_surname', '%' . $field_value . '%')
                                     );
                                 }
                                 break;
@@ -841,7 +851,7 @@ class SearchService
     /**
      * @param array<Tree> $search_trees
      *
-     * @return Collection<int,Individual>
+     * @return Collection<Individual>
      */
     public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees): Collection
     {
@@ -878,14 +888,14 @@ class SearchService
 
         if ($plac_sdx !== '') {
             $query = $query
-                ->join('placelinks', static fn (JoinOn $j): JoinOn => $j->on('pl_file', 'i_file')->on('pl_gid', 'i_id'))
-                ->join('places', static fn (JoinOn $j): JoinOn => $j->on('p_file', 'pl_file')->on('p_id', 'pl_p_id'))
+                ->join('placelinks', ['pl_file' => 'i_file', 'pl_gid' => 'i_id'])
+                ->join('places', ['p_file' => 'pl_file', 'p_id' => 'pl_p_id'])
                 ->whereNested($this->wherePhonetic($plac_field, $plac_sdx));
         }
 
         if ($givn_sdx !== '' || $surn_sdx !== '') {
             $query = $query
-                ->join('name', static fn (JoinOn $j): JoinOn => $j->on('n_file', 'i_file')->on('n_id', 'i_id'))
+                ->join('name', ['n_file' => 'i_file', 'n_id' => 'i_id'])
                 ->whereNested($this->wherePhonetic($givn_field, $givn_sdx))
                 ->whereNested($this->wherePhonetic($surn_field, $surn_sdx));
         }
@@ -905,7 +915,7 @@ class SearchService
      * @param int     $offset     Skip this many rows.
      * @param int     $limit      Take this many rows.
      *
-     * @return Collection<int,mixed>
+     * @return Collection<mixed>
      */
     private function paginateQuery(QueryBuilder $query, Closure $row_mapper, Closure $row_filter, int $offset, int $limit): Collection
     {
@@ -915,7 +925,7 @@ class SearchService
             $record = $row_mapper($row);
             // searchIndividualNames() and searchFamilyNames() can return duplicate rows,
             // where individuals have multiple names - and we need to sort results by name.
-            if ($collection->containsStrict($record)) {
+            if ($collection->contains($record)) {
                 continue;
             }
             // If the object has a method "canShow()", then use it to filter for privacy.
@@ -944,27 +954,27 @@ class SearchService
      *
      * @param array<string> $search_terms
      *
-     * @return Closure(Predicates):Predicates
+     * @return Closure(QueryBuilder):QueryBuilder
      */
     private function whereSearch(string $column, array $search_terms): Closure
     {
-        return static function (Predicates $p) use ($column, $search_terms): Predicates {
+        return static function (QueryBuilder $query) use ($column, $search_terms): QueryBuilder {
             foreach ($search_terms as $search_term) {
-                $p = $p->iLike($column, '%' . addcslashes($search_term, '\\%_') . '%');
+                $query = $query->whereILike($column, '%' . addcslashes($search_term, '\\%_') . '%');
             }
 
-            return $p;
+            return $query;
         };
     }
 
     private function wherePhonetic(string $column, string $soundex): Closure
     {
-        return static function (Predicates $p) use ($column, $soundex): Predicates {
+        return static function (QueryBuilder $query) use ($column, $soundex): QueryBuilder {
             foreach (explode(':', $soundex) as $sdx) {
-                $p = $p->orILike($column, '%' . addcslashes($sdx, '\\%_') . '%');
+                $query = $query->orWhereILike($column, '%' . addcslashes($sdx, '\\%_') . '%');
             }
 
-            return $p;
+            return $query;
         };
     }
 
@@ -1006,6 +1016,8 @@ class SearchService
 
     /**
      * Searching for short or common text can give more results than the system can process.
+     *
+     * @return Closure(object): object
      */
     private function rowLimiter(int $limit = self::MAX_SEARCH_RESULTS): Closure
     {
@@ -1024,6 +1036,8 @@ class SearchService
 
     /**
      * Convert a row from any tree in the families table into a family object.
+     *
+     * @return Closure(object): Family
      */
     private function familyRowMapper(): Closure
     {
@@ -1036,6 +1050,8 @@ class SearchService
 
     /**
      * Convert a row from any tree in the individuals table into an individual object.
+     *
+     * @return Closure(object): Individual
      */
     private function individualRowMapper(): Closure
     {

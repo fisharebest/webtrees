@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 use function array_map;
 use function explode;
@@ -112,10 +112,10 @@ class EventsRecorded extends AbstractElement
     {
         $factory = Registry::elementFactory();
 
-        $options = Collection::make(self::EVENTS_RECORDED)
+        $options = (new Collection(self::EVENTS_RECORDED))
             ->mapWithKeys(static fn (string $tag): array => [explode(':', $tag)[1] => $factory->make($tag)->label()])
             ->sort()
-            ->all();
+            ->array();
 
         $id2 = Registry::idFactory()->id();
 

@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Client\ClientInterface;
@@ -197,7 +197,7 @@ class UpgradeWizardStepTest extends TestCase
     public function testStepExport(): void
     {
         $tree         = $this->importTree('demo.ged');
-        $all_trees    = Collection::make([$tree->name() => $tree]);
+        $all_trees    = new Collection([$tree->name() => $tree]);
         $tree_service = self::createStub(TreeService::class);
         $tree_service->method('all')->willReturn($all_trees);
 

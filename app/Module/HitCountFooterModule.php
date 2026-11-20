@@ -156,7 +156,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         ], [
             'page_count' => 1,
         ], [
-            'page_count' => DB::raw('page_count + 1'),
+            'page_count' => DB::add(DB::column('page_count'), DB::value(1)),
         ]);
 
         $count = (int) DB::query()

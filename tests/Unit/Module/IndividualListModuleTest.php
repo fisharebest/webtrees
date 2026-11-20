@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 
@@ -51,7 +51,7 @@ class IndividualListModuleTest extends TestCase
         $module = new class extends IndividualListModule {
             /**
              * @param array<string> $surnames
-             * @return Collection<int,\Fisharebest\Webtrees\Individual>
+             * @return Collection<\Fisharebest\Webtrees\Individual>
              */
             public function selectIndividuals(Tree $tree, array $surnames): Collection
             {

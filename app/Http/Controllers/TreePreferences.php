@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -115,7 +115,7 @@ final class TreePreferences
 
         $ignore_facts = ['CHAN', 'CHIL', 'FAMC', 'FAMS', 'HUSB', 'SUBM', 'WIFE', 'NAME', 'SEX'];
 
-        $all_family_facts = Collection::make(Registry::elementFactory()->make('FAM')->subtags())
+        $all_family_facts = (new Collection(Registry::elementFactory()->make('FAM')->subtags()))
             ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
             ->mapWithKeys(static fn (string $value, string $key): array => [$key => 'FAM:' . $key])
             ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
@@ -123,7 +123,7 @@ final class TreePreferences
             ->map(static fn (ElementInterface $element): string => $element->label())
             ->sort(I18N::compare(...));
 
-        $all_individual_facts = Collection::make(Registry::elementFactory()->make('INDI')->subtags())
+        $all_individual_facts = (new Collection(Registry::elementFactory()->make('INDI')->subtags()))
             ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
             ->mapWithKeys(static fn (string $value, string $key): array => [$key => 'INDI:' . $key])
             ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))

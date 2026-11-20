@@ -22,12 +22,14 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Enums\AccessLevel;
 use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Http\Controllers\NotePage;
-use Illuminate\Support\Str;
 
 use function explode;
 use function htmlspecialchars_decode;
+use function mb_strimwidth;
+use function mb_strwidth;
 use function preg_match;
 use function preg_replace;
+use function rtrim;
 use function strip_tags;
 
 use const ENT_QUOTES;
@@ -91,7 +93,11 @@ class Note extends GedcomRecord
         $first_line = self::firstLineOfTextFromHtml($html);
 
         if ($first_line !== '') {
-            $this->addName(static::RECORD_TYPE, Str::limit($first_line, 100, I18N::translate('…')), $this->gedcom());
+            $name = mb_strwidth($first_line, 'UTF-8') > 100
+                ? rtrim(mb_strimwidth($first_line, 0, 100, '', 'UTF-8')) . I18N::translate('…')
+                : $first_line;
+
+            $this->addName(static::RECORD_TYPE, $name, $this->gedcom());
         }
     }
 

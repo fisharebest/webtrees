@@ -393,7 +393,7 @@ trait ModuleThemeTrait
                 ]);
             });
 
-            return new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->all());
+            return new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus->array());
         }
 
         return null;
@@ -416,7 +416,7 @@ trait ModuleThemeTrait
             ->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
             ->map(static fn (ModuleMenuInterface $menu): Menu|null => $menu->getMenu($tree))
             ->filter()
-            ->all();
+            ->array();
     }
 
     /**

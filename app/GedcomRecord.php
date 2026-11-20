@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Enums\ChangeStatus;
 use Fisharebest\Webtrees\Enums\Restriction;
 use Fisharebest\Webtrees\Http\Controllers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use InvalidArgumentException;
 use LogicException;
 
@@ -509,7 +509,7 @@ class GedcomRecord
      *
      * @param array<string> $filter
      *
-     * @return Collection<int,Fact>
+     * @return Collection<Fact>
      */
     public function facts(
         array $filter = [],
@@ -740,12 +740,13 @@ class GedcomRecord
 
         // Create a pending change
         DB::query(table: 'change')->insert(values: [
-            'gedcom_id'  => $this->tree->id(),
-            'xref'       => $this->xref,
-            'old_gedcom' => $this->gedcom(),
-            'new_gedcom' => $gedcom,
-            'status'     => ChangeStatus::Pending->value,
-            'user_id'    => Auth::id(),
+            'gedcom_id'   => $this->tree->id(),
+            'xref'        => $this->xref,
+            'old_gedcom'  => $this->gedcom(),
+            'new_gedcom'  => $gedcom,
+            'status'      => ChangeStatus::Pending->value,
+            'user_id'     => Auth::id(),
+            'change_time' => DB::now(),
         ]);
 
         // Clear the cache
@@ -768,12 +769,13 @@ class GedcomRecord
         // Create a pending change
         if (!$this->isPendingDeletion()) {
             DB::query(table: 'change')->insert([
-                'gedcom_id'  => $this->tree->id(),
-                'xref'       => $this->xref,
-                'old_gedcom' => $this->gedcom(),
-                'new_gedcom' => '',
-                'status'     => ChangeStatus::Pending->value,
-                'user_id'    => Auth::id(),
+                'gedcom_id'   => $this->tree->id(),
+                'xref'        => $this->xref,
+                'old_gedcom'  => $this->gedcom(),
+                'new_gedcom'  => '',
+                'status'      => ChangeStatus::Pending->value,
+                'user_id'     => Auth::id(),
+                'change_time' => DB::now(),
             ]);
         }
 
@@ -826,7 +828,7 @@ class GedcomRecord
      * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
      * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
      *
-     * @param Collection<int,Fact> $facts
+     * @param Collection<Fact> $facts
      */
     protected function extractNamesFromFacts(int $level, string $fact_type, Collection $facts): void
     {

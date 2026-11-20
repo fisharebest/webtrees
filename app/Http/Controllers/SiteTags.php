@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -67,8 +67,8 @@ final class SiteTags
         $custom_time_tags     = (bool) Site::getPreference('CUSTOM_TIME_TAGS');
 
         return $this->viewResponse('admin/tags', [
-            'all_family_tags'        => $all_family_tags->sort()->all(),
-            'all_individual_tags'    => $all_individual_tags->sort()->all(),
+            'all_family_tags'        => $all_family_tags->sort()->array(),
+            'all_individual_tags'    => $all_individual_tags->sort()->array(),
             'custom_family_tags'     => $custom_family_tags,
             'custom_gedcom_l_tags'   => $custom_gedcom_l_tags,
             'custom_individual_tags' => $custom_individual_tags,

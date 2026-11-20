@@ -82,7 +82,7 @@ final class TreeImport extends AbstractCommand
         $gedcom_media_path  = $this->stringOption(input: $input, name: 'gedcom-media-path');
         $encoding           = $this->stringOption(input: $input, name: 'encoding');
 
-        $tree = $this->tree_service->all()[$tree_name] ?? null;
+        $tree = $this->tree_service->all()->get($tree_name);
 
         if ($tree === null) {
             $io->error(message: 'Tree "' . $tree_name . '" not found.');

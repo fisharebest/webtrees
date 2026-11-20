@@ -13,18 +13,18 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
+use Fisharebest\Collection\Collection;
 
 /**
- * @var Collection<int,Fact>|null       $clipboard_facts
- * @var Collection<int,Family>|null     $linked_families
- * @var Collection<int,Individual>|null $linked_individuals
- * @var Collection<int,Location>|null   $linked_locations
- * @var Collection<int,Media>|null      $linked_media_objects
- * @var Collection<int,Note>|null       $linked_notes
- * @var Collection<int,Repository>|null $linked_repositories
- * @var Collection<int,Source>|null     $linked_sources
- * @var Collection<int,Submitter>|null  $linked_submitters
+ * @var Collection<Fact>|null       $clipboard_facts
+ * @var Collection<Family>|null     $linked_families
+ * @var Collection<Individual>|null $linked_individuals
+ * @var Collection<Location>|null   $linked_locations
+ * @var Collection<Media>|null      $linked_media_objects
+ * @var Collection<Note>|null       $linked_notes
+ * @var Collection<Repository>|null $linked_repositories
+ * @var Collection<Source>|null     $linked_sources
+ * @var Collection<Submitter>|null  $linked_submitters
  * @var GedcomRecord                    $record
  * @var Tree                            $tree
  */

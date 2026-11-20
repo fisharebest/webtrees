@@ -81,16 +81,16 @@ class GedcomRecordTest extends TestCase
 
         self::assertCount(4, $facts);
 
-        $individual->createFact('1 FACT baz', false, $facts[2]);
+        $individual->createFact('1 FACT baz', false, $facts->get(2));
 
         $facts = $individual->facts(['FACT']);
 
         self::assertCount(5, $facts);
-        self::assertSame('1 FACT foo', $facts[0]->gedcom());
-        self::assertSame('1 FACT foo', $facts[1]->gedcom());
-        self::assertSame('1 FACT baz', $facts[2]->gedcom());
-        self::assertSame('1 FACT bar', $facts[3]->gedcom());
-        self::assertSame('1 FACT bar', $facts[4]->gedcom());
+        self::assertSame('1 FACT foo', $facts->get(0)->gedcom());
+        self::assertSame('1 FACT foo', $facts->get(1)->gedcom());
+        self::assertSame('1 FACT baz', $facts->get(2)->gedcom());
+        self::assertSame('1 FACT bar', $facts->get(3)->gedcom());
+        self::assertSame('1 FACT bar', $facts->get(4)->gedcom());
     }
 
     public function createFactWithInvalidData(): void
@@ -112,14 +112,14 @@ class GedcomRecordTest extends TestCase
 
         $facts = $individual->facts(['FACT']);
 
-        $individual->deleteFact($facts[2]->id(), false);
+        $individual->deleteFact($facts->get(2)->id(), false);
 
         $facts = $individual->facts(['FACT']);
 
         self::assertCount(3, $facts);
-        self::assertSame('1 FACT foo', $facts[0]->gedcom());
-        self::assertSame('1 FACT foo', $facts[1]->gedcom());
-        self::assertSame('1 FACT bar', $facts[2]->gedcom());
+        self::assertSame('1 FACT foo', $facts->get(0)->gedcom());
+        self::assertSame('1 FACT foo', $facts->get(1)->gedcom());
+        self::assertSame('1 FACT bar', $facts->get(2)->gedcom());
     }
 
     public function testDeleteRecordCreatesPendingChange(): void
@@ -158,15 +158,15 @@ class GedcomRecordTest extends TestCase
 
         $facts = $individual->facts(['FACT']);
 
-        $individual->updateFact($facts[2]->id(), '1 FACT baz', false);
+        $individual->updateFact($facts->get(2)->id(), '1 FACT baz', false);
 
         $facts = $individual->facts(['FACT']);
 
         self::assertCount(4, $facts);
-        self::assertSame('1 FACT foo', $facts[0]->gedcom());
-        self::assertSame('1 FACT foo', $facts[1]->gedcom());
-        self::assertSame('1 FACT baz', $facts[2]->gedcom());
-        self::assertSame('1 FACT bar', $facts[3]->gedcom());
+        self::assertSame('1 FACT foo', $facts->get(0)->gedcom());
+        self::assertSame('1 FACT foo', $facts->get(1)->gedcom());
+        self::assertSame('1 FACT baz', $facts->get(2)->gedcom());
+        self::assertSame('1 FACT bar', $facts->get(3)->gedcom());
     }
 
     public function testEditingKeepsFactsWithRestrictionNotice(): void
@@ -179,17 +179,17 @@ class GedcomRecordTest extends TestCase
         self::assertCount(4, $facts);
 
         // ...and editing the record must not delete them.
-        $individual->updateFact($facts[3]->id(), '1 FACT quux', false);
+        $individual->updateFact($facts->get(3)->id(), '1 FACT quux', false);
         $individual->createFact('1 FACT corge', false);
 
         $facts = $individual->facts(['FACT']);
 
         self::assertCount(5, $facts);
-        self::assertSame("1 FACT foo\n2 RESN confidential", $facts[0]->gedcom());
-        self::assertSame("1 FACT bar\n2 RESN privacy", $facts[1]->gedcom());
-        self::assertSame("1 FACT baz\n2 RESN none", $facts[2]->gedcom());
-        self::assertSame('1 FACT quux', $facts[3]->gedcom());
-        self::assertSame('1 FACT corge', $facts[4]->gedcom());
+        self::assertSame("1 FACT foo\n2 RESN confidential", $facts->get(0)->gedcom());
+        self::assertSame("1 FACT bar\n2 RESN privacy", $facts->get(1)->gedcom());
+        self::assertSame("1 FACT baz\n2 RESN none", $facts->get(2)->gedcom());
+        self::assertSame('1 FACT quux', $facts->get(3)->gedcom());
+        self::assertSame('1 FACT corge', $facts->get(4)->gedcom());
     }
 
     public function updateFactWithInvalidData(): void
@@ -199,7 +199,7 @@ class GedcomRecordTest extends TestCase
         $individual = $this->tree->createIndividual('0 @@ INDI');
         $individual->createFact('1 FACT foo', false);
         $facts = $individual->facts(['FACT']);
-        $individual->updateFact($facts[0]->id(), '2 FOO bar', false);
+        $individual->updateFact($facts->get(0)->id(), '2 FOO bar', false);
     }
 
     public function testSortFactsForIndividualUsesDateAndTypeRules(): void
@@ -212,7 +212,7 @@ class GedcomRecordTest extends TestCase
 
         $facts = $individual->facts(['BIRT', 'OCCU', 'DEAT'], true);
 
-        self::assertSame(['INDI:BIRT', 'INDI:OCCU', 'INDI:DEAT'], $facts->map(static fn (Fact $fact): string => $fact->tag())->all());
+        self::assertSame(['INDI:BIRT', 'INDI:OCCU', 'INDI:DEAT'], $facts->map(static fn (Fact $fact): string => $fact->tag())->array());
     }
 
     public function testSortFactsForFamilyOrdersUndatedFactsByType(): void
@@ -224,6 +224,6 @@ class GedcomRecordTest extends TestCase
 
         $facts = $family->facts(['MARR', 'DIV'], true);
 
-        self::assertSame(['FAM:MARR', 'FAM:DIV'], $facts->map(static fn (Fact $fact): string => $fact->tag())->all());
+        self::assertSame(['FAM:MARR', 'FAM:DIV'], $facts->map(static fn (Fact $fact): string => $fact->tag())->array());
     }
 }
