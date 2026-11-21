@@ -77,6 +77,18 @@ trait ModuleCustomTrait
     }
 
     /**
+     * Fetch the version information from the given content string.
+     *
+     * @param string $content
+     *
+     * @return string
+     */
+    protected function extractVersion(string $content): string
+    {
+        return $content;
+    }
+
+    /**
      * Fetch the latest version of this module.
      */
     public function customModuleLatestVersion(): string
@@ -94,7 +106,7 @@ trait ModuleCustomTrait
                 $response        = $http_client->sendRequest($request);
 
                 if ($response->getStatusCode() === HttpStatusCode::OK->value) {
-                    $version = $response->getBody()->getContents();
+                    $version = $this->extractVersion($response->getBody()->getContents());
 
                     // Does the response look like a version?
                     if (preg_match('/^\d+\.\d+\.\d+/', $version)) {
