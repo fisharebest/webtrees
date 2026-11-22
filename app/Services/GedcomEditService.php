@@ -304,8 +304,10 @@ class GedcomEditService
         $preferences = array_values($preferences);
         $hidden_tags = array_merge(...$preferences);
 
+        // Hiding INDI:CHR must not hide INDI:CHR:DATE, etc.  A hidden event can still be
+        // added (e.g. from the list of quick facts), and then needs its subtags.
         foreach ($hidden_tags as $hidden_tag) {
-            if (str_contains($tag, $hidden_tag)) {
+            if (str_ends_with($tag, $hidden_tag)) {
                 return true;
             }
         }
