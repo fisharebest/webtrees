@@ -64,7 +64,7 @@ class NorwegianBokmalTest extends AbstractLanguageTestCase
     }
     public function testEndonym(): void
     {
-        self::assertSame('norsk bokml', self::language()->endonym());
+        self::assertSame('norsk bokmål', self::language()->endonym());
     }
 
 
@@ -685,8 +685,8 @@ class NorwegianBokmalTest extends AbstractLanguageTestCase
         );
 
         // Partners
-        self::assertRelationshipNames('hustru', 'mann', [$husband, $fm, $wife]);
-        self::assertRelationshipNames('eksmann', 'ekskone', [$wife, $fd, $exHusband]);
+        self::assertRelationshipNames('hustru', 'ektemann', [$husband, $fm, $wife]);
+        self::assertRelationshipNames('eksektemann', 'ekshustru', [$wife, $fd, $exHusband]);
         self::assertRelationshipNames('forlovede', 'forlovede', [$fiance, $fe, $engaged]);
 
         // Parents
@@ -716,9 +716,9 @@ class NorwegianBokmalTest extends AbstractLanguageTestCase
         self::assertRelationshipNames('mormor', 'barnebarn', [$son, $fm, $wife, $fw, $motherOfW]);
         self::assertRelationshipNames('morfar', 'barnebarn', [$son, $fm, $wife, $fw, $fatherOfW]);
 
-        // Great-grandparents (dynamic)
-        self::assertRelationshipName('tippoldefar', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
-        self::assertRelationshipName('tippoldemor', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
+        // Great-grandparents
+        self::assertRelationshipName('oldefar', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
+        self::assertRelationshipName('oldemor', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
 
         // Aunts and uncles (paternal/maternal specific)
         self::assertRelationshipNames('faster', 'nevø', [$son, $fm, $husband, $fp, $sisterOfH]);

@@ -685,9 +685,9 @@ class NorwegianNynorskTest extends AbstractLanguageTestCase
         );
 
         // Partners
-        self::assertRelationshipNames('hustru', 'mann', [$husband, $fm, $wife]);
-        self::assertRelationshipNames('eksmann', 'ekskone', [$wife, $fd, $exHusband]);
-        self::assertRelationshipNames('forlova', 'forlova', [$fiance, $fe, $engaged]);
+        self::assertRelationshipNames('hustru', 'ektemann', [$husband, $fm, $wife]);
+        self::assertRelationshipNames('eksektemann', 'ekshustru', [$wife, $fd, $exHusband]);
+        self::assertRelationshipNames('festemøy', 'festemann', [$fiance, $fe, $engaged]);
 
         // Parents
         self::assertRelationshipNames('mor', 'son', [$son, $fm, $wife]);
@@ -695,8 +695,8 @@ class NorwegianNynorskTest extends AbstractLanguageTestCase
         self::assertRelationshipNames('mor', 'dotter', [$daughter, $fm, $wife]);
 
         // Siblings
-        self::assertRelationshipNames('lillesyster', 'storebror', [$son, $fm, $daughter]);
-        self::assertRelationshipNames('storebror', 'lillesyster', [$daughter, $fm, $son]);
+        self::assertRelationshipNames('veslesyster', 'storebror', [$son, $fm, $daughter]);
+        self::assertRelationshipNames('storebror', 'veslesyster', [$daughter, $fm, $son]);
 
         // Half-siblings
         self::assertRelationshipName('halvbror', [$stepDaughter, $fd, $wife, $fm, $son]);
@@ -716,9 +716,9 @@ class NorwegianNynorskTest extends AbstractLanguageTestCase
         self::assertRelationshipNames('mormor', 'barnebarn', [$son, $fm, $wife, $fw, $motherOfW]);
         self::assertRelationshipNames('morfar', 'barnebarn', [$son, $fm, $wife, $fw, $fatherOfW]);
 
-        // Great-grandparents (dynamic)
-        self::assertRelationshipName('tippoldefar', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
-        self::assertRelationshipName('tippoldemor', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
+        // Great-grandparents
+        self::assertRelationshipName('oldefar', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
+        self::assertRelationshipName('oldemor', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
 
         // Aunts and uncles (paternal/maternal specific)
         self::assertRelationshipNames('faster', 'nevø', [$son, $fm, $husband, $fp, $sisterOfH]);
