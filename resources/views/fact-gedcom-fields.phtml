@@ -30,6 +30,7 @@ $keys     = array_keys($levels);
 $elements = [];
 
 $private_level = PHP_INT_MAX;
+$hide_gedcom_errors = $tree->getPreference('HIDE_GEDCOM_ERRORS') === '1';
 
 foreach ($keys as $key) {
     $hierarchy[$levels[$key]] = $tags[$key];
@@ -79,7 +80,9 @@ foreach ($keys as $key) {
             <?php array_shift($keys) ?>
             <?php foreach ($keys as $key) : ?>
                 <?php if ($values[$key] !== '') : ?>
-                    <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
+                    <?php if (!$hide_gedcom_errors || !($elements[$key] instanceof UnknownElement)) : ?>
+                        <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
+                    <?php endif ?>
                 <?php endif ?>
             <?php endforeach ?>
         </div>
@@ -87,7 +90,7 @@ foreach ($keys as $key) {
 <?php else : ?>
     <?php foreach ($keys as $key) : ?>
         <?php if ($values[$key] !== '') : ?>
-            <?php if ($elements[$key] instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') !== '1') : ?>
+            <?php if (!$hide_gedcom_errors || !($elements[$key] instanceof UnknownElement)) : ?>
                 <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
             <?php endif ?>
         <?php endif ?>
