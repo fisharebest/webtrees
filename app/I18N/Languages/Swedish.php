@@ -225,8 +225,7 @@ final readonly class Swedish extends AbstractLanguage
      */
     private function gen(string $nominative): array
     {
-        $genitive = $nominative . 's';
-        return [$nominative, $genitive . ' %s'];
+        return [$nominative, $nominative . 's %s'];
     }
 
     /**
