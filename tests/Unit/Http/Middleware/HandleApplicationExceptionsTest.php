@@ -19,19 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
+use Fisharebest\Webtrees\Container;
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Exceptions\ImageException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpInternalServerErrorException;
+use Fisharebest\Webtrees\Http\Middleware\HandleApplicationExceptions;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\PhpService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tests\TestCase;
-use Fisharebest\Collection\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Fisharebest\Webtrees\Http\Middleware\HandleApplicationExceptions;
+use RuntimeException;
 
 #[CoversClass(HandleApplicationExceptions::class)]
 class HandleApplicationExceptionsTest extends TestCase
@@ -51,6 +51,57 @@ class HandleApplicationExceptionsTest extends TestCase
         $middleware = new HandleApplicationExceptions(new ModuleService(), new WebtreesTheme());
         $response   = $middleware->process($request, $handler);
 
+        self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
+    }
+
+    public function testMiddlewareHandlesExceptionBeforeRouting(): void
+    {
+        $request = self::createRequest()->withoutAttribute('route');
+        Registry::container(new Container());
+
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willThrowException(new RuntimeException('original failure'));
+
+        $middleware = new HandleApplicationExceptions(new ModuleService(), new WebtreesTheme());
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame($request, Registry::container()->get(ServerRequestInterface::class));
+        self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
+        self::assertStringContainsString('original failure', $response->getBody()->getContents());
+    }
+
+    public function testMiddlewareHandlesHttpExceptionBeforeRouting(): void
+    {
+        $request = self::createRequest()->withoutAttribute('route');
+        Registry::container(new Container());
+
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willThrowException(new HttpInternalServerErrorException('original failure'));
+
+        $middleware = new HandleApplicationExceptions(new ModuleService(), new WebtreesTheme());
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame($request, Registry::container()->get(ServerRequestInterface::class));
+        self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
+        self::assertStringContainsString('original failure', $response->getBody()->getContents());
+    }
+
+    public function testMiddlewareUsesRoutedRequest(): void
+    {
+        $request        = self::createRequest()->withHeader('X-Requested-With', 'XMLHttpRequest');
+        $routed_request = $request->withAttribute('tree', 'example');
+
+        $handler = self::createStub(RequestHandlerInterface::class);
+        $handler->method('handle')->willReturnCallback(static function () use ($routed_request): never {
+            Registry::container()->set(ServerRequestInterface::class, $routed_request);
+
+            throw new HttpInternalServerErrorException('original failure');
+        });
+
+        $middleware = new HandleApplicationExceptions(new ModuleService(), new WebtreesTheme());
+        $response   = $middleware->process($request, $handler);
+
+        self::assertSame($routed_request, Registry::container()->get(ServerRequestInterface::class));
         self::assertSame(HttpStatusCode::InternalServerError->value, $response->getStatusCode());
     }
 

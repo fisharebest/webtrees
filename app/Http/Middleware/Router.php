@@ -89,8 +89,11 @@ readonly class Router implements MiddlewareInterface
         }
 
         // Some older code expects the tree attribute to be a Tree object.
-        $tree    = $request->getAttribute('tree');
-        $tree    = $this->tree_service->all()->get($tree);
+        $tree = $request->getAttribute('tree');
+        if ($tree !== null) {
+            $tree = $this->tree_service->all()->get($tree);
+        }
+
         $request = $request->withAttribute('tree', $tree);
 
         // Some older code expects to find these in the container, for dependency-injection.

@@ -51,6 +51,8 @@ final readonly class HandleApplicationExceptions extends AbstractExceptionHandle
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        Registry::container()->set(ServerRequestInterface::class, $request);
+
         try {
             return $handler->handle($request);
         } catch (HttpException $exception) {
@@ -74,6 +76,10 @@ final readonly class HandleApplicationExceptions extends AbstractExceptionHandle
 
         if ($this->isAjaxRequest($request)) {
             return response($html, $status_code);
+        }
+
+        if ($request->getAttribute('route') === null) {
+            return response(view('layouts/error', ['content' => $html]), $status_code);
         }
 
         $html = view('layouts/default', [
@@ -108,6 +114,10 @@ final readonly class HandleApplicationExceptions extends AbstractExceptionHandle
 
         if ($this->isAjaxRequest($request)) {
             return response($html, HttpStatusCode::InternalServerError);
+        }
+
+        if ($request->getAttribute('route') === null) {
+            return response(view('layouts/error', ['content' => $html]), HttpStatusCode::InternalServerError);
         }
 
         $modules = $this->module_service->all();

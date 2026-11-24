@@ -19,15 +19,67 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Http\Middleware;
 
-use Fisharebest\Webtrees\Tests\TestCase;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Fisharebest\Collection\Collection;
+use Fisharebest\Webtrees\Enums\HttpStatusCode;
 use Fisharebest\Webtrees\Http\Middleware\Router;
+use Fisharebest\Webtrees\Http\Routing\RouteCollection;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 #[CoversClass(Router::class)]
 class RouterTest extends TestCase
 {
-    public function testClass(): void
+    public function testRouteWithoutTree(): void
     {
-        self::assertTrue(class_exists(Router::class));
+        $request = self::createRequest();
+        $request = $request->withUri($request->getUri()->withPath('/'));
+
+        $controller = self::createStub(RequestHandlerInterface::class);
+        $controller->method('handle')->willReturn(Registry::responseFactory()->response('ok'));
+        Registry::container()->set(RequestHandlerInterface::class, $controller);
+
+        $routes = new RouteCollection();
+        $routes->add('/', RequestHandlerInterface::class);
+
+        $module_service = self::createStub(ModuleService::class);
+        $module_service->method('findByInterface')->willReturn(new Collection());
+        $tree_service = self::createMock(TreeService::class);
+        $tree_service->expects(self::never())->method('all');
+
+        $router = new Router($module_service, $routes, $tree_service);
+
+        self::assertSame(HttpStatusCode::OK->value, $router->process($request, $controller)->getStatusCode());
+        self::assertNull(Registry::container()->get(ServerRequestInterface::class)->getAttribute('tree'));
+    }
+
+    public function testRouteWithTree(): void
+    {
+        $request = self::createRequest();
+        $request = $request->withUri($request->getUri()->withPath('/tree/example'));
+
+        $controller = self::createStub(RequestHandlerInterface::class);
+        $controller->method('handle')->willReturn(Registry::responseFactory()->response('ok'));
+        Registry::container()->set(RequestHandlerInterface::class, $controller);
+
+        $routes = new RouteCollection();
+        $routes->add('/tree/{tree}', RequestHandlerInterface::class);
+
+        $tree = self::createStub(Tree::class);
+        $module_service = self::createStub(ModuleService::class);
+        $module_service->method('findByInterface')->willReturn(new Collection());
+        $tree_service = self::createStub(TreeService::class);
+        $tree_service->method('all')->willReturn(new Collection(['example' => $tree]));
+
+        $router = new Router($module_service, $routes, $tree_service);
+
+        self::assertSame(HttpStatusCode::OK->value, $router->process($request, $controller)->getStatusCode());
+        self::assertSame($tree, Registry::container()->get(ServerRequestInterface::class)->getAttribute('tree'));
+        self::assertSame($tree, Registry::container()->get(Tree::class));
     }
 }
