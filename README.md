@@ -172,7 +172,8 @@ Then run this command::
 
 * php composer.phar install
 
-You will need [npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
+You will need [Node.js](https://nodejs.org/) 22.18+ (22.x) or 24.11+ and
+[npm](https://www.npmjs.com/get-npm) to install the Javascript dependencies.
 Then run the commands:
 
 * npm install
