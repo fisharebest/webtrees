@@ -38,4 +38,14 @@ class DescriptiveTitleTest extends AbstractElementTestCase
         self::assertSame('  Foo  bAr  baZ  ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
         self::assertSame("Foo \n\n bAr \n baZ", self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
     }
+
+    public function testEditTextAreaPreservesLeadingNewline(): void
+    {
+        $element = new DescriptiveTitle('label');
+
+        self::assertSame(
+            '<textarea class="form-control" id="id" name="name" rows="3" dir="auto">' . "\n\n" . 'text</textarea>',
+            $element->editTextArea('id', 'name', "\ntext")
+        );
+    }
 }

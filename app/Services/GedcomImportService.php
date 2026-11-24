@@ -212,7 +212,9 @@ class GedcomImportService
                     // Special case - Note records uniquely have data in the level 0 line.
                     // We move this data to a CONC line, so our normal edit tools work.
                     // So we need to add a space for '0 @X@ NOTE\n1 CONC'.
-                    if ($n === 1 || $tree->getPreference('WORD_WRAPPED_NOTES') === '1') {
+                    // An empty text tag also needs a separator before concatenated data.
+                    $empty_text_tag = preg_match('/(?:^|\n)\d+(?: @[^@]+@)? (?:NOTE|TEXT|DATA|CONT)$/', $newrec) === 1;
+                    if ($n === 1 || $empty_text_tag || $tree->getPreference('WORD_WRAPPED_NOTES') === '1') {
                         $newrec .= ' ' . $data;
                     } else {
                         $newrec .= $data;
