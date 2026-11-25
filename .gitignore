@@ -6,13 +6,14 @@
 
 /node_modules/
 
+/public/css/
+/public/js/
 /public/mix-manifest.json
-/public/css/*.map
-/public/css/*/*.map
-/public/js/*.map
-/public/js/*.js.LICENSE.txt
 /public/robots.txt
 
+/resources/fonts/DejaVuSans*.ttf
+/resources/fonts/dejavusans*.json
+/resources/fonts/dejavusans*.z
 /resources/lang/*/messages.php
 
 /robots.txt

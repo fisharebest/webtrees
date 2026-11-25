@@ -112,15 +112,31 @@
             "@composer install --no-interaction",
             "npm ci",
             "npm run build",
+            "@compile-fonts",
             "php index.php build:compile-po-files"
         ],
+        "compile-fonts": [
+            "rm -f resources/fonts/dejavusans*.json resources/fonts/dejavusans*.z",
+            "php index.php dev:convert-font DejaVuSans.ttf",
+            "php index.php dev:convert-font DejaVuSans-Bold.ttf",
+            "php index.php dev:convert-font DejaVuSans-Oblique.ttf",
+            "php index.php dev:convert-font DejaVuSans-BoldOblique.ttf"
+        ],
         "create-release": [
-            "rm -Rf webtrees/",
-            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "@composer install --no-dev --no-interaction",
             "@composer dump-autoload --classmap-authoritative --strict-psr --strict-ambiguous --no-interaction",
+            "npm ci",
+            "rm -Rf public/css/ public/js/",
+            "npm run build",
+            "@compile-fonts",
+            "php index.php build:compile-po-files",
+            "rm -Rf webtrees/",
+            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "cp -r vendor/ webtrees/vendor/",
-            "php webtrees/index.php build:compile-po-files",
+            "cp -r public/css public/js webtrees/public/",
+            "mkdir -p webtrees/resources/fonts/",
+            "cp resources/fonts/DejaVuSans*.ttf resources/fonts/dejavusans* webtrees/resources/fonts/",
+            "for file in resources/lang/*/messages.php; do cp \"$file\" \"webtrees/$(dirname \"$file\")/\"; done",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
         "png": [

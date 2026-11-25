@@ -61,21 +61,16 @@ If not, you'll need to replace `composer` with `php /path/to/your/copy/of/compos
 
 ### NPM
 
-* After modifying any CSS or JS files, you'll need to rebuild the files in `public/js` and `public/css`. You do this with the command `npm run build`.
+* After checking out the source, run `composer compile` to install dependencies and build assets and translations.
+  After modifying CSS or JS files, rebuild the files in `public/js` and `public/css` with `npm run build`.
 * During the JavaScript module migration, keep the compatibility globals `window.webtrees` and `window.TreeViewHandler` available for existing templates and inline callers. The statistics module is fully self-initializing and requires no globals.
 
-## Third-party libraries and compiled files in the source tree
+## Building from source
 
-For historic reasons, we include certain third-party libraries and compiled
-files in our source tree.  This is usually considered to be bad practice.
-We do it because we have a large number of testers and users who have become
-accustomed to downloading the latest source code and running it without any build step.
-
-We include the non-development PHP libraries from `/vendor`.
-These are created using the command `composer install --no-dev`.
-
-We include the compiled JS and CSS assets from `/public/{css,js}`).
-These are created using the command `npm run build`.
+The source tree does not include third-party libraries or compiled assets.
+Run `composer compile` after checkout to install PHP and JavaScript dependencies,
+build CSS and JavaScript, and compile translations. Release archives are built
+with `composer create-release` and include the files needed to run the application.
 
 ## Creating a pull request
 

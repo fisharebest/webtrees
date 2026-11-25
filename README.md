@@ -104,7 +104,9 @@ modules_v4/                 Third-party module directory
 
 Run `php index.php dev:update-po-files` after adding translatable messages to refresh the
 POT templates and PO catalogs.
-Run `php index.php build:compile-po-files` to generate .php and .js files used by the application.
+Run `composer compile` after checking out the source to install dependencies and
+generate the web assets, PDF fonts, and PHP and JavaScript language files.
+Run `php index.php build:compile-po-files` to regenerate language files after editing translations.
 
 ### Namespace and autoloading
 
@@ -174,19 +176,15 @@ Prerequisites: PHP 8.3+, [Composer](https://getcomposer.org/),
 [Node.js](https://nodejs.org/) with npm.
 
 ```bash
-# Install PHP dependencies
-composer install
+# Install dependencies and generate all files needed to run from source
+composer compile
 
-# Install JS dependencies and compile assets
-npm ci
-npm run build
-
-# Compile language files
-composer compile-po-files
-
-# Create a .ZIP file containing a release
+# Create a .ZIP file containing a release (builds assets and languages in the archive)
 composer create-release
 ```
+
+Generated files in `public/css/`, `public/js/`, `resources/fonts/`,
+and `resources/lang/*/messages.php` are not tracked by Git.
 
 ### Quality and CI
 

@@ -93,6 +93,9 @@ module.exports = (env, argv) => ({
         patterns: [
           { from: 'node_modules/leaflet/dist/images/*', to: 'css/images/[name][ext]' },
           { from: 'node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf', to: path.resolve(__dirname, 'resources/fonts/DejaVuSans.ttf') },
+          { from: 'node_modules/dejavu-fonts-ttf/ttf/DejaVuSans-Bold.ttf', to: path.resolve(__dirname, 'resources/fonts/DejaVuSans-Bold.ttf') },
+          { from: 'node_modules/dejavu-fonts-ttf/ttf/DejaVuSans-Oblique.ttf', to: path.resolve(__dirname, 'resources/fonts/DejaVuSans-Oblique.ttf') },
+          { from: 'node_modules/dejavu-fonts-ttf/ttf/DejaVuSans-BoldOblique.ttf', to: path.resolve(__dirname, 'resources/fonts/DejaVuSans-BoldOblique.ttf') },
         ],
       }),
       {
