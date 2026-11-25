@@ -32,6 +32,7 @@ class HtmlService
         // Constructing the sanitizer is slow, so create only when needed.
         $config = (new HtmlSanitizerConfig())
             ->allowSafeElements()
+            ->allowRelativeMedias()
             // These can be abused by a malicious user,
             // but cKeditor creates style attributes and classes are
             // useful to make the content match the style of the site.

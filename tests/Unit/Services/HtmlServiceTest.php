@@ -100,6 +100,18 @@ class HtmlServiceTest extends TestCase
         self::assertSame('<img src="https://example.com/image.png" usemap="#mymap" />', $this->html_service->sanitize($html));
     }
 
+    public function testRootRelativeImageSource(): void
+    {
+        $html = '<img src="/public/TestImage.jpg">';
+        self::assertSame('<img src="/public/TestImage.jpg" />', $this->html_service->sanitize($html));
+    }
+
+    public function testPathRelativeImageSource(): void
+    {
+        $html = '<img src="public/TestImage.jpg">';
+        self::assertSame('<img src="public/TestImage.jpg" />', $this->html_service->sanitize($html));
+    }
+
     // --- Custom element: <map> ---
 
     public function testMapElement(): void
