@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the webtrees package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: webtrees 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-16 15:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: resources/js/admin/pages/trees-import.js
+msgid "You have selected a GEDCOM file with a different name. Is this correct?"
+msgstr ""
+
+#: resources/js/admin/pages/users-edit.js
+msgid "You must specify an individual record before you can restrict the user to their immediate family."
+msgstr ""
+
+#: resources/js/webtrees/confirm.js
+msgid "cancel"
+msgstr ""
+
+#: resources/js/webtrees/confirm.js
+msgid "OK"
+msgstr ""
+
+#: resources/js/webtrees/gallery.js
+msgid "close"
+msgstr ""
+
+#: resources/js/webtrees/gallery.js
+msgid "previous"
+msgstr ""
+
+#: resources/js/webtrees/gallery.js
+msgid "next"
+msgstr ""
+
+#: resources/js/webtrees/map.js
+msgid "Zoom in"
+msgstr ""
+
+#: resources/js/webtrees/map.js
+msgid "Zoom out"
+msgstr ""
+
+#: resources/js/webtrees/map.js
+msgid "Reload map"
+msgstr ""
+
+#: resources/js/webtrees/tom-select.js
+msgid "No results found"
+msgstr ""

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\I18N\Translation;
 use Fisharebest\Webtrees\Webtrees;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -31,11 +30,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function array_key_exists;
 use function array_filter;
 use function array_merge;
 use function array_map;
-use function array_unique;
 use function array_values;
 use function addcslashes;
 use function basename;
@@ -51,7 +48,6 @@ use function file_put_contents;
 use function glob;
 use function implode;
 use function is_dir;
-use function is_file;
 use function is_string;
 use function ltrim;
 use function max;
@@ -61,7 +57,6 @@ use function number_format;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
-use function json_encode;
 use function round;
 use function rmdir;
 use function rtrim;
@@ -76,14 +71,12 @@ use function substr;
 use function trim;
 use function uniqid;
 use function unlink;
-use function var_export;
 use function stripcslashes;
 
 use const DIRECTORY_SEPARATOR;
-use const JSON_THROW_ON_ERROR;
 use const STR_PAD_LEFT;
 
-final class Xgettext extends AbstractCommand
+final class UpdatePoFiles extends AbstractCommand
 {
     private const string ROOT_DIRECTORY = Webtrees::ROOT_DIR;
 
@@ -97,8 +90,6 @@ final class Xgettext extends AbstractCommand
 
     private const string XML_TEMPLATE = self::LANGUAGE_DIRECTORY . '/webtrees-xml.pot';
 
-    private const string JAVASCRIPT_DIRECTORY = 'public/js/i18n';
-
     // These look like printf placeholders, but they aren't.
     private const string DATE_FORMAT = '%j %F %Y';
     private const string TIME_FORMAT = '%H:%i:%s';
@@ -108,8 +99,8 @@ final class Xgettext extends AbstractCommand
     protected function configure(): void
     {
         $this
-            ->setName('dev:xgettext')
-            ->setDescription('Extract PHP, PHTML, JavaScript and XML translation templates');
+            ->setName('dev:update-po-files')
+            ->setDescription('Extract translation templates and update PO files');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -264,39 +255,10 @@ final class Xgettext extends AbstractCommand
             return self::FAILURE;
         }
 
-        $javascript_template_filename = self::ROOT_DIRECTORY . self::JAVASCRIPT_TEMPLATE;
-
-        if (!is_file($javascript_template_filename)) {
-            $io->error('The JavaScript POT template does not exist: ' . self::JAVASCRIPT_TEMPLATE);
-
-            return self::FAILURE;
-        }
-
-        $javascript_template_content = file_get_contents($javascript_template_filename);
-
-        if ($javascript_template_content === false) {
-            $io->error('Unable to read JavaScript POT template: ' . self::JAVASCRIPT_TEMPLATE);
-
-            return self::FAILURE;
-        }
-
         $merged_template_filename = $this->createMergedTemplate();
 
         if ($merged_template_filename === null) {
             $io->error($this->template_merge_error ?? 'Failed to merge POT templates for updating language catalogs.');
-
-            return self::FAILURE;
-        }
-
-        $javascript_message_ids = $this->extractJavaScriptMessageIdsFromPot($javascript_template_content);
-        $javascript_directory   = self::ROOT_DIRECTORY . self::JAVASCRIPT_DIRECTORY;
-
-        if (!is_dir($javascript_directory)) {
-            mkdir($javascript_directory, 0777, true);
-        }
-
-        if (!is_dir($javascript_directory)) {
-            $io->error('Unable to create JavaScript catalog directory: ' . self::JAVASCRIPT_DIRECTORY);
 
             return self::FAILURE;
         }
@@ -318,9 +280,6 @@ final class Xgettext extends AbstractCommand
                 $progress_bar->setMessage($language_name);
 
                 $po_file       = self::ROOT_DIRECTORY . $language_catalog_filename;
-                $php_file      = self::ROOT_DIRECTORY . self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php';
-                $js_file       = self::ROOT_DIRECTORY . self::JAVASCRIPT_DIRECTORY . '/' . $language_name . '.js';
-
                 $catalog_updated = $this->updateLanguageCatalog($po_file, $merged_template_filename);
 
                 if (!$catalog_updated) {
@@ -329,50 +288,18 @@ final class Xgettext extends AbstractCommand
                         $language_name,
                         $language_catalog_filename,
                         'failed',
-                        self::JAVASCRIPT_DIRECTORY . '/' . $language_name . '.js',
-                        'failed',
-                        self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                         $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                     ];
                     $progress_bar->advance();
                     continue;
                 }
 
-                $po_status    = $this->countPoTranslationStatus($po_file);
-                $translations = $this->compilePoFile($po_file, $php_file);
-
-                if ($translations === null) {
-                    $error = true;
-                    $language_rows[] = [
-                        $language_name,
-                        $language_catalog_filename,
-                        $this->formatStatus($po_status['translated'], $po_status['total']),
-                        self::JAVASCRIPT_DIRECTORY . '/' . $language_name . '.js',
-                        'failed',
-                        self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
-                        $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
-                    ];
-                    $progress_bar->advance();
-                    continue;
-                }
-
-                $catalog      = $this->buildJavaScriptCatalog($javascript_message_ids, $translations);
-                $script       = $this->buildJavaScriptCatalogScript($catalog);
-                $bytes_written = file_put_contents($js_file, $script);
-
-                if ($bytes_written === false) {
-                    $error = true;
-                }
-
-                $js_status = $this->countJavaScriptTranslationStatus($javascript_message_ids, $translations);
+                $po_status = $this->countPoTranslationStatus($po_file);
 
                 $language_rows[] = [
                     $language_name,
                     $language_catalog_filename,
                     $this->formatStatus($po_status['translated'], $po_status['total']),
-                    self::JAVASCRIPT_DIRECTORY . '/' . $language_name . '.js',
-                    $bytes_written === false ? 'failed' : $this->formatStatus($js_status['translated'], $js_status['total']),
-                    self::LANGUAGE_DIRECTORY . '/' . $language_name . '/messages.php',
                     $this->formatNumber((int) round((microtime(true) - $language_started_at) * 1000)) . 'ms',
                 ];
 
@@ -392,15 +319,11 @@ final class Xgettext extends AbstractCommand
             'Language',
             'PO file',
             'PO status',
-            'JS file',
-            'JS status',
-            'Compiled PHP file',
             'Processing time',
         ]);
         $language_table->setRows($language_rows);
         $language_table->setColumnStyle(2, $right_align);
-        $language_table->setColumnStyle(4, $right_align);
-        $language_table->setColumnStyle(6, $right_align);
+        $language_table->setColumnStyle(3, $right_align);
         $language_table->render();
 
         $placeholder_check_failed = false;
@@ -802,83 +725,6 @@ final class Xgettext extends AbstractCommand
     }
 
     /**
-     * @return array<string,string>|null
-     */
-    private function compilePoFile(string $po_file, string $php_file): array|null
-    {
-        $stream       = fopen($po_file, 'rb');
-        $translation  = Translation::fromPoStream($stream);
-        fclose($stream);
-        $translations = $translation->toArray();
-
-        $php_code = "<?php\n\nreturn " . var_export($translations, true) . ";\n";
-        $written  = file_put_contents($php_file, $php_code);
-
-        if ($written === false) {
-            return null;
-        }
-
-        /** @var array<string,string> $translations */
-        return $translations;
-    }
-
-    /**
-     * @return array<int,string>
-     */
-    private function extractJavaScriptMessageIdsFromPot(string $pot_contents): array
-    {
-        $message_ids = [];
-
-        foreach (explode("\n", $pot_contents) as $line) {
-            $line = trim($line);
-
-            if (!str_starts_with($line, 'msgid "') || !str_ends_with($line, '"')) {
-                continue;
-            }
-
-            $message_id = substr($line, 7, -1);
-
-            if ($message_id === '') {
-                continue;
-            }
-
-            $message_ids[] = str_replace(['\\"', '\\\\'], ['"', '\\'], $message_id);
-        }
-
-        return array_values(array_unique($message_ids));
-    }
-
-    /**
-     * @param array<int,string>    $message_ids
-     * @param array<string,string> $translations
-     *
-     * @return array<string,string>
-     */
-    private function buildJavaScriptCatalog(array $message_ids, array $translations): array
-    {
-        $catalog = [];
-
-        foreach ($message_ids as $message_id) {
-            $catalog[$message_id] = array_key_exists($message_id, $translations)
-                ? $translations[$message_id]
-                : $message_id;
-        }
-
-        return $catalog;
-    }
-
-    /**
-     * @param array<string,string> $catalog
-     */
-    private function buildJavaScriptCatalogScript(array $catalog): string
-    {
-        return 'window.webtrees = window.webtrees || {};' . "\n"
-            . 'window.webtrees.i18nCatalog = Object.assign(window.webtrees.i18nCatalog || {}, '
-            . json_encode($catalog, JSON_THROW_ON_ERROR)
-            . ');' . "\n";
-    }
-
-    /**
      * @return array<int,array{source:string,translated:string}>
      */
     private function validatePoPlaceholders(string $po_file): array
@@ -1066,28 +912,6 @@ final class Xgettext extends AbstractCommand
         return [
             'translated' => $translated,
             'total' => $translated + $fuzzy + $untranslated,
-        ];
-    }
-
-    /**
-     * @param array<int,string>    $message_ids
-     * @param array<string,string> $translations
-     *
-     * @return array{translated:int,total:int}
-     */
-    private function countJavaScriptTranslationStatus(array $message_ids, array $translations): array
-    {
-        $translated = 0;
-
-        foreach ($message_ids as $message_id) {
-            if (isset($translations[$message_id]) && $translations[$message_id] !== '') {
-                $translated++;
-            }
-        }
-
-        return [
-            'translated' => $translated,
-            'total' => count($message_ids),
         ];
     }
 

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Cli\Commands;
 
-use Fisharebest\Webtrees\Cli\Commands\Xgettext;
+use Fisharebest\Webtrees\Cli\Commands\UpdatePoFiles;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use ReflectionMethod;
@@ -30,69 +30,12 @@ use function sys_get_temp_dir;
 use function uniqid;
 use function unlink;
 
-#[CoversClass(Xgettext::class)]
-class XgettextTest extends TestCase
+#[CoversClass(UpdatePoFiles::class)]
+class UpdatePoFilesTest extends TestCase
 {
-    public function testExtractMessageIdsFromPotIgnoresHeaderAndKeepsUniqueIds(): void
-    {
-        $command = new Xgettext();
-
-        $pot_contents = <<<'POT'
-msgid ""
-msgstr ""
-
-#: resources/js/webtrees/confirm.js:35
-msgid "previous"
-msgstr ""
-
-#: resources/js/webtrees/gallery.js:468
-msgid "next"
-msgstr ""
-
-#: resources/js/webtrees/gallery.js:469
-msgid "next"
-msgstr ""
-POT;
-
-        self::assertSame(['previous', 'next'], $this->invokePrivateMethod($command, 'extractJavaScriptMessageIdsFromPot', $pot_contents));
-    }
-
-    public function testBuildCatalogUsesTranslationsAndFallsBackToEnglishIds(): void
-    {
-        $command = new Xgettext();
-
-        $catalog = $this->invokePrivateMethod(
-            $command,
-            'buildJavaScriptCatalog',
-            ['Cancel', 'next', 'Image'],
-            ['Cancel' => 'Annuler', 'next' => 'suivant'],
-        );
-
-        self::assertSame([
-            'Cancel' => 'Annuler',
-            'next' => 'suivant',
-            'Image' => 'Image',
-        ], $catalog);
-    }
-
-    public function testBuildCatalogScriptCreatesWindowBootstrapSnippet(): void
-    {
-        $command = new Xgettext();
-
-        $script = $this->invokePrivateMethod($command, 'buildJavaScriptCatalogScript', [
-            'Cancel' => 'Cancel',
-            'OK' => 'OK',
-        ]);
-        $catalog_prefix = 'window.webtrees.i18nCatalog = Object.assign(window.webtrees.i18nCatalog || {}, ';
-
-        self::assertStringContainsString('window.webtrees = window.webtrees || {};', $script);
-        self::assertStringContainsString($catalog_prefix, $script);
-        self::assertStringContainsString('{"Cancel":"Cancel","OK":"OK"}', $script);
-    }
-
     public function testValidatePoPlaceholdersDetectsMismatches(): void
     {
-        $command         = new Xgettext();
+        $command         = new UpdatePoFiles();
         $temporary_file  = sys_get_temp_dir() . '/webtrees-po-' . uniqid('', true) . '.po';
         $po_content      = <<<'PO'
 msgid ""
@@ -126,7 +69,7 @@ PO;
 
     public function testValidatePoPlaceholdersIgnoresUntranslatedEntries(): void
     {
-        $command        = new Xgettext();
+        $command        = new UpdatePoFiles();
         $temporary_file = sys_get_temp_dir() . '/webtrees-po-' . uniqid('', true) . '.po';
         $po_content     = <<<'PO'
 msgid ""
@@ -154,7 +97,7 @@ PO;
 
     public function testValidatePoPlaceholdersIgnoresDateFormatExceptions(): void
     {
-        $command        = new Xgettext();
+        $command        = new UpdatePoFiles();
         $temporary_file = sys_get_temp_dir() . '/webtrees-po-' . uniqid('', true) . '.po';
         $po_content     = <<<'PO'
 msgid ""
@@ -180,7 +123,7 @@ PO;
 
     public function testMergePotContentsMergesDuplicateEntriesWithoutConflictMarkers(): void
     {
-        $command         = new Xgettext();
+        $command         = new UpdatePoFiles();
         $temporary_file1 = sys_get_temp_dir() . '/webtrees-pot-' . uniqid('', true) . '-1.pot';
         $temporary_file2 = sys_get_temp_dir() . '/webtrees-pot-' . uniqid('', true) . '-2.pot';
 
@@ -223,7 +166,7 @@ POT;
         self::assertTrue(str_contains($merged_content, '#: app/Foo.php:10 resources/xml/reports/bar.xml:5'));
     }
 
-    private function invokePrivateMethod(Xgettext $command, string $method_name, mixed ...$arguments): mixed
+    private function invokePrivateMethod(UpdatePoFiles $command, string $method_name, mixed ...$arguments): mixed
     {
         return (new ReflectionMethod($command, $method_name))->invokeArgs($command, $arguments);
     }

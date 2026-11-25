@@ -13,10 +13,6 @@
 /public/js/*.js.LICENSE.txt
 /public/robots.txt
 
-/resources/lang/webtrees-js.pot
-/resources/lang/webtrees-phtml.pot
-/resources/lang/webtrees-php.pot
-/resources/lang/webtrees-xml.pot
 /resources/lang/*/messages.php
 
 /robots.txt

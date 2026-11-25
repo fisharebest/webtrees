@@ -1,0 +1,1126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the webtrees package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: webtrees 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 11:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "Ancestors"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "A report of an individual’s ancestors, in a narrative style."
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Individual"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "All"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Generations"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Show sources"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Show notes"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "Show occupations"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "Show residences"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "Show children of ancestors"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgctxt "paper size"
+msgid "A4"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgctxt "paper size"
+msgid "A3"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgctxt "paper size"
+msgid "Letter"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgctxt "paper size"
+msgid "Tabloid"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Page size"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "Ancestors of "
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid "Generation "
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgctxt "MALE"
+msgid "was born"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgctxt "FEMALE"
+msgid "was born"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid " in "
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid " but the details are unknown"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "He was christened"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "She was christened"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "His occupation was"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "Her occupation was"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "He resided at"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "She resided at"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid "He married"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid "She married"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "He died"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "She died"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "He was cremated"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "She was cremated"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "He was buried"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+msgid "She was buried"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid "Child of "
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid "Children of "
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+msgid "and"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/change_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Birth"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/pedigree_report.xml
+msgid "Marriage"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/change_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/pedigree_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Death"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Sources"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Page"
+msgstr ""
+
+#: resources/xml/reports/ahnentafel_report.xml
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "of"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml
+msgid "Vital records"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml
+msgid "A report of vital records for a given date or place."
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Name"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/occupation_report.xml
+msgid "Place"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+msgid "Birth date range start"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+msgid "Birth date range end"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/death_report.xml
+msgid "Death date range start"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/death_report.xml
+msgid "Death date range end"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "sort by name"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "sort by date of birth"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "sort by date of death"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Sort order"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Father"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Mother"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/occupation_report.xml
+msgid "Date"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/marriage_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Source"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Spouse"
+msgstr ""
+
+#: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Total individuals"
+msgstr ""
+
+#: resources/xml/reports/birth_report.xml
+msgid "Births"
+msgstr ""
+
+#: resources/xml/reports/birth_report.xml
+msgid "A report of individuals who were born in a given time or place."
+msgstr ""
+
+#: resources/xml/reports/birth_report.xml
+msgid "Birthplace contains"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+msgid "Burials"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+msgid "A report of individuals who were buried in a given place."
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+msgid "Burial place contains"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "None"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/death_report.xml
+msgid "Married name"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/death_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Husband"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/death_report.xml
+msgid "Names"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of death"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of burial"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of burial"
+msgstr ""
+
+#: resources/xml/reports/cemetery_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/occupation_report.xml
+msgid "Note"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Changes"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "A report of recent and pending changes."
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Starting range of change dates"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Ending range of change dates"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "sort by date"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "yes"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "no"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Show pending changes"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/pedigree_report.xml
+msgid "Landscape"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+#: resources/xml/reports/pedigree_report.xml
+msgid "Portrait"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Orientation"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Pending changes"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Differences"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Last change"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Total pending changes: "
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Recent changes"
+msgstr ""
+
+#: resources/xml/reports/change_report.xml
+msgid "Total accepted changes: "
+msgstr ""
+
+#: resources/xml/reports/death_report.xml
+msgid "Deaths"
+msgstr ""
+
+#: resources/xml/reports/death_report.xml
+msgid "A report of individuals who died in a given time or place."
+msgstr ""
+
+#: resources/xml/reports/death_report.xml
+msgid "Death place contains"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Descendants"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "A report of an individual’s descendants, in a narrative style."
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "Descendants of "
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgctxt "MALE"
+msgid "died"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgctxt "FEMALE"
+msgid "died"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgctxt "MALE"
+msgid "married"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "daughter of"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgctxt "FEMALE"
+msgid "married"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "son of"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "She was born"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "She "
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "He was born"
+msgstr ""
+
+#: resources/xml/reports/descendancy_report.xml
+msgid "He "
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "A report of facts which are supported by a given source."
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Find a source"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "facts"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "records"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Source type"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Individuals"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/occupation_report.xml
+msgid "Date of birth"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Event"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Citation details"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Families"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Religious marriage"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Civil marriage"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+msgid "Registered partnership"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/marriage_report.xml
+msgid "Total families"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of birth"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of death"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of marriage"
+msgstr ""
+
+#: resources/xml/reports/fact_sources.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of marriage"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+msgid "Family"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+msgid "A report of family members and their details."
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Show photos"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+msgid "Print basic events when blank"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Use colors"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Wife"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Christening"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Baptism"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+msgid "Cremation"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Burial"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Children"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Son"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Daughter"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Sex"
+msgstr ""
+
+#: resources/xml/reports/family_group_report.xml
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgctxt "unknown sex"
+msgid "Unknown"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+msgid "Related families"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+msgid "A report of the families that are closely related to an individual."
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Parents and siblings"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Spouses and children"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Direct line ancestors"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Direct line ancestors and their families"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/missing_facts_report.xml
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Choose relatives"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Highlighted image"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Facts and events"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Notes"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Family with parents"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Brother"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Sister"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Family with husband"
+msgstr ""
+
+#: resources/xml/reports/individual_ext_report.xml
+#: resources/xml/reports/individual_report.xml
+msgid "Family with wife"
+msgstr ""
+
+#: resources/xml/reports/individual_report.xml
+msgid "A report of an individual’s details."
+msgstr ""
+
+#: resources/xml/reports/individual_report.xml
+msgid "Temple"
+msgstr ""
+
+#: resources/xml/reports/marriage_report.xml
+msgid "Marriages"
+msgstr ""
+
+#: resources/xml/reports/marriage_report.xml
+msgid "A report of individuals who were married in a given time or place."
+msgstr ""
+
+#: resources/xml/reports/marriage_report.xml
+msgid "Marriage place contains"
+msgstr ""
+
+#: resources/xml/reports/marriage_report.xml
+msgid "Marriage date range start"
+msgstr ""
+
+#: resources/xml/reports/marriage_report.xml
+msgid "Marriage date range end"
+msgstr ""
+
+#: resources/xml/reports/marriage_report.xml
+msgid "sort by date of marriage"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Missing data"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "A report of the information that is missing for an individual and their relatives."
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Sources to the events"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Bar mitzvah"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Bat mitzvah"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Confirmation"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Engagement"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "First communion"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Marriage banns"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Religion"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of baptism"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of baptism"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of christening"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of christening"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of bar mitzvah"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of bar mitzvah"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of bat mitzvah"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of bat mitzvah"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of confirmation"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of confirmation"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of engagement"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of engagement"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of first communion"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of first communion"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Date of marriage banns"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Place of marriage banns"
+msgstr ""
+
+#: resources/xml/reports/missing_facts_report.xml
+msgid "Total events"
+msgstr ""
+
+#: resources/xml/reports/occupation_report.xml
+msgid "Occupations"
+msgstr ""
+
+#: resources/xml/reports/occupation_report.xml
+msgid "A report of individuals who had a given occupation."
+msgstr ""
+
+#: resources/xml/reports/occupation_report.xml
+msgid "Occupation"
+msgstr ""
+
+#: resources/xml/reports/pedigree_report.xml
+msgid "Pedigree"
+msgstr ""
+
+#: resources/xml/reports/pedigree_report.xml
+msgid "A report of an individual’s ancestors, formatted as a tree."
+msgstr ""
+
+#: resources/xml/reports/pedigree_report.xml
+msgctxt "paper size"
+msgid "A2"
+msgstr ""
+
+#: resources/xml/reports/pedigree_report.xml
+msgctxt "paper size"
+msgid "A1"
+msgstr ""
+
+#: resources/xml/reports/pedigree_report.xml
+msgctxt "paper size"
+msgid "A0"
+msgstr ""
+
+#: resources/xml/reports/pedigree_report.xml
+msgid "Page setup"
+msgstr ""
+
+#: resources/xml/reports/relative_ext_report.xml
+msgid "Related individuals"
+msgstr ""
+
+#: resources/xml/reports/relative_ext_report.xml
+msgid "A report of the individuals that are closely related to an individual."
+msgstr ""

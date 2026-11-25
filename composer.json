@@ -108,15 +108,19 @@
             "phpunit",
             "phpstan"
         ],
-        "build": [
+        "compile": [
+            "@composer install --no-interaction",
+            "npm ci",
+            "npm run build",
+            "php index.php build:compile-po-files"
+        ],
+        "create-release": [
             "rm -Rf webtrees/",
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
             "@composer install --no-dev --no-interaction",
             "@composer dump-autoload --classmap-authoritative --strict-psr --strict-ambiguous --no-interaction",
             "cp -r vendor/ webtrees/vendor/",
-            "php index.php xgettext",
-            "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
-            "for FILE in public/js/i18n/*.js; do cp $FILE webtrees/$FILE; done",
+            "php webtrees/index.php build:compile-po-files",
             "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
         "png": [

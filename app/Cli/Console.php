@@ -44,7 +44,7 @@ final class Console extends Application
         Commands\TreeImport::class,
         Commands\TreeList::class,
         Commands\TreeSetting::class,
-        Commands\Xgettext::class,
+        Commands\UpdatePoFiles::class,
         Commands\UserEdit::class,
         Commands\UserList::class,
         Commands\UserSetting::class,

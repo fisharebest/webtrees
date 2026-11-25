@@ -90,7 +90,7 @@ app/                        Application source (PSR-4 root: Fisharebest\Webtrees
 resources/
 ├── css/                    Stylesheets (compiled by webpack)
 ├── js/                     JavaScript (compiled by webpack)
-├── lang/                   Language files (*.po, compiled into *.php for release)
+├── lang/                   Language files (*.po and *.pot, compiled for release)
 └── views/                  View templates (*.phtml)
 
 tests/
@@ -101,6 +101,10 @@ public/                     Web-accessible assets (compiled CSS/JS, images, font
 data/                       Runtime data (config, GEDCOM files, cache — not in VCS)
 modules_v4/                 Third-party module directory
 ```
+
+Run `php index.php dev:update-po-files` after adding translatable messages to refresh the
+POT templates and PO catalogs.
+Run `php index.php build:compile-po-files` to generate .php and .js files used by the application.
 
 ### Namespace and autoloading
 
@@ -174,11 +178,14 @@ Prerequisites: PHP 8.3+, [Composer](https://getcomposer.org/),
 composer install
 
 # Install JS dependencies and compile assets
-npm install
+npm ci
 npm run build
 
+# Compile language files
+composer compile-po-files
+
 # Create a .ZIP file containing a release
-composer build
+composer create-release
 ```
 
 ### Quality and CI
