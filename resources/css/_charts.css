@@ -36,6 +36,9 @@
     .wt-chart {
         overflow: visible;
     }
+    .wt-main-container {
+        max-width: none;
+    }
 }
 
 /* Lines for "vertical" charts, such as the ancestors and descendants chart. */
