@@ -19,9 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Unit\Module;
 
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+
+use function view;
 
 #[CoversClass(RelationshipsChartModule::class)]
 class RelationshipsChartModuleTest extends TestCase
@@ -29,5 +31,23 @@ class RelationshipsChartModuleTest extends TestCase
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(RelationshipsChartModule::class));
+    }
+
+    public function testConnectorDirections(): void
+    {
+        $directions = ['right', 'up', 'down', 'diagonal-up', 'diagonal-down'];
+
+        foreach ($directions as $direction) {
+            $html = view('modules/relationships-chart/connector', [
+                'direction' => $direction,
+                'label'     => 'mother',
+            ]);
+
+            self::assertStringContainsString('wt-relationship-connector-' . $direction, $html);
+            self::assertStringContainsString('wt-relationship-connector-label">mother</span>', $html);
+            self::assertStringContainsString('wt-relationship-connector-arrow" aria-hidden="true"></span>', $html);
+            self::assertStringNotContainsString('fa-arrow-', $html);
+            self::assertStringNotContainsString('background:', $html);
+        }
     }
 }

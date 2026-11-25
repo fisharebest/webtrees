@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Http\Middleware\AuthNotRobot;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -42,10 +41,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_map;
-use function asset;
 use function count;
 use function current;
-use function e;
 use function implode;
 use function in_array;
 use function max;
@@ -247,14 +244,6 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         $paths = $this->calculateRelationships($individual1, $individual2, $recursion, (bool) $ancestors);
 
         ob_start();
-        if (I18N::textDirection() === TextDirection::LTR) {
-            $diagonal1 = asset('css/images/dline.png');
-            $diagonal2 = asset('css/images/dline2.png');
-        } else {
-            $diagonal1 = asset('css/images/dline2.png');
-            $diagonal2 = asset('css/images/dline.png');
-        }
-
         $num_paths = 0;
         foreach ($paths as $path) {
             $nodes = (new Collection($path))
@@ -293,10 +282,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         $record->spouses()->contains($prev) && $record->spouses()->contains($next)
                     ) {
                         // Spouses or siblings.  Move right.
-                        $table[$x + 1][$y] =
-                            '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div style="height: 32px;">' .
-                            $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
-                            '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
+                        $table[$x + 1][$y] = view('modules/relationships-chart/connector', [
+                            'direction' => 'right',
+                            'label'     => $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()),
+                        ]);
                         $x                 += 2;
                     } elseif (
                         $record->spouses()->contains($prev) && $record->children()->contains($next) ||
@@ -304,31 +293,31 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     ) {
                         // Parent to child.  Move down (or diagonally if it's a change in vertical direction).
                         if ($n > 2 && $nodes[$n - 2] instanceof Family && $nodes[$n - 2]->children()->contains($nodes[$n - 3]) && $nodes[$n - 2]->spouses()->contains($prev)) {
-                            $table[$x + 1][$y - 1] =
-                                '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' .
-                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
-                                view('icons/arrow-down') . '</div></div>';
+                            $table[$x + 1][$y - 1] = view('modules/relationships-chart/connector', [
+                                'direction' => 'diagonal-down',
+                                'label'     => $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()),
+                            ]);
                             $x                     += 2;
                         } else {
-                            $table[$x][$y - 1] =
-                                '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' .
-                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
-                                '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
+                            $table[$x][$y - 1] = view('modules/relationships-chart/connector', [
+                                'direction' => 'down',
+                                'label'     => $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()),
+                            ]);
                         }
                         $y -= 2;
                     } else {
                         // Child to parent. Move up (or diagonally if it's a change in vertical direction).
                         if ($n > 2 && $nodes[$n - 2] instanceof Family && $nodes[$n - 2]->spouses()->contains($nodes[$n - 3]) && $nodes[$n - 2]->children()->contains($prev)) {
-                            $table[$x + 1][$y + 1] =
-                                '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' .
-                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
-                                '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
+                            $table[$x + 1][$y + 1] = view('modules/relationships-chart/connector', [
+                                'direction' => 'diagonal-up',
+                                'label'     => $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()),
+                            ]);
                             $x                     += 2;
                         } else {
-                            $table[$x][$y + 1] =
-                                '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 64px;">' .
-                                $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()) .
-                                '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                            $table[$x][$y + 1] = view('modules/relationships-chart/connector', [
+                                'direction' => 'up',
+                                'label'     => $this->relationship_service->nameFromPath([$prev, $record, $next], I18N::language()),
+                            ]);
                         }
                         $y += 2;
                     }

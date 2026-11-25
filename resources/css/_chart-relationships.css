@@ -25,3 +25,121 @@
 .wt-chart-relationships .wt-chart-box-lifespan {
     display: none;
 }
+
+.wt-relationship-connector {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+}
+
+.wt-relationship-connector::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-top: var(--chart-line);
+    transform: translate(-50%, -50%);
+}
+
+.wt-relationship-connector-label,
+.wt-relationship-connector-arrow {
+    position: absolute;
+    z-index: 1;
+}
+
+.wt-relationship-connector-arrow {
+    top: 50%;
+    left: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-top: var(--chart-line);
+    border-right: var(--chart-line);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.wt-relationship-connector-right {
+    width: 96px;
+}
+
+.wt-relationship-connector-right::before {
+    width: 100%;
+}
+
+.wt-relationship-connector-right .wt-relationship-connector-label {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.wt-relationship-connector-up,
+.wt-relationship-connector-down {
+    width: 100%;
+}
+
+.wt-relationship-connector-up::before,
+.wt-relationship-connector-down::before {
+    width: 64px;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.wt-relationship-connector-up .wt-relationship-connector-label,
+.wt-relationship-connector-down .wt-relationship-connector-label {
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    padding-left: 0.625rem;
+    text-align: left;
+    transform: translateY(-50%);
+}
+
+.wt-relationship-connector-diagonal-up,
+.wt-relationship-connector-diagonal-down {
+    width: 96px;
+}
+
+.wt-relationship-connector-diagonal-up::before,
+.wt-relationship-connector-diagonal-down::before {
+    /* A 96x64 rectangle has a 115.38px diagonal at 33.69 degrees. */
+    width: 120.185%;
+}
+
+.wt-relationship-connector-diagonal-down::before {
+    transform: translate(-50%, -50%) rotate(33.69deg);
+}
+
+.wt-relationship-connector-diagonal-up::before {
+    transform: translate(-50%, -50%) rotate(-33.69deg);
+}
+
+.wt-relationship-connector-diagonal-up .wt-relationship-connector-label,
+.wt-relationship-connector-diagonal-down .wt-relationship-connector-label {
+    top: 0;
+    width: 100%;
+}
+
+.wt-relationship-connector-diagonal-up .wt-relationship-connector-label {
+    left: 0;
+    text-align: start;
+}
+
+.wt-relationship-connector-diagonal-down .wt-relationship-connector-label {
+    right: 0;
+    text-align: end;
+}
+
+.wt-relationship-connector-diagonal-down .wt-relationship-connector-arrow {
+    transform: translate(-50%, -50%) rotate(78.69deg);
+}
+
+.wt-relationship-connector-diagonal-up .wt-relationship-connector-arrow {
+    transform: translate(-50%, -50%) rotate(11.31deg);
+}
+
+.wt-relationship-connector-up .wt-relationship-connector-arrow {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.wt-relationship-connector-down .wt-relationship-connector-arrow {
+    transform: translate(-50%, -50%) rotate(135deg);
+}
