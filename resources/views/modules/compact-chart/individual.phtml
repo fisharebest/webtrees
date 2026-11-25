@@ -12,5 +12,5 @@ use Fisharebest\Webtrees\Individual;
 <?php if ($individual instanceof Individual) : ?>
     <?= view('chart-box', ['individual' => $individual]) ?>
 <?php else : ?>
-    <div class="h-100 wt-chart-box">&nbsp;</div>
+    <div class="wt-chart-box">&nbsp;</div>
 <?php endif ?>
