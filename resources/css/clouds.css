@@ -777,7 +777,7 @@ div.fact_SHARED_NOTE {
 }
 
 .wt-calendar-widget-weekday,
-.wt-calendar-widget-day-selected {
+.wt-calendar-widget-day.wt-calendar-widget-day-selected {
     font-size: 12px;
     border: 1px solid #ccc;
     vertical-align: top;
@@ -1115,7 +1115,7 @@ div.faq_body {
 
 /* Tbl hdrs and Light Text */
 .wt-calendar-widget-weekday,
-.wt-calendar-widget-day-selected,
+.wt-calendar-widget-day.wt-calendar-widget-day-selected,
 .list_label,
 .list_label a {
     background-color: #95b8e0;

@@ -558,7 +558,7 @@ div.fact_SHARED_NOTE {
 }
 
 .wt-calendar-widget-weekday,
-.wt-calendar-widget-day-selected {
+.wt-calendar-widget-day.wt-calendar-widget-day-selected {
     font-weight: bold;
     background-color: #ccc;
     vertical-align: top;

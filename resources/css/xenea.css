@@ -728,7 +728,7 @@ div.fact_SHARED_NOTE {
 }
 
 .wt-calendar-widget-weekday,
-.wt-calendar-widget-day-selected {
+.wt-calendar-widget-day.wt-calendar-widget-day-selected {
     color: #006;
     font-size: 12px;
     background-color: #c3dfff;
