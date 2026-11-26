@@ -54,10 +54,13 @@ use Fisharebest\Webtrees\Tests\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_column;
+use function array_fill;
 use function array_filter;
+use function array_keys;
 use function array_slice;
 use function array_values;
 use function count;
+use function implode;
 
 #[CoversClass(LayoutEngine::class)]
 #[CoversClass(LayoutPages::class)]
@@ -529,6 +532,101 @@ class LayoutEngineTest extends TestCase
         self::assertSame($blocks[2]->row_id, $blocks[3]->row_id);
         self::assertEqualsWithDelta(60.0, $blocks[2]->height, 0.01);
         self::assertEqualsWithDelta(0.0, $blocks[3]->y, 0.01);
+    }
+
+    public function testOversizedMiddleCellContinuesWithoutBlankPagesOrFooterOverlap(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $style = $this->makeStyle();
+        $cells = [];
+        $rows = [
+            ['Preface', CellNewline::NextLine],
+            ['First', CellNewline::Right],
+            ['Second', CellNewline::Right],
+            [implode('<br>', array_fill(0, 20, 'Long line')), CellNewline::Right],
+            ['Last', CellNewline::NextLine],
+            ['Following row', CellNewline::NextLine],
+        ];
+
+        foreach ($rows as [$text, $newline]) {
+            $cell = new Cell(100.0, 20.0, '', CellAlign::Left, '', $style, $newline, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+            $cell->addText($text);
+            $cells[] = $cell;
+        }
+
+        $blocks = $engine->layout($cells);
+        $pages = [];
+        $long_lines = [];
+
+        foreach ($blocks as $block) {
+            if (!$block->data instanceof TextCellData) {
+                continue;
+            }
+
+            $pages[$block->page][] = $block;
+            self::assertLessThanOrEqual(100.0, $block->y + $block->height);
+
+            if ($block->column_id === $blocks[4]->column_id) {
+                $long_lines[] = $block->data->text;
+            }
+        }
+
+        self::assertSame([0, 1, 2, 3], array_keys($pages));
+        self::assertCount(1, $pages[0]);
+        self::assertCount(4, $pages[1]);
+        self::assertCount(4, $pages[2]);
+        self::assertCount(5, $pages[3]);
+        self::assertSame(implode("\n", array_fill(0, 20, 'Long line')), implode("\n", $long_lines));
+        self::assertInstanceOf(TextCellData::class, $pages[3][4]->data);
+        self::assertSame('Following row', $pages[3][4]->data->text);
+        self::assertEqualsWithDelta($pages[3][3]->height, $pages[3][4]->y, 0.01);
+    }
+
+    public function testOversizedRowDoesNotLeaveAnEmptyPageAfterItsFirstColumnMoves(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $style = $this->makeStyle();
+        $cells = [];
+        $rows = [
+            ['Preface', 90.0, CellNewline::NextLine],
+            ['First', 20.0, CellNewline::Right],
+            [implode('<br>', array_fill(0, 16, 'Long line')), 20.0, CellNewline::Right],
+            ['Last', 20.0, CellNewline::NextLine],
+        ];
+
+        foreach ($rows as [$text, $height, $newline]) {
+            $cell = new Cell(100.0, $height, '', CellAlign::Left, '', $style, $newline, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+            $cell->addText($text);
+            $cells[] = $cell;
+        }
+
+        $pages = $engine->layoutPaged($cells)->pages;
+        self::assertSame([0, 1, 2, 3], array_keys($pages));
+
+        foreach ($pages as $page => $blocks) {
+            $text_cells = array_values(array_filter($blocks, static fn (LayoutBlock $block): bool => $block->data instanceof TextCellData));
+            self::assertCount($page === 0 ? 1 : 3, $text_cells);
+
+            foreach ($text_cells as $block) {
+                self::assertLessThanOrEqual(100.0, $block->y + $block->height);
+            }
+        }
+    }
+
+    public function testOversizedUnterminatedCellContinuesAcrossPages(): void
+    {
+        $engine = $this->createEngine(page_height: 172.0);
+        $cell = new Cell(100.0, 20.0, '', CellAlign::Left, '', $this->makeStyle(), CellNewline::Right, Element::CURRENT_POSITION, Element::CURRENT_POSITION, '', '');
+        $cell->addText(implode('<br>', array_fill(0, 16, 'Long line')));
+
+        $pages = $engine->layoutPaged([$cell])->pages;
+        self::assertSame([0, 1, 2], array_keys($pages));
+
+        foreach ($pages as $blocks) {
+            self::assertInstanceOf(TextCellData::class, $blocks[0]->data);
+            self::assertNotSame('', $blocks[0]->data->text);
+            self::assertLessThanOrEqual(100.0, $blocks[0]->y + $blocks[0]->height);
+        }
     }
 
     public function testAdjacentTextBoxesShareRowMetadataOnRectAndTextFlow(): void

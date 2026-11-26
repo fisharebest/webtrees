@@ -22,7 +22,13 @@ namespace Fisharebest\Webtrees\Report;
 use LogicException;
 
 use function array_splice;
+use function array_slice;
+use function ceil;
 use function count;
+use function floor;
+use function implode;
+use function max;
+use function min;
 use function str_replace;
 
 /**
@@ -164,8 +170,17 @@ final class LayoutEngine
         $this->footnotes = [];
 
         foreach ($elements as $element) {
+            if (!$element instanceof Cell && $this->content_height > 0.0 && $this->cell_row_height > $this->content_height) {
+                $this->paginateOversizedCellRow();
+                $this->cell_row_height = 0.0;
+                $this->cell_row_block_indexes = [];
+                $this->cell_row_id = null;
+            }
+
             $this->layoutElement($element);
         }
+
+        $this->paginateOversizedCellRow();
 
         /** @var array<int, list<LayoutBlock>> $pages */
         $pages = [];
@@ -263,7 +278,7 @@ final class LayoutEngine
         }
 
         // Check page break
-        if ($this->needsPageBreak($height)) {
+        if ($this->needsPageBreak($height) && !($height > $this->content_height && $this->cell_row_y === 0.0)) {
             $this->newPage();
             $y = $this->cursor_y;
 
@@ -323,6 +338,7 @@ final class LayoutEngine
             case CellNewline::NextLine:
                 $this->cursor_x = 0.0;
                 $this->cursor_y = $y + $this->cell_row_height;
+                $this->paginateOversizedCellRow();
                 $this->last_cell_height = 0.0;
                 $this->cell_row_height = 0.0;
                 $this->cell_row_block_indexes = [];
@@ -332,12 +348,105 @@ final class LayoutEngine
             case CellNewline::Below:
                 $this->cursor_x = $x + $width;
                 $this->cursor_y = $y + $this->cell_row_height;
+                $this->paginateOversizedCellRow();
                 $this->last_cell_height = 0.0;
                 $this->cell_row_height = 0.0;
                 $this->cell_row_block_indexes = [];
                 $this->cell_row_id = null;
                 break;
         }
+    }
+
+    /**
+     * Continue a row taller than the printable area, splitting each column at
+     * wrapped line boundaries so all columns advance to the same next page.
+     */
+    private function paginateOversizedCellRow(): void
+    {
+        if ($this->content_height <= 0.0 || $this->cell_row_height <= $this->content_height) {
+            return;
+        }
+
+        $row_start_index = $this->cell_row_block_indexes[0];
+        $row_blocks = array_slice($this->blocks, $row_start_index, count($this->cell_row_block_indexes));
+        array_splice($this->blocks, $row_start_index, count($row_blocks));
+
+        /** @var list<array{LayoutBlock, TextCellData, list<string>, float, int}> $columns */
+        $columns = [];
+        $page_count = (int) ceil($this->cell_row_height / $this->content_height);
+
+        foreach ($row_blocks as $block) {
+            $data = $block->data;
+            if (!$data instanceof TextCellData) {
+                throw new LogicException('A cell row contains a non-cell block.');
+            }
+
+            $lines = $data->text === ''
+                ? []
+                : $this->wrapper->wrapText($data->text, $data->style, $block->width - self::CELL_PADDING * 2);
+            $line_height = $data->style->size * self::LINE_HEIGHT_RATIO;
+            if ($lines !== [] && $line_height <= 0.0) {
+                throw new LogicException('A report cell must have a positive line height.');
+            }
+
+            $lines_per_page = $lines === []
+                ? 0
+                : (int) floor(($this->content_height - self::CELL_PADDING * 2) / $line_height);
+            if ($lines !== [] && $lines_per_page < 1) {
+                throw new LogicException('A report cell line is taller than the printable page.');
+            }
+
+            if ($lines !== []) {
+                $page_count = max($page_count, (int) ceil(count($lines) / $lines_per_page));
+            }
+
+            $columns[] = [$block, $data, $lines, $line_height, $lines_per_page];
+        }
+
+        $saved_cursor_x = $this->cursor_x;
+
+        for ($page_offset = 0; $page_offset < $page_count; $page_offset++) {
+            if ($page_offset > 0) {
+                $this->newPage();
+            }
+
+            $segment_height = min($this->content_height, max(0.0, $this->cell_row_height - $page_offset * $this->content_height));
+
+            foreach ($columns as [$block, $data, $lines, $line_height, $lines_per_page]) {
+                $segment_lines = $lines_per_page > 0
+                    ? array_slice($lines, $page_offset * $lines_per_page, $lines_per_page)
+                    : [];
+                if ($segment_lines !== []) {
+                    $segment_height = max($segment_height, count($segment_lines) * $line_height + self::CELL_PADDING * 2);
+                }
+
+                $this->blocks[] = LayoutBlock::textCell(
+                    page: $this->current_page,
+                    x: $block->x,
+                    y: 0.0,
+                    width: $block->width,
+                    height: 0.0,
+                    text: implode("\n", $segment_lines),
+                    style: $data->style,
+                    align: $data->align,
+                    background_color: $data->background_color,
+                    border: $data->border,
+                    border_color: $data->border_color,
+                    text_color: $data->text_color,
+                    url: $data->url,
+                )->withRowColumn($block->row_id, $block->column_id);
+            }
+
+            $segment_height = min($segment_height, $this->content_height);
+            $segment_start = count($this->blocks) - count($columns);
+            for ($index = $segment_start; $index < count($this->blocks); $index++) {
+                $this->blocks[$index] = $this->blocks[$index]->withHeight($segment_height);
+            }
+
+            $this->cursor_y = $segment_height;
+        }
+
+        $this->cursor_x = $saved_cursor_x;
     }
 
     /**
