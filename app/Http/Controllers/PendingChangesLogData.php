@@ -87,7 +87,7 @@ final class PendingChangesLogData
             // Only convert valid xrefs to links
             $record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
 
-            $change_time = new DateTimeImmutable($row->change_time, new DateTimeZone('UTC'))
+            $change_time = (new DateTimeImmutable($row->change_time, new DateTimeZone('UTC')))
                 ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
                 ->format('Y-m-d H:i:s T');
 

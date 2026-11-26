@@ -54,7 +54,7 @@ final class SiteLogsData
             [],
             [],
             function (object $row): array {
-                $log_time = new DateTimeImmutable($row->log_time, new DateTimeZone('UTC'))
+                $log_time = (new DateTimeImmutable($row->log_time, new DateTimeZone('UTC')))
                     ->setTimezone(new DateTimeZone($this->user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
                     ->format('Y-m-d H:i:s T');
 
