@@ -269,8 +269,8 @@ class WebtreesSchema
         switch ($current_version) {
             case 0:
                 // No upgrade needed - go straight to the latest version
-                DB::migrate(target: $this->version46(), mode: $strict, execute: true);
-                $this->setVersion(46);
+                DB::migrate(target: $this->latestVersion(), mode: $strict, execute: true);
+                $this->setVersion(Webtrees::SCHEMA_VERSION);
                 break;
 
             case 1:
@@ -1683,6 +1683,11 @@ class WebtreesSchema
         DB::query(table: 'gedcom_setting')
             ->whereIn('setting_name', [...array_keys($new_columns), 'LANGUAGE'])
             ->delete();
+    }
+
+    public function latestVersion(): Schema
+    {
+        return $this->version46();
     }
 
     public function version1(): Schema

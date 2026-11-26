@@ -36,8 +36,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -148,8 +146,6 @@ final class Register
         $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, '0');
 
         $base_url = Validator::attributes($request)->string('base_url');
-        $reply_to = $tree instanceof Tree ? new TreeUser($tree) : new SiteUser();
-
         $verify_url = route(VerifyEmail::class, [
             'username' => $user->userName(),
             'token'    => $token,
@@ -161,7 +157,7 @@ final class Register
         $this->email_service->send(
             new SiteUser(),
             $user,
-            $reply_to,
+            new SiteUser(),
             I18N::translate('Your registration at %s', $base_url),
             view('emails/register-user-text', ['user' => $user, 'base_url' => $base_url, 'verify_url' => $verify_url]),
             view('emails/register-user-html', ['user' => $user, 'base_url' => $base_url, 'verify_url' => $verify_url])

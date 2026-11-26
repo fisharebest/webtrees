@@ -120,7 +120,7 @@ final class UserEdit
             $this->email_service->send(
                 new SiteUser(),
                 $edit_user,
-                $this->user,
+                new SiteUser(),
                 /* I18N: %s is a server name/URL */
                 I18N::translate('New user at %s', $base_url),
                 view('emails/approve-user-text', ['user' => $edit_user, 'base_url' => $base_url]),

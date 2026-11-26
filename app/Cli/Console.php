@@ -32,6 +32,7 @@ use function parse_ini_file;
 final class Console extends Application
 {
     private const array COMMANDS = [
+        Commands\BackupDatabase::class,
         Commands\CompilePoFiles::class,
         Commands\ConfigIni::class,
         Commands\ConvertFont::class,
@@ -39,6 +40,7 @@ final class Console extends Application
         Commands\SiteOnline::class,
         Commands\SiteSetting::class,
         Commands\Repl::class,
+        Commands\RestoreDatabase::class,
         Commands\TreeEdit::class,
         Commands\TreeExport::class,
         Commands\TreeImport::class,

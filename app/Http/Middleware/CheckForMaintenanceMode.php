@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Enums\HttpStatusCode;
+use Fisharebest\Webtrees\Factories\LanguageFactory;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MaintenanceModeService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,6 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 readonly class CheckForMaintenanceMode implements MiddlewareInterface
 {
     public function __construct(
+        private LanguageFactory $language_factory,
         private MaintenanceModeService $maintenance_mode_service,
     ) {
     }
@@ -36,6 +39,9 @@ readonly class CheckForMaintenanceMode implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($this->maintenance_mode_service->isOffline()) {
+            // I18N isn't set up yet, so just use the browser language
+            I18N::init($this->language_factory->fromRequest($request)->languageTag());
+
             $html = view('layouts/offline', [
                 'message' => $this->maintenance_mode_service->message(),
                 'url'     => (string) $request->getUri(),

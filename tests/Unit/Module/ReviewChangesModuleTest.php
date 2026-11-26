@@ -29,7 +29,9 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tests\TestCase;
+use Fisharebest\Webtrees\TreeUser;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ReviewChangesModule::class)]
@@ -80,5 +82,45 @@ class ReviewChangesModuleTest extends TestCase
         self::assertStringNotContainsString('Old pending', $html);
         self::assertStringNotContainsString('Accepted', $html);
         self::assertStringNotContainsString('Other tree', $html);
+    }
+
+    public function testPendingChangeNotificationRepliesToTreeUser(): void
+    {
+        self::createDatabase();
+
+        $clock        = new SystemClock();
+        $user_service = new UserService($clock);
+        $user         = $user_service->create('admin', 'Admin', 'admin@example.com', 'secret');
+        $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        Auth::login($user);
+
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree         = $tree_service->create('family', 'Family');
+
+        DB::query(table: 'change')->insert([
+            'change_time' => DB::now(),
+            'gedcom_id'   => $tree->id(),
+            'xref'        => 'I1',
+            'status'      => 'pending',
+            'old_gedcom'  => '',
+            'new_gedcom'  => "0 @I1@ INDI\n1 NAME Pending",
+            'user_id'     => $user->id(),
+        ]);
+
+        $email_service = self::createMock(EmailService::class);
+        $email_service->expects(self::once())
+            ->method('send')
+            ->with(
+                self::isInstanceOf(SiteUser::class),
+                self::callback(static fn ($recipient): bool => $recipient->id() === $user->id()),
+                self::isInstanceOf(TreeUser::class),
+                self::anything(),
+                self::anything(),
+                self::anything(),
+            )
+            ->willReturn(true);
+
+        $module = new ReviewChangesModule($email_service, $tree_service, $user_service, $clock);
+        $module->getBlock($tree, 0, ModuleBlockInterface::CONTEXT_EMBED, ['sendmail' => '1']);
     }
 }

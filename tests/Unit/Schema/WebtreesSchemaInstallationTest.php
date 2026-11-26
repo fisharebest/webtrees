@@ -39,6 +39,13 @@ class WebtreesSchemaInstallationTest extends TestCase
         self::assertTrue(class_exists(WebtreesSchema::class));
     }
 
+    public function testLatestVersionReturnsCurrentSchema(): void
+    {
+        $webtrees_schema = new WebtreesSchema();
+
+        self::assertEquals($webtrees_schema->version46(), $webtrees_schema->latestVersion());
+    }
+
     public function testExistingInstallationUsesVersionedSchema(): void
     {
         $pdo = new Sqlite('sqlite::memory:');
