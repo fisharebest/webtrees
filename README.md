@@ -256,3 +256,6 @@ Supported drivers:
 * Firebird
 
 Table names use a configurable prefix so multiple instances can share a database.
+
+CLI tools `database-export` and `database-import` will copy the application tables to
+an SQLite database.  Use this for backup/restore, moving databases between servers, etc.

@@ -38,8 +38,9 @@ use Throwable;
 
 use function is_file;
 use function realpath;
+use function strpbrk;
 
-final class RestoreDatabase extends AbstractCommand
+final class DatabaseImport extends AbstractCommand
 {
     public function __construct(
         private readonly DatabaseTransferService $database_transfer_service,
@@ -50,19 +51,19 @@ final class RestoreDatabase extends AbstractCommand
 
     protected function configure(): void
     {
-        $this->setName('restore-database')
-            ->setDescription('Restore the application database from an SQLite file')
-            ->addArgument('filename', InputArgument::REQUIRED, 'The backup filename in data/');
+        $this->setName('database-import')
+            ->setDescription('Import the application database from an SQLite file')
+            ->addArgument('filename', InputArgument::REQUIRED, 'Input filename or path');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io       = new SymfonyStyle($input, $output);
         $filename = $this->stringArgument($input, 'filename');
-        $path     = Webtrees::DATA_DIR . $filename;
+        $path     = strpbrk($filename, '/\\') === false ? Webtrees::DATA_DIR . $filename : $filename;
 
         if (!is_file($path)) {
-            $io->error('Backup file not found in data/: ' . $filename);
+            $io->error('Database file not found: ' . $path);
 
             return self::FAILURE;
         }
@@ -117,7 +118,7 @@ final class RestoreDatabase extends AbstractCommand
             return self::FAILURE;
         }
 
-        $io->success('Database restored from data/' . $filename);
+        $io->success('Database imported from ' . $path);
 
         // Restore the original on/offline state.
         if (!$offline) {

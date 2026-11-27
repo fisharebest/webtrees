@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\DatabaseTransferService;
 use Fisharebest\Webtrees\Webtrees;
 use Pdo\Sqlite;
-use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -32,9 +32,11 @@ use Throwable;
 
 use function file_exists;
 use function gmdate;
+use function str_ends_with;
+use function strpbrk;
 use function unlink;
 
-final class BackupDatabase extends AbstractCommand
+final class DatabaseExport extends AbstractCommand
 {
     public function __construct(private readonly DatabaseTransferService $database_transfer_service)
     {
@@ -43,18 +45,30 @@ final class BackupDatabase extends AbstractCommand
 
     protected function configure(): void
     {
-        $this->setName('backup-database')
-            ->setDescription('Back up the application database to an SQLite file');
+        $this->setName('database-export')
+            ->setDescription('Export the application database to an SQLite file')
+            ->addArgument('filename', InputArgument::OPTIONAL, 'Output filename or path (.sqlite)');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io       = new SymfonyStyle($input, $output);
-        $filename = 'backup-' . gmdate('Ymd-His') . '.sqlite';
-        $path     = Webtrees::DATA_DIR . $filename;
+        $filename = $this->stringArgument($input, 'filename');
+
+        if ($filename === '') {
+            $filename = 'export-' . gmdate('Ymd-His') . '.sqlite';
+        }
+
+        if (!str_ends_with($filename, '.sqlite')) {
+            $io->error('Export filename must end in .sqlite: ' . $filename);
+
+            return self::FAILURE;
+        }
+
+        $path = strpbrk($filename, '/\\') === false ? Webtrees::DATA_DIR . $filename : $filename;
 
         if (file_exists($path)) {
-            $io->error('Backup file already exists: ' . $filename);
+            $io->error('Export file already exists: ' . $path);
 
             return self::FAILURE;
         }
@@ -87,7 +101,7 @@ final class BackupDatabase extends AbstractCommand
             return self::FAILURE;
         }
 
-        $io->success('Database backed up to data/' . $filename);
+        $io->success('Database exported to ' . $path);
 
         return self::SUCCESS;
     }

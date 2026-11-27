@@ -56,7 +56,7 @@ final class DatabaseTransferService
         }
 
         $progress_bar = new ProgressBar($output, $total);
-        $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%% %memory%, %elapsed% elapsed');
+        $progress_bar->setFormat(' %current%/%max% [%bar%] %percent%% %remaining% remaining');
         $progress_bar->minSecondsBetweenRedraws(0.1);
         $progress_bar->start();
 
