@@ -15,7 +15,10 @@ use Fisharebest\Webtrees\Encodings\UTF16LE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Registry;
 use php_user_filter;
+use RuntimeException;
 
+use function fopen;
+use function is_resource;
 use function str_starts_with;
 use function stream_bucket_append;
 use function stream_bucket_make_writeable;
@@ -110,17 +113,32 @@ class GedcomEncodingFilter extends php_user_filter
             }
         }
 
-        // Process the final record.
-        if ($closing) {
+        // Process any bytes held while checking for a BOM or a complete character.
+        if ($closing && $this->data !== '') {
             if (!$this->bom_checked) {
                 $this->detectByteOrderMark();
             }
 
             $this->src_encoding ??= Registry::encodingFactory()->make('UTF-8');
             $data_out           = $this->dst_encoding->fromUtf8($this->src_encoding->toUtf8($this->data));
-            $bucket_out         = stream_bucket_new($this->stream, $data_out);
-            $return             = PSFS_PASS_ON;
-            stream_bucket_append($out, $bucket_out);
+
+            // Streams containing just a BOM and no data could end up here.
+            if ($data_out !== '') {
+                // PHP clears the stream property before closing a filter on an unreferenced stream.
+                $stream = $this->stream;
+
+                if (!is_resource($stream)) {
+                    $stream = fopen('php://memory', 'wb+');
+
+                    if ($stream === false) {
+                        throw new RuntimeException('Failed to create a stream for the final filter bucket');
+                    }
+                }
+
+                $bucket_out = stream_bucket_new($stream, $data_out);
+                $return     = PSFS_PASS_ON;
+                stream_bucket_append($out, $bucket_out);
+            }
         }
 
         return $return;

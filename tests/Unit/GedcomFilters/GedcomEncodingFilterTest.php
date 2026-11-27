@@ -35,15 +35,39 @@ use function proc_open;
 use function rewind;
 use function str_split;
 use function stream_filter_append;
+use function stream_filter_remove;
 use function stream_get_contents;
 use function stream_set_blocking;
 use function usleep;
 
 use const STREAM_FILTER_READ;
+use const STREAM_FILTER_WRITE;
 
 #[CoversClass(GedcomEncodingFilter::class)]
 class GedcomEncodingFilterTest extends TestCase
 {
+    public function testEmptyWriteFilterCanCloseImplicitly(): void
+    {
+        self::assertSame('ok', $this->closeWriteFilterImplicitly(''));
+    }
+
+    public function testShortWriteFilterCanCloseImplicitly(): void
+    {
+        foreach (['a', 'ab', 'abc'] as $input) {
+            self::assertSame('ok', $this->closeWriteFilterImplicitly($input));
+        }
+    }
+
+    public function testShortInputIsFlushedOnClose(): void
+    {
+        foreach (['', 'a', 'ab', 'abc', UTF8::BYTE_ORDER_MARK] as $input) {
+            $expected = $input === UTF8::BYTE_ORDER_MARK ? '' : $input;
+
+            self::assertSame($expected, $this->filterString($input, 'UTF-8'));
+            self::assertSame($expected, $this->filterWriteString($input));
+        }
+    }
+
     public function testUtf8WithoutBom(): void
     {
         $gedcom = "0 HEAD\r\n1 SOUR webtrees\r\n1 CHAR UTF-8\r\n0 TRLR\r\n";
@@ -114,6 +138,15 @@ class GedcomEncodingFilterTest extends TestCase
         self::assertSame($gedcom, $result);
     }
 
+    private function closeWriteFilterImplicitly(string $input): string
+    {
+        $stream = fopen('php://memory', 'wb+');
+        stream_filter_append($stream, GedcomEncodingFilter::class, STREAM_FILTER_WRITE);
+        fwrite($stream, $input);
+
+        return 'ok';
+    }
+
     /**
      * Run data through the GedcomEncodingFilter stream filter.
      */
@@ -124,6 +157,20 @@ class GedcomEncodingFilterTest extends TestCase
         rewind($stream);
 
         stream_filter_append($stream, GedcomEncodingFilter::class, STREAM_FILTER_READ, ['src_encoding' => $src_encoding]);
+
+        $result = stream_get_contents($stream);
+        fclose($stream);
+
+        return $result;
+    }
+
+    private function filterWriteString(string $input): string
+    {
+        $stream = fopen('php://memory', 'wb+');
+        $filter = stream_filter_append($stream, GedcomEncodingFilter::class, STREAM_FILTER_WRITE);
+        fwrite($stream, $input);
+        stream_filter_remove($filter);
+        rewind($stream);
 
         $result = stream_get_contents($stream);
         fclose($stream);
