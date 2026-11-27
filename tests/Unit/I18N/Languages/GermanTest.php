@@ -20,12 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Tests\Unit\I18N\Languages;
 
 use Fisharebest\Webtrees\Contracts\LanguageInterface;
+use Fisharebest\Webtrees\Enums\Relation;
 use Fisharebest\Webtrees\Enums\Script;
 use Fisharebest\Webtrees\Enums\TextDirection;
 use Fisharebest\Webtrees\Enums\Weekday;
 use Fisharebest\Webtrees\I18N\Languages\German;
+use Fisharebest\Webtrees\Relationship;
 use Fisharebest\Webtrees\Report\PaperSize;
 use PHPUnit\Framework\Attributes\CoversClass;
+
+use function array_map;
 
 #[CoversClass(German::class)]
 class GermanTest extends AbstractLanguageTestCase
@@ -654,20 +658,32 @@ class GermanTest extends AbstractLanguageTestCase
         $fatherOfH = self::male('fh', "1 FAMS @fp@");
         $motherOfH = self::female('mh', "1 FAMS @fp@");
         $fatherOfW = self::male('fw_h', "1 FAMS @fw@");
-        $motherOfW = self::female('fw_w', "1 FAMS @fw@");
-        $brotherOfH = self::male('bh', "1 FAMC @fp@");
+        $motherOfW = self::female('fw_w', "1 FAMS @fw@\n1 FAMC @fmgp@");
+        $sibling_of_wife = self::unknown('sw', "1 FAMC @fw@");
+        $brotherOfH = self::male('bh', "1 FAMC @fp@\n1 FAMS @fbro@");
         $sisterOfH = self::female('sh', "1 FAMC @fp@");
+        $aunt_by_marriage = self::female('abm', "1 FAMS @fbro@");
         $grandsonSon = self::male('gs', "1 FAMC @fson@");
         $granddaughterSon = self::female('gd', "1 FAMC @fson@");
+        $grandchild_unknown = self::unknown('gcu', "1 FAMC @fson@");
         $wifeOfSon = self::female('ws', "1 FAMS @fson@");
         $husbandOfDaughter = self::male('hd', "1 FAMS @fdau@");
-        $nieceFromBro = self::female('nb', "1 FAMC @fbro@");
+        $nieceFromBro = self::female('nb', "1 FAMC @fbro@\n1 FAMS @fniece@");
         $nephewFromBro = self::male('npb', "1 FAMC @fbro@");
+        $niece_unknown = self::unknown('nu', "1 FAMC @fbro@");
+        $grandniece = self::female('gn', "1 FAMC @fniece@\n1 FAMS @fgrandniece@");
+        $great_grandniece = self::female('ggn', "1 FAMC @fgrandniece@");
         $cousinFemale = self::female('cf', "1 FAMC @fbro@");
         $cousinMale = self::male('cm', "1 FAMC @fbro@");
-        $paternalGF = self::male('pgf', "1 FAMS @fgp@");
+        $cousin_unknown = self::unknown('cu', "1 FAMC @fbro@");
+        $paternalGF = self::male('pgf', "1 FAMS @fgp@\n1 FAMC @fggp@");
         $paternalGM = self::female('pgm', "1 FAMS @fgp@");
-        $greatAunt = self::female('ga', "1 FAMC @fgp@");
+        $maternal_grandfather = self::male('mgf', "1 FAMS @fmgp@");
+        $maternal_grandmother = self::female('mgm', "1 FAMS @fmgp@");
+        $great_great_grandfather = self::male('ggf', "1 FAMS @fggp@");
+        $very_great_aunt = self::female('vga', "1 FAMC @fggp@");
+        $greatAunt = self::female('ga', "1 FAMC @fgp@\n1 FAMS @fgreat_aunt@");
+        $great_aunt_husband = self::male('gah', "1 FAMS @fgreat_aunt@");
         $greatUncle = self::male('gu', "1 FAMC @fgp@");
         $engaged = self::female('eng', "1 FAMS @fe@");
         $fiance = self::male('fan', "1 FAMS @fe@");
@@ -676,25 +692,32 @@ class GermanTest extends AbstractLanguageTestCase
         $fm = self::family('fm', "0 @fm@ FAM\n1 MARR Y\n1 HUSB @h@\n1 WIFE @w@\n1 CHIL @s@\n1 CHIL @d@\n1 CHIL @c@");
         $fd = self::family('fd', "0 @fd@ FAM\n1 DIV Y\n1 HUSB @ex@\n1 WIFE @w@\n1 CHIL @as@\n1 CHIL @sd@\n1 CHIL @fs@");
         $fp = self::family('fp', "0 @fp@ FAM\n1 HUSB @fh@\n1 WIFE @mh@\n1 CHIL @h@\n1 CHIL @bh@\n1 CHIL @sh@");
-        $fw = self::family('fw', "0 @fw@ FAM\n1 HUSB @fw_h@\n1 WIFE @fw_w@\n1 CHIL @w@");
-        $fson = self::family('fson', "0 @fson@ FAM\n1 MARR Y\n1 HUSB @s@\n1 WIFE @ws@\n1 CHIL @gs@\n1 CHIL @gd@");
+        $fw = self::family('fw', "0 @fw@ FAM\n1 HUSB @fw_h@\n1 WIFE @fw_w@\n1 CHIL @w@\n1 CHIL @sw@");
+        $fson = self::family('fson', "0 @fson@ FAM\n1 MARR Y\n1 HUSB @s@\n1 WIFE @ws@\n1 CHIL @gs@\n1 CHIL @gd@\n1 CHIL @gcu@");
         $fdau = self::family('fdau', "0 @fdau@ FAM\n1 MARR Y\n1 HUSB @hd@\n1 WIFE @d@");
-        $fbro = self::family('fbro', "0 @fbro@ FAM\n1 HUSB @bh@\n1 CHIL @nb@\n1 CHIL @npb@\n1 CHIL @cf@\n1 CHIL @cm@");
+        $fbro = self::family('fbro', "0 @fbro@ FAM\n1 MARR Y\n1 HUSB @bh@\n1 WIFE @abm@\n1 CHIL @nb@\n1 CHIL @npb@\n1 CHIL @nu@\n1 CHIL @cf@\n1 CHIL @cm@\n1 CHIL @cu@");
+        $fniece = self::family('fniece', "0 @fniece@ FAM\n1 WIFE @nb@\n1 CHIL @gn@");
+        $fgrandniece = self::family('fgrandniece', "0 @fgrandniece@ FAM\n1 WIFE @gn@\n1 CHIL @ggn@");
         $fgp = self::family('fgp', "0 @fgp@ FAM\n1 HUSB @pgf@\n1 WIFE @pgm@\n1 CHIL @fh@\n1 CHIL @ga@\n1 CHIL @gu@");
+        $fmgp = self::family('fmgp', "0 @fmgp@ FAM\n1 HUSB @mgf@\n1 WIFE @mgm@\n1 CHIL @fw_w@");
+        $fggp = self::family('fggp', "0 @fggp@ FAM\n1 HUSB @ggf@\n1 CHIL @pgf@\n1 CHIL @vga@");
+        $fgreat_aunt = self::family('fgreat_aunt', "0 @fgreat_aunt@ FAM\n1 MARR Y\n1 HUSB @gah@\n1 WIFE @ga@");
         $fe = self::family('fe', "0 @fe@ FAM\n1 ENGA Y\n1 HUSB @fan@\n1 WIFE @eng@");
 
         self::registerStubs(
             [$husband, $wife, $son, $daughter, $child, $exHusband, $adoptedSon, $stepDaughter, $fosterSon,
-             $fatherOfH, $motherOfH, $fatherOfW, $motherOfW, $brotherOfH, $sisterOfH,
-             $grandsonSon, $granddaughterSon, $wifeOfSon, $husbandOfDaughter,
-             $nieceFromBro, $nephewFromBro, $cousinFemale, $cousinMale,
-             $paternalGF, $paternalGM, $greatAunt, $greatUncle, $engaged, $fiance],
-            [$fm, $fd, $fp, $fw, $fson, $fdau, $fbro, $fgp, $fe]
+             $fatherOfH, $motherOfH, $fatherOfW, $motherOfW, $sibling_of_wife, $brotherOfH, $sisterOfH, $aunt_by_marriage,
+             $grandsonSon, $granddaughterSon, $grandchild_unknown, $wifeOfSon, $husbandOfDaughter,
+             $nieceFromBro, $nephewFromBro, $niece_unknown, $grandniece, $great_grandniece,
+             $cousinFemale, $cousinMale, $cousin_unknown,
+             $paternalGF, $paternalGM, $maternal_grandfather, $maternal_grandmother, $great_great_grandfather, $very_great_aunt,
+             $greatAunt, $great_aunt_husband, $greatUncle, $engaged, $fiance],
+            [$fm, $fd, $fp, $fw, $fson, $fdau, $fbro, $fniece, $fgrandniece, $fgp, $fmgp, $fggp, $fgreat_aunt, $fe]
         );
 
         // Partners
         self::assertRelationshipNames('Ehefrau', 'Ehemann', [$husband, $fm, $wife]);
-        self::assertRelationshipNames('Ex-Ehemann', 'Ex-Ehefrau', [$wife, $fd, $exHusband]);
+        self::assertRelationshipNames('Ex-Mann', 'Ex-Frau', [$wife, $fd, $exHusband]);
         self::assertRelationshipNames('Verlobte', 'Verlobter', [$fiance, $fe, $engaged]);
 
         // Parents
@@ -712,9 +735,9 @@ class GermanTest extends AbstractLanguageTestCase
         self::assertRelationshipNames('Pflegevater', 'Pflegesohn', [$fosterSon, $fd, $exHusband]);
 
         // Siblings
-        self::assertRelationshipNames('kleine Schwester', 'großer Bruder', [$son, $fm, $daughter]);
-        self::assertRelationshipNames('großer Bruder', 'kleine Schwester', [$daughter, $fm, $son]);
-        self::assertRelationshipNames('jüngeres Geschwister', 'großer Bruder', [$son, $fm, $child]);
+        self::assertRelationshipNames('Jüngere Schwester', 'Älterer Bruder', [$son, $fm, $daughter]);
+        self::assertRelationshipNames('Älterer Bruder', 'Jüngere Schwester', [$daughter, $fm, $son]);
+        self::assertRelationshipNames('Jüngeres Geschwister', 'Älterer Bruder', [$son, $fm, $child]);
         self::assertRelationshipName('Bruder', [$stepDaughter, $fd, $adoptedSon]);
         self::assertRelationshipName('Schwester', [$adoptedSon, $fd, $stepDaughter]);
 
@@ -733,30 +756,58 @@ class GermanTest extends AbstractLanguageTestCase
         self::assertRelationshipName('Schwiegersohn', [$motherOfW, $fw, $wife, $fm, $husband]);
 
         // Grandparents and grandchildren
-        self::assertRelationshipNames('Großmutter', 'Enkel', [$son, $fm, $husband, $fp, $motherOfH]);
-        self::assertRelationshipNames('Großvater', 'Enkel', [$son, $fm, $husband, $fp, $fatherOfH]);
+        self::assertRelationshipNames('Großmutter väterlicherseits', 'Enkel', [$son, $fm, $husband, $fp, $motherOfH]);
+        self::assertRelationshipNames('Großvater väterlicherseits', 'Enkel', [$son, $fm, $husband, $fp, $fatherOfH]);
+        self::assertRelationshipName('Großmutter mütterlicherseits', [$son, $fm, $wife, $fw, $motherOfW]);
+        self::assertRelationshipName('Großvater mütterlicherseits', [$son, $fm, $wife, $fw, $fatherOfW]);
         self::assertRelationshipName('Enkelin', [$fatherOfH, $fp, $husband, $fm, $daughter]);
         self::assertRelationshipName('Enkel', [$fatherOfH, $fp, $husband, $fm, $son]);
-        self::assertRelationshipName('Enkelkind', [$fatherOfH, $fp, $husband, $fm, $child]);
+        self::assertRelationshipName('Enkelin/Enkel', [$fatherOfH, $fp, $husband, $fm, $child]);
+        self::assertRelationshipName('Urenkelin/Urenkel', [$fatherOfH, $fp, $husband, $fm, $son, $fson, $grandchild_unknown]);
 
         // Great-grandparents (dynamic)
-        self::assertRelationshipName('UrUrGroßvater', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
-        self::assertRelationshipName('UrUrGroßmutter', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
+        self::assertRelationshipName('Urgroßvater (väterlicherseits)', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF]);
+        self::assertRelationshipName('Urgroßmutter (väterlicherseits)', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGM]);
+        self::assertRelationshipName('Urgroßvater (mütterlicherseits)', [$son, $fm, $wife, $fw, $motherOfW, $fmgp, $maternal_grandfather]);
+        self::assertRelationshipName('Urgroßmutter (mütterlicherseits)', [$son, $fm, $wife, $fw, $motherOfW, $fmgp, $maternal_grandmother]);
+        self::assertRelationshipName('Ururgroßvater (väterlicherseits)', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF, $fggp, $great_great_grandfather]);
 
         // Aunts and uncles
         self::assertRelationshipNames('Tante', 'Neffe', [$son, $fm, $husband, $fp, $sisterOfH]);
         self::assertRelationshipNames('Onkel', 'Neffe', [$son, $fm, $husband, $fp, $brotherOfH]);
+        self::assertRelationshipName('Tante', [$son, $fm, $husband, $fp, $brotherOfH, $fbro, $aunt_by_marriage]);
 
         // Nieces and nephews (sibling's children)
         self::assertRelationshipName('Nichte', [$husband, $fp, $brotherOfH, $fbro, $nieceFromBro]);
         self::assertRelationshipName('Neffe', [$husband, $fp, $brotherOfH, $fbro, $nephewFromBro]);
+        self::assertRelationshipName('Nichte/Neffe', [$husband, $fp, $brotherOfH, $fbro, $niece_unknown]);
+        self::assertRelationshipName('Großnichte', [$husband, $fp, $brotherOfH, $fbro, $nieceFromBro, $fniece, $grandniece]);
+        self::assertRelationshipName('Urgroßnichte', [$husband, $fp, $brotherOfH, $fbro, $nieceFromBro, $fniece, $grandniece, $fgrandniece, $great_grandniece]);
 
         // Cousins
         self::assertRelationshipName('Cousine', [$son, $fm, $husband, $fp, $brotherOfH, $fbro, $cousinFemale]);
         self::assertRelationshipName('Cousin', [$son, $fm, $husband, $fp, $brotherOfH, $fbro, $cousinMale]);
+        self::assertRelationshipName('Cousin/Cousine', [$son, $fm, $husband, $fp, $brotherOfH, $fbro, $cousin_unknown]);
+        self::assertRelationshipName('Schwager/Schwägerin', [$husband, $fm, $wife, $fw, $sibling_of_wife]);
+        self::assertRelationshipName('Schwägerin', [$husband, $fp, $brotherOfH, $fbro, $aunt_by_marriage]);
 
         // Great-aunt/uncle (dynamic)
-        self::assertRelationshipName('UrTante', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatAunt]);
-        self::assertRelationshipName('UrOnkel', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatUncle]);
+        self::assertRelationshipName('Großtante', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatAunt]);
+        self::assertRelationshipName('Großonkel', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatUncle]);
+        self::assertRelationshipName('Großonkel', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $greatAunt, $fgreat_aunt, $great_aunt_husband]);
+        self::assertRelationshipName('Urgroßtante', [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF, $fggp, $very_great_aunt]);
+
+        $relationships = self::language()->relationships();
+        $ancestor_path = [$son, $fm, $husband, $fp, $fatherOfH, $fgp, $paternalGF];
+        $niece_path = [$husband, $fp, $brotherOfH, $fbro, $niece_unknown];
+
+        self::assertContains(
+            ['Urgroßvater (väterlicherseits)', '%s des Urgroßvaters (väterlicherseits)'],
+            array_map(static fn (Relationship $relationship): array|null => $relationship->match($ancestor_path, [Relation::Father, Relation::Father, Relation::Father]), $relationships)
+        );
+        self::assertContains(
+            ['Nichte/Neffe', '%s der Nichte/des Neffen'],
+            array_map(static fn (Relationship $relationship): array|null => $relationship->match($niece_path, [Relation::Brother, Relation::Child]), $relationships)
+        );
     }
 }
