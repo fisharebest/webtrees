@@ -151,7 +151,7 @@ final class UpgradeWizardStep
         $root_filesystem->createDirectory(self::UPGRADE_FOLDER);
 
         return response(view('components/alert-success', [
-            'alert' => I18N::translate('The folder %s has been created.', e(self::UPGRADE_FOLDER)),
+            'alert' => I18N::translate('The folder “%s” has been created.', e(self::UPGRADE_FOLDER)),
         ]));
     }
 
@@ -177,7 +177,7 @@ final class UpgradeWizardStep
         fclose($stream);
 
         return response(view('components/alert-success', [
-            'alert' => I18N::translate('The family tree has been exported to %s.', e($filename)),
+            'alert' => I18N::translate('The family tree has been exported to “%s”.', e($filename)),
         ]));
     }
 

@@ -66,10 +66,10 @@ final class ExportGedcomServer
             fclose($resource);
 
             /* I18N: %s is a filename */
-            FlashMessages::addMessage(I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
+            FlashMessages::addMessage(I18N::translate('The family tree has been exported to “%s”.', Html::filename($filename)), 'success');
         } catch (FilesystemException | UnableToWriteFile $ex) {
             FlashMessages::addMessage(
-                I18N::translate('The file %s could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
+                I18N::translate('The file “%s” could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
                 'danger'
             );
         }

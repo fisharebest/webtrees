@@ -134,14 +134,14 @@ final class UploadMedia
             }
 
             if ($file_exists) {
-                FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
+                FlashMessages::addMessage(I18N::translate('The file “%s” already exists. Use another filename.', $path, 'error'));
                 continue;
             }
 
             // Now copy the file to the correct location.
             try {
                 $data_filesystem->writeStream($path, $uploaded_file->getStream()->detach());
-                FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
+                FlashMessages::addMessage(I18N::translate('The file “%s” has been uploaded.', Html::filename($path)), 'success');
                 Log::addMediaLog('Media file ' . $path . ' uploaded');
             } catch (FilesystemException | UnableToWriteFile $ex) {
                 FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . e($ex->getMessage()), 'danger');

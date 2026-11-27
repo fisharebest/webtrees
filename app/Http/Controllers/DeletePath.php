@@ -57,7 +57,7 @@ final class DeletePath
         $normalized_path = $this->whitespace_path_normalizer->normalizePath($path);
 
         if (in_array($normalized_path, self::PROTECTED_PATHS, true)) {
-            FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
+            FlashMessages::addMessage(I18N::translate('The file “%s” could not be deleted.', e($path)), 'danger');
             return response();
         }
 
@@ -65,16 +65,16 @@ final class DeletePath
         if (str_ends_with($path, '/')) {
             try {
                 $data_filesystem->deleteDirectory($normalized_path);
-                FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
+                FlashMessages::addMessage(I18N::translate('The folder “%s” has been deleted.', e($path)), 'success');
             } catch (FilesystemException | UnableToDeleteDirectory) {
-                FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
+                FlashMessages::addMessage(I18N::translate('The folder “%s” could not be deleted.', e($path)), 'danger');
             }
         } else {
             try {
                 $data_filesystem->delete($normalized_path);
-                FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
+                FlashMessages::addMessage(I18N::translate('The file “%s” has been deleted.', e($path)), 'success');
             } catch (FilesystemException | UnableToDeleteFile) {
-                FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
+                FlashMessages::addMessage(I18N::translate('The file “%s” could not be deleted.', e($path)), 'danger');
             }
         }
 

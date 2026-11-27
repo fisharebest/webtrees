@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 22:58+0100\n"
+"POT-Creation-Date: 2026-11-27 00:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,23 +45,23 @@ msgstr " în "
 msgid "%1$s (%2$s)"
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
 msgstr "%1$s KB au fost ddescărcați in %2$s secunde."
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr ""
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
@@ -69,13 +69,13 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr ""
 
 #. I18N: image dimensions, width × height
-#: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
+#: app/Http/Controllers/ManageMediaData.php app/MediaFile.php
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php app/Elements/NoteStructure.php
 #: app/Exceptions/FileUploadException.php app/Fact.php app/GedcomRecord.php
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-gedcom-fields.phtml
 #: resources/views/modules/media-list/page.phtml
@@ -114,8 +114,8 @@ msgid "%s BCE"
 msgstr ""
 
 #. I18N: size of file in KB
-#: app/Http/RequestHandlers/ManageMediaData.php
-#: app/Http/RequestHandlers/UploadMediaPage.php app/MediaFile.php
+#: app/Http/Controllers/ManageMediaData.php
+#: app/Http/Controllers/UploadMedia.php app/MediaFile.php
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "%s KB"
@@ -163,7 +163,7 @@ msgstr[2] ""
 
 #: resources/views/family-page-children.phtml
 #: resources/views/modules/ancestors-chart/tree.phtml
-#: resources/views/modules/descendancy_chart/tree.phtml
+#: resources/views/modules/descendancy-chart/tree.phtml
 #: resources/views/statistics/families/top10-list.phtml
 #: resources/views/statistics/families/top10-nolist.phtml
 #, php-format
@@ -182,16 +182,14 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/CheckTree.php
-#: app/Http/RequestHandlers/UserEditAction.php
-#: app/Http/RequestHandlers/UserEditPage.php
+#: app/Http/Controllers/CheckTree.php app/Http/Controllers/UserEdit.php
 #: app/Module/FamilyTreeNewsModule.php app/Module/UserJournalModule.php
 #: resources/views/edit/reorder-media.phtml
 #, php-format
 msgid "%s does not exist."
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchReplaceAction.php
+#: app/Http/Controllers/SearchReplace.php
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
@@ -225,7 +223,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/SearchReplaceAction.php
+#: app/Http/Controllers/SearchReplace.php
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
@@ -250,7 +248,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/SearchReplaceAction.php
+#: app/Http/Controllers/SearchReplace.php
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
@@ -258,12 +256,12 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #, php-format
 msgid "%s occurs too many times."
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchReplaceAction.php
+#: app/Http/Controllers/SearchReplace.php
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
@@ -286,7 +284,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/SearchReplaceAction.php
+#: app/Http/Controllers/SearchReplace.php
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
@@ -386,19 +384,19 @@ msgid "(%s after death)"
 msgstr "(%s după moarte)"
 
 #. I18N: The current age of a living individual
-#: app/Http/RequestHandlers/IndividualPage.php
+#: app/Http/Controllers/IndividualPage.php
 #, php-format
 msgid "(age %s)"
 msgstr ""
 
-#: app/Http/RequestHandlers/IndividualPage.php
+#: app/Http/Controllers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
 #, php-format
 msgid "(aged %s)"
 msgstr ""
 
-#: app/Http/RequestHandlers/IndividualPage.php
+#: app/Http/Controllers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
 #, php-format
@@ -406,7 +404,7 @@ msgctxt "Female"
 msgid "(aged %s)"
 msgstr ""
 
-#: app/Http/RequestHandlers/IndividualPage.php
+#: app/Http/Controllers/IndividualPage.php
 #: resources/views/fact-association-structure.phtml
 #: resources/views/fact-date.phtml
 #, php-format
@@ -533,8 +531,7 @@ msgctxt "CENTURY"
 msgid "9th"
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/UserEditPage.php
+#: app/Http/Controllers/UserEdit.php
 msgid "<default theme>"
 msgstr ""
 
@@ -741,7 +738,7 @@ msgstr ""
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
 
-#: app/Http/RequestHandlers/LoginAction.php app/Module/CheckForNewVersion.php
+#: app/Http/Controllers/Login.php app/Module/CheckForNewVersion.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/upgrade/wizard.phtml
 #: resources/views/emails/new-version-html.phtml
@@ -749,9 +746,9 @@ msgstr ""
 msgid "A new version of webtrees is available."
 msgstr ""
 
-#: app/Http/RequestHandlers/PasswordRequestAction.php
+#: app/Http/Controllers/PasswordRequest.php
 #, php-format
-msgid "A password reset link has been sent to “%s”."
+msgid "A password reset link has been sent to \"%s\"."
 msgstr ""
 
 #. I18N: Description of the “Journal” module
@@ -1020,7 +1017,7 @@ msgstr ""
 msgid "Accra, Ghana"
 msgstr ""
 
-#: app/Http/RequestHandlers/MapDataAdd.php
+#: app/Http/Controllers/MapDataAdd.php
 msgid "Add"
 msgstr "Adaugă"
 
@@ -1033,18 +1030,18 @@ msgstr ""
 msgid "Add a brother"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddChildToFamilyPage.php
+#: app/Http/Controllers/AddChildToFamily.php
 #: resources/views/family-page-menu.phtml
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a child"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddChildToIndividualPage.php
+#: app/Http/Controllers/AddChildToIndividual.php
 #: resources/views/modules/relatives/tab.phtml
 msgid "Add a child to create a one-parent family"
 msgstr "Adaugă un copil pentru a crea o familie cu un singur părinte"
 
-#: app/Http/RequestHandlers/AddChildToFamilyPage.php
+#: app/Http/Controllers/AddChildToFamily.php
 #: resources/views/family-page-children.phtml
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a daughter"
@@ -1056,7 +1053,7 @@ msgstr ""
 msgid "Add a fact"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#: app/Http/Controllers/AddParentToIndividual.php
 #: resources/views/family-page-grandparents.phtml
 #: resources/views/modules/relatives/tab.phtml
 msgid "Add a father"
@@ -1066,8 +1063,8 @@ msgstr "Adaugă un nou tată"
 msgid "Add a favorite"
 msgstr "Adaugă un nou favorit"
 
-#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
-#: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: app/Http/Controllers/AddSpouseToFamily.php
+#: app/Http/Controllers/AddSpouseToIndividual.php
 #: resources/views/family-page-menu.phtml
 #: resources/views/family-page-parents.phtml
 #: resources/views/modules/relatives/family.phtml
@@ -1075,17 +1072,16 @@ msgstr "Adaugă un nou favorit"
 msgid "Add a husband"
 msgstr "Adaugă un nou soţ"
 
-#: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php
+#: app/Http/Controllers/LinkSpouseToIndividual.php
 #: resources/views/modules/relatives/tab.phtml
 msgid "Add a husband using an existing individual"
 msgstr "Adaugă un soţ folosind o persoană existentă"
 
-#: resources/views/modules/user_blog/list.phtml
+#: resources/views/modules/user-blog/list.phtml
 msgid "Add a journal entry"
 msgstr "Adaugă o intrare nouă în jurnal"
 
-#: app/Http/RequestHandlers/AddMediaFileModal.php
-#: resources/views/media-page-menu.phtml
+#: app/Http/Controllers/AddMediaFile.php resources/views/media-page-menu.phtml
 #: resources/views/modals/add-media-file.phtml
 msgid "Add a media file"
 msgstr ""
@@ -1096,7 +1092,7 @@ msgstr ""
 msgid "Add a media object"
 msgstr "Adaugă un nou obiect media"
 
-#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#: app/Http/Controllers/AddParentToIndividual.php
 #: resources/views/family-page-grandparents.phtml
 #: resources/views/modules/relatives/tab.phtml
 msgid "Add a mother"
@@ -1106,7 +1102,7 @@ msgstr "Adaugă o nouă mamă"
 msgid "Add a name"
 msgstr "Adaugă un nou nume"
 
-#: resources/views/modules/gedcom_news/list.phtml
+#: resources/views/modules/gedcom-news/list.phtml
 msgid "Add a news article"
 msgstr "Adaugă o nouă ştire"
 
@@ -1114,7 +1110,7 @@ msgstr "Adaugă o nouă ştire"
 msgid "Add a note"
 msgstr "Adaugă o notă nouă"
 
-#: app/Http/RequestHandlers/AddParentToIndividualPage.php
+#: app/Http/Controllers/AddParentToIndividual.php
 #, fuzzy
 msgid "Add a parent"
 msgstr "Adaugă un părinte"
@@ -1127,18 +1123,18 @@ msgstr ""
 msgid "Add a sister"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddChildToFamilyPage.php
+#: app/Http/Controllers/AddChildToFamily.php
 #: resources/views/family-page-children.phtml
 #: resources/views/modules/relatives/family.phtml
 msgid "Add a son"
 msgstr ""
 
-#: resources/views/modules/sources_tab/tab.phtml
+#: resources/views/modules/sources-tab/tab.phtml
 msgid "Add a source citation"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
-#: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: app/Http/Controllers/AddSpouseToFamily.php
+#: app/Http/Controllers/AddSpouseToIndividual.php
 #: resources/views/modules/relatives/tab.phtml
 msgid "Add a spouse"
 msgstr ""
@@ -1153,13 +1149,12 @@ msgstr "Adaugă un soț/o soție folosind o persoană existentă"
 msgid "Add a story"
 msgstr "Adaugă articol"
 
-#: app/Http/RequestHandlers/UserAddPage.php
-#: resources/views/admin/control-panel.phtml
+#: app/Http/Controllers/UserAdd.php resources/views/admin/control-panel.phtml
 msgid "Add a user"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddSpouseToFamilyPage.php
-#: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
+#: app/Http/Controllers/AddSpouseToFamily.php
+#: app/Http/Controllers/AddSpouseToIndividual.php
 #: resources/views/family-page-menu.phtml
 #: resources/views/family-page-parents.phtml
 #: resources/views/modules/relatives/family.phtml
@@ -1167,7 +1162,7 @@ msgstr ""
 msgid "Add a wife"
 msgstr "Adaugă o nouă soţie"
 
-#: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php
+#: app/Http/Controllers/LinkSpouseToIndividual.php
 #: resources/views/modules/relatives/tab.phtml
 msgid "Add a wife using an existing individual"
 msgstr "Adaugă o soţie folosind o persoană existentă"
@@ -1259,8 +1254,8 @@ msgstr ""
 
 #: app/CustomTags/Aldfaer.php app/CustomTags/GedcomL.php
 #: app/CustomTags/PersonalAncestralFile.php app/Gedcom.php
-#: app/Http/RequestHandlers/CreateRepositoryModal.php
-#: app/Module/FixCemeteryTag.php resources/views/modals/submitter-fields.phtml
+#: app/Http/Controllers/CreateRepository.php app/Module/FixCemeteryTag.php
+#: resources/views/modals/submitter-fields.phtml
 #, fuzzy
 msgid "Address"
 msgstr "Adresă"
@@ -1419,13 +1414,12 @@ msgstr ""
 msgid "Adult christening"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
-#: app/Module/SearchMenuModule.php
+#: app/Http/Controllers/SearchAdvanced.php app/Module/SearchMenuModule.php
 msgid "Advanced search"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Afghanistan"
 msgstr "Afganistan"
 
@@ -1493,7 +1487,7 @@ msgid "Agency"
 msgstr "Agenţie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Albania"
 msgstr ""
 
@@ -1508,7 +1502,7 @@ msgid "Albuquerque, New Mexico, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Algeria"
 msgstr ""
 
@@ -1530,7 +1524,7 @@ msgstr "Viu sau decedat"
 #: app/Module/FrequentlyAskedQuestionsModule.php
 #: resources/views/lists/datatables-attributes.phtml
 #: resources/views/modules/faq/config.phtml
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/descendancy_report.xml
@@ -1541,17 +1535,16 @@ msgstr "Viu sau decedat"
 msgid "All"
 msgstr "Toate"
 
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Http/Controllers/TreePrivacy.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "All facts and events"
 msgstr ""
 
-#: app/Http/RequestHandlers/RegisterAction.php
+#: app/Http/Controllers/Register.php
 msgid "All fields must be completed."
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesAllPage.php
-#: resources/views/admin/components.phtml
+#: app/Http/Controllers/ModulesAll.php resources/views/admin/components.phtml
 #: resources/views/admin/control-panel.phtml
 msgid "All modules"
 msgstr ""
@@ -1586,7 +1579,7 @@ msgid "Alternative spelling of surname"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "American Samoa"
 msgstr "Samoa Americană"
 
@@ -1688,17 +1681,17 @@ msgid "Anchorage, Alaska, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Andorra"
 msgstr "Andora"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Angola"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Anguilla"
 msgstr ""
 
@@ -1719,16 +1712,16 @@ msgid "Answer"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Antarctica"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Antigua and Barbuda"
 msgstr "Antigua şi Barbuda"
 
-#: app/Http/RequestHandlers/LoginPage.php
+#: app/Http/Controllers/Login.php
 msgid "Anyone with a user account can access this website."
 msgstr ""
 
@@ -1794,7 +1787,7 @@ msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi acest fapt GEDCOM ?"
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi acest mesaj ? Nu poate fi recuperat mai târziu."
 
-#: app/Http/RequestHandlers/ManageMediaData.php
+#: app/Http/Controllers/ManageMediaData.php
 #: resources/views/admin/clean-data.phtml resources/views/admin/trees.phtml
 #: resources/views/admin/users-table-options.phtml
 #: resources/views/edit-account-page.phtml
@@ -1802,9 +1795,9 @@ msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi acest mesaj ? Nu poate fi 
 #: resources/views/individual-page-menu.phtml
 #: resources/views/media-page-menu.phtml
 #: resources/views/modules/faq/config.phtml
-#: resources/views/modules/gedcom_news/list.phtml
+#: resources/views/modules/gedcom-news/list.phtml
 #: resources/views/modules/stories/config.phtml
-#: resources/views/modules/user_blog/list.phtml
+#: resources/views/modules/user-blog/list.phtml
 #: resources/views/record-page-menu.phtml
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
@@ -1819,7 +1812,7 @@ msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi acest element din lista dumneavoastră de favoriţi ?"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Argentina"
 msgstr ""
 
@@ -1828,12 +1821,12 @@ msgid "Argentina, Colombia, Mexico, Chile, Uruguay, Peru, Israel"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Armenia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Aruba"
 msgstr ""
 
@@ -1856,11 +1849,11 @@ msgstr ""
 msgid "Associate"
 msgstr "Asociază"
 
-#: app/Http/RequestHandlers/HelpText.php
+#: app/Http/Controllers/HelpText.php
 msgid "Associate events with this source"
 msgstr "Asociaţi evenimentele cu această sursă"
 
-#: resources/views/modules/personal_facts/tab.phtml
+#: resources/views/modules/personal-facts/tab.phtml
 msgid "Associated events"
 msgstr ""
 
@@ -1870,7 +1863,7 @@ msgid "Asunción, Paraguay"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "At sea"
 msgstr "La Mare"
 
@@ -1919,7 +1912,7 @@ msgid "August"
 msgstr "August"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Australia"
 msgstr ""
 
@@ -1928,7 +1921,7 @@ msgid "Australia / New Zealand"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Austria"
 msgstr ""
 
@@ -1942,7 +1935,7 @@ msgid "Author of last change"
 msgstr ""
 
 #. I18N: Automatic suggestions when you type
-#: app/Http/RequestHandlers/ModulesMapAutocompletePage.php
+#: app/Http/Controllers/ModulesMapAutocomplete.php
 #: resources/views/admin/control-panel.phtml
 msgid "Autocomplete"
 msgstr ""
@@ -1966,8 +1959,8 @@ msgid "Average age"
 msgstr ""
 
 #: app/Module/StatisticsChartModule.php app/Statistics.php
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/custom.phtml
 #: resources/views/modules/statistics-chart/lifespan.phtml
@@ -1990,8 +1983,8 @@ msgstr ""
 msgid "Average number"
 msgstr ""
 
-#: app/Statistics.php resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Statistics.php resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/children.phtml
 msgid "Average number of children per family"
@@ -2004,27 +1997,27 @@ msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Azerbaijan"
 msgstr "Azerbaidjan"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Azores"
 msgstr "Azore"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bahamas"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bahrain"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bangladesh"
 msgstr ""
 
@@ -2106,7 +2099,7 @@ msgid "Bar mitzvah"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Barbados"
 msgstr ""
 
@@ -2123,12 +2116,12 @@ msgstr ""
 msgid "Baton Rouge, Louisiana, United States"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
+#: app/Http/Controllers/SearchAdvanced.php
 msgid "Begins with"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Belarus"
 msgstr ""
 
@@ -2138,22 +2131,22 @@ msgid "Belgian Chocolate"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Belgium"
 msgstr "Belgia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Belize"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Benin"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bermuda"
 msgstr ""
 
@@ -2167,7 +2160,7 @@ msgid "Best man"
 msgstr "Cavaler de onoare"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bhutan"
 msgstr ""
 
@@ -2197,7 +2190,7 @@ msgstr ""
 msgid "Birmingham, Alabama, United States"
 msgstr ""
 
-#: app/Gedcom.php app/Http/RequestHandlers/IndividualPage.php
+#: app/Gedcom.php app/Http/Controllers/IndividualPage.php
 #: resources/views/lists/individuals-table.phtml
 #: resources/xml/reports/ahnentafel_report.xml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/change_report.xml
@@ -2350,7 +2343,7 @@ msgstr "Binecuvântare"
 msgid "Block"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesBlocksPage.php
+#: app/Http/Controllers/ModulesBlocks.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Blocks"
@@ -2382,7 +2375,7 @@ msgid "Boise, Idaho, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bolivia"
 msgstr ""
 
@@ -2398,7 +2391,7 @@ msgid "Born in the covenant"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bosnia and Herzegovina"
 msgstr "Bosnia şi Herţegovina"
 
@@ -2416,7 +2409,7 @@ msgid "Both dead"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Botswana"
 msgstr ""
 
@@ -2426,7 +2419,7 @@ msgid "Bountiful, Utah, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bouvet Island"
 msgstr "Insula Bouvet"
 
@@ -2443,8 +2436,7 @@ msgid "Branches of the %s family"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Brazil"
 msgstr "Brazilia"
 
@@ -2472,12 +2464,12 @@ msgid "Brit milah"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "British Indian Ocean Territory"
 msgstr "Teritoriul Britanic din Oceanul Indian"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "British Virgin Islands"
 msgstr "Insulele Virgine Britanice"
 
@@ -2487,7 +2479,7 @@ msgid "Brother"
 msgstr "Frate"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Brunei Darussalam"
 msgstr ""
 
@@ -2497,7 +2489,7 @@ msgid "Buenos Aires, Argentina"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Bulgaria"
 msgstr ""
 
@@ -2637,12 +2629,12 @@ msgid "Burials"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Burkina Faso"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Burundi"
 msgstr ""
 
@@ -2694,12 +2686,12 @@ msgid "Call number"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cambodia"
 msgstr "Cambodgia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cameroon"
 msgstr "Camerun"
 
@@ -2709,18 +2701,17 @@ msgid "Campinas, Brazil"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Canada"
 msgstr ""
 
-#: app/Http/RequestHandlers/SitePreferencesAction.php
+#: app/Http/Controllers/SitePreferences.php
 #, php-format
 msgid "Cannot write to the folder “%s”."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cape Verde"
 msgstr "Capul Verde"
 
@@ -2766,7 +2757,7 @@ msgid "Caution! This may take a long time. Be patient."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cayman Islands"
 msgstr "Insulele Cayman"
 
@@ -2788,11 +2779,11 @@ msgstr ""
 msgid "Census assistant"
 msgstr "Asistent Recensământ"
 
-#: app/Gedcom.php resources/views/modules/GEDFact_assistant/select-census.phtml
+#: app/Gedcom.php resources/views/modules/GEDFact-assistant/select-census.phtml
 msgid "Census date"
 msgstr "Dată recensamânt"
 
-#: resources/views/modules/GEDFact_assistant/select-census.phtml
+#: resources/views/modules/GEDFact-assistant/select-census.phtml
 msgid "Census date and place"
 msgstr ""
 
@@ -2805,7 +2796,7 @@ msgid "Census transcript"
 msgstr "Transcriere recensământ"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Central African Republic"
 msgstr "Republica Africană Centrală"
 
@@ -2819,44 +2810,44 @@ msgid "Certificate"
 msgstr "Certificat"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Chad"
 msgstr "Ciad"
 
-#: app/Http/RequestHandlers/ChangeFamilyMembersPage.php
+#: app/Http/Controllers/ChangeFamilyMembers.php
 #: resources/views/family-page-menu.phtml
 msgid "Change family members"
 msgstr "Modifică membri familiei"
 
-#: app/Http/RequestHandlers/TreePageEdit.php
-msgid "Change the “Home page” blocks"
+#: app/Http/Controllers/TreePageEdit.php
+msgid "Change the \"Home page\" blocks"
 msgstr ""
 
-#: app/Http/RequestHandlers/UserPageEdit.php
+#: app/Http/Controllers/UserPageEdit.php
 msgid "Change the “My page” blocks"
 msgstr ""
 
 #. I18N: [a record was] Changed by <user>
-#: resources/views/modules/recent_changes/changes-list.phtml
+#: resources/views/modules/recent-changes/changes-list.phtml
 #, php-format
 msgid "Changed by %1$s"
 msgstr ""
 
 #. I18N: [a record was] Changed on <date/time>
-#: resources/views/modules/recent_changes/changes-list.phtml
+#: resources/views/modules/recent-changes/changes-list.phtml
 #, php-format
 msgid "Changed on %1$s"
 msgstr ""
 
 #. I18N: [a record was] Changed on <date/time> by <user>
-#: resources/views/modules/recent_changes/changes-list.phtml
+#: resources/views/modules/recent-changes/changes-list.phtml
 #, php-format
 msgid "Changed on %1$s by %2$s"
 msgstr ""
 
 #. I18N: Name of a module/report
 #: app/Module/ChangeReportModule.php resources/views/admin/users-edit.phtml
-#: resources/views/modules/recent_changes/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
 #: resources/views/pending-changes-page.phtml
 #: resources/xml/reports/change_report.xml
 msgid "Changes"
@@ -2870,8 +2861,7 @@ msgstr[0] "Modificări în ultima %s zi"
 msgstr[1] "Modificări în ultimele %s zile"
 msgstr[2] "Modificări în ultimele %s zile"
 
-#: app/Http/RequestHandlers/PendingChangesLogPage.php
-#: resources/views/admin/trees.phtml
+#: app/Http/Controllers/PendingChangesLog.php resources/views/admin/trees.phtml
 msgid "Changes log"
 msgstr ""
 
@@ -2899,15 +2889,14 @@ msgstr "Tip diagramă"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/block
-#: app/Http/RequestHandlers/ModulesChartsPage.php
-#: app/Module/ChartsBlockModule.php app/Module/ChartsMenuModule.php
-#: resources/views/admin/control-panel.phtml
+#: app/Http/Controllers/ModulesCharts.php app/Module/ChartsBlockModule.php
+#: app/Module/ChartsMenuModule.php resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 #: resources/views/admin/trees-preferences.phtml
 msgid "Charts"
 msgstr "Diagrame"
 
-#: app/Http/RequestHandlers/CheckTree.php resources/views/admin/trees.phtml
+#: app/Http/Controllers/CheckTree.php resources/views/admin/trees.phtml
 msgid "Check for errors"
 msgstr ""
 
@@ -2915,7 +2904,7 @@ msgstr ""
 msgid "Check for new version"
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 msgid "Check for pending changes…"
 msgstr ""
 
@@ -2947,8 +2936,7 @@ msgstr ""
 msgid "Child of %s"
 msgstr "Copilul lui %s"
 
-#: app/Http/RequestHandlers/FamilyPage.php
-#: app/Http/RequestHandlers/IndividualPage.php
+#: app/Http/Controllers/FamilyPage.php app/Http/Controllers/IndividualPage.php
 #: app/Module/StatisticsChartModule.php
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
@@ -3003,17 +2991,16 @@ msgid "Children's data"
 msgstr "Datele copiilor"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Chile"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "China"
 msgstr ""
 
-#: app/Http/RequestHandlers/ReportListPage.php
+#: app/Http/Controllers/ReportList.php
 msgid "Choose a report to run"
 msgstr "Alegeţi ce raport doriţi să rulaţi"
 
@@ -3023,7 +3010,7 @@ msgstr "Alegeţi ce raport doriţi să rulaţi"
 msgid "Choose relatives"
 msgstr ""
 
-#: app/Http/RequestHandlers/SiteRegistrationPage.php
+#: app/Http/Controllers/SiteRegistration.php
 msgid "Choose user defined welcome text typed below"
 msgstr ""
 
@@ -3101,7 +3088,7 @@ msgid "Christening of a son"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Christmas Island"
 msgstr "Insula Christmas"
 
@@ -3155,7 +3142,7 @@ msgctxt "MALE"
 msgid "Civil registrar"
 msgstr ""
 
-#: app/Http/RequestHandlers/CleanDataFolder.php
+#: app/Http/Controllers/CleanDataFolder.php
 #: resources/views/admin/control-panel.phtml
 msgid "Clean up data folder"
 msgstr ""
@@ -3176,7 +3163,7 @@ msgid "Cochabamba, Bolivia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cocos (Keeling) Islands"
 msgstr "Insulele Cocos (Keeling)"
 
@@ -3191,7 +3178,7 @@ msgid "Cold Day"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Colombia"
 msgstr "Columbia"
 
@@ -3240,7 +3227,7 @@ msgid "Communicate directly with other users, using private messages."
 msgstr "Comunică direct cu alţi utilizatori folosind mesaje private."
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Comoros"
 msgstr "Comore"
 
@@ -3296,13 +3283,13 @@ msgstr ""
 msgid "Contact method"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
+#: app/Http/Controllers/SearchAdvanced.php
 msgid "Contains"
 msgstr ""
 
-#: resources/views/modules/gedcom_news/edit.phtml
+#: resources/views/modules/gedcom-news/edit.phtml
 #: resources/views/modules/html/config.phtml
-#: resources/views/modules/user_blog/edit.phtml
+#: resources/views/modules/user-blog/edit.phtml
 msgid "Content"
 msgstr "Conţinut"
 
@@ -3310,11 +3297,9 @@ msgstr "Conţinut"
 msgid "Continuation"
 msgstr ""
 
-#: app/Http/RequestHandlers/ControlPanel.php
-#: app/Http/RequestHandlers/MapDataAdd.php
-#: app/Http/RequestHandlers/MapDataEdit.php
-#: app/Http/RequestHandlers/MapDataList.php app/Module/ModuleThemeTrait.php
-#: resources/views/admin/analytics-edit.phtml
+#: app/Http/Controllers/ControlPanel.php app/Http/Controllers/MapDataAdd.php
+#: app/Http/Controllers/MapDataEdit.php app/Http/Controllers/MapDataList.php
+#: app/Module/ModuleThemeTrait.php resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/broadcast.phtml
 #: resources/views/admin/changes-log.phtml
 #: resources/views/admin/clean-data.phtml
@@ -3357,7 +3342,6 @@ msgstr ""
 #: resources/views/modules/openrouteservice/config.phtml
 #: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
-#: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/edit.phtml
 msgid "Control panel"
@@ -3376,7 +3360,7 @@ msgid "Convert to"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cook Islands"
 msgstr "Insulele Cook"
 
@@ -3406,7 +3390,7 @@ msgstr "Copiază"
 msgid "Copy all the records from %1$s into %2$s."
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 msgid "Copy files…"
 msgstr ""
 
@@ -3432,7 +3416,7 @@ msgid "Correspondence"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Costa Rica"
 msgstr ""
 
@@ -3450,11 +3434,11 @@ msgstr ""
 msgid "Country"
 msgstr "Țară"
 
-#: app/Http/RequestHandlers/ManageMediaData.php
+#: app/Http/Controllers/ManageMediaData.php
 msgid "Create"
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateTreePage.php
+#: app/Http/Controllers/CreateTree.php
 #: resources/views/admin/control-panel.phtml
 msgid "Create a family tree"
 msgstr ""
@@ -3496,7 +3480,7 @@ msgstr ""
 msgid "Create a submitter"
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 msgid "Create a temporary folder…"
 msgstr ""
 
@@ -3504,7 +3488,7 @@ msgstr ""
 msgid "Create a unique filename"
 msgstr ""
 
-#: app/Http/RequestHandlers/AddUnlinkedPage.php
+#: app/Http/Controllers/AddUnlinked.php
 msgid "Create an individual"
 msgstr ""
 
@@ -3662,17 +3646,17 @@ msgid "Cremation of a wife"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Croatia"
 msgstr "Croaţia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cuba"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Curaçao"
 msgstr ""
 
@@ -3689,7 +3673,7 @@ msgstr "Personalizat"
 msgid "Custom GEDCOM tags"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
 
@@ -3712,12 +3696,12 @@ msgid "Customize this page"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Cyprus"
 msgstr "Cipru"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Czech Republic"
 msgstr "Republica Cehă"
 
@@ -3727,7 +3711,7 @@ msgid "Córdoba, Argentina"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Côte d’Ivoire"
 msgstr ""
 
@@ -3772,10 +3756,8 @@ msgstr "Operator de date"
 msgid "Data fix"
 msgstr ""
 
-#: app/Http/RequestHandlers/DataFixChoose.php
-#: app/Http/RequestHandlers/DataFixPage.php
-#: app/Http/RequestHandlers/HelpText.php
-#: app/Http/RequestHandlers/ModulesDataFixesPage.php
+#: app/Http/Controllers/DataFix.php app/Http/Controllers/DataFixPage.php
+#: app/Http/Controllers/HelpText.php app/Http/Controllers/ModulesDataFixes.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/data-fix-page.phtml
 #: resources/views/admin/modules.phtml resources/views/admin/trees.phtml
@@ -3806,6 +3788,7 @@ msgstr "Păstrarea datelor"
 msgid "Data storage location"
 msgstr "Locația stocării datelor"
 
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -3814,6 +3797,7 @@ msgid "Database connection"
 msgstr ""
 
 #: app/CustomTags/PhpGedView.php
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -3822,6 +3806,7 @@ msgid "Database name"
 msgstr ""
 
 #: app/CustomTags/PhpGedView.php
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlsrv.phtml
@@ -3833,6 +3818,7 @@ msgid "Database type"
 msgstr ""
 
 #: app/CustomTags/PhpGedView.php
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlsrv.phtml
@@ -3842,7 +3828,7 @@ msgstr ""
 #: app/CustomTags/Aldfaer.php app/CustomTags/Ancestry.php
 #: app/CustomTags/FamilyTreeBuilder.php app/CustomTags/GedcomL.php
 #: app/CustomTags/Legacy.php app/CustomTags/TheMasterGenealogist.php
-#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
+#: app/Gedcom.php app/Http/Controllers/HelpText.php
 #: app/Module/ResearchTaskModule.php resources/views/help/date.phtml
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modules/timeline-chart/chart.phtml
@@ -4045,7 +4031,7 @@ msgstr "Ziua:"
 msgid "Dead"
 msgstr "Total decedaţi"
 
-#: app/Gedcom.php app/Http/RequestHandlers/IndividualPage.php
+#: app/Gedcom.php app/Http/Controllers/IndividualPage.php
 #: resources/views/lists/individuals-table.phtml
 #: resources/views/modules/yahrzeit/table.phtml
 #: resources/xml/reports/ahnentafel_report.xml
@@ -4258,7 +4244,7 @@ msgstr ""
 msgid "Degree"
 msgstr "Grad"
 
-#: app/Http/RequestHandlers/ManageMediaData.php app/Module/FixPrimaryTag.php
+#: app/Http/Controllers/ManageMediaData.php app/Module/FixPrimaryTag.php
 #: resources/views/admin/locations.phtml
 #: resources/views/admin/trees-privacy.phtml resources/views/admin/trees.phtml
 #: resources/views/admin/users-table-options.phtml
@@ -4269,15 +4255,15 @@ msgstr "Grad"
 #: resources/views/media-page-details.phtml
 #: resources/views/media-page-menu.phtml
 #: resources/views/modules/faq/config.phtml
-#: resources/views/modules/gedcom_news/list.phtml
+#: resources/views/modules/gedcom-news/list.phtml
 #: resources/views/modules/stories/config.phtml
+#: resources/views/modules/user-blog/list.phtml
 #: resources/views/modules/user-messages/user-messages.phtml
-#: resources/views/modules/user_blog/list.phtml
 #: resources/views/record-page-menu.phtml
 msgid "Delete"
 msgstr "Şterge"
 
-#: app/Http/RequestHandlers/UsersCleanupPage.php
+#: app/Http/Controllers/UsersCleanup.php
 #: resources/views/admin/control-panel.phtml
 msgid "Delete inactive users"
 msgstr ""
@@ -4306,12 +4292,12 @@ msgstr ""
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
 msgstr "Prin ştergerea familiei se dezleagă toţi indivizii unul de celălal dar indivizii ramân la locul lor. Sunteţi sigur(ă) că doriţi să ştergeţi familia ?"
 
-#: app/Http/RequestHandlers/GedcomLoad.php
+#: app/Http/Controllers/GedcomLoad.php
 msgid "Deleting…"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Democratic Republic of the Congo"
 msgstr ""
 
@@ -4320,7 +4306,7 @@ msgid "Demographic data"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Denmark"
 msgstr "Danemarca"
 
@@ -4455,7 +4441,7 @@ msgid "Divorces by century"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Djibouti"
 msgstr ""
 
@@ -4486,12 +4472,12 @@ msgid "Domain name"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Dominica"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Dominican Republic"
 msgstr "Republica Dominicană"
 
@@ -4500,7 +4486,7 @@ msgstr "Republica Dominicană"
 msgid "Download"
 msgstr "Descarcă"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 #, php-format
 msgid "Download %s…"
 msgstr ""
@@ -4522,17 +4508,13 @@ msgstr ""
 msgid "Draper, Utah, United States"
 msgstr ""
 
-#: app/Http/RequestHandlers/AccountUpdate.php
-#: app/Http/RequestHandlers/RegisterAction.php
-#: app/Http/RequestHandlers/UserAddAction.php
-#: app/Http/RequestHandlers/UserEditAction.php
+#: app/Http/Controllers/Account.php app/Http/Controllers/Register.php
+#: app/Http/Controllers/UserAdd.php app/Http/Controllers/UserEdit.php
 msgid "Duplicate email address. A user with that email already exists."
 msgstr ""
 
-#: app/Http/RequestHandlers/AccountUpdate.php
-#: app/Http/RequestHandlers/RegisterAction.php
-#: app/Http/RequestHandlers/UserAddAction.php
-#: app/Http/RequestHandlers/UserEditAction.php
+#: app/Http/Controllers/Account.php app/Http/Controllers/Register.php
+#: app/Http/Controllers/UserAdd.php app/Http/Controllers/UserEdit.php
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr "Nume de utilizator duplicat. Există deja un utilizator cu acest nume. Vă rugăm alegeţi alt nume de utilizator."
 
@@ -4544,15 +4526,15 @@ msgstr ""
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/individual-events.phtml
 msgid "Earliest birth"
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/individual-events.phtml
 msgid "Earliest death"
@@ -4567,26 +4549,25 @@ msgid "Earliest marriage"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Ecuador"
 msgstr ""
 
-#: app/Http/RequestHandlers/MapDataEdit.php
-#: resources/views/admin/locations.phtml
+#: app/Http/Controllers/MapDataEdit.php resources/views/admin/locations.phtml
 #: resources/views/admin/users-table-options.phtml
 #: resources/views/admin/users.phtml resources/views/edit/icon-fact-edit.phtml
 #: resources/views/media-page-details.phtml
 #: resources/views/media-page-menu.phtml
 #: resources/views/modules/faq/config.phtml
-#: resources/views/modules/gedcom_news/list.phtml
+#: resources/views/modules/gedcom-news/list.phtml
 #: resources/views/modules/stories/config.phtml
-#: resources/views/modules/user_blog/list.phtml
+#: resources/views/modules/user-blog/list.phtml
 #: resources/views/note-page-details.phtml
 #: resources/views/record-page-menu.phtml
 msgid "Edit"
 msgstr "Editare"
 
-#: app/Http/RequestHandlers/EditMediaFileModal.php
+#: app/Http/Controllers/EditMediaFile.php
 #: resources/views/modals/edit-media-file.phtml
 msgid "Edit a media file"
 msgstr ""
@@ -4605,8 +4586,7 @@ msgstr ""
 msgid "Edit the name"
 msgstr ""
 
-#: app/Http/RequestHandlers/EditRawFactPage.php
-#: app/Http/RequestHandlers/EditRawRecordPage.php
+#: app/Http/Controllers/EditRawFact.php app/Http/Controllers/EditRawRecord.php
 #: resources/views/edit/edit-fact.phtml resources/views/edit/edit-record.phtml
 #: resources/views/family-page-menu.phtml
 #: resources/views/individual-page-menu.phtml
@@ -4618,7 +4598,7 @@ msgstr "Modifică înregistrarea GEDCOM în modul brut"
 msgid "Edit the sex"
 msgstr ""
 
-#: app/Http/RequestHandlers/EditNotePage.php
+#: app/Http/Controllers/EditNote.php
 msgid "Edit the shared note"
 msgstr ""
 
@@ -4626,7 +4606,7 @@ msgstr ""
 msgid "Edit the story"
 msgstr "Modificare articol"
 
-#: app/Http/RequestHandlers/UserEditPage.php
+#: app/Http/Controllers/UserEdit.php
 msgid "Edit the user"
 msgstr ""
 
@@ -4639,7 +4619,7 @@ msgid "Edit with all GEDCOM tags"
 msgstr ""
 
 #: app/Enums/Role.php resources/views/admin/users-edit.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Editor"
 msgstr ""
@@ -4654,12 +4634,12 @@ msgid "Education"
 msgstr "Educaţie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Egypt"
 msgstr "Egipt"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "El Salvador"
 msgstr ""
 
@@ -4769,7 +4749,7 @@ msgid "Engagement"
 msgstr "Logodnă"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "England"
 msgstr "Anglia"
 
@@ -4782,17 +4762,21 @@ msgstr "Introduceţi o notă opţională pentru acest favorit"
 msgid "Enter fullscreen"
 msgstr ""
 
+#: resources/views/setup/step-4-database-firebird.phtml
+msgid "Enter the database file path or alias on the database server."
+msgstr ""
+
 #: resources/views/search-replace-page.phtml
 msgid "Entire record"
 msgstr "Înregistrare întreagă"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Equatorial Guinea"
 msgstr "Guineea Ecuatorială"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Eritrea"
 msgstr "Eritreea"
 
@@ -4816,12 +4800,12 @@ msgid "Estimated dates for birth and death"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Estonia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Ethiopia"
 msgstr "Etiopia"
 
@@ -4844,11 +4828,11 @@ msgstr "Eveniment"
 msgid "Event did not occur"
 msgstr ""
 
-#: app/Gedcom.php resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Gedcom.php resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/individual-events.phtml
-#: resources/views/modules/todays_events/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/todays-events/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 msgid "Events"
 msgstr "Evenimente"
 
@@ -4856,7 +4840,7 @@ msgstr "Evenimente"
 msgid "Events in countries"
 msgstr ""
 
-#: resources/views/modules/personal_facts/tab.phtml
+#: resources/views/modules/personal-facts/tab.phtml
 msgid "Events of close relatives"
 msgstr "Evenimentele rudelor apropiate"
 
@@ -4864,11 +4848,11 @@ msgstr "Evenimentele rudelor apropiate"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
+#: app/Http/Controllers/SearchAdvanced.php
 msgid "Exact"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
+#: app/Http/Controllers/SearchAdvanced.php
 msgid "Exact date"
 msgstr ""
 
@@ -4908,11 +4892,11 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-#: app/Http/RequestHandlers/ExportGedcomPage.php
+#: app/Http/Controllers/ExportGedcomPage.php
 msgid "Export a GEDCOM file"
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 msgid "Export all the family trees to GEDCOM files…"
 msgstr ""
 
@@ -5037,7 +5021,7 @@ msgstr ""
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/admin/locations.phtml resources/views/admin/tags.phtml
 #: resources/views/family-page.phtml
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 #: resources/xml/reports/individual_ext_report.xml
 #: resources/xml/reports/individual_report.xml
 msgid "Facts and events"
@@ -5060,7 +5044,7 @@ msgid "Facts for new individuals"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Falkland Islands"
 msgstr "Insulele Falkland"
 
@@ -5077,8 +5061,8 @@ msgstr "Insulele Falkland"
 #: resources/views/lists/notes-table.phtml
 #: resources/views/lists/sources-table.phtml
 #: resources/views/lists/submitters-table.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/place-hierarchy/events.phtml
 #: resources/views/modules/place-hierarchy/sidebar.phtml
@@ -5095,15 +5079,14 @@ msgstr ""
 
 #. I18N: Name of a module/report
 #: app/CustomTags/FamilyTreeMaker.php app/Gedcom.php
-#: app/Http/RequestHandlers/CheckTree.php
-#: app/Module/FamilyGroupReportModule.php
+#: app/Http/Controllers/CheckTree.php app/Module/FamilyGroupReportModule.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/edit/link-child-to-family.phtml
 #: resources/views/modals/link-media-to-family.phtml
-#: resources/views/modules/family_nav/sidebar-family.phtml
+#: resources/views/modules/family-nav/sidebar-family.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/random_media/slide-show.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/random-media/slide-show.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 #: resources/views/modules/statistics-chart/custom.phtml
 #: resources/xml/reports/family_group_report.xml
 msgid "Family"
@@ -5232,8 +5215,8 @@ msgstr ""
 msgid "Family with spouse"
 msgstr "Familie cu soţul/soţia"
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 msgid "Family with the most children"
 msgstr "Familia cu cei mai mulţi copii"
@@ -5260,7 +5243,7 @@ msgid "Fan chart of %s"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Faroe Islands"
 msgstr "Insulele Feroe"
 
@@ -5313,12 +5296,12 @@ msgstr "Februarie"
 msgid "Female"
 msgstr "Femeie"
 
-#: app/Statistics.php resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Statistics.php resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/greatest-age.phtml
 #: resources/views/modules/statistics-chart/lifespan.phtml
 #: resources/views/modules/statistics-chart/oldest-living.phtml
-#: resources/views/modules/top10_givnnames/block.phtml
+#: resources/views/modules/top10-givnnames/block.phtml
 msgid "Females"
 msgstr "Femei"
 
@@ -5338,12 +5321,12 @@ msgid "Field value"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Fiji"
 msgstr ""
 
 #: app/CustomTags/FamilyTreeBuilder.php
-#: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
+#: app/Http/Controllers/ManageMediaData.php app/MediaFile.php
 msgid "File size"
 msgstr ""
 
@@ -5351,7 +5334,7 @@ msgstr ""
 msgid "File successfully uploaded"
 msgstr "Fişierul a fost uploadat cu succes"
 
-#: app/Gedcom.php app/Http/RequestHandlers/ManageMediaData.php
+#: app/Gedcom.php app/Http/Controllers/ManageMediaData.php
 #: resources/views/admin/gedcom-export-options.phtml
 #: resources/views/admin/trees-export.phtml
 #: resources/views/modals/media-file-fields.phtml
@@ -5363,13 +5346,21 @@ msgstr ""
 msgid "Filename on server"
 msgstr "Numele fişierului pe server"
 
-#: app/Http/RequestHandlers/UploadMediaAction.php
+#: app/Http/Controllers/UploadMedia.php
+#, php-format
+msgid "Filenames are not allowed to contain the character \"%s\"."
+msgstr ""
+
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr ""
 
-#: app/Http/RequestHandlers/UploadMediaAction.php
+#: app/Http/Controllers/UploadMedia.php
+#, php-format
+msgid "Filenames are not allowed to have the extension \"%s\"."
+msgstr ""
+
 #: app/Services/MediaFileService.php
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
@@ -5407,7 +5398,7 @@ msgstr ""
 msgid "Find any relationship"
 msgstr ""
 
-#: app/Http/RequestHandlers/FindDuplicateRecords.php
+#: app/Http/Controllers/FindDuplicateRecords.php
 #: resources/views/admin/trees.phtml
 msgid "Find duplicates"
 msgstr ""
@@ -5426,13 +5417,12 @@ msgstr ""
 msgid "Find the closest relationships"
 msgstr ""
 
-#: app/Http/RequestHandlers/UnconnectedPage.php
-#: resources/views/admin/trees.phtml
+#: app/Http/Controllers/Unconnected.php resources/views/admin/trees.phtml
 msgid "Find unrelated individuals"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Finland"
 msgstr "Finlanda"
 
@@ -5458,7 +5448,7 @@ msgid "Flag"
 msgstr "Steag"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Flanders"
 msgstr "Flandra"
 
@@ -5481,7 +5471,7 @@ msgstr "Vă rugăm daţi click pe următorul link şi completaţi datele cerute 
 msgid "Footer"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesFootersPage.php
+#: app/Http/Controllers/ModulesFooters.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Footers"
@@ -5507,12 +5497,12 @@ msgid "For help with genealogy questions contact %s."
 msgstr "Contact pentru ajutor cu întrebările legate de genealogie %s."
 
 #: resources/views/admin/control-panel.phtml resources/views/admin/tags.phtml
+#: resources/views/admin/trees-privacy.phtml
 #: resources/views/modules/geonames/config.phtml
 #: resources/views/modules/google-maps/config.phtml
 #: resources/views/modules/here-maps/config.phtml
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
-#: resources/views/modules/sitemap/config.phtml
 #, php-format
 msgid "For more information, see %s."
 msgstr ""
@@ -5533,7 +5523,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr ""
 
 #: resources/views/login-page.phtml
-#: resources/views/modules/login_block/sign-in.phtml
+#: resources/views/modules/login-block/sign-in.phtml
 msgid "Forgot password?"
 msgstr ""
 
@@ -5581,8 +5571,7 @@ msgid "Foster mother"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "France"
 msgstr "Franţa"
 
@@ -5602,17 +5591,17 @@ msgid "French"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "French Guiana"
 msgstr "Guiana Franceză"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "French Polynesia"
 msgstr "Polinezia franceză"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "French Southern Territories"
 msgstr "Teritoriile Franceze de Sud"
 
@@ -5689,8 +5678,7 @@ msgstr ""
 msgid "GEDCOM tag"
 msgstr ""
 
-#: app/Http/RequestHandlers/SiteTagsPage.php
-#: resources/views/admin/control-panel.phtml
+#: app/Http/Controllers/SiteTags.php resources/views/admin/control-panel.phtml
 msgid "GEDCOM tags"
 msgstr ""
 
@@ -5714,12 +5702,12 @@ msgid "GOV identifier type"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Gabon"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Gambia"
 msgstr ""
 
@@ -5754,15 +5742,9 @@ msgstr "Meniu de genealogie"
 msgid "General"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchGeneralPage.php
-#: app/Module/SearchMenuModule.php
+#: app/Http/Controllers/SearchGeneral.php app/Module/SearchMenuModule.php
 msgid "General search"
 msgstr ""
-
-#. I18N: Description of the “Sitemaps” module
-#: app/Module/SiteMapModule.php
-msgid "Generate sitemap files for search engines."
-msgstr "Generează hărţi site pentru motoarele de căutare."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ParserGenerate.php
@@ -5780,7 +5762,7 @@ msgid "Generation "
 msgstr ""
 
 #: resources/views/modules/ancestors-chart/page.phtml
-#: resources/views/modules/descendancy_chart/page.phtml
+#: resources/views/modules/descendancy-chart/page.phtml
 #: resources/views/modules/family-book-chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
 #: resources/views/modules/hourglass-chart/page.phtml
@@ -5815,27 +5797,26 @@ msgstr "Geocodare"
 msgid "Geographic area"
 msgstr ""
 
-#: app/Http/RequestHandlers/MapDataAdd.php
-#: app/Http/RequestHandlers/MapDataEdit.php
-#: app/Http/RequestHandlers/MapDataList.php
+#: app/Http/Controllers/MapDataAdd.php app/Http/Controllers/MapDataEdit.php
+#: app/Http/Controllers/MapDataList.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/map-import-form.phtml
 msgid "Geographic data"
 msgstr "Date geografice"
 
 #. I18N: find latitude/longitude for a place
-#: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php
+#: app/Http/Controllers/ModulesMapGeoLocations.php
 #: resources/views/admin/control-panel.phtml
 msgid "Geolocation"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Georgia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Germany"
 msgstr "Germania"
 
@@ -5844,12 +5825,12 @@ msgid "Germany / Austria"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Ghana"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Gibraltar"
 msgstr ""
 
@@ -5930,7 +5911,7 @@ msgid "Greatest age between siblings"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Greece"
 msgstr "Grecia"
 
@@ -5946,7 +5927,7 @@ msgid "Green Beam"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Greenland"
 msgstr "Groenlanda"
 
@@ -5956,7 +5937,7 @@ msgid "Gregorian"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Grenada"
 msgstr ""
 
@@ -5966,12 +5947,12 @@ msgid "Guadalajara, Mexico"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guadeloupe"
 msgstr "Guadelupa"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guam"
 msgstr ""
 
@@ -5990,7 +5971,7 @@ msgid "Guardian"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guatemala"
 msgstr ""
 
@@ -6005,22 +5986,22 @@ msgid "Guayaquil, Ecuador"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guernsey"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guinea"
 msgstr "Guineea"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guinea-Bissau"
 msgstr "Guineea-Bissau"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Guyana"
 msgstr ""
 
@@ -6034,7 +6015,7 @@ msgid "Hair color"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Haiti"
 msgstr ""
 
@@ -6086,16 +6067,16 @@ msgstr ""
 msgid "He was cremated"
 msgstr ""
 
-#: app/Gedcom.php app/Header.php app/Http/RequestHandlers/CheckTree.php
+#: app/Gedcom.php app/Header.php app/Http/Controllers/CheckTree.php
 msgid "Header"
 msgstr "Antet"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Heard Island and McDonald Islands"
 msgstr "Insula Heard şi Insulele McDonald"
 
-#: app/Http/RequestHandlers/HelpText.php
+#: app/Http/Controllers/HelpText.php
 msgid "Hebrew"
 msgstr "Ebraic"
 
@@ -6137,7 +6118,7 @@ msgstr "Salut %s …<br>Mulţumesc pentru înregistrare."
 msgid "Hello administrator…"
 msgstr "Bună administratore …"
 
-#: app/Http/RequestHandlers/HelpText.php resources/views/help/link.phtml
+#: app/Http/Controllers/HelpText.php resources/views/help/link.phtml
 msgid "Help"
 msgstr "Ajutor"
 
@@ -6164,8 +6145,7 @@ msgstr ""
 msgid "Hide GEDCOM tags"
 msgstr ""
 
-#: app/Auth.php app/Enums/AccessLevel.php
-#: app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Auth.php app/Enums/AccessLevel.php app/Http/Controllers/TreePrivacy.php
 #: resources/views/admin/trees-privacy.phtml
 msgid "Hide from everyone"
 msgstr ""
@@ -6202,10 +6182,10 @@ msgstr ""
 msgid "His occupation was"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesHistoricEventsPage.php
+#: app/Http/Controllers/ModulesHistoricEvents.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
-#: resources/views/modules/personal_facts/tab.phtml
+#: resources/views/modules/personal-facts/tab.phtml
 msgid "Historic events"
 msgstr ""
 
@@ -6221,20 +6201,20 @@ msgid "Holocaust"
 msgstr ""
 
 #. I18N: Name of a module
+#: app/Http/Exceptions/HttpNotFoundException.php
 #: app/Module/WelcomeBlockModule.php resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml resources/views/admin/trees.phtml
 msgid "Home page"
 msgstr "Pagină inițială"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Honduras"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
 #. I18N: Name of a country or state
-#: app/Elements/TempleCode.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Elements/TempleCode.php app/StatisticsData.php
 msgid "Hong Kong"
 msgstr ""
 
@@ -6274,11 +6254,11 @@ msgid "How much recursion to use when searching for relationships"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Hungary"
 msgstr "Ungaria"
 
-#: app/Gedcom.php app/Http/RequestHandlers/LinkSpouseToIndividualPage.php
+#: app/Gedcom.php app/Http/Controllers/LinkSpouseToIndividual.php
 #: resources/views/edit/change-family-members.phtml
 #: resources/views/fact-date.phtml resources/xml/reports/cemetery_report.xml
 #: resources/xml/reports/death_report.xml
@@ -6298,7 +6278,7 @@ msgid "IP address"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Iceland"
 msgstr "Islanda"
 
@@ -6433,7 +6413,7 @@ msgstr ""
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesAnalyticsPage.php
+#: app/Http/Controllers/ModulesAnalytics.php
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
@@ -6442,7 +6422,7 @@ msgstr ""
 msgid "If your database uses an encrypted connection, provide the names of the files containing the SSL certificate and key."
 msgstr "Dacă baza de date folosește o conexiune criptată, furnizați numele fișierelor care conțin certificatul și cheia SSL."
 
-#: app/Http/RequestHandlers/ManageMediaData.php app/MediaFile.php
+#: app/Http/Controllers/ManageMediaData.php app/MediaFile.php
 msgid "Image dimensions"
 msgstr ""
 
@@ -6459,11 +6439,11 @@ msgstr "Imigrare"
 msgid "Import"
 msgstr "Importă"
 
-#: app/Http/RequestHandlers/ImportGedcomPage.php
+#: app/Http/Controllers/ImportGedcom.php
 msgid "Import a GEDCOM file"
 msgstr ""
 
-#: app/Http/RequestHandlers/MapDataImportPage.php
+#: app/Http/Controllers/MapDataImport.php
 msgid "Import geographic data"
 msgstr ""
 
@@ -6547,8 +6527,7 @@ msgid "Include the individual’s immediate family"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "India"
 msgstr ""
 
@@ -6559,14 +6538,14 @@ msgstr ""
 
 #. I18N: Name of a module/report
 #: app/CustomTags/FamilyTreeMaker.php app/Gedcom.php
-#: app/Http/RequestHandlers/CheckTree.php app/Module/IndividualReportModule.php
+#: app/Http/Controllers/CheckTree.php app/Module/IndividualReportModule.php
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/admin/trees-privacy.phtml resources/views/admin/trees.phtml
 #: resources/views/modals/link-media-to-individual.phtml
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/charts/config.phtml
 #: resources/views/modules/compact-chart/page.phtml
-#: resources/views/modules/descendancy_chart/page.phtml
+#: resources/views/modules/descendancy-chart/page.phtml
 #: resources/views/modules/family-book-chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
 #: resources/views/modules/favorites/favorites.phtml
@@ -6574,8 +6553,8 @@ msgstr ""
 #: resources/views/modules/interactive-tree/page.phtml
 #: resources/views/modules/pedigree-chart/page.phtml
 #: resources/views/modules/pedigree-map/page.phtml
-#: resources/views/modules/random_media/slide-show.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/random-media/slide-show.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 #: resources/views/modules/statistics-chart/custom.phtml
 #: resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/edit.phtml
@@ -6621,8 +6600,8 @@ msgstr ""
 msgid "Individual record"
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 msgid "Individual who lived the longest"
 msgstr "Persoana care a trăit cel mai mult"
@@ -6642,12 +6621,12 @@ msgstr "Persoana care a trăit cel mai mult"
 #: resources/views/lists/submitters-table.phtml
 #: resources/views/lists/surnames-table.phtml
 #: resources/views/modules/census-assistant.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/place-hierarchy/events.phtml
 #: resources/views/modules/place-hierarchy/sidebar.phtml
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 #: resources/views/modules/statistics-chart/custom.phtml
 #: resources/views/record-page-links.phtml
 #: resources/views/search-general-page.phtml
@@ -6661,7 +6640,7 @@ msgid "Individuals with sources"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Indonesia"
 msgstr "Indonezia"
 
@@ -6679,7 +6658,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Inline-source records are discouraged."
 msgstr ""
 
@@ -6704,15 +6683,15 @@ msgstr ""
 msgid "International transfers"
 msgstr "Transferuri internaționale"
 
-#: app/Http/RequestHandlers/GedcomLoad.php
+#: app/Http/Controllers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no header record found."
 msgstr ""
 
-#: app/Http/RequestHandlers/GedcomLoad.php
+#: app/Http/Controllers/GedcomLoad.php
 msgid "Invalid GEDCOM file - no trailer record found."
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Invalid GEDCOM level number."
 msgstr ""
 
@@ -6720,40 +6699,40 @@ msgstr ""
 msgid "Invalid GEDCOM record"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Invalid GEDCOM record."
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Invalid GEDCOM tag."
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Invalid GEDCOM value."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Iran"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Iraq"
 msgstr "Irak"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Ireland"
 msgstr "Irlanda"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Isle of Man"
 msgstr "Wyspa Man"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Israel"
 msgstr ""
 
@@ -6766,7 +6745,7 @@ msgid "It is not recommended to use custom GEDCOM tags. This data can be lost wh
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Italy"
 msgstr "Italia"
 
@@ -6776,7 +6755,7 @@ msgid "Jalali"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Jamaica"
 msgstr ""
 
@@ -6787,8 +6766,7 @@ msgid "January"
 msgstr "Ianuarie"
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Japan"
 msgstr "Japonia"
 
@@ -6809,7 +6787,7 @@ msgid "John /DOE/"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Jordan"
 msgstr "Iordania"
 
@@ -6851,7 +6829,7 @@ msgid "Kansas City, Missouri, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Kazakhstan"
 msgstr "Kazahstan"
 
@@ -6871,7 +6849,7 @@ msgid "Keep the existing “last change” information"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Kenya"
 msgstr ""
 
@@ -6880,7 +6858,7 @@ msgid "Keyword examples"
 msgstr "Exemple cuvinte-cheie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Kiribati"
 msgstr ""
 
@@ -6890,12 +6868,12 @@ msgid "Kona, Hawaii, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Korea"
 msgstr "Coreea"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Kuwait"
 msgstr "Kuweit"
 
@@ -6905,7 +6883,7 @@ msgid "Kyiv, Ukraine"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Kyrgyzstan"
 msgstr "Kârgâzstan"
 
@@ -6966,7 +6944,7 @@ msgid "Land sale"
 msgstr ""
 
 #. I18N: page orientation
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 #: resources/xml/reports/change_report.xml
 #: resources/xml/reports/pedigree_report.xml
 msgid "Landscape"
@@ -6983,14 +6961,14 @@ msgstr "Peisaj"
 msgid "Language"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesLanguagesPage.php
+#: app/Http/Controllers/ModulesLanguages.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Languages"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Laos"
 msgstr ""
 
@@ -7020,8 +6998,8 @@ msgstr ""
 #: resources/views/lists/repositories-table.phtml
 #: resources/views/lists/sources-table.phtml
 #: resources/views/lists/submitters-table.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 #: resources/xml/reports/change_report.xml
 msgid "Last change"
 msgstr ""
@@ -7044,15 +7022,15 @@ msgstr ""
 msgid "Last signed in"
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/individual-events.phtml
 msgid "Latest birth"
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/individual-events.phtml
 msgid "Latest death"
@@ -7076,7 +7054,7 @@ msgid "Latitude"
 msgstr "Latitudine"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Latvia"
 msgstr "Letonia"
 
@@ -7086,15 +7064,15 @@ msgid "Lawful basis"
 msgstr "Temei legal"
 
 #: resources/views/modules/ancestors-chart/page.phtml
-#: resources/views/modules/descendancy_chart/page.phtml
+#: resources/views/modules/descendancy-chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
 #: resources/views/modules/hourglass-chart/page.phtml
 #: resources/views/modules/pedigree-chart/page.phtml
-#: resources/views/modules/recent_changes/config.phtml
-#: resources/views/modules/todays_events/config.phtml
-#: resources/views/modules/top10_givnnames/config.phtml
-#: resources/views/modules/top10_surnames/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
+#: resources/views/modules/todays-events/config.phtml
+#: resources/views/modules/top10-givnnames/config.phtml
+#: resources/views/modules/top10-surnames/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 #: resources/views/modules/yahrzeit/config.phtml
 msgid "Layout"
 msgstr ""
@@ -7113,7 +7091,7 @@ msgid "Leaves"
 msgstr "Frunze"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Lebanon"
 msgstr "Liban"
 
@@ -7143,7 +7121,7 @@ msgid "Length of marriage"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Lesotho"
 msgstr ""
 
@@ -7167,17 +7145,17 @@ msgid "Letter"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Liberia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Libya"
 msgstr "Libia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Liechtenstein"
 msgstr ""
 
@@ -7199,11 +7177,11 @@ msgstr ""
 msgid "Line endings"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "Line number"
 msgstr ""
 
-#: app/Http/RequestHandlers/FixLevel0MediaPage.php
+#: app/Http/Controllers/FixLevel0Media.php
 #: resources/views/admin/control-panel.phtml
 msgid "Link media objects to facts and events"
 msgstr ""
@@ -7214,7 +7192,7 @@ msgstr ""
 msgid "Link the user account to an individual."
 msgstr ""
 
-#: app/Http/RequestHandlers/LinkChildToFamilyPage.php
+#: app/Http/Controllers/LinkChildToFamily.php
 #: resources/views/modules/relatives/tab.phtml
 msgid "Link this individual to an existing family as a child"
 msgstr "Legaţi această persoană la o familie existentă ca şi copil"
@@ -7247,7 +7225,7 @@ msgid "List"
 msgstr "Listă"
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/ModulesListsPage.php app/Module/ListsMenuModule.php
+#: app/Http/Controllers/ModulesLists.php app/Module/ListsMenuModule.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 #: resources/views/admin/trees-preferences.phtml
@@ -7255,7 +7233,7 @@ msgid "Lists"
 msgstr "Liste"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Lithuania"
 msgstr "Lituania"
 
@@ -7279,9 +7257,9 @@ msgid "Local files"
 msgstr ""
 
 #: app/CustomTags/GedcomL.php app/CustomTags/Legacy.php
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #: resources/views/lists/locations-table.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 msgid "Location"
 msgstr ""
 
@@ -7354,22 +7332,22 @@ msgid "Lubbock, Texas, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Luxembourg"
 msgstr "Luxemburg"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Macau"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Macedonia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Madagascar"
 msgstr ""
 
@@ -7389,17 +7367,17 @@ msgid "Maidenhead location code"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Malawi"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Malaysia"
 msgstr "Malaiezia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Maldives"
 msgstr "Maldive"
 
@@ -7407,27 +7385,26 @@ msgstr "Maldive"
 msgid "Male"
 msgstr "Bărbat"
 
-#: app/Statistics.php resources/views/modules/gedcom_stats/statistics.phtml
+#: app/Statistics.php resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/greatest-age.phtml
 #: resources/views/modules/statistics-chart/lifespan.phtml
 #: resources/views/modules/statistics-chart/oldest-living.phtml
-#: resources/views/modules/top10_givnnames/block.phtml
+#: resources/views/modules/top10-givnnames/block.phtml
 msgid "Males"
 msgstr "Bărbaţi"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mali"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Malta"
 msgstr ""
 
-#: app/Http/RequestHandlers/ManageTrees.php
-#: resources/views/admin/changes-log.phtml
+#: app/Http/Controllers/ManageTrees.php resources/views/admin/changes-log.phtml
 #: resources/views/admin/data-fix-page.phtml
 #: resources/views/admin/data-fix-select.phtml
 #: resources/views/admin/merge-records-step-1.phtml
@@ -7443,7 +7420,7 @@ msgstr ""
 msgid "Manage family trees"
 msgstr ""
 
-#: app/Http/RequestHandlers/ManageMediaPage.php
+#: app/Http/Controllers/ManageMedia.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/media-upload.phtml
 msgid "Manage media"
@@ -7503,12 +7480,12 @@ msgid "Map link"
 msgstr ""
 
 #. I18N: Links to maps
-#: app/Http/RequestHandlers/ModulesMapLinksPage.php
+#: app/Http/Controllers/ModulesMapLinks.php
 #: resources/views/admin/control-panel.phtml
 msgid "Map links"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesMapProvidersPage.php
+#: app/Http/Controllers/ModulesMapProviders.php
 #: app/Services/LeafletJsService.php resources/views/admin/control-panel.phtml
 msgid "Map providers"
 msgstr ""
@@ -7707,12 +7684,12 @@ msgid "Married name"
 msgstr "Prenume după căsătorie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Marshall Islands"
 msgstr "Insulele Marshall"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Martinique"
 msgstr "Martinica"
 
@@ -7738,12 +7715,12 @@ msgid "Matomo™ / Piwik™ analytics"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mauritania"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mauritius"
 msgstr ""
 
@@ -7764,7 +7741,7 @@ msgid "May"
 msgstr "Mai"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mayotte"
 msgstr ""
 
@@ -7777,7 +7754,7 @@ msgstr ""
 #: app/CustomTags/GedcomL.php app/Media.php app/Module/MediaListModule.php
 #: app/Module/MediaTabModule.php resources/views/admin/control-panel.phtml
 #: resources/views/admin/media.phtml resources/views/lists/media-table.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 msgid "Media"
 msgstr "Fişiere media"
 
@@ -7814,8 +7791,8 @@ msgstr ""
 msgid "Media folders"
 msgstr ""
 
-#: app/CustomTags/GedcomL.php app/Gedcom.php
-#: app/Http/RequestHandlers/CheckTree.php app/Http/RequestHandlers/HelpText.php
+#: app/CustomTags/GedcomL.php app/Gedcom.php app/Http/Controllers/CheckTree.php
+#: app/Http/Controllers/HelpText.php
 #: resources/views/admin/fix-level-0-media.phtml
 #: resources/views/admin/media.phtml resources/views/admin/trees-privacy.phtml
 #: resources/views/admin/trees.phtml
@@ -7830,8 +7807,8 @@ msgstr ""
 #: resources/views/lists/media-table.phtml
 #: resources/views/lists/notes-table.phtml
 #: resources/views/lists/sources-table.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/other-records.phtml
 #: resources/views/record-page-links.phtml
@@ -7885,7 +7862,7 @@ msgstr ""
 msgid "Menu"
 msgstr "Meniu"
 
-#: app/Http/RequestHandlers/ModulesMenusPage.php
+#: app/Http/Controllers/ModulesMenus.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Menus"
@@ -7900,13 +7877,12 @@ msgstr ""
 msgid "Merge"
 msgstr ""
 
-#: app/Http/RequestHandlers/MergeTreesPage.php
+#: app/Http/Controllers/MergeTrees.php
 #: resources/views/admin/control-panel.phtml
 msgid "Merge family trees"
 msgstr ""
 
-#: app/Http/RequestHandlers/MergeFactsPage.php
-#: app/Http/RequestHandlers/MergeRecordsPage.php
+#: app/Http/Controllers/MergeFacts.php app/Http/Controllers/MergeRecords.php
 #: resources/views/admin/trees.phtml
 msgid "Merge records"
 msgstr ""
@@ -7934,7 +7910,7 @@ msgid "Messages"
 msgstr "Mesaje"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mexico"
 msgstr "Mexic"
 
@@ -7954,7 +7930,7 @@ msgid "Microfilm"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Micronesia"
 msgstr "Micronezia"
 
@@ -8007,14 +7983,13 @@ msgstr ""
 #: resources/views/modules/map-box/config.phtml
 #: resources/views/modules/openrouteservice/config.phtml
 #: resources/views/modules/relationships-chart/config.phtml
-#: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/config.phtml
 #: resources/views/modules/stories/edit.phtml
 msgid "Modules"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Moldova"
 msgstr ""
 
@@ -8024,17 +7999,17 @@ msgid "Mon"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Monaco"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mongolia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Montenegro"
 msgstr "Muntenegru"
 
@@ -8092,12 +8067,12 @@ msgid "Montreal, Quebec, Canada"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Montserrat"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Morocco"
 msgstr "Maroc"
 
@@ -8106,8 +8081,8 @@ msgstr "Maroc"
 msgid "Most SMTP servers require a password."
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 msgid "Most common surnames"
 msgstr "Cele mai comune nume de familie"
@@ -8130,6 +8105,7 @@ msgstr ""
 msgid "Most servers do not use secure connections."
 msgstr ""
 
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
@@ -8137,6 +8113,10 @@ msgstr ""
 
 #: resources/views/setup/step-4-database-sqlsrv.phtml
 msgid "Most sites are configured to use the default value of 1433."
+msgstr ""
+
+#: resources/views/setup/step-4-database-firebird.phtml
+msgid "Most sites are configured to use the default value of 3050."
 msgstr ""
 
 #: resources/views/setup/step-4-database-pgsql.phtml
@@ -8197,7 +8177,7 @@ msgid "Move up"
 msgstr "Mută în sus"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Mozambique"
 msgstr "Mozambic"
 
@@ -8210,12 +8190,12 @@ msgstr ""
 msgid "Multiple marriages"
 msgstr ""
 
-#: app/Http/RequestHandlers/AccountEdit.php app/Module/ModuleThemeTrait.php
+#: app/Http/Controllers/Account.php app/Module/ModuleThemeTrait.php
 #: app/Module/UserWelcomeModule.php
 msgid "My account"
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateTreePage.php
+#: app/Http/Controllers/CreateTree.php
 msgid "My family tree"
 msgstr ""
 
@@ -8224,7 +8204,7 @@ msgid "My individual record"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/UserPage.php app/Module/ModuleThemeTrait.php
+#: app/Http/Controllers/UserPage.php app/Module/ModuleThemeTrait.php
 #: app/Module/UserWelcomeModule.php resources/views/admin/modules.phtml
 msgid "My page"
 msgstr "Pagina mea"
@@ -8238,11 +8218,11 @@ msgid "My pedigree"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Myanmar"
 msgstr ""
 
-#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
+#: app/Gedcom.php app/Http/Controllers/HelpText.php
 #: resources/views/individual-page-name.phtml
 #: resources/views/lists/anniversaries-table.phtml
 #: resources/views/modals/location-fields.phtml
@@ -8261,7 +8241,7 @@ msgstr ""
 msgid "Name"
 msgstr "Nume"
 
-#: app/Gedcom.php app/Http/RequestHandlers/CreateRepositoryModal.php
+#: app/Gedcom.php app/Http/Controllers/CreateRepository.php
 msgctxt "Repository"
 msgid "Name"
 msgstr ""
@@ -8296,7 +8276,7 @@ msgid "Namesake"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Namibia"
 msgstr ""
 
@@ -8322,7 +8302,7 @@ msgid "Naturalization"
 msgstr "Naturalizare"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Nauru"
 msgstr ""
 
@@ -8337,16 +8317,16 @@ msgid "Nauvoo (original), Illinois, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Nepal"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Netherlands"
 msgstr "Olanda"
 
-#: app/Http/RequestHandlers/UserListData.php app/Statistics.php
+#: app/Http/Controllers/UserListData.php app/Statistics.php
 #: resources/views/components/datetime.phtml
 msgid "Never"
 msgstr ""
@@ -8356,7 +8336,7 @@ msgid "Never married"
 msgstr "Necăsătorit până în prezent"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "New Caledonia"
 msgstr "Noua Caledonie"
 
@@ -8370,7 +8350,7 @@ msgid "New York, New York, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "New Zealand"
 msgstr "Noua Zeelandă"
 
@@ -8379,14 +8359,13 @@ msgid "New data"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/RegisterAction.php
+#: app/Http/Controllers/Register.php
 #, php-format
 msgid "New registration at %s"
 msgstr "Înregistrare nouă la %s"
 
 #. I18N: %s is a server name/URL
-#: app/Http/RequestHandlers/UserEditAction.php
-#: app/Http/RequestHandlers/VerifyEmail.php
+#: app/Http/Controllers/UserEdit.php app/Http/Controllers/VerifyEmail.php
 #, php-format
 msgid "New user at %s"
 msgstr "Utilizator nou la %s"
@@ -8410,12 +8389,12 @@ msgstr "Ziar"
 msgid "Next email reminder will be sent after "
 msgstr "Următorul memento va fi trimis prin email după "
 
-#: resources/views/modules/random_media/slide-show.phtml
+#: resources/views/modules/random-media/slide-show.phtml
 msgid "Next image"
 msgstr "Următoarea imagine"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Nicaragua"
 msgstr ""
 
@@ -8424,17 +8403,17 @@ msgid "Nickname"
 msgstr "Porecla"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Niger"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Nigeria"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Niue"
 msgstr ""
 
@@ -8442,7 +8421,7 @@ msgstr ""
 msgid "No"
 msgstr "Nu"
 
-#: app/Http/RequestHandlers/ImportGedcomAction.php
+#: app/Http/Controllers/ImportGedcom.php
 msgid "No GEDCOM file was received."
 msgstr ""
 
@@ -8507,7 +8486,7 @@ msgstr[2] ""
 msgid "No facts exist for this family."
 msgstr "Nici un fapt pentru această familie."
 
-#: app/Http/RequestHandlers/MapDataImportAction.php
+#: app/Http/Controllers/MapDataImport.php
 msgid "No file was received."
 msgstr ""
 
@@ -8524,12 +8503,12 @@ msgstr "Nu s-a găsit nici o (altă) legătură între cei doi indivizi."
 msgid "No matching facts found"
 msgstr "Nu au fost găsite fapte care să se potrivească"
 
-#: resources/views/modules/gedcom_news/list.phtml
-#: resources/views/modules/user_blog/list.phtml
+#: resources/views/modules/gedcom-news/list.phtml
+#: resources/views/modules/user-blog/list.phtml
 msgid "No news articles have been submitted."
 msgstr "Nu a fost trimisă nici o ştire."
 
-#: app/Http/RequestHandlers/SiteRegistrationPage.php
+#: app/Http/Controllers/SiteRegistration.php
 msgid "No predefined text"
 msgstr ""
 
@@ -8565,7 +8544,7 @@ msgstr ""
 msgid "No temple - living ordinance"
 msgstr "Nici un templu - Ordonanţă de viaţă"
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/upgrade/wizard.phtml
 msgid "No upgrade information is available."
@@ -8590,7 +8569,7 @@ msgid "None"
 msgstr "Nici unul"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Norfolk Island"
 msgstr "Insula Norfolk"
 
@@ -8599,7 +8578,7 @@ msgid "Normally, any changes made to a family tree need to be reviewed by a mode
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "North Korea"
 msgstr "Coreea de Nord"
 
@@ -8608,17 +8587,17 @@ msgid "Northern America"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Northern Ireland"
 msgstr "Irlanda de Nord"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Northern Mariana Islands"
 msgstr "Insulele Mariane de Nord"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Norway"
 msgstr "Norvegia"
 
@@ -8647,14 +8626,14 @@ msgstr ""
 
 #: app/CustomTags/Ancestry.php app/CustomTags/GedcomL.php
 #: app/CustomTags/Legacy.php app/Elements/NoteStructure.php app/Gedcom.php
-#: app/Http/RequestHandlers/CheckTree.php app/Module/ResearchTaskModule.php
+#: app/Http/Controllers/CheckTree.php app/Module/ResearchTaskModule.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/create-media-from-file.phtml
 #: resources/views/modals/media-object-fields.phtml
 #: resources/views/modals/note-object-fields.phtml
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/notes/tab.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 #: resources/xml/reports/cemetery_report.xml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/occupation_report.xml
@@ -8746,8 +8725,8 @@ msgstr ""
 msgid "Number of children"
 msgstr "numărul de copii"
 
-#: resources/views/modules/recent_changes/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 #: resources/views/modules/yahrzeit/config.phtml
 msgid "Number of days to show"
 msgstr "Numărul de zile de arătat"
@@ -8757,7 +8736,7 @@ msgid "Number of families without children"
 msgstr ""
 
 #. I18N: ... to show in a list
-#: resources/views/modules/top10_givnnames/config.phtml
+#: resources/views/modules/top10-givnnames/config.phtml
 msgid "Number of given names"
 msgstr ""
 
@@ -8766,13 +8745,13 @@ msgid "Number of marriages"
 msgstr ""
 
 #. I18N: ... to show in a list
-#: resources/views/modules/top10_pageviews/config.phtml
+#: resources/views/modules/top10-pageviews/config.phtml
 msgid "Number of pages"
 msgstr ""
 
 #. I18N: ... to show in a list
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/top10_surnames/config.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/top10-surnames/config.phtml
 msgid "Number of surnames"
 msgstr ""
 
@@ -8817,7 +8796,7 @@ msgid "Occupations"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Occupied Palestinian Territory"
 msgstr "Teritoriul Palestinian Ocupat"
 
@@ -8871,7 +8850,7 @@ msgid "Olivia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Oman"
 msgstr ""
 
@@ -9051,12 +9030,12 @@ msgid "Painting"
 msgstr "Tablou"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Pakistan"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Palau"
 msgstr ""
 
@@ -9071,7 +9050,7 @@ msgid "Palmyra, New York, United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Panama"
 msgstr ""
 
@@ -9086,12 +9065,12 @@ msgid "Papeete, Tahiti"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Papua New Guinea"
 msgstr "Papua Noua Guinee"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Paraguay"
 msgstr ""
 
@@ -9099,11 +9078,11 @@ msgstr ""
 msgid "Parent location"
 msgstr ""
 
-#: app/Gedcom.php app/Http/RequestHandlers/IndividualPage.php
+#: app/Gedcom.php app/Http/Controllers/IndividualPage.php
 #: app/Module/IndividualFactsTabModule.php
 #: resources/views/edit/reorder-families.phtml
 #: resources/views/modules/ancestors-chart/tree.phtml
-#: resources/views/modules/family_nav/sidebar-family.phtml
+#: resources/views/modules/family-nav/sidebar-family.phtml
 msgid "Parents"
 msgstr "Părinţi"
 
@@ -9122,7 +9101,7 @@ msgstr ""
 #: resources/views/admin/users-create.phtml
 #: resources/views/admin/users-edit.phtml
 #: resources/views/edit-account-page.phtml resources/views/login-page.phtml
-#: resources/views/modules/login_block/sign-in.phtml
+#: resources/views/modules/login-block/sign-in.phtml
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
 #: resources/views/setup/step-5-administrator.phtml
@@ -9168,9 +9147,9 @@ msgid "Pedigree tree of %s"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/HelpText.php
-#: app/Http/RequestHandlers/PendingChanges.php app/Module/ModuleThemeTrait.php
-#: app/Module/ReviewChangesModule.php resources/views/admin/control-panel.phtml
+#: app/Http/Controllers/HelpText.php app/Http/Controllers/PendingChanges.php
+#: app/Module/ModuleThemeTrait.php app/Module/ReviewChangesModule.php
+#: resources/views/admin/control-panel.phtml
 #: resources/views/pending-changes-page.phtml
 #: resources/xml/reports/change_report.xml
 msgid "Pending changes"
@@ -9199,12 +9178,12 @@ msgid "Perth, Australia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Peru"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Philippines"
 msgstr "Filipine"
 
@@ -9236,8 +9215,8 @@ msgid "Phonetic place"
 msgstr ""
 
 #. I18N: search using “sounds like”, rather than exact spelling
-#: app/Http/RequestHandlers/SearchPhoneticPage.php
-#: app/Module/SearchMenuModule.php resources/views/branches-page.phtml
+#: app/Http/Controllers/SearchPhonetic.php app/Module/SearchMenuModule.php
+#: resources/views/branches-page.phtml
 msgid "Phonetic search"
 msgstr ""
 
@@ -9265,13 +9244,13 @@ msgid "Pink Plastic"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Pitcairn"
 msgstr ""
 
 #: app/CustomTags/Ancestry.php app/CustomTags/FamilyTreeBuilder.php
 #: app/CustomTags/GedcomL.php app/CustomTags/Legacy.php app/Gedcom.php
-#: app/Http/RequestHandlers/HelpText.php app/Module/FixCemeteryTag.php
+#: app/Http/Controllers/HelpText.php app/Module/FixCemeteryTag.php
 #: resources/views/admin/location-edit.phtml
 #: resources/views/admin/locations.phtml
 #: resources/views/lists/families-table.phtml
@@ -9433,23 +9412,21 @@ msgstr ""
 msgid "Places"
 msgstr ""
 
-#: resources/views/modules/random_media/slide-show.phtml
+#: resources/views/modules/random-media/slide-show.phtml
 msgid "Play"
 msgstr "Start"
 
-#: app/Http/RequestHandlers/ContactAction.php
+#: app/Http/Controllers/Contact.php
 msgid "Please enter a valid email address."
 msgstr "Vă rugăm introduceţi o adresă de email validă."
 
-#: app/Http/RequestHandlers/ContactAction.php
-#: app/Http/RequestHandlers/PasswordResetAction.php
-#: app/Http/RequestHandlers/PasswordResetPage.php
-#: app/Http/RequestHandlers/RegisterAction.php
+#: app/Http/Controllers/Contact.php app/Http/Controllers/PasswordReset.php
+#: app/Http/Controllers/Register.php
 msgid "Please try again."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Poland"
 msgstr "Polonia"
 
@@ -9461,6 +9438,7 @@ msgstr "Poloneză"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlsrv.phtml
@@ -9478,14 +9456,14 @@ msgid "Porto Alegre, Brazil"
 msgstr ""
 
 #. I18N: page orientation
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 #: resources/xml/reports/change_report.xml
 #: resources/xml/reports/pedigree_report.xml
 msgid "Portrait"
 msgstr "Portret"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Portugal"
 msgstr "Portugalia"
 
@@ -9510,21 +9488,21 @@ msgstr ""
 msgid "Powered by webtrees™"
 msgstr ""
 
-#: app/Http/RequestHandlers/SiteRegistrationPage.php
+#: app/Http/Controllers/SiteRegistration.php
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr ""
 
-#: app/Http/RequestHandlers/SiteRegistrationPage.php
+#: app/Http/Controllers/SiteRegistration.php
 msgid "Predefined text that states all users can request a user account"
 msgstr ""
 
-#: app/Http/RequestHandlers/SiteRegistrationPage.php
+#: app/Http/Controllers/SiteRegistration.php
 msgid "Predefined text that states only family members can request a user account"
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePageBlockEdit.php
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Http/RequestHandlers/UserPageBlockEdit.php
+#: app/Http/Controllers/TreePageBlockEdit.php
+#: app/Http/Controllers/TreePreferences.php
+#: app/Http/Controllers/UserPageBlockEdit.php
 #: resources/views/admin/components.phtml resources/views/admin/modules.phtml
 #: resources/views/admin/trees.phtml
 #: resources/views/modules/block-template.phtml
@@ -9551,8 +9529,7 @@ msgstr ""
 msgid "Preston, England"
 msgstr ""
 
-#: app/Http/RequestHandlers/DataFixData.php
-#: app/Http/RequestHandlers/DataFixPreview.php
+#: app/Http/Controllers/DataFixData.php app/Http/Controllers/DataFixPreview.php
 #: resources/views/admin/analytics-edit.phtml
 msgid "Preview"
 msgstr ""
@@ -9569,8 +9546,7 @@ msgstr ""
 msgid "Priority"
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePrivacyPage.php
-#: resources/views/admin/trees.phtml
+#: app/Http/Controllers/TreePrivacy.php resources/views/admin/trees.phtml
 msgid "Privacy"
 msgstr "Confidenţialitate"
 
@@ -9580,7 +9556,6 @@ msgstr "Confidenţialitate"
 msgid "Privacy policy"
 msgstr ""
 
-#. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml
 msgid "Privacy restrictions"
 msgstr ""
@@ -9642,7 +9617,7 @@ msgid "Publication"
 msgstr "Publicaţie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Puerto Rico"
 msgstr ""
 
@@ -9652,7 +9627,7 @@ msgid "Purpose of processing"
 msgstr "Scopul prelucrării"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Qatar"
 msgstr ""
 
@@ -9715,22 +9690,21 @@ msgstr ""
 msgid "Random images from the current family tree."
 msgstr "Imagini aleatoare din arborele de familie curent."
 
-#: app/Http/RequestHandlers/ReorderChildrenPage.php
+#: app/Http/Controllers/ReorderChildren.php
 #: resources/views/family-page-children.phtml
 #: resources/views/family-page-menu.phtml
 #: resources/views/modules/relatives/family.phtml
 msgid "Re-order children"
 msgstr "Rearanjează copiii"
 
-#: app/Http/RequestHandlers/ReorderFamiliesPage.php
+#: app/Http/Controllers/ReorderFamilies.php
 #: resources/views/individual-page-menu.phtml
 #: resources/views/modules/relatives/tab.phtml
 msgid "Re-order families"
 msgstr ""
 
-#: app/CustomTags/PhpGedView.php
-#: app/Http/RequestHandlers/ReorderMediaFilesPage.php
-#: app/Http/RequestHandlers/ReorderMediaPage.php app/Module/FixPrimaryTag.php
+#: app/CustomTags/PhpGedView.php app/Http/Controllers/ReorderMedia.php
+#: app/Http/Controllers/ReorderMediaFiles.php app/Module/FixPrimaryTag.php
 #: resources/views/individual-page-menu.phtml
 msgid "Re-order media"
 msgstr "Re-ordonare fişiere media"
@@ -9739,7 +9713,7 @@ msgstr "Re-ordonare fişiere media"
 msgid "Re-order media files"
 msgstr ""
 
-#: app/Http/RequestHandlers/ReorderNamesPage.php
+#: app/Http/Controllers/ReorderNames.php
 #: resources/views/individual-page-menu.phtml
 msgid "Re-order names"
 msgstr ""
@@ -9767,7 +9741,7 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modules/clippings/show.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 #: resources/views/modules/todo/research-tasks.phtml
 msgid "Record"
 msgstr "Înregistrarea"
@@ -9921,7 +9895,7 @@ msgstr ""
 msgid "Reminder date"
 msgstr ""
 
-#: resources/views/modules/review_changes/config.phtml
+#: resources/views/modules/review-changes/config.phtml
 msgid "Reminder email frequency (days)"
 msgstr "Frecvenţa emailurilor pentru memento-uri (zile)"
 
@@ -9959,7 +9933,7 @@ msgid "Reno, Nevada, United States"
 msgstr ""
 
 #. I18N: Renumber the records in a family tree
-#: app/Http/RequestHandlers/RenumberTreePage.php
+#: app/Http/Controllers/RenumberTree.php
 #: resources/views/admin/trees-merge.phtml resources/views/admin/trees.phtml
 msgid "Renumber XREFs"
 msgstr ""
@@ -9995,8 +9969,8 @@ msgid "Report phrase"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/ModulesReportsPage.php
-#: app/Module/ReportsMenuModule.php resources/views/admin/control-panel.phtml
+#: app/Http/Controllers/ModulesReports.php app/Module/ReportsMenuModule.php
+#: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Reports"
 msgstr "Rapoarte"
@@ -10006,8 +9980,8 @@ msgstr "Rapoarte"
 #: app/Services/AdminService.php resources/views/admin/control-panel.phtml
 #: resources/views/admin/merge-records-step-1.phtml
 #: resources/views/lists/repositories-table.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/other-records.phtml
 #: resources/views/record-page-links.phtml
@@ -10016,12 +9990,11 @@ msgstr "Rapoarte"
 msgid "Repositories"
 msgstr "Lista"
 
-#: app/CustomTags/GedcomL.php app/Gedcom.php
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/CustomTags/GedcomL.php app/Gedcom.php app/Http/Controllers/CheckTree.php
 #: resources/views/admin/trees-privacy.phtml resources/views/admin/trees.phtml
 #: resources/views/modals/source-fields.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 msgid "Repository"
 msgstr "Depozit"
 
@@ -10030,19 +10003,17 @@ msgid "Repository name"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Republic of the Congo"
 msgstr ""
 
-#: app/Http/RequestHandlers/PasswordRequestAction.php
-#: app/Http/RequestHandlers/PasswordRequestPage.php
+#: app/Http/Controllers/PasswordRequest.php
 msgid "Request a new password"
 msgstr "Cereţi o nouă parolă"
 
-#: app/Http/RequestHandlers/RegisterAction.php
-#: app/Http/RequestHandlers/RegisterPage.php app/Module/WelcomeBlockModule.php
+#: app/Http/Controllers/Register.php app/Module/WelcomeBlockModule.php
 #: resources/views/login-page.phtml
-#: resources/views/modules/login_block/sign-in.phtml
+#: resources/views/modules/login-block/sign-in.phtml
 msgid "Request a new user account"
 msgstr "Cereţi un nou cont"
 
@@ -10077,13 +10048,13 @@ msgstr "Domiciliu"
 msgid "Restore the default block layout"
 msgstr ""
 
-#: app/Http/RequestHandlers/HelpText.php resources/views/admin/users-edit.phtml
+#: app/Http/Controllers/HelpText.php resources/views/admin/users-edit.phtml
 msgid "Restrict to immediate family"
 msgstr ""
 
 #. I18N: a restriction on viewing data
 #: app/CustomTags/GedcomL.php app/CustomTags/PhpGedView.php app/Gedcom.php
-#: app/Http/RequestHandlers/HelpText.php
+#: app/Http/Controllers/HelpText.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Restriction"
 msgstr "Restricţie"
@@ -10131,11 +10102,11 @@ msgid "Role"
 msgstr "Rol"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Romania"
 msgstr "România"
 
-#: app/Http/RequestHandlers/HelpText.php
+#: app/Http/Controllers/HelpText.php
 msgid "Romanized"
 msgstr "Romanizat"
 
@@ -10167,18 +10138,17 @@ msgid "Russell"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Russia"
 msgstr "Rusia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Rwanda"
 msgstr "Ruanda"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Réunion"
 msgstr ""
 
@@ -10226,32 +10196,32 @@ msgstr ""
 msgid "Sage"
 msgstr ""
 
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Saint Barthélemy"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Saint Helena"
 msgstr "Sfânta Elena"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Saint Kitts and Nevis"
 msgstr "Sfântul Kitts şi Nevis"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Saint Lucia"
 msgstr "Sfânta Lucia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Saint Pierre and Miquelon"
 msgstr "Saint Pierre şi Miquelon"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Saint Vincent and the Grenadines"
 msgstr "Sfântul Vincent şi Grenadine"
 
@@ -10265,7 +10235,7 @@ msgid "Same as uploaded file"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Samoa"
 msgstr ""
 
@@ -10285,7 +10255,7 @@ msgid "San José, Costa Rica"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "San Marino"
 msgstr ""
 
@@ -10305,7 +10275,7 @@ msgid "Santo Domingo, Dominican Republic"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Sao Tome and Principe"
 msgstr ""
 
@@ -10315,8 +10285,7 @@ msgid "Sat"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Saudi Arabia"
 msgstr "Arabia Saudita"
 
@@ -10329,7 +10298,7 @@ msgid "School or college"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Scotland"
 msgstr "Scoţia"
 
@@ -10373,8 +10342,8 @@ msgid "Search"
 msgstr "Caută"
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/SearchReplacePage.php
-#: app/Module/FixSearchAndReplace.php app/Module/SearchMenuModule.php
+#: app/Http/Controllers/SearchReplace.php app/Module/FixSearchAndReplace.php
+#: app/Module/SearchMenuModule.php
 #, fuzzy
 msgid "Search and replace"
 msgstr "Caută și înlocuiește"
@@ -10398,11 +10367,11 @@ msgstr ""
 msgid "Search for"
 msgstr "Căutare pentru"
 
-#: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php
+#: app/Http/Controllers/ModulesMapGeoLocations.php
 msgid "Search for locations in an external database."
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesMapAutocompletePage.php
+#: app/Http/Controllers/ModulesMapAutocomplete.php
 msgid "Search for place names in an external database."
 msgstr ""
 
@@ -10521,8 +10490,8 @@ msgstr ""
 msgid "Send"
 msgstr "Trimite"
 
-#: app/Http/RequestHandlers/ContactPage.php
-#: app/Http/RequestHandlers/MessagePage.php app/StatisticsData.php
+#: app/Http/Controllers/Contact.php app/Http/Controllers/Message.php
+#: app/StatisticsData.php
 #: resources/views/modules/user-messages/user-messages.phtml
 #: resources/views/pending-changes-page.phtml
 msgid "Send a message"
@@ -10549,7 +10518,7 @@ msgid "Send an email to all administrators when an upgrade is available."
 msgstr ""
 
 #. I18N: Label for a configuration option
-#: resources/views/modules/review_changes/config.phtml
+#: resources/views/modules/review-changes/config.phtml
 msgid "Send out reminder emails"
 msgstr "Trimiteţi emailuri pentru memento-uri"
 
@@ -10563,7 +10532,7 @@ msgstr ""
 msgid "Sender name"
 msgstr ""
 
-#: app/Http/RequestHandlers/EmailPreferencesPage.php
+#: app/Http/Controllers/EmailPreferences.php
 #: resources/views/admin/control-panel.phtml
 msgid "Sending email"
 msgstr ""
@@ -10574,7 +10543,7 @@ msgid "Sending server name"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Senegal"
 msgstr ""
 
@@ -10598,7 +10567,7 @@ msgid "September"
 msgstr "Septembrie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Serbia"
 msgstr ""
 
@@ -10616,7 +10585,7 @@ msgctxt "MALE"
 msgid "Servant"
 msgstr ""
 
-#: app/Http/RequestHandlers/PhpInformation.php
+#: app/Http/Controllers/PhpInformation.php
 #: resources/views/admin/control-panel.phtml
 msgid "Server information"
 msgstr ""
@@ -10628,6 +10597,7 @@ msgstr "Locația serverului"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlsrv.phtml
@@ -10639,7 +10609,7 @@ msgstr ""
 msgid "Service"
 msgstr "Serviciu"
 
-#: app/Http/RequestHandlers/PasswordResetPage.php
+#: app/Http/Controllers/PasswordReset.php
 msgid "Set a new password"
 msgstr ""
 
@@ -10653,12 +10623,12 @@ msgstr ""
 msgid "Set the access level for each tree."
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePageDefaultEdit.php
+#: app/Http/Controllers/TreePageDefault.php
 #: resources/views/admin/control-panel.phtml
 msgid "Set the default blocks for new family trees"
 msgstr ""
 
-#: app/Http/RequestHandlers/UserPageDefaultEdit.php
+#: app/Http/Controllers/UserPageDefaultEdit.php
 #: resources/views/admin/control-panel.phtml
 msgid "Set the default blocks for new users"
 msgstr ""
@@ -10693,7 +10663,7 @@ msgid "Sex"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Seychelles"
 msgstr ""
 
@@ -10725,7 +10695,7 @@ msgid "Shared notes"
 msgstr ""
 
 #. I18N: plural noun - things that can be shared
-#: app/Http/RequestHandlers/ModulesSharesPage.php
+#: app/Http/Controllers/ModulesShares.php
 #: resources/views/admin/control-panel.phtml
 msgid "Shares"
 msgstr ""
@@ -10804,7 +10774,7 @@ msgstr "Arată toate notele"
 msgid "Show all places in a list"
 msgstr "Arată toate locurile într-o listă"
 
-#: resources/views/modules/sources_tab/tab.phtml
+#: resources/views/modules/sources-tab/tab.phtml
 msgid "Show all sources"
 msgstr "Arată toate sursele"
 
@@ -10842,7 +10812,7 @@ msgid "Show couples with an unknown marriage date."
 msgstr "Arată cuplurile cu data căsătoriei necunoscută."
 
 #. I18N: label for yes/no option
-#: resources/views/modules/gedcom_stats/config.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
 msgid "Show date of last update"
 msgstr "Afişează data ultimei actualizări"
 
@@ -10907,8 +10877,8 @@ msgstr ""
 msgid "Show occupations"
 msgstr ""
 
-#: resources/views/modules/todays_events/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/todays-events/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 msgid "Show only events of living individuals"
 msgstr "Arăta doar evenimentele legate de persoanele în viaţă"
 
@@ -10920,7 +10890,7 @@ msgstr "Arată doar femeile."
 msgid "Show only individuals for whom the sex is not known."
 msgstr "Arată doar persoanele al căror sex este necunoscut."
 
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 msgid "Show only individuals, events, or all"
 msgstr "Arată doar persoane, evenimente sau toate"
 
@@ -10937,7 +10907,7 @@ msgstr ""
 msgid "Show password"
 msgstr ""
 
-#: app/Http/RequestHandlers/RenumberTreeAction.php
+#: app/Http/Controllers/RenumberTree.php
 #: resources/xml/reports/change_report.xml
 msgid "Show pending changes"
 msgstr ""
@@ -10973,7 +10943,7 @@ msgstr "Afişează sarcinile de cercetare care au dată în viitor"
 msgid "Show residences"
 msgstr ""
 
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 msgid "Show slide show controls"
 msgstr "Afişez controalele secvenţei de imagini"
 
@@ -11002,7 +10972,7 @@ msgid "Show the birthplace of ancestors on a map."
 msgstr ""
 
 #. I18N: label for a yes/no option
-#: resources/views/modules/recent_changes/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
 msgid "Show the date and time"
 msgstr ""
 
@@ -11027,8 +10997,7 @@ msgstr ""
 msgid "Show the list of surnames"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesMapLinksPage.php
-#: app/Module/ModuleMapLinkTrait.php
+#: app/Http/Controllers/ModulesMapLinks.php app/Module/ModuleMapLinkTrait.php
 msgid "Show the location of an event on an external map."
 msgstr ""
 
@@ -11038,7 +11007,7 @@ msgid "Show the location of events on a map."
 msgstr ""
 
 #. I18N: label for a yes/no option
-#: resources/views/modules/recent_changes/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
 msgid "Show the user who made the change"
 msgstr ""
 
@@ -11054,20 +11023,20 @@ msgid "Show thumbnail images in charts and family groups."
 msgstr "Arată imaginile evidenţiate în căsuţele persoanelor."
 
 #: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
-#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Enums/Restriction.php app/Http/Controllers/TreePrivacy.php
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to managers"
 msgstr ""
 
 #: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
-#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Enums/Restriction.php app/Http/Controllers/TreePrivacy.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to members"
 msgstr ""
 
 #: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
-#: app/Enums/Restriction.php app/Http/RequestHandlers/TreePrivacyPage.php
+#: app/Enums/Restriction.php app/Http/Controllers/TreePrivacy.php
 #: resources/views/admin/trees-privacy.phtml
 #: resources/views/modals/restriction-fields.phtml
 msgid "Show to visitors"
@@ -11102,19 +11071,19 @@ msgstr "Frate/soră"
 msgid "Sidebar"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesSidebarsPage.php
+#: app/Http/Controllers/ModulesSidebars.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Sidebars"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Sierra Leone"
 msgstr ""
 
 #. I18N: Name of a module
-#: app/Http/RequestHandlers/LoginPage.php app/Module/LoginBlockModule.php
+#: app/Http/Controllers/Login.php app/Module/LoginBlockModule.php
 #: app/Module/ModuleThemeTrait.php
 #, fuzzy
 msgid "Sign in"
@@ -11126,7 +11095,7 @@ msgstr "Autentificare"
 msgid "Sign out"
 msgstr "Deconectare"
 
-#: app/Http/RequestHandlers/SiteRegistrationPage.php
+#: app/Http/Controllers/SiteRegistration.php
 #: resources/views/admin/control-panel.phtml
 msgid "Sign-in and registration"
 msgstr ""
@@ -11140,8 +11109,7 @@ msgid "Simple dates are assumed to be in the gregorian calendar. To specify a da
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Singapore"
 msgstr ""
 
@@ -11175,12 +11143,7 @@ msgstr ""
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
 
-#. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
-#: app/Module/SiteMapModule.php
-msgid "Sitemaps"
-msgstr "Hărţi site"
-
-#: resources/views/modules/sitemap/config.phtml
+#: resources/views/admin/trees-privacy.phtml
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps."
 msgstr "Hărţile site sunt o modalitate prin care poţi informa motoarele de căutare despre paginile ce pot fi indexate. Toate marile motoare de căutare suportă hărţi site."
 
@@ -11209,18 +11172,18 @@ msgstr ""
 msgid "Slide show"
 msgstr "Secvenţă imagini"
 
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 #, fuzzy
 msgid "Slide show interval"
 msgstr "Intervalul prezentării de diapozitive"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Slovakia"
 msgstr "Slovacia"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Slovenia"
 msgstr ""
 
@@ -11238,12 +11201,12 @@ msgid "Social security number"
 msgstr "Număr asigurare socială"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Solomon Islands"
 msgstr "Insulele Solomon"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Somalia"
 msgstr ""
 
@@ -11290,9 +11253,9 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml
 #: resources/views/modules/faq/edit.phtml
-#: resources/views/modules/recent_changes/config.phtml
-#: resources/views/modules/todays_events/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
+#: resources/views/modules/todays-events/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/cemetery_report.xml
 #: resources/xml/reports/change_report.xml
@@ -11318,21 +11281,20 @@ msgstr ""
 msgid "Sosa-Stradonitz number"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
+#: app/Http/Controllers/SearchAdvanced.php
 msgid "Sounds like"
 msgstr ""
 
 #. I18N: Name of a module/report
-#: app/CustomTags/GedcomL.php app/Gedcom.php
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/CustomTags/GedcomL.php app/Gedcom.php app/Http/Controllers/CheckTree.php
 #: app/Module/FactSourcesReportModule.php
 #: resources/views/admin/trees-privacy.phtml resources/views/admin/trees.phtml
 #: resources/views/fact-gedcom-fields.phtml
 #: resources/views/modals/link-media-to-source.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/random_media/slide-show.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
-#: resources/views/modules/sources_tab/tab.phtml
+#: resources/views/modules/random-media/slide-show.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
+#: resources/views/modules/sources-tab/tab.phtml
 #: resources/xml/reports/bdm_report.xml resources/xml/reports/birth_report.xml
 #: resources/xml/reports/death_report.xml
 #: resources/xml/reports/fact_sources.xml
@@ -11363,8 +11325,8 @@ msgstr ""
 #: resources/views/lists/notes-table.phtml
 #: resources/views/lists/repositories-table.phtml
 #: resources/views/lists/sources-table.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/chart-sources.phtml
 #: resources/views/modules/statistics-chart/other-records.phtml
@@ -11389,8 +11351,7 @@ msgid "Sources to the events"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "South Africa"
 msgstr "Africa de Sud"
 
@@ -11399,7 +11360,7 @@ msgid "South America"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Georgia de Sud şi Insulele Sandwich de Sud"
 
@@ -11408,12 +11369,12 @@ msgid "South Korea"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "South Sudan"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Spain"
 msgstr "Spania"
 
@@ -11428,7 +11389,7 @@ msgstr "Spaniolă"
 msgid "Spokane, Washington, United States"
 msgstr ""
 
-#: app/Http/RequestHandlers/IndividualPage.php
+#: app/Http/Controllers/IndividualPage.php
 #: resources/views/edit/change-family-members.phtml
 #: resources/views/fact-date.phtml
 #: resources/views/modules/pedigree-chart/previous.phtml
@@ -11453,7 +11414,7 @@ msgid "Spouses and children"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Sri Lanka"
 msgstr ""
 
@@ -11476,7 +11437,7 @@ msgstr ""
 msgid "Standard GEDCOM tags"
 msgstr ""
 
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 msgid "Start slide show on page load"
 msgstr "Pornire secvenţă imagini la încărcarea paginii"
 
@@ -11501,8 +11462,8 @@ msgstr "Stat"
 #. I18N: Name of a module/chart
 #: app/Module/FamilyTreeStatisticsModule.php app/Module/HtmlBlockModule.php
 #: app/Module/StatisticsChartModule.php
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 msgid "Statistics"
 msgstr "Statistici"
 
@@ -11528,7 +11489,7 @@ msgstr ""
 msgid "Stockholm, Sweden"
 msgstr ""
 
-#: resources/views/modules/random_media/slide-show.phtml
+#: resources/views/modules/random-media/slide-show.phtml
 msgid "Stop"
 msgstr "Stop"
 
@@ -11554,7 +11515,7 @@ msgstr "Titlul articolului"
 msgid "Subject"
 msgstr "Subiect"
 
-#: app/Gedcom.php app/Http/RequestHandlers/CheckTree.php app/Submission.php
+#: app/Gedcom.php app/Http/Controllers/CheckTree.php app/Submission.php
 msgid "Submission"
 msgstr "Aplicaţie"
 
@@ -11566,10 +11527,10 @@ msgstr "Aplicaţie"
 msgid "Submitted but not yet cleared"
 msgstr ""
 
-#: app/Gedcom.php app/Http/RequestHandlers/CheckTree.php
+#: app/Gedcom.php app/Http/Controllers/CheckTree.php
 #: resources/views/admin/trees.phtml
 #: resources/views/modals/submission-fields.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 msgid "Submitter"
 msgstr "Aplicant"
 
@@ -11588,7 +11549,7 @@ msgid "Submitters"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Sudan"
 msgstr ""
 
@@ -11608,20 +11569,12 @@ msgstr "Autoritate de supraveghere"
 msgid "Support and documentation can be found at %s."
 msgstr ""
 
-#: app/Services/ServerCheckService.php
-msgid "Support for PostgreSQL is experimental."
-msgstr ""
-
-#: app/Services/ServerCheckService.php
-msgid "Support for SQL Server is experimental."
-msgstr ""
-
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Suriname"
 msgstr "Surinam"
 
-#: app/Gedcom.php app/Http/RequestHandlers/HelpText.php
+#: app/Gedcom.php app/Http/Controllers/HelpText.php
 #: resources/views/branches-page.phtml
 #: resources/views/lists/families-table.phtml
 #: resources/views/lists/individuals-table.phtml
@@ -11652,8 +11605,8 @@ msgid "Surname tradition"
 msgstr ""
 
 #: resources/views/lists/surnames-table.phtml
-#: resources/views/modules/gedcom_stats/config.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "Surnames"
 msgstr ""
@@ -11673,7 +11626,7 @@ msgid "Suva, Fiji"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Svalbard and Jan Mayen"
 msgstr "Insulele Svalbard şi Jan Mayen"
 
@@ -11683,18 +11636,17 @@ msgid "Swap individuals"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Swaziland"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Sweden"
 msgstr "Suedia"
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Switzerland"
 msgstr "Elveţia"
 
@@ -11708,7 +11660,7 @@ msgid "Synchronize family trees with GEDCOM files"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Syria"
 msgstr "Siria"
 
@@ -11721,6 +11673,7 @@ msgstr ""
 msgid "Tab"
 msgstr ""
 
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -11747,7 +11700,7 @@ msgctxt "paper size"
 msgid "Tabloid"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesTabsPage.php
+#: app/Http/Controllers/ModulesTabs.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Tabs"
@@ -11759,12 +11712,12 @@ msgid "Taipei, Taiwan"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Taiwan"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Tajikistan"
 msgstr "Tadjikistan"
 
@@ -11774,7 +11727,7 @@ msgid "Tampico, Mexico"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Tanzania"
 msgstr ""
 
@@ -11823,8 +11776,7 @@ msgid "Text direction"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "Thailand"
 msgstr "Tailanda"
 
@@ -11836,7 +11788,7 @@ msgstr ""
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
 
-#: app/Http/RequestHandlers/SynchronizeTrees.php
+#: app/Http/Controllers/SynchronizeTrees.php
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
 msgstr ""
@@ -11890,15 +11842,15 @@ msgid "The administrator has been informed. As soon as they give you permission 
 msgstr "Administratorul a fost notificat. De îndată ce vă dă permisiunea să vă autentificaţi, puteţi să vă autentificaţi cu utilizatorul si parola dumneavoastră."
 
 #. I18N: %s is the name of a genealogy record
-#: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
-#: app/Http/RequestHandlers/PendingChangesAcceptTree.php
+#: app/Http/Controllers/PendingChangesAcceptRecord.php
+#: app/Http/Controllers/PendingChangesAcceptTree.php
 #, php-format
 msgid "The changes to “%s” have been accepted."
 msgstr ""
 
 #. I18N: %s is the name of a genealogy record
-#: app/Http/RequestHandlers/PendingChangesRejectRecord.php
-#: app/Http/RequestHandlers/PendingChangesRejectTree.php
+#: app/Http/Controllers/PendingChangesRejectRecord.php
+#: app/Http/Controllers/PendingChangesRejectTree.php
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr ""
@@ -11916,44 +11868,52 @@ msgstr ""
 msgid "The date and time of the last update"
 msgstr ""
 
-#: app/Http/RequestHandlers/AccountUpdate.php
-#: app/Http/RequestHandlers/MapDataSave.php
+#: app/Http/Controllers/Account.php app/Http/Controllers/MapDataSave.php
 #, php-format
 msgid "The details for “%s” have been updated."
 msgstr ""
 
-#. I18N: %s is a filename
-#: app/Http/RequestHandlers/ExportGedcomServer.php
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/CreateTree.php
 #, php-format
-msgid "The family tree has been exported to %s."
+msgid "The family tree \"%s\" already exists."
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateTreeAction.php
-#: app/Http/RequestHandlers/TreePreferencesAction.php
+#: app/Http/Controllers/CreateTree.php
+#, php-format
+msgid "The family tree \"%s\" has been created."
+msgstr ""
+
+#. I18N: %s is a filename
+#: app/Http/Controllers/ExportGedcomServer.php
+#: app/Http/Controllers/UpgradeWizardStep.php
+#, php-format
+msgid "The family tree has been exported to “%s”."
+msgstr ""
+
+#: app/Http/Controllers/TreePreferences.php
 #, php-format
 msgid "The family tree “%s” already exists."
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateTreeAction.php
-#, php-format
-msgid "The family tree “%s” has been created."
-msgstr ""
-
 #. I18N: %s is the name of a family tree
-#: app/Http/RequestHandlers/DeleteTreeAction.php
-#: app/Http/RequestHandlers/SynchronizeTrees.php
+#: app/Http/Controllers/DeleteTreeAction.php
+#: app/Http/Controllers/SynchronizeTrees.php
 #, php-format
 msgid "The family tree “%s” has been deleted."
 msgstr ""
 
+#: app/Http/Controllers/UpgradeWizardStep.php
+#, php-format
+msgid "The family tree “%s” was not found."
+msgstr ""
+
 #. I18N: %s is the name of a family tree
-#: app/Http/RequestHandlers/SelectDefaultTree.php
+#: app/Http/Controllers/SelectDefaultTree.php
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
 
-#: app/Http/RequestHandlers/MergeTreesAction.php
+#: app/Http/Controllers/MergeTrees.php
 msgid "The family trees have been merged successfully."
 msgstr ""
 
@@ -11963,34 +11923,40 @@ msgid "The family trees menu."
 msgstr ""
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
-#: app/Http/RequestHandlers/DeleteRecord.php
+#: app/Http/Controllers/DeleteRecord.php
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
 msgstr ""
 
-#: app/Http/RequestHandlers/UploadMediaAction.php
+#. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
+#: app/Http/Controllers/DeleteRecord.php
 #, php-format
-msgid "The file %s already exists. Use another filename."
+msgid "The family “%s” has been deleted because the last member has been deleted."
 msgstr ""
 
-#: app/Http/RequestHandlers/ExportGedcomServer.php
+#: app/Http/Controllers/UploadMedia.php
 #, php-format
-msgid "The file %s could not be created."
+msgid "The file “%s” already exists. Use another filename."
 msgstr ""
 
-#: app/Http/RequestHandlers/DeletePath.php
+#: app/Http/Controllers/ExportGedcomServer.php
 #, php-format
-msgid "The file %s could not be deleted."
+msgid "The file “%s” could not be created."
 msgstr ""
 
-#: app/Http/RequestHandlers/DeletePath.php
+#: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The file %s has been deleted."
+msgid "The file “%s” could not be deleted."
 msgstr ""
 
-#: app/Http/RequestHandlers/UploadMediaAction.php
+#: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The file %s has been uploaded."
+msgid "The file “%s” has been deleted."
+msgstr ""
+
+#: app/Http/Controllers/UploadMedia.php
+#, php-format
+msgid "The file “%s” has been uploaded."
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -12010,26 +11976,26 @@ msgstr ""
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
 
-#: app/Http/RequestHandlers/DeletePath.php
+#: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The folder %s could not be deleted."
+msgid "The folder “%s” could not be deleted."
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #, php-format
-msgid "The folder %s has been created."
+msgid "The folder “%s” has been created."
 msgstr ""
 
-#: app/Http/RequestHandlers/DeletePath.php
+#: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The folder %s has been deleted."
+msgid "The folder “%s” has been deleted."
 msgstr ""
 
 #: resources/views/admin/site-preferences.phtml
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
 
-#: app/Http/RequestHandlers/SitePreferencesAction.php
+#: app/Http/Controllers/SitePreferences.php
 #, php-format
 msgid "The folder “%s” does not exist."
 msgstr ""
@@ -12052,7 +12018,7 @@ msgstr ""
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
 
-#: app/Http/RequestHandlers/HelpText.php
+#: app/Http/Controllers/HelpText.php
 msgid "The help text has not been written for this item."
 msgstr ""
 
@@ -12067,12 +12033,12 @@ msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
-#: app/Http/RequestHandlers/DeleteRecord.php
+#: app/Http/Controllers/DeleteRecord.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
 msgstr ""
 
-#: app/Http/RequestHandlers/MergeFactsAction.php
+#: app/Http/Controllers/MergeFacts.php
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
 msgstr ""
@@ -12082,8 +12048,7 @@ msgstr ""
 msgid "The lists menu."
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateLocationAction.php
-#: app/Http/RequestHandlers/MapDataSave.php
+#: app/Http/Controllers/CreateLocation.php app/Http/Controllers/MapDataSave.php
 msgid "The location has been created"
 msgstr ""
 
@@ -12091,17 +12056,17 @@ msgstr ""
 msgid "The location of this place is not known."
 msgstr ""
 
-#: app/Http/RequestHandlers/EditMediaFileAction.php
+#: app/Http/Controllers/EditMediaFile.php
 #, php-format
-msgid "The media file %1$s could not be renamed to %2$s."
+msgid "The media file “%1$s” could not be renamed to “%2$s”."
 msgstr ""
 
-#: app/Http/RequestHandlers/EditMediaFileAction.php
+#: app/Http/Controllers/EditMediaFile.php
 #, php-format
-msgid "The media file %1$s has been renamed to %2$s."
+msgid "The media file “%1$s” has been renamed to “%2$s”."
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateMediaObjectAction.php
+#: app/Http/Controllers/CreateMediaObject.php
 msgid "The media object has been created"
 msgstr ""
 
@@ -12109,36 +12074,37 @@ msgstr ""
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr ""
 
-#: app/Http/RequestHandlers/BroadcastAction.php
+#: app/Http/Controllers/Broadcast.php
 #, php-format
 msgid "The message was not sent to %s."
 msgstr ""
 
-#: app/Http/RequestHandlers/ContactAction.php
-#: app/Http/RequestHandlers/EmailPreferencesAction.php
-#: app/Http/RequestHandlers/MessageAction.php
+#: app/Http/Controllers/Contact.php app/Http/Controllers/EmailPreferences.php
+#: app/Http/Controllers/Message.php
 msgid "The message was not sent."
 msgstr ""
 
-#: app/Http/RequestHandlers/BroadcastAction.php
-#: app/Http/RequestHandlers/ContactAction.php
-#: app/Http/RequestHandlers/EmailPreferencesAction.php
-#: app/Http/RequestHandlers/MessageAction.php
+#: app/Http/Controllers/Broadcast.php app/Http/Controllers/Contact.php
+#: app/Http/Controllers/EmailPreferences.php app/Http/Controllers/Message.php
 #, php-format
 msgid "The message was successfully sent to %s."
 msgstr "Mesajul a fost trimis la %s cu succes."
 
-#: app/Http/RequestHandlers/AbstractModuleComponentAction.php
-#: app/Http/RequestHandlers/ModulesAllAction.php
+#: app/Http/Controllers/AbstractModuleComponent.php
+#: app/Http/Controllers/ModulesAll.php
+#, php-format
+msgid "The module \"%s\" has been disabled."
+msgstr ""
+
+#: app/Http/Controllers/AbstractModuleComponent.php
+#: app/Http/Controllers/ModulesAll.php
+#, php-format
+msgid "The module \"%s\" has been enabled."
+msgstr ""
+
 #: app/Module/ChartsBlockModule.php
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
-
-#: app/Http/RequestHandlers/AbstractModuleComponentAction.php
-#: app/Http/RequestHandlers/ModulesAllAction.php
-#, php-format
-msgid "The module “%s” has been enabled."
 msgstr ""
 
 #. I18N: Help text for the “Quick family facts” configuration setting
@@ -12159,13 +12125,8 @@ msgstr ""
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateNoteAction.php
+#: app/Http/Controllers/CreateNote.php
 msgid "The note has been created"
-msgstr ""
-
-#: app/Http/RequestHandlers/AdminMediaFileDownload.php
-#: app/Http/RequestHandlers/AdminMediaFileThumbnail.php
-msgid "The parameter “path” is invalid."
 msgstr ""
 
 #: app/Http/RequestHandlers/SetupWizard.php
@@ -12176,8 +12137,7 @@ msgstr ""
 msgid "The password required for authentication with the SMTP server."
 msgstr ""
 
-#: app/Http/RequestHandlers/PasswordResetAction.php
-#: app/Http/RequestHandlers/PasswordResetPage.php
+#: app/Http/Controllers/PasswordReset.php
 msgid "The password reset link has expired."
 msgstr ""
 
@@ -12190,23 +12150,23 @@ msgstr ""
 msgid "The place hierarchy."
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePreferencesAction.php
-#: app/Http/RequestHandlers/TreePrivacyAction.php
+#: app/Http/Controllers/TreePreferences.php
+#: app/Http/Controllers/TreePrivacy.php
 msgid "The preferences for all family trees have been updated."
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePreferencesAction.php
-#: app/Http/RequestHandlers/TreePrivacyAction.php
+#: app/Http/Controllers/TreePreferences.php
+#: app/Http/Controllers/TreePrivacy.php
 msgid "The preferences for new family trees have been updated."
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePreferencesAction.php
-#: app/Http/RequestHandlers/TreePrivacyAction.php
+#: app/Http/Controllers/TreePreferences.php
+#: app/Http/Controllers/TreePrivacy.php
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
 msgstr ""
 
-#: app/Http/RequestHandlers/ModuleDeleteSettings.php
+#: app/Http/Controllers/ModuleDeleteSettings.php
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
 msgstr ""
@@ -12216,11 +12176,12 @@ msgstr ""
 #: app/Module/MapGeoLocationGeonames.php
 #: app/Module/MapGeoLocationOpenRouteService.php
 #: app/Module/OpenRouteServiceAutocomplete.php app/Module/PrivacyPolicy.php
-#: app/Module/RelationshipsChartModule.php app/Module/SiteMapModule.php
+#: app/Module/RelationshipsChartModule.php
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr ""
 
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -12228,7 +12189,7 @@ msgstr ""
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
 
-#: app/Http/RequestHandlers/MergeFactsAction.php
+#: app/Http/Controllers/MergeFacts.php
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr ""
@@ -12238,7 +12199,7 @@ msgstr ""
 msgid "The reports menu."
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateRepositoryAction.php
+#: app/Http/Controllers/CreateRepository.php
 msgid "The repository has been created"
 msgstr ""
 
@@ -12259,7 +12220,7 @@ msgstr ""
 msgid "The server could not understand this request."
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #, fuzzy
 msgid "The server’s memory limit has been reached."
 msgstr "Limita de memorie a serverului a fost atinsă."
@@ -12268,8 +12229,7 @@ msgstr "Limita de memorie a serverului a fost atinsă."
 msgid "The server’s temporary folder cannot be accessed."
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
-#: app/Http/RequestHandlers/RenumberTreeAction.php
+#: app/Http/Controllers/CheckTree.php app/Http/Controllers/RenumberTree.php
 #: app/Services/UpgradeService.php
 msgid "The server’s time limit has been reached."
 msgstr ""
@@ -12283,15 +12243,15 @@ msgstr "Dimensiunea arborelui de familie, cele mai vechi şi cele mai recente ev
 msgid "The solution"
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateSourceAction.php
+#: app/Http/Controllers/CreateSource.php
 msgid "The source has been created"
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateSubmissionAction.php
+#: app/Http/Controllers/CreateSubmission.php
 msgid "The submission has been created"
 msgstr ""
 
-#: app/Http/RequestHandlers/CreateSubmitterAction.php
+#: app/Http/Controllers/CreateSubmitter.php
 msgid "The submitter has been created"
 msgstr ""
 
@@ -12315,7 +12275,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 msgid "The upgrade is complete."
 msgstr ""
 
@@ -12324,7 +12284,7 @@ msgstr ""
 msgid "The uploaded file exceeds the allowed size."
 msgstr "Fişierul uploadat depăşeşte limita permisă."
 
-#: app/Http/RequestHandlers/UsersCleanupAction.php
+#: app/Http/Controllers/UsersCleanup.php
 #, php-format
 msgid "The user %s has been deleted."
 msgstr ""
@@ -12334,7 +12294,7 @@ msgstr ""
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr ""
 
-#: app/Http/RequestHandlers/LoginAction.php
+#: app/Http/Controllers/Login.php
 msgid "The username or password is incorrect."
 msgstr ""
 
@@ -12343,28 +12303,26 @@ msgstr ""
 msgid "The username required for authentication with the SMTP server."
 msgstr ""
 
-#: app/Http/RequestHandlers/EmailPreferencesAction.php
-#: app/Http/RequestHandlers/ModulesAnalyticsAction.php
-#: app/Http/RequestHandlers/ModulesBlocksAction.php
-#: app/Http/RequestHandlers/ModulesChartsAction.php
-#: app/Http/RequestHandlers/ModulesDataFixesAction.php
-#: app/Http/RequestHandlers/ModulesFootersAction.php
-#: app/Http/RequestHandlers/ModulesHistoricEventsAction.php
-#: app/Http/RequestHandlers/ModulesLanguagesAction.php
-#: app/Http/RequestHandlers/ModulesListsAction.php
-#: app/Http/RequestHandlers/ModulesMapAutocompleteAction.php
-#: app/Http/RequestHandlers/ModulesMapGeoLocationsAction.php
-#: app/Http/RequestHandlers/ModulesMapLinksAction.php
-#: app/Http/RequestHandlers/ModulesMapProvidersAction.php
-#: app/Http/RequestHandlers/ModulesMenusAction.php
-#: app/Http/RequestHandlers/ModulesReportsAction.php
-#: app/Http/RequestHandlers/ModulesSharesAction.php
-#: app/Http/RequestHandlers/ModulesSidebarsAction.php
-#: app/Http/RequestHandlers/ModulesTabsAction.php
-#: app/Http/RequestHandlers/ModulesThemesAction.php
-#: app/Http/RequestHandlers/SitePreferencesAction.php
-#: app/Http/RequestHandlers/SiteRegistrationAction.php
-#: app/Http/RequestHandlers/SiteTagsAction.php
+#: app/Http/Controllers/EmailPreferences.php
+#: app/Http/Controllers/ModulesAnalytics.php
+#: app/Http/Controllers/ModulesBlocks.php
+#: app/Http/Controllers/ModulesCharts.php
+#: app/Http/Controllers/ModulesDataFixes.php
+#: app/Http/Controllers/ModulesFooters.php
+#: app/Http/Controllers/ModulesHistoricEvents.php
+#: app/Http/Controllers/ModulesLanguages.php
+#: app/Http/Controllers/ModulesLists.php
+#: app/Http/Controllers/ModulesMapAutocomplete.php
+#: app/Http/Controllers/ModulesMapGeoLocations.php
+#: app/Http/Controllers/ModulesMapLinks.php
+#: app/Http/Controllers/ModulesMapProviders.php
+#: app/Http/Controllers/ModulesMenus.php
+#: app/Http/Controllers/ModulesReports.php
+#: app/Http/Controllers/ModulesShares.php
+#: app/Http/Controllers/ModulesSidebars.php
+#: app/Http/Controllers/ModulesTabs.php app/Http/Controllers/ModulesThemes.php
+#: app/Http/Controllers/SitePreferences.php
+#: app/Http/Controllers/SiteRegistration.php app/Http/Controllers/SiteTags.php
 msgid "The website preferences have been updated."
 msgstr ""
 
@@ -12383,13 +12341,13 @@ msgstr ""
 msgid "Theme change"
 msgstr "Schimbare temă"
 
-#: app/Http/RequestHandlers/ModulesThemesPage.php
+#: app/Http/Controllers/ModulesThemes.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/modules.phtml
 msgid "Themes"
 msgstr ""
 
-#: resources/views/modules/personal_facts/tab.phtml
+#: resources/views/modules/personal-facts/tab.phtml
 #, fuzzy
 msgid "There are no facts for this individual."
 msgstr "Nu există fapte pentru acest individ."
@@ -12399,7 +12357,7 @@ msgstr "Nu există fapte pentru acest individ."
 msgid "There are no individuals with the surname “%s”"
 msgstr ""
 
-#: app/Http/RequestHandlers/ManageMediaData.php
+#: app/Http/Controllers/ManageMediaData.php
 msgid "There are no links to this media object."
 msgstr ""
 
@@ -12411,7 +12369,7 @@ msgstr "Nu există obiecte media pentru acest individ."
 msgid "There are no notes for this individual."
 msgstr "Nu există note pentru acest individ."
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #: resources/views/pending-changes-page.phtml
 msgid "There are no pending changes."
 msgstr ""
@@ -12420,7 +12378,7 @@ msgstr ""
 msgid "There are no research tasks in this family tree."
 msgstr "Nu sunt sarcini de cercetare în acest arbore de familie."
 
-#: resources/views/modules/sources_tab/tab.phtml
+#: resources/views/modules/sources-tab/tab.phtml
 msgid "There are no source citations for this individual."
 msgstr "Nu există surse citate pentru acest individ."
 
@@ -12442,10 +12400,9 @@ msgstr[2] ""
 msgid "There was an error checking for a new version."
 msgstr ""
 
-#: app/Http/RequestHandlers/AddMediaFileAction.php
-#: app/Http/RequestHandlers/CreateMediaObjectAction.php
-#: app/Http/RequestHandlers/UploadMediaAction.php
-#: app/Services/MediaFileService.php
+#: app/Http/Controllers/AddMediaFile.php
+#: app/Http/Controllers/CreateMediaObject.php
+#: app/Http/Controllers/UploadMedia.php app/Services/MediaFileService.php
 msgid "There was an error uploading your file."
 msgstr "A existat o eroare la uploadarea fişierului dumneavoastră."
 
@@ -12459,15 +12416,15 @@ msgstr ""
 msgid "Third-party services"
 msgstr "Servicii terțe"
 
-#: app/Http/RequestHandlers/LoginAction.php
+#: app/Http/Controllers/Login.php
 msgid "This account has not been approved. Please wait for an administrator to approve it."
 msgstr ""
 
-#: app/Http/RequestHandlers/LoginAction.php
+#: app/Http/Controllers/Login.php
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
 
-#: resources/views/modules/review_changes/config.phtml
+#: resources/views/modules/review-changes/config.phtml
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
 
@@ -12480,10 +12437,6 @@ msgstr ""
 
 #: app/Elements/AbstractEventElement.php
 msgid "This event occurred, but the details are unknown."
-msgstr ""
-
-#: app/Auth.php
-msgid "This family does not exist or you do not have permission to view it."
 msgstr ""
 
 #: app/Auth.php
@@ -12531,13 +12484,13 @@ msgstr ""
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr "Acest arbore de familie a fost actualizat ultima dată pe #gedcomUpdated#. Sunt #totalSurnames# nume de familiei în acest arbore. Cel mai vechi eveniment înregistrat este #firstEventType# pentru #firstEventName# în #firstEventYear#. Cel mai recent eveniment este #lastEventType# pentru #lastEventName# în #lastEventYear#.<br><br>Dacă ai de făcut vreun comentariu sau o recomandare ia legătura cu #contactWebmaster#."
 
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #, php-format
 msgid "This family tree was last updated on %s."
 msgstr "Acest arbore de familie a fost actualizat pe %s."
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "This filename is not compatible with the GEDZIP file format."
 msgstr ""
 
@@ -12553,10 +12506,6 @@ msgstr ""
 
 #: app/Http/Middleware/CheckCsrf.php
 msgid "This form has expired. Try again."
-msgstr ""
-
-#: app/Auth.php
-msgid "This individual does not exist or you do not have permission to view it."
 msgstr ""
 
 #: app/Auth.php
@@ -12617,7 +12566,7 @@ msgstr "Această informaţie este privată şi nu poate fi aratată."
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/upgrade/wizard.phtml
 msgid "This is the latest version of webtrees. No upgrade is available."
@@ -12635,16 +12584,12 @@ msgstr ""
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr ""
 
-#: app/Http/RequestHandlers/PasswordRequestAction.php
+#: app/Http/Controllers/PasswordRequest.php
 msgid "This link is valid for one hour."
 msgstr ""
 
 #: resources/views/help/data-fixes.phtml
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
-
-#: app/Auth.php
-msgid "This media object does not exist or you do not have permission to view it."
 msgstr ""
 
 #: app/Auth.php
@@ -12689,10 +12634,6 @@ msgstr ""
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr ""
-
-#: app/Auth.php
-msgid "This note does not exist or you do not have permission to view it."
 msgstr ""
 
 #: app/Auth.php
@@ -12779,11 +12720,7 @@ msgstr[2] ""
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
 
-#: app/Auth.php
-msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
-
-#: resources/views/admin/trees-privacy.phtml
+#: app/Auth.php resources/views/admin/trees-privacy.phtml
 msgid "This record does not exist."
 msgstr ""
 
@@ -12809,10 +12746,6 @@ msgstr ""
 
 #: app/Auth.php
 msgid "This record is private."
-msgstr ""
-
-#: app/Auth.php
-msgid "This repository does not exist or you do not have permission to view it."
 msgstr ""
 
 #: app/Auth.php
@@ -12850,10 +12783,6 @@ msgstr ""
 
 #: app/Module/GoogleMaps.php app/Module/HereMaps.php app/Module/MapBox.php
 msgid "This service requires an API key."
-msgstr ""
-
-#: app/Auth.php
-msgid "This source does not exist or you do not have permission to view it."
 msgstr ""
 
 #: app/Auth.php
@@ -12979,13 +12908,13 @@ msgstr ""
 
 #: resources/views/admin/changes-log.phtml
 #: resources/views/admin/site-logs.phtml
-#: resources/views/modules/gedcom_news/edit.phtml
-#: resources/views/modules/user_blog/edit.phtml
+#: resources/views/modules/gedcom-news/edit.phtml
+#: resources/views/modules/user-blog/edit.phtml
 msgid "Timestamp"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Timor-Leste"
 msgstr ""
 
@@ -13005,10 +12934,10 @@ msgstr "TinyMCE™"
 #: resources/views/modals/source-fields.phtml
 #: resources/views/modules/census-assistant.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/gedcom_news/edit.phtml
+#: resources/views/modules/gedcom-news/edit.phtml
 #: resources/views/modules/html/config.phtml
 #: resources/views/modules/privacy-policy/admin.phtml
-#: resources/views/modules/user_blog/edit.phtml
+#: resources/views/modules/user-blog/edit.phtml
 msgid "Title"
 msgstr "Titlu"
 
@@ -13072,12 +13001,12 @@ msgid "To use this service, you need an account."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Togo"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Tokelau"
 msgstr ""
 
@@ -13092,7 +13021,7 @@ msgid "Tombstone"
 msgstr "Piatră funerară"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Tonga"
 msgstr ""
 
@@ -13170,7 +13099,7 @@ msgstr ""
 msgid "Total divorces"
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
 #: resources/views/modules/statistics-chart/other-events.phtml
 #: resources/xml/reports/missing_facts_report.xml
 msgid "Total events"
@@ -13218,17 +13147,17 @@ msgstr ""
 msgid "Total pending changes: "
 msgstr ""
 
-#: resources/views/modules/gedcom_stats/config.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
 #: resources/views/modules/html/template-statistics.phtml
 #: resources/views/modules/statistics-chart/names.phtml
 msgid "Total surnames"
 msgstr "Total nume de familie"
 
-#: resources/views/modules/gedcom_stats/config.phtml
+#: resources/views/modules/gedcom-stats/config.phtml
 msgid "Total users"
 msgstr "Toţi utilizatorii"
 
-#: app/Http/RequestHandlers/ModulesAnalyticsPage.php
+#: app/Http/Controllers/ModulesAnalytics.php
 #: app/Module/ModuleAnalyticsTrait.php app/Module/PrivacyPolicy.php
 #: resources/views/admin/analytics-edit.phtml
 #: resources/views/admin/control-panel.phtml
@@ -13248,7 +13177,7 @@ msgid "Tree"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Trinidad and Tobago"
 msgstr "Trinidad şi Tobago"
 
@@ -13263,12 +13192,12 @@ msgid "Tue"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Tunisia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Turkey"
 msgstr "Turcia"
 
@@ -13277,17 +13206,17 @@ msgid "Turkey, UAE, Indonesia, Malaysia, Vietnam"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Turkmenistan"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Turks and Caicos Islands"
 msgstr "Insulele Turks şi Caicos"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Tuvalu"
 msgstr ""
 
@@ -13306,8 +13235,8 @@ msgstr ""
 #: app/CustomTags/PhpGedView.php app/Gedcom.php
 #: resources/views/admin/site-logs.phtml
 #: resources/views/modules/media-list/page.phtml
-#: resources/views/modules/random_media/config.phtml
-#: resources/views/modules/recent_changes/changes-table.phtml
+#: resources/views/modules/random-media/config.phtml
+#: resources/views/modules/recent-changes/changes-table.phtml
 msgid "Type"
 msgstr "Tip"
 
@@ -13360,34 +13289,33 @@ msgstr ""
 #: app/CustomTags/GedcomL.php app/CustomTags/Legacy.php
 #: app/CustomTags/PersonalAncestralFile.php app/CustomTags/PhpGedView.php
 #: app/CustomTags/RootsMagic.php app/Gedcom.php
-#: app/Http/RequestHandlers/CreateRepositoryModal.php
+#: app/Http/Controllers/CreateRepository.php
 #: resources/views/admin/trees-create.phtml
 #: resources/views/admin/trees-preferences.phtml
 #: resources/views/modals/media-file-fields.phtml
 #: resources/views/modules/favorites/favorites.phtml
 #: resources/views/modules/matomo-analytics/form.phtml
 #: resources/views/modules/share-url/share.phtml
-#: resources/views/modules/sitemap/config.phtml
 msgid "URL"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "US Minor Outlying Islands"
 msgstr "SUA Insulele Minor Depărtate"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "US Virgin Islands"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Uganda"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Ukraine"
 msgstr "Ucraina"
 
@@ -13412,18 +13340,17 @@ msgid "Unique identifiers allow the same record to be found in different family 
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "United Arab Emirates"
 msgstr "Emiratele Arabe Unite"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "United Kingdom"
 msgstr "Regatul Unit"
 
 #. I18N: Name of a country or state
-#: app/Module/PrivacyPolicy.php app/Statistics/Service/CountryService.php
-#: app/StatisticsData.php
+#: app/Module/PrivacyPolicy.php app/StatisticsData.php
 msgid "United States"
 msgstr ""
 
@@ -13438,7 +13365,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php app/Elements/FamilyStatusText.php
 #: app/Enums/Sex.php app/GedcomRecord.php app/Statistics.php
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Unknown"
 msgstr ""
 
@@ -13471,9 +13398,9 @@ msgstr "Cod GEDCOM nerecunoscut"
 msgid "Unused files"
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 #, php-format
-msgid "Unzip %s to a temporary folder…"
+msgid "Unzip “%s” to a temporary folder…"
 msgstr ""
 
 #. I18N: Name of a module
@@ -13481,7 +13408,7 @@ msgstr ""
 msgid "Upcoming events"
 msgstr "Evenimente apropiate"
 
-#: app/Http/RequestHandlers/DataFixData.php
+#: app/Http/Controllers/DataFixData.php
 msgid "Update"
 msgstr "Actualizare"
 
@@ -13506,18 +13433,17 @@ msgstr ""
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
-#: app/Http/RequestHandlers/LoginAction.php
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/Login.php app/Http/Controllers/UpgradeWizardStep.php
 #: resources/views/admin/control-panel.phtml
 #, php-format
 msgid "Upgrade to webtrees %s."
 msgstr ""
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php
+#: app/Http/Controllers/UpgradeWizard.php
 msgid "Upgrade wizard"
 msgstr ""
 
-#: app/Http/RequestHandlers/UploadMediaPage.php
+#: app/Http/Controllers/UploadMedia.php
 #: resources/views/admin/control-panel.phtml
 msgid "Upload media files"
 msgstr ""
@@ -13527,7 +13453,7 @@ msgid "Upload one or more media files from your local computer. Media files can 
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Uruguay"
 msgstr ""
 
@@ -13565,12 +13491,13 @@ msgstr ""
 msgid "Use compact layout"
 msgstr "Folosește aranjament compact"
 
-#: resources/views/modules/gedcom_news/edit.phtml
-#: resources/views/modules/user_blog/edit.phtml
+#: resources/views/modules/gedcom-news/edit.phtml
+#: resources/views/modules/user-blog/edit.phtml
 #, fuzzy
 msgid "Use current timestamp"
 msgstr "Folosește marca temporală curentă"
 
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -13578,7 +13505,7 @@ msgstr "Folosește marca temporală curentă"
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
 msgstr ""
 
-#: app/Http/RequestHandlers/ModulesMapProvidersPage.php
+#: app/Http/Controllers/ModulesMapProviders.php
 msgid "Use maps in webtrees."
 msgstr ""
 
@@ -13602,7 +13529,7 @@ msgstr ""
 msgid "Use silhouettes"
 msgstr ""
 
-#: app/Http/RequestHandlers/CopyFact.php
+#: app/Http/Controllers/CopyFact.php
 msgid "Use the “edit“ menu to paste this into another record."
 msgstr ""
 
@@ -13615,7 +13542,7 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: app/Http/RequestHandlers/UserListPage.php
+#: app/Http/Controllers/UserListPage.php
 #: resources/views/admin/control-panel.phtml
 #: resources/views/admin/email-page.phtml
 #: resources/views/admin/users-cleanup.phtml
@@ -13632,7 +13559,7 @@ msgstr ""
 msgid "User not verified by administrator."
 msgstr ""
 
-#: app/Http/RequestHandlers/VerifyEmail.php
+#: app/Http/Controllers/VerifyEmail.php
 msgid "User verification"
 msgstr "Verificarea utilizatorului"
 
@@ -13645,7 +13572,7 @@ msgstr "Verificarea utilizatorului"
 #: resources/views/emails/register-notify-text.phtml
 #: resources/views/login-page.phtml
 #: resources/views/modules/geonames/config.phtml
-#: resources/views/modules/login_block/sign-in.phtml
+#: resources/views/modules/login-block/sign-in.phtml
 #: resources/views/modules/todo/research-tasks.phtml
 #: resources/views/password-reset-page.phtml
 #: resources/views/register-page.phtml
@@ -13664,7 +13591,7 @@ msgid "Usernames are case-insensitive and ignore accented letters, so that “ch
 msgstr ""
 
 #: resources/views/admin/control-panel.phtml
-#: resources/views/modules/gedcom_stats/statistics.phtml
+#: resources/views/modules/gedcom-stats/statistics.phtml
 #: resources/views/modules/html/template-statistics.phtml
 msgid "Users"
 msgstr ""
@@ -13674,7 +13601,7 @@ msgid "User’s account has been inactive too long: "
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Uzbekistan"
 msgstr ""
 
@@ -13684,7 +13611,7 @@ msgid "Vancouver, British Columbia, Canada"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Vanuatu"
 msgstr ""
 
@@ -13694,12 +13621,12 @@ msgid "Various statistics charts."
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Vatican City"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Venezuela"
 msgstr ""
 
@@ -13732,7 +13659,7 @@ msgid "Video"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Vietnam"
 msgstr "Vietnam"
 
@@ -13783,12 +13710,12 @@ msgid "Vital records"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Wales"
 msgstr "Ţara Galilor"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Wallis and Futuna"
 msgstr "Insulele Wallis şi Futuna"
 
@@ -13840,12 +13767,11 @@ msgstr "Acum vă vom trimite un email de confirmare la adresa <b>%s</b>. Trebuie
 msgid "Website"
 msgstr ""
 
-#: app/Http/RequestHandlers/SiteLogsPage.php
-#: resources/views/admin/control-panel.phtml
+#: app/Http/Controllers/SiteLogs.php resources/views/admin/control-panel.phtml
 msgid "Website logs"
 msgstr ""
 
-#: app/Http/RequestHandlers/SitePreferencesPage.php
+#: app/Http/Controllers/SitePreferences.php
 #: resources/views/admin/control-panel.phtml
 msgid "Website preferences"
 msgstr ""
@@ -13875,7 +13801,7 @@ msgid "Welcome to this genealogy website"
 msgstr "Bine aţi venit pe acest site de genealogie"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Western Sahara"
 msgstr "Sahara Occidentală"
 
@@ -13910,11 +13836,6 @@ msgstr ""
 msgid "Where we operate online services that children may access directly, the minimum age for consent in our jurisdiction is %s years."
 msgstr ""
 
-#. I18N: Label for a configuration option
-#: resources/views/modules/sitemap/config.phtml
-msgid "Which family trees should be included in the sitemaps"
-msgstr "Ce arbori de familie să fie incluşi în hărţile site"
-
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml
 msgid "Who can upload new media files"
@@ -13937,7 +13858,7 @@ msgstr "Văduvă"
 msgid "Widower"
 msgstr "Văduv"
 
-#: app/Gedcom.php app/Http/RequestHandlers/LinkSpouseToIndividualPage.php
+#: app/Gedcom.php app/Http/Controllers/LinkSpouseToIndividual.php
 #: resources/views/edit/change-family-members.phtml
 #: resources/views/fact-date.phtml
 #: resources/xml/reports/family_group_report.xml
@@ -13983,7 +13904,7 @@ msgstr ""
 msgid "Wives take their husband’s surname."
 msgstr ""
 
-#: app/Http/RequestHandlers/MapDataAdd.php
+#: app/Http/Controllers/MapDataAdd.php
 #: resources/views/modules/place-hierarchy/page.phtml
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "World"
@@ -14004,7 +13925,7 @@ msgid "Year:"
 msgstr "An:"
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Yemen"
 msgstr ""
 
@@ -14019,17 +13940,16 @@ msgstr "Da"
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
 
-#: app/Http/RequestHandlers/ContactAction.php
-#: app/Http/RequestHandlers/RegisterAction.php
+#: app/Http/Controllers/Contact.php app/Http/Controllers/Register.php
 msgid "You are not allowed to send messages that contain external links."
 msgstr ""
 
-#: resources/views/modules/login_block/sign-out.phtml
+#: resources/views/modules/login-block/sign-out.phtml
 #, php-format
 msgid "You are signed in as %s."
 msgstr ""
 
-#: app/Http/RequestHandlers/LoginPage.php
+#: app/Http/Controllers/Login.php
 msgid "You can apply for an account using the link below."
 msgstr ""
 
@@ -14058,7 +13978,6 @@ msgstr ""
 msgid "You can renumber this family tree."
 msgstr ""
 
-#. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
@@ -14072,11 +13991,11 @@ msgstr ""
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 msgstr "Poţi mări viteza calculelor de confidenţialitate adăugând câmpul Dată deces indivizilor a căror dată de deces poate fi dedusă din alte date, dar care nu au un câmp de Dată deces, Înmormântare, Incinerare, etc."
 
-#: app/Http/RequestHandlers/LoginAction.php
+#: app/Http/Controllers/Login.php
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr ""
 
-#: app/Http/Exceptions/HttpAccessDeniedException.php
+#: app/Http/Exceptions/HttpForbiddenException.php
 #: app/Http/Exceptions/HttpNotFoundException.php
 msgid "You do not have permission to view this page."
 msgstr ""
@@ -14089,7 +14008,7 @@ msgstr "Aţi confirmat cererea dumneavoastră pentru a deveni un utilizator înr
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr ""
 
-#: app/Http/RequestHandlers/Logout.php
+#: app/Http/Controllers/Logout.php
 msgid "You have signed out."
 msgstr ""
 
@@ -14133,16 +14052,16 @@ msgstr "Trebuie să selectezi un individ şi un tip diagramă în setările de c
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
 msgstr ""
 
-#: app/Http/RequestHandlers/RenumberTreeAction.php
+#: app/Http/Controllers/RenumberTree.php
 #, fuzzy
 msgid "You need to accept or reject all pending changes before proceeding."
 msgstr "Trebuie să acceptați sau să respingeți toate modificările în așteptare înainte de a continua."
 
-#: app/Http/RequestHandlers/LoginPage.php
+#: app/Http/Controllers/Login.php
 msgid "You need to be a family member to access this website."
 msgstr ""
 
-#: app/Http/RequestHandlers/LoginPage.php
+#: app/Http/Controllers/Login.php
 msgid "You need to be an authorized user to access this website."
 msgstr ""
 
@@ -14164,13 +14083,17 @@ msgstr ""
 msgid "You sent the following message to a webtrees user:"
 msgstr "Aţi trimis următorul mesaj către un utilizator webtrees:"
 
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
+#: app/Http/Controllers/Register.php
+#, php-format
+msgid "You should delete the \"%1$s\" from \"%2$s\" and try again."
+msgstr ""
+
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
-#: app/Http/RequestHandlers/ContactAction.php
-#: app/Http/RequestHandlers/RegisterAction.php
+#: app/Http/Controllers/Contact.php
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr ""
@@ -14213,7 +14136,7 @@ msgstr "Coşul dumneavoastră de decupaje este gol."
 msgid "Your name"
 msgstr ""
 
-#: app/Http/RequestHandlers/PasswordResetAction.php
+#: app/Http/Controllers/PasswordReset.php
 msgid "Your password has been updated."
 msgstr ""
 
@@ -14221,7 +14144,7 @@ msgstr ""
 msgid "Your personal data may be transferred to, and processed in, countries other than the country in which you reside. We take appropriate safeguards to protect your data during such transfers."
 msgstr ""
 
-#: app/Http/RequestHandlers/RegisterAction.php
+#: app/Http/Controllers/Register.php
 #, php-format
 msgid "Your registration at %s"
 msgstr "Înregistrarea dumneavoastră la %s"
@@ -14237,12 +14160,12 @@ msgid "ZIP"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Zambia"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Zimbabwe"
 msgstr ""
 
@@ -14403,7 +14326,7 @@ msgstr ""
 #: resources/views/modules/custom-css-js/edit.phtml
 #: resources/views/modules/edit-block-config.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/gedcom_news/edit.phtml
+#: resources/views/modules/gedcom-news/edit.phtml
 #: resources/views/modules/geonames/config.phtml
 #: resources/views/modules/google-maps/config.phtml
 #: resources/views/modules/here-maps/config.phtml
@@ -14411,7 +14334,7 @@ msgstr ""
 #: resources/views/modules/openrouteservice/config.phtml
 #: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/stories/edit.phtml
-#: resources/views/modules/user_blog/edit.phtml
+#: resources/views/modules/user-blog/edit.phtml
 #, fuzzy
 msgid "cancel"
 msgstr "Anulează"
@@ -14468,7 +14391,7 @@ msgid "compact list"
 msgstr "listă compactă"
 
 #. I18N: A button label.
-#: app/Http/RequestHandlers/UpgradeWizardStep.php
+#: app/Http/Controllers/UpgradeWizardStep.php
 #: resources/views/admin/import-progress.phtml
 #: resources/views/admin/map-import-form.phtml
 #: resources/views/admin/merge-records-step-1.phtml
@@ -14564,7 +14487,7 @@ msgstr ""
 msgid "download"
 msgstr "descarcă"
 
-#: resources/views/modules/descendancy_chart/tree.phtml
+#: resources/views/modules/descendancy-chart/tree.phtml
 msgid "d’Aboville number"
 msgstr ""
 
@@ -14590,7 +14513,7 @@ msgctxt "NOUN"
 msgid "extract"
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 #: resources/xml/reports/fact_sources.xml
 msgid "facts"
 msgstr ""
@@ -14674,6 +14597,10 @@ msgstr ""
 msgid "import file"
 msgstr ""
 
+#: resources/views/admin/trees-privacy.phtml
+msgid "include"
+msgstr ""
+
 #: app/Elements/AgeAtEvent.php
 msgid "infant"
 msgstr "Prunc"
@@ -14706,9 +14633,8 @@ msgstr ""
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Module/OnThisDayModule.php app/Module/RecentChangesModule.php
-#: app/Module/TopGivenNamesModule.php
+#: app/Http/Controllers/TreePreferences.php app/Module/OnThisDayModule.php
+#: app/Module/RecentChangesModule.php app/Module/TopGivenNamesModule.php
 #: app/Module/UpcomingAnniversariesModule.php app/Module/YahrzeitModule.php
 msgid "list"
 msgstr "listă"
@@ -14718,7 +14644,7 @@ msgstr "listă"
 msgid "local"
 msgstr ""
 
-#: app/Http/RequestHandlers/MapDataImportAction.php
+#: app/Http/Controllers/MapDataImport.php
 #, php-format
 msgid "locations updated: %s, locations added: %s"
 msgstr ""
@@ -14733,7 +14659,7 @@ msgid "managers"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 msgid "markdown"
 msgstr ""
 
@@ -14757,8 +14683,8 @@ msgstr ""
 msgid "matrilineal"
 msgstr ""
 
-#: resources/views/modules/recent_changes/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 #: resources/views/modules/yahrzeit/config.phtml
 #, php-format
 msgid "maximum %s day"
@@ -14792,6 +14718,7 @@ msgstr ""
 #: resources/views/setup/step-1-language.phtml
 #: resources/views/setup/step-2-server-checks.phtml
 #: resources/views/setup/step-3-database-type.phtml
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -14800,8 +14727,7 @@ msgstr ""
 msgid "next"
 msgstr "următor(-oare)"
 
-#: app/Elements/OrdinanceProcessFlag.php
-#: app/Http/RequestHandlers/UserListData.php
+#: app/Elements/OrdinanceProcessFlag.php app/Http/Controllers/UserListData.php
 #: resources/views/admin/site-mail.phtml
 #: resources/views/admin/site-preferences.phtml
 #: resources/views/admin/site-registration.phtml
@@ -14809,12 +14735,12 @@ msgstr "următor(-oare)"
 #: resources/views/lists/families-table.phtml
 #: resources/views/modules/fix-search-and-replace/options.phtml
 #: resources/views/modules/html/config.phtml
-#: resources/views/modules/random_media/config.phtml
-#: resources/views/modules/recent_changes/config.phtml
-#: resources/views/modules/review_changes/config.phtml
-#: resources/views/modules/todays_events/config.phtml
+#: resources/views/modules/random-media/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
+#: resources/views/modules/review-changes/config.phtml
+#: resources/views/modules/todays-events/config.phtml
 #: resources/views/modules/todo/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 #: resources/xml/reports/change_report.xml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
@@ -14822,7 +14748,7 @@ msgstr "următor(-oare)"
 msgid "no"
 msgstr "nu"
 
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 #: app/Module/RelationshipsChartModule.php app/Services/EmailService.php
 #: resources/views/modules/statistics-chart/custom.phtml
 msgid "none"
@@ -14884,7 +14810,7 @@ msgid "photocopy"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 msgid "plain text"
 msgstr ""
 
@@ -14900,6 +14826,7 @@ msgstr ""
 #: resources/views/modules/media-list/pagination.phtml
 #: resources/views/setup/step-2-server-checks.phtml
 #: resources/views/setup/step-3-database-type.phtml
+#: resources/views/setup/step-4-database-firebird.phtml
 #: resources/views/setup/step-4-database-mysql.phtml
 #: resources/views/setup/step-4-database-pgsql.phtml
 #: resources/views/setup/step-4-database-sqlite.phtml
@@ -14923,7 +14850,7 @@ msgstr ""
 msgid "questionable evidence"
 msgstr ""
 
-#: app/Http/RequestHandlers/TreePreferencesPage.php
+#: app/Http/Controllers/TreePreferences.php
 #: resources/xml/reports/fact_sources.xml
 msgid "records"
 msgstr ""
@@ -15013,7 +14940,7 @@ msgstr ""
 #: resources/views/modules/edit-block-config.phtml
 #: resources/views/modules/faq/edit.phtml
 #: resources/views/modules/favorites/favorites.phtml
-#: resources/views/modules/gedcom_news/edit.phtml
+#: resources/views/modules/gedcom-news/edit.phtml
 #: resources/views/modules/geonames/config.phtml
 #: resources/views/modules/google-maps/config.phtml
 #: resources/views/modules/here-maps/config.phtml
@@ -15021,9 +14948,8 @@ msgstr ""
 #: resources/views/modules/openrouteservice/config.phtml
 #: resources/views/modules/privacy-policy/admin.phtml
 #: resources/views/modules/relationships-chart/config.phtml
-#: resources/views/modules/sitemap/config.phtml
 #: resources/views/modules/stories/edit.phtml
-#: resources/views/modules/user_blog/edit.phtml
+#: resources/views/modules/user-blog/edit.phtml
 msgid "save"
 msgstr ""
 
@@ -15042,7 +14968,7 @@ msgstr "caută"
 msgid "secondary evidence"
 msgstr ""
 
-#: resources/views/modules/random_media/config.phtml
+#: resources/views/modules/random-media/config.phtml
 #, fuzzy
 msgid "seconds"
 msgstr "secunde"
@@ -15085,9 +15011,9 @@ msgstr ""
 #. I18N: button label
 #: resources/views/admin/trees-check.phtml
 #: resources/views/lists/anniversaries-list.phtml
-#: resources/views/modules/gedcom_news/list.phtml
-#: resources/views/modules/recent_changes/changes-list.phtml
-#: resources/views/modules/user_blog/list.phtml
+#: resources/views/modules/gedcom-news/list.phtml
+#: resources/views/modules/recent-changes/changes-list.phtml
+#: resources/views/modules/user-blog/list.phtml
 #: resources/views/modules/yahrzeit/list.phtml
 msgid "show more"
 msgstr ""
@@ -15098,12 +15024,12 @@ msgstr "arată graficul"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml
-#: resources/views/modules/login_block/sign-in.phtml
+#: resources/views/modules/login-block/sign-in.phtml
 msgid "sign in"
 msgstr "autentificare"
 
 #. I18N: A button label.
-#: resources/views/modules/login_block/sign-out.phtml
+#: resources/views/modules/login-block/sign-out.phtml
 #, fuzzy
 msgid "sign out"
 msgstr "deconectare"
@@ -15177,17 +15103,16 @@ msgstr "Născut decedat"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Module/OnThisDayModule.php app/Module/RecentChangesModule.php
-#: app/Module/TopGivenNamesModule.php app/Module/TopSurnamesModule.php
-#: app/Module/UpcomingAnniversariesModule.php app/Module/YahrzeitModule.php
+#: app/Http/Controllers/TreePreferences.php app/Module/OnThisDayModule.php
+#: app/Module/RecentChangesModule.php app/Module/TopGivenNamesModule.php
+#: app/Module/TopSurnamesModule.php app/Module/UpcomingAnniversariesModule.php
+#: app/Module/YahrzeitModule.php
 msgid "table"
 msgstr "tabel"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
-#: app/Http/RequestHandlers/TreePreferencesPage.php
-#: app/Module/TopSurnamesModule.php
+#: app/Http/Controllers/TreePreferences.php app/Module/TopSurnamesModule.php
 msgid "tag cloud"
 msgstr ""
 
@@ -15248,7 +15173,7 @@ msgstr "încarcă"
 #: resources/views/branches-page.phtml
 #: resources/views/modules/ancestors-chart/page.phtml
 #: resources/views/modules/compact-chart/page.phtml
-#: resources/views/modules/descendancy_chart/page.phtml
+#: resources/views/modules/descendancy-chart/page.phtml
 #: resources/views/modules/family-book-chart/page.phtml
 #: resources/views/modules/fanchart/page.phtml
 #: resources/views/modules/hourglass-chart/page.phtml
@@ -15281,11 +15206,11 @@ msgstr ""
 msgid "webtrees"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "webtrees cannot create thumbnails for this file format."
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 msgid "webtrees does not recognize this file format."
 msgstr ""
 
@@ -15312,8 +15237,7 @@ msgid "xenea"
 msgstr ""
 
 #: app/Elements/AbstractEventElement.php app/Elements/OrdinanceProcessFlag.php
-#: app/Http/RequestHandlers/FamilyPage.php
-#: app/Http/RequestHandlers/UserListData.php
+#: app/Http/Controllers/FamilyPage.php app/Http/Controllers/UserListData.php
 #: resources/views/admin/site-mail.phtml
 #: resources/views/admin/site-preferences.phtml
 #: resources/views/admin/site-registration.phtml
@@ -15321,12 +15245,12 @@ msgstr ""
 #: resources/views/lists/families-table.phtml
 #: resources/views/modules/fix-search-and-replace/options.phtml
 #: resources/views/modules/html/config.phtml
-#: resources/views/modules/random_media/config.phtml
-#: resources/views/modules/recent_changes/config.phtml
-#: resources/views/modules/review_changes/config.phtml
-#: resources/views/modules/todays_events/config.phtml
+#: resources/views/modules/random-media/config.phtml
+#: resources/views/modules/recent-changes/config.phtml
+#: resources/views/modules/review-changes/config.phtml
+#: resources/views/modules/todays-events/config.phtml
 #: resources/views/modules/todo/config.phtml
-#: resources/views/modules/upcoming_events/config.phtml
+#: resources/views/modules/upcoming-events/config.phtml
 #: resources/xml/reports/change_report.xml
 #: resources/xml/reports/family_group_report.xml
 #: resources/xml/reports/individual_ext_report.xml
@@ -15339,7 +15263,7 @@ msgstr "da"
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php
+#: app/Http/Controllers/SearchAdvanced.php
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
@@ -15348,22 +15272,22 @@ msgstr[1] ""
 msgstr[2] ""
 
 #. I18N: Name of a country or state
-#: app/Statistics/Service/CountryService.php app/StatisticsData.php
+#: app/StatisticsData.php
 msgid "Åland Islands"
 msgstr ""
 
-#: app/Http/RequestHandlers/CheckTree.php
+#: app/Http/Controllers/CheckTree.php
 #, php-format
 msgid "“%1$s” should be “%2$s”."
 msgstr ""
 
-#: app/Http/RequestHandlers/CopyFact.php
+#: app/Http/Controllers/CopyFact.php
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
 msgstr ""
 
 #. I18N: %s is the name of a genealogy record
-#: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
+#: app/Http/Controllers/PendingChangesAcceptRecord.php
 #: app/Services/MapDataService.php
 #, php-format
 msgid "“%s” has been deleted."

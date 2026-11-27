@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 00:42+0000\n"
+"POT-Creation-Date: 2026-11-27 00:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3822,22 +3822,22 @@ msgstr ""
 
 #: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The file %s could not be deleted."
+msgid "The file “%s” could not be deleted."
 msgstr ""
 
 #: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The folder %s has been deleted."
+msgid "The folder “%s” has been deleted."
 msgstr ""
 
 #: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The folder %s could not be deleted."
+msgid "The folder “%s” could not be deleted."
 msgstr ""
 
 #: app/Http/Controllers/DeletePath.php
 #, php-format
-msgid "The file %s has been deleted."
+msgid "The file “%s” has been deleted."
 msgstr ""
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
@@ -3871,12 +3871,12 @@ msgstr ""
 
 #: app/Http/Controllers/EditMediaFile.php
 #, php-format
-msgid "The media file %1$s has been renamed to %2$s."
+msgid "The media file “%1$s” has been renamed to “%2$s”."
 msgstr ""
 
 #: app/Http/Controllers/EditMediaFile.php
 #, php-format
-msgid "The media file %1$s could not be renamed to %2$s."
+msgid "The media file “%1$s” could not be renamed to “%2$s”."
 msgstr ""
 
 #: app/Http/Controllers/EditNote.php
@@ -3922,12 +3922,12 @@ msgstr ""
 #: app/Http/Controllers/ExportGedcomServer.php
 #: app/Http/Controllers/UpgradeWizardStep.php
 #, php-format
-msgid "The family tree has been exported to %s."
+msgid "The family tree has been exported to “%s”."
 msgstr ""
 
 #: app/Http/Controllers/ExportGedcomServer.php
 #, php-format
-msgid "The file %s could not be created."
+msgid "The file “%s” could not be created."
 msgstr ""
 
 #: app/Http/Controllers/FamilyPage.php app/Http/Controllers/IndividualPage.php
@@ -4487,12 +4487,12 @@ msgstr ""
 
 #: app/Http/Controllers/SitePreferences.php
 #, php-format
-msgid "Cannot write to the folder \"%s\"."
+msgid "Cannot write to the folder “%s”."
 msgstr ""
 
 #: app/Http/Controllers/SitePreferences.php
 #, php-format
-msgid "The folder \"%s\" does not exist."
+msgid "The folder “%s” does not exist."
 msgstr ""
 
 #: app/Http/Controllers/SiteRegistration.php
@@ -4654,7 +4654,7 @@ msgstr ""
 
 #: app/Http/Controllers/UpgradeWizard.php
 #, php-format
-msgid "Unzip %s to a temporary folder…"
+msgid "Unzip “%s” to a temporary folder…"
 msgstr ""
 
 #: app/Http/Controllers/UpgradeWizard.php
@@ -4676,7 +4676,7 @@ msgstr ""
 
 #: app/Http/Controllers/UpgradeWizardStep.php
 #, php-format
-msgid "The folder %s has been created."
+msgid "The folder “%s” has been created."
 msgstr ""
 
 #: app/Http/Controllers/UpgradeWizardStep.php
@@ -4724,12 +4724,12 @@ msgstr ""
 
 #: app/Http/Controllers/UploadMedia.php
 #, php-format
-msgid "The file %s already exists. Use another filename."
+msgid "The file “%s” already exists. Use another filename."
 msgstr ""
 
 #: app/Http/Controllers/UploadMedia.php
 #, php-format
-msgid "The file %s has been uploaded."
+msgid "The file “%s” has been uploaded."
 msgstr ""
 
 #: app/Http/Controllers/UserAdd.php

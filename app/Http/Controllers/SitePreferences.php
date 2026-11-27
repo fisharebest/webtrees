@@ -79,10 +79,10 @@ final class SitePreferences
             if (is_writable($index_directory)) {
                 Site::setPreference('INDEX_DIRECTORY', $index_directory);
             } else {
-                FlashMessages::addMessage(I18N::translate('Cannot write to the folder "%s".', e($index_directory)), 'danger');
+                FlashMessages::addMessage(I18N::translate('Cannot write to the folder “%s”.', e($index_directory)), 'danger');
             }
         } else {
-            FlashMessages::addMessage(I18N::translate('The folder "%s" does not exist.', e($index_directory)), 'danger');
+            FlashMessages::addMessage(I18N::translate('The folder “%s” does not exist.', e($index_directory)), 'danger');
         }
 
         Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) $allow_change_gedcom);

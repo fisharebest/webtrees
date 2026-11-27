@@ -138,13 +138,13 @@ final class EditMediaFile
             try {
                 if ($filesystem->fileExists($old) && !$filesystem->fileExists($new)) {
                     $filesystem->move($old, $new);
-                    FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                    FlashMessages::addMessage(I18N::translate('The media file “%1$s” has been renamed to “%2$s”.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                 } else {
-                    FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                    FlashMessages::addMessage(I18N::translate('The media file “%1$s” could not be renamed to “%2$s”.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                     $file = $old;
                 }
             } catch (FilesystemException | UnableToMoveFile) {
-                FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                FlashMessages::addMessage(I18N::translate('The media file “%1$s” could not be renamed to “%2$s”.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                 $file = $old;
             }
         }

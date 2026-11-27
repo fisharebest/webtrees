@@ -105,7 +105,7 @@ final class UpgradeWizard
                 route(UpgradeWizardStep::class, ['step' => self::STEP_PENDING]) => I18N::translate('Check for pending changes…'),
             ] + $export_steps + [
                 route(UpgradeWizardStep::class, ['step' => self::STEP_DOWNLOAD]) => I18N::translate('Download %s…', e($download_url)),
-                route(UpgradeWizardStep::class, ['step' => self::STEP_UNZIP])    => I18N::translate('Unzip %s to a temporary folder…', e(basename($download_url))),
+                route(UpgradeWizardStep::class, ['step' => self::STEP_UNZIP])    => I18N::translate('Unzip “%s” to a temporary folder…', e(basename($download_url))),
                 route(UpgradeWizardStep::class, ['step' => self::STEP_COPY])     => I18N::translate('Copy files…'),
             ];
     }
