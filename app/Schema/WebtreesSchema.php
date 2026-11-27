@@ -2697,4 +2697,15 @@ class WebtreesSchema
                     ->addForeignKey(foreign_key: DB::foreignKey(name: 'gedcom_fk2', columns: ['support_user_id'], foreign_table: 'user', foreign_columns: ['user_id'])),
             );
     }
+
+    public function version47(): Schema
+    {
+        return $this->version46()
+            ->alterTable(name: 'change', callback: static fn (Table $table): Table => $table
+                ->addIndex(index: DB::index(name: 'change_ix3', columns: ['status']))
+                ->addIndex(index: DB::index(name: 'change_ix4', columns: ['xref']))
+                ->addIndex(index: DB::index(name: 'change_ix5', columns: ['change_time']))
+                ->addIndex(index: DB::index(name: 'change_ix6', columns: ['gedcom_id', 'change_time']))
+                ->addIndex(index: DB::index(name: 'change_ix7', columns: ['gedcom_id', 'status', 'change_id'])));
+    }
 }

@@ -168,6 +168,68 @@ class WebtreesSchemaTest extends TestCase
         self::assertFalse($webtrees_schema->updateSchema());
     }
 
+    public function testVersion47IndexesChangeQueries(): void
+    {
+        $pdo = new Sqlite('sqlite::memory:');
+        $pdo->exec('PRAGMA foreign_keys = ON');
+        DB::attach($pdo);
+
+        $webtrees_schema = new WebtreesSchema();
+
+        DB::migrate(
+            target: $webtrees_schema->version46(),
+            mode: new MigrationMode(strict_not_null: true),
+            execute: true,
+        );
+        DB::query(table: 'gedcom')->insert(['gedcom_id' => 1, 'gedcom_name' => 'example']);
+        DB::query(table: 'user')->insert(['user_id' => 1, 'user_name' => 'example', 'real_name' => 'Example', 'email' => 'example@example.com', 'password' => '']);
+        DB::query(table: 'change')->insert([
+            'change_time' => '2026-01-01 00:00:00',
+            'status'      => 'accepted',
+            'gedcom_id'   => 1,
+            'xref'        => 'I1',
+            'old_gedcom' => '',
+            'new_gedcom' => '0 @I1@ INDI',
+            'user_id'     => 1,
+        ]);
+
+        DB::migrate(
+            target: $webtrees_schema->version47(),
+            mode: new MigrationMode(strict_not_null: true),
+            execute: true,
+        );
+
+        $change = DB::introspect()->getTable(name: 'change');
+        self::assertSame(
+            ['change_ix1', 'change_ix2', 'change_ix3', 'change_ix4', 'change_ix5', 'change_ix6', 'change_ix7'],
+            array_map(static fn (Index $index): string => $index->getName(), $change->getIndexes()),
+        );
+        self::assertSame([
+            ['gedcom_id', 'status', 'xref'],
+            ['user_id'],
+            ['status'],
+            ['xref'],
+            ['change_time'],
+            ['gedcom_id', 'change_time'],
+            ['gedcom_id', 'status', 'change_id'],
+        ], array_map(static fn (Index $index): array => $index->getColumns(), $change->getIndexes()));
+        self::assertSame('I1', $pdo->query('SELECT xref FROM change WHERE change_id = 1')->fetchColumn());
+
+        foreach (
+            [
+                "SELECT xref FROM change WHERE gedcom_id = 1 AND status = 'pending' GROUP BY xref" => 'change_ix1',
+                "SELECT 1 FROM change WHERE status = 'pending' LIMIT 1" => 'change_ix3',
+                "SELECT 1 FROM change WHERE xref = 'I1' LIMIT 1" => 'change_ix4',
+                'SELECT change_time FROM change ORDER BY change_time LIMIT 1' => 'change_ix5',
+                "SELECT 1 FROM change WHERE gedcom_id = 1 AND change_time >= '2026-01-01' LIMIT 1" => 'change_ix6',
+                "SELECT change_time FROM change WHERE gedcom_id = 1 AND status = 'accepted' ORDER BY change_id DESC LIMIT 1" => 'change_ix7',
+            ] as $query => $index
+        ) {
+            $plan = $pdo->query('EXPLAIN QUERY PLAN ' . $query)->fetchAll(PDO::FETCH_COLUMN, 3);
+            self::assertStringContainsString($index, implode(' ', $plan), $query);
+        }
+    }
+
     public function testHistoricalMediaIsTransferredBeforeReplacingItsColumnsAndPrimaryKey(): void
     {
         $pdo = new Sqlite('sqlite::memory:');
