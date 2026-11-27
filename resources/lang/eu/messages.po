@@ -12394,6 +12394,10 @@ msgstr "Gertaera hau benetazkoa da, baina ez dira xetehasunak ezagutzen."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Familia hau ez dago zuhaitzean edo ez duzu ikusteko baimenik."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Familia hau ezabatu da. Deuseztapena moderatzaile batek onartu beharko du."
@@ -12413,6 +12417,10 @@ msgstr "Familia hau editatu da. Aldaketak moderatzaileren batek onartu beharko d
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Familia hau editatu da. Aldaketak errebisatu beharko dituzu eta gero %1$s edo %2$s."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12458,6 +12466,10 @@ msgstr "Formulario hau iraungirik dago. Saiatu berriz."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Pertsona hau ez dago zuhaitzean, edo ezin zaizu erakutsi pribatutasun arauak direla medio."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Pertsona hau ezabatu da. Deusestatzea moderatzaile batek errebisatu beharko du."
@@ -12477,6 +12489,10 @@ msgstr "Pertsona honen informazioa editatu da. Aldaketak moderatzaile batek erre
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Pertsona honen informazioa editatu da. Aldaketak errebisatu beharrak dira eta %1$s edo %2$s."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12538,6 +12554,10 @@ msgstr "Zerrenda hau bilaketa xinple eta azkar baten bitartez sortzen da. Beraz,
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Multimedia objektu hau ez dago zuhaitzean edo ez ikusteko baimenik."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Multimedia objektu hau ezabatu da. Deuseztapena moderatzaile batek errebisatu beharko du."
@@ -12557,6 +12577,10 @@ msgstr "Multimedia objektu hau editatu da. Aldaketak moderatzaile batek errebisa
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Multimedia objektu hau aldatu da. Aldaketak errebisatu beharko dituzu eta %1$s edo %2$s."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12578,6 +12602,10 @@ msgstr "Izen hau erabiltzen da “Nork” eremuan, zerbitzari honen mezu elektro
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ohar hau ez dago zuhaitzean edo ez duzu baimenik ikusteko."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ohar hau ezabatu da. Bere deuseztatzea moderatzaileak errebisatu beharko du."
@@ -12597,6 +12625,10 @@ msgstr "Ohar hau editatu da. Aldaketak moderatzaileak errebisatu beharko ditu."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ohar hau editatu da. Aldaketak errebisatu beharko dituzu eta zer egin aukeratu: %1$s edo %2$s."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12682,8 +12714,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Erregistro hori editatu da. Aldaketak moderatzaile batek errebisatu beharko ditu eta gero %1$s edo %2$s."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Gordailua ez dago zuhaitzean edo ez duzu ikusteko baimenik."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12717,6 +12761,14 @@ msgstr "Zerbitzu honek API klabearen beharra dauka."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Iturri hori ez dago zuhaitzean edo ez duzu ikusteko baimenik."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13947,6 +13999,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

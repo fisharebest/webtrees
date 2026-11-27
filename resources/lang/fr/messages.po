@@ -12465,6 +12465,11 @@ msgstr "Cet événement s'est produit, mais les détails ne sont pas connus."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "La fiche de cette famille n’existe pas ou vous n’avez pas le droit d’y accéder."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Cette famille n’existe pas."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "La fiche de cette famille a été supprimée. La suppression doit être révisée par un gestionnaire."
@@ -12484,6 +12489,11 @@ msgstr "La fiche de cette famille a été modifiée. Les modifications doivent �
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "La fiche de cette famille a été modifiée. Vous devriez examiner les modifications, puis les %1$s ou les %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Cette famille est privée."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12529,6 +12539,11 @@ msgstr "Ce formulaire a expiré. Essayez à nouveau."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "La fiche de cet individu n’existe pas ou vous n’avez pas le droit d’y accéder."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Cet individu n’existe pas."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "La fiche de cet individu a été supprimée. La suppression doit être révisée par un gestionnaire."
@@ -12548,6 +12563,11 @@ msgstr "La fiche de cet individu a été modifiée. Les modifications doivent ê
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Cet individu a été modifié. Veuillez examiner les modifications, puis les %1$s ou les %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "La fiche de cet individu est privée."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12609,6 +12629,11 @@ msgstr "Cette liste est créée à l'aide d'une recherche simple (mais rapide) e
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Cet objet média n’existe pas ou vous n’avez pas le droit d’y accéder."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Cet objet média n’existe pas."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Cet objet média a été supprimé. La suppression doit être révisée par un gestionnaire."
@@ -12628,6 +12653,11 @@ msgstr "Cet objet média a été modifié. Les modifications doivent être révi
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Cet objet média a été modifié. Vous devez examiner les modifications et puis les %1$s ou les %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Cet objet média est privé."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12649,6 +12679,11 @@ msgstr "Ce nom est utilisé dans le champ « De », lorsque des courriels so
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Cette note n’existe pas ou vous n’avez pas le droit d’y accéder."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Cette note n’existe pas."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Cette note a été supprimée. La suppression doit être révisée par un gestionnaire."
@@ -12668,6 +12703,11 @@ msgstr "Cette note a été modifiée. Les modifications doivent être révisées
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Cette note a été modifiée. Veuillez examiner les modifications, puis les %1$s ou les %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Cette note est privée."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12753,8 +12793,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Cet enregistrement a été modifié. Vous devriez examiner les changements puis les %1$s ou les %2$s."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Cet enregistrement est privé."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Ce dépôt d’archives n’existe pas ou vous n’avez pas le droit d’y accéder."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "Ce dépôt d’archives n’existe pas."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "Ce dépôt d’archives est privé."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12788,6 +12843,16 @@ msgstr "Une clé API est requise pour utiliser ce service."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Cette source n’existe pas ou vous n’avez pas le droit d’y accéder."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "Cette source n’existe pas."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "Cette source est privée."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14038,6 +14103,11 @@ msgstr "Vous avez le droit de demander une copie des données personnelles que n
 #, fuzzy
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr "Vous avez le droit de demander la rectification de toute donnée personnelle inexacte."
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Vous devrez peut-être vous connecter pour le voir."
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy

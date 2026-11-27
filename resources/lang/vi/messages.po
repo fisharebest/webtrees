@@ -12431,6 +12431,10 @@ msgstr "Sự kiện này đã xảy ra, nhưng không rõ chi tiết."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Gia đình này không có hoặc bạn chưa được phép xem."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Gia đình này đã được xóa. Cần có một biên tập viên xem xét lại."
@@ -12450,6 +12454,10 @@ msgstr "Gia đình này đã được thêm vào. Thay đổi sẽ hiện khi."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Gia đình này đã được sửa. Bạn phải xem xét thay đổi đó rồi %1$s hoặc %2$s chúng."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12494,6 +12502,10 @@ msgstr "Mẫu nhập này đã hết hiệu lực. Xin thử lại."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Cá nhân này không tồn tại hoặc bạn không có quyền xem."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Cá nhân này đã được xóa. Một biên tập viên cần xem xét lại việc này."
@@ -12513,6 +12525,10 @@ msgstr "Cá nhân này đã được sửa. Các thay đổi cần được mộ
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Cá nhân này đã được sửa chữa. Bạn phải xem xét các thay đổi rồi %1$s hoặc %2$s chúng."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12576,6 +12592,10 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Đối tượng đa phương tiện này không tồn tại hay bạn không được quyền xem."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Đối tượng đa phương tiện đã bị xóa. Biên tập viên cần xem xét việc này."
@@ -12595,6 +12615,10 @@ msgstr "Đối tượng đa phương tiện này đã được chỉnh sửa. Bi
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Đối tương đa phương tiện này đã được chỉnh sửa. Bạn cần phải xem xét thay đổi rồi %1$s hoặc %2$s chúng."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12616,6 +12640,10 @@ msgstr "Tên này được dùng ở trường “Từ”, khi gửi thư tự �
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ghi chú không tồn tại hoặc bạn không có quyền xem."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ghi chú này đã được xóa. Một biên tập iên cần xem lại nó."
@@ -12635,6 +12663,10 @@ msgstr "Ghi chú đã được sửa. Thay đổi cần phải có một biên t
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ghi chú đã được sửa. Bạn phải xem lại thay đổi rồi %1$s hoặc %2$s chúng."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12720,8 +12752,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Bản ghi này đã được chỉnh sửa. Bạn nên xem lại các thay đổi và sau đó %1$s hoặc %2$s họ."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Kho dữ liệu này không tồn tại hoặc bạn không được phép xem."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 #, fuzzy
@@ -12757,6 +12801,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Nguồn này không tồn tại hoặc bạn không được phép xem."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13997,6 +14049,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

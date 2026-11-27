@@ -14221,6 +14221,10 @@ msgstr "Ushbu voqea sodir bo'lgan, ammo tafsilotlari noma'lum."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Bu oila mavjud emas yoki uni koʻrish uchun ruxsatingiz yoʻq."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu oila oʻchirib tashlandi. Oʻchirish moderator tomonidan koʻrib chiqilishi kerak."
@@ -14240,6 +14244,10 @@ msgstr "Bu oila tahrirlangan. O'zgarishlar moderator tomonidan ko'rib chiqilishi
 #, fuzzy, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ushbu oila tahrirlangan. Siz o'zgarishlarni ko'rib chiqishingiz va keyin ularni %1$s yoki %2$s qilishingiz kerak."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, fuzzy, php-format
@@ -14291,6 +14299,10 @@ msgstr "Ushbu shaklning muddati tugagan. Qayta urining."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Ushbu shaxs mavjud emas yoki uni ko'rish uchun ruxsatingiz yo'q."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu shaxs oʻchirib tashlangan. Oʻchirish moderator tomonidan koʻrib chiqilishi kerak."
@@ -14310,6 +14322,10 @@ msgstr "Bu shaxs tahrirlangan. O'zgarishlar moderator tomonidan ko'rib chiqilish
 #, fuzzy, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ushbu shaxs tahrirlangan. Siz o'zgarishlarni ko'rib chiqishingiz va keyin ularni %1$s yoki %2$s qilishingiz kerak."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14377,6 +14393,10 @@ msgstr "Ushbu ro'yxat oddiy (ammo tez) qidiruv yordamida yaratilgan, shuning uch
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Ushbu media obyekti mavjud emas yoki uni koʻrish uchun ruxsatingiz yoʻq."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ushbu media obyekt o'chirildi. Oʻchirish moderator tomonidan koʻrib chiqilishi kerak."
@@ -14396,6 +14416,10 @@ msgstr "Ushbu media obyekti tahrirlangan. O'zgarishlar moderator tomonidan ko'ri
 #, fuzzy, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ushbu media obyekt tahrirlangan. Siz o'zgarishlarni ko'rib chiqishingiz va keyin ularni %1$s yoki %2$s qilishingiz kerak."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -14419,6 +14443,10 @@ msgstr "Bu ism ushbu serverdan avtomatik xatlar yuborilganda “Kimdan” maydon
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Bu qayd mavjud emas yoki uni ko‘rish uchun ruxsatingiz yo‘q."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu qayd oʻchirildi. Oʻchirish moderator tomonidan koʻrib chiqilishi kerak."
@@ -14439,6 +14467,10 @@ msgstr "Ushbu qayd tahrirlangan. O'zgarishlar moderator tomonidan ko'rib chiqili
 #, fuzzy, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ushbu qayd tahrirlangan. Siz o'zgarishlarni ko'rib chiqishingiz va keyin ularni %1$s yoki %2$s qilishingiz kerak."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14531,8 +14563,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Ushbu yozuv tahrirlangan. Siz o'zgarishlarni ko'rib chiqishingiz va keyin ularni %1$s yoki %2$s qilishingiz kerak."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Bu ombor mavjud emas yoki uni koʻrish uchun ruxsatingiz yoʻq."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 #, fuzzy
@@ -14569,6 +14613,14 @@ msgstr "Ushbu xizmat API kalitini talab qiladi."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Bu manba mavjud emas yoki uni koʻrish uchun ruxsatingiz yoʻq."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -15966,6 +16018,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

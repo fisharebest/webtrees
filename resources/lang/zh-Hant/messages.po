@@ -13390,6 +13390,11 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "這個家庭不存在，或者您沒有權限查看它。"
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "這個家庭不存在。"
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "這個家庭已被刪除。需要審批後才能生效。"
@@ -13411,6 +13416,11 @@ msgstr "這個家庭已經被編輯。需要審批後才能生效。"
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "這個家庭已經被編輯。你應該檢查此操作,然後決定是 %1$s 或 %2$s。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "這個家庭是私密的。"
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -13458,6 +13468,11 @@ msgstr "表單已過期。 再試一次。"
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "這個人不存在，或者您沒有權限查看它。"
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "此人不存在。"
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "這個人已經被刪除。刪除需要主編審批後，方可生效。"
@@ -13479,6 +13494,11 @@ msgstr "這個人已經被編輯。更改需要主編審批後，方可生效。
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "這個人已經被編輯。你應該檢查此操作,然後決定是 %1$s 或 %2$s。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "此人的資料是私密的。"
 
 # I18N: Help text for the “Default individual” configuration setting
 #. I18N: Help text for the “Default individual” configuration setting
@@ -13542,6 +13562,11 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "該多媒體對象不存在，或者您沒有權限查看它。"
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "這個多媒體物件不存在。"
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "這個多媒體對象已被刪除。刪除需要主編審批後，方可生效。"
@@ -13564,6 +13589,11 @@ msgstr "這個多媒體對象已經被編輯。更改需要主編審批後，方
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "這個多媒體對象已被刪除。你應該檢查此操作，然後決定是 %1$s 或 %2$s。"
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "這個多媒體物件是私密的。"
+
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
 #: resources/views/emails/message-user-html.phtml
@@ -13584,6 +13614,11 @@ msgstr "從這台伺服器發送自動電子郵件時，在“發件人”資料
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "這個記錄不存在或您無權查看它。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "這則註釋不存在。"
 
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
@@ -13606,6 +13641,11 @@ msgstr "這記錄被編輯。更改需要主編審批後，方可生效。"
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "這記錄被編輯。你應該檢查此操作，然後決定是 %1$s 或 %2$s。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "這則註釋是私密的。"
 
 # I18N: Help text for the “Automatically expand notes” configuration setting
 #. I18N: Help text for the “Automatically expand notes” configuration setting
@@ -13699,8 +13739,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "此記錄已被編輯。 您應該檢查此操作，然後決定是 %1$s 或 %2$s。"
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "這筆記錄是私密的。"
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "這個存儲庫不存在或您無權查看它。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "這個儲存庫不存在。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "這個儲存庫是私密的。"
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -13734,6 +13789,16 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "這個來源不存在或您無權查看它。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "這個來源不存在。"
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "這個來源是私密的。"
 
 # I18N: Help text for the “Add to TITLE header tag” configuration setting
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
@@ -15069,6 +15134,11 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr ""
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "您可能需要登入才能查看。"
 
 #: app/Module/PrivacyPolicy.php
 msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."

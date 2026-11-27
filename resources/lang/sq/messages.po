@@ -13360,6 +13360,10 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Familja nuk ekziston ose ju nuk jeni të autorizuar ta shihni atë."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Familja është fshirë. Fshirja duhet kontrolluar nga moderatori."
@@ -13381,6 +13385,10 @@ msgstr "Familja është edituar. Ndryshimet duhet kontrolluar nga moderatori."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Familja është edituar. Ju duhet të kontrolloni ndryshimet dhe pastaj %1$s ose %2$s."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -13430,6 +13438,10 @@ msgstr "Kjo form ka skaduar. Provoni përsëri."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Ky person nuk ekziston ose ju nuk jeni të autoriuar për ta parv atë."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ky person është fshirë. Fshirja duhet të kontrollohet nga një moderator."
@@ -13451,6 +13463,10 @@ msgstr "Ky person është edituar. Ndryshimet duhet të kontrollohen nga nja mod
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ky person është edituar. Ju duhet të kontrolloni ndryshimet dhe pastaj %1$s ose %2$s."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 # I18N: Help text for the “Default individual” configuration setting
 #. I18N: Help text for the “Default individual” configuration setting
@@ -13514,6 +13530,10 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Ky media objekt nuk ekziston ose ju nuk keni autoriIm për ta parë atë."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ky media objekt është fshirë. Fshirja duhet të kontrollohet nga moderatori."
@@ -13536,6 +13556,10 @@ msgstr "Ky media objekt është edituar. Ndryshimet duhet të kontrollohen nga m
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ky media objekt është edituar. Ju duhet të kontrolloni ndryshimet dhe pastaj %1$s ose %2$s."
 
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
+
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
 #: resources/views/emails/message-user-html.phtml
@@ -13556,6 +13580,10 @@ msgstr "Ky emër përdoret në fushën “Nga”, kur të dërgoni email automat
 #: app/Auth.php
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ky njoftim nuk ekziston ose nuk keni autorizim për tas parë atë."
+
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
 
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
@@ -13578,6 +13606,10 @@ msgstr "Ky njoftim është fshirë. Ndryshimet duhet të kontrollohen nga modera
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ky njoftim është edituar. Ju duhet t'i kontrolloni ndryshimet dhe pastaj %1$s ose %2$s."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 # I18N: Help text for the “Automatically expand notes” configuration setting
 #. I18N: Help text for the “Automatically expand notes” configuration setting
@@ -13672,8 +13704,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Ky shënim është edituar. Ju duhet të kontrolloni mdryshimet dhe pastaj %1$s ose %2$s."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Ky vend rruajtjeje nuk ekziston ose ju nuk keni autorizim për ta parë atë."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -13707,6 +13751,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Ky burim nuk ekziston ose ju nuk keni autorizim për ta parë atë."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 # I18N: Help text for the “Add to TITLE header tag” configuration setting
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
@@ -15044,6 +15096,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

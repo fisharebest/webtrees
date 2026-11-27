@@ -12395,6 +12395,10 @@ msgstr "Peristiwa ini terjadi, tetapi detailnya tidak diketahui."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Keluarga ini tidak ada atau Anda tidak memiliki izin untuk melihatnya."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Keluarga ini telah dihapus. Penghapusan perlu ditinjau oleh moderator."
@@ -12414,6 +12418,10 @@ msgstr "Keluarga ini telah diubah. Perubahan perlu ditinjau oleh moderator."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Keluarga ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12458,6 +12466,10 @@ msgstr "Formulir ini telah kedaluwarsa. Coba lagi."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Data tentang orang ini tidak ditemukan atau anda tidak memiliki izin untuk melihatnya."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Orang ini telah dihapus. penghapusan perlu ditinjau oleh moderator."
@@ -12477,6 +12489,10 @@ msgstr "Orang ini telah diubah. perubahan perlu ditinjau oleh moderator."
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Orang ini telah diubah. anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12538,6 +12554,10 @@ msgstr "Daftar ini dibuat menggunakan pencarian sederhana (namun cepat), dan kar
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Gambar/Foto tidak ada atau membutuhkan persetujuan."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Gambar ini telah dihapus. Penghapusan memerlukan peninajauan oleh moderator."
@@ -12557,6 +12577,10 @@ msgstr "Gambar ini telah dirubah. Perubahan memerlukan peninajauan oleh moderato
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Media ini telah diubah. anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12578,6 +12602,10 @@ msgstr "Nama ini digunakan di bidang “Dari”, saat mengirim surel otomatis da
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Catatan ini tidak ada atau Anda tidak memiliki izin untuk melihatnya."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Catatan ini telah dihapus. Penghapusan perlu ditinjau oleh moderator."
@@ -12597,6 +12625,10 @@ msgstr "Catatan ini telah diubah. Perubahan perlu ditinjau oleh moderator."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Catatan ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12681,8 +12713,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Catatan ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Repositori ini tidak ada atau Anda tidak memiliki izin untuk melihatnya."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12716,6 +12760,14 @@ msgstr "Layanan ini memerlukan API key."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Sumber ini tidak ada atau anda tidak memiliki izin untuk melihatnya."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13946,6 +13998,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

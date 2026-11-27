@@ -12421,6 +12421,10 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Ši šeima neegzistuoja arba Jūs neturite leidimo jos matyti."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ši šeima buvo ištrinta. Ištrynimui reikės prižiūrėtojo patvirtinimo."
@@ -12440,6 +12444,10 @@ msgstr "Ši šeima buvo pakeista. Pakeitimams reikia prižiūrėtojo patvirtinim
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ši šeima buvo pakeista. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12486,6 +12494,10 @@ msgstr "Šio formos laikas yra pasibaigęs. Bandykite dar kartą."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Toks asmuo neegzistuoja arba Jūs neturite leidimo jo matyti."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Šis asmuo buvo ištrintas. Ištrynimui reikės prižiūrėtojo patvirtinimo."
@@ -12505,6 +12517,10 @@ msgstr "Šis asmuo buvo pakeistas. Pakeitimams reikia prižiūrėtojo patvirtini
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Šis asmuo buvo pakeistas. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12566,6 +12582,10 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Šis objektas arba neegzistuoja arba jūs neturite teisių peržiūrėti jo."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Šis objektas buvo paruoštas trynimui. Trynimo veiksmai turi būti peržiūrėti ir patvirtinti arba atšaukti moderatoriaus."
@@ -12585,6 +12605,10 @@ msgstr "Šis objektas buvo keistas. Pakeitimai turi būti peržiūrėti ir patvi
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Šis objektas buvo keistas. Jūs turite peržiūrėti keitimus ir tada %1$s arba %2$s juos."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12606,6 +12630,10 @@ msgstr "Šis vardas naudojamas „Nuo“ lauke, siunčiant automatinius laiškus
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Tokia pastaba neegzistuoja arba Jūs neturite leidimo jos matyti."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ši pastaba buvo ištrinta. Ištrynimui reikės prižiūrėtojo patvirtinimo."
@@ -12625,6 +12653,10 @@ msgstr "Ši pastaba buvo pakeista. Pakeitimams reikia prižiūrėtojo patvirtini
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ši pastaba buvo pakeista. Jūs turėtumėte peržiūrėti pakeitimus ir tuomet %1$s arba %2$s juos."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12711,8 +12743,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr ""
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Ši saugykla neegzistuoja arba Jūs neturite leidimo jai matyti."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12746,6 +12790,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Toks šaltinis neegzistuoja arba Jūs neturite teisių jo peržiūrėti."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13979,6 +14031,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

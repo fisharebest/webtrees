@@ -12395,6 +12395,10 @@ msgstr "این رویداد رخ داده است، اما جزئیات مشخص 
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "این خانواده وجود ندارد یا شما اجازه مشاهده آن را ندارید."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "این خانواده حذف شده است. حذف باید توسط ناظر بررسی شود."
@@ -12414,6 +12418,10 @@ msgstr "این خانواده ویرایش شده است. تغییرات بای�
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "این خانواده ویرایش شده است. باید تغییرات را مرور کنید و سپس %1$s یا %2$s آنها را بررسی کنید."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12459,6 +12467,10 @@ msgstr "این فرم منقضی شده است. دوباره امتحان کنی
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "این فرد وجود ندارد یا شما اجازه مشاهده آن را ندارید."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "این فرد حذف شده است. حذف باید توسط ناظر بررسی شود."
@@ -12478,6 +12490,10 @@ msgstr "این فرد ویرایش شده است. تغییرات باید توس
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "این فرد ویرایش شده است. باید تغییرات را مرور کنید و سپس %1$s یا %2$s آنها را بررسی کنید."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12539,6 +12555,10 @@ msgstr "این لیست با استفاده از یک جستجوی ساده (ا�
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "این موضوع رسانه وجود ندارد یا شما اجازه مشاهده آن را ندارید."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "این موضوع رسانه حذف شده است. حذف باید توسط ناظر بررسی شود."
@@ -12558,6 +12578,10 @@ msgstr "این موضوع رسانه ویرایش شده است. تغییرات 
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "این موضوع رسانه ویرایش شده است. باید تغییرات را مرور کنید و سپس %1$s یا %2$s آنها را بررسی کنید."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12579,6 +12603,10 @@ msgstr "این نام در قسمت “از” هنگام ارسال ایمیل 
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "این یادداشت وجود ندارد یا شما اجازه مشاهده آن را ندارید."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "این یادداشت حذف شده است. حذف باید توسط ناظر بررسی شود."
@@ -12598,6 +12626,10 @@ msgstr "این یادداشت ویرایش شده است. تغییرات بای�
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "این یادداشت ویرایش شده است. باید تغییرات را مرور کنید و سپس %1$s یا %2$s آنها را بررسی کنید."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12683,8 +12715,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "این رکورد ویرایش شده است. باید تغییرات را مرور کنید و سپس %1$s یا %2$s آنها را بررسی کنید."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "این مخزن وجود ندارد یا شما اجازه مشاهده آن را ندارید."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12718,6 +12762,14 @@ msgstr "این سرویس به یک کلید API نیاز دارد."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "این منبع وجود ندارد یا شما اجازه مشاهده آن را ندارید."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13948,6 +14000,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

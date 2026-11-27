@@ -12447,6 +12447,10 @@ msgstr "Az esemény megtörtént, de a részletek ismeretlenek."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Ez a család nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ezt a családot törölték. A törlést egy webhelykezelőnek felül kell vizsgálnia."
@@ -12466,6 +12470,10 @@ msgstr "E család adatait szerkesztették. A változtatást egy webhelykezelőne
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "E család adatait szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12511,6 +12519,10 @@ msgstr "Ez az űrlap (időtúllépés miatt) lejárt. Próbálja újra."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Ez a személy nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ezt a személyt törölték. A törlést egy webhelykezelőnek felül kell vizsgálnia."
@@ -12530,6 +12542,10 @@ msgstr "E személy adatait szerkesztették. A változtatást egy webhelykezelőn
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "E személy adatait szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12591,6 +12607,10 @@ msgstr "Ez a listát egyszerű (de gyors) kereséssel jött létre, és ezért o
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Ez a médiaobjektum nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ezt a médiaobjektumot törölték. A törlést egy webhelykezelőnek felül kell vizsgálnia."
@@ -12610,6 +12630,10 @@ msgstr "Ezt a médiaobjektumot szerkesztették. A változtatást egy webhelykeze
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ezt a médiaobjektumot szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12631,6 +12655,10 @@ msgstr "Ez a név szerepel majd a „Feladó” mezőben, amikor automatikus e-m
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ez a jegyzet nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ezt a jegyzetet törölték. A törlést egy webhelykezelőnek felül kell vizsgálnia."
@@ -12650,6 +12678,10 @@ msgstr "Ezt a jegyzetet szerkesztették. A változtatást egy webhelykezelőnek 
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ezt a jegyzetet szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12735,8 +12767,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Ezt a bejegyzést szerkesztették. Ellenőrzés után választhatja a változtatás %1$sát vagy %2$sát."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Ez az adattár nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12770,6 +12814,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Ez a forrás nem létezik, vagy Önnek nincs jogosultsága megtekinteni."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14005,6 +14057,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

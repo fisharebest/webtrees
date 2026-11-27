@@ -178,10 +178,8 @@ class Auth
 
     public static function checkFamilyAccess(Family|null $family, bool $edit = false): Family
     {
-        $message = I18N::translate('This family does not exist or you do not have permission to view it.');
-
         if ($family === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This family does not exist.'));
         }
 
         if ($edit && $family->canEdit()) {
@@ -194,15 +192,13 @@ class Auth
             return $family;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This family is private.')));
     }
 
     public static function checkHeaderAccess(Header|null $header, bool $edit = false): Header
     {
-        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
-
         if ($header === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This record does not exist.'));
         }
 
         if ($edit && $header->canEdit()) {
@@ -215,7 +211,7 @@ class Auth
             return $header;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This record is private.')));
     }
 
     /**
@@ -223,10 +219,8 @@ class Auth
      */
     public static function checkIndividualAccess(Individual|null $individual, bool $edit = false, bool $chart = false): Individual
     {
-        $message = I18N::translate('This individual does not exist or you do not have permission to view it.');
-
         if ($individual === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This individual does not exist.'));
         }
 
         if ($edit && $individual->canEdit()) {
@@ -243,15 +237,13 @@ class Auth
             return $individual;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This individual is private.')));
     }
 
     public static function checkLocationAccess(Location|null $location, bool $edit = false): Location
     {
-        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
-
         if ($location === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This record does not exist.'));
         }
 
         if ($edit && $location->canEdit()) {
@@ -264,15 +256,13 @@ class Auth
             return $location;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This record is private.')));
     }
 
     public static function checkMediaAccess(Media|null $media, bool $edit = false): Media
     {
-        $message = I18N::translate('This media object does not exist or you do not have permission to view it.');
-
         if ($media === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This media object does not exist.'));
         }
 
         if ($edit && $media->canEdit()) {
@@ -285,15 +275,13 @@ class Auth
             return $media;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This media object is private.')));
     }
 
     public static function checkNoteAccess(Note|null $note, bool $edit = false): Note
     {
-        $message = I18N::translate('This note does not exist or you do not have permission to view it.');
-
         if ($note === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This note does not exist.'));
         }
 
         if ($edit && $note->canEdit()) {
@@ -306,15 +294,13 @@ class Auth
             return $note;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This note is private.')));
     }
 
     public static function checkSharedNoteAccess(SharedNote|null $shared_note, bool $edit = false): SharedNote
     {
-        $message = I18N::translate('This note does not exist or you do not have permission to view it.');
-
         if ($shared_note === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This note does not exist.'));
         }
 
         if ($edit && $shared_note->canEdit()) {
@@ -327,15 +313,13 @@ class Auth
             return $shared_note;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This note is private.')));
     }
 
     public static function checkRecordAccess(GedcomRecord|null $record, bool $edit = false): GedcomRecord
     {
-        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
-
         if ($record === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This record does not exist.'));
         }
 
         if ($edit && $record->canEdit()) {
@@ -348,15 +332,13 @@ class Auth
             return $record;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This record is private.')));
     }
 
     public static function checkRepositoryAccess(Repository|null $repository, bool $edit = false): Repository
     {
-        $message = I18N::translate('This repository does not exist or you do not have permission to view it.');
-
         if ($repository === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This repository does not exist.'));
         }
 
         if ($edit && $repository->canEdit()) {
@@ -369,15 +351,13 @@ class Auth
             return $repository;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This repository is private.')));
     }
 
     public static function checkSourceAccess(Source|null $source, bool $edit = false): Source
     {
-        $message = I18N::translate('This source does not exist or you do not have permission to view it.');
-
         if ($source === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This source does not exist.'));
         }
 
         if ($edit && $source->canEdit()) {
@@ -390,15 +370,13 @@ class Auth
             return $source;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This source is private.')));
     }
 
     public static function checkSubmitterAccess(Submitter|null $submitter, bool $edit = false): Submitter
     {
-        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
-
         if ($submitter === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This record does not exist.'));
         }
 
         if ($edit && $submitter->canEdit()) {
@@ -411,15 +389,13 @@ class Auth
             return $submitter;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This record is private.')));
     }
 
     public static function checkSubmissionAccess(Submission|null $submission, bool $edit = false): Submission
     {
-        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
-
         if ($submission === null) {
-            throw new HttpNotFoundException($message);
+            throw new HttpNotFoundException(I18N::translate('This record does not exist.'));
         }
 
         if ($edit && $submission->canEdit()) {
@@ -432,7 +408,7 @@ class Auth
             return $submission;
         }
 
-        throw new HttpForbiddenException($message);
+        throw new HttpForbiddenException(self::privateRecordMessage(I18N::translate('This record is private.')));
     }
 
     public static function canUploadMedia(Tree $tree, UserInterface $user): bool
@@ -469,5 +445,14 @@ class Auth
             'confidential' => I18N::translate('Show to managers'),
             'hidden'       => I18N::translate('Hide from everyone'),
         ];
+    }
+
+    private static function privateRecordMessage(string $message): string
+    {
+        if (self::check()) {
+            return $message;
+        }
+
+        return $message . ' ' . I18N::translate('You may need to sign in to see it.');
     }
 }

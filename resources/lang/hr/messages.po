@@ -12474,6 +12474,10 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Ova obitelj ne postoji ili vi nemate dozvolu za pregled."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ova obitelj je obrisana. Brisanje treba biti odobreno od upravitelja."
@@ -12493,6 +12497,10 @@ msgstr "Ova obitelj je promijenjena. Promjene treba pregledati upravitelj."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ova obitelj je promijenjena. Trebate pregledati promjene i %1$s ili %2$s."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12540,6 +12548,10 @@ msgstr "Ovaj obrazac je istekao. Pokušajte ponovo."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Ova osoba ne postoji ili vi nemate dozvolu da ju vidite."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ova osoba je obrisana. Brisanje zahtjeva pregled upravitelja."
@@ -12559,6 +12571,10 @@ msgstr "Ova osoba je promijenjena. Promjena zahtjeva pregled upravitelja."
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ova osoba je promijenjena. Vi trebate pregledati promjene i %1$s ili %2$s ih."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12620,6 +12636,10 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Ovaj medijski objekt ne postoji ili vi nemate dozvolu da ga vidite."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ovaj medijski objekt je obrisan. Brisanje treba biti pregledano od moderatora."
@@ -12639,6 +12659,10 @@ msgstr "Ovaj medijski objekt je promijenjen. Promjena treba biti pregledana od u
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ovaj medijski objekt je promijenjen. Trebate pregledati promjenu i %1$s ili %2$s ih."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12660,6 +12684,10 @@ msgstr "Ovo ime se koristi u „From” polju, kada se automatski šalje e-pošt
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ova bilješka ne postoji ili vi nemate dozvolu da ju vidite."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ova bilješka je obrisana. Brisanje treba pregledati upravitelj."
@@ -12679,6 +12707,10 @@ msgstr "Ova bilješka je promijenjena. Promjene treba pregledati upravitelj."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ova bilješka je promijenjena. Trebate pregledati promjene i %1$s ili %2$s ih."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12765,8 +12797,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Ovaj zapis je uređen. Vi trebate pregledati promjene i onda %1$s ili %2$s ga."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Ovo mjesto čuvanja ne postoji ili vi nemate dozvolu vidjeti ga."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12800,6 +12844,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Ovaj izvor ne postoji ili vi nemate dopuštenje vidjeti ga."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14038,6 +14090,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

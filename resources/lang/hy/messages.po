@@ -12390,6 +12390,10 @@ msgstr "Այս դեպքը տեղի է ունեցել, սակայն մանրամ�
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Այս ընտանիքը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Այս ընտանիքը ջնջվել է: Ջնջումը պետք է վերանայվի մոդերատորի կողմից:"
@@ -12409,6 +12413,10 @@ msgstr "Այս ընտանիքը խմբագրվել է: Փոփոխություն�
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Այս ընտանիքը խմբագրվել է: Դուք պետք է վերանայեք փոփոխությունները, այնուհետև %1$s կամ %2$s դրանք:"
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12454,6 +12462,10 @@ msgstr "Այս ձևի ժամկետը լրացել է: Նորից փորձեք:"
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Այս անձը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Այս անհատը ջնջվել է: Ջնջումը պետք է վերանայվի մոդերատորի կողմից:"
@@ -12473,6 +12485,10 @@ msgstr "Այս անհատը խմբագրվել է: Փոփոխություննե�
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Այս անհատը խմբագրվել է: Դուք պետք է վերանայեք փոփոխությունները, այնուհետև %1$s կամ %2$s դրանք:"
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12534,6 +12550,10 @@ msgstr "Այս ցուցակը ստեղծվում է պարզ (բայց արագ)
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Այս մեդիա օբյեկտը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Այս մեդիա օբյեկտը ջնջվել է: Ջնջումը պետք է վերանայվի մոդերատորի կողմից:"
@@ -12553,6 +12573,10 @@ msgstr "Այս մեդիա օբյեկտը խմբագրվել է: Փոփոխութ
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Այս մեդիա օբյեկտը խմբագրվել է: Դուք պետք է վերանայեք փոփոխությունները, այնուհետև %1$s կամ %2$s դրանք:"
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12574,6 +12598,10 @@ msgstr "Այս անունը օգտագործվում է «From» դաշտում�
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Այս նշումը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Այս նշումը ջնջվել է։ Ջնջումը պետք է վերանայվի մոդերատորի կողմից:"
@@ -12593,6 +12621,10 @@ msgstr "Այս նշումը խմբագրվել է։ Փոփոխություննե
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Այս նշումը խմբագրվել է։ Դուք պետք է վերանայեք փոփոխությունները, այնուհետև %1$s կամ %2$s դրանք:"
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12678,8 +12710,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Այս գրառումը խմբագրվել է։ Դուք պետք է վերանայեք փոփոխությունները, այնուհետև %1$s կամ %2$s դրանք:"
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Այս պահոցը գոյություն չունի կամ դուք այն դիտելու թույլտվություն չունեք:"
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12713,6 +12757,14 @@ msgstr "Այս ծառայության համար անհրաժեշտ է API բա�
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Այս աղբյուրը գոյություն չունի կամ դուք այն դիտելու թույլտվություն չունեք:"
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13943,6 +13995,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

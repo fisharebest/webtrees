@@ -12382,6 +12382,10 @@ msgstr "यो घटना घट्यो, तर विवरण अज्ञ
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "यो परिवार अवस्थित छैन वा तपाईंसँग यसलाई हेर्ने अनुमति छैन।"
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "यो परिवार मेटाइएको छ। मेटाउने कार्यलाई मध्यस्थकर्ताद्वारा समीक्षा गर्न आवश्यक हुनेछ।"
@@ -12401,6 +12405,10 @@ msgstr "यो परिवार सम्पादन गरिएको छ�
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "यो परिवार सम्पादन गरिएको छ। तपाईंले परिवर्तनहरूको समीक्षा गर्नुपर्छ र त्यसपछि %1$s वा %2$s तिनीहरूलाई।"
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12446,6 +12454,10 @@ msgstr "यो फारमको म्याद सकियो । फेर�
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "यो व्यक्ति अवस्थित छैन वा तपाईंसँग यसलाई हेर्ने अनुमति छैन।"
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "यो व्यक्ति मेटाइएको छ। मेटाउने कार्यलाई मध्यस्थकर्ताद्वारा समीक्षा गर्न आवश्यक हुनेछ।"
@@ -12465,6 +12477,10 @@ msgstr "यो व्यक्ति सम्पादन गरिएको �
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "यो व्यक्ति सम्पादन गरिएको छ। तपाईंले परिवर्तनहरूको समीक्षा गर्नुपर्छ र त्यसपछि %1$s वा %2$s तिनीहरूलाई।"
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12526,6 +12542,10 @@ msgstr "यो सूची एक साधारण (तर छिटो) ख�
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "यो मिडिया वस्तु अवस्थित छैन वा तपाइँसँग यसलाई हेर्नको लागि अनुमति छैन।"
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "यो मिडिया वस्तु मेटाइएको छ। मेटाउने कार्यलाई मध्यस्थकर्ताद्वारा समीक्षा गर्न आवश्यक हुनेछ।"
@@ -12545,6 +12565,10 @@ msgstr "यो मिडिया वस्तु सम्पादन गर�
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "यो मिडिया वस्तु सम्पादन गरिएको छ। तपाईंले परिवर्तनहरूको समीक्षा गर्नुपर्छ र त्यसपछि %1$s वा %2$s तिनीहरूलाई।"
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12566,6 +12590,10 @@ msgstr "यो नाम “बाट” फिल्डमा प्रयो�
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "यो नोट अवस्थित छैन वा तपाईंसँग यसलाई हेर्ने अनुमति छैन।"
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "यो नोट मेटाइएको छ। मेटाउने कार्यलाई मध्यस्थकर्ताद्वारा समीक्षा गर्न आवश्यक हुनेछ।"
@@ -12585,6 +12613,10 @@ msgstr "यो नोट सम्पादन गरिएको छ। पर�
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "यो नोट सम्पादन गरिएको छ। तपाईंले परिवर्तनहरूको समीक्षा गर्नुपर्छ र त्यसपछि %1$s वा %2$s तिनीहरूलाई।"
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12670,8 +12702,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "यो रेकर्ड सम्पादन गरिएको छ। तपाईंले परिवर्तनहरूको समीक्षा गर्नुपर्छ र त्यसपछि %1$s वा %2$s तिनीहरूलाई।"
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "यो भण्डार अवस्थित छैन वा तपाइँसँग यसलाई हेर्ने अनुमति छैन।"
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12705,6 +12749,14 @@ msgstr "यो सेवालाई API कुञ्जी चाहिन्�
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "यो स्रोत अवस्थित छैन वा तपाईंसँग यसलाई हेर्ने अनुमति छैन।"
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13935,6 +13987,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

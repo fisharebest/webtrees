@@ -12478,6 +12478,10 @@ msgstr "Tato událost nastala, ale nejsou známy podrobnosti."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Tato rodina neexistuje nebo nemáte dostatečné oprávnění ji prohlížet."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tato rodina byla smazána. Smazání musí prohlédnout moderátor."
@@ -12497,6 +12501,10 @@ msgstr "Tato rodina byla upravena. Změny musí prohlédnout moderátor."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tato rodina byla upravena. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12543,6 +12551,10 @@ msgstr "Tento formulář vypršel. Prosím zkuste to znovu."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Tato osoba neexistuje nebo nemáte dostatečné oprávnění pro prohlížení."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tato osoba byla smazána. Smazání musí posoudit moderátor."
@@ -12562,6 +12574,10 @@ msgstr "Tato osoba byla upravena. Změny musí posoudit moderátor."
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tato osoba byla upravena. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12623,6 +12639,10 @@ msgstr "Tento seznam vznikl použitím jednoduchého (ale rychlého) prohledán�
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Tento objekt médií neexistuje nebo nemáte dostatečná práva na prohlížení."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tento objekt médií byl vymazán. Smazání musí posoudit moderátor."
@@ -12642,6 +12662,10 @@ msgstr "Tento objekt médií byl upraven. Úpravu musí posoudit moderátor."
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tento objekt médií byl upraven. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12663,6 +12687,10 @@ msgstr "Toto jméno je použito v políčku „Od“ v každém emailu, který s
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Tato poznámka neexistuje nebo nemáte dostatečné oprávnění ji prohlížet."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tato poznámka byla smazána. Smazání musí posoudit moderátor."
@@ -12682,6 +12710,10 @@ msgstr "Tato poznámka byla upravena. Úpravu musí posoudit moderátor."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tato poznámka byla upravena. Měli byste úpravu posoudit a pak ji %1$s nebo %2$s."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12768,8 +12800,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Tento záznam byl upraven. Měli byste úpravy posoudit a pak je %1$s nebo %2$s."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Tento repozitář neexistuje nebo nemáte dostatečné oprávnění pro prohlížení."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12803,6 +12847,14 @@ msgstr "Tato služba vyžaduje klíč API."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Tento pramen neexistuje nebo nemáte dostatečné oprávnění, abyste jej mohli zobrazit."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14040,6 +14092,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

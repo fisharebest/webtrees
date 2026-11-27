@@ -12473,6 +12473,10 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Libótá liye lizalí tɛ́ tǒ ozalí na ndingisa ya komɔ́nɔ lyangó tɛ́."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Libótá liye lizímamákí. Ekonsengela bozímisi etálama lisúsu na mondimi."
@@ -12492,6 +12496,10 @@ msgstr "Libótá liye lizímamákí. Esengélí mabóngoli matálama lisúsu na 
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Libótá liye libongisamákí. Esengélí otála lisúsu mabóngoli mpé bôngó %1$s tǒ %2$s yangó."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12537,6 +12545,10 @@ msgstr ""
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Moto óyo azalí tɛ́ tǒ ozalí na ndingisa ya komɔ́nɔ yě tɛ́."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Moto óyo azímamákí. Esengéli bozímisi etálama lisúsu na mondimi."
@@ -12556,6 +12568,10 @@ msgstr "Moto óyo abongisamákí. Esengéli mabóngoli matálama lisúsu na mond
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Moto óyo abongisamákí. Esengélí otála lisúsu mabóngoli mpé bôngó %1$s tǒ %2$s mangó."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12617,6 +12633,10 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Elɔ́kɔ ya bopanzi nsango eye ezalí tɛ́ tǒ ozalí na ndingisa ya komɔ́nɔ yangó tɛ́."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Elɔ́kɔ ya bopanzi nsango eye ezímamákí. Esengéli mabóngoli matálama lisúsu na mondimi."
@@ -12635,6 +12655,10 @@ msgstr ""
 #: resources/views/media-page-pending.phtml
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
+msgstr ""
+
+#: app/Auth.php
+msgid "This media object is private."
 msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
@@ -12657,6 +12681,10 @@ msgstr ""
 msgid "This note does not exist or you do not have permission to view it."
 msgstr ""
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
@@ -12675,6 +12703,10 @@ msgstr ""
 #: resources/views/note-page-pending.phtml
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
+msgstr ""
+
+#: app/Auth.php
+msgid "This note is private."
 msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
@@ -12761,7 +12793,19 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr ""
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
 msgstr ""
 
 #: resources/views/admin/users-edit.phtml
@@ -12795,6 +12839,14 @@ msgstr ""
 
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
 msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
@@ -14032,6 +14084,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

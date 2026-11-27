@@ -12441,6 +12441,10 @@ msgstr "Aquest esdeveniment es va produir, però se'n desconeixen els detalls."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Aquesta família no existeix o no teniu permís per veure-la."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Aquesta família ha estat esborrada. La supressió haurà de ser revisada per un supervisor."
@@ -12460,6 +12464,10 @@ msgstr "Aquesta família ha estat editada. Els canvis han de ser revisats per un
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Aquesta família ha estat editada. Heu de revisar els canvis i %1$s o %2$s -los."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12505,6 +12513,10 @@ msgstr "Aquest formulari ha caducat. Torneu-hi."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Aquesta persona no existeix o no teniu permís per veure-la."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Aquesta persona ha estat esborrada. La supressió haurà de ser revisada per un supervisor."
@@ -12524,6 +12536,10 @@ msgstr "Aquesta persona ha estat editada. Els canvis han de ser revisats per un 
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Aquesta persona ha estat editada. Heu de revisar els canvis i %1$s or %2$s -los."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12585,6 +12601,10 @@ msgstr "Aquesta llista es crea mitjançant una cerca senzilla (però ràpida) i,
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "No existeix aquest objecte multimèdia o no teniu permís per veure’l."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "S’ha eliminat l’objecte multimèdia. Però ara cal que ho revisi un supervisor."
@@ -12604,6 +12624,10 @@ msgstr "Aquest objecte multimèdia ha estat editat. Però ara cal que ho revisi 
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Aquest objecte multimèdia ha estat editat. Heu de revisar els canvis i %1$s o %2$s."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12625,6 +12649,10 @@ msgstr "Aquest nom s’utilitza en el camp «De», en enviar missatges automàti
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Aquesta nota no existeix o no teniu permís per veure-la."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Aquesta nota ha estat esborrada. La supressió haurà de ser revisada per un supervisor."
@@ -12644,6 +12672,10 @@ msgstr "Aquesta nota ha estat editada. Els canvis han de ser revisats per un sup
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Aquesta nota ha estat editada. Heu de revisar-ne els canvis i %1$s o %2$s -los."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12729,8 +12761,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Aquest registre s'ha editat. Heu de revisar els canvis i tot seguit %1$s o %2$s."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Aquest arxiu no existeix o no teniu permís per veure’l."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12764,6 +12808,14 @@ msgstr "Aquest servei requereix una clau API."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Aquesta font no existeix o no teniu permís per veure-la."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13998,6 +14050,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

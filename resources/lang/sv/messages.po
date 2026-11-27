@@ -12454,6 +12454,11 @@ msgstr "Denna händelse inträffade, men detaljerna är okända."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Denna familj existerar inte eller så saknar du rättigheter att se den."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Den här familjen finns inte."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Denna familj har avlägsnats. Strykningen måste granskas av en moderator."
@@ -12473,6 +12478,11 @@ msgstr "Denna familj har redigerats. Ändringarna måste granskas av en moderato
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Denna familj har redigerats. Granska ändringarna och sen %1$s eller %2$s dem."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Den här familjen är privat."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12518,6 +12528,11 @@ msgstr "Detta formulär har gått ut. Försök igen."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Denna person existerar inte eller så saknar du rättigheter att se den."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Den här personen finns inte."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Denna person har avlägsnats. Strykningen måste granskas av en moderator."
@@ -12537,6 +12552,11 @@ msgstr "Denna person har redigerats. Ändringarna måste granskas av en moderato
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Denna person har blivit redigerad. Granska ändringarna och sen %1$s eller %2$s dem."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "Den här personen är privat."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12598,6 +12618,11 @@ msgstr "Denna lista skapas med en enkel (men snabb) sökning och innehåller dä
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Detta media objekt existerar inte eller så saknar du rättigheter att se det."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Det här medieobjektet finns inte."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Detta media objekt har avlägsnats. En moderator måste ännu kontrollera det."
@@ -12617,6 +12642,11 @@ msgstr "Detta media objekt har redigerats. Ändringarna måste granskas av en mo
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Detta media objekt har redigerats. Du bör granska ändringarna och sedan %1$s eller %2$s dem."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Det här medieobjektet är privat."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12638,6 +12668,11 @@ msgstr "Detta namn används i ”Från”-fältet, när automatiska mejl skickas
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Denna anmärkning existerar inte eller så saknar du rättigheter att se den."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Den här anteckningen finns inte."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Denna anteckning har avlägsnats. Strykningen måste granskas av en moderator."
@@ -12657,6 +12692,11 @@ msgstr "Denna anteckning har redigerats. Ändringarna måste granskas av en mode
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Denna anteckning har redigerats. Granska ändringen och sen %1$s eller %2$s dem."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Den här anteckningen är privat."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12742,8 +12782,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Denna post har redigerats. Granska ändringarna och sen %1$s eller %2$s dem."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Den här posten är privat."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Detta arkiv existerar inte eller så saknar du rättigheter att se det."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "Det här arkivet finns inte."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "Det här arkivet är privat."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12777,6 +12832,16 @@ msgstr "Denna tjänst kräver en API-nyckel."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Denna källa existerar inte eller så saknar du rättigheter att se den."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "Den här källan finns inte."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "Den här källan är privat."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14013,6 +14078,11 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr ""
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Du kan behöva logga in för att se det."
 
 #: app/Module/PrivacyPolicy.php
 msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."

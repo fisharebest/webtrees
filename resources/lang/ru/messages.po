@@ -12479,6 +12479,11 @@ msgstr "Это событие произошло, но подробности н
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Эта семья не существует или у Вас нет прав для просмотра."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Эта семья не существует."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Эта семья была удалена. Удаление должны быть проверено модератором."
@@ -12498,6 +12503,11 @@ msgstr "Эта семья была отредактирована. Измене�
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Эта семья была отредактирована. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Эта семья является закрытой."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12544,6 +12554,11 @@ msgstr "Время для этой формы истекло. Попробуйт
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Данных о запрашиваемой персоне нет или у Вас нет прав для просмотра."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Эта персона не существует."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Этот человек был удален. Удаление должно быть проверено модератором."
@@ -12563,6 +12578,11 @@ msgstr "Этот человек был отредактирован. Измен�
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Этот человек был отредактирован. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "Данные об этой персоне закрыты."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12624,6 +12644,11 @@ msgstr "Этот список создается с помощью просто�
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Этот медиаобъект не существует или у Вас нет прав для просмотра."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Этот медиаобъект не существует."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Этот медиаобъект был удален. Удаление должно быть проверено модератором."
@@ -12643,6 +12668,11 @@ msgstr "Этот медиаобъект был отредактирован. И�
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Этот медиаобъект был отредактирован. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Этот медиаобъект является закрытым."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12664,6 +12694,11 @@ msgstr "Это имя используется в поле «От кого», п
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Это примечание не существует или у Вас нет прав для просмотра."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Это примечание не существует."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Эта заметка была удалена. Удаление должно быть проверено модератором."
@@ -12683,6 +12718,11 @@ msgstr "Эта заметка была отредактирована. Изме�
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Эта заметка была отредактирована. Вы должны рассмотреть это изменение, а затем %1$s или %2$s его."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Это примечание является закрытым."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12769,8 +12809,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Эта запись была отредактирована. Вы должны рассмотреть изменения записи, а затем %1$s или %2$s её."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Эта запись является закрытой."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Этот архив не существует или у Вас нет прав на просмотр."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "Этот архив не существует."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "Этот архив является закрытым."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12804,6 +12859,16 @@ msgstr "Для этой службы требуется ключ API."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Этот источник не существует или у Вас нет прав для просмотра."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "Этот источник не существует."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "Этот источник является закрытым."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14042,6 +14107,11 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr ""
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Возможно, вам потребуется войти в систему, чтобы увидеть это."
 
 #: app/Module/PrivacyPolicy.php
 msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."

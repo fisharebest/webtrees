@@ -12443,6 +12443,10 @@ msgstr "Tämä tapahtui, mutta yksityiskohtia ei tunneta."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Tämä perhe ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tämä perhe on poistettu. Valvojan on tarkastettava poisto."
@@ -12462,6 +12466,10 @@ msgstr "Tämä perhe on muokattu. Valvojan on tarkastettava muutokset."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tämä perhe on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12507,6 +12515,10 @@ msgstr "Lomake on vanhentunut - yritä uudelleen."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Tämä henkilö ei ole olemassa tai sinulla ei ole oikeutta katsella hänen tietojaan."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tämä henkilö on poistettu. Valvojan on tarkastettava poisto."
@@ -12526,6 +12538,10 @@ msgstr "Tämä henkilö on muokattu. Valvojan on tarkastettava muutokset."
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tämä henkilö on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12587,6 +12603,10 @@ msgstr "Tämä luettelo luodaan käyttämällä yksinkertaista (mutta nopeaa) ha
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Tämä mediakohde ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tämä mediakohde on poistettu. Valvojan on tarkastettava poisto."
@@ -12606,6 +12626,10 @@ msgstr "Tämä mediakohde on muokattu. Valvojan on tarkastettava muutokset."
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tämä mediakohde on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12627,6 +12651,10 @@ msgstr "Tätä nimeä käytetään ”Keneltä (From)”-kentässä, kun tältä
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Tämä huomautus ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Tämä huomautus on poistettu. Valvojan on tarkastettava poisto."
@@ -12646,6 +12674,10 @@ msgstr "Tämä huomautus on muokattu. Valvojan on tarkastettava muutokset."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Tämä huomautus on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12731,8 +12763,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Tämä tietue on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Tämä tietovarasto ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12766,6 +12810,14 @@ msgstr "Tämä palvelu vaatii API-avaimen."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Tämä lähde ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14000,6 +14052,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

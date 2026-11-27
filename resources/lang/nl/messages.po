@@ -12466,6 +12466,11 @@ msgstr "Deze gebeurtenis heeft plaatsgevonden, maar de details zijn onbekend."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Deze familie bestaat niet of u heeft geen rechten om deze te zien."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Deze familie bestaat niet."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Deze familie is verwijderd. Dit zal worden beoordeeld door een moderator."
@@ -12485,6 +12490,11 @@ msgstr "Deze familie is gewijzigd. De wijzigingen moeten worden nagezien door ee
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Dit gezin is gewijzigd. Beoordeel de wijzigingen en %1$s of %2$s ze dan."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Deze familie is privé."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12530,6 +12540,11 @@ msgstr "Dit formulier is verlopen. Probeer opnieuw."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Deze persoon bestaat niet, of u heeft geen permissie om dit te zien."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Deze persoon bestaat niet."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Deze persoon is verwijderd. De verwijdering moet nagekeken worden door een moderator."
@@ -12549,6 +12564,11 @@ msgstr "De gegevens van deze persoon zijn gewijzigd. De wijzigingen moeten nagek
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "De gegevens van deze persoon zijn gewijzigd. Beoordeel de wijzigingen en %1$s of %2$s ze dan."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "Deze persoon is privé."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12610,6 +12630,11 @@ msgstr "Deze lijst is gemaakt met een eenvoudige (maar snelle) zoekopdracht en b
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Dit mediaobject bestaat niet of u heeft geen toestemming om het te bekijken."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Dit mediaobject bestaat niet."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Dit mediaobject werd verwijderd. De verwijdering moet worden beoordeeld door een moderator."
@@ -12629,6 +12654,11 @@ msgstr "Dit mediaobject werd gewijzigd. De wijzigingen moeten worden beoordeeld 
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Dit mediaobject werd gewijzigd. Beoordeel de wijzigingen en %1$s of %2$s ze dan."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Dit mediaobject is privé."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12650,6 +12680,11 @@ msgstr "Deze naam wordt gebruikt voor het ‘Van’ veld, voor verzending van au
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Deze notitie bestaat niet of u heeft niet de rechten om dit te zien."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Deze notitie bestaat niet."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Deze notitie is verwijderd. Het verwijderen zal nagekeken moeten worden door een moderator."
@@ -12669,6 +12704,11 @@ msgstr "Deze notitie is gewijzigd. De wijzigingen moeten nagekeken worden door e
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Deze notitie is gewijzigd. Beoordeel de wijzigingen en %1$s of %2$s ze dan."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Deze notitie is privé."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12754,8 +12794,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Dit record is gewijzigd. Beoordeel de wijzigingen en %1$s of %2$s deze dan."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Dit record is privé."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Deze opslagplaats bestaat niet of u heeft geen recht deze in te zien."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "Deze opslagplaats bestaat niet."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "Deze opslagplaats is privé."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12789,6 +12844,16 @@ msgstr "Deze dienst vereist een API-sleutel."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Deze bron bestaat niet of u heeft geen permissie om deze bron in te zien."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "Deze bron bestaat niet."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "Deze bron is privé."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14038,6 +14103,11 @@ msgstr "U heeft het recht om een kopie op te vragen van de persoonsgegevens die 
 #, fuzzy
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr "U heeft het recht om rectificatie van onjuiste persoonsgegevens te verzoeken."
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Mogelijk moet u inloggen om dit te zien."
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy

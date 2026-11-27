@@ -12393,6 +12393,10 @@ msgstr "Hierdie gebeurtenis het plaasgevind, maar die besonderhede is onbekend."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Hierdie gesin bestaan nie, of jy het nie toestemming om dit te sien nie."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Hierdie gesin is geskrap. Dit sal eers deur 'n moderator nagesien moet word."
@@ -12412,6 +12416,10 @@ msgstr "Hierdie gesin is gewysig. Dit sal eers deur 'n moderator nagesien word."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Hierdie gesin is gewysig. Jy moet die wysigings evalueer en %1$s of %2$s hulle dan."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12457,6 +12465,10 @@ msgstr "Hierdie vorm het verstryk. Probeer weer."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Hierdie persoon bestaan nie of jy het nie toestemming om dit te sien nie."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Hierdie persoon is geskrap. Die skrapping sal deur 'n moderator nagesien moet word."
@@ -12476,6 +12488,10 @@ msgstr "Hierdie persoon is gewysig. Die wysigings moet deur 'n moderator nagesie
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Hierdie persoon is gewysig. Jy moet die wysigings evalueer en dit dan %1$s of %2$s."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12537,6 +12553,10 @@ msgstr "Hierdie lys is geskep met behulp van ’n eenvoudige (maar vinnige) soek
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Hierdie mediavoorwerp bestaan nie of jy het nie toestemming om dit te sien nie."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Hierdie mediavoorwerp is geskrap. Die skrapping moet nog deur 'n moderator nagegaan word."
@@ -12556,6 +12576,10 @@ msgstr "Hierdie mediavoorwerp is gewysig. Die wysigings moet nog deur 'n moderat
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Hierdie mediavoorwerp is gewysig. Jy moet die wysigings nagaan en dit dan %1$s of %2$s."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12577,6 +12601,10 @@ msgstr "Hierdie naam word gebruik in die “Van”-veld, wanneer outomaties e-po
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Hierdie nota bestaan nie of jy het nie toestemming om dit te sien nie."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Hierdie nota is geskrap. Hierdie skrapping moet nog deur 'n moderator nagegaan word."
@@ -12596,6 +12624,10 @@ msgstr "Hierdie nota is gewysig. Hierdie wysiging moet nog deur 'n moderator nag
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Hierdie nota is gewysig. Jy moet hierdie wysigings nagaan en dit dan %1$s of %2$s."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12681,8 +12713,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Hierdie rekord is gewysig. Jy moet die wysiging nagaan en dit dan %1$s of %2$s."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Hierdie bergplek bestaan nie of jy het nie toestemming om dit te sien nie."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12716,6 +12760,14 @@ msgstr "Hierdie diens vereis 'n API-sleutel."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Hierdie bron bestaan nie of jy het nie toestemming om dit te sien nie."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13946,6 +13998,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

@@ -12466,6 +12466,11 @@ msgstr "Este evento ocurrió, pero se desconocen los detalles."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Esta familia no existe o usted no tiene permiso para verla."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Esta familia no existe."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Esta familia ha sido borrada. La supresión tendrá que ser aprobada por un moderador."
@@ -12485,6 +12490,11 @@ msgstr "Esta familia ha sido editada. Los cambios tendrán que ser aprobados por
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Esta familia ha sido editada. Debe revisar los cambios y luego %1$s o %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Esta familia es privada."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12530,6 +12540,11 @@ msgstr "Este formulario ha expirado. Inténtelo de nuevo."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Este individuo no existe, o usted no tiene permiso para verlo."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Este individuo no existe."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Esta persona ha sido borrada. El borrado tendrá que ser revisado por un moderador."
@@ -12549,6 +12564,11 @@ msgstr "Esta persona ha sido editada. Los cambios deben ser revisados por un mod
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Esta persona ha sido editada. Debe revisar los cambios y %1$s o %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "Los datos de este individuo son privados."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12610,6 +12630,11 @@ msgstr "Esta lista se crea mediante una búsqueda simple (pero rápida) y, por l
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Este objeto audiovisual no existe o usted no tiene permiso para verlo."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Este objeto multimedia no existe."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Este objeto audiovisual se ha eliminado. La eliminación tiene que ser revisada por un moderador."
@@ -12629,6 +12654,11 @@ msgstr "Este objeto audiovisual se ha editado. Los cambios tienen que ser revisa
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Este objeto audiovisual ha sido cambiado. Debe revisar los cambios y %1$s o %2$s."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Este objeto multimedia es privado."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12650,6 +12680,11 @@ msgstr "Este nombre se usa en el campo «De», para enviar correos electrónicos
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Esta nota no existe o no tiene Ud. permiso para verla."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Esta nota no existe."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Esta nota ha sido borrada. El borrado deberá ser revisado por un moderador."
@@ -12669,6 +12704,11 @@ msgstr "Esta nota ha sido editada. Los cambios deben ser revisados por un modera
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Esta nota ha sido editada. Debe revisar los cambios y entonces elegir %1$s o %2$s ."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Esta nota es privada."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12754,8 +12794,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Este registro ha sido editado. Debe revisar los cambios y después %1$s o %2$s."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Este registro es privado."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "El repositorio no existe o usted no tiene los permisos para verlo."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "Este repositorio no existe."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "Este repositorio es privado."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12789,6 +12844,16 @@ msgstr "Este servicio requiere una clave API."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Esta fuente no existe o usted no tiene permiso para verla."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "Esta fuente no existe."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "Esta fuente es privada."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14038,6 +14103,11 @@ msgstr "Tiene derecho a solicitar una copia de los datos personales que tenemos 
 #, fuzzy
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr "Tiene derecho a solicitar la rectificación de cualquier dato personal inexacto."
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Es posible que tenga que iniciar sesión para verlo."
 
 #: app/Module/PrivacyPolicy.php
 #, fuzzy

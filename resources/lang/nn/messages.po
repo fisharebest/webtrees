@@ -12397,6 +12397,10 @@ msgstr "Faktisk hending, men ingen kjende detaljar."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Familien finnast ikkje, eller du har ikkje løyve til å sjå den."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Familien er sletta. Slettinga må fyrst godkjennast av ein moderator."
@@ -12416,6 +12420,10 @@ msgstr "Familien er endra. Endringane må fyrst godkjennast av ein moderator."
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Familien er blitt endra. Sjå over endringane og %1$s eller %2$s dei."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12461,6 +12469,10 @@ msgstr "Dette skjemaet er utgått. Prøv igjen."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Personen finnast ikkje, eller du har ikkje løyve til å sjå vedkomande."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Personen er sletta. Slettinga må godkjennast av ein moderator."
@@ -12480,6 +12492,10 @@ msgstr "Personen er endra. Endringa må godkjennast av ein moderator."
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Personen har blitt endra. Sjå over endringane og %1$s eller %2$s dei."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12541,6 +12557,10 @@ msgstr "Denne lista vert oppretta ved enkelt (men raskt) søk, og vil derfor inn
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Medieobjektet finnast ikkje, eller du har ikkje løyve til å sjå det."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Medieobjektet er sletta. Slettinga må godkjennast av ein moderator."
@@ -12560,6 +12580,10 @@ msgstr "Medieobjektet er endra. Endringane må godkjennast av ein moderator."
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Medieobjektet er endra. Sjå over endringane og %1$s eller %2$s dei."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12581,6 +12605,10 @@ msgstr "Dette namnet vert nytta i «Frå»-feltet når e-post sendast automatisk
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Notatet finnast ikkje, eller du har ikkje løyve til å sjå det."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Notatet er sletta. Slettinga må fyrst godkjennast av ein moderator."
@@ -12600,6 +12628,10 @@ msgstr "Notatet er endra. Endringane må fyrst godkjennast av ein moderator."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Notatet er endra. Sjå over endringane og %1$s eller %2$s dei."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12685,8 +12717,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Denne posten har blitt endra. Du må kontrollere endringane og %1$s eller %2$s dei."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Arkivet finnast ikkje, eller du har ikkje løyve til å sjå det."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12720,6 +12764,14 @@ msgstr "Tenesta krev ein API nøkkel."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Kjelda finst ikkje, eller du har ikkje løyve til å sjå den."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13950,6 +14002,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

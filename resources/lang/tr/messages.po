@@ -12443,6 +12443,11 @@ msgstr "Bu olay meydana geldi, ancak ayrıntılar bilinmiyor."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Bu aile yok ya da onu görüntüleme izniniz yok."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Bu aile mevcut değil."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu aile silindi. Silme işleminin bir moderatör tarafından gözden geçirilmesi gerekecektir."
@@ -12462,6 +12467,11 @@ msgstr "Bu aile düzenlendi. Değişikliklerin bir moderatör tarafından gözde
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Bu aile düzenlendi. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Bu aile özeldir."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12507,6 +12517,11 @@ msgstr "Bu formun süresi doldu. Tekrar deneyin."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Bu kişi mevcut değil veya görüntüleme izniniz yok."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Bu kişi mevcut değil."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu kişi silindi. Silme işleminin bir moderatör tarafından gözden geçirilmesi gerekecektir."
@@ -12526,6 +12541,11 @@ msgstr "Bu kişi düzenlenmiştir. Değişikliklerin bir moderatör tarafından 
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Bu kişi düzenlenmiştir. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "Bu kişi özeldir."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12587,6 +12607,11 @@ msgstr "Bu liste basit (ancak hızlı) bir arama kullanılarak oluşturulur ve b
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Bu medya nesnesi mevcut değil veya onu görüntüleme izniniz yok."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Bu medya nesnesi mevcut değil."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu medya nesnesi silindi. Silme işleminin bir moderatör tarafından gözden geçirilmesi gerekecektir."
@@ -12606,6 +12631,11 @@ msgstr "Bu medya nesnesi düzenlenmiştir. Değişikliklerin bir moderatör tara
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Bu medya nesnesi düzenlenmiştir. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Bu medya nesnesi özeldir."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12627,6 +12657,11 @@ msgstr "Bu ad, bu sunucudan otomatik e-postalar gönderirken “Kimden” alanı
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Bu not yok veya görüntüleme izniniz yok."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Bu not mevcut değil."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Bu not silindi. Silme işleminin bir moderatör tarafından gözden geçirilmesi gerekecektir."
@@ -12646,6 +12681,11 @@ msgstr "Bu not düzenlenmiştir. Değişikliklerin bir moderatör tarafından g�
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Bu not düzenlenmiştir. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Bu not özeldir."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12731,8 +12771,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Bu kayıt düzenlenmiştir. Değişiklikleri ve ardından %1$s veya %2$s'i gözden geçirmelisiniz."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Bu kayıt özeldir."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Bu bilgi havuzu mevcut değil veya görüntüleme izniniz yok."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "Bu bilgi havuzu mevcut değil."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "Bu bilgi havuzu özeldir."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12766,6 +12821,16 @@ msgstr "Bu servis API anahtarı gerektirir."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Bu kaynak mevcut değil veya onu görüntüleme izniniz yok."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "Bu kaynak mevcut değil."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "Bu kaynak özeldir."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14001,6 +14066,11 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr ""
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Görmek için giriş yapmanız gerekebilir."
 
 #: app/Module/PrivacyPolicy.php
 msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."

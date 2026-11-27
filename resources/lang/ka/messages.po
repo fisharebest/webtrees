@@ -12386,6 +12386,10 @@ msgstr ""
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "ეს ოჯახი არ არსებობს ან თქვენ არ გაქვთ საკმარისი უფლება მისი ნახვის."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "ეს ოჯახი წაიშალა. წაშლა საჭიროებს შემოწმებას მოდერატორის მიერ."
@@ -12405,6 +12409,10 @@ msgstr "Этот источник был редактирован. Измене�
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Эта семья была редактирована. Вы должны просмотреть и %1$s или %2$s изменения."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12449,6 +12457,10 @@ msgstr ""
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "ეს ოჯახი არ არსებობს ან თქვენ არ გაქვთ საკმარისი უფლება მისი ნახვის."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "პერსონა წაიშალა. წაშლა მოითხოვს მოდერატორისგან შემოწმებას."
@@ -12468,6 +12480,10 @@ msgstr "Этот источник был редактирован. Измене�
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Эта семья была редактирована. Вы должны просмотреть и %1$s или %2$s изменения."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12530,6 +12546,10 @@ msgstr ""
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Этот медиаобъект не существует или у Вас нет прав для просмотра."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Этот медиаобъект был удалён. Удаление нуждается в проверке модератором."
@@ -12549,6 +12569,10 @@ msgstr "Этот медиаобъект был редактирован. Изм�
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Этот медиаобъект был редактирован. Вы должны просмотреть и %1$s или %2$s изменения."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12570,6 +12594,10 @@ msgstr ""
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Это примечание не существует или у Вас нет прав для просмотра."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Этот источник был удалён. Удаление нуждается в проверке модератором."
@@ -12589,6 +12617,10 @@ msgstr "Этот источник был редактирован. Измене�
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Этот источник был редактирован. Вы должны просмотреть и %1$s или %2$s изменения."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12673,8 +12705,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr ""
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "ეს არქივი არ არსებობს ან თქვენ არ გაქვთ უფლება მისი ნახვის."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 #, fuzzy
@@ -12709,6 +12753,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Этот источник не существует или у Вас нет прав для просмотра."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -13938,6 +13990,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php

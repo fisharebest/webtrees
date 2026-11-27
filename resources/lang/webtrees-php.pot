@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 11:22+0000\n"
+"POT-Creation-Date: 2026-11-27 00:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,31 +51,59 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/Auth.php
-msgid "This family does not exist or you do not have permission to view it."
+msgid "This family does not exist."
 msgstr ""
 
 #: app/Auth.php
-msgid "This record does not exist or you do not have permission to view it."
+msgid "This family is private."
 msgstr ""
 
 #: app/Auth.php
-msgid "This individual does not exist or you do not have permission to view it."
+msgid "This record does not exist."
 msgstr ""
 
 #: app/Auth.php
-msgid "This media object does not exist or you do not have permission to view it."
+msgid "This record is private."
 msgstr ""
 
 #: app/Auth.php
-msgid "This note does not exist or you do not have permission to view it."
+msgid "This individual does not exist."
 msgstr ""
 
 #: app/Auth.php
-msgid "This repository does not exist or you do not have permission to view it."
+msgid "This individual is private."
 msgstr ""
 
 #: app/Auth.php
-msgid "This source does not exist or you do not have permission to view it."
+msgid "This media object does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
+
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
 msgstr ""
 
 #: app/Auth.php app/Elements/RestrictionNotice.php app/Enums/AccessLevel.php
@@ -95,6 +123,10 @@ msgstr ""
 
 #: app/Auth.php app/Enums/AccessLevel.php app/Http/Controllers/TreePrivacy.php
 msgid "Hide from everyone"
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Census/CensusColumnSurnameGivenNames.php app/Family.php

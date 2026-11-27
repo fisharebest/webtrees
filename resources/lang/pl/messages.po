@@ -12476,6 +12476,11 @@ msgstr "To wydarzenie miało miejsce, ale szczegóły nie są znane."
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Ta rodzina nie istnieje lub nie masz uprawnień do przeglądania jej."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This family does not exist."
+msgstr "Ta rodzina nie istnieje."
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ta rodzina została usunięta. Usunięcie musi zostać zweryfikowane przez moderatora."
@@ -12495,6 +12500,11 @@ msgstr "Ta rodzina została zmieniona. Zmiany muszą zostać zweryfikowane przez
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ta rodzina została zmieniona. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This family is private."
+msgstr "Ta rodzina jest prywatna."
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12541,6 +12551,11 @@ msgstr "Dany formularz jest nieaktualny. Spróbuj ponownie."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Ta osoba nie istnieje lub nie masz uprawnień do przeglądania jej."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This individual does not exist."
+msgstr "Ta osoba nie istnieje."
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ta osoba została usunięta. Usunięcie musi zostać zweryfikowane przez moderatora."
@@ -12560,6 +12575,11 @@ msgstr "Ta osoba została zmieniona. Zmiany muszą zostać zweryfikowane przez m
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ta osoba została zmieniona. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This individual is private."
+msgstr "Ta osoba jest prywatna."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12621,6 +12641,11 @@ msgstr "Ta lista jest tworzona za pomocą prostego (ale szybkiego) wyszukiwania 
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Ten obiekt multimedialny nie istnieje lub nie masz uprawnień do przeglądania go."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This media object does not exist."
+msgstr "Ten obiekt multimedialny nie istnieje."
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ten obiekt multimedialny został usunięty. Usunięcie musi zostać zweryfikowane przez moderatora."
@@ -12640,6 +12665,11 @@ msgstr "Ten obiekt multimedialny został zmieniony. Zmiany muszą zostać zweryf
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ten obiekt multimedialny został zmieniony. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This media object is private."
+msgstr "Ten obiekt multimedialny jest prywatny."
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12661,6 +12691,11 @@ msgstr "Ta nazwa jest używana w polu „Od”, podczas wysyłania automatycznyc
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Ta notatka nie istnieje lub nie masz uprawnień do przeglądania jej."
 
+#: app/Auth.php
+#, fuzzy
+msgid "This note does not exist."
+msgstr "Ta notatka nie istnieje."
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Ta notatka została usunięta. Usunięcie musi zostać zweryfikowane przez moderatora."
@@ -12680,6 +12715,11 @@ msgstr "Ta notatka została zmieniona. Zmiany muszą zostać zweryfikowane przez
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Ta notatka została zmieniona. Należy przejrzeć zmiany, a następnie %1$s lub %2$s je."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This note is private."
+msgstr "Ta notatka jest prywatna."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12766,8 +12806,23 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Dany wpis został zmodyfikowany. Należy sprawdzić dane zmiany i %1$s lub %2$s je."
 
 #: app/Auth.php
+#, fuzzy
+msgid "This record is private."
+msgstr "Ten wpis jest prywatny."
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Te repozytorium nie istnieje lub nie masz uprawnień do przeglądania go."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository does not exist."
+msgstr "To repozytorium nie istnieje."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This repository is private."
+msgstr "To repozytorium jest prywatne."
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12801,6 +12856,16 @@ msgstr "Ta usługa wymaga klucza API."
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Te źródło nie istnieje lub nie masz uprawnień do przeglądania go."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source does not exist."
+msgstr "To źródło nie istnieje."
+
+#: app/Auth.php
+#, fuzzy
+msgid "This source is private."
+msgstr "To źródło jest prywatne."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14040,6 +14105,11 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
 msgstr ""
+
+#: app/Auth.php
+#, fuzzy
+msgid "You may need to sign in to see it."
+msgstr "Aby to zobaczyć, może być konieczne zalogowanie się."
 
 #: app/Module/PrivacyPolicy.php
 msgid "You may request that we delete, restrict, or cease processing your personal data. However, where data is processed for historical research purposes or was obtained from publicly accessible sources, these rights may be limited where compliance would render the research impossible or seriously impair it."

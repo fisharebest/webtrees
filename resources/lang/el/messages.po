@@ -12447,6 +12447,10 @@ msgstr "Αυτό το συμβάν συνέβη, αλλά οι λεπτομέρ�
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "Αυτή η οικογένεια δεν υπάρχει ή δεν έχετε άδεια να την δείτε."
 
+#: app/Auth.php
+msgid "This family does not exist."
+msgstr ""
+
 #: resources/views/family-page-pending.phtml
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Αυτή η οικογένεια έχει διαγραφεί. Η διαγραφή θα πρέπει να ελεγχθεί από έναν επόπτη."
@@ -12466,6 +12470,10 @@ msgstr "Αυτή η οικογένεια έχει επεξεργαστεί. Οι
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Αυτή η οικογένεια έχει επεξεργαστεί. Θα πρέπει να ελέγξετε τις αλλαγές και, στη συνέχεια, επιλέγετε την %1$s ή %2$s τους."
+
+#: app/Auth.php
+msgid "This family is private."
+msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml
 #, php-format
@@ -12511,6 +12519,10 @@ msgstr "Αυτή η φόρμα έχει λήξει. Προσπάθησε ξαν�
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Αυτό το άτομο δεν υπάρχει ή δεν έχετε άδεια να το δείτε."
 
+#: app/Auth.php
+msgid "This individual does not exist."
+msgstr ""
+
 #: resources/views/individual-page-pending.phtml
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Αυτό το άτομο έχει διαγραφεί. Η διαγραφή θα πρέπει να ελεγχθεί από έναν επόπτη."
@@ -12530,6 +12542,10 @@ msgstr "Αυτό το άτομο έχει επεξεργαστεί. Οι αλλ�
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Αυτό το άτομο έχει επεξεργαστεί. Θα πρέπει να ελέγξετε τις αλλαγές και, στη συνέχεια, na epil;ejete %1$s ή %2$s τους."
+
+#: app/Auth.php
+msgid "This individual is private."
+msgstr ""
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12591,6 +12607,10 @@ msgstr "Αυτή η λίστα δημιουργείται χρησιμοποιώ
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr "Αυτό το αντικείμενο πολυμέσων δεν υπάρχει ή δεν έχετε άδεια να το δείτε."
 
+#: app/Auth.php
+msgid "This media object does not exist."
+msgstr ""
+
 #: resources/views/media-page-pending.phtml
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Αυτό το αντικείμενο πολυμέσων έχει διαγραφεί. Η διαγραφή θα πρέπει να ελεγχθεί από έναν επόπτη."
@@ -12610,6 +12630,10 @@ msgstr "Αυτό το αντικείμενο πολυμέσων έχει επε�
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Αυτό το αντικείμενο πολυμέσων έχει επεξεργαστεί. Θα πρέπει να ελέγξετε τις αλλαγές και, στη συνέχεια, επιλέξτε %1$s ή %2$s."
+
+#: app/Auth.php
+msgid "This media object is private."
+msgstr ""
 
 #: resources/views/emails/message-copy-html.phtml
 #: resources/views/emails/message-copy-text.phtml
@@ -12631,6 +12655,10 @@ msgstr "Αυτό το όνομα χρησιμοποιείται στο πεδί�
 msgid "This note does not exist or you do not have permission to view it."
 msgstr "Αυτή η σημείωση δεν υπάρχει ή δεν έχετε άδεια να την προβάλετε."
 
+#: app/Auth.php
+msgid "This note does not exist."
+msgstr ""
+
 #: resources/views/note-page-pending.phtml
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr "Αυτή η σημείωση έχει διαγραφεί. Η διαγραφή θα πρέπει να ελεγχθεί από έναν επόπτη."
@@ -12650,6 +12678,10 @@ msgstr "Αυτή η σημείωση έχει επεξεργαστεί. Οι α�
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr "Αυτή η σημείωση έχει επεξεργαστεί. Πρέπει να ελέγξετε τις αλλαγές και μετά να τις %1$s ή %2$s."
+
+#: app/Auth.php
+msgid "This note is private."
+msgstr ""
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -12735,8 +12767,20 @@ msgid "This record has been edited. You should review the changes and then %1$s 
 msgstr "Αυτή η εγγραφή έχει επεξεργαστεί. Πρέπει να ελέγξετε τις αλλαγές και μετά να τις %1$s ή %2$s."
 
 #: app/Auth.php
+msgid "This record is private."
+msgstr ""
+
+#: app/Auth.php
 msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Αυτό το αποθετήριο δεν υπάρχει ή δεν έχετε άδεια να το δείτε."
+
+#: app/Auth.php
+msgid "This repository does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This repository is private."
+msgstr ""
 
 #: resources/views/admin/users-edit.phtml
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -12770,6 +12814,14 @@ msgstr ""
 #: app/Auth.php
 msgid "This source does not exist or you do not have permission to view it."
 msgstr "Αυτή η πηγή δεν υπάρχει ή δεν έχετε δικαιώματα πρόσβασης σε αυτή."
+
+#: app/Auth.php
+msgid "This source does not exist."
+msgstr ""
+
+#: app/Auth.php
+msgid "This source is private."
+msgstr ""
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml
@@ -14005,6 +14057,10 @@ msgstr ""
 
 #: app/Module/PrivacyPolicy.php
 msgid "You have the right to request that we correct any inaccurate personal data."
+msgstr ""
+
+#: app/Auth.php
+msgid "You may need to sign in to see it."
 msgstr ""
 
 #: app/Module/PrivacyPolicy.php
