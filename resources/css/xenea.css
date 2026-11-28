@@ -727,7 +727,8 @@ div.fact_SHARED_NOTE {
     background-color: #ff0;
 }
 
-.descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day.wt-calendar-widget-day-selected {
     color: #006;
     font-size: 12px;
     background-color: #c3dfff;
@@ -735,7 +736,7 @@ div.fact_SHARED_NOTE {
     padding: 3px;
 }
 
-.optionbox {
+.wt-calendar-widget-day {
     background-color: #ecf5ff;
     font-size: 1rem;
     border: solid #c3dfff 1px;

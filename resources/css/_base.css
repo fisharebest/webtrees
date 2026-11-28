@@ -130,6 +130,35 @@ a:hover, .btn-link:hover, .nav-link:hover {
     border-left: solid 4px var(--bs-border-color);
 }
 
+.wt-calendar-widget {
+    background-color: var(--bs-body-bg);
+    position: absolute;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.wt-calendar-widget-visible {
+    visibility: visible;
+}
+
+.wt-calendar-widget > table {
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    border-collapse: collapse;
+}
+
+.wt-calendar-widget > table > tbody > tr > td {
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+}
+
+.wt-calendar-widget > table > tbody > tr > td > table {
+    width: 100%;
+}
+
+.wt-calendar-widget .wt-calendar-widget-day-outside-month {
+    background-color: var(--bs-secondary-bg);
+    border: var(--bs-border-style) var(--bs-border-color) var(--bs-border-width);
+}
+
 .wt-text-overflow-elipsis {
     white-space: nowrap;
     overflow: hidden;

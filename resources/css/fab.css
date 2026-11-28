@@ -354,13 +354,14 @@ table {
 
 /* ====== Round Corners ======== */
 .block,
-.descriptionbox,
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day-selected,
+.wt-calendar-widget-day,
 .list_label,
 .list_label_wrap,
 .list_value,
 .list_value_wrap,
 .messagebox,
-.optionbox,
 .person0,
 .person1,
 .person2,
@@ -556,20 +557,22 @@ div.fact_SHARED_NOTE {
     background-color: #ff0;
 }
 
-.descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day.wt-calendar-widget-day-selected {
     font-weight: bold;
     background-color: #ccc;
     vertical-align: top;
 }
 
-.descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day-selected {
     font-size: 14px;
     background-color: #ccc;
     vertical-align: top;
     padding: 3px;
 }
 
-.optionbox {
+.wt-calendar-widget-day {
     background-color: #ddd;
     color: #000;
     vertical-align: top;

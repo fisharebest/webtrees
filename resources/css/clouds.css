@@ -577,7 +577,7 @@ fieldset,
 .list_value,
 .list_value_wrap,
 .messagebox,
-.optionbox,
+.wt-calendar-widget-day,
 .wt-chart-box,
 .person0,
 .person1,
@@ -776,14 +776,15 @@ div.fact_SHARED_NOTE {
     background-color: #ff0;
 }
 
-.descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day.wt-calendar-widget-day-selected {
     font-size: 12px;
     border: 1px solid #ccc;
     vertical-align: top;
     padding: 3px;
 }
 
-.optionbox {
+.wt-calendar-widget-day {
     font-size: 1rem;
     background-color: #ecf5ff;
     color: #006;
@@ -1113,7 +1114,8 @@ div.faq_body {
 }
 
 /* Tbl hdrs and Light Text */
-.descriptionbox,
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day.wt-calendar-widget-day-selected,
 .list_label,
 .list_label a {
     background-color: #95b8e0;

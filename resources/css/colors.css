@@ -153,7 +153,9 @@
 
 .wt-page-options-label,
 .wt-facts-table th, .wt-facts-table .dropdown-toggle,
-.descriptionbox, .descriptionbox a,
+.wt-calendar-widget-day.wt-calendar-widget-day-selected,
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-weekday a, .wt-calendar-widget-day-selected a,
 .topbottombar, .topbottombar a,
 .list_label, .list_label a {
     background-color: var(--color-3);
@@ -164,7 +166,7 @@
 .wt-block-content,
 .wt-facts-table td,
 .ui-widget-header,
-.optionbox, .ui-state-active a:link,
+.wt-calendar-widget-day, .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a {
     background: var(--color-4);
 }
@@ -403,21 +405,16 @@ table.center {
     font-weight: bold;
 }
 
-.descriptionbox {
+.wt-calendar-widget-weekday,
+.wt-calendar-widget-day-selected {
     font-size: 1rem;
     color: #333;
     border: 1px solid #999;
 }
 
-.optionbox {
+.wt-calendar-widget-day {
     color: #333;
     border: 1px solid #999;
-}
-
-.optionbox .list_value {
-    background-color: #fff;
-    border: 1px solid #999;
-    border-radius: 3px;
 }
 
 /* ---Pending edits--- */

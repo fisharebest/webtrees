@@ -68,7 +68,7 @@ class DateValue extends AbstractElement
             view('edit/input-addon-calendar', ['id' => $id]) .
             view('edit/input-addon-help', ['topic' => 'DATE']) .
             '</div>' .
-            '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>' .
+            '<div id="caldiv' . $id . '" class="wt-calendar-widget"></div>' .
             '<div class="form-text">' . (new Date($value))->display() . '</div>';
     }
 

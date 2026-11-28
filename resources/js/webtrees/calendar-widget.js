@@ -108,7 +108,7 @@ export function calLocalize(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, no
  */
 function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   let i, j;
-  let content = '<table border="1"><tr>';
+  let content = '<table><tr>';
   content += '<td><select class="form-select" id="' + dateFieldId + '_daySelect" data-wt-calendar-update="1">';
   for (i = 1; i < 32; i++) {
     content += '<option value="' + i + '"';
@@ -129,13 +129,11 @@ function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   content += '</select></td>';
   content += '<td><input class="form-control" type="text" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" data-wt-calendar-update="1" /></td></tr>';
   content += '<tr><td colspan="3">';
-  content += '<table width="100%">';
+  content += '<table>';
   content += '<tr>';
   j = weekStart;
   for (i = 0; i < 7; i++) {
-    content += '<td ';
-    content += 'class="descriptionbox"';
-    content += '>';
+    content += '<td class="wt-calendar-widget-weekday">';
     content += daysOfWeek[j];
     content += '</td>';
     j++;
@@ -154,17 +152,15 @@ function calGenerateSelectorContent(dateFieldId, dateDivId, date) {
   for (j = 0; j < 6; j++) {
     content += '<tr>';
     for (i = 0; i < 7; i++) {
-      content += '<td ';
+      content += '<td class="wt-calendar-widget-day';
       if (tdate.getMonth() === date.getMonth()) {
         if (tdate.getDate() === date.getDate()) {
-          content += 'class="descriptionbox"';
-        } else {
-          content += 'class="optionbox"';
+          content += ' wt-calendar-widget-day-selected';
         }
       } else {
-        content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
+        content += ' wt-calendar-widget-day-outside-month';
       }
-      content += '><a href="#" data-wt-calendar-date="1" data-wt-calendar-year="' + tdate.getFullYear() + '" data-wt-calendar-month="' + tdate.getMonth() + '" data-wt-calendar-day="' + tdate.getDate() + '">';
+      content += '"><a href="#" data-wt-calendar-date="1" data-wt-calendar-year="' + tdate.getFullYear() + '" data-wt-calendar-month="' + tdate.getMonth() + '" data-wt-calendar-day="' + tdate.getDate() + '">';
       content += tdate.getDate();
       content += '</a></td>';
       let datemilli = tdate.getTime() + daymilli;
@@ -236,12 +232,8 @@ export function calendarWidget(dateDivId, dateFieldId) {
   let dateDiv = document.getElementById(dateDivId);
   let dateField = document.getElementById(dateFieldId);
 
-  if (dateDiv.style.visibility === 'visible') {
-    dateDiv.style.visibility = 'hidden';
-    return false;
-  }
-  if (dateDiv.style.visibility === 'show') {
-    dateDiv.style.visibility = 'hide';
+  if (dateDiv.classList.contains('wt-calendar-widget-visible')) {
+    dateDiv.classList.remove('wt-calendar-widget-visible');
     return false;
   }
 
@@ -260,15 +252,7 @@ export function calendarWidget(dateDivId, dateFieldId) {
 
   dateDiv.innerHTML = calGenerateSelectorContent(dateFieldId, dateDivId, date);
   bindCalendarUpdateHandlers(dateDiv, dateFieldId, dateDivId);
-  if (dateDiv.style.visibility === 'hidden') {
-    dateDiv.style.visibility = 'visible';
-    return false;
-  }
-  if (dateDiv.style.visibility === 'hide') {
-    dateDiv.style.visibility = 'show';
-    return false;
-  }
-
+  dateDiv.classList.add('wt-calendar-widget-visible');
   return false;
 }
 
@@ -439,4 +423,3 @@ export function reformatDate(datefield, dmy) {
     datefield.value = datestr;
   }
 }
-
