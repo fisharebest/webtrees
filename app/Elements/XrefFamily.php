@@ -42,6 +42,7 @@ class XrefFamily extends AbstractXrefElement
             'family' => Registry::familyFactory()->make(trim($value, '@'), $tree),
             'tree'   => $tree,
             'at'     => '@',
+            'void'   => $this->isVoid($value),
         ]);
     }
 

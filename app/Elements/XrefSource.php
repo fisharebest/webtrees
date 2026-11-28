@@ -60,6 +60,7 @@ class XrefSource extends AbstractXrefElement
                 'source' => Registry::sourceFactory()->make(trim($value, '@'), $tree),
                 'tree'   => $tree,
                 'at'     => '@',
+                'void'   => $this->isVoid($value),
             ]);
 
             return
